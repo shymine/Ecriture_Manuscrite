@@ -6,7 +6,7 @@ all: main
 
 main: main.tex $(SOURCES)
 	pdflatex -shell-escape main.tex
-	# bibtex main (for bibliography)
+	bibtex main
 	pdflatex -shell-escape main.tex
 	pdflatex -shell-escape main.tex
 
