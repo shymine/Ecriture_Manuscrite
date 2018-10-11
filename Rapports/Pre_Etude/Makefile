@@ -12,4 +12,4 @@ main: main.tex $(SOURCES)
 
 clean:
 	rm -rf _minted*
-	rm -f *.aux *.bbl *.blg *.log *.out *.toc *.pdf
+	rm -f *.aux *.bbl *.blg *.log *.out *.toc main.pdf
