@@ -11,21 +11,6 @@ données d’entrées et donc d’effectuer une classification pour chacune des 
 		
 \subsection{Modèles de Markov Cachés}
 
-Les Modèles de Markov Cachés (MMC) sont des modèles probabilistes basés sur une structure de graphe.
-Ils modélisent une séquence basée sur des connaissances \textit{a priori}, comme un langage avec la
-forme des lettres. Les MMC sont constitués d’un processus possédant deux composantes stochastiques
-(se basant sur le hasard). La première correspond aux états du processus, il s’agit des
-observations à chaques instants. La seconde modélise les dépendances temporelles entre les
-états non observés, c’est celle-ci qui permet de modéliser les dépendances temporelles markoviennes. 
-Les probabilités de passage d’un état à un autre dépendent d’une matrice de transition
-et un vecteur de conditions initiales permet de définir l’état de départ. Les MMC permettent de
-modéliser la probabilité d’émission d’une observation $y$ (première composante) par un état $x$ qui
-est défini par la probabilité $e = p(y|x)$, ce qui donne une seconde matrice représentant
-ces probabilités d’émission. Il existe donc deux types d’observation : les observations discrètes,
-liées à un alphabet fini, et les observations continues qui prennent leurs valeurs dans un espace de
-$\mathbb{R}^N$, avec $N$ la dimension d’un vecteur d’observations. Sur les modèles ainsi générés,
-il est possible d’appliquer différents algorithmes suivant les réponses attendues.
-
 \subsection{Champs Aléatoires Conditionnels}
 
 \subsection{Réseaux de Neurones Récurrents}
@@ -57,12 +42,4 @@ l’utilisation d’outils déjà existants sans avoir à faire de conversion en
 qui pourraient exister. De ce fait, les différentes étapes de l’analyse de documents peuvent être effectuées
 par différentes équipes sans qu’il n'y ait de conflit au niveau du format des données, ce qui permet une
 collaboration plus facile. Les données présentes en entrée dans le cas de notre projet seront au format PiFF.
-Par conséquent, les données après traitement par le logiciel devront également être dans ce format. 
-
-\section{Framework Deep Learning}
-
-\subsection{PyTorch}
-
-\subsection{TensorFlow}
-
-\section{Base de données (pour stocker des images)}
+Par conséquent, les données après traitement par le logiciel devront également être dans ce format.
