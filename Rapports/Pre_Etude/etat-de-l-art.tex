@@ -7,7 +7,7 @@ Dans cette section, nous allons détailler tous les outils à notre disposition 
 La plupart des techniques de reconnaissance de l'écriture sont basées sur des classifieurs
 dits dynamiques, c'est-à-dire qu'ils possèdent une mémoire interne ou possèdent une notion
 de contexte dans leur analyse. Ces classifieurs permettent un parcours et une division des
-données d'entrées et donc d'effectuer une classification pour chacune des divisions repérées. 
+données d'entrée et donc d'effectuer une classification pour chacune des divisions repérées. 
 		
 \subsection{Modèles de Markov Cachés}
 
@@ -87,9 +87,110 @@ segmentation, une adaptation des algorithmes d'apprentissage est nécessaire.
 
 \section{Détecteur de lignes}
 
-\subsection{Par floutage}
+Afin de pouvoir utiliser les techniques de reconnaissance manuscrite, il est d'abord nécessaire
+de faire une segmentation des documents numérisés que nous possédons en entrée. La méthode
+usuelle dans le domaine de la reconnaissance manuscrite est la segmentation par ligne des documents.
+Pour ce faire, plusieurs techniques sont documentées dans la littérature concernant l'OCR
+(\textit{Optical Character Recognition}). La segmentation en lignes est une étape importante pour
+la reconnaissance manuscrite puisqu'un mauvais découpage va inévitablement poser des problèmes
+lors des étapes suivantes de la reconnaissance.
 
-\subsection{Par réseau de neurone à convolution}
+\paragraph{}
+Il est alors important d'identifier les problèmes que pose la détection de lignes dans les documents manuscrits.
+En effet, certains aspects sont à prendre en compte :
+\begin{itemize}
+\item Les lignes fluctuent au sein d'un même document;
+\item Les lignes d'un texte ne sont pas espacées régulièrement;
+\item Certaines lignes peuvent se chevaucher;
+\item L'espace interligne lui aussi peut varier d'une ligne à une autre et d'un paragraphe à un autre;
+\item Les lignes d'un paragraphe peuvent avoir une courbure globale et une courbure locale propre à
+chaque ligne (et même locale à une partie d'une ligne).
+\end{itemize}
+
+\paragraph{}
+Tous ces paramètres pouvant différer entre deux paragraphes, deux textes, et deux écrivains. Nous allons maintenant
+présenter rapidement les principales techniques documentées dans la littérature de l'OCR, pour ensuite décrire plus
+précisément le fonctionnement des deux solutions fournies par IntuiDoc pour la détection des lignes d'un document manuscrit.
+Il existe globalement deux types d'approches pour la détection des lignes dans un document manuscrit : les approches
+descendantes et les approches ascendantes. Les approches descendantes sont basées sur la technique de la projection.
+La projection horizontale est appliquée au document ou à une partie du document. Ensuite, une analyse sur les \textit{maxima},
+les \textit{minima} et les composantes connexes entre deux \textit{minima} consécutifs permettent de déterminer les lignes.
+Les approches ascendantes sont basées sur le bas niveau (au niveau pixel ou composantes connexes). La classification
+par plus proches voisins (KNN), la transformée de Hough, la technique du lissage, et la technique de répulsif-attractif
+utilisent ce type d'approches. Dans le cadre de notre projet, les algorithmes de détection des lignes nous sont
+fournis par l'équipe IntuiDoc. Ils utilisent deux techniques différentes que nous allons décrire ici.
+
+\subsection{Détection de ligne par floutage}
+
+Cette technique utilise la combinaison de deux niveaux d'analyse de l'image. Tout d'abord, une première analyse bas niveau
+de l'image floutée est réalisée, ce qui est efficace pour les images à forte densité textuelle. Ensuite, une analyse plus
+haut niveau est effectuée, ce qui est efficace sur des images à faible densité textuelle. La combinaison des deux niveaux
+d'analyse permet de gérer les problèmes liés à la détection de lignes dans les documents manuscrits évoqués au début de ce chapitre.
+L'analyse bas niveau de l'image floutée est composée de deux étapes que sont l'extraction de régions noires dans l'image afin de
+construire des parties de l'axe de la ligne, ainsi que la construction de l'axe de la ligne.
+
+\begin{mdframed}[innerbottommargin=10]
+\begin{center}
+\includegraphics[width=0.6\linewidth]{detect1.png}
+\end{center}
+\end{mdframed}
+
+\paragraph{}
+Afin d'extraire les régions noires correspondant à des parties d'une ligne, il est nécessaire d'effectuer préalablement un
+traitement sur l'image. Tout d'abord, l'image est floutée, puis une double binarisation lui est appliquée. Le résultat est
+une image dans laquelle sont en évidence les « régions noires » qui vont être utilisées pour construire l'axe des lignes.
+
+\begin{mdframed}[innerbottommargin=10]
+\begin{center}
+\includegraphics[width=0.6\linewidth]{detect2.png}
+\end{center}
+\end{mdframed}
+
+\paragraph{}
+Ces traitements d'image et la localisation de ces « zones noires » vont permettre ensuite de construire les axes des lignes.
+Une analyse de la position et de l'épaisseur de ces zones va permettre de les relier entre elles. On pourra alors calculer
+une épaisseur moyenne et une pente moyenne pour le document, données qui vont ensuite servir pour étendre les axes.
+
+\begin{mdframed}[innerbottommargin=10]
+\begin{center}
+\includegraphics[width=0.6\linewidth]{detect3.png}
+\end{center}
+\end{mdframed}
+
+\paragraph{}
+En effet, la dernière opération de cette étape consiste à trier les différents axes créés. Des règles prenant en compte l'épaisseur,
+la position et la pente des axes vont déterminer quels axes fusionner et quels axes supprimer. On peut obtenir des axes incomplets
+en résultat de cette première analyse bas niveau. Cependant, aucune analyse supplémentaire ne peut être réalisée à ce niveau.
+
+\paragraph{}
+Le deuxième niveau d'analyse prend en compte le modèle du document étudié. À partir des différents axes de lignes créés dans l'étape
+précédente, le but est de créer les lignes du texte. Ainsi, en fonction du document étudié, les stratégies de construction des lignes
+seront différentes. Afin de spécifier un document, une description grammaticale basée sur deux types d'entités (les éléments connectés
+et les axes créés précédemment) est effectuée. La description grammaticale du modèle du document va permettre de localiser les lignes
+du texte et d'assigner des pixels à des lignes. Grâce à la description grammaticale et à des règles judicieusement choisies, on peut alors
+construire les lignes du document. Cependant, il peut-être nécessaire (selon le domaine d'application) d'associer chaque pixel à sa ligne.
+Une dernière analyse basée sur la description grammaticale du document couplée à certaines informations sur le document
+est effectuée pour réaliser l'association.
+
+\subsection{Détection de ligne par réseau de neurone à convolution}
+
+Les réseaux de neurones à convolution comparent les images fragment par fragment et recherchent des fragments caractéristiques.
+Par exemple, un réseau de neurones à convolution cherchant à déterminer si une image est un X ou pas va chercher les caractéristiques
+définissant les X, les diagonales et leur entre-croisement. Lorsqu'on lui présente une image, le système ne sait alors pas si les
+caractéristiques sont présentes ni leur localisation. Il va alors calculer dans toute l'image si la caractéristique est présente.
+Pour compléter une convolution, on répète ce processus alignant les caractéristiques à chaque sous-partie de l'image.
+Le résultat de chaque convolution est une image stockant le résultat de la comparaison, avec un 1 pour une similitude et un -1
+pour une différence par exemple. Ensuite, à partir du résultat de chaque convolution, on crée un tableau situant où les
+caractéristiques se trouvent dans l'image. On obtient alors des images correspondant à l'image de base découpée en filtres.
+On répète le processus de convolution pour chaque caractéristique, et on obtient alors la couche de convolution.
+
+Cependant, le nombre d'opérations augmente linéairement avec le nombre de pixels de l'image et le
+nombre de pixels de chaque caractéristique. On peut alors effectuer du \textit{pooling}. On va
+réduire le nombre de pixels de l'image, en passant une fenêtre de quelques pixels sur l'image,
+et dans laquelle on ne garde que la valeur qui nous importe. Ainsi, le réseau ne situe pas précisément
+les caractéristiques dans l'image, il connaît seulement leur présence ou non. La couche de
+\textit{pooling} sert simplement à diminuer la charge de calcul. En effet, on garde le même nombre
+d'images avec les mêmes informations, mais le nombre de pixels est moindre.
 
 \section{Format de description d'image}
 

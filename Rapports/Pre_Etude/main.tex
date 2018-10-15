@@ -21,6 +21,7 @@
 \usepackage{mdframed}
 \usepackage{geometry}
 \usepackage{titlesec}
+\usepackage{pdfpages}
 \usepackage[textwidth=16mm]{todonotes}
 
 \newcommand{\as}[1]{\todo[color=green!40,size=\tiny,caption={}]{#1}}
@@ -35,6 +36,9 @@ bottom=20mm
 }
 
 \begin{document}
+
+\includepdf[pages=-]{page1.pdf}
+
 \pagestyle{empty}
 \fontfamily{cmss}
 \selectfont
@@ -61,6 +65,6 @@ bottom=20mm
 \bibliography{main}
 \bibliographystyle{plain}
 
-\include{annexes}
+%\include{annexes}
 
 \end{document}
