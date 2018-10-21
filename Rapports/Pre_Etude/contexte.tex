@@ -1,22 +1,27 @@
 \chapter{Contexte du projet}
 
-Comme énoncé dans l’introduction, ce projet est en collaboration avec l’entreprise
-Doptim et les archives départementales d’Ille-et-Vilaine. Le produit de notre travail
-leur sera donc mis à disposition afin qu’ils puissent l’exploiter.
+Comme énoncé dans l’introduction, ce projet est en collaboration avec l’équipe Intuidoc de l’IRISA,
+l’entreprise Doptim et les archives départementales d'Ille-et-Vilaine. Le produit de notre travail
+leur sera donc mis à disposition, directement ou indirectement, afin qu’ils puissent l’exploiter.
 
-\section{Les archives départementales d’Ille-et-Vilaine}
+\section{L’équipe de recherche IntuiDoc}
 
-Les archives départementales d’Ille-et-Vilaine, situées à Rennes, regroupent plusieurs
-millions de documents manuscrits datant, pour les plus anciens, du début du XI\up{ème} siècle.
-Ces documents n’y sont pas seulement entreposés mais aussi numérisés pour que n’importe qui
-puisse les consulter, soit en version physique aux archives, soit en version numérique
-depuis n’importe où. Il existe actuellement des moteurs de recherche permettant de retrouver
-les documents grâce à des annotations ou des mots-clés, mais leur utilisation reste limitée
-car les documents sont souvent peu lisibles. L'outil que notre projet va apporter aux
-archivistes leur permettra de retranscrire la totalité du contenu d’un document manuscrit
-sous forme de texte numérique pour que la recherche soit plus efficace et la consultation
-plus agréable. Cet outil pourra facilement être intégré à la chaîne d’archivage des documents
-puisqu’il pourra être exécuté juste après la numérisation, sans grande intervention humaine.
+Dans le cadre de ses recherches, l’équipe IntuiDoc de l’IRISA cherche à faire avancer le domaine
+de la reconnaissance d’écriture manuscrite afin de rendre plus accessibles des textes anciens qui
+sont souvent peu compréhensibles. Il n’est pas simple d’écrire un programme qui reconnaît les textes
+manuscrits, c’est pourquoi la plupart des systèmes de reconnaissance d’écriture sont basés sur des
+algorithmes intelligents. Ces algorithmes sont souvent formés de réseaux de neurones qui ont besoin
+d’apprendre à reconnaître les différents caractères, quels que soient la langue et le style du rédacteur.
+Pour apprendre, ils ont besoin d’un grand nombre d’exemples (plusieurs milliers) qui sont longs
+à construire à la main. 
+
+\paragraph{}
+Dans ce contexte, les exemples d’apprentissage (appelés base d’apprentissage dans la suite de ce rapport)
+sont des associations entre les textes manuscrits et leurs retranscriptions informatiques. Ainsi,
+l’algorithme apprend à reconnaître les caractères en comparant sa sortie avec la retranscription fournie.
+Notre projet, qui a été proposé par l’équipe IntuiDoc, est donc de construire un système qui
+permet de générer des bases d’apprentissage à partir de données brutes (mais dans des formats précis)
+de manière automatique.
 
 \section{Doptim}
 
@@ -26,12 +31,28 @@ Son but premier est de créer une communauté de \textit{data scientists} et de
 \textit{data engineers} qui auraient l’ambition d’optimiser et de maîtriser la gestion
 des données. Doptim est aujourd’hui investie dans un projet de service en ligne permettant
 aux généalogistes de gagner du temps dans la fouille et le décryptage de documents numériques.
-Notre projet pourrait donc être ajouté au leur pour simplifier la lecture de documents anciens.
+De plus, Doptim est en collaboration avec les archives départementales d’Ille-et-Vilaine.
+Cette collaboration a pour but de créer un système de reconnaissance d’écriture manuscrite qui
+aidera les archivistes. Notre projet pourrait donc être utilisé au sein du leur pour qu’ils
+puissent générer plus rapidement leurs bases d’apprentissage.
+
+\section{Les archives départementales d’Ille-et-Vilaine}
+
+Les archives départementales d’Ille-et-Vilaine, situées à Rennes, regroupent plusieurs
+millions de documents manuscrits datant, pour les plus anciens, du début du XI\up{ème} siècle.
+Ces documents n’y sont pas seulement entreposés mais aussi numérisés pour que n’importe qui
+puisse les consulter, soit en version physique aux archives, soit en version numérique
+depuis n’importe où. Il existe actuellement des moteurs de recherche permettant de retrouver
+les documents grâce à des annotations ou des mots-clés, mais leur utilisation reste limitée
+car les documents sont souvent peu lisibles. Leur collaboration avec Doptim a pour but de
+retranscrire la totalité du contenu d’un document manuscrit sous forme de texte numérique
+pour que la recherche soit plus efficace et la consultation plus agréable. Cet outil pourra
+facilement être intégré à la chaîne d’archivage des documents puisqu’il pourra être exécuté
+juste après la numérisation, sans intervention humaine.
 
 \paragraph{}
-Bien sûr, l’outil final de notre projet qui a pour but d’être compatible avec plusieurs
-types de reconnaisseurs d’écriture manuscrite ne sera pas notre propriété. Nous le rendrons
-public et utilisable par qui le veut. La collaboration que nous avons avec les archives
+L’outil final de notre projet qui a pour but d’être compatible avec plusieurs types de
+reconnaisseurs d’écriture manuscrite ne sera pas notre propriété. Nous le rendrons public et
+utilisable par tout le monde. La collaboration que nous avons avec l’IRISA, les archives
 départementales d’Ille-et-Vilaine et Doptim nous permettent d’orienter notre projet afin de
-nous faire une idée de ce qu’un utilisateur pourrait en attendre (notamment au niveau de l’IHM).
-Ces deux collaborations ne sont pas distinctes puisque Doptim et les archives travaillent déjà ensemble.
+nous faire une idée de ce qu’un utilisateur pourrait en attendre.

@@ -1,125 +1,168 @@
 \chapter{Cahier des charges}
 
-Dans cette partie nous allons détailler les différentes caractéristiques
-de notre projet. Nous allons commencer par étudier les différents objectifs
-du projet puis nous l’analyserons plus en détail aux moyens d’outils de spécification.
+Dans cette partie, nous allons détailler les différentes caractéristiques de notre projet.
+Nous commencerons par étudier les différents objectifs du projet, puis nous en ferons
+une description fonctionnelle.
 
 \section{Les objectifs}
 
-Les différents objectifs sont illustrés par le schéma ci-dessous. Celui-ci,
-bien que complexe, peut aider le lecteur à comprendre les liens entre tous les objectifs.
-Les éléments \textbf{en gras} nous sont fournis et sont à intégrer dans le projet.
+L’objectif premier du projet est de créer un logiciel de génération de bases d’apprentissage
+pour un système de reconnaissance d’écriture manuscrite. Néanmoins, le projet peut être divisé
+en sous-parties illustrées par le schéma suivant. Celui-ci, bien que complexe, peut aider le
+lecteur à comprendre les liens entre tous les objectifs. Les éléments en \textbf{gras} nous
+sont fournis et sont à intégrer dans le projet.
 
 \paragraph{}
-\begin{mdframed}[frametitle={Schéma représentant les différents objectifs du projet}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Schéma résumant les différents aspects du projet}, innerbottommargin=10]
 \begin{center}
 \includegraphics[width=\linewidth]{schema.pdf}
 \end{center}
 \end{mdframed}
 
+\subsection{Traitement des documents en entrée}
+
+Afin de générer des bases d’apprentissage, notre programme prendra en entrée des documents manuscrits
+numérisés et leurs retranscriptions. Nous qualifions les retranscriptions de vérité terrain car elles
+ont été réalisées par des humains et sont donc censées être justes. Le premier objectif est donc de
+découper correctement les documents manuscrits sous la forme d’imagettes. Ces imagettes peuvent
+correspondre à des lignes ou à des paragraphes des documents initiaux.
+
 \paragraph{}
-Le premier objectif est de découper correctement les documents manuscrits sous la forme
-d’imagettes. Ces imagettes peuvent correspondre à des lignes ou à des paragraphes des documents initiaux.
-Le schéma ci-dessus représente un mode de fonctionnement dans lequel chaque imagette contient
-une seule ligne du document, mais le projet doit contenir un second mode dans lequel chaque imagette
-représente un paragraphe et où la fonction de détection de ligne est absente.
+\begin{mdframed}[frametitle={Exemple d'imagette}, innerbottommargin=10]
+\begin{center}
+\includegraphics[width=\linewidth]{imagette.png}
+\end{center}
+\end{mdframed}
 
 \paragraph{}
 Le découpage en lignes se fait à l’aide d’un \textbf{outil de détection de lignes} et d’un
 \textbf{outil de découpage de paragraphes}. Cette partie correspond à la zone du schéma sur fond bleu.
-Le projet doit donc permettre de générer des imagettes en se passant du premier outil mentionné.
-
-\paragraph{}
-Dans la première version, le \textit{scan} d’un document contenant des informations manuscrites est
-donné en entrée et est découpé en paragraphes grâce aux \textbf{données de position} présentes dans
-les fichiers de la \textbf{base Maurdor} (contenant les scans des documents et leur vérité terrain).
-Ces paragraphes sont par la suite découpés en lignes via l’outil détecteur de lignes. Les éléments obtenus
-sont enfin convertis en imagettes avec un programme à créer appelé \textit{Génération d’images} sur le schéma.
-
-\paragraph{}
-Le deuxième objectif est de relier les imagettes à leur retranscription numérique
-(aussi appelée vérité terrain). Cet objectif est réalisable grâce aux données de position
-qui accompagnent les retranscriptions de la base Maurdor. Ces couples \texttt{(imagette, retranscription)}
-seront ensuite enregistrés dans une base de données qui constituera la base d’apprentissage du
-\textbf{système de reconnaissance d’écriture manuscrite}. Cette partie correspond également à la partie
-en bleu du schéma. Une vérité terrain permet non seulement d’identifier les paragraphes mais
-également de lier les imagettes à la retranscription numérique du texte manuscrit qu’elles contiennent
-grâce aux informations de numéro de ligne. Il est possible que la vérité terrain ne soit pas toujours
-fournie en entrée, le logiciel doit alors permettre à l’utilisateur de rentrer lui-même une retranscription
-numérique (mode ajout utilisateur sur le schéma). Les imagettes (ou lignes sur le schéma) sont stockées
-dans la base de données, en jaune. La base de données contient donc des imagettes (\textit{Exemples d’apprentissage}),
-pouvant être associées à leur retranscription numérique (\textit{Label}) et à un texte généré par un
-reconnaisseur d’écriture manuscrite (\textit{Résultats}).
-
-\paragraph{}
-Le troisième objectif est de générer les couples \texttt{(imagette, retranscription)} avec un format spécifique
-qui pourra ensuite être facilement modifié, cela dans le but d’être compatible avec les formats d’entrée de
-plusieurs systèmes de reconnaissance d’écriture manuscrite sans trop d’efforts.
-Plusieurs choix s’offrent à nous. Comme les données en entrée sont dans le
-\href{https://lampsrv02.umiacs.umd.edu/projdb/project.php?id=53}{format GEDI}, nous pourrions générer des
-fichiers dans ce même format. Nous pouvons également les sauvegarder au format PiFF\cite{piff:2017},
-fortement compatible avec ce type de données. Dans tous les cas, nous devrons créer un script qui
-convertira les données (GEDI ou PiFF) en un format compatible avec le logiciel de reconnaissance d’écriture
-manuscrite en notre possession. Le passage par le format GEDI ou PiFF permettra simplement de rendre les données
-plus manipulables pour des personnes souhaitant les exploiter. Le système de reconnaissance d’écriture manuscrite
-est situé dans la partie verte du schéma. Le logiciel devra permettre de générer trois jeux de données différents
-associés à trois modes de fonctionnement du reconnaisseur :
+Afin de générer les imagettes, nous avons deux possibilités :
 
 \begin{itemize}
-\item un mode d’\textbf{apprentissage} : dans ce mode, le système de reconnaissance extrait de la base de données les
-imagettes et leur label associé pour pouvoir s'entraîner; il fournit ensuite un résultat pour chaque imagette,
-qui pourra être comparé par des utilisateurs via une IHM;
-\item un mode d’\textbf{évaluation} : ce mode permet de vérifier la qualité du reconnaisseur après un apprentissage;
-\item un mode de \textbf{production} : dans ce mode, le reconnaisseur est censé être bien entraîné; il n’a que les
-imagettes en entrée et il fournit une retranscription numérique (un label) pour des documents sans vérité terrain.
-Il permet alors d’aider l’utilisateur à retranscrire numériquement un document manuscrit scanné.
+\item Option détection sur le document : on détecte la position des lignes sur l’entièreté du document,
+on découpe en paragraphes puis on relie les lignes détectées aux paragraphes;
+
+\item Option détection sur les paragraphes : on découpe d’abord les paragraphes, puis on détecte la position
+des lignes dans chacun des paragraphes.
 \end{itemize}
 
 \paragraph{}
-Ces modes sont illustrés dans les schémas ci-dessous. Le premier schéma représente le mode évaluation avec l’option
-de détection des lignes, et le second schéma représente le mode production sans cette option. Ceci est fait dans un
-but illustratif, car les deux modes devront pouvoir être exécutés avec et sans cette option.
-
-\newpage
+Ces deux possibilités ont des avantages et des inconvénients. La première possibilité a l’avantage d’être plus précise.
+En effet, sur un document complet, on peut utiliser un meilleur outil de détection de lignes (à base de réseaux de
+neurones à convolution) qui analyse la forme globale du document. L’inconvénient est qu’il faut relier les lignes
+détectées à des paragraphes qui n’ont pas forcément une forme rectangulaire mais souvent plus complexe. Il faudra
+donc utiliser des outils géométriques pour détecter l’appartenance d’un point à un polygone qui peut être concave.
 
 \paragraph{}
-\begin{mdframed}[frametitle={Schéma résumant le mode évaluation du projet (avec détection de lignes)}, innerbottommargin=10]
+La seconde possibilité est moins précise car l’outil de détection de lignes précédent ne peut pas s’appliquer
+à un simple paragraphe. Nous devrons donc utiliser un autre outil (à base de floutage) qui peut traiter n’importe
+quel format de document mais moins en détail. L’avantage de cette possibilité est que nous n’aurons pas à relier
+les lignes aux paragraphes puisqu’elles y seront directement détectées. Nous avons cependant choisi d’implémenter
+les deux possibilités pour rendre notre système compatible avec une plus grande variété de documents.
+
+\paragraph{}
+Le schéma représentant les objectifs du projet montre un mode de fonctionnement (partie en bleu) où
+chaque imagette contient une seule ligne du document. Mais le projet doit contenir un second mode où
+les imagettes représentent des paragraphes et où la partie détection de ligne est absente. Ce second
+mode de fonctionnement permettra de générer des bases d’apprentissage pour des systèmes travaillant
+sur des paragraphes entiers et non simplement sur des lignes. 
+
+\paragraph{}
+\begin{mdframed}[frametitle={Partie traitement des données du projet (avec détection de lignes)}, innerbottommargin=10]
 \begin{center}
-\includegraphics[width=\linewidth]{schema-eval.pdf}
+\includegraphics[width=\linewidth]{detection.png}
 \end{center}
 \end{mdframed}
 
 \paragraph{}
-\begin{mdframed}[frametitle={Schéma résumant le mode production du projet (sans détection de lignes)}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Partie traitement des données du projet (sans détection de lignes)}, innerbottommargin=10]
 \begin{center}
-\includegraphics[width=\linewidth]{schema-prod.pdf}
+\includegraphics[width=\linewidth]{sans-detection.png}
 \end{center}
 \end{mdframed}
 
-\newpage
 \paragraph{}
-Le quatrième objectif est de créer une Interface Homme-Machine (IHM) permettant d’observer les imagettes
-et les retranscriptions, afin de confirmer et/ou corriger les retranscriptions si jamais elles ne correspondent
-pas au texte de l’imagette. On doit également pouvoir supprimer des couples \texttt{(imagette, retranscription)}
-de la base de données si jamais l’utilisateur considère qu’elles n’apporteront rien de bénéfique
-à l’apprentissage du reconnaisseur. Les données que l'on pourrait vouloir supprimer seraient des
-données trop bruitées, trop dégradées, mal coupées, etc. Il pourrait cependant être intéressant
-de les conserver pour que le reconnaisseur apprenne à reconnaître des textes abîmés. Cet objectif est représenté
-dans la partie rouge du schéma, l'IHM locale, qui doit pouvoir accéder à la base de données et la modifier.
+Dans un premier temps, nous travaillerons sur des documents provenant de la \textbf{base
+\href{http://www.maurdor-campaign.org/}{Maurdor}}. Cette base, contenant des documents manuscrits numérisés
+ainsi que leur retranscription, présente l’avantage d’avoir, en plus, les informations sur la position des
+paragraphes et des lignes dans le document (tout cela dans un format spécifique dérivé du XML, le
+\href{https://lampsrv02.umiacs.umd.edu/projdb/project.php?id=53}{format GEDI}). Nous utiliserons ces informations
+pour découper les paragraphes. Par la suite, notre système devra être capable de prendre en entrée un autre
+format de documents, le format PiFF\cite{piff:2017}, qui contient également les données de position des
+paragraphes dans une image. Nous expliquerons pourquoi nous avons choisi ce format par la suite.
+
+
+\subsection{Mise en relation des imagettes et de leur retranscription}
+
+Afin que les imagettes puissent être exploitables, il faut les mettre en relation avec leur retranscription
+numérique (la vérité terrain). Cet objectif est réalisable grâces aux données de position qui accompagnent
+les retranscriptions des fichiers d’entrée. Ces couples imagette-retranscription seront ensuite enregistrés
+dans une base de données qui constituera la base d’apprentissage d’un \textbf{système de reconnaissance
+d’écriture manuscrite}. Cette partie correspond également à la partie en bleu du schéma.
+
+\subsection{Création d'une base de données}
+
+Les couples imagette-retranscription ainsi formés doivent être enregistrés dans une base de données
+(partie jaune du schéma) pour être exploités par un système de reconnaissance d’écriture manuscrite.
+Il pourrait être intéressant de stocker, en plus, un texte généré par un reconnaisseur d’écriture pour
+pouvoir tout conserver dans la même base.
 
 \paragraph{}
-Enfin, le dernier objectif (optionnel) est de créer une seconde interface permettant
-d’observer les imagettes et les résultats du reconnaisseur. Cet objectif est optionnel
-car il sort légèrement du cadre du travail qui nous est demandé mais il sera utile pour faire
-une démonstration du reconnaisseur lors de la présentation finale de notre projet.
-Nous pourrons ainsi montrer ce que notre travail aura pu apporter à la reconnaissance
-d’écriture manuscrite. Cette tâche ne sera probablement pas longue à réaliser car elle peut
-consister en une amélioration de l’IHM précédente. Pour rendre la démonstration plus
-ludique, on pourrait aussi imaginer créer une IHM sous forme de jeu entre une personne
-et le reconnaisseur. Par exemple, la personne et le reconnaisseur pourraient avoir à
-retranscrire un texte manuscrit le plus vite possible. Cet objectif est représenté dans
-la partie rouge du schéma, l'IHM web, qui doit comme la première interface
-accéder à la base de données et la modifier.
+La plupart des systèmes de \textit{deep learning} fonctionnent en trois modes : apprentissage, évaluation,
+utilisation. Le système de reconnaissance d’écriture manuscrite est situé dans la partie verte du schéma.
+La base de données que nous allons développer devra permettre de manipuler trois jeux de données différents : 
+
+\begin{itemize}
+\item Tout d’abord, en mode d’apprentissage, le système de reconnaissance extrait de la base les deux premiers
+jeux de données : \textbf{les imagettes et leurs retranscriptions} associées pour pouvoir s'entraîner.
+\item Ensuite, le mode d'évaluation permet de vérifier la qualité du reconnaisseur après un apprentissage
+et ne retourne pas de données à l’intérieur de la base.
+\item Enfin, en mode de production, le reconnaisseur est supposé être bien entraîné. Il n’a que les imagettes
+en entrée et il fournit une retranscription numérique (un label) pour des documents sans vérité terrain.
+Il permet alors d’aider l’utilisateur à retranscrire numériquement un document manuscrit scanné.
+Ce label généré pourrait donc être intégré à la base de donnée à la place de la vérité terrain. 
+\end{itemize}
+
+\paragraph{}
+Chaque mode de fonctionnement est illustré par un schéma en annexe A.
+
+\subsection{Création d'une IHM permettant la modification de la base de données}
+
+Il est possible que la vérité terrain ne soit pas toujours fournie en entrée ou qu’elle soit incorrecte.
+Nous devons donc développer un logiciel permettant à l’utilisateur de rentrer lui-même une retranscription
+numérique et de donner la position des paragraphes (mode ajout utilisateur sur le schéma). On doit également
+pouvoir supprimer des couples imagette-retranscription de la base de données si jamais l’utilisateur considère
+qu’elles n’apporteront rien de bénéfique à l’apprentissage du reconnaisseur. Les données qu’on pourrait vouloir
+supprimer seraient des données trop bruitées, trop dégradées, mal coupées, etc. Il pourrait cependant être
+intéressant de les conserver pour que le reconnaisseur apprenne à reconnaître des textes abîmés. Cet objectif
+est représenté dans la partie rouge du schéma (IHM locale) qui doit pouvoir accéder à la base de données
+et la modifier.
+
+\subsection{Utiliser un format spécifique et convertible en sortie}
+
+Notre logiciel générera des couples imagette-retranscription dans un format spécifique qui pourra ensuite être
+facilement modifié, cela dans le but d’être compatible avec les formats d’entrée de plusieurs systèmes de
+reconnaissance d’écriture manuscrite sans trop d’efforts. Plusieurs choix s’offrent à nous. Le format des données
+en entrée de la base Maurdor est GEDI. Cependant, les formats d’autres bases sont différents. GEDI n’est donc pas
+un format standard. L’équipe IntuiDoc a cherché à mettre en place un format de description d’image nommé PiFF qui
+se veut générique et facilement convertible dans les autres formats. Il nous a donc paru raisonnable de choisir
+d’utiliser ce format dans notre projet. Nous aurons donc un convertisseur du format d’entrée GEDI en PiFF et un
+convertisseur de PiFF vers différents formats des librairies de \textit{deep learning}.
+
+\subsection{Création d'une seconde IHM permettant d'observer les imagettes et les résultats d'un reconnaisseur}
+
+Pour vérifier le bon fonctionnement de notre programme de génération de bases d’apprentissage, nous avons à notre
+disposition un reconnaisseur d’écriture manuscrite nommé Laia\cite{laia:2016} dont nous parlerons plus tard.
+Pour voir si notre système est efficace, il pourrait être intéressant de créer une seconde interface permettant
+d’observer les imagettes et les résultats du reconnaisseur. Cet objectif est optionnel car il sort légèrement du
+travail qui nous est demandé mais il sera utile pour faire une démonstration du reconnaisseur lors de la présentation
+finale de notre projet. On pourra ainsi montrer ce que notre travail aura pu apporter à la reconnaissance d’écriture
+manuscrite. Ce point ne sera probablement pas long à réaliser car il peut simplement consister en une amélioration
+de l’IHM précédente. Pour rendre la démonstration plus ludique, on pourrait aussi créer une IHM sous forme de jeu
+entre une personne et le reconnaisseur. Par exemple, la personne et le reconnaisseur pourraient avoir à retranscrire
+un texte manuscrit le plus vite possible. Cet objectif est représenté dans la partie rouge du schéma (IHM web) qui
+doit comme la première interface accéder à la base de données et la modifier.
 
 \section{Description fonctionnelle des besoins}
 
@@ -127,7 +170,7 @@ accéder à la base de données et la modifier.
 
 Le diagramme suivant permet d’exprimer le besoin lié au projet. Ainsi, notre logiciel de
 traitement de données manuscrites aura pour but principal de préparer et stocker des données
-d’apprentissage pour le système de reconnaissance d’écriture manuscrite développé par Doptim.
+d’apprentissage pour des systèmes de reconnaissance d’écriture manuscrite.
 
 \paragraph{}
 \begin{mdframed}
@@ -136,7 +179,6 @@ d’apprentissage pour le système de reconnaissance d’écriture manuscrite d�
 \end{center}
 \end{mdframed}
 
-\newpage
 \subsection{Diagramme pieuvre}
 
 Le diagramme pieuvre, quant à lui, permet d’exprimer les différentes fonctions contraintes
