@@ -9,8 +9,8 @@ une description fonctionnelle.
 L’objectif premier du projet est de créer un logiciel de génération de bases d’apprentissage
 pour un système de reconnaissance d’écriture manuscrite. Néanmoins, le projet peut être divisé
 en sous-parties illustrées par le schéma suivant. Celui-ci, bien que complexe, peut aider le
-lecteur à comprendre les liens entre tous les objectifs. Les éléments en \textbf{gras} nous
-sont fournis et sont à intégrer dans le projet.
+lecteur à comprendre les liens entre tous les objectifs. Les éléments en \textbf{gras} sur le
+schéma nous sont fournis et sont à intégrer dans le projet.
 
 \paragraph{}
 \begin{mdframed}[frametitle={Schéma résumant les différents aspects du projet}, innerbottommargin=10]
@@ -35,9 +35,8 @@ correspondre à des lignes ou à des paragraphes des documents initiaux.
 \end{mdframed}
 
 \paragraph{}
-Le découpage en lignes se fait à l’aide d’un \textbf{outil de détection de lignes} et d’un
-\textbf{outil de découpage de paragraphes}. Cette partie correspond à la zone du schéma sur fond bleu.
-Afin de générer les imagettes, nous avons deux possibilités :
+Le découpage en lignes se fait à l’aide d’un outil de détection de lignes et d’un outil de découpage de paragraphes.
+Cette partie correspond à la zone du schéma sur fond bleu. Afin de générer les imagettes, nous avons deux possibilités :
 
 \begin{itemize}
 \item Option détection sur le document : on détecte la position des lignes sur l’entièreté du document,
@@ -83,8 +82,8 @@ sur des paragraphes entiers et non simplement sur des lignes.
 \end{mdframed}
 
 \paragraph{}
-Dans un premier temps, nous travaillerons sur des documents provenant de la \textbf{base
-\href{http://www.maurdor-campaign.org/}{Maurdor}}. Cette base, contenant des documents manuscrits numérisés
+Dans un premier temps, nous travaillerons sur des documents provenant de la base
+\href{http://www.maurdor-campaign.org/}{Maurdor}. Cette base, contenant des documents manuscrits numérisés
 ainsi que leur retranscription, présente l’avantage d’avoir, en plus, les informations sur la position des
 paragraphes et des lignes dans le document (tout cela dans un format spécifique dérivé du XML, le
 \href{https://lampsrv02.umiacs.umd.edu/projdb/project.php?id=53}{format GEDI}). Nous utiliserons ces informations
@@ -98,13 +97,12 @@ paragraphes dans une image. Nous expliquerons pourquoi nous avons choisi ce form
 Afin que les imagettes puissent être exploitables, il faut les mettre en relation avec leur retranscription
 numérique (la vérité terrain). Cet objectif est réalisable grâces aux données de position qui accompagnent
 les retranscriptions des fichiers d’entrée. Ces couples imagette-retranscription seront ensuite enregistrés
-dans une base de données qui constituera la base d’apprentissage d’un \textbf{système de reconnaissance
-d’écriture manuscrite}. Cette partie correspond également à la partie en bleu du schéma.
+dans une base de données qui constituera la base d’apprentissage d’un système de reconnaissance d’écriture
+manuscrite. Cette partie correspond également à la partie en bleu du schéma.
 
 \subsection{Création d'une base de données}
 
-Les couples imagette-retranscription ainsi formés doivent être enregistrés dans une base de données
-(partie jaune du schéma) pour être exploités par un système de reconnaissance d’écriture manuscrite.
+La base de données contient donc les couples imagette-retranscription ainsi formés (partie jaune du schéma).
 Il pourrait être intéressant de stocker, en plus, un texte généré par un reconnaisseur d’écriture pour
 pouvoir tout conserver dans la même base.
 
@@ -115,7 +113,7 @@ La base de données que nous allons développer devra permettre de manipuler tro
 
 \begin{itemize}
 \item Tout d’abord, en mode d’apprentissage, le système de reconnaissance extrait de la base les deux premiers
-jeux de données : \textbf{les imagettes et leurs retranscriptions} associées pour pouvoir s'entraîner.
+jeux de données : les imagettes et leurs retranscriptions associées pour pouvoir s'entraîner.
 \item Ensuite, le mode d'évaluation permet de vérifier la qualité du reconnaisseur après un apprentissage
 et ne retourne pas de données à l’intérieur de la base.
 \item Enfin, en mode de production, le reconnaisseur est supposé être bien entraîné. Il n’a que les imagettes

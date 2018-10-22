@@ -2,9 +2,13 @@
 
 Notre projet est constitué de plusieurs briques élémentaires dont il convient de comprendre
 le fonctionnement et les alternatives qui existent. L’objectif de notre projet est de construire
-un logiciel générant des bases d’apprentissage pour des reconnaisseurs d’écriture manuscrites.
+un logiciel générant des bases d’apprentissage pour des reconnaisseurs d’écriture manuscrite.
 Nous présenterons donc les différentes techniques permettant de réaliser cette tâche et en quoi
-consistent les techniques sur lesquelles sont basés les reconnaisseurs d’écriture.
+consistent les techniques sur lesquelles sont basés les reconnaisseurs d’écriture. Le langage de
+programmation à utiliser dans le projet était libre : nous avons donc choisi le langage Scala,
+car il est un bon compromis entre la JVM, qui est notre zone de confort et qui permet d'utiliser
+toutes les bibliothèques Java dans le projet, et un paradigme fonctionnel, agréable à utiliser
+et qui permet d'introduire une touche supplémentaire d'originalité dans le projet.
 
 \section{Techniques de reconnaissance d'écriture}
 
@@ -14,9 +18,9 @@ sont basés.
 
 \paragraph{}
 Afin de tester notre logiciel, nous utiliserons l’outil Laia. Cet outil permet de créer des
-modèles de reconnaisseurs d’écriture manuscrite en \textit{deep learning}. Il nous suffira ainsi
-d’utiliser leur modèle de reconnaisseur, de l’entraîner sur une base d’apprentissage que nous aurons
-générée avec notre logiciel, et de voir si les résultats obtenus avec ce modèle sont bons ou non. 
+modèles de reconnaisseurs d’écriture manuscrite en \textit{deep learning}. Il nous faudra donc
+utiliser leur modèle de reconnaisseur, l’entraîner sur une base d’apprentissage que nous aurons
+générée avec notre logiciel, et nous verrons si les résultats obtenus avec ce modèle sont bons ou non. 
 
 \paragraph{}
 La plupart des techniques de reconnaissance de l'écriture sont basées sur des classifieurs
@@ -32,13 +36,13 @@ comme un langage pourrait être défini à l'aide de la forme des lettres. Les p
 d'un état à un autre dépendent d'une matrice de transition et un vecteur de conditions initiales
 permet de définir l'état de départ. Les MMC permettent de modéliser la probabilité de choisir un caractère
 en fonction de l'état actuel du système de reconnaissance. Pour cela, les différentes composantes
-de l'alphabet utilisé sont décomposées (première partie de boucle du \texttt{d}, barre verticale du \texttt{l}, etc).
+de l'alphabet utilisé sont décomposées (première partie de boucle du \texttt{d}, barre verticale du \texttt{l}, \ldots).
 Ces composantes correspondent aux états du graphe. On pourra donc modéliser la
 probabilité pour un système de choisir un \texttt{l} après avoir lu une barre verticale, etc.
 Ces probabilités ne seront pas égales à 1 car une barre verticale peut aussi correspondre à un
 \texttt{t} par exemple. Cependant, cette approche impose une segmentation des composantes
 de l'alphabet que l'on souhaite traiter et impose de changer ces composantes ou d'étendre
-l'alphabet reconnu. Or, cette segmentation et l'étiquetage correspondant ("c'est une boucle d'un a", etc)
+l'alphabet reconnu. Or, cette segmentation et l'étiquetage correspondant (\textit{e.g.} "c'est une boucle d'un a")
 ne sont pas toujours évidents et peuvent être fastidieux à faire.
 
 \newpage
@@ -240,13 +244,13 @@ au sein de notre projet aura été établie avec GEDI.
 Le Pivot File Format (PiFF) est un format de description d'image basé sur JSON et créé par différents
 chercheurs français, dont notre encadrant de projet, Bertrand COÜASNON. C’est un format intermédiaire préalable
 au traitement d’une image dans le cadre d’analyses de documents. Ce format est très utile pour l'analyse
-de documents puisqu'il permet le partage de jeu de données, le traitement de résultats ainsi que
+de documents puisqu'il permet le partage de jeux de données, le traitement de résultats ainsi que
 l'utilisation d'outils déjà existants sans avoir à faire de conversion entre les différents formats
 qui pourraient exister. De ce fait, les différentes étapes de l'analyse de documents peuvent être effectuées
 par différentes équipes sans qu'il n'y ait de conflit au niveau du format des données, ce qui permet une
 collaboration plus facile. Les données présentes en entrée dans le cas de notre projet pourront se trouver
-sous différents formats, soit au format PiFF et dans ce cas il n’y aura rien à changer, ou soit dans un autre
-format quelconque et il faudra ainsi les convertir. Les données de la base Maurdor étant au format GEDI,
+sous différents formats, soit au format PiFF et dans ce cas il n’y aura rien à changer, soit dans un autre
+format quelconque et il faudra alors les convertir. Les données de la base Maurdor étant au format GEDI,
 il nous faudra notamment un convertisseur GEDI/PiFF. De ce fait, les données après traitement par le logiciel
 seront toutes dans le format PiFF, ce qui permettra de les utiliser facilement.
 
@@ -268,16 +272,25 @@ En effet, les bases de type NoSQL permettent de stocker les images telles quelle
 sans devoir les traduire dans un autre format.
 
 \section{Interface Homme-Machine}
-	
-Les technologies existantes pour réaliser un IHM sont abondantes. Nous pouvons concevoir une application dite lourde,
-avec le \textit{backend} et le \textit{frontend} tous deux contenus dans une même application bureau, ou bien créer une interface web.
-Comme nous avons une base de données à gérer et que nous souhaitons que notre logiciel soit portable et puisse fonctionner
-sur un serveur, nous préférons nous orienter vers une implémentation web de l’interface. Cependant, il existe de multiples
-moyens d’utiliser une base de données avec une application web. Nous pouvons par exemple utiliser des requêtes
-\href{https://en.wikipedia.org/wiki/Representational_state_transfer}{REST}, gérer la base de manière plus proche avec des
-scripts de type NodeJS, PHP, etc. et construire l’interface en HTML/CSS et JS. Il existe également des librairies basées sur
-le modèle MVC, d’autres non. Ainsi, il nous est nécessaire de définir les rôles et objectifs de l’interface ainsi que les
-interactions qu’elle aura avec le reste du programme afin de pouvoir décider d’une approche et des technologies nécessaires.
+
+Les technologies existantes pour réaliser une IHM sont abondantes. Deux lignes de conduite s’offrent à nous. Nous pouvons
+soit concevoir une application "lourde" comprenant une interface logicielle construite avec un outil du type de
+\href{https://fr.wikipedia.org/wiki/JavaFX}{JavaFX}, soit créer une interface web. Nous devons gérer une base de données et
+nous souhaitons que notre logiciel soit portable et puisse fonctionner sur un serveur. Nous avons donc préféré nous orienter
+vers une implémentation web de l’interface. Cependant, il existe de multiples moyens d’utiliser une base de données avec une
+application web. Nous pouvons par exemple utiliser des requêtes \href{https://en.wikipedia.org/wiki/Representational_state_transfer}{REST},
+gérer la base de manière plus proche avec des scripts de type NodeJS ou PHP et construire l’interface en HTML/CSS et JS.
+Il existe également des bibliothèques basées sur le modèle MVC, d’autres non. Nous avons isolé quatre frameworks web basés sur Scala :
+\href{http://www.scala-js.org/}{Scala.js}, \href{https://www.playframework.com/}{Play},
+\href{https://sourceforge.net/p/chaosuiframework/wiki/Home/}{Chaos} et \href{https://www.liftweb.net/}{Lift}. Scala.js est rapide,
+fiable, facile à utiliser et utilise les bibliothèques JS existantes et une multitude d’autres bibliothèques standard.
+Play est rapide, utilise \href{http://maven.apache.org/}{Maven} et la JVM, possède une communauté très active et propose un
+rendu en temps réel. Chaos, très utilisé pour les applications REST, est léger, facile à prendre en main et utilise la JVM,
+Scala et \href{https://jersey.github.io/}{Jersey}. Cependant, il n’est performant que pour les applications REST.
+Enfin, Lift est principalement orienté vers les applications avec un fort besoin de sécurité. Il est rapide, facile à maintenir et
+propose des modules pré-construits ainsi qu’une large documentation dont la qualité est néanmoins très variable. Ainsi, il nous
+est nécessaire de définir les rôles et les objectifs de l’interface ainsi que les interactions qu’elle aura avec le reste du
+programme afin de pouvoir déterminer l’approche et les technologies nécessaires.
 
 \section{Traitement d’images}
 
@@ -285,9 +298,10 @@ Pour le traitement d'images, plusieurs bibliothèques logicielles sont à notre 
 \href{https://github.com/python-pillow/Pillow}{Pillow}, \href{https://github.com/imagej/imagej1}{ImageJ},
 \href{https://www.imagemagick.org/script/index.php}{ImageMagick} ou \href{https://opencv.org/}{OpenCV}.
 Cette dernière nous a été conseillée par notre encadrant de projet, et elle est reconnue comme un
-standard parmi les technologies de traitement d'images utilisées par la communauté. De plus, elle est
+standard parmi les technologies de traitement d'images utilisées par la communauté, car elle elle est
 disponible sur plusieurs plateformes et interfaçable avec plusieurs langages (C++, Java, Python, \ldots).
-Nous avons donc sélectionné cette bibliothèque. D'après le cahier des charges, nous n'aurons pas à utiliser
-ses fonctionnalités les plus avancées (à base d'intelligence artificielle) au cours de ce projet, mais cela
-permet une fois de plus que le projet soit évolutif, c'est-à-dire que les chercheurs qui maintiendront le projet
-pourront y ajouter des éléments de traitement d'images plus avancés.
+Elle convient donc parfaitement aux besoins que nous avons (compatibilité avec la JVM, bibliothèque complète et
+\textit{cross-platform}). D'après le cahier des charges, nous n'aurons pas à utiliser ses fonctionnalités
+les plus avancées (à base d'intelligence artificielle) au cours de ce projet, mais cela permet une fois de plus
+que le projet soit évolutif, c'est-à-dire que les chercheurs qui maintiendront le projet pourront y ajouter
+des éléments de traitement d'images plus avancés. Ce choix est donc validé dès maintenant.
