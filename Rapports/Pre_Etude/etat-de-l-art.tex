@@ -250,7 +250,7 @@ format quelconque et il faudra ainsi les convertir. Les données de la base Maur
 il nous faudra notamment un convertisseur GEDI/PiFF. De ce fait, les données après traitement par le logiciel
 seront toutes dans le format PiFF, ce qui permettra de les utiliser facilement.
 
-\subsection{Base de données}
+\section{Base de données}
 
 La question de la base de données est une question qui a été soulevée puisqu’elle constitue le pivot de notre
 logiciel. En effet, elle centralise les couples imagette-retranscription produits lors du traitement des données
@@ -267,7 +267,7 @@ En effet, les bases de type NoSQL permettent de stocker les images telles quelle
 (on constitue des collections de documents que l'on lie). Ainsi, il serait possible d’intégrer les images dans la base
 sans devoir les traduire dans un autre format.
 
-\subsection{Interface Homme-Machine}
+\section{Interface Homme-Machine}
 	
 Les technologies existantes pour réaliser un IHM sont abondantes. Nous pouvons concevoir une application dite lourde,
 avec le \textit{backend} et le \textit{frontend} tous deux contenus dans une même application bureau, ou bien créer une interface web.
@@ -279,5 +279,15 @@ scripts de type NodeJS, PHP, etc. et construire l’interface en HTML/CSS et JS.
 le modèle MVC, d’autres non. Ainsi, il nous est nécessaire de définir les rôles et objectifs de l’interface ainsi que les
 interactions qu’elle aura avec le reste du programme afin de pouvoir décider d’une approche et des technologies nécessaires.
 
-\subsection{Traitement d’images}
-% OpenCV
+\section{Traitement d’images}
+
+Pour le traitement d'images, plusieurs bibliothèques logicielles sont à notre disposition. On peut citer
+\href{https://github.com/python-pillow/Pillow}{Pillow}, \href{https://github.com/imagej/imagej1}{ImageJ},
+\href{https://www.imagemagick.org/script/index.php}{ImageMagick} ou \href{https://opencv.org/}{OpenCV}.
+Cette dernière nous a été conseillée par notre encadrant de projet, et elle est reconnue comme un
+standard parmi les technologies de traitement d'images utilisées par la communauté. De plus, elle est
+disponible sur plusieurs plateformes et interfaçable avec plusieurs langages (C++, Java, Python, \ldots).
+Nous avons donc sélectionné cette bibliothèque. D'après le cahier des charges, nous n'aurons pas à utiliser
+ses fonctionnalités les plus avancées (à base d'intelligence artificielle) au cours de ce projet, mais cela
+permet une fois de plus que le projet soit évolutif, c'est-à-dire que les chercheurs qui maintiendront le projet
+pourront y ajouter des éléments de traitement d'images plus avancés.
