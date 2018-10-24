@@ -9,13 +9,14 @@ programmation à utiliser dans le projet était libre : nous avons donc choisi l
 \href{http://scala-lang.org}{Scala}, car il est un bon compromis entre la JVM, qui est notre zone
 de confort et qui permet d'utiliser toutes les bibliothèques Java dans le projet, et un paradigme
 fonctionnel, agréable à utiliser et qui permet d'introduire une touche supplémentaire d'originalité
-dans le projet.
+dans le projet. Les différentes technologies que nous avons étudiées font donc partie de l'écosystème
+de ce langage de programmation.
 
 \section{Techniques de reconnaissance d'écriture}
 
-Cette partie de l'État de l'art s'appuie sur les travaux de thèse de Luc MIOLET sur les différents
+Cette partie de l'État de l'art s'appuie sur les travaux de thèse de Luc MIOULET\cite{mioulet:2015} sur les différents
 systèmes de reconnaissance d'écriture, et sur les travaux d'Adeline GRANET, Emmanuel MORIN, Harold MOUCHÈRE,
-Solen QUINIOU et Christian VIARD-GAUDIN sur la reconnaissance de documents historiques. Le cadre de notre
+Solen QUINIOU et Christian VIARD-GAUDIN sur la reconnaissance de documents historiques\cite{rececr:2017}. Le cadre de notre
 projet ne comprend pas le développement d'un reconnaisseur. Cette partie fera l'objet d'une collaboration
 entre Doptim et l'équipe IntuiDoc dans le cadre d'une thèse. Il est cependant intéressant de comprendre
 les mécanismes sur lesquels ceux-ci sont basés.
@@ -48,8 +49,6 @@ Ces probabilités ne seront pas égales à 1 car une barre verticale peut aussi 
 de l'alphabet que l'on souhaite traiter et impose de changer ces composantes ou d'étendre
 l'alphabet reconnu. Or, cette segmentation et l'étiquetage correspondant (\textit{e.g.} "c'est une boucle d'un a")
 ne sont pas toujours évidents et peuvent être fastidieux à faire.
-
-\newpage
 
 \paragraph{}
 \begin{mdframed}[frametitle={Figure 8 : Schéma de transition et d'observation d'un MMC}, innerbottommargin=10]
@@ -99,6 +98,7 @@ réseau convolutionnel qui permet d'augmenter le niveau d'abstraction des donné
 circuler les résultats des différents réseaux vers d'autres afin d'extraire de plus en plus d'informations
 de haut niveau dans le document étudié.
 
+\paragraph{}
 \begin{mdframed}[frametitle={Figure 10 : Schéma de structure d'un MDRNN}, innerbottommargin=10]
 \begin{center}
 \includegraphics[width=0.6\linewidth]{mdrnn.png}
@@ -160,8 +160,8 @@ dans le cadre de notre projet.
 \subsection{Détection de lignes par réseau de neurones à convolution}
 
 Pour la détection des lignes sur tout le document, un détecteur de lignes basé sur un réseau de neurones à convolution nous sera
-fourni par IntuiDoc. Cette partie s'appuie sur un article de Charles CROUSPEYRE à propos du fonctionnement des réseaux convolutifs,
-et sur les travaux de Sofia ARES OLIVEIRA, Benoît SEGUIN, et Frédéric KAPLAN sur l’approche \textit{deep learning} de la segmentation
+fourni par IntuiDoc. Cette partie s'appuie sur un article\cite{crouspeyre:2017} de Charles CROUSPEYRE à propos du fonctionnement des
+réseaux convolutifs, et sur les travaux de Sofia ARES OLIVEIRA, Benoît SEGUIN, et Frédéric KAPLAN\cite{} sur l’approche \textit{deep learning} de la segmentation
 de documents. 
 
 Les réseaux de neurones à convolution comparent les images fragment par fragment et recherchent des fragments caractéristiques.
@@ -194,6 +194,7 @@ deux niveaux d'analyse permet de gérer les problèmes liés à la détection de
 début de ce chapitre. L'analyse bas niveau de l'image floutée est composée de deux étapes que sont l'extraction de régions
 noires dans l'image afin de construire des parties de l'axe de la ligne, ainsi que la construction de l'axe de la ligne.
 
+\paragraph{}
 \begin{mdframed}[frametitle={Figure 11 : Floutage d'une image}, innerbottommargin=10]
 \begin{center}
 \includegraphics[width=0.6\linewidth]{detect1.png}
@@ -205,6 +206,7 @@ Afin d'extraire les régions noires correspondant à des parties d'une ligne, il
 traitement sur l'image. Tout d'abord, l'image est floutée, puis une double binarisation lui est appliquée. Le résultat est
 une image dans laquelle sont en évidence les « régions noires » qui vont être utilisées pour construire l'axe des lignes.
 
+\paragraph{}
 \begin{mdframed}[frametitle={Figure 12 : Binarisation d'une image}, innerbottommargin=10]
 \begin{center}
 \includegraphics[width=0.6\linewidth]{detect2.png}
@@ -216,6 +218,7 @@ Ces traitements d'image et la localisation de ces « zones noires » vont permet
 Une analyse de la position et de l'épaisseur de ces zones va permettre de les relier entre elles. On pourra alors calculer
 une épaisseur moyenne et une pente moyenne pour le document, données qui vont ensuite servir pour étendre les axes.
 
+\paragraph{}
 \begin{mdframed}[frametitle={Figure 13 : Extension des axes correspondant aux lignes de texte}, innerbottommargin=10]
 \begin{center}
 \includegraphics[width=0.6\linewidth]{detect3.png}
@@ -278,7 +281,7 @@ pour la charger, ce qui peut poser des problèmes de latence s'il s'agit de gros
 d'images à charger. Un autre moyen qui existe est de stocker non pas l'image mais une référence vers l'image,
 soit son \textit{path}. Cette méthode, répandue en entreprise, a l'avantage de ne pas surcharger la base de données et
 est souvent recommandée. Même si alors le poids de l'image ne pose plus problème, on n'accède plus à l'objet image en
-lui-même, et cela impose de les stocker dans un répertoire précis hors de la base. Il existe également d'autres solutions
+lui-même, et cela impose de les stocker dans un serveur de fichiers hors de la base. Il existe également d'autres solutions
 n'utilisant pas les bases SQL. En effet, les bases de type NoSQL permettent de stocker les images telles quelles du fait
 de leur orientation document (on constitue des collections de documents que l'on lie). Ainsi, il serait possible d'intégrer
 les images dans la base sans devoir les traduire dans un autre format.
