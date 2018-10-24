@@ -1,4 +1,4 @@
-\chapter{Cahier des charges}
+\hypertarget{c4}{\chapter{Cahier des charges}}
 
 Dans cette partie, nous allons détailler les différentes caractéristiques de notre projet.
 Nous commencerons par étudier les différents objectifs du projet, puis nous en ferons
@@ -13,7 +13,7 @@ lecteur à comprendre les liens entre tous les objectifs. Les éléments en \tex
 schéma nous sont fournis et sont à intégrer dans le projet.
 
 \paragraph{}
-\begin{mdframed}[frametitle={Schéma résumant les différents aspects du projet}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 2 : Schéma résumant les différents aspects du projet}, innerbottommargin=10]
 \begin{center}
 \includegraphics[width=\linewidth]{schema.pdf}
 \end{center}
@@ -22,27 +22,28 @@ schéma nous sont fournis et sont à intégrer dans le projet.
 \subsection{Traitement des documents en entrée}
 
 Afin de générer des bases d’apprentissage, notre programme prendra en entrée des documents manuscrits
-numérisés et leurs retranscriptions. Nous qualifions les retranscriptions de vérité terrain car elles
+numérisés et leurs retranscriptions. On qualifie les retranscriptions de vérité terrain car elles
 ont été réalisées par des humains et sont donc censées être justes. Le premier objectif est donc de
 découper correctement les documents manuscrits sous la forme d’imagettes. Ces imagettes peuvent
 correspondre à des lignes ou à des paragraphes des documents initiaux.
 
 \paragraph{}
-\begin{mdframed}[frametitle={Exemple d'imagette}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 3 : Exemple d'imagette}, innerbottommargin=10]
 \begin{center}
 \includegraphics[width=\linewidth]{imagette.png}
 \end{center}
 \end{mdframed}
 
 \paragraph{}
-Le découpage en lignes se fait à l’aide d’un outil de détection de lignes et d’un outil de découpage de paragraphes.
-Cette partie correspond à la zone du schéma sur fond bleu. Afin de générer les imagettes, nous avons deux possibilités :
+Le découpage en lignes se fait à l’aide de plusieurs outils : deux outils de détection de lignes qui nous sont fournis,
+et un outil de découpage de paragraphes qui sera à développer au cours du projet. Cette partie correspond à la zone du
+schéma sur fond bleu. Afin de générer les imagettes, nous avons deux possibilités :
 
 \begin{itemize}
-\item Option détection sur le document : on détecte la position des lignes sur l’entièreté du document,
+\item option détection sur le document : on détecte la position des lignes sur l’entièreté du document,
 on découpe en paragraphes puis on relie les lignes détectées aux paragraphes;
 
-\item Option détection sur les paragraphes : on découpe d’abord les paragraphes, puis on détecte la position
+\item option détection sur les paragraphes : on découpe d’abord les paragraphes, puis on détecte la position
 des lignes dans chacun des paragraphes.
 \end{itemize}
 
@@ -68,14 +69,14 @@ mode de fonctionnement permettra de générer des bases d’apprentissage pour d
 sur des paragraphes entiers et non simplement sur des lignes. 
 
 \paragraph{}
-\begin{mdframed}[frametitle={Partie traitement des données du projet (avec détection de lignes)}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 4 : Partie traitement des données du projet (avec détection de lignes)}, innerbottommargin=10]
 \begin{center}
 \includegraphics[width=\linewidth]{detection.png}
 \end{center}
 \end{mdframed}
 
 \paragraph{}
-\begin{mdframed}[frametitle={Partie traitement des données du projet (sans détection de lignes)}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 5 : Partie traitement des données du projet (sans détection de lignes)}, innerbottommargin=10]
 \begin{center}
 \includegraphics[width=\linewidth]{sans-detection.png}
 \end{center}
@@ -85,17 +86,17 @@ sur des paragraphes entiers et non simplement sur des lignes.
 Dans un premier temps, nous travaillerons sur des documents provenant de la base
 \href{http://www.maurdor-campaign.org/}{Maurdor}. Cette base, contenant des documents manuscrits numérisés
 ainsi que leur retranscription, présente l’avantage d’avoir, en plus, les informations sur la position des
-paragraphes et des lignes dans le document (tout cela dans un format spécifique dérivé du XML, le
+paragraphes et des retours à la ligne dans le document qui permettront de déduire la position des lignes
+(tout cela dans un format spécifique dérivé du XML, le
 \href{https://lampsrv02.umiacs.umd.edu/projdb/project.php?id=53}{format GEDI}). Nous utiliserons ces informations
 pour découper les paragraphes. Par la suite, notre système devra être capable de prendre en entrée un autre
 format de documents, le format PiFF\cite{piff:2017}, qui contient également les données de position des
 paragraphes dans une image. Nous expliquerons pourquoi nous avons choisi ce format par la suite.
 
-
 \subsection{Mise en relation des imagettes et de leur retranscription}
 
 Afin que les imagettes puissent être exploitables, il faut les mettre en relation avec leur retranscription
-numérique (la vérité terrain). Cet objectif est réalisable grâces aux données de position qui accompagnent
+numérique (contenue dans la vérité terrain). Cet objectif est réalisable grâces aux données de position qui accompagnent
 les retranscriptions des fichiers d’entrée. Ces couples imagette-retranscription seront ensuite enregistrés
 dans une base de données qui constituera la base d’apprentissage d’un système de reconnaissance d’écriture
 manuscrite. Cette partie correspond également à la partie en bleu du schéma.
@@ -112,14 +113,15 @@ utilisation. Le système de reconnaissance d’écriture manuscrite est situé d
 La base de données que nous allons développer devra permettre de manipuler trois jeux de données différents : 
 
 \begin{itemize}
-\item Tout d’abord, en mode d’apprentissage, le système de reconnaissance extrait de la base les deux premiers
-jeux de données : les imagettes et leurs retranscriptions associées pour pouvoir s'entraîner.
-\item Ensuite, le mode d'évaluation permet de vérifier la qualité du reconnaisseur après un apprentissage
-et ne retourne pas de données à l’intérieur de la base.
-\item Enfin, en mode de production, le reconnaisseur est supposé être bien entraîné. Il n’a que les imagettes
-en entrée et il fournit une retranscription numérique (un label) pour des documents sans vérité terrain.
-Il permet alors d’aider l’utilisateur à retranscrire numériquement un document manuscrit scanné.
-Ce label généré pourrait donc être intégré à la base de donnée à la place de la vérité terrain. 
+\item tout d’abord, en mode d’apprentissage, notre logiciel extrait de la base les deux premiers jeux de données
+(les imagettes et leurs retranscriptions associées) et les fournit au système de reconnaissance pour qu'il puisse s'entraîner;
+\item ensuite, l'utilisateur doit pouvoir choisir un autre jeu de données pour évaluer son reconnaisseur; cela permet de vérifier
+la qualité du reconnaisseur après un apprentissage; ainsi, si l'on utilise une seule base pour stocker les ensembles d’apprentissage
+et d’évaluation, il pourrait être intéressant d’étiqueter les données pour indiquer dans quelle situation elles seront utilisées;
+\item enfin, en mode de production, le reconnaisseur est supposé être bien entraîné; il n’a que les imagettes
+en entrée et il fournit une retranscription numérique (un label) pour des documents sans vérité terrain;
+il permet alors d’aider l’utilisateur à retranscrire numériquement un document manuscrit scanné; ce label généré pourrait donc
+être intégré à la base de données commme nouvelle vérité terrain si l'utilisateur veut perfectionner son reconnaisseur.
 \end{itemize}
 
 \paragraph{}
@@ -143,10 +145,10 @@ Notre logiciel générera des couples imagette-retranscription dans un format sp
 facilement modifié, cela dans le but d’être compatible avec les formats d’entrée de plusieurs systèmes de
 reconnaissance d’écriture manuscrite sans trop d’efforts. Plusieurs choix s’offrent à nous. Le format des données
 en entrée de la base Maurdor est GEDI. Cependant, les formats d’autres bases sont différents. GEDI n’est donc pas
-un format standard. L’équipe IntuiDoc a cherché à mettre en place un format de description d’image nommé PiFF qui
-se veut générique et facilement convertible dans les autres formats. Il nous a donc paru raisonnable de choisir
-d’utiliser ce format dans notre projet. Nous aurons donc un convertisseur du format d’entrée GEDI en PiFF et un
-convertisseur de PiFF vers différents formats des librairies de \textit{deep learning}.
+un format standard. Le format PiFF est un format de description d'images, mis en place par l'équipe IntuiDoc et par
+d'autres laboratoires, qui se veut générique et facilement convertible dans d'autres formats. Il nous a donc paru
+raisonnable de choisir d’utiliser ce format dans notre projet. Nous aurons donc un convertisseur du format d’entrée
+GEDI en PiFF et un convertisseur de PiFF vers différents formats de librairies de \textit{deep learning}.
 
 \subsection{Création d'une seconde IHM permettant d'observer les imagettes et les résultats d'un reconnaisseur}
 
@@ -171,7 +173,7 @@ traitement de données manuscrites aura pour but principal de préparer et stock
 d’apprentissage pour des systèmes de reconnaissance d’écriture manuscrite.
 
 \paragraph{}
-\begin{mdframed}
+\begin{mdframed}[frametitle={Figure 6 : Diagramme bête à cornes}, innerbottommargin=10]
 \begin{center}
 \includegraphics[width=0.7\linewidth]{bete-a-cornes.png}
 \end{center}
@@ -184,21 +186,21 @@ qui découlent de l’objectif principal du projet. De ce fait, notre logiciel d
 avec différents acteurs afin de s’intégrer parfaitement dans l’optique du projet :
 
 \begin{itemize}
-\item \textbf{FP1} : Tout d’abord, le premier objectif (et l’objectif principal du projet) est
-de préparer et stocker les données d’apprentissage pour un système de reconnaissance d’écriture manuscrite.
-\item \textbf{FC1} : Ensuite, il devra utiliser le détecteur de lignes fourni afin de découper
-les phrases des textes d’entrée en imagettes. 
-\item \textbf{FC2} : Il devra également permettre à l’utilisateur d’interagir avec les données
-traitées afin de les vérifier et/ou de les modifier si nécessaire, le tout par le biais d’une Interface Homme-Machine. 
-\item \textbf{FC3} : Notre logiciel utilisera aussi la vérité terrain fournie afin d’associer
-les imagettes découpées à la bonne transcription.
-\item \textbf{FC4} : Il faudra également que celui-ci soit compatible avec le format des données
-qui lui seront fournies en entrée (format GEDI ou PiFF).
-\item \textbf{FC5} : Enfin, notre logiciel devra regrouper les données afin de les stocker dans une base de données.
+\item \textbf{FP1} : tout d’abord, le premier objectif (et l’objectif principal du projet) est
+de préparer et stocker les données d’apprentissage pour un système de reconnaissance d’écriture manuscrite;
+\item \textbf{FC1} : ensuite, il devra utiliser le détecteur de lignes fourni afin de découper
+les phrases des textes d’entrée en imagettes;
+\item \textbf{FC2} : il devra également permettre à l’utilisateur d’interagir avec les données
+traitées afin de les vérifier et/ou de les modifier si nécessaire, le tout par le biais d’une Interface Homme-Machine;
+\item \textbf{FC3} : notre logiciel utilisera aussi la vérité terrain fournie afin d’associer
+les imagettes découpées à la bonne transcription;
+\item \textbf{FC4} : il faudra également que celui-ci soit compatible avec le format des données
+qui lui seront fournies en entrée (format GEDI ou PiFF);
+\item \textbf{FC5} : enfin, notre logiciel devra regrouper les données afin de les stocker dans une base de données.
 \end{itemize}
 
 \paragraph{}
-\begin{mdframed}
+\begin{mdframed}[frametitle={Figure 7 : Diagramme pieuvre}, innerbottommargin=10]
 \begin{center}
 \includegraphics[width=0.7\linewidth]{pieuvre.png}
 \end{center}

@@ -1,4 +1,4 @@
-\chapter{Contexte du projet}
+\hypertarget{c3}{\chapter{Contexte du projet}}
 
 Comme énoncé dans l’introduction, ce projet est en collaboration avec l’équipe IntuiDoc de l’IRISA,
 l’entreprise Doptim et les archives départementales d'Ille-et-Vilaine. Le produit de notre travail
@@ -8,10 +8,11 @@ leur sera donc mis à disposition, directement ou indirectement, afin qu’ils p
 
 Dans le cadre de ses recherches, l’équipe IntuiDoc de l’IRISA cherche à faire avancer le domaine
 de la reconnaissance d’écriture manuscrite afin de rendre plus accessibles des textes anciens qui
-sont souvent peu compréhensibles. Il n’est pas simple d’écrire un programme qui reconnaît les textes
-manuscrits, c’est pourquoi la plupart des systèmes de reconnaissance d’écriture sont basés sur des
-algorithmes intelligents. Ces algorithmes sont souvent formés de réseaux de neurones qui ont besoin
-d’apprendre à reconnaître les différents caractères, quels que soient la langue et le style du rédacteur.
+sont souvent peu compréhensibles. Elle est en collaboration avec les archives départementales
+d'Ille-et-Vilaine. Il n’est pas simple d’écrire un programme qui reconnaît les textes manuscrits,
+c’est pourquoi la plupart des systèmes de reconnaissance d’écriture sont basés sur des algorithmes
+intelligents. Ces algorithmes sont souvent formés de réseaux de neurones qui ont besoin d’apprendre
+à reconnaître les différents caractères, quels que soient la langue et le style du rédacteur.
 Pour apprendre, ils ont besoin d’un grand nombre d’exemples (plusieurs milliers) qui sont longs
 à construire à la main. 
 
@@ -20,8 +21,7 @@ Dans ce contexte, les exemples d’apprentissage (appelés base d’apprentissag
 sont des associations entre les textes manuscrits et leurs retranscriptions informatiques. Ainsi,
 l’algorithme apprend à reconnaître les caractères en comparant sa sortie avec la retranscription fournie.
 Notre projet, qui a été proposé par l’équipe IntuiDoc, est donc de construire un système qui
-permet de générer des bases d’apprentissage à partir de données brutes (mais dans des formats précis)
-de manière automatique.
+permet de générer des bases d’apprentissage à partir d'images et d'une vérité terrain de manière automatique.
 
 \section{Doptim}
 
@@ -30,11 +30,10 @@ Elle a été fondée par Sophie TARDIVEL, qui sera notre contact dans l’entrep
 Son but premier est de créer une communauté de \textit{data scientists} et de
 \textit{data engineers} qui auraient l’ambition d’optimiser et de maîtriser la gestion
 des données. Doptim est aujourd’hui investie dans un projet de service en ligne permettant
-aux généalogistes de gagner du temps dans la fouille et le décryptage de documents numériques.
-De plus, Doptim est en collaboration avec les archives départementales d’Ille-et-Vilaine.
-Cette collaboration a pour but de créer un système de reconnaissance d’écriture manuscrite qui
-aidera les archivistes. Notre projet pourrait donc être utilisé au sein du leur pour qu’ils
-puissent générer plus rapidement leurs bases d’apprentissage.
+aux généalogistes de gagner du temps dans la fouille et le décryptage de documents manuscrits
+numérisés. De plus, Doptim est en collaboration avec l’équipe de recherche IntuiDoc. Cette
+collaboration a pour but de créer un système de reconnaissance d’écriture manuscrite qui aidera
+les archivistes.
 
 \section{Les archives départementales d’Ille-et-Vilaine}
 
@@ -44,15 +43,15 @@ Ces documents n’y sont pas seulement entreposés mais aussi numérisés pour q
 puisse les consulter, soit en version physique aux archives, soit en version numérique
 depuis n’importe où. Il existe actuellement des moteurs de recherche permettant de retrouver
 les documents grâce à des annotations ou des mots-clés, mais leur utilisation reste limitée
-car les documents sont souvent peu lisibles. Leur collaboration avec Doptim a pour but de
-retranscrire la totalité du contenu d’un document manuscrit sous forme de texte numérique
-pour que la recherche soit plus efficace et la consultation plus agréable. Cet outil pourra
-facilement être intégré à la chaîne d’archivage des documents puisqu’il pourra être exécuté
-juste après la numérisation, sans intervention humaine.
+car les documents sont souvent peu lisibles. La collaboration entre l'équipe IntuiDoc et Doptim
+a pour but de retranscrire la totalité du contenu d’un document manuscrit sous forme de
+texte numérique pour que la recherche soit plus efficace et la consultation plus agréable.
+Cet outil pourra facilement être intégré à la chaîne d’archivage des documents puisqu’il pourra
+être exécuté juste après la numérisation, sans intervention humaine.
 
 \paragraph{}
 L’outil final de notre projet qui a pour but d’être compatible avec plusieurs types de
-reconnaisseurs d’écriture manuscrite ne sera pas notre propriété. Nous le rendrons public et
-utilisable par tout le monde. La collaboration que nous avons avec l’IRISA, les archives
-départementales d’Ille-et-Vilaine et Doptim nous permettent d’orienter notre projet afin de
-nous faire une idée de ce qu’un utilisateur pourrait en attendre.
+reconnaisseurs d’écriture manuscrite sera pas notre propriété, mais nous le rendrons public et
+utilisable par tout le monde. Ce sera un logiciel libre. La collaboration que nous avons avec
+l’IRISA, les archives départementales d’Ille-et-Vilaine et Doptim nous permettent d’orienter
+notre projet afin de nous faire une idée de ce qu’un utilisateur pourrait en attendre.
