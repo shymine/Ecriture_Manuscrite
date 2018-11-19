@@ -8,14 +8,14 @@ une description fonctionnelle.
 
 L’objectif premier du projet est de créer un logiciel de génération de bases d’apprentissage
 pour un système de reconnaissance d’écriture manuscrite. Néanmoins, le projet peut être divisé
-en sous-parties illustrées par le schéma suivant. Celui-ci, bien que complexe, peut aider le
+en sous-parties illustrées par le schéma de la figure 2. Celui-ci, bien que complexe, peut aider le
 lecteur à comprendre les liens entre tous les objectifs. Les éléments en \textbf{gras} sur le
 schéma nous sont fournis et sont à intégrer dans le projet.
 
 \paragraph{}
 \begin{mdframed}[frametitle={Figure 2 : Schéma résumant les différents aspects du projet}, innerbottommargin=10]
 \begin{center}
-\includegraphics[width=\linewidth]{schema.pdf}
+\includegraphics[width=\linewidth]{schema_mode1.1.pdf}
 \end{center}
 \end{mdframed}
 
@@ -40,10 +40,10 @@ et un outil de découpage de paragraphes qui sera à développer au cours du pro
 schéma sur fond bleu. Afin de générer les imagettes, nous avons deux possibilités :
 
 \begin{itemize}
-\item option détection sur le document : on détecte la position des lignes sur l’entièreté du document,
+\item option détection sur le document (figure 4) : on détecte la position des lignes sur l’entièreté du document,
 on découpe en paragraphes puis on relie les lignes détectées aux paragraphes;
 
-\item option détection sur les paragraphes : on découpe d’abord les paragraphes, puis on détecte la position
+\item option détection sur les paragraphes (figure 5) : on découpe d’abord les paragraphes, puis on détecte la position
 des lignes dans chacun des paragraphes.
 \end{itemize}
 
@@ -168,7 +168,7 @@ doit comme la première interface accéder à la base de données et la modifier
 
 \subsection{Diagramme bête à cornes}
 
-Le diagramme suivant permet d’exprimer le besoin lié au projet. Ainsi, notre logiciel de
+Le diagramme de la figure 6 permet d’exprimer le besoin lié au projet. Ainsi, notre logiciel de
 traitement de données manuscrites aura pour but principal de préparer et stocker des données
 d’apprentissage pour des systèmes de reconnaissance d’écriture manuscrite.
 
@@ -183,7 +183,7 @@ d’apprentissage pour des systèmes de reconnaissance d’écriture manuscrite.
 
 \subsection{Diagramme pieuvre}
 
-Le diagramme pieuvre, quant à lui, permet d’exprimer les différentes fonctions contraintes
+Le diagramme pieuvre de la figure 7, quant à lui, permet d’exprimer les différentes fonctions contraintes
 qui découlent de l’objectif principal du projet. De ce fait, notre logiciel devra interagir
 avec différents acteurs afin de s’intégrer parfaitement dans l’optique du projet :
 

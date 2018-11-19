@@ -118,7 +118,7 @@ usuelle dans le domaine de la reconnaissance manuscrite est la segmentation par 
 Pour ce faire, plusieurs techniques sont documentées dans la littérature concernant l'OCR
 (\textit{Optical Character Recognition}). Cette partie s'appuie notamment sur une revue des différentes
 techniques de segmentation parue dans l’\href{http://www.ijcsns.org/}{International Journal of Computer Science and Network Security}
-par neuf membres de l’université de Malaya. La segmentation en lignes est une étape importante pour
+par neuf membres de l’université de Malaya\cite{offline:2008}. La segmentation en lignes est une étape importante pour
 la reconnaissance manuscrite puisqu'un mauvais découpage va inévitablement poser des problèmes
 lors des étapes suivantes de la reconnaissance.
 
@@ -161,8 +161,8 @@ dans le cadre de notre projet.
 
 Pour la détection des lignes sur tout le document, un détecteur de lignes basé sur un réseau de neurones à convolution nous sera
 fourni par IntuiDoc. Cette partie s'appuie sur un article\cite{crouspeyre:2017} de Charles CROUSPEYRE à propos du fonctionnement des
-réseaux convolutifs, et sur les travaux de Sofia ARES OLIVEIRA, Benoît SEGUIN, et Frédéric KAPLAN\cite{} sur l’approche \textit{deep learning} de la segmentation
-de documents. 
+réseaux convolutifs, et sur les travaux de Sofia ARES OLIVEIRA, Benoît SEGUIN, et Frédéric KAPLAN\cite{dhsegment:2018} sur l’approche
+\textit{deep learning} de la segmentation de documents. 
 
 Les réseaux de neurones à convolution comparent les images fragment par fragment et recherchent des fragments caractéristiques.
 Par exemple, un réseau de neurones à convolution cherchant à déterminer si une image est un X ou pas va chercher les caractéristiques
@@ -186,7 +186,7 @@ d'images avec les mêmes informations, mais le nombre de pixels est moindre.
 \subsection{Détection de ligne par floutage}
 
 Pour détecter les lignes sur un paragraphe, un détecteur de lignes par floutage sera utilisé. Cette partie s'appuie sur les
-travaux d'Aurélie LEMAITRE, Jean CAMILLERAPP, et Bertrand COÜASNON sur la segmentation de textes manuscrits par l’utilisation
+travaux d'Aurélie LEMAITRE, Jean CAMILLERAPP, et Bertrand COÜASNON\cite{blur:2014} sur la segmentation de textes manuscrits par l’utilisation
 d’images floutées. Cette technique utilise la combinaison de deux niveaux d'analyse de l'image. Tout d'abord, une première
 analyse bas niveau de l'image floutée est réalisée, ce qui est efficace pour les images à forte densité textuelle. Ensuite,
 une analyse plus haut niveau est effectuée, ce qui est efficace sur des images à faible densité textuelle. La combinaison des
