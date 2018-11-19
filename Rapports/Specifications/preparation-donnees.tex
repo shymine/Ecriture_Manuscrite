@@ -1,0 +1,27 @@
+\section{Préparation des données}
+
+Cette partie du projet a pour but de réaliser un premier traitement sur les
+données d’entrée. Ces données sont aux formats GEDI et PiFF, présentés dans
+le dernier rapport. Nous devons fournir un logiciel qui soit capable de
+traiter ces formats (\textbf{PR_FO_1} et \textbf{PR_FO_2}). Nous avons validé
+la proposition que nous avions faite, qui était de choisir PiFF comme format
+de traitement unique. Nous fournirons donc un convertisseur de GEDI vers PiFF,
+et nous garantirons par modélisation logicielle la possibilité pour les futurs
+utilisateurs d’écrire d’autres convertisseurs des formats de leur choix vers
+PiFF s’ils le souhaitent (\textbf{GEN_EVOL}).
+
+\paragraph{}
+En exploitant le fichier PiFF, ce module du projet génèrera les imagettes qui
+formeront les exemples. Les coordonnées utilisées pour la découpe d’image seront
+calculées grâce au polygone identifiant le paragraphe présent dans le fichier
+d’entrée, ainsi que les détecteur de lignes. Cette découpe pourra être réalisée
+soit en lignes, soit en paragraphes, ce qui correspond à deux reconnaisseurs
+différents à utiliser par la suite. Par ailleurs, les fonctions de manipulation
+d’images utiliseront la bibliothèque graphique OpenCV, que nous avions déjà
+sélectionnée auparavant. Les deux options seront disponibles sur le logiciel.
+
+\paragraph{}
+Nous devrons récupérer la vérité terrain si elle existe dans le fichier d’entrée,
+afin de pouvoir l’afficher sur l’IHM et permettre à l’utilisateur de la corriger
+ainsi qu’au reconnaisseur de s’entraîner avec, en lui fournissant des exemples
+que notre logiciel aura créés en associant les imagettes à leur transcription.
