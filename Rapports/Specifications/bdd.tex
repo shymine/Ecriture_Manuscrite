@@ -41,29 +41,6 @@ En plus de stocker les données, la partie base de données devra pouvoir commun
 
 La bibliothèque que nous devons implémenter contiendra ainsi des méthodes dont le but est de faire le lien entre la partie base de données et les autres blocs du logiciel. Parmi ces méthodes nous retrouverons ainsi des procédés pour accéder aux données (SELECT en SQL), modifier les données (UPDATE en SQL), insérer de nouvelles données dans la base (INSERT INTO en SQL) ou encore supprimer des données de la base (DELETE en SQL). Ces méthodes devront être implémentées pour chaque table de la base de données.
 
-\subsection{Modélisation}
-
-Voici la manière dont nous avons modélisé la base de données :
-
-\paragraph{}
-
-\begin{mdframed}[frametitle={Figure 6 : Modèle entité association de la Base de données}, innerbottommargin=10]
-\begin{center}
-\includegraphics[width=\linewidth]{Modele_entite_association.pdf}
-\end{center}
-\end{mdframed}
-
-\paragraph{}
-
-Les tables Author, Type et Operating Mode permettent de stocker les informations concerant les auteurs des documents, le type des documents ainsi que le mode dans lequel on se trouve (mode apprentissage ou mode évaluation).
-La table Document contient toutes les informations concernant un document. A savoir son nom, son auteur, son type, le mode auquel il appartient ainsi que sa date d’ajout à la base.
-
-Nos imagettes seront stockées dans des dossiers à côté de la base de données. Elles seront donc référencées par la base de donnée grâce à leur chemin (par exemple “/home/MesImagettes/imagette1.jpg”) dans la table Example. Cette table contient en plus une référence vers le document d’origine.
-
-\paragraph{}
-
-Les trois tables suivantes (Transcription, UserAnnotation, GroundTruth) servent à lier les imagettes avec leur transcription. Dans la table GroundTruth, on enregistre l’id de l’imagette ainsi que sa vérité-terrain. Dans la table UserAnnotation, on enregistre la même chose mais, en plus, la date de création de cette vérité-terrain qui aura été ajoutée par un utilisateur. Enfin, dans la table Transcription, on enregistre les mêmes informations que dans la table UserAnnotation sauf que, cette fois-ci, la transcription aura été donnée par un reconnaisseur d’écriture manuscrite représenté dans la table Recognizer.
-
 
 
 
