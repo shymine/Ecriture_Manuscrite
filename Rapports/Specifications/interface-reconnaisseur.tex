@@ -1,1 +1,24 @@
 \section{Interface avec le reconnaisseur}
+
+Cette partie du projet a pour but de faire le lien avec le système de
+reconnaissance d’écriture. Située entre la BDD et le reconnaisseur,
+l’interface permet de faire transiter des informations entre les deux, sans
+contraintes de format. Elle convertit les données stockées en données
+intelligibles pour le reconnaisseur (\textbf{INT\_FMT}).
+
+\paragraph{}
+Après discussion avec l'encadrant de projet, nous considérerons que le format
+PiFF est connu des reconnaisseurs utilisés, \textit{i.e.} nous n'aurons pas à
+écrire de convertisseur de PiFF vers un quelconque format d'entrée d'un
+\textit{framework} de \textit{deep learning}. Par ailleurs, ceci permet de
+rendre le projet totalement indépendant du \textit{framework}
+(\textbf{GEN\_EVOL}). Après avoir transmis les données au reconnaisseur, nous
+devrons cependant les récupérer pour traiter les résultats (\textbf{INT\_RES}).
+
+\paragraph{}
+Enfin, le logiciel à développer devra fonctionner dans trois modes :
+\begin{itemize}
+\item un mode Apprentissage ;
+\item un mode Évaluation ;
+\item un mode Production.
+\end{itemize}
