@@ -1,3 +1,80 @@
 \chapter{Architecture logicielle}
 
+Notre projet peut être découpé en plusieurs modules, comme montré précédemment.
+L’architecture de notre logiciel va donc s’appuyer sur cette structure
+modulaire. Chaque module sera relié aux autres par une interface centrale
+recoupant les fonctionnalités de chaque module.
+
 \section{Description des modules}
+
+\subsection{Préparation des données}
+
+Le module de préparation des données est divisé en trois parties. La première
+est une interface \textbf{DocAdapter} qui symbolise les convertisseurs de
+formats vers PiFF. Nous en implémenterons un, la classe
+\textbf{GEDIToPiFFAdapter}, afin de nous permettre comme prévu de traiter les
+documents de la base Maurdor, présentée dans le précédent rapport. Grâce à
+l’utilisation d’une interface, les développeurs sont cependant libres d’en
+ajouter à l’avenir.
+
+\paragraph{}
+La seconde partie est une classe abstraite \textbf{ExampleMaker} symbolisant la
+création des exemples d’apprentissage. En effet, les exemples peuvent être créés
+selon plusieurs méthodes de détection de lignes et de découpe d’images : par
+lignes ou par paragraphes. C’est pourquoi nous avons créé deux classes
+\textbf{LineMaker} et \textbf{ParagraphMaker}, mais une potentielle troisième
+méthode de détection de lignes à l’avenir pourra facilement être ajoutée à notre
+logiciel, en créant une troisième classe héritière d’\textbf{ExampleMaker}.
+
+\paragraph{}
+La troisième et dernière partie de ce module est une fabrique qui utilise les
+deux parties présentées auparavant afin de créer des objets de type
+\textbf{Document} à partir d’une image et des données du fichier d’entrée.
+
+\paragraph{}
+\begin{mdframed}[frametitle={Titre}, innerbottommargin=10]
+\begin{center}
+%\includegraphics[scale=0.6]{fichier.png}
+\end{center}
+\end{mdframed}
+
+\subsection{Base de données}
+
+doublon
+
+\paragraph{}
+\begin{mdframed}[frametitle={Titre}, innerbottommargin=10]
+\begin{center}
+%\includegraphics[scale=0.6]{fichier.png}
+\end{center}
+\end{mdframed}
+
+\subsection{Interface avec le reconnaisseur}
+
+Le programme qui se chargera de faire l’interface entre les données de notre
+base et un reconnaisseur sera assez simple. Il se contentera d’extraire les
+données pertinentes de la base pour ensuite les convertir au bon format. Son
+architecture générale est illustrée pas le schéma ci-dessous.
+
+\paragraph{}
+\begin{mdframed}[frametitle={Titre}, innerbottommargin=10]
+\begin{center}
+%\includegraphics[scale=0.6]{fichier.png}
+\end{center}
+\end{mdframed}
+
+\paragraph{}
+Une interface appelée \textbf{Recognizer} est associée au système de
+reconnaissance d’écriture manuscrite. cette interface possède des méthodes
+pour entraîner ou évaluer le reconnaisseur, ou pour lui faire reconnaître des
+jeux de données. Un ensemble d’exemples est envoyé au reconnaisseur qui les
+traite. Si les données nécessitent d’être converties, une classe
+\textbf{ConverterRecognizer} héritant de cette interface peut être utilisée.
+Elle possède en attribut une classe \textbf{Converter} pouvant exécuter des
+méthodes pour convertir les exemples d’un format à un autre. Ces méthodes
+de la classe \textbf{Converter} seront appelées par les méthodes
+d’entraînement, d’évaluation, etc, en amont du traitement qu’elles doivent
+effectuer. Au cours du développement, des implémentations de ces interfaces
+ou classes abstraites seront réalisées.
+
+\subsection{Interface Homme-Machine}
