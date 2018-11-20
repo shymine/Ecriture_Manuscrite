@@ -31,7 +31,7 @@ Il existe de nombreux SGBD mais pour une base de données intégrée SQLite nous
 
 \subsection{Objectifs de la BDD}
 
-Le principal objectif de la base de données est de pouvoir stocker les données traitées par notre logiciel. Ainsi il doit être possible de pouvoir stocker des imagettes associées à leur transcription (vérité terrain). On devra également pouvoir stocker les données obtenues par le système de reconnaissance d’écriture manuscrite qui aura été entraîné grâce à la base d’apprentissage que notre logiciel lui aura fourni. Ainsi il faudra aussi stocker des imagettes associées à leur transcription générée par le reconnaisseur. 
+Le principal objectif de la base de données est de pouvoir stocker les données traitées par notre logiciel. Ainsi il doit être possible de pouvoir stocker des imagettes associées à leur transcription (vérité terrain) (BDD_VER). On doit aussi pouvoir stocker des imagettes associées à une transcription établie par l'utilisateur (BDD_USR). On devra également pouvoir stocker les données obtenues par le système de reconnaissance d’écriture manuscrite qui aura été entraîné grâce à la base d’apprentissage que notre logiciel lui aura fourni. Ainsi il faudra aussi stocker des imagettes associées à leur transcription générée par le reconnaisseur (BDD_REC). 
 
 \paragraph{}
 
@@ -39,7 +39,7 @@ En plus de stocker les données, la partie base de données devra pouvoir commun
 
 \subsection{Concernant la bibliothèque}
 
-La bibliothèque que nous devons implémenter contiendra ainsi des méthodes dont le but est de faire le lien entre la partie base de données et les autres blocs du logiciel. Parmi ces méthodes nous retrouverons ainsi des procédés pour accéder aux données (SELECT en SQL), modifier les données (UPDATE en SQL), insérer de nouvelles données dans la base (INSERT INTO en SQL) ou encore supprimer des données de la base (DELETE en SQL). Ces méthodes devront être implémentées pour chaque table de la base de données.
+La bibliothèque que nous devons implémenter contiendra ainsi des méthodes dont le but est de faire le lien entre la partie base de données et les autres blocs du logiciel. Parmi ces méthodes nous retrouverons ainsi des procédés pour accéder aux données (BDD_SEL) (SELECT en SQL), modifier les données (BDD_UPD) (UPDATE en SQL), insérer de nouvelles données dans la base (BDD_INS) (INSERT INTO en SQL) ou encore supprimer des données de la base (BDD_DEL) (DELETE en SQL). Ces méthodes devront être implémentées pour chaque table de la base de données.
 
 
 

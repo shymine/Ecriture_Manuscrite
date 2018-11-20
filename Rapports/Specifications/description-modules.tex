@@ -90,7 +90,28 @@ Au cours du développement, des implémentations de ces interfaces ou classes ab
 
 \subsection{Interface Homme-Machine}
 
-Le néant
+L’IHM sera constituée de cinq pages différentes :
+\begin{itemize}
+	\item une page d’accueil qui permet à l’utilisateur de sélectionner le document sur lequel il souhaite travailler, ainsi que le mode d’édition des annotations de son choix ;
+	\item une page correspondant au mode 1 de l’édition des annotations (sans vérité-terrain au préalable ou avec des vérités-terrain manquantes) où l’utilisateur rentre manuellement toutes les annotations ;
+	\item une page correspondant au mode 2 (correction des transcriptions de l’IA) où l’utilisateur vérifie le travail de l’IA et corrige les fautes si besoin ;
+	\item une page correspondant au mode 3 (validation finale) où les vérités-terrain ont été préalablement validées par l’utilisateur. Cette page propose une lecture rapide pour corriger les éventuelles erreurs restantes;
+	\item une page d’édition des zones où l’utilisateur peut définir et modifier les différentes zones qui découpent le manuscrit.
+\end{itemize}
+
+\paragraph{}
+
+Les cinq pages communiquent entre elles selon le schéma suivant :
+
+\paragraph{}
+
+\begin{mdframed}[frametitle={Figure 10 : Organisation de l'IHM}, innerbottommargin=10]
+\begin{center}
+\includegraphics[scale=0.6]{schema_ihm.png}
+\end{center}
+\end{mdframed}
+
+\paragraph{}
 
 \section{Interactions}
 
@@ -98,7 +119,7 @@ Tous les modules présentés dans la partie précédente doivent interagir entre
 
 \paragraph{}
 
-\begin{mdframed}[frametitle={Figure 10 : Diagramme de classes du contrôleur}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 11 : Diagramme de classes du contrôleur}, innerbottommargin=10]
 \begin{center}
 \includegraphics[scale=0.6]{Specifications.pdf}
 \end{center}

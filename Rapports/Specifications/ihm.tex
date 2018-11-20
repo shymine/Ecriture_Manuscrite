@@ -1,1 +1,58 @@
 \section{Interface Homme-Machine}
+
+\subsection{Page d'édition des annotation}
+
+La page d’édition des annotations présente trois modes d’édition différents : un mode sans vérités-terrain disponibles au départ, un mode de correction des transcriptions de l’IA et un mode de validation finale.
+
+\subsubsection{Informations générales}
+
+L’interface doit tout d’abord permettre de naviguer entre les différents documents d’un même classeur pour permettre à l’utilisateur d’ouvrir un autre manuscrit (PEA_GEN_1). Elle doit également permettre de naviguer entre les différentes pages du manuscrit en cours d’annotation (PEA_GEN_2).
+
+L’interface possède trois modes d’édition des annotations différents et doit donc permettre de naviguer entre les modes de façon ergonomique et claire (PEA_GEN_3).
+
+\paragraph{}
+
+Afin de basculer vers la page d’édition des zones de découpe, elle doit posséder un bouton intitulé “modifier les zones du manuscrit” (PEA_GEN_4). Pour plus de clarté, l’interface doit posséder une zone montrant la page découpée afin de localiser les zones de découpe du manuscrit, avec la zone en cours d’annotation figurant en une couleur différente (PEA_GEN_5).
+
+La zone principale de l’interface doit afficher la liste des imagettes du manuscrit découpé (PEA_GEN_6). Chaque imagette est suivie de l’annotation correspondante. Le couple imagette-transcription est chargé depuis la base de données. Lorsque la vérité-terrain d’une imagette est modifiée, les modifications sont aussitôt envoyées à la base de données (PEA_GEN_7). En outre, si une imagette ou sa transcription n’est pas pertinente pour l’ensemble d’apprentissage, le couple imagette-transcription peut être supprimé de la base de données à l’aide d’un bouton prévu à cet effet (PEA_GEN_8).
+
+\paragraph{}
+
+L’utilisateur peut également ajouter à la base de données des documents avec ou sans transcription (PEA_GEN_9) et exporter les données validées afin de lancer un nouvel apprentissage (PEA_GEN_10).
+
+\subsubsection{Mode annotations}
+
+Dans ce mode, aucune vérité-terrain n’est disponible. L’utilisateur doit donc annoter à la main tout le manuscrit afin de générer l’ensemble d’apprentissage. Pour faciliter le travail de l’utilisateur, à l’ouverture de la page, le curseur est placé sur la première imagette ne possédant pas de transcription (PEA_MA_1). Puis, pendant l’édition des vérités-terrain, un simple appui sur la touche Entrée permet de positionner le curseur sur l’annotation suivante afin de faciliter la navigation et de réduire le temps passé à l’édition des transcriptions (PEA_MA_2). Enfin, l’interface doit proposer un bouton permettant de basculer vers la prochaine imagette sans vérité-terrain (PEA_MA_3). Cela est utile dans le cas où les transcriptions manquantes sont éparpillées et ne se suivent pas.
+
+\subsubsection{Mode correction de la reconnaissance}
+
+Dans ce mode, l’utilisateur doit corriger les annotations proposées par l’IA à la suite de son apprentissage. En partant du principe que les transcriptions proposées par l’IA sont relativement fiables et pour diminuer le temps passé à la validation, un simple appui sur Entrée valide les transcriptions zone par zone et passe à la zone suivante (PEA_MCR_1). Si une transcription est fausse, l’utilisateur doit pouvoir la modifier en cliquant dessus pour y positionner son curseur et en effectuant ses modifications manuellement (PEA_MCR_2).
+
+\subsubsection{Mode validation}
+
+Dans ce mode, la vérité-terrain a été validée auparavant par l’utilisateur. Il fait donc office de validation finale. L’interface propose une lecture rapide pour ajouter des corrections si besoin. Ainsi, un simple appui sur Entrée valide les transcriptions zone par zone (PEA_MV_1). Si une transcription s’avère fausse, l’utilisateur doit pouvoir la modifier en cliquant dessus et en effectuant ses modifications manuellement (PEA_MV_2).
+
+\subsection{Page de découpe des zones}
+
+Cette page permet à l’utilisateur de définir et de modifier les différentes zones qui découpent le manuscrit.
+
+\subsubsection{Outils de découpe}
+
+La page d’édition des zones offre plusieurs outils de découpe, d’édition des zones et de navigation dans le manuscrit.
+\begin{itemize}
+	\item l’outil “nouvelle sélection” crée une nouvelle zone à l’aide d’un rectangle (PDEC_OD_1). Les rectangles qui définissent initialement les zones doivent avoir des sommets dont on peut modifier la position pour une découpe plus fine. Les zones ne sont donc pas limitées à des rectangles, mais peuvent prendre la forme d’autres quadrilatères (PDEC_OD_2);
+	\item l’outil “déplacer” déplace la zone sélectionnée sur le manuscrit (PDEC_OD_3). Cela est utile quand l’utilisateur s’aperçoit que plusieurs de ses zones sont mal positionnées. Il peut donc déplacer chaque zone en un clic à l’aide de cet outil;
+	\item l’outil “zoom +” permet de zoomer sur le manuscrit et “zoom -” de dézoomer, afin de faciliter l’édition des zones (PDEC_OD_4);
+	\item l’outil “annuler” permet d’annuler la dernière action (PDEC_OD_5) et l’outil “refaire” permet de refaire l’action annulée précédemment (PDEC_OD_6);
+	\item l’outil “réinitialiser” supprime toutes les zones de la page pour retourner au manuscrit vierge (PDEC_OD_7) en cas de travail erroné;
+	\item afin de permettre à l’utilisateur de vérifier son travail au fur et à mesure, l’interface de découpe doit proposer un outil “appliquer la détection de lignes sur la zone” (PDEC_OD_8). Cet outil applique le détecteur de lignes sur la zone sélectionnée, afin de voir quelles lignes sont détectées pour vérifier que la zone est bien définie;
+	\item enfin, l’outil “valider” valide la découpe et bascule vers la page d’édition des annotations (PDEC_OD_9).
+\end{itemize}
+
+\subsubsection{Visualisation du manuscrit}
+
+L’interface doit posséder un bouton de retour au menu principal (PDEC_VM_1) ainsi qu’une zone de navigation dans les autres documents pour permettre à l’utilisateur d’ouvrir un autre manuscrit (PDEC_VM_2). Elle doit également permettre de naviguer entre les différentes pages du manuscrit (PDEC_VM_3). Enfin, la zone de visualisation doit pouvoir permettre à l’utilisateur de se déplacer sur le manuscrit horizontalement et verticalement à l’aide d’un bouton de défilement (PDEC_VM_4).
+
+
+
+
