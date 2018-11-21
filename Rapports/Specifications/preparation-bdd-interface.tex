@@ -27,7 +27,7 @@ afin de pouvoir l’afficher sur l’IHM et permettre à l’utilisateur de la c
 ainsi qu’au reconnaisseur de s’entraîner avec, en lui fournissant des exemples
 que notre logiciel aura créés en associant les imagettes à leur transcription.
 
-\section{Base de données}
+\section{Stockage des données}
 
 \subsection{Choix du type de modélisation}
 
@@ -109,44 +109,6 @@ nouvelles données dans la base (\textbf{BDD\_INS}) (\texttt{INSERT INTO} en
 SQL), ou encore supprimer des données de la base (\textbf{BDD\_DEL})
 (\texttt{DELETE} en SQL). Ces méthodes devront être implémentées pour chaque
 table de la base de données.
-
-\subsection{Modélisation}
-
-Voici la manière dont nous avons modélisé la base de données (schéma en figure
-6) :
-
-\paragraph{}
-Les tables \textbf{Author}, \textbf{Type} et \textbf{Operating Mode} permettent
-de stocker les informations concerant les auteurs des documents, le type des
-documents ainsi que le mode dans lequel on se trouve (mode apprentissage ou
-mode évaluation). La table \textbf{Document} contient toutes les informations
-concernant un document, à savoir : son nom, son auteur, son type, le mode auquel
-il appartient, ainsi que sa date d’ajout à la base.
-Nos imagettes seront stockées dans des dossiers à côté de la base de données.
-Elles seront donc référencées par la base de données grâce à leur chemin
-(\textit{e.g.} \texttt{/home/user/MesImagettes/imagette1.jpg}) dans la table
-\textbf{Example}. Cette table contient en plus une référence vers le document
-d’origine.
-
-\paragraph{}
-Les trois tables suivantes (\textbf{Transcription}, \textbf{UserAnnotation},
-\textbf{GroundTruth}) servent à lier les imagettes avec leur transcription.
-Dans la table \textbf{GroundTruth}, on enregistre l’identifiant de l’imagette
-ainsi que sa vérité terrain. Dans la table \textbf{UserAnnotation}, on
-enregistre la même chose mais, en plus, la date de création de cette vérité
-terrain qui aura été ajoutée par un utilisateur. Enfin, dans la table
-\textbf{Transcription}, on enregistre les mêmes informations que dans la
-table \textbf{UserAnnotation} sauf que, cette fois-ci, la transcription aura
-été donnée par un reconnaisseur d’écriture manuscrite représenté dans la
-table \textbf{Recognizer}.
-
-\newpage
-
-\begin{mdframed}[frametitle={Figure 6 : Modèle entité association de la base de données}, innerbottommargin=10]
-\begin{center}
-\includegraphics[width=\linewidth]{Modele_entite_association.pdf}
-\end{center}
-\end{mdframed}
 
 \section{Interface avec le reconnaisseur}
 
