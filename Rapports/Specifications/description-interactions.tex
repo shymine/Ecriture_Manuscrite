@@ -128,29 +128,22 @@ Le contrôleur communique enfin avec l’IHM pour traiter les demandes de l’ut
 
 \section{Interactions}
 
-Tous les modules présentés dans la partie précédente doivent interagir entre
-eux à plusieurs niveaux. Un contrôleur général permet de gérer la communication
-et la coopération des différents modules. Une première architecture de celui-ci
-est visible sur le schéma XX.
+Tous les modules présentés dans la partie précédente doivent interagir entre eux à plusieurs niveaux. Un contrôleur général permet de gérer la communication et la coopération des différents modules. Une première architecture de celui-ci est visible sur la figure 10.
 
 \paragraph{}
-\begin{mdframed}[frametitle={Titre}, innerbottommargin=10]
+
+\begin{mdframed}[frametitle={Figure 11 : Diagramme de classes du contrôleur}, innerbottommargin=10]
 \begin{center}
-%\includegraphics[scale=0.6]{fichier.png}
+\includegraphics[scale=0.6]{Specifications.pdf}
 \end{center}
 \end{mdframed}
 
 \paragraph{}
-Le diagramme reste général et n’entre pas dans les détails de l’implémentation
-qui restent encore à définir. Les couleurs correspondant aux couleurs des
-parties expliquées sur la Figure 1. Le contrôleur possède une classe
-correspondant à la partie préparation des données (en bleu). Celle-ci contient
-des méthodes pour générer des exemples à ajouter à la BDD. Une autre classe
-(en jaune) permet de communiquer avec la BDD. Elle contient une méthode pour se
-connecter à la BDD, et d’autres pour envoyer, recevoir ou modifier des données
-stockées. Une dernière classe (partie en vert) permet ensuite de faire le lien
-avec le système de reconnaissance d’écriture manuscrite. Elle contient des
-méthodes pour lancer l’apprentissage ou l’évaluation du reconnaisseur, ou pour
-l’utiliser sur un exemple en mode production. Le contrôleur communique enfin
-avec l’IHM pour traiter les demandes de l’utilisateur et lui renvoyer les
-images et transcriptions. L’IHM est traitée par un serveur web.
+
+Le diagramme reste général et n’entre pas dans les détails de l’implémentation qui restent encore à définir. Les couleurs correspondant aux couleurs des parties expliquées sur la figure 1.
+
+\paragraph{}
+
+Le contrôleur possède une classe correspondant à la partie préparation des données (en bleu). Celle-ci contient des méthodes pour générer des exemples à ajouter à la BDD. Une autre classe (en jaune) permet de communiquer avec la BDD. Elle contient une méthode pour se connecter à la BDD, et d’autres pour envoyer, recevoir ou modifier des données stockées. Une dernière classe (partie en vert) permet ensuite de faire le lien avec le système de reconnaissance d’écriture manuscrite. Elle contient des méthodes pour lancer l’apprentissage ou l’évaluation du reconnaisseur ou pour l’utiliser sur un exemple en mode production.
+Le contrôleur communique enfin avec l’IHM pour traiter les demandes de l’utilisateur et lui renvoyer les images et transcriptions. L’IHM est traitée par un serveur Web.
+
