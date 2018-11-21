@@ -51,7 +51,7 @@ Utiliser un serveur distant sur lequel on installerait une base de données
 était notre première idée. Cependant, ce système possède un inconvénient
 majeur qui est que notre application aurait besoin d’une connexion Internet
 et d’un serveur pour fonctionner. Cette contrainte ajoutant plus de complexité
-que nécessaire, nous n'utiliserons pas de serveur distant. Utiliser un serveur
+que nécessaire, nous avons écarté cette possibilité. Utiliser un serveur
 local résoudrait le problème de la connexion Internet, mais il faudrait tout
 de même faire tourner un serveur local sur la machine qui exécute le logiciel.
 
@@ -77,11 +77,13 @@ simplement.
 
 Le principal objectif de la base de données est de pouvoir stocker les données
 traitées par notre logiciel. Ainsi, il doit être possible de pouvoir stocker
-des imagettes associées à leur transcription (vérité terrain). On devra
-également pouvoir stocker les données obtenues par le système de reconnaissance
-d’écriture manuscrite qui aura été entraîné grâce à la base d’apprentissage
-que notre logiciel lui aura fourni. Ainsi, il faudra aussi stocker des
-imagettes associées à leur transcription générée par le reconnaisseur.
+des imagettes associées à leur transcription (vérité terrain) (\textbf{BDD\_VER}).
+On doit aussi pouvoir stocker des imagettes associées à une transcription établie
+par l’utilisateur (\textbf{BDD\_USR}). On devra également pouvoir stocker les
+données obtenues par le système de reconnaissance d’écriture manuscrite qui aura
+été entraîné grâce à la base d’apprentissage que notre logiciel lui aura fourni.
+Ainsi, il faudra aussi stocker des imagettes associées à leur transcription
+générée par le reconnaisseur (\textbf{BDD\_REC}).
 
 \paragraph{}
 En plus de stocker les données, la partie base de données devra pouvoir
@@ -101,9 +103,10 @@ du projet.
 La bibliothèque que nous devons implémenter contiendra ainsi des méthodes dont
 le but est de faire le lien entre la partie base de données et les autres
 blocs du logiciel. Parmi ces méthodes, nous retrouverons ainsi des procédés
-pour accéder aux données (\texttt{SELECT} en SQL), modifier les données
-(\texttt{UPDATE} en SQL), insérer de nouvelles données dans la base
-(\texttt{INSERT INTO} en SQL), ou encore supprimer des données de la base
+pour accéder aux données (\textbf{BDD\_SEL}) (\texttt{SELECT} en SQL),
+modifier les données (\textbf{BDD\_UPD}) (\texttt{UPDATE} en SQL), insérer de
+nouvelles données dans la base (\textbf{BDD\_INS}) (\texttt{INSERT INTO} en
+SQL), ou encore supprimer des données de la base (\textbf{BDD\_DEL})
 (\texttt{DELETE} en SQL). Ces méthodes devront être implémentées pour chaque
 table de la base de données.
 
@@ -151,18 +154,22 @@ Cette partie du projet a pour but de faire le lien avec le système de
 reconnaissance d’écriture. Située entre la BDD et le reconnaisseur,
 l’interface permet de faire transiter des informations entre les deux, sans
 contraintes de format. Elle convertit les données stockées en données
-intelligibles pour le reconnaisseur (\textbf{INT\_FMT}).
+intelligibles pour le reconnaisseur (\textbf{IR\_CV}).
 
 \paragraph{}
-Après discussion avec l'encadrant de projet, nous considérerons que le format
-PiFF est connu des reconnaisseurs utilisés, \textit{i.e.} nous n'aurons pas à
-écrire de convertisseur de PiFF vers un quelconque format d'entrée d'un
-\textit{framework} de \textit{deep learning}. Par ailleurs, ceci permet de
-rendre le projet totalement indépendant du \textit{framework}
-(\textbf{GEN\_EVOL}). Après avoir transmis les données au reconnaisseur, nous
-devrons cependant les récupérer pour traiter les résultats (\textbf{INT\_RES}).
+Pour tester notre programme, nous avons un reconnaisseur d’écriture
+manuscrite nommé
+\href{https://github.com/jpuigcerver/Laia/tree/master/egs/iam}{Laia} à notre
+disposition. Ce reconnaisseur prend en format d’entrée des fichiers dans un
+format spécifique. Nous allons donc concevoir un programme qui transforme les
+données stockées dans notre base au format adéquat pour que Laia puisse
+apprendre. Notre programme ayant pour vocation à être utilisé par différents
+systèmes de reconnaissance, nous allons laisser le code de ce programme
+\textit{open source} pour que n’importe qui puisse définir son propre
+formateur de données (\textbf{IR\_OS}).
 
 \paragraph{}
-Enfin, le logiciel à développer devra fonctionner dans les trois modes
-(apprentissage, évaluation, production) qui ont été décrits dans une partie
-précédente.
+Notre logiciel pourra également, via cette interface, lancer
+l’apprentissage du système de reconnaissance (\textbf{IR\_AP}), lancer une
+évaluation (\textbf{IR\_EV}) et lancer une transcription de document
+(\textbf{IR\_TR}).
