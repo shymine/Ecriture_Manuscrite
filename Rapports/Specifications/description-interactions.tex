@@ -31,7 +31,7 @@ ajouter à l’avenir.
 
 \paragraph{}
 
-La seconde partie est une classe abstraite \textbf{ExampleMaker} symbolisant
+La seconde partie est une classe abstraite \textbf{ExampleMaker} permettant
 la création des exemples d’apprentissage. En effet, les exemples peuvent être
 créés selon plusieurs méthodes de détection de lignes et de découpe d’images :
 par lignes ou par paragraphes. C’est pourquoi nous avons créé deux classes
@@ -47,7 +47,82 @@ La troisième et dernière partie de ce module est une fabrique appelée
 auparavant afin de créer des objets de type Document à partir d’une image et
 des données du fichier d’entrée.
 
-\subsection{BDD}
+\paragraph{}
+
+Par ailleurs, les fonctions de manipulation d’images utiliseront la bibliothèque graphique OpenCV, que nous avions déjà sélectionnée auparavant.
+
+\subsection{Base de données}
+
+\subsection{Choix du type de modélisation}
+
+Concernant le stockage des données, nous avions plusieurs choix :
+\begin{itemize}
+\item écrire dans des fichiers ;
+\item installer une base de données sur un serveur distant ;
+\item installer une base de données sur un serveur local à la machine ;
+\item installer une base de données sans serveur, en interne au logiciel.
+\end{itemize}
+
+\paragraph{}
+Pour éviter d’utiliser un système de base de données, nous aurions pu choisir
+d’écrire les données que l’on voudrait sauvegarder directement dans des
+fichiers. Cependant, cette façon de sauvegarder les données n’est pas très
+“propre” et est compliquée à structurer. C’est pour cette raison que nous nous
+sommes plutôt dirigés vers un Système de Gestion de Bases de Données (SGBD).
+
+\paragraph{}
+Utiliser un serveur distant sur lequel on installerait une base de données était 
+notre première idée. Cependant, dans cadre du projet, le logiciel ne doit pas avoir 
+besoin d’être exécuté par plusieurs utilisateurs en même temps et de ce fait il n’est 
+pas nécessaire de partager les données, il n’y a donc pas besoin de serveur. De plus, 
+avec un serveur distant on aurait besoin d’une connexion internet pour lancer 
+l’application ce qui aurait ajouté de la complexité au projet, nous avons donc 
+abandonné l’idée d’un serveur distant. Utiliser un serveur local résoudrait le problème 
+de la connexion internet mais il faudrait tout de même faire tourner un serveur local 
+sur la machine qui exécute le logiciel, ce qui rend la manipulation des données plus difficile.
+
+
+\paragraph{}
+La solution que nous avons retenue est l’utilisation d’une base de donnée
+intégrée à l’application. Ainsi, la création et la manipulation de la base
+sera plus simple. Le principal inconvénient de ce type de base de données est
+qu’on ne peut pas y accéder à plusieurs. Seul l’utilisateur du logiciel a accès
+aux données qu’il manipule. Dans une amélioration possible du projet, on
+pourrait imaginer installer la base de données sur un serveur externe pour
+autoriser la multi-utilisation. Cette amélioration n’étant pas très compliquée,
+il sera possible de la faire en fin de projet.
+
+\paragraph{}
+Il existe de nombreux SGBD, mais pour une base de données intégrée,
+\href{https://sqlite.org/index.html}{SQLite} nous semble être le meilleur
+choix. En effet, il est \textit{open source}, gratuit et est spécifiquement
+destiné à être utilisé comme SGBD intégré à un logiciel. De plus, il est
+simple d’utilisation car il existe une API Java permettant de le manipuler
+simplement.
+
+Le fait que nous utilisions SQLite et son
+\textit{framework} Java va nous permettre d’implémenter des méthodes Java pour
+accéder et manipuler simplement les données présentes dans la base. L’objectif
+de l’équipe qui développe la base de données est donc de la modéliser, la
+construire et de fournir une bibliothèque Java qui pourra être utilisée par le
+reste de l’équipe. Le but de cette bibliothèque est d’éviter aux autres équipes
+d’avoir à manipuler du SQL dans leur code Scala. Java étant interopérable avec
+Scala, le fait de la développer en Java ne posera aucun problème pour le reste
+du projet.
+
+\subsection{Concernant la bibliothèque}
+
+La bibliothèque que nous devons implémenter contiendra ainsi des méthodes dont
+le but est de faire le lien entre la partie base de données et les autres
+blocs du logiciel. Parmi ces méthodes, nous retrouverons ainsi des procédés
+pour accéder aux données (\textbf{STO\_SEL}) (\texttt{SELECT} en SQL),
+modifier les données (\textbf{STO\_UPD}) (\texttt{UPDATE} en SQL), insérer de
+nouvelles données dans la base (\textbf{STO\_INS}) (\texttt{INSERT INTO} en
+SQL), ou encore supprimer des données de la base (\textbf{STO\_DEL})
+(\texttt{DELETE} en SQL). Ces méthodes devront être implémentées pour chaque
+table de la base de données.
+
+\subsection{Schéma de la base de données}
 
 Voici la manière dont nous avons modélisé la base de données :
 
@@ -110,7 +185,7 @@ A chaque mode est associé une classe héritant de la classe \textbf{Database}
 et possédant les méthodes exclusives à ce mode. On obtient ainsi trois
 classes, \textbf{TrainingDataBase}, \textbf{EvalDataBase} et
 \textbf{ProdDataBase}, cette dernière classe pouvante également ajouter les
-résultats du classifieur.
+résultats du système de reconnaissance d'écriture manuscrite.
 
 \subsection{Interface avec le système de reconnaissance}
 
@@ -171,6 +246,11 @@ Les cinq pages communiquent entre elles selon le schéma suivant :
 \includegraphics[scale=0.6]{schema_ihm.png}
 \end{center}
 \end{mdframed}
+
+L’interface est orientée web, en JavaScript pour une plus grande accessibilité 
+et une meilleure portabilité. Ce choix a également pour but de faciliter 
+l’évolution de l’application vers une solution multi-utilisateurs distants, 
+où plusieurs personnes s‘y connecteraient via internet.
 
 \section{Interactions}
 

@@ -7,7 +7,7 @@
 Le projet se découpe en quatre grandes parties qui sont :
 \begin{itemize}
 	\item la préparation des données ;
-	\item le stockage des données dans une BDD ;
+	\item le stockage des données ;
 	\item l'interface avec le reconnaisseur ;
 	\item l'IHM.
 \end{itemize}
@@ -24,48 +24,34 @@ pré-étude.
 \end{mdframed}
 
 \paragraph{}
-Le projet se présente sous la forme d’un programme, principalement écrit en
-\href{http://scala-lang.org}{Scala}. En effet, lors du précédent rapport,
-nous avions déjà évoqué ce choix personnel, qui permet de travailler à la
-fois avec un langage fonctionnel et avec la JVM. Par la suite tous les éléments
-décrits seront donc considérés comme écrits en Scala, et pour toute exception,
-le langage utilisé sera précisé.
 
-\paragraph{}
-
-La partie découpe de documents prend en entrée des documents scannés contenant
+La partie préparation des données prend en entrée des documents scannés contenant
 de l’écriture manuscrite, en extrait les informations contenues sous la forme
-de couples imagette-transcription et les stocke dans la BDD. Le
-\textit{framework} de gestion de bases de données utilisé est codé en Java.
-Les langages Scala et Java étant interopérables, car tournant tous deux sur la
-JVM, notre code Scala est donc compatible avec ce \textit{framework}. Le code
-de notre logiciel concernant la base de données sera écrit en Java.
+de couples imagette-transcription et les stocke.
 
 \paragraph{}
-Ces informations stockées sont mises à disposition d’un classifieur, pour qu’il
-puisse s'entraîner sur celles-ci. Ce classifieur ne fait pas partie du cadre de
+Ces informations stockées sont mises à disposition d’un système de reconnaissance d'écriture manuscrite, pour qu’il
+puisse s'entraîner sur celles-ci. Ce reconnaisseur ne fait pas partie du cadre de
 l’application, mais vient se greffer à celle-ci. Le programme doit donc faire
-en sorte que les données de la BDD puissent être accessibles par le classifieur.
-Le classifieur n’étant pas intégré au programme, il peut être changé à tout
+en sorte que les données stockées puissent être accessibles par le reconnaisseur.
+Le système de reconnaissance n’étant pas intégré au programme, il peut être changé à tout
 moment. L’application doit néanmoins pouvoir le faire fonctionner selon 3 modes :
-apprentissage, évaluation et production. Les données stockées dans la base sont
+Production de données pour l’apprentissage, production de données pour l’évaluation 
+et production de transcriptions à partir de données. Les données stockées sont
 ainsi divisées en sous-ensembles, chacun correspondant à un mode de
 fonctionnement.
+Le tout est géré par l’utilisateur grâce à une interface.
 
 \paragraph{}
-Le tout est géré par l’utilisateur grâce à une interface Web, en JavaScript
-pour une plus grande accessibilité et une meilleure portabilité. Ce choix a
-également pour but de faciliter l’évolution de l’application vers une solution
-multi-utilisateurs distants, où plusieurs personnes s‘y connecteraient via
-Internet. Chaque partie sera expliquée plus en détails dans la suite du rapport.
+Chaque partie sera expliquée plus en détails dans la suite du rapport, ainsi que les choix que nous avons fait pour répondre aux besoins exprimés par chacune.
 
 \subsection{Côté utilisateur}
 
 Le logiciel à créer fonctionnera donc suivant plusieurs modes de fonctionnement :
 \begin{itemize}
-	\item apprentissage ;
-	\item évaluation ;
-	\item production.
+	\item production de données pour l’apprentissage (abrégé en Apprentissage) ;
+	\item Production de données pour l’évaluation (abrégé en Evaluation) ;
+	\item Production de transcriptions à partir de données (abrégé en Production).
 \end{itemize}
 
 \paragraph{}
@@ -74,8 +60,8 @@ apprentissage est nécessaire pour obtenir un résultat fonctionnel. Les deux
 modes suivants sont à implémenter suivant le temps restant.
 
 \paragraph{}
-Le mode apprentissage a pour objectif de faire apprendre un système de
-reconnaissance d’écriture. Le logiciel génère une base d’apprentissage pour un
+.Le mode Apprentissage a pour objectif de produire des données pour faire apprendre un système de reconnaissance d’écriture. 
+Le logiciel génère une base d’apprentissage pour un
 système de reconnaissance d’écriture manuscrite et fournit les données
 produites en entrée du reconnaisseur. Celui-ci peut alors les utiliser pour
 apprendre à retranscrire correctement du texte.
@@ -88,11 +74,11 @@ peut :
 terrain ;
 \item charger un document dans la base sans vérité terrain ;
 \item annoter ledit document pour lui associer une nouvelle transcription ;
-\item lancer l’apprentissage du système de reconnaissance ;
+\item Fournir des documents au reconnaisseur pour son apprentissage ;
 \item modifier les données contenues dans la base :
 \begin{enumerate}
 \item supprimer un document ;
-\item déplacer un document vers un autre sous-ensemble ;
+\item Masquer un document de l’apprentissage.
 \end{enumerate}
 \item changer de mode de fonctionnement.
 \end{enumerate}
@@ -101,7 +87,7 @@ terrain ;
 
 \begin{mdframed}[frametitle={Figure 2 : Diagramme de cas d'utilisation (mode apprentissage)}, innerbottommargin=10]
 \begin{center}
-\includegraphics[scale=0.6]{Usecase_1.png}
+\includegraphics[scale=0.6]{Usecase_1.pdf}
 \end{center}
 \end{mdframed}
 
@@ -122,7 +108,7 @@ correcte) ;
 \item modifier les données contenues dans la base :
 \begin{enumerate}
 \item supprimer un document ;
-\item déplacer un document vers un autre sous-ensemble ;
+\item Masquer un document de l’évaluation.
 \end{enumerate}
 \item changer de mode de fonctionnement.
 \end{enumerate}
@@ -131,7 +117,7 @@ correcte) ;
 
 \begin{mdframed}[frametitle={Figure 3 : Diagramme de cas d'utilisation (mode évaluation)}, innerbottommargin=10]
 \begin{center}
-\includegraphics[scale=0.6]{Usecase_2.png}
+\includegraphics[scale=0.6]{Usecase_2.pdf}
 \end{center}
 \end{mdframed}
 
@@ -149,12 +135,9 @@ Dans ce mode, via l'intermédiaire de l’IHM, l’utilisateur peut :
 \item charger un document sans vérité terrain ;
 \item écrire une transcription manuellement, pour compléter ou corriger la
 transcription du reconnaisseur ;
-\item jouer à des mini-jeux en utilisant le reconnaisseur (le contenu des
-mini-jeux n’a pas encore été établi, cette option étant annexe au projet) ;
 \item modifier les données contenues dans la base :
 \begin{enumerate}
-\item supprimer un document ;
-\item déplacer un document vers un autre sous-ensemble ;
+\item supprimer un document.
 \end{enumerate}
 \item changer de mode de fonctionnement.
 \end{enumerate}
@@ -162,7 +145,7 @@ mini-jeux n’a pas encore été établi, cette option étant annexe au projet) 
 \paragraph{}
 \begin{mdframed}[frametitle={Figure 4 : Diagramme de cas d'utilisation (mode production)}, innerbottommargin=10]
 \begin{center}
-\includegraphics[scale=0.6]{Usecase_3.png}
+\includegraphics[scale=0.6]{Usecase_3.pdf}
 \end{center}
 \end{mdframed}
 
@@ -178,6 +161,6 @@ reconnaisseur. Cette possibilité sera donc incluse dans le projet.
 \paragraph{}
 \begin{mdframed}[frametitle={Figure 5 : Diagramme de cas d'utilisation (pour développeur)}, innerbottommargin=10]
 \begin{center}
-\includegraphics[scale=0.7]{Usecase_Dev.png}
+\includegraphics[scale=0.7]{Usecase_Dev.pdf}
 \end{center}
 \end{mdframed}
