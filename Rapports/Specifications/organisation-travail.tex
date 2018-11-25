@@ -20,143 +20,147 @@ Voici la répartition que nous avons effectuée sur les différents blocs :
 	\hline
 	\multicolumn{2}{ | c | }{ \textbf{Bloc 1 : Préparation des données} } \\
 	\hline
-	\textbf{Spécification} && \textbf{Description} \\
+	\textbf{Spécification} & \textbf{Description} \\
 	\hline
-	PR_FO_1 & Traiter le format PiFF en interne dans le logiciel \\
+	PR\_FO\_1 & Traiter le format PiFF en interne dans le logiciel \\
 	\hline
-	PR_FO_2 & Fournir un convertisseur du format GEDI vers PiFF \\
+	PR\_FO\_2 & Fournir un convertisseur du format GEDI vers PiFF \\
 	\hline
-	PR_TR_1 & Intégrer une fonction de détection de lignes au logiciel \\
+	PR\_TR\_1 & Intégrer une fonction de détection de lignes au logiciel \\
 	\hline
-	PR_TR_2 & Permettre un découpage des images en lignes \\
+	PR\_TR\_2 & Permettre un découpage des images en lignes \\
 	\hline
-	PR_TR_3 & Localiser les paragraphes \\
+	PR\_TR\_3 & Localiser les paragraphes \\
 	\hline
-	PR_TR_4 & Permettre un découpage des images en paragraphes \\
+	PR\_TR\_4 & Permettre un découpage des images en paragraphes \\
 	\hline
-	PR_RE_1 & Associer les images à leur transcription \\
+	PR\_RE\_1 & Associer les images à leur transcription \\
 	\hline
-	PR_RE_2 & Associer la vérité terrain à une transcription \\
+	PR\_RE\_2 & Associer la vérité terrain à une transcription \\
 	\hline
-	PR_RE_3 & Permettre de générer une vérité terrain si besoin, grâce à un reconnaisseur \\
+	PR\_RE\_3 & Permettre de générer une vérité terrain si besoin, grâce à un reconnaisseur \\
 	\hline
 \end{tabular}
 
+\paragraph{}
 \begin{tabular}{ | l | l | }
 	\hline
 	\multicolumn{2}{ | c | }{ \textbf{Bloc 2 : Stockage des données} } \\
 	\hline
-	\textbf{Spécification} && \textbf{Description} \\
+	\textbf{Spécification} & \textbf{Description} \\
 	\hline
-	STO_VER & Stocker des imagettes associées à une vérité terrain \\
+	STO\_VER & Stocker des imagettes associées à une vérité terrain \\
 	\hline
-	STO_USR & Stocker des imagettes associées à une transcription générée par l’utilisateur \\
+	STO\_USR & Stocker des imagettes associées à une transcription générée par l’utilisateur \\
 	\hline
-	STO_REC & Stocker des imagettes associées à une transcription générée par un reconnaisseur  \\
+	STO\_REC & Stocker des imagettes associées à une transcription générée par un reconnaisseur  \\
 	\hline
-	STO_SEL & Fournir des méthodes pour accéder aux données stockées  \\
+	STO\_SEL & Fournir des méthodes pour accéder aux données stockées  \\
 	\hline
-	STO_UPD & Fournir des méthodes pour modifier les données stockées \\
+	STO\_UPD & Fournir des méthodes pour modifier les données stockées \\
 	\hline
-	STO_INS & Fournir des méthodes pour pouvoir insérer des données à stocker \\
+	STO\_INS & Fournir des méthodes pour pouvoir insérer des données à stocker \\
 	\hline
-	STO_DEL & Fournir des méthodes pour pouvoir supprimer des données stockées \\
+	STO\_DEL & Fournir des méthodes pour pouvoir supprimer des données stockées \\
 	\hline
 \end{tabular}
 
+\paragraph{}
 \begin{tabular}{ | l | l | }
 	\hline
 	\multicolumn{2}{ | c | }{ \textbf{Bloc 3 : Interface avec le reconnaisseur} } \\
 	\hline
-	\textbf{Spécification} && \textbf{Description} \\
+	\textbf{Spécification} & \textbf{Description} \\
 	\hline
-	IR_CV & Convertir les données au format d’entrée du reconnaisseur \\
+	IR\_CV & Convertir les données au format d’entrée du reconnaisseur \\
 	\hline
-	IR_AP & Fournir les données au reconnaisseur \\
+	IR\_AP & Fournir les données au reconnaisseur \\
 	\hline
-	IR_EV & Pouvoir lancer une évaluation du reconnaisseur  \\
+	IR\_EV & Pouvoir lancer une évaluation du reconnaisseur  \\
 	\hline
-	IR_TR & Pouvoir lancer une transcription d’un document par le reconnaisseur   \\
+	IR\_TR & Pouvoir lancer une transcription d’un document par le reconnaisseur   \\
 	\hline
 \end{tabular}
 
+\paragraph{}
 \begin{tabular}{ | l | l | }
 	\hline
 	\multicolumn{2}{ | c | }{ \textbf{Bloc 4 : Interface avec l’utilisateur} } \\
 	\hline
-	\textbf{Spécification} && \textbf{Description} \\
+	\textbf{Spécification} & \textbf{Description} \\
 	\hline
-	PEA_GEN_1 & Naviguer entre les différents documents d’un même classeur \\
+	PEA\_GEN\_1 & Naviguer entre les différents documents d’un même classeur \\
 	\hline
-	PEA_GEN_2 & Naviguer entre les différentes pages du manuscrit en cours d’annotation \\
+	PEA\_GEN\_2 & Naviguer entre les différentes pages du manuscrit en cours d’annotation \\
 	\hline
-	PEA_GEN_3 & Basculer vers la page d’édition des zones de découpe à l’aide d’un bouton \\
+	PEA\_GEN\_3 & Basculer vers la page d’édition des zones de découpe à l’aide d’un bouton \\
 	\hline
-	PEA_GEN_4 & Posséder une zone montrant la page découpée afin de localiser les zones de découpe du manuscrit, avec la zone en cours d’annotation figurant en une couleur différente \\
+	PEA\_GEN\_4 & Posséder une zone montrant la page découpée afin de localiser les zones de découpe du manuscrit, avec la zone en cours d’annotation figurant en une couleur différente \\
 	\hline
-	PEA_GEN_5 & Afficher la liste des imagettes du manuscrit découpé \\
+	PEA\_GEN\_5 & Afficher la liste des imagettes du manuscrit découpé \\
 	\hline
-	PEA_GEN_6 & Modifier directement la base de données quand on modifie une vérité terrain \\
+	PEA\_GEN\_6 & Modifier directement la base de données quand on modifie une vérité terrain \\
 	\hline
-	PEA_GEN_7 & Supprimer un couple imagette-transcription de la base de données à l’aide d’un bouton prévu à cet effet \\
+	PEA\_GEN\_7 & Supprimer un couple imagette-transcription de la base de données à l’aide d’un bouton prévu à cet effet \\
 	\hline
-	PEA_GEN_8 & Ajouter à la base de données des documents avec ou sans transcription \\
+	PEA\_GEN\_8 & Ajouter à la base de données des documents avec ou sans transcription \\
 	\hline
-	PEA_GEN_9 & Exporter les données validées afin de lancer un nouvel apprentissage \\
+	PEA\_GEN\_9 & Exporter les données validées afin de lancer un nouvel apprentissage \\
 	\hline
-	PEA_MA_1 & Placer le curseur sur la première imagette ne possédant pas de transcription à l’ouverture de la page \\
+	PEA\_MA\_1 & Placer le curseur sur la première imagette ne possédant pas de transcription à l’ouverture de la page \\
 	\hline
-	PEA_MA_2 & Un appui sur la touche Entrée permet de positionner le curseur sur l’annotation suivante \\
+	PEA\_MA\_2 & Un appui sur la touche Entrée permet de positionner le curseur sur l’annotation suivante \\
 	\hline
-	PEA_MA_3 & Proposer un bouton permettant de basculer vers la prochaine imagette sans vérité-terrain \\
+	PEA\_MA\_3 & Proposer un bouton permettant de basculer vers la prochaine imagette sans vérité-terrain \\
 	\hline
-	PEA_MCR_1 & Un appui sur Entrée valide les transcriptions zone par zone et passe à la zone suivante \\
+	PEA\_MCR\_1 & Un appui sur Entrée valide les transcriptions zone par zone et passe à la zone suivante \\
 	\hline
-	PEA_MCR_2 & Modifier une transcription en cliquant dessus pour y positionner le curseur et effectuer manuellement les modifications  \\
+	PEA\_MCR\_2 & Modifier une transcription en cliquant dessus pour y positionner le curseur et effectuer manuellement les modifications  \\
 	\hline
-	PEA_MV_1 & Un appui sur Entrée valide les transcriptions zone par zone \\
+	PEA\_MV\_1 & Un appui sur Entrée valide les transcriptions zone par zone \\
 	\hline
-	PEA_MV_2 & Modifier une transcription en cliquant dessus pour y positionner le curseur et effectuer manuellement les modifications  \\
+	PEA\_MV\_2 & Modifier une transcription en cliquant dessus pour y positionner le curseur et effectuer manuellement les modifications  \\
 	\hline
-	PDEC_OD_1 & Créer une nouvelle zone à l’aide d’un rectangle \\
+	PDEC\_OD\_1 & Créer une nouvelle zone à l’aide d’un rectangle \\
 	\hline
-	PDEC_OD_2 & Les zones ne sont donc pas limitées à des rectangles, mais peuvent prendre la forme d’autres polygones \\
+	PDEC\_OD\_2 & Les zones ne sont donc pas limitées à des rectangles, mais peuvent prendre la forme d’autres polygones \\
 	\hline
-	PDEC_OD_3 & Déplacer la zone sélectionnée sur le manuscrit \\
+	PDEC\_OD\_3 & Déplacer la zone sélectionnée sur le manuscrit \\
 	\hline
-	PDEC_OD_4 & Zoomer et dézoomer sur le manuscrit  \\
+	PDEC\_OD\_4 & Zoomer et dézoomer sur le manuscrit  \\
 	\hline
-	PDEC_OD_5 & Annuler la dernière action \\
+	PDEC\_OD\_5 & Annuler la dernière action \\
 	\hline
-	PDEC_OD_6 & Refaire l’action annulée précédemment \\
+	PDEC\_OD\_6 & Refaire l’action annulée précédemment \\
 	\hline
-	PDEC_OD_7 & Supprimer toutes les zones de la page pour retourner au manuscrit vierge \\
+	PDEC\_OD\_7 & Supprimer toutes les zones de la page pour retourner au manuscrit vierge \\
 	\hline
-	PDEC_OD_8 & Proposer une option “appliquer la détection de lignes sur la zone” \\
+	PDEC\_OD\_8 & Proposer une option “appliquer la détection de lignes sur la zone” \\
 	\hline
-	PDEC_OD_9 & Valider la découpe et basculer vers la page d’édition des annotations  \\
+	PDEC\_OD\_9 & Valider la découpe et basculer vers la page d’édition des annotations  \\
 	\hline
-	PDEC_VM_1 & Posséder un bouton de retour au menu principal \\
+	PDEC\_VM\_1 & Posséder un bouton de retour au menu principal \\
 	\hline
-	PDEC_VM_2 & Permettre à l’utilisateur d’ouvrir un autre manuscrit \\
+	PDEC\_VM\_2 & Permettre à l’utilisateur d’ouvrir un autre manuscrit \\
 	\hline
-	PDEC_VM_3 & Permettre de naviguer entre les différentes pages du manuscrit \\
+	PDEC\_VM\_3 & Permettre de naviguer entre les différentes pages du manuscrit \\
 	\hline
-	PDEC_VM_4 & Permettre à l’utilisateur de se déplacer sur le manuscrit horizontalement et verticalement à l’aide d’un bouton de défilement \\
+	PDEC\_VM\_4 & Permettre à l’utilisateur de se déplacer sur le manuscrit horizontalement et verticalement à l’aide d’un bouton de défilement \\
 	\hline
 \end{tabular}
 
+\paragraph{}
 \begin{tabular}{ | l | l | }
 	\hline
 	\multicolumn{2}{ | c | }{ \textbf{Bloc 5 : Général} } \\
 	\hline
-	\textbf{Spécification} && \textbf{Description} \\
+	\textbf{Spécification} & \textbf{Description} \\
 	\hline
-	GEN_ERGO & Ergonomie de l‘application \\
+	GEN\_ERGO & Ergonomie de l‘application \\
 	\hline
-	GEN_ERGO & Concevoir un logiciel évolutif \\
+	GEN\_ERGO & Concevoir un logiciel évolutif \\
 	\hline
-	GEN_ERGO & Fournir un logiciel open source \\
+	GEN\_ERGO & Fournir un logiciel open source \\
 	\hline
 \end{tabular}
 
@@ -186,7 +190,7 @@ cette manière :
 \paragraph{}
 \begin{mdframed}[frametitle={Figure 12 : Estimation de la planification des tâches}, innerbottommargin=10]
 \begin{center}
-\includegraphics[scale=0.6]{gantt.png}
+%\includegraphics[scale=0.6]{gantt.png}
 \end{center}
 \end{mdframed}
 
@@ -204,42 +208,3 @@ cette manière :
 
 \paragraph{}
 \textcolor{pink}{En rose : } exécution du projet en mode production. Ce seront les tests du reconnaisseur.
-
-
-
-\section{Délivrables ?}
-
-\begin{mdframed}[frametitle={Figure N : LOT 1 - X}, innerbottommargin=10]
-\begin{center}
-\begin{tabular}{ | l | l | }
-\hline
-{\textbf{Règles}}   &   {\textbf{Description}} \\ \hline
-{XX\_1}              &   {Règle XX\_1} \\ \hline
-\end{tabular}
-\end{center}
-\end{mdframed}
-
-Formats
-PR\_FO\_1 : Permettre de traiter le format PiFF
-PR\_FO\_2 : Permettre de traiter le format GEDI
-Traitement
-PR\_TR\_1 : Fonction de détection de lignes intégrée au logiciel
-PR\_TR\_2 : Permettre un découpage des images en lignes
-PR\_TR\_3 : Localiser les paragraphes
-PR\_TR\_4 : Permettre un découpage des images en paragraphes
-Représentation des données
-PR\_RE\_1 : Associer les images à leur transcription
-PR\_RE\_2 : Associer la vérité terrain à une transcription
-PR\_RE\_3 : Permettre de générer une vérité terrain si besoin, grâce à un reconnaisseur
-
-GEN\_ERGO : Ergonomie du logiciel
-GEN\_EVOL : Logiciel évolutif
-
-INT\_FMT : Fournir des données intelligibles par le reconnaisseur
-INT\_RES : Récupérer les résultats
-GEN\_EVOL : Changer de reconnaisseur (pouvoir installer n’importe quel reconnaisseur)
-
-INT\_MOD : L’utiliser dans plusieurs modes
--Apprentissage
--Evaluation
--Production
