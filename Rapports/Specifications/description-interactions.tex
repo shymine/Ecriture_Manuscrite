@@ -74,26 +74,32 @@ fichiers. Cependant, cette façon de sauvegarder les données n’est pas très
 sommes plutôt dirigés vers un Système de Gestion de Bases de Données (SGBD).
 
 \paragraph{}
-Utiliser un serveur distant sur lequel on installerait une base de données était 
-notre première idée. Cependant, dans le cadre du projet, le logiciel n'a pas
-besoin d’être exécuté par plusieurs utilisateurs en même temps et de ce fait il n’est 
-pas nécessaire de partager les données, il n’y a donc pas besoin de serveur. De plus, 
-avec un serveur distant, une connexion Internet aurait été nécessaire pour lancer 
-l’application, ce qui aurait ajouté de la complexité au projet. Nous avons donc 
-abandonné l’idée d’un serveur distant. Utiliser un serveur local résoudrait le problème 
-de la connexion Internet, mais il faudrait tout de même lancer un serveur local 
-sur la machine qui exécute le logiciel, ce qui rend la manipulation des données
-plus difficile et nécessite de maintenir le serveur allumé en plus du logiciel.
+Utiliser un serveur distant sur lequel on installerait une base de données 
+était notre première idée. Avec une base de données de ce type on pourrait 
+partager les données qu’on exploite et ainsi travailler à plusieurs sur le 
+même projet. D’autant plus si on choisit, par exemple, d’orienter l’IHM en
+ web. Cependant ce type de base de données demande un peu plus d’efforts 
+de mise en place, notamment en ce qui concerne les authentifications ou 
+les accès concurrentiels aux données. En sachant que le cahier des charges 
+ne spécifie pas que l’application doit être utilisée par plusieurs personnes 
+en même temps et que le coût de mise en place d’une telle technologie n’est 
+pas négligeable (en considérant le temps à notre disposition au second 
+semestre), nous avons décidé de ne pas nous orienter vers cette technologie. 
+Il pourrait néanmoins être intéressant pour un projet futur d’utiliser 
+cette technologie afin de proposer une application multi-utilisateurs. 
+Nous préférons dans notre cas, d’abord avoir une application fonctionnelle 
+qui répond aux spécifications du client. 
+
+ Utiliser un serveur local pourrait être une bonne alternative mais le problème 
+est qu’il faudrait faire tourner un serveur local sur la machine qui exécute 
+le logiciel, ce qui rend la manipulation des données plus difficile et
+ nécessite de maintenir le serveur allumé en plus du logiciel.
 
 \paragraph{}
-La solution que nous avons retenue est donc l’utilisation d’une base de données
-intégrée à l’application. Ainsi, la création et la manipulation de la base
-seront plus simples. Le principal inconvénient de ce type de base de données est
-qu’on ne peut pas y accéder à plusieurs. Seul l’utilisateur du logiciel a accès
-aux données qu’il manipule. Dans une amélioration possible du projet, on
-pourrait imaginer installer la base de données sur un serveur externe pour
-autoriser la multi-utilisation. Cette amélioration n’étant pas très compliquée,
-il sera possible de la faire en fin de projet.
+La solution que nous avons retenue est donc l’utilisation d’une base de donnée 
+intégrée à l’application. Ainsi, la création et la manipulation de la base 
+sera plus simple. L’utilisateur pourra ainsi directement manipuler les données 
+comme on manipule des fichiers sur n’importe quel machine.
 
 \paragraph{}
 Il existe de nombreux SGBD, mais pour une base de données intégrée,
@@ -197,7 +203,7 @@ Son architecture générale est illustrée par le schéma ci-dessous.
 
 \newpage
 
-\begin{mdframed}[frametitle={Figure 14 : Diagramme de classes de l'interface avec le système de reconaissance d'écriture manuscrite}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 14 : Diagramme de classes de l'interface avec le système de reconnaissance d'écriture manuscrite}, innerbottommargin=10]
 \begin{center}
 \includegraphics[scale=0.5]{interface-reconnaisseur.pdf}
 \end{center}
@@ -206,7 +212,7 @@ Son architecture générale est illustrée par le schéma ci-dessous.
 \paragraph{}
 Une interface appelée \textbf{Recognizer} est associée au système de
 reconnaissance d’écriture manuscrite. cette interface possède des méthodes
-pour entraîner ou  évaluer le reconnaisseur, ou pour lui faire reconnaître
+pour fournir des données d'entraînement ou  évaluer le reconnaisseur, ou pour lui faire reconnaître
 des jeux de données. Un ensemble d’exemples est envoyé au reconnaisseur qui
 les traite. Si les données nécessitent d’être converties, une classe
 \textbf{ConverterRecognizer} héritant de cette interface peut être utilisée.

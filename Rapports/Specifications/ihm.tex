@@ -2,8 +2,8 @@
 
 \subsection{Introduction}
 
-La fonction principale de l’application est de valider les transcriptions d’un
-manuscrit. Elle propose ainsi de valider un ensemble d’annotations
+La fonction principale de l’application est de valider les transcriptions d’un document.
+Nous.décrivons ici par document un fichier manuscrit ou imprimé scanné composé d’une ou plusieurs pages. L’application propose ainsi de valider un ensemble d’annotations
 (\textbf{PEA\_GEN\_1}), d’éditer manuellement les transcriptions
 (\textbf{PEA\_GEN\_2}), ou encore de corriger les annotations proposées par un
 reconnaisseur externe à l’application (\textbf{PEA\_GEN\_3}).
@@ -18,20 +18,21 @@ effet (\textbf{PEA\_GEN\_5}). Cette fonctionnalité sera expliquée plus en
 détail par la suite.
 
 \paragraph{}
-Les manuscrits sont regroupés en projets (par exemple, l’ensemble des registres
+Les documents sont regroupés en projets (par exemple, l’ensemble des registres
 paroissiaux de 1800 à 1810) (\textbf{PEA\_GEN\_6}). En ouvrant l’application,
-l’utilisateur sélectionne d’abord le projet puis le manuscrit sur lequel il
-veut travailler (\textbf{PEA\_GEN\_7}). Il peut également créer un nouveau
-projet (\textbf{PEA\_GEN\_8}). Pour ce faire, l’utilisateur clique sur le
-bouton “Nouveau projet”, le nomme, choisit son type (dans l’éventualité où un
-reconnaisseur est utilisé sur ce projet, les deux types sont “test” ou
-“apprentissage”, afin de décider de la façon dont les manuscrits seront
-utilisés par le reconnaisseur), puis le remplit en choisissant parmi ses
-fichiers les manuscrits qu’il contiendra.
+l’utilisateur sélectionne d’abord le projet puis le document sur lequel il
+veut travailler et enfin le mode dans lequel il veut ouvrir le document 
+(annotation manuelle, correction des propositions du reconnaisseur ou validation 
+des transcriptions) (\textbf{PEA\_GEN\_7}). Les documents sont simplement décrits 
+par leur nom (par exemple, “Registre Paroissial de la commune de Bécherel de 
+1800 à 1810).  Il peut également créer un nouveau
+projet (\textbf{PEA\_GEN\_8}). Pour ce faire, l’utilisateur clique sur le 
+bouton “Nouveau projet”, le nomme, puis le remplit en choisissant parmi 
+ses fichiers les manuscrits qu’il contiendra.
 
 \paragraph{}
-Une fois que l’utilisateur a choisi son manuscrit, il a trois possibilités.
-Il peut basculer vers la page de découpe des zones (\textbf{PEA\_GEN\_9}), vers
+Une fois que l’utilisateur a choisi le document sur lequel il veut travailler, il 
+peut basculer vers la page de découpe des zones (\textbf{PEA\_GEN\_9}), vers
 la page d’édition des annotations (\textbf{PEA\_GEN\_10}) ou bien vers la page
 de validation des transcriptions (\textbf{PEA\_GEN\_11}).
 
@@ -45,9 +46,9 @@ de validation des transcriptions (\textbf{PEA\_GEN\_11}).
 \subsection{Page de découpe des zones}
 
 Cette page permet à l’utilisateur de définir et de modifier les différentes
-zones qui découpent le manuscrit. La page d’édition des zones offre
+zones qui découpent le document. La page d’édition des zones offre
 plusieurs outils de découpe, d’édition des zones et de navigation dans le
-manuscrit. L’outil “nouvelle sélection” crée une nouvelle zone à l’aide d’un
+document. L’outil “nouvelle sélection” crée une nouvelle zone à l’aide d’un
 rectangle (\textbf{PDEC\_OD\_1}). Les rectangles qui définissent initialement
 les zones doivent avoir des sommets dont on peut modifier la position pour
 une découpe plus fine (\textbf{PDEC\_OD\_2}). De plus, l’utilisateur doit avoir
@@ -60,16 +61,16 @@ l’apprentissage du reconnaisseur se fera différemment selon si la zone contie
 un corps de texte ou un titre, par exemple.
 
 \paragraph{}
-L’outil “déplacer” déplace la zone sélectionnée sur le manuscrit
+L’outil “déplacer” déplace la zone sélectionnée sur le document
 (\textbf{PDEC\_OD\_5}). Cela est utile quand l’utilisateur s’aperçoit que
 plusieurs de ses zones sont mal positionnées. Il peut donc déplacer chaque zone
 en un clic à l’aide de cet outil. L’outil “zoom +” permet de zoomer sur le
-manuscrit et “zoom -” de dézoomer, afin de faciliter l’édition des zones, pour
+document et “zoom -” de dézoomer, afin de faciliter l’édition des zones, pour
 une meilleure ergonomie (\textbf{PDEC\_OD\_6}). L’outil “annuler” permet
 d’annuler la dernière action (\textbf{PDEC\_OD\_7}) et l’outil “refaire” permet
 de refaire l’action annulée précédemment (\textbf{PDEC\_OD\_8}). L’outil
 “réinitialiser” supprime toutes les zones de la page pour retourner au
-manuscrit vierge (\textbf{PDEC\_OD\_9}) en cas de travail erroné. Cela évite à
+document vierge (\textbf{PDEC\_OD\_9}) en cas de travail erroné. Cela évite à
 l’utilisateur d’avoir à supprimer les zones une par une.
 
 \paragraph{}
@@ -79,7 +80,7 @@ lignes sur la zone” (\textbf{PDEC\_OD\_10}). Cet outil applique le détecteur 
 lignes sur la zone sélectionnée, afin de voir quelles lignes sont détectées
 pour vérifier que la zone est bien définie. Lorsque l’utilisateur a fini la
 découpe d’une page, trois possibilités s’offrent à lui. Il peut tout d’abord
-choisir de continuer la découpe du manuscrit sur la page suivante
+choisir de continuer la découpe du document sur la page suivante
 (\textbf{PDEC\_OD\_11}), de passer à l’édition des annotations sur la page qu’il
 vient de découper (\textbf{PDEC\_OD\_12}) ou bien d’exporter la page découpée au
 format PiFF afin de soumettre les données à un reconnaisseur externe à
@@ -88,7 +89,7 @@ l’application (\textbf{PDEC\_OD\_13}).
 \paragraph{}
 Enfin, l’interface doit posséder un bouton de retour au menu principal
 (\textbf{PDEC\_OD\_14}). De plus, la zone de visualisation doit pouvoir permettre
-à l’utilisateur de se déplacer sur le manuscrit à l’aide d’un \textit{scroll} horizontal
+à l’utilisateur de se déplacer sur le document à l’aide d’un \textit{scroll} horizontal
 et vertical (\textbf{PDEC\_OD\_15}).
 
 \newpage
@@ -108,7 +109,8 @@ imagette ne possédant pas de transcription (\textbf{PEMA\_1}). Puis, pendant
 l’édition des vérités-terrain, un simple appui sur la touche Entrée permet de
 positionner le curseur sur l’annotation suivante afin de faciliter la
 navigation et de réduire le temps passé à l’édition des transcriptions
-(\textbf{PEMA\_2}). Enfin, l’interface doit proposer un raccourci clavier
+(\textbf{PEMA\_2}). L’utilisateur peut naviguer entre les zones grâce à 
+la barre dédiée en bas de la fenêtre. Enfin, l’interface doit proposer un raccourci clavier
 permettant de basculer vers la prochaine imagette sans vérité-terrain
 (\textbf{PEMA\_3}). Cela est utile dans le cas où les transcriptions manquantes
 sont éparpillées et ne se suivent pas. Comme c’est une fonctionnalité qui ne
@@ -119,9 +121,9 @@ clavier plutôt qu’un bouton pour éviter de surcharger l’interface.
 Sur cette page, l’utilisateur a toujours la possibilité de basculer vers la
 page d’édition des zones de découpe. L’interface doit donc posséder un bouton
 intitulé “modifier les zones du manuscrit” (\textbf{PEMA\_4}). La zone
-principale de l’interface doit afficher la liste des imagettes du manuscrit
+principale de l’interface doit afficher la liste des imagettes du document
 découpé (\textbf{PEMA\_5}). Chaque imagette est suivie de l’annotation
-correspondante. Nous avons choisi de présenter le manuscrit en séparant les
+correspondante. Nous avons choisi de présenter le document en séparant les
 imagettes les unes des autres pour améliorer la lisibilité du texte et des
 transcriptions ligne par ligne. De plus, cette présentation nous permet quand
 même d’avoir accès au contexte de la ligne courante, c’est-à-dire les imagettes
@@ -133,7 +135,7 @@ et que les imagettes sont découpées correctement.
 Si un couple imagette-transcription ne semble pas pertinent pour l’étude, une
 croix permet de le griser afin qu’il soit ignoré (\textbf{PEMA\_6}). Il ne sera
 pas supprimé de la base de données, mais si un reconnaisseur est utilisé sur
-le manuscrit, le couple ignoré ne sera pas pris en compte par celui-ci.
+le document, le couple ignoré ne sera pas pris en compte par celui-ci.
 L’utilisateur garde la possibilité de le dégriser en cliquant sur la flèche
 orange dans le coin droit de l’imagette. Enfin, l’utilisateur peut basculer
 vers la page de validation des transcriptions afin de valider et d’exporter son
@@ -148,7 +150,7 @@ travail (\textbf{PEMA\_7}).
 
 \subsection{Page de correction des transcriptions du reconnaisseur}
 
-Si l’utilisateur a fait passer un manuscrit par un reconnaisseur d’écriture
+Si l’utilisateur a fait passer un document par un reconnaisseur d’écriture
 manuscrite, il veut pouvoir visualiser le résultat qui fait suite à son
 apprentissage et le corriger manuellement si besoin. C’est ce que permet
 cette page de l’interface. Celle-ci est semblable à la page d’édition manuelle
@@ -165,7 +167,11 @@ en effectuant ses modifications manuellement (\textbf{PCORIA\_2}).
 
 \paragraph{}
 La zone de visualisation des imagettes se présente de la même manière que sur
-la page d’édition manuelle des transcriptions (\textbf{PCORIA\_3}). Cette page
+la page d’édition manuelle des transcriptions (\textbf{PCORIA\_3}). De même, 
+l’utilisateur peut naviguer entre les zones grâce à la barre de navigation en 
+bas de la fenêtre. Il peut également naviguer entre les pages du document grâce 
+aux flèches dans la zone à droite des imagettes où figurela page courante 
+en entier. Cette page
 possède également la fonctionnalité de mise à l’écart d’un couple
 imagette-transcription, comme dans la page précédente (\textbf{PCORIA\_4}).
 Enfin, l’utilisateur peut également basculer vers la page de validation des
@@ -195,7 +201,8 @@ propose une lecture rapide pour ajouter des corrections si besoin. Ainsi, un
 simple appui sur Entrée valide les transcriptions zone par zone
 (\textbf{PVAL\_3}). Si une transcription s’avère fausse, l’utilisateur doit
 pouvoir la modifier en cliquant dessus et en effectuant ses modifications
-manuellement (\textbf{PVAL\_4}).
+manuellement (\textbf{PVAL\_4}).  L’utilisateur peut naviguer entre les 
+différentes zones et les différentes pages grâce aux boutons prévus à cet effet.
 
 \paragraph{}
 L’interface indique si les transcriptions ont été fournies manuellement par un
@@ -209,7 +216,7 @@ Dans le coin supérieur droit figure une fenêtre montrant la page entière
 découpée en zones avec la zone courante dans une couleur différente
 (\textbf{PVAL\_6}). Cela permet à l’utilisateur de connaître à tout moment sa
 position dans le manuscrit. Enfin, un bouton permet de valider le travail pour
-de bon et de fermer le manuscrit (\textbf{PVAL\_7}).
+de bon et de fermer le document (\textbf{PVAL\_7}).
 
 \newpage
 
@@ -218,3 +225,28 @@ de bon et de fermer le manuscrit (\textbf{PVAL\_7}).
 \includegraphics[scale=0.05]{ihm5.jpg}
 \end{center}
 \end{mdframed}
+
+\subsection{Navigation dans l'application}
+
+La navigation entre les pages de l’application se fait de manière la plus 
+instinctive possible. Quand l’utilisateur ouvre l’application, il arrive 
+sur la page d’accueil où il choisit son document, puis le mode de travail
+ qu’il veut. La page correspondant au mode s’ouvre ensuite (édition manuelle 
+des annotations, correction des propositions du reconnaisseur ou validation).
+ L’utilisateur peut retourner au menu à tout moment à l’aide d’un bouton
+ prévu à cet effet ou passer au mode de validation depuis les pages 
+d’édition des annotations et de correction de la reconnaissance. De plus, 
+la page d’édition des zones de découpe est accessible depuis la page 
+d’annotation manuelle.
+
+Lorsque l’utilisateur annote un document, il peut naviguer simplement 
+dans ses différentes pages grâce à la barre de navigation située dans 
+la zone à droite des imagettes où figure la page entière courante découpée.
+
+Quand un document est en cours d’annotation, la navigation vers un autre 
+document au sein du même projet se fait dans la zone “Documents du même 
+projet”. L’utilisateur sélectionne le document qu’il veut ouvrir, 
+choisit le mode de travail, puis le document s’ouvre.
+
+
+

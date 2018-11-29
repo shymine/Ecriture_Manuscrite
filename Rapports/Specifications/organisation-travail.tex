@@ -9,7 +9,9 @@ cependant une base provenant d’autres blocs pour faire des tests.
 Par exemple, la partie IHM aura besoin d’une base de données pour
 vérifier que la recherche d’imagettes dans celle-ci se déroule bien.
 Nous allons donc commencer par développer des prototypes simplifiés
-pour que tout le monde puisse améliorer sa partie.
+pour que tout le monde puisse améliorer sa partie. De plus, certains 
+blocs ne représentent pas la même quantité de travail, certaines 
+personnes sont donc réparties sur plusieurs blocs.
 
 \paragraph{}
 Voici la répartition que nous avons effectuée sur les différents blocs :
@@ -100,9 +102,9 @@ Voici la répartition que nous avons effectuée sur les différents blocs :
 	\hline
 	PEA\_GEN\_5 & Ignorer un couple imagette-transcription s’il n’est pas pertinent \\
 	\hline
-	PEA\_GEN\_6 & Regrouper les manuscrits en projets \\
+	PEA\_GEN\_6 & Regrouper les documents en projets \\
 	\hline
-	PEA\_GEN\_7 & Sélectionner d’abord le projet puis le manuscrit sur lequel l’utilisateur veut travailler à l’ouverture de l’application \\
+	PEA\_GEN\_7 & Sélectionner d’abord le projet puis le document sur lequel l’utilisateur veut travailler à l’ouverture de l’application \\
 	\hline
 	PEA\_GEN\_8 & Créer un nouveau projet \\
 	\hline
@@ -120,19 +122,19 @@ Voici la répartition que nous avons effectuée sur les différents blocs :
 	\hline
 	PDEC\_OD\_4 & Changer le type de la zone avec un menu déroulant \\
 	\hline
-	PDEC\_OD\_5 & Déplace la zone sélectionnée sur le manuscrit (outil “déplacer”) \\
+	PDEC\_OD\_5 & Déplace la zone sélectionnée sur le document (outil “déplacer”) \\
 	\hline
-	PDEC\_OD\_6 & Zoomer et dézoomer sur le manuscrit (outils “zoom +” et “zoom -”) \\
+	PDEC\_OD\_6 & Zoomer et dézoomer sur le document (outils “zoom +” et “zoom -”) \\
 	\hline
 	PDEC\_OD\_7 & Annuler la dernière action (outil “annuler”) \\
 	\hline
 	PDEC\_OD\_8 & Refaire l’action annulée précédemment (outil “refaire”) \\
 	\hline
-	PDEC\_OD\_9 & Supprime toutes les zones de la page pour retourner au manuscrit vierge (outil “réinitialiser”) \\
+	PDEC\_OD\_9 & Supprime toutes les zones de la page pour retourner au document vierge (outil “réinitialiser”) \\
 	\hline
 	PDEC\_OD\_10 & Applique un détecteur de lignes sur la zone sélectionnée (outil “appliquer la détection de lignes sur la zone”) \\
 	\hline
-	PDEC\_OD\_11 & Continuer la découpe du manuscrit sur la page suivante \\
+	PDEC\_OD\_11 & Continuer la découpe du document sur la page suivante \\
 	\hline
 	PDEC\_OD\_12 & Passer à l’édition des annotations sur la page qu’il vient de découper \\
 	\hline
@@ -150,7 +152,7 @@ Voici la répartition que nous avons effectuée sur les différents blocs :
 	\hline
 	PEMA\_4 & Posséder un bouton intitulé “modifier les zones du manuscrit” \\
 	\hline
-	PEMA\_5 & Afficher la liste des imagettes du manuscrit découpé \\
+	PEMA\_5 & Afficher la liste des imagettes du document découpé \\
 	\hline
 	PEMA\_6 & Ignorer un couple imagette-transcription s’il n’est pas pertinent \\
 	\hline
@@ -184,14 +186,37 @@ Voici la répartition que nous avons effectuée sur les différents blocs :
 	\hline
 	PVAL\_6 & Faire figurer une fenêtre montrant la page entière découpée en zones avec la zone courante dans une couleur différente \\
 	\hline
-	PVAL\_7 & Valider le travail pour de bon et fermer le manuscrit à l’aide d’un bouton prévu à cet effet \\
+	PVAL\_7 & Valider le travail pour de bon et fermer le document à l’aide d’un bouton prévu à cet effet \\
 	\hline
 \end{tabular}
 
 \paragraph{}
 \begin{tabular}{ | l | l | }
 	\hline
-	\multicolumn{2}{ | c | }{ \textbf{Bloc 5 : Général} } \\
+	\multicolumn{2}{ | c | }{ \textbf{Bloc 5 : Lien entre les blocs précédents} } \\
+	\hline
+	\textbf{Spécification} & \textbf{Description} \\
+	\hline
+	LINK\_PR\_STO & Envoyer les données en entrée vers le système de stockage \\
+	\hline
+	LINK\_STO\_IHM & Extraire les données pour les fournir à l’IHM \\
+	\hline
+	LINK\_STO\_IR & Extraire les données pour les fournir au système de reconnaissance \\
+	\hline
+	LINK\_IHM\_STO & Envoyer les demandes de l’IHM au système de stockage \\
+	\hline
+	LINK\_IHM\_IR & Envoyer les résultats du reconnaisseur vers le système de stockage \\
+	\hline
+	LINK\_COH & Fournir un logiciel composés de blocs communiquant entre eux de manière fonctionnelle et cohérente \\
+	\hline
+\end{tabular}
+
+\end{center}
+
+\paragraph{}
+\begin{tabular}{ | l | l | }
+	\hline
+	\multicolumn{2}{ | c | }{ \textbf{Bloc 6 : Général} } \\
 	\hline
 	\textbf{Spécification} & \textbf{Description} \\
 	\hline
@@ -208,9 +233,9 @@ Voici la répartition que nous avons effectuée sur les différents blocs :
 \paragraph{}
 
 Ainsi nous nous répartissons le travail selon ces blocs : Enzo CRANCE et
-Valentin FOUCHER s’occupent du bloc 1, Kévin DESPOULAINS et Corentin GUILLOUX
-du bloc 2, Timothée NEITTHOFFER du bloc 3, Laure DU MESNILDOT et Charlotte
-RICHARD du bloc 4, et Gaël GENDRON du bloc 5. 
+Valentin FOUCHER s’occupent du bloc 1, Kévin DESPOULAINS, Corentin GUILLOUX et Valentin FOUCHER
+du bloc 2, Gaël GENDRON et Timothée NEITTHOFFER du bloc 3, Laure DU MESNILDOT et Charlotte
+RICHARD du bloc 4, Gaël GENDRON et Timothée NEITTHOFFER du bloc 5. 
 
 \paragraph{}
 Cette répartition des tâches permet à chaque équipe de spécifier plus en détail
@@ -218,6 +243,13 @@ sa partie, et donc de pouvoir estimer plus précisément le temps que prendra le
 développement. Nous espérons donc avoir un rapport de planification précis qui
 nous permettra d’anticiper d’éventuelles réorganisations d’équipes en fonction
 des différentes charges de travail.
+
+\paragraph{}
+Nous fonctionnerons de manière itérative pour s’assurer régulièrement du fonctionnement
+ des blocs seuls et entre eux. Pour le moment, deux itérations ont été planifiées mais
+ nous envisageons de redécouper le travail en plusieurs nouvelles itérations. Cette
+ organisation, décrite dans la partie suivante, sera abordée plus en détail dans 
+le rapport de planification.
 
 \section{Organisation temporelle}
 
