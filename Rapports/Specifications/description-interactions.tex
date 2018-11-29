@@ -5,7 +5,7 @@ L’architecture de notre logiciel va donc s’appuyer sur cette structure
 modulaire. Chaque module sera relié aux autres par une interface centrale
 recoupant les fonctionnalités de chaque module.
 Le projet se présente sous la forme d’un programme, principalement écrit en Scala.
-Par la suite tous les éléments décrits seront considérés comme écrits en Scala
+Par la suite, tous les éléments décrits seront considérés comme écrits en Scala,
 et pour toute exception le langage utilisé sera précisé.
 
 \section{Description des modules}
@@ -13,11 +13,11 @@ et pour toute exception le langage utilisé sera précisé.
 \subsection{Préparation des données}
 
 Le module de préparation des données est divisé en trois parties représentées
-sur la figure 6.
+sur la figure 11.
 
 \paragraph{}
 
-\begin{mdframed}[frametitle={Figure 6 : Diagramme de classes de la partie préparation des données}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 11 : Diagramme de classes de la partie préparation des données}, innerbottommargin=10]
 \begin{center}
 \includegraphics[scale=0.5]{prepa-data.pdf}
 \end{center}
@@ -54,9 +54,9 @@ des données du fichier d’entrée.
 
 Par ailleurs, les fonctions de manipulation d’images utiliseront la bibliothèque graphique OpenCV, que nous avions déjà sélectionnée auparavant.
 
-\subsection{Base de données}
+\subsection{Stockage des données}
 
-\subsection{Choix du type de modélisation}
+\subsubsection{Choix du type de modélisation}
 
 Concernant le stockage des données, nous avions plusieurs choix :
 \begin{itemize}
@@ -75,20 +75,20 @@ sommes plutôt dirigés vers un Système de Gestion de Bases de Données (SGBD).
 
 \paragraph{}
 Utiliser un serveur distant sur lequel on installerait une base de données était 
-notre première idée. Cependant, dans cadre du projet, le logiciel ne doit pas avoir 
+notre première idée. Cependant, dans le cadre du projet, le logiciel n'a pas
 besoin d’être exécuté par plusieurs utilisateurs en même temps et de ce fait il n’est 
 pas nécessaire de partager les données, il n’y a donc pas besoin de serveur. De plus, 
-avec un serveur distant on aurait besoin d’une connexion internet pour lancer 
-l’application ce qui aurait ajouté de la complexité au projet, nous avons donc 
+avec un serveur distant, une connexion Internet aurait été nécessaire pour lancer 
+l’application, ce qui aurait ajouté de la complexité au projet. Nous avons donc 
 abandonné l’idée d’un serveur distant. Utiliser un serveur local résoudrait le problème 
-de la connexion internet mais il faudrait tout de même faire tourner un serveur local 
-sur la machine qui exécute le logiciel, ce qui rend la manipulation des données plus difficile.
-
+de la connexion Internet, mais il faudrait tout de même lancer un serveur local 
+sur la machine qui exécute le logiciel, ce qui rend la manipulation des données
+plus difficile et nécessite de maintenir le serveur allumé en plus du logiciel.
 
 \paragraph{}
-La solution que nous avons retenue est l’utilisation d’une base de donnée
+La solution que nous avons retenue est donc l’utilisation d’une base de données
 intégrée à l’application. Ainsi, la création et la manipulation de la base
-sera plus simple. Le principal inconvénient de ce type de base de données est
+seront plus simples. Le principal inconvénient de ce type de base de données est
 qu’on ne peut pas y accéder à plusieurs. Seul l’utilisateur du logiciel a accès
 aux données qu’il manipule. Dans une amélioration possible du projet, on
 pourrait imaginer installer la base de données sur un serveur externe pour
@@ -101,9 +101,7 @@ Il existe de nombreux SGBD, mais pour une base de données intégrée,
 choix. En effet, il est \textit{open source}, gratuit et est spécifiquement
 destiné à être utilisé comme SGBD intégré à un logiciel. De plus, il est
 simple d’utilisation car il existe une API Java permettant de le manipuler
-simplement.
-
-Le fait que nous utilisions SQLite et son
+simplement. Le fait que nous utilisions SQLite et son
 \textit{framework} Java va nous permettre d’implémenter des méthodes Java pour
 accéder et manipuler simplement les données présentes dans la base. L’objectif
 de l’équipe qui développe la base de données est donc de la modéliser, la
@@ -113,7 +111,7 @@ d’avoir à manipuler du SQL dans leur code Scala. Java étant interopérable a
 Scala, le fait de la développer en Java ne posera aucun problème pour le reste
 du projet.
 
-\subsection{Concernant la bibliothèque}
+\subsubsection{Concernant la bibliothèque}
 
 La bibliothèque que nous devons implémenter contiendra ainsi des méthodes dont
 le but est de faire le lien entre la partie base de données et les autres
@@ -125,13 +123,13 @@ SQL), ou encore supprimer des données de la base (\textbf{STO\_DEL})
 (\texttt{DELETE} en SQL). Ces méthodes devront être implémentées pour chaque
 table de la base de données.
 
-\subsection{Schéma de la base de données}
+\subsubsection{Schéma de la base de données}
 
 Voici la manière dont nous avons modélisé la base de données :
 
 \paragraph{}
 
-\begin{mdframed}[frametitle={Figure 7 : Modèle entité association de la Base de données}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 12 : Modèle entité association de la Base de données}, innerbottommargin=10]
 \begin{center}
 \includegraphics[scale=0.6]{Modele_entite_association.pdf}
 \end{center}
@@ -140,15 +138,15 @@ Voici la manière dont nous avons modélisé la base de données :
 \paragraph{}
 
 Les tables \textbf{Author}, \textbf{Type} et \textbf{Operating Mode} permettent
-de stocker les informations concerant les auteurs des documents, le type des
+de stocker les informations concernant les auteurs des documents, le type des
 documents ainsi que le mode dans lequel on se trouve (mode apprentissage ou
 mode évaluation). La table \textbf{Document} contient toutes les informations
-concernant un document. A savoir son nom, son auteur, son type, le mode auquel
-il appartient ainsi que sa date d’ajout à la base.
+concernant un document, à savoir : son nom, son auteur, son type, le mode auquel
+il appartient, ainsi que sa date d’ajout à la base.
 
 \paragraph{}
 Nos imagettes seront stockées dans des dossiers à côté de la base de données.
-Elles seront donc référencées par la base de donnée grâce à leur chemin (par
+Elles seront donc référencées par la base de données grâce à leur chemin (par
 exemple \texttt{/home/user/MesImagettes/imagette1.jpg}) dans la table
 \textbf{Example}. Cette table contient en plus une référence vers le document
 d’origine.
@@ -162,7 +160,7 @@ ainsi que sa vérité-terrain. Dans la table \textbf{UserAnnotation}, on
 enregistre la même chose mais, en plus, la date de création de cette
 vérité-terrain qui aura été ajoutée par un utilisateur. Enfin, dans la
 table \textbf{Transcription}, on enregistre les mêmes informations que dans
-la table \textbf{UserAnnotation} sauf que, cette fois-ci, la transcription
+la table \textbf{UserAnnotation}, sauf que, cette fois-ci, la transcription
 aura été donnée par un reconnaisseur d’écriture manuscrite représenté dans
 la table \textbf{Recognizer}.
 
@@ -170,11 +168,11 @@ la table \textbf{Recognizer}.
 
 La BDD sera gérée depuis le contrôleur via une classe \textbf{Database}
 contenant des méthodes pour communiquer avec elle. Une première version du
-diagramme de classes de cette partie est illustré en figure 7.
+diagramme de classes de cette partie est illustré en figure 12.
 
 \paragraph{}
 
-\begin{mdframed}[frametitle={Figure 8 : Diagramme de classes de l'interface avec la BDD}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 13 : Diagramme de classes de l'interface avec la BDD}, innerbottommargin=10]
 \begin{center}
 \includegraphics[scale=0.5]{bdd.pdf}
 \end{center}
@@ -187,7 +185,7 @@ et sans transcription, extraire des exemples et les modifier ou les supprimer.
 A chaque mode est associé une classe héritant de la classe \textbf{Database}
 et possédant les méthodes exclusives à ce mode. On obtient ainsi trois
 classes, \textbf{TrainingDataBase}, \textbf{EvalDataBase} et
-\textbf{ProdDataBase}, cette dernière classe pouvante également ajouter les
+\textbf{ProdDataBase}, cette dernière classe pouvant également ajouter les
 résultats du système de reconnaissance d'écriture manuscrite.
 
 \subsection{Interface avec le système de reconnaissance}
@@ -195,11 +193,11 @@ résultats du système de reconnaissance d'écriture manuscrite.
 Le programme qui se chargera de faire l’interface entre les données de notre
 base et un reconnaisseur sera assez simple. Il se contentera d’extraire les
 données pertinentes de la base pour ensuite les convertir au bon format.
-Son architecture générale est illustrée pas le schéma ci-dessous.
+Son architecture générale est illustrée par le schéma ci-dessous.
 
 \newpage
 
-\begin{mdframed}[frametitle={Figure 9 : Diagramme de classes de l'interface avec le système de reconaissance d'écriture manuscrite}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 14 : Diagramme de classes de l'interface avec le système de reconaissance d'écriture manuscrite}, innerbottommargin=10]
 \begin{center}
 \includegraphics[scale=0.5]{interface-reconnaisseur.pdf}
 \end{center}
@@ -215,7 +213,7 @@ les traite. Si les données nécessitent d’être converties, une classe
 Elle possède en attribut une classe \textbf{Converter} pouvant exécuter des
 méthodes pour convertir les exemples d’un format à un autre. Ces méthodes de
 la classe \textbf{Converter} seront appelées par les méthodes d’entraînement,
-d’évaluation, \ldots en amont du traitement qu’elles doivent effectuer.
+d’évaluation, etc, en amont du traitement qu’elles doivent effectuer.
 
 \paragraph{}
 Au cours du développement, des implémentations de ces interfaces ou classes
@@ -244,23 +242,23 @@ les différentes zones qui découpent le manuscrit.
 Les cinq pages communiquent entre elles selon le schéma suivant :
 
 \paragraph{}
-\begin{mdframed}[frametitle={Figure 10 : Organisation de l'IHM}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 15 : Hiérarchie entre les pages}, innerbottommargin=10]
 \begin{center}
-\includegraphics[scale=0.6]{schema_ihm.png}
+\includegraphics[scale=0.6]{ihm6.png}
 \end{center}
 \end{mdframed}
 
 L’interface est orientée web, en JavaScript pour une plus grande accessibilité 
 et une meilleure portabilité. Ce choix a également pour but de faciliter 
 l’évolution de l’application vers une solution multi-utilisateurs distants, 
-où plusieurs personnes s‘y connecteraient via internet.
+où plusieurs personnes s‘y connecteraient via Internet.
 
 \section{Interactions}
 
 Tous les modules présentés dans la partie précédente doivent interagir entre
 eux à plusieurs niveaux. Un contrôleur général permet de gérer la communication
 et la coopération des différents modules. Une première architecture de celui-ci
-est visible sur la figure 10.
+est visible sur la figure 15.
 
 \paragraph{}
 Le diagramme reste général et n’entre pas dans les détails de l’implémentation
@@ -282,7 +280,7 @@ transcriptions. L’IHM est traitée par un serveur web.
 
 \newpage
 
-\begin{mdframed}[frametitle={Figure 11 : Diagramme de classes du contrôleur}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 16 : Diagramme de classes du contrôleur}, innerbottommargin=10]
 \begin{center}
 \includegraphics[scale=0.3]{Specifications.pdf}
 \end{center}

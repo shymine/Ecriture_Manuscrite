@@ -27,7 +27,7 @@ pré-étude.
 
 La partie préparation des données prend en entrée des documents scannés contenant
 de l’écriture manuscrite, en extrait les informations contenues sous la forme
-de couples imagette-transcription et les stocke.
+de couples imagette-transcription, et les stocke.
 
 \paragraph{}
 Ces informations stockées sont mises à disposition d’un système de reconnaissance d'écriture manuscrite, pour qu’il
@@ -36,22 +36,23 @@ l’application, mais vient se greffer à celle-ci. Le programme doit donc faire
 en sorte que les données stockées puissent être accessibles par le reconnaisseur.
 Le système de reconnaissance n’étant pas intégré au programme, il peut être changé à tout
 moment. L’application doit néanmoins pouvoir le faire fonctionner selon 3 modes :
-Production de données pour l’apprentissage, production de données pour l’évaluation 
+production de données pour l’apprentissage, production de données pour l’évaluation,
 et production de transcriptions à partir de données. Les données stockées sont
 ainsi divisées en sous-ensembles, chacun correspondant à un mode de
 fonctionnement.
 Le tout est géré par l’utilisateur grâce à une interface.
 
 \paragraph{}
-Chaque partie sera expliquée plus en détails dans la suite du rapport, ainsi que les choix que nous avons fait pour répondre aux besoins exprimés par chacune.
+Chaque partie sera expliquée plus en détails dans la suite du rapport, ainsi que les choix
+que nous avons faits pour répondre aux besoins exprimés par chacune.
 
 \subsection{Côté utilisateur}
 
-Le logiciel à créer fonctionnera donc suivant plusieurs modes de fonctionnement :
+Le logiciel à créer fonctionnera donc suivant plusieurs modes :
 \begin{itemize}
 	\item production de données pour l’apprentissage (abrégé en Apprentissage) ;
-	\item Production de données pour l’évaluation (abrégé en Evaluation) ;
-	\item Production de transcriptions à partir de données (abrégé en Production).
+	\item production de données pour l’évaluation (abrégé en Évaluation) ;
+	\item production de transcriptions à partir de données (abrégé en Production).
 \end{itemize}
 
 \paragraph{}
@@ -60,7 +61,7 @@ apprentissage est nécessaire pour obtenir un résultat fonctionnel. Les deux
 modes suivants sont à implémenter suivant le temps restant.
 
 \paragraph{}
-.Le mode Apprentissage a pour objectif de produire des données pour faire apprendre un système de reconnaissance d’écriture. 
+Le mode apprentissage a pour objectif de produire des données pour faire apprendre un système de reconnaissance d’écriture. 
 Le logiciel génère une base d’apprentissage pour un
 système de reconnaissance d’écriture manuscrite et fournit les données
 produites en entrée du reconnaisseur. Celui-ci peut alors les utiliser pour
@@ -74,11 +75,11 @@ peut :
 terrain ;
 \item charger un document dans la base sans vérité terrain ;
 \item annoter ledit document pour lui associer une nouvelle transcription ;
-\item Fournir des documents au reconnaisseur pour son apprentissage ;
+\item fournir des documents au reconnaisseur pour son apprentissage ;
 \item modifier les données contenues dans la base :
 \begin{enumerate}
 \item supprimer un document ;
-\item Masquer un document de l’apprentissage.
+\item masquer un document de l’apprentissage ;
 \end{enumerate}
 \item changer de mode de fonctionnement.
 \end{enumerate}
@@ -108,7 +109,7 @@ correcte) ;
 \item modifier les données contenues dans la base :
 \begin{enumerate}
 \item supprimer un document ;
-\item Masquer un document de l’évaluation.
+\item masquer un document de l’évaluation ;
 \end{enumerate}
 \item changer de mode de fonctionnement.
 \end{enumerate}
@@ -137,7 +138,7 @@ Dans ce mode, via l'intermédiaire de l’IHM, l’utilisateur peut :
 transcription du reconnaisseur ;
 \item modifier les données contenues dans la base :
 \begin{enumerate}
-\item supprimer un document.
+\item supprimer un document ;
 \end{enumerate}
 \item changer de mode de fonctionnement.
 \end{enumerate}
@@ -154,8 +155,8 @@ transcription du reconnaisseur ;
 Le logiciel ne possède pas de système de reconnaissance d’écriture intégré.
 Cette partie, comme précisé précédemment, y est simplement greffée. Il n’est
 pas prévu de pouvoir changer de reconnaisseur via l’interface graphique, cette
-opération étant rare et pouvant même ne jamais avoir lieu au cours de la vie du
-logiciel. Néanmoins, il doit être possible pour un développeur de système de
+opération étant si besoin réalisée hors du logiciel par l'utilisateur.
+Néanmoins, il doit être possible pour un développeur de système de
 reconnaissance d’écriture manuscrite utilisant notre logiciel de changer le
 reconnaisseur. Cette possibilité sera donc incluse dans le projet.
 

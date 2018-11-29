@@ -82,70 +82,109 @@ Voici la répartition que nous avons effectuée sur les différents blocs :
 	\hline
 \end{tabular}
 
-\paragraph{}
+\newpage
+
 \begin{tabular}{ | l | p{0.8\linewidth} | }
 	\hline
 	\multicolumn{2}{ | c | }{ \textbf{Bloc 4 : Interface avec l’utilisateur} } \\
 	\hline
 	\textbf{Spécification} & \textbf{Description} \\
 	\hline
-	PEA\_GEN\_1 & Naviguer entre les différents documents d’un même classeur \\
+	PEA\_GEN\_1 & Valider un ensemble d'annotations \\
 	\hline
-	PEA\_GEN\_2 & Naviguer entre les différentes pages du manuscrit en cours d’annotation \\
+	PEA\_GEN\_2 & Éditer manuellement les transcriptions \\
 	\hline
-	PEA\_GEN\_3 & Basculer vers la page d’édition des zones de découpe à l’aide d’un bouton \\
+	PEA\_GEN\_3 & Corriger les annotations proposées par un reconnaisseur externe à l'application \\
 	\hline
-	PEA\_GEN\_4 & Posséder une zone montrant la page découpée afin de localiser les zones de découpe du manuscrit, avec la zone en cours d’annotation figurant en une couleur différente \\
+	PEA\_GEN\_4 & Envoyer les modifications à la base de données lorsque la vérité-terrain d’une imagette est modifiée \\
 	\hline
-	PEA\_GEN\_5 & Afficher la liste des imagettes du manuscrit découpé \\
+	PEA\_GEN\_5 & Ignorer un couple imagette-transcription s’il n’est pas pertinent \\
 	\hline
-	PEA\_GEN\_6 & Modifier directement la base de données quand on modifie une vérité terrain \\
+	PEA\_GEN\_6 & Regrouper les manuscrits en projets \\
 	\hline
-	PEA\_GEN\_7 & Supprimer un couple imagette-transcription de la base de données à l’aide d’un bouton prévu à cet effet \\
+	PEA\_GEN\_7 & Sélectionner d’abord le projet puis le manuscrit sur lequel l’utilisateur veut travailler à l’ouverture de l’application \\
 	\hline
-	PEA\_GEN\_8 & Ajouter à la base de données des documents avec ou sans transcription \\
+	PEA\_GEN\_8 & Créer un nouveau projet \\
 	\hline
-	PEA\_GEN\_9 & Exporter les données validées afin de lancer un nouvel apprentissage \\
+	PEA\_GEN\_9 & Basculer vers la page de découpe des zones \\
 	\hline
-	PEA\_MA\_1 & Placer le curseur sur la première imagette ne possédant pas de transcription à l’ouverture de la page \\
+	PEA\_GEN\_10 & Basculer vers la page d’édition des annotations \\
 	\hline
-	PEA\_MA\_2 & Un appui sur la touche Entrée permet de positionner le curseur sur l’annotation suivante \\
+	PEA\_GEN\_11 & Basculer vers la page de validation des transcriptions \\
 	\hline
-	PEA\_MA\_3 & Proposer un bouton permettant de basculer vers la prochaine imagette sans vérité-terrain \\
+	PDEC\_OD\_1 & Créer une nouvelle zone à l’aide d’un rectangle (outil "nouvelle sélection") \\
 	\hline
-	PEA\_MCR\_1 & Un appui sur Entrée valide les transcriptions zone par zone et passe à la zone suivante \\
+	PDEC\_OD\_2 & Pouvoir modifier la position des sommets des rectangles \\
 	\hline
-	PEA\_MCR\_2 & Modifier une transcription en cliquant dessus pour y positionner le curseur et effectuer manuellement les modifications  \\
+	PDEC\_OD\_3 & Rajouter des sommets à la zone \\
 	\hline
-	PEA\_MV\_1 & Un appui sur Entrée valide les transcriptions zone par zone \\
+	PDEC\_OD\_4 & Changer le type de la zone avec un menu déroulant \\
 	\hline
-	PEA\_MV\_2 & Modifier une transcription en cliquant dessus pour y positionner le curseur et effectuer manuellement les modifications  \\
+	PDEC\_OD\_5 & Déplace la zone sélectionnée sur le manuscrit (outil “déplacer”) \\
 	\hline
-	PDEC\_OD\_1 & Créer une nouvelle zone à l’aide d’un rectangle \\
+	PDEC\_OD\_6 & Zoomer et dézoomer sur le manuscrit (outils “zoom +” et “zoom -”) \\
 	\hline
-	PDEC\_OD\_2 & Les zones ne sont donc pas limitées à des rectangles, mais peuvent prendre la forme d’autres polygones \\
+	PDEC\_OD\_7 & Annuler la dernière action (outil “annuler”) \\
 	\hline
-	PDEC\_OD\_3 & Déplacer la zone sélectionnée sur le manuscrit \\
+	PDEC\_OD\_8 & Refaire l’action annulée précédemment (outil “refaire”) \\
 	\hline
-	PDEC\_OD\_4 & Zoomer et dézoomer sur le manuscrit  \\
+	PDEC\_OD\_9 & Supprime toutes les zones de la page pour retourner au manuscrit vierge (outil “réinitialiser”) \\
 	\hline
-	PDEC\_OD\_5 & Annuler la dernière action \\
+	PDEC\_OD\_10 & Applique un détecteur de lignes sur la zone sélectionnée (outil “appliquer la détection de lignes sur la zone”) \\
 	\hline
-	PDEC\_OD\_6 & Refaire l’action annulée précédemment \\
+	PDEC\_OD\_11 & Continuer la découpe du manuscrit sur la page suivante \\
 	\hline
-	PDEC\_OD\_7 & Supprimer toutes les zones de la page pour retourner au manuscrit vierge \\
+	PDEC\_OD\_12 & Passer à l’édition des annotations sur la page qu’il vient de découper \\
 	\hline
-	PDEC\_OD\_8 & Proposer une option “appliquer la détection de lignes sur la zone” \\
+	PDEC\_OD\_13 & Exporter la page découpée au format PiFF afin de soumettre les données à un reconnaisseur externe à l’application \\
 	\hline
-	PDEC\_OD\_9 & Valider la découpe et basculer vers la page d’édition des annotations  \\
+	PDEC\_OD\_14 & Posséder un bouton de retour au menu principal \\
 	\hline
-	PDEC\_VM\_1 & Posséder un bouton de retour au menu principal \\
+	PDEC\_OD\_15 & Permettre à l’utilisateur de se déplacer sur le manuscrit à l’aide d’un scroll horizontal et vertical \\
 	\hline
-	PDEC\_VM\_2 & Permettre à l’utilisateur d’ouvrir un autre manuscrit \\
+	PEMA\_1 & Placer le curseur sur la première imagette ne possédant pas de transcription \\
 	\hline
-	PDEC\_VM\_3 & Permettre de naviguer entre les différentes pages du manuscrit \\
+	PEMA\_2 & Positionner le curseur sur l’annotation suivante en appuyant sur Entrée \\
 	\hline
-	PDEC\_VM\_4 & Permettre à l’utilisateur de se déplacer sur le manuscrit horizontalement et verticalement à l’aide d’un bouton de défilement \\
+	PEMA\_3 & Proposer un raccourci clavier permettant de basculer vers la prochaine imagette sans vérité-terrain \\
+	\hline
+	PEMA\_4 & Posséder un bouton intitulé “modifier les zones du manuscrit” \\
+	\hline
+	PEMA\_5 & Afficher la liste des imagettes du manuscrit découpé \\
+	\hline
+	PEMA\_6 & Ignorer un couple imagette-transcription s’il n’est pas pertinent \\
+	\hline
+	PEMA\_7 & Basculer vers la page de validation des transcriptions \\
+	\hline
+	PCORIA\_1 & Valider les transcriptions zone par zone et passer à la zone suivante avec un simple appui sur Entrée \\
+	\hline
+	PCORIA\_2 & Pouvoir modifier une annotation fausse en cliquant dessus pour y positionner son curseur et en effectuant ses modifications manuellement \\
+	\hline
+	PCORIA\_3 & La zone de visualisation des imagettes se présente de la même manière que sur la page d’édition manuelle des transcriptions \\
+	\hline
+	PCORIA\_4 & Posséder également la fonctionnalité de mise à l’écart d’un couple imagette-transcription \\
+	\hline
+	PCORIA\_5 & Basculer vers la page de validation des transcriptions \\
+	\hline
+\end{tabular}
+
+\begin{tabular}{ | l | p{0.8\linewidth} | }
+	\hline
+	\textbf{Spécification} & \textbf{Description} \\
+	\hline
+	PVAL\_1 & Accéder à la page de validation depuis le menu principal \\
+	\hline
+	PVAL\_2 & Accéder à cette page de validation depuis les pages d’édition manuelle des annotations et de correction des transcriptions proposées par le reconnaisseur \\
+	\hline
+	PVAL\_3 & Valider les transcriptions zone par zone et passer à la zone suivante avec un simple appui sur Entrée \\
+	\hline
+	PVAL\_4 & Pouvoir modifier une annotation fausse en cliquant dessus pour y positionner son curseur et en effectuant ses modifications manuellement \\
+	\hline
+	PVAL\_5 & Indique si les transcriptions ont été fournies manuellement par un humain ou si elles proviennent d’un reconnaisseur \\
+	\hline
+	PVAL\_6 & Faire figurer une fenêtre montrant la page entière découpée en zones avec la zone courante dans une couleur différente \\
+	\hline
+	PVAL\_7 & Valider le travail pour de bon et fermer le manuscrit à l’aide d’un bouton prévu à cet effet \\
 	\hline
 \end{tabular}
 
@@ -168,8 +207,10 @@ Voici la répartition que nous avons effectuée sur les différents blocs :
 
 \paragraph{}
 
-Ainsi nous nous répartissons le travail selon ces blocs.
-Enzo Crance et Valentin Fouche s’occupent du bloc 1, Kevin Despoulains et Corentin Guilloux du bloc 2, Timothée Neitthoffer du bloc 3, Laure Du Mesnildot et Charlotte Richard du bloc 4 et Gaël Gendron du bloc 5. 
+Ainsi nous nous répartissons le travail selon ces blocs : Enzo CRANCE et
+Valentin FOUCHER s’occupent du bloc 1, Kévin DESPOULAINS et Corentin GUILLOUX
+du bloc 2, Timothée NEITTHOFFER du bloc 3, Laure DU MESNILDOT et Charlotte
+RICHARD du bloc 4, et Gaël GENDRON du bloc 5. 
 
 \paragraph{}
 Cette répartition des tâches permet à chaque équipe de spécifier plus en détail
@@ -180,17 +221,18 @@ des différentes charges de travail.
 
 \section{Organisation temporelle}
 
-Certains membre du groupe partent en mobilité en Janvier (Kévin DESPOULAINS,
+Certains membres du groupe partent en mobilité en janvier (Kévin DESPOULAINS,
 Corentin GUILLOUX, et Gaël GENDRON). Notre premier objectif est donc de
 concevoir la base et la documentation de chaque partie avant leur départ.
 Nous allons donc anticiper la phase de développement en la débutant dès à
 présent. Le diagramme de Gantt précédemment établi se trouve donc modifié de
 cette manière :
 
-\paragraph{}
-\begin{mdframed}[frametitle={Figure 12 : Estimation de la planification des tâches}, innerbottommargin=10]
+\newpage
+
+\begin{mdframed}[frametitle={Figure 17 : Estimation de la planification des tâches}, innerbottommargin=10]
 \begin{center}
-%\includegraphics[scale=0.6]{gantt.png}
+\includegraphics[scale=0.5]{gantt.png}
 \end{center}
 \end{mdframed}
 
