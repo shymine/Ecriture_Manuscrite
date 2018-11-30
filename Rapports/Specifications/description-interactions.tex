@@ -23,7 +23,7 @@ sur la figure 11.
 \end{center}
 \end{mdframed}
 
-\paragraph{}
+\newpage
 
 La première est  une interface \textbf{DocAdapter} qui symbolise les
 convertisseurs de formats vers PiFF. Nous en implémenterons un, la classe
@@ -90,6 +90,7 @@ cette technologie afin de proposer une application multi-utilisateurs.
 Nous préférons dans notre cas, d’abord avoir une application fonctionnelle 
 qui répond aux spécifications du client. 
 
+\paragraph{}
  Utiliser un serveur local pourrait être une bonne alternative mais le problème 
 est qu’il faudrait faire tourner un serveur local sur la machine qui exécute 
 le logiciel, ce qui rend la manipulation des données plus difficile et
@@ -201,7 +202,7 @@ base et un reconnaisseur sera assez simple. Il se contentera d’extraire les
 données pertinentes de la base pour ensuite les convertir au bon format.
 Son architecture générale est illustrée par le schéma ci-dessous.
 
-\newpage
+\paragraph{}
 
 \begin{mdframed}[frametitle={Figure 14 : Diagramme de classes de l'interface avec le système de reconnaissance d'écriture manuscrite}, innerbottommargin=10]
 \begin{center}
@@ -211,7 +212,7 @@ Son architecture générale est illustrée par le schéma ci-dessous.
 
 \paragraph{}
 Une interface appelée \textbf{Recognizer} est associée au système de
-reconnaissance d’écriture manuscrite. cette interface possède des méthodes
+reconnaissance d’écriture manuscrite. Cette interface possède des méthodes
 pour fournir des données d'entraînement ou  évaluer le reconnaisseur, ou pour lui faire reconnaître
 des jeux de données. Un ensemble d’exemples est envoyé au reconnaisseur qui
 les traite. Si les données nécessitent d’être converties, une classe
@@ -224,6 +225,8 @@ d’évaluation, etc, en amont du traitement qu’elles doivent effectuer.
 \paragraph{}
 Au cours du développement, des implémentations de ces interfaces ou classes
 abstraites seront réalisées.
+
+\newpage
 
 \subsection{Interface Homme-Machine}
 
@@ -259,6 +262,8 @@ et une meilleure portabilité. Ce choix a également pour but de faciliter
 l’évolution de l’application vers une solution multi-utilisateurs distants, 
 où plusieurs personnes s‘y connecteraient via Internet.
 
+\newpage
+
 \section{Interactions}
 
 Tous les modules présentés dans la partie précédente doivent interagir entre
@@ -284,10 +289,9 @@ exemple en mode production. Le contrôleur communique enfin avec l’IHM pour
 traiter les demandes de l’utilisateur et lui renvoyer les images et
 transcriptions. L’IHM est traitée par un serveur web.
 
-\newpage
 
 \begin{mdframed}[frametitle={Figure 16 : Diagramme de classes du contrôleur}, innerbottommargin=10]
 \begin{center}
-\includegraphics[scale=0.3]{Specifications.pdf}
+\includegraphics[scale=0.25]{Specifications.pdf}
 \end{center}
 \end{mdframed}
