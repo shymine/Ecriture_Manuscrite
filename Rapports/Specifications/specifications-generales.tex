@@ -58,7 +58,7 @@ Le logiciel à créer fonctionnera donc suivant plusieurs modes :
 \paragraph{}
 Les trois modes ne sont pas à implémenter avec la même priorité, seul le mode
 apprentissage est nécessaire pour obtenir un résultat fonctionnel. Les deux
-modes suivants sont à implémenter suivant le temps restant.
+modes suivants sont à implémenter suivant le temps restant. Les fonctionnalités d'accès au reconnaisseur (en pointillés sur les schémas) ne sont notamment pas nécessairement accessibles depuis l'IHM. L'apprentissage se faisant hors de l'application, il n'est pas envisagé pour le moment de pouvoir le lancer depuis celle-ci.
 
 \paragraph{}
 Le mode apprentissage a pour objectif de produire des données pour faire apprendre un système de reconnaissance d’écriture. 
@@ -67,7 +67,15 @@ système de reconnaissance d’écriture manuscrite et fournit les données
 produites en entrée du reconnaisseur. Celui-ci peut alors les utiliser pour
 apprendre à retranscrire correctement du texte.
 
-\paragraph{}
+\begin{mdframed}[frametitle={Figure 2 : Diagramme de cas d'utilisation (mode apprentissage)}, innerbottommargin=10]
+\begin{center}
+\includegraphics[scale=0.4]{Usecase_1.pdf}
+\end{center}
+\end{mdframed}
+
+
+\newpage
+
 Du point de vue de l'utilisateur du logiciel, par l’intermédiaire de l’IHM, il
 peut :
 \begin{enumerate}
@@ -75,7 +83,7 @@ peut :
 terrain (transcription numérique d'un texte manuscrit entré par un humain) ;
 \item charger un document dans la base sans vérité terrain ;
 \item annoter ledit document pour lui associer une nouvelle transcription ;
-\item fournir des documents au reconnaisseur pour son apprentissage ;
+\item fournir des documents au reconnaisseur pour son apprentissage (via la base de données) ;
 \item modifier les données contenues dans la base :
 \begin{enumerate}
 \item supprimer un document ;
@@ -84,19 +92,18 @@ terrain (transcription numérique d'un texte manuscrit entré par un humain) ;
 \item changer de mode de fonctionnement.
 \end{enumerate}
 
-\newpage
-
-\begin{mdframed}[frametitle={Figure 2 : Diagramme de cas d'utilisation (mode apprentissage)}, innerbottommargin=10]
-\begin{center}
-\includegraphics[scale=0.4]{Usecase_1.pdf}
-\end{center}
-\end{mdframed}
-
 \paragraph{}
 
+\paragraph{}
 Le mode évaluation a pour objectif d’évaluer un système de reconnaissance. Ce
 mode est en général utilisé après avoir effectué un apprentissage avec le
 reconnaisseur. Il permet de vérifier l’efficacité de l’apprentissage effectué.
+
+\begin{mdframed}[frametitle={Figure 3 : Diagramme de cas d'utilisation (mode évaluation)}, innerbottommargin=10]
+\begin{center}
+\includegraphics[scale=0.4]{Usecase_2.pdf}
+\end{center}
+\end{mdframed}
 
 \paragraph{}
 
@@ -105,7 +112,7 @@ Dans ce mode, toujours par l’intermédiaire de l’IHM, l’utilisateur peut :
 \item charger un document, accompagné d’une vérité terrain (la vérité terrain
 est obligatoire dans ce mode de fonctionnement, pour que l’évaluation soit
 correcte) ;
-\item lancer l’évaluation du système de reconnaissance ;
+\item lancer l’évaluation du système de reconnaissance (optionnel) ;
 \item modifier les données contenues dans la base :
 \begin{enumerate}
 \item supprimer un document ;
@@ -116,13 +123,6 @@ correcte) ;
 
 \newpage
 
-\begin{mdframed}[frametitle={Figure 3 : Diagramme de cas d'utilisation (mode évaluation)}, innerbottommargin=10]
-\begin{center}
-\includegraphics[scale=0.4]{Usecase_2.pdf}
-\end{center}
-\end{mdframed}
-
-\paragraph{}
 Le mode production a pour objectif d’utiliser un système de reconnaissance afin
 d’obtenir une transcription pour des documents n’en ayant pas. Ce mode est en
 général utilisé sur un reconnaisseur entraîné, dont l’apprentissage a été
@@ -130,12 +130,20 @@ général utilisé sur un reconnaisseur entraîné, dont l’apprentissage a ét
 de démonstration, permettant d’utiliser le reconnaisseur de manière ludique.
 Il pourra être utilisé lors de la démonstration de fin de projet.
 
+\begin{mdframed}[frametitle={Figure 4 : Diagramme de cas d'utilisation (mode production)}, innerbottommargin=10]
+\begin{center}
+\includegraphics[scale=0.4]{Usecase_3.pdf}
+\end{center}
+\end{mdframed}
+
+
 \paragraph{}
 Dans ce mode, via l'intermédiaire de l’IHM, l’utilisateur peut :
 \begin{enumerate}
 \item charger un document sans vérité terrain ;
 \item écrire une transcription manuellement, pour compléter ou corriger la
 transcription du reconnaisseur ;
+\item lancer la transcription du document par le reconnaisseur (optionnel) ;
 \item modifier les données contenues dans la base :
 \begin{enumerate}
 \item supprimer un document ;
@@ -144,12 +152,6 @@ transcription du reconnaisseur ;
 \end{enumerate}
 
 \newpage
-
-\begin{mdframed}[frametitle={Figure 4 : Diagramme de cas d'utilisation (mode production)}, innerbottommargin=10]
-\begin{center}
-\includegraphics[scale=0.4]{Usecase_3.pdf}
-\end{center}
-\end{mdframed}
 
 \paragraph{}
 Le logiciel ne possède pas de système de reconnaissance d’écriture intégré.
