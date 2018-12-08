@@ -1,0 +1,52 @@
+\babel@toc {french}{}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {paragraph}{}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}Rappel du contexte}{2}{chapter.2}
+\contentsline {section}{\numberline {2.1}Les acteurs du projet}{2}{section.2.1}
+\contentsline {paragraph}{}{2}{section.2.1}
+\contentsline {section}{\numberline {2.2}Le pr\IeC {\'e}rim\IeC {\`e}tre fonctionnel}{2}{section.2.2}
+\contentsline {paragraph}{}{2}{section.2.2}
+\contentsline {section}{\numberline {2.3}Les \IeC {\'e}l\IeC {\'e}ments en entr\IeC {\'e}e}{2}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Les donn\IeC {\'e}es en entr\IeC {\'e}e de l'application}{2}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Les sources d'information existantes}{3}{subsection.2.3.2}
+\contentsline {section}{\numberline {2.4}Le p\IeC {\'e}rim\IeC {\`e}tre de qualification}{3}{section.2.4}
+\contentsline {paragraph}{}{3}{section.2.4}
+\contentsline {section}{\numberline {2.5}Le calendrier}{3}{section.2.5}
+\contentsline {paragraph}{}{3}{section.2.5}
+\contentsline {section}{\numberline {2.6}Analyse des risques}{3}{section.2.6}
+\contentsline {paragraph}{}{4}{section.2.6}
+\contentsline {paragraph}{}{4}{section.2.6}
+\contentsline {paragraph}{}{4}{section.2.6}
+\contentsline {paragraph}{}{4}{section.2.6}
+\contentsline {paragraph}{}{4}{section.2.6}
+\contentsline {paragraph}{}{4}{section.2.6}
+\contentsline {paragraph}{}{4}{section.2.6}
+\contentsline {chapter}{\numberline {3}Organisation : la gestion de projet}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}D\IeC {\'e}coupage du projet}{5}{section.3.1}
+\contentsline {paragraph}{}{5}{section.3.1}
+\contentsline {paragraph}{}{5}{section.3.1}
+\contentsline {section}{\numberline {3.2}Cycle de production}{5}{section.3.2}
+\contentsline {paragraph}{}{5}{section.3.2}
+\contentsline {section}{\numberline {3.3}Mode de pilotage}{6}{section.3.3}
+\contentsline {paragraph}{}{6}{section.3.3}
+\contentsline {chapter}{\numberline {4}L'estimation}{7}{chapter.4}
+\contentsline {section}{\numberline {4.1}Estimation de la partie analyse}{7}{section.4.1}
+\contentsline {paragraph}{}{7}{section.4.1}
+\contentsline {section}{\numberline {4.2}Estimation de la partie d\IeC {\'e}veloppement}{7}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Estimation du temps d'apprentissage}{7}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Estimation du temps de conception}{8}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Estimation du temps de d\IeC {\'e}veloppement}{8}{subsection.4.2.3}
+\contentsline {chapter}{\numberline {5}Planification : \IeC {\`a} partir de Microsoft Project}{9}{chapter.5}
+\contentsline {section}{\numberline {5.1}Hi\IeC {\'e}rarchie des t\IeC {\^a}ches}{9}{section.5.1}
+\contentsline {paragraph}{}{9}{section.5.1}
+\contentsline {paragraph}{}{9}{section.5.1}
+\contentsline {section}{\numberline {5.2}Affectation des ressources par t\IeC {\^a}che}{9}{section.5.2}
+\contentsline {paragraph}{}{9}{section.5.2}
+\contentsline {paragraph}{}{10}{section.5.2}
+\contentsline {paragraph}{}{10}{section.5.2}
+\contentsline {section}{\numberline {5.3}Jalons}{10}{section.5.3}
+\contentsline {section}{\numberline {5.4}Diagramme de Gantt}{10}{section.5.4}
+\contentsline {chapter}{\numberline {6}Conclusion}{12}{chapter.6}
+\contentsline {paragraph}{}{12}{chapter.6}
+\contentsline {paragraph}{}{12}{chapter.6}
+\contentsline {paragraph}{}{12}{chapter.6}

@@ -1,0 +1,160 @@
+
+\chapter{Rappel du contexte}
+
+\section{Les acteurs du projet}
+
+Notre projet est encadré par Bertrand COÜASNON, enseignant à l’INSA de Rennes et membre de l’équipe de recherche IntuiDoc à l’IRISA, ainsi que Erwan Fouché et Julien Bouvet, ingénieurs au sein de l’entreprise Sopra Steria. Nous réalisons ce projet en relation Jean-Yves LE CLERC, conservateur et responsable de la numérisation  aux archives départementales d’Ille-et-Vilaine, et Sophie Tardivel, responsable et data scientist chez Doptim.
+
+\paragraph{}
+
+Notre équipe est composée de huit étudiants INSA, tous en quatrième année au département informatique : Enzo CRANCE, Kevin DESPOULAINS, Laure DU MESNILDOT, Valentin FOUCHER, Gaël GENDRON, Corentin GUILLOUX, Charlotte RICHARD et Timothée NEITTHOFFER.
+
+\section{Le prérimètre fonctionnel}
+
+Ce projet nous a été proposé par Bertrand Couasnon et a pour objectif de générer de manière automatique des bases d’apprentissage pour des reconnaisseurs d’écriture manuscrite à partir de documents numérisés et de leur transcription numérique. Les reconnaisseurs d’écriture ont besoin d’apprendre à reconnaître les caractères manuscrits par des exemples pour apprendre. Notre but est donc de concevoir un logiciel et de le développer afin qu’il puisse générer ces exemples dans des bases d’apprentissage. Au travers d’une interface (IHM), l’utilisateur pourra également modifier les exemples générés dans la base afin de les corrigés s’il ont mal été générés. Il pourra également les supprimer de la base.
+
+\paragraph{}
+
+Ce projet s’installe dans la continuité des efforts de transformation numérique des archives. En effet, les modes de consommation de l’information changent et tendent à se diriger vers le tout numérique : c’est dans cette approche que les archives départementales d’Ille-et-Vilaine font appel à nos services afin de permettre à tous d’accéder aux informations archivées depuis chez soi via une application web, évitant ainsi de se déplacer dans les locaux des archives.
+
+\section{Les éléments en entrée}
+
+\subsection{Les données en entrée de l'application}
+
+Les données en entrée de l’application sont les documents manuscrits numérisés, leur transcription et des annotations. Ces documents pourront être de différents types : des articles de presse, des actes de naturalisation ou de mariage, etc. Ces données devront être formatées correctement pour être utilisées par notre programme.
+
+\newpage
+
+\subsection{Les sources d'information existantes}
+
+Pour nous aider tout au long du projet nous pouvons nous aider d’une base existante contenant des documents numérisés ainsi que leur transcription et des annotations. Elle servira donc à tester notre programme tout au long de son développement. Nous avons également des outils de détection de lignes dans des documents fournis par Bertrand Coüasnon.
+
+\section{Le périmètre de qualification}
+
+Le résultat attendu par le client est une application pouvant être utilisable par n’importe quelle personne disposant d’un reconnaisseur d’écriture manuscrite et désirant générer une base d’apprentissage rapidement à partir de documents déjà retranscrits. Le niveau de qualité attendu est donc assez élevé, il faudra privilégier la qualité des fonctionnalités plutôt que leur quantité. C’est pourquoi nous sommes partis sur un logiciel simple, ne fonctionnant sans aucune connexion internet. En plus des attentes fonctionnelles, la qualité du code doit aussi être soignée. Avoir un code propre, lisible et compréhensible est un point-clé, en effet cela permettra aux promotions suivantes de continuer le projet si toutes les fonctionnalités n’ont pas été implémentées, ou si de nouvelles idées d’amélioration émergent dans le futur.
+
+\paragraph{}
+
+Afin d’arriver à ce niveau de qualification, nous allons devoir mettre en place plusieurs  stratégies. Tout d’abord nous ferons des tests unitaires sur l’application afin de nous assurer de la robustesse du système de gestion des données. Ensuite, du côté client, les tests seront surtout faits directement sur l’interface utilisateur pour détecter des problèmes fonctionnels d’une part et problèmes d’affichage d’autre part.
+
+\section{Le calendrier}
+
+Les ressources humaines ne seront pas les mêmes tout au long du projet. En effet certains membres du groupe partent en mobilité lors du second semestre de l’année : Kevin DESPOULAINS, Gaël GENDRON et Corentin GUILLOUX. Il restera donc cinq membres pour la partie développement de l’application.
+
+\begin{center}
+
+\begin{tabular}{ | l | l | }
+	\hline
+	\textbf{Livrables du projet} & \textbf{Date de rendu} \\
+	\hline
+	Rapport de pré-étude associé à la phase d'analyse & Jeudi 25 octobre 2018 \\
+	\hline
+	Rapport de spécification fonctionnelle  & Vendredi 30 novembre 2018 \\
+	\hline
+	Dossier de planification & Mardi 18 décembre 2018 \\
+	\hline
+	Rapport de conception logicielle & Vendredi 15 Février 2019 \\
+	\hline
+	Page HTML résumant le projet & Vendredi 29 mars 2019 \\
+	\hline
+	Rapport final  & Mardi 7 mai 2019 \\
+	\hline
+	Livraison du projet & Jeudi 9 mai 2019 \\
+	\hline
+\end{tabular}
+
+\paragraph{}
+
+\begin{tabular}{ | l | l | }
+	\hline
+	\textbf{Présentations du projet} & \textbf{Date} \\
+	\hline
+	Soutenance de planification  & Jeudi 20 décembre 2018 \\
+	\hline
+	Première soutenance de projet  & Vendredi 21 décembre 2018 \\
+	\hline
+	Dernière soutenance de projet & Jeudi 9 mai 2019 \\
+	\hline
+	Showroom des projets & Vendredi 10 mai 2019 \\
+\end{tabular}
+
+\end{center}
+
+\section{Analyse des risques}
+
+Lors de la phase de développement de l’application, nous avons envisagé plusieurs risques potentiels qui pourraient retarder le bon déroulement du projet. Nous avons donc prévu dès maintenant des solutions, présentées ci-dessous, afin de pouvoir continuer à avancer normalement en cas de problème.
+
+\paragraph{}
+
+\textbf{Risque : } Absence non prévue (maladie, etc.)
+\newline
+\textbf{Impact : } Plus de travail pour les autres, nécessité de rattraper le retard pour l'absent
+\newline
+\textbf{Action 1 : } Prévenir au plus tôt dans la mesure du possible pour minimiser les effets de surprise
+\newline
+\textbf{Action 2 : } Bien commenter le code pour pouvoir reprendre facilement la partie de l’absent
+
+\paragraph{}
+
+\textbf{Risque : } Surcharge de travail avec les cours
+\newline
+\textbf{Impact : } Moins de temps pour travailler sur le projet
+\newline
+\textbf{Action : } Prendre de l’avance sur les périodes moins chargées
+
+\paragraph{}
+
+\textbf{Risque : } Bug incompréhensible, zone de blocage
+\newline
+\textbf{Impact : } Perte de temps et risque de retarder les autres membres de l’équipe
+\newline
+\textbf{Action : } En parler avec les autres pour ne pas rester coincé seul
+
+\paragraph{}
+
+\textbf{Risque : } Blocage dû à la parallélisation des tâches (exemple : le développeur de la partie
+front-end en attente de la mise en place de la partie base de données)
+\newline
+\textbf{Impact : } Perte de temps et membres du groupe non utilisés
+\newline
+\textbf{Action : } Ne pas attendre en silence, en parler au chef de projet pour faire une autre tâche
+en attendant
+
+\paragraph{}
+
+\textbf{Risque : } Problème relationnel entre des personnes du groupe
+\newline
+\textbf{Impact : } Création de conflits, perte de communication et donc d’informations
+\newline
+\textbf{Action : } Mettre les choses à plat, ne pas faire monter les tensions en gardant le silence
+
+\paragraph{}
+
+\textbf{Risque : } Problème relationnel entre des personnes du groupe
+\newline
+\textbf{Impact : } Création de conflits, perte de communication et donc d’informations
+\newline
+\textbf{Action 1 : } Mettre les choses à plat, ne pas faire monter les tensions en gardant le silence
+\newline
+\textbf{Action 2 : } En parler au chef d’équipe, qui sera chargé de désamorcer les tensions
+
+\paragraph{}
+
+\textbf{Risque : } Mauvaise interprétation de ce qui est demandé par le client
+\newline
+\textbf{Impact : } Perte de temps à développer inutilement
+\newline
+\textbf{Action : } Bien communiquer au sein de groupe et avec le client pour être sûr d’avoir la même vision des choses
+
+
+
+
+
+
+
+
+
+
+
+
+
