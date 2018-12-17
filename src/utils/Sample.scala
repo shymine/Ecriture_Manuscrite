@@ -23,5 +23,5 @@ class Sample(private val path: String, private var translation: String) {
 	  * @param newName The new translation for the sample
 	  */
 	def setTranslation(newName : String) = translation = new String(newName)
-	
+
 }
