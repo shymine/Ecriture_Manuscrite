@@ -7,7 +7,17 @@ L’estimation des charges de la partie hors développement se résume en deux g
 
 \paragraph{}
 
-Pour les deux grands points, le calcul a été sensiblement le même. Dans un premier temps, pour les réunions, nous nous sommes basés sur le temps hebdomadaire passé en réunion depuis le début du projet, au mois de septembre, que nous avons multiplié à la fois par le nombre de semaines restantes et par le nombre de personnes dans le groupe. Dans un  second temps, nous avons calculé le temps nécessaire à la réalisation des prochains rapports. Dans ce cas, nous avons multiplié le temps passé en moyenne par chaque personne pour l’écriture d’un rapport par le nombre de personnes dans le groupe et par le nombre de rapports qu’il nous reste à rendre. Nous avons pu calculer la charge des rapports de cette façon, car nous avons réparti leurs réalisations de façon homogène entre les différents membres du groupe.
+Pour les deux grands points, le calcul a été sensiblement le même. Dans un premier temps, pour les réunions, nous nous sommes basés sur le temps hebdomadaire passé en réunion depuis le début du projet, au mois de septembre, que nous avons multiplié à la fois par le nombre de semaines restantes et par le nombre de personnes dans le groupe. Dans un  second temps, nous avons calculé le temps nécessaire à la réalisation des prochains rapports. Pour ce faire nous avions besoin de plusieurs chiffres :
+
+\begin{itemize}
+\item le nombre moyen d’heures passées par personnes pour la réalisation d’un rapport. Ce chiffre est basé sur le temps que nous avons passé pour l’écriture des premiers rapports ;
+\item le nombre de personnes affectées à la rédaction d’un rapport. Nous avons choisi de mobiliser la moitié du groupe pour l’écriture de chaque rapport. Ainsi, le groupe étant réduit à 5 personnes au second semestre, 2 personnes s’occuperont d’un rapport pendant les périodes de rendu ;
+\item le nombre de rapports restants.
+\end{itemize}
+
+\paragraph{}
+
+En multipliant ces chiffres, nous avons obtenu la charge des rapports. Ce calcul a été possible car nous avons réparti de façon homogène entre les membres du groupe la charge de travail pour la réalisation des rapports.
 
 \section{Estimation de la partie développement}
 
@@ -16,7 +26,7 @@ Cette partie a été plus compliquée à estimer car nous avions peu de repères
 \begin{itemize}
 \item connaissance des technologies utilisées (donc temps d’apprentissage nécessaire estimé) ;
 \item temps estimé de conception ;
-\item temps estimé de développement .
+\item temps estimé de développement (en incluant les tests) .
 \end{itemize}
 
 \subsection{Estimation du temps d'apprentissage}
@@ -31,4 +41,19 @@ La conception ayant majoritairement été réalisée précédemment, cette parti
 
 \subsection{Estimation du temps de développement}
 
-Cette partie de l’estimation est la plus compliquée à estimer. En effet, il n’est pas possible de prévoir les problèmes que nous allons rencontrer. C’est pourquoi, nous nous sommes basés sur le temps de développement d’autres projets que nous avons réalisés en y ajoutant une marge au cas où nous serions confrontés à un problème. Afin d’essayer d’obtenir une approximation plus proche de la réalité, nous avons divisé en plus petites parties les objectifs de chacun. Ainsi, alors qu’un grand projet peut paraître vague à estimer, raisonner sur des petites parties concrètes nous permet cette granularité.
+Cette partie de l’estimation est la plus compliquée à estimer. En effet, il n’est pas possible de prévoir les problèmes que nous allons rencontrer. C’est pourquoi, nous nous sommes basés sur le temps de développement d’autres projets que nous avons réalisés comptant l’écriture du code, la documentation ainsi que les tests, et en y ajoutant une marge au cas où nous serions confrontés à un problème. Afin d’essayer d’obtenir une approximation plus proche de la réalité, nous avons divisé en plus petites parties les objectifs de chacun. Ainsi, alors qu’un grand projet peut paraître vague à estimer, raisonner sur des petites parties concrètes nous permet cette granularité.
+
+\paragraph{}
+
+Nous avons décomposé chaque tâche de développement en sous-parties. Tout d’abord une marge de 25\% est définie en cas de sous-estimation du temps de travail. Ensuite, le travail à faire est décomposé en deux grande parties auxquelles un temps égal est accordé : la conception de la solution en elle-même et la correction de la solution. Concernant la première partie, 12.5\% du temps correspond à l’analyse du travail à faire, à la recherche d’une solution efficace pour répondre au problème posé. Le développement en temps que tel, l’implémentation de la réponse, représente 25\% du temps. Concernant la seconde partie, 20\% du temps est accordé à la création et à l’exécution de tests afin de vérifier le bon fonctionnement de la solution. Enfin, respectivement 12.5\% et 5\% sont dédiés à l’intégration au sein du projet et à la documentation.
+
+\paragraph{}
+
+\begin{mdframed}[frametitle={Figure 1 : Diagramme de répartition du travail par tâche}, innerbottommargin=10]
+\begin{center}
+\includegraphics[scale=0.44]{repartition_travail_taches.pdf}
+\end{center}
+\end{mdframed}
+
+
+
