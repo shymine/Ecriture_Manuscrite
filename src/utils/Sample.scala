@@ -5,23 +5,24 @@ package utils
   * @param path The path leading to the image
   * @param translation The current translation associated to the image
   */
-class Sample(private val path: String, private var translation: String) {
+class Sample(private val _path: String, private var _translation: String) {
+
 	/**
 	  * Give the path leading to the image of the sample
 	  * @return The path of the image
 	  */
-	def getPath: String = path
+	def path: String = _path
 
 	/**
 	  * Give the translation associated with the image
 	  * @return Returns a copy of the translation
 	  */
-	def getTranslation: String = new String(translation)
+	def translation: String = new String(_translation)
 
 	/**
 	  * Set the translation with a copy of the given String
 	  * @param newName The new translation for the sample
 	  */
-	def setTranslation(newName : String) = translation = new String(newName)
+	def translation(newName : String) = _translation = new String(newName)
 
 }
