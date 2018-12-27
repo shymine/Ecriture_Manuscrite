@@ -2,16 +2,16 @@ package utils
 
 /**
   * The class representing the data samples in the database.
-  * @param path The path leading to the image
+  * @param image The path leading to the image
   * @param translation The current translation associated to the image
   */
-class Sample(private val _path: String, private var _translation: String) {
+class Sample(private val _image: String, private var _translation: String) {
 
 	/**
 	  * Give the path leading to the image of the sample
 	  * @return The path of the image
 	  */
-	def path: String = _path
+	def path: String = _image
 
 	/**
 	  * Give the translation associated with the image

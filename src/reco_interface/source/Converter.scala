@@ -1,4 +1,4 @@
-package reco_interface
+package reco_interface.source
 
 import utils.Sample
 
