@@ -31,9 +31,4 @@ trait Recognizer {
 	  */
 	def recognize(samples: List[Sample]) : List[Sample]
 
-	/**
-	  * Allows to change the recognizer by another
-	  * @param path The path where the Recognizer to use is
-	  */
-	def changeRecognizer(path: String)
 }
