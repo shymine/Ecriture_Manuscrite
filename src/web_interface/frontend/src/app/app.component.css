@@ -1,12 +1,13 @@
 h1 {
-    background-color:#D1DEFF;
-    color: #E88AE8;
+    font-family: 'Times New Roman', Times, serif;
+    background-color:#DDD6ea;
+    color: #48327f;
     text-align: center;
     font-size: 70px;
 
-    border: 5px solid #E88AE8;
+    border: 1px solid #5E4B8C;
     font-weight: bold;
 
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     margin-top: 10px;
 }
