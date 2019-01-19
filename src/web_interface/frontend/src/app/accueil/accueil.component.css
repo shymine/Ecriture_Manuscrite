@@ -1,0 +1,51 @@
+/* COULEURS (peut changer ici)
+BLUE #D1DEFF RVB 209 222 255
+PINK #E88AE8 RVB 232 138 232
+ORANGE #FFB380 RVB 255 179 128
+YELLOW #E8E069 RVB 232 224 105
+GREEN #66FF9C RVB 102 255 156
+*/
+
+h1 {
+    background-color:#D1DEFF;
+    color: #E88AE8;
+
+    border: 5px solid #E88AE8;
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+
+.band {
+    background-color:#FFB380;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.button1 {
+    border: 2px solid #FFF;
+    color: #FFF;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: rgba(255, 255, 255, 0.281)
+}
+
+.button1:hover {
+    background: rgba(255, 255, 255, 0);
+}
+
+.divisionG {
+    width: 30% ;
+    height: 100%;
+    min-height: 87vh;
+    border: 2px solid #66FF9C;
+    color: blue;
+
+}
+
+.divisionD {
+    width: 30% ;
+    border: 2px solid #66FF9C;
+    margin-left: 2px;
+
+}
