@@ -1,17 +1,14 @@
-<h1>
-  AGNOSCO
-</h1>
 
 <div class="band">
-  <button class="button1">YOU</button>
-  <button class="button1">ARE</button>
-  <button class="button1">WELCOME</button>
-  <button class="button1">IN</button>
-  <button class="button1">OUR</button>
-  <button class="button1">WEBSITE</button>
+  <button class="button1" >YOU</button>
+  <button class="button1" (click)="goToDecoupe()">ARE</button>
+  <button class="button1" (click)="goToAnnotation(0)">WELCOME</button>
+  <button class="button1" (click)="goToAnnotation(1)">IN</button>
+  <button class="button1" (click)="goToValidation(0)">OUR</button>
+  <button class="button1" (click)="goToValidation(1)">WEBSITE</button>
 </div>
 
-<div style="position: absolute; width:30%;">
+<div>
   <div  class="divisionG">
     <ul>
       <li>Projet 1</li>
@@ -37,11 +34,13 @@
       </ul>
     </ul> 
   </div>
-</div>
 
-<div style="position: absolute; left:31%; position: relative; width: 68.6%">
+
   <div class="divisionD">
-    <button>CHARGER</button>
-    <button>ALLER</button>
+    <button class="button2">
+      <p>Créer un nouveau projet</p>
+      +
+    </button>
   </div>
+
 </div>
