@@ -6,6 +6,41 @@ YELLOW #E8E069 RVB 232 224 105
 GREEN #66FF9C RVB 102 255 156
 */
 
+/* divisions */
+
+.divisionParent{
+    position: relative;
+    border: 2px solid rgb(233, 233, 233);
+    padding: 5px;
+    margin: 0px;
+    overflow: auto;
+    background-image:url(../../assets/images/plume.png);
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-position: 38% 30%;
+}
+
+.divisionG {
+    position: relative;
+    z-index: 1;
+    width: 33%;
+    height: 100%;
+    min-height: 79vh;
+    border: 2px solid #66FF9C;
+    color: blue;
+    float: left;
+    background: rgba(255, 255, 255, 0.479);
+}
+
+.divisionD {
+    position: relative;
+    width: 65%;
+    height: 100%;
+    min-height: 85vh;
+    border: 2px solid #E8E069;
+    float: right;
+}
+
 .band {
     background-color:#FFB380;
     width: 100%;
@@ -33,41 +68,40 @@ GREEN #66FF9C RVB 102 255 156
 
 .button2 {
     position: relative;
-    top: 20vh;
-    left: 25%;
+    z-index: 1;
+    top: 18vh;
+    left: 10%;
     border: 1px solid #E8E069;
     color: #E88AE8;
-    background: #FFF;
+    background: rgba(255, 255, 255, 0.568);
     margin-left: 3%;
     margin-right: 3%;
-    height: 400px;
-    width: 500px;
-
+    height: 50vh;
+    width: 40%;
+    vertical-align: top;
 }
 
 .button2:hover {
-    background: rgb(247, 245, 245);
+    background: rgba(247, 245, 245, 0.514);
 }
 
-/* divisions */
-
-.divisionG {
+.images_petit {
     position: relative;
-    width: 30%;
-    height: 100%;
-    min-height: 85vh;
-    border: 2px solid #66FF9C;
-    color: blue;
+    height:50%;
+    width:40%;
+}
+
+.images_fond {
+    position: relative;
+    height:25%;
+    width:25%;
     float: left;
 }
 
-.divisionD {
-    position: relative;
-    width: 69%;
-    height: 100%;
-    min-height: 85vh;
-    border: 2px solid #E8E069;
-    float: right;
-    
-
+.titre{
+    font-size: 300%;
+    margin-bottom: 1%;
+    margin-top:1%;
+    padding-bottom: 5%
 }
+  
