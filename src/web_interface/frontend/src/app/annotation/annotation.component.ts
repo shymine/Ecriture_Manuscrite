@@ -25,4 +25,12 @@ export class AnnotationComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  goToDecoupe(){
+    this.router.navigate(['/decoupe']);
+  }
+
+  goToValidation(p){
+    this.router.navigate(['/validation',{'id':JSON.stringify(p)}]);
+  }
+
 }

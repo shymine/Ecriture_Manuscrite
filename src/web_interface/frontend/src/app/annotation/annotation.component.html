@@ -3,10 +3,13 @@
 </head>
 
 <div class="band" >
+  
   <button (click)="goHome()"><i class="fas fa-home"></i></button>
-  <span id="goToDecoupe">édition des zones de découpe /</span>
-  <span id="goToAnnotations"> transcription manuscrite /</span>
-  <span id="goToValidation"> validation</span>
+  
+  <span id="goToDec" (click)="goToDecoupe()">édition des zones de découpe /</span>
+  <span id="goToAnn"> transcription manuscrite /</span>
+  <span id="goToValidation" (click)="goToValidation()"> validation</span>
+  <!--texte cliquable à mettre en surbrillance quand la souris passe dessus-->
 </div>
 
 <p>
