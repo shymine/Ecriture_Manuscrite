@@ -12,7 +12,7 @@ export class AnnotationComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) {
       
-   }
+  }
 
   ngOnInit() {
     //parametres
@@ -23,6 +23,14 @@ export class AnnotationComponent implements OnInit {
 
   goHome(){
     this.router.navigate(['']);
+  }
+
+  goToDecoupe(){
+    this.router.navigate(['/decoupe']);
+  }
+
+  goToValidation(p){
+    this.router.navigate(['/validation',{'id':JSON.stringify(p)}]);
   }
 
 }
