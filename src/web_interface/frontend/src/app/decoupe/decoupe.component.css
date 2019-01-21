@@ -9,22 +9,64 @@
 .DivParent{
     height:100%;
     border: 2px solid #eeeeee;
+    overflow: auto;
+    padding: 2px;
 }
 
 .background {
     position: relative;
     height:100%;
-    min-height: 80vh;
-    left: 20%;
+    min-height: 82vh;
+    left: 30%;
     width: 40%;
     border: 2px solid #48327F;
+    float: left;
+}
+
+.outils {
+    position: relative;
+    float: right;
+    background: rgb(83, 70, 116);
+    border: double rgb(218, 213, 230);
+    border-width : 6px;
+    padding:10px;
+    margin-right: 5px;
+    top: 2px;
+    width: 27%;
+    height: 50vh;
+}
+
+.titreO {
+    position: relative;
+    height: 10%;
+    color: #ffffffee;
+    margin : 0px;
+    font-size: 30px;;
+    text-align: center;
+}
+
+.nameOutil {
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    font-size: 25px;
+    color: #ffffff;
+    vertical-align: text-bottom;
+    bottom: 5px;
 }
 
 /*images*/
-.images_petit {
+.image_fond {
     position: relative;
     width:100%;
     height: auto;
+}
+
+.icone {
+    position: relative;
+    height : 100%;
+    width : auto;
 }
 
 /* boutons */
@@ -43,4 +85,18 @@
 
 .button1:hover {
     background: rgba(255, 255, 255, 0.055);
+}
+
+.buttonOutil {
+    position: relative;
+    border: none;
+    height: 10%;
+    margin: 0px;
+    width: 100%;
+    padding: 0px;
+    margin-top: 15px;
+    background: none;
+}
+.buttonOutil:hover {
+    background: #ffffff1e;
 }
