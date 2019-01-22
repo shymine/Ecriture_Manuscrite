@@ -6,46 +6,112 @@ YELLOW #E8E069 RVB 232 224 105
 GREEN #66FF9C RVB 102 255 156
 */
 
-h1 {
-    background-color:#D1DEFF;
-    color: #E88AE8;
-
-    border: 5px solid #E88AE8;
-    font-weight: bold;
-
-    margin-bottom: 10px;
-}
+/* divisions */
 
 .band {
-    background-color:#FFB380;
+    background-color:#110f3d;
+    color: #48327F;
     width: 100%;
-    margin-bottom: 10px;
+    height: 30px;
+    margin-bottom: 5px;
 }
 
-.button1 {
-    border: 2px solid #FFF;
-    color: #FFF;
-    margin-left: 1px;
-    margin-right: 1px;
-    background: rgba(255, 255, 255, 0.281)
-}
-
-.button1:hover {
-    background: rgba(255, 255, 255, 0);
+.divisionParent{
+    position: relative;
+    border: 1px solid rgba(95, 75, 140, 0.425);
+    padding: 5px;
+    margin: 0px;
+    overflow: auto;
+    background-image:url(../../assets/images/plume.png);
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-position: 38% 30%;
 }
 
 .divisionG {
-    width: 30% ;
+    position: relative;
+    z-index: 1;
+    width: 33%;
     height: 100%;
-    min-height: 87vh;
-    border: 2px solid #66FF9C;
-    color: blue;
-
+    min-height: 79vh;
+    border: 3px solid rgba(95, 75, 140, 0.089);
+    color: rgb(124, 102, 180);
+    font-size: 20px;
+    float: left;
+    background: rgba(255, 255, 255, 0.479);
 }
 
 .divisionD {
-    width: 30% ;
-    border: 2px solid #66FF9C;
-    margin-left: 2px;
-
+    position: relative;
+    width: 65%;
+    height: 100%;
+    min-height: 85vh;
+    border: 2px solid #E8E069;
+    float: right;
 }
+
+/* boutons */
+
+.button1 {
+    border-left: 1px solid rgb(225, 220, 238);
+    border-right: 1px solid rgb(225, 220, 238);
+    border-top: none;
+    border-bottom: none;
+    color: rgb(236, 233, 243);
+    height: 100%;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: rgba(255, 255, 255, 0.205)
+}
+
+.button1:hover {
+    background: rgba(255, 255, 255, 0.055);
+}
+
+.button2 {
+    position: relative;
+    z-index: 1;
+    top: 18vh;
+    left: 10%;
+    border: 1px solid rgba(95, 75, 140, 0.096);;
+    color: rgb(124, 102, 180);
+    background: rgba(255, 255, 255, 0.479);
+    margin-left: 3%;
+    margin-right: 3%;
+    height: 50vh;
+    width: 40%;
+    vertical-align: top;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.button2:hover {
+    background: #f7f7f781;
+}
+
+.images_petit {
+    position: relative;
+    height:50%;
+    width:35%;
+}
+
+.images_fond {
+    position: relative;
+    height:25%;
+    width:25%;
+    float: left;
+}
+
+.titre{
+    font-size: 350%;
+    margin-bottom: 1%;
+    margin-top:1%;
+    padding-bottom: 5%
+}
+
+.titreProjets{
+    font-size: 40px;
+    margin-bottom: 2px;
+    margin-top:3px;
+    text-align: center;
+}
+  
