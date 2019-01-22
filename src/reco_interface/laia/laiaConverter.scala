@@ -11,8 +11,17 @@ import utils.Sample
   * -	must know the number of output symbol
   */
 class laiaConverter extends Converter {
+	var height: Integer = -1
 
+	/**
+	  * This should convert the images into images off the defined height
+	  *
+	  * @param samples The samples to convert
+	  * @return The converted samples
+	  */
 	override def convertData(samples: Iterable[Sample]): Iterable[Sample] = ???
 
 	override def unconvertData(samples: Iterable[Sample]): Iterable[Sample] = ???
+
+	def setHeigth(h: Integer) = this.height = h
 }
