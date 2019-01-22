@@ -6,24 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
 </head>
 
-<body>
+<div class="band">  
+      <button class = "homeButton" (click)="goHome()"><i class="fas fa-home"></i></button>
+      
+      <button class = "navBand" style="padding-left: 5px; margin-right: 5px;" (click)="goToValidation(params[0])">validation</button>
+      <button class = "navBandTrans">/ transcription manuscrite /</button>
+      <button class = "navBand" style="padding-right: 5px;" (click)="goToDecoupe()">édition des zones de découpe</button>
+</div>
 
-  <div class="band">  
-    <button class = "homeButton" (click)="goHome()"><i class="fas fa-home"></i></button>
-    
-    <button class = "navBand" style="padding-left: 5px; margin-right: 5px;" (click)="goToValidation()">validation</button>
-    <button class = "navBandTrans">/ transcription manuscrite /</button>
-    <button class = "navBand" style="padding-right: 5px;" (click)="goToDecoupe()">édition des zones de découpe</button>
+<div class = "divisionParent">
+  <div class = "annotationWindow">
+    <p>
+      annotation works!
+    </p>
+    <p>{{params[0]}}</p>
   </div>
 
-  <p>
-    annotation works!
-  </p>
+  <div class = "navigation">
+    <h1>Document 1.0</h1>
+    <img class="image_doc" src="../../assets/images/Fraise.png" alt="page" />
+  </div>
 
-  <p>{{params[0]}}</p>
-
-  <!-- Bootstrap
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>-->
-</body>
+</div>
+<!-- Bootstrap
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>-->
