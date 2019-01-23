@@ -1,5 +1,7 @@
 package reco_interface.laia
 
+import java.io.{File, PrintWriter}
+
 import reco_interface.source.ConverterRecognizer
 import reco_interface.source.Converter
 import utils.Sample
@@ -23,7 +25,9 @@ class laiaConnector(converter: Converter, val modelPath: String, val height: Int
 	  */
 	override def train(samples: Iterable[Sample]): Unit = {
 		val convertedData = this.converter.convertData(samples)
-
+		val writer1 = new PrintWriter(new File("./model/imageTraining"))
+		val writer
+		samples.foreach(sample => writer1.write(sample.path))
 	}
 
 	/**

@@ -15,7 +15,8 @@ class laiaConverter extends Converter {
 
 	/**
 	  * This should convert the images into images off the defined height
-	  *
+	  * Put everything in png
+	  * Construct the correct transcription waned by laia
 	  * @param samples The samples to convert
 	  * @return The converted samples
 	  */
