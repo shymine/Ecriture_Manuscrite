@@ -5,6 +5,8 @@ import java.io.{File, PrintWriter}
 import reco_interface.source.ConverterRecognizer
 import reco_interface.source.Converter
 import utils.Sample
+
+import scala.util.matching.Regex
 import sys.process._
 
 /**
@@ -12,7 +14,7 @@ import sys.process._
   * Laia should be installed beforehand using docker
   * @param converter The converter from the Sample to the laia input
   */
-class laiaConnector(converter: Converter, val modelPath: String, val height: Integer) extends ConverterRecognizer(converter){
+class laiaConnector(converter: Converter, val height: Integer) extends ConverterRecognizer(converter){
 
 	/**
 	  * Laia needs all images to be the same height
@@ -56,11 +58,20 @@ class laiaConnector(converter: Converter, val modelPath: String, val height: Int
 				{space} 2
 		 */
 		val convertedData = this.converter.convertData(samples)
-		val writer1 = new PrintWriter(new File("./model/imageTraining"))
-		val writer2 = new PrintWriter(new File("./model/transcriptTraining"))
-		val writer3 = new PrintWriter(new File("./model/imageValidation"))
-		val writer4 = new PrintWriter(new File("./model/transcriptValidation"))
+		val writer1 = new PrintWriter(new File("./model/imageTraining.lst"))
+		val writer2 = new PrintWriter(new File("./model/transcriptTraining.txt"))
+		val writer3 = new PrintWriter(new File("./model/imageValidation.lst"))
+		val writer4 = new PrintWriter(new File("./model/transcriptValidation.txt"))
 		samples.foreach(sample => writer1.write(sample.path))
+		val regID: Regex = (raw"(\w+)\.png").r
+		samples.foreach(sample => {
+			val inte: Regex.Match =
+				regID.findFirstMatchIn(sample.path)
+    				.getOrElse(throw new MatchError(sample.path))
+			val imgId: String = inte.group(1)
+			println(imgId)
+			writer2.write(imgId) // verifier l'append
+		})
 	}
 
 	/**
@@ -90,16 +101,20 @@ class laiaConnector(converter: Converter, val modelPath: String, val height: Int
 	  * @param recognizerPath
 	  * @param converter
 	  */
-	/*
-		laia-create-model \
-		  --cnn_batch_norm true \
-		  --cnn_type leakyrelu \
-		  -- 1 64 20 model.t7;
-	 */
 	override def changeRecognizer(recognizerPath: String, converter: Converter): Unit = ???
 
+	/**
+	  * Initialise the network to use
+	  * @param symbol
+	  */
+	/*
+	laia-create-model \
+	  --cnn_batch_norm true \
+	  --cnn_type leakyrelu \
+	  -- 1 64 20 model.t7;
+ 	*/
 	def init(symbol: Integer) = {
-		val ret: Integer = s"laia-docker create-model 1 $height $symbol $modelPath" !
+		val ret: Integer = s"laia-docker create-model 1 $height $symbol model/model.t1" !
 		if(ret != 0) {
 			throw new RuntimeException("problem with creation of the model")
 		}
