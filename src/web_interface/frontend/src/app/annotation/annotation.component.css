@@ -1,3 +1,19 @@
+.divisionParent{
+    height:100%;
+    overflow: auto;
+    padding: 0px;
+}
+
+.leftWindow{
+    position: relative;
+    height:100%;
+    min-height: 82vh;
+    left: 0%;
+    width: 70%;
+    float: left;
+    padding: 0px;
+}
+
 .band {
     background-color:#110f3d;
     color: #48327F;
@@ -13,12 +29,23 @@
     border-bottom: none;
     color: rgb(236, 233, 243);
     height: 100%;
+    margin-left: 1px;
     margin-right: 1px;
     background: rgba(255, 255, 255, 0.205)
 }
 
 .homeButton:hover {
     background: rgba(255, 255, 255, 0.055);
+}
+
+.navBandTranscription{
+    font-weight: bold;
+    border: none;
+    height: 100%;
+    float: right;
+    background: #110f3d;
+    color: rgb(219, 210, 241);
+    padding: 0%;
 }
 
 .navBand{
@@ -35,32 +62,14 @@
     color: rgb(219, 210, 241);
 }
 
-.navBandTrans{
-    font-weight: bold;
-    border: none;
-    height: 100%;
-    float: right;
-    background: #110f3d;
-    color: rgb(219, 210, 241);
-    padding: 0%;
-}
-
-.divisionParent{
-    height:100%;
-    border: 2px solid #eeeeee;
-    overflow: auto;
-    padding: 2px;
-}
-
 .annotationWindow{
     position: relative;
-    height:100%;
-    min-height: 82vh;
-    left: 0%;
-    width: 70%;
-    border: 2px solid #48327F;
     float: left;
+    height:100%;
+    width: 100%;
+    min-height: 82vh;
     padding: 5px;
+    border: solid 2px rgb(218, 213, 230);
 }
 
 .navigation{
