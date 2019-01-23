@@ -6,25 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
 </head>
 
-<div class="band">  
-      <button class = "homeButton" (click)="goHome()"><i class="fas fa-home"></i></button>
-      
-      <button class = "navBand" style="padding-left: 5px; margin-right: 5px;" (click)="goToValidation(params[0])">validation</button>
-      <button class = "navBandTrans">/ transcription manuscrite /</button>
-      <button class = "navBand" style="padding-right: 5px;" (click)="goToDecoupe()">édition des zones de découpe</button>
-</div>
 
 <div class = "divisionParent">
-  <div class = "annotationWindow">
-    <p>
-      annotation works!
-    </p>
-    <p>{{params[0]}}</p>
+  <div class = "leftWindow">
+    <div class="band">  
+          <button class = "homeButton" (click)="goHome()"><i class="fas fa-home"></i></button>
+          
+          <button class = "navBand" style="padding-left: 5px; margin-right: 5px;" (click)="goToValidation(params[0])">validation</button>
+          <button class = "navBandTranscription">/ transcription manuscrite /</button>
+          <button class = "navBand" style="padding-right: 5px;" (click)="goToDecoupe()">édition des zones de découpe</button>
+    </div>
+
+    <div class="annotationWindow">
+      <p>
+        Annotation works!
+      </p>
+      <p>{{params[0]}}</p>
+    </div>
+
   </div>
 
   <div class = "navigation">
     <h1>Document 1.0</h1>
-    <img class="image_doc" src="../../assets/images/Fraise.png" alt="page" />
+    <img class="image_doc" src="../../assets/images/Elephant.jpg" alt="page" />
   </div>
 
 </div>
