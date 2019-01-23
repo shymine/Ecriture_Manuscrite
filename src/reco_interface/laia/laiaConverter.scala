@@ -5,9 +5,9 @@ import utils.Sample
 
 /**
   * Laia constraints:
-  * - 	must know the number of channel of the input images
+  * - 	must know the number of channel of the input images -> 3 if RGB, 1 if greyscale
   * - 	must know the height of the input images and all images
-  *   		must have the same height for the creation of the model
+  * - 	must have the same height for the creation of the model
   * -	must know the number of output symbol
   */
 class laiaConverter extends Converter {
