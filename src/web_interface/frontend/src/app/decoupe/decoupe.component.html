@@ -4,9 +4,11 @@
 </head>
 
 <div class="band">
-  <button class="button1" (click)="goHome()"><i class="fas fa-home"></i></button>
-  <button style="float: right; margin-right: 1%;" class="button1">Goto Transcription manuscrite</button>
-  <button style="float: right; margin-right: 1%" class="button1">Exporter vers le reconnaisseur</button>
+  <button class = "homeButton" (click)="goHome()"><i class="fas fa-home"></i></button>
+
+  <button class = "navBand" style="padding-left: 5px;" (click)="goToValidation(params[0])">transcription manuscrite</button>
+  <button class = "navBandTranscription">édition des zones de découpe ></button>
+  <button style="float: right;" class="button2">Exporter vers le reconnaisseur <img class="petitIcone" src="../../assets/images/extrairedecoupe.png" alt="page" /></button>
   
 </div>
 
@@ -15,7 +17,7 @@
     <img class="image_fond" src="../../assets/images/Fraise.png" alt="page" />
   </div>
   <div class="outils">
-    <div class ="titreO">Outils</div>
+    <div class ="titreO"><img class="icone" src="../../assets/images/Outils.png" alt="page" /></div>
 
     <button class="buttonOutil"><span class="nameOutil">nouvelle selection </span><img class="icone" src="../../assets/images/1decoupe.png" alt="page" /></button>
     

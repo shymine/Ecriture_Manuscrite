@@ -54,6 +54,7 @@
     color: #ffffff;
     vertical-align: text-bottom;
     bottom: 5px;
+    margin-right: 20px;
 }
 
 /*images*/
@@ -68,6 +69,16 @@
     height : 100%;
     width : auto;
 }
+
+.petitIcone {
+    position: relative;
+    vertical-align: top;
+    height : 50%;
+    width : auto;
+    margin-left: 2px;
+    filter: opacity(0.90);
+}
+
 
 /* boutons */
 
@@ -85,6 +96,62 @@
 
 .button1:hover {
     background: rgba(255, 255, 255, 0.055);
+}
+
+.navBandTranscription{
+    border: none;
+    height: 100%;
+    float: right;
+    background: #110f3d;
+    color: rgb(219, 210, 241);
+    padding: 0%;
+}
+
+.homeButton{
+    border-left: 1px solid rgb(225, 220, 238);
+    border-right: 1px solid rgb(225, 220, 238);
+    border-top: none;
+    border-bottom: none;
+    color: rgb(236, 233, 243);
+    height: 100%;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: none;
+}
+
+.homeButton:hover {
+    background: rgba(255, 255, 255, 0.137);
+}
+
+.navBand{
+    position: relative;
+    border: none;
+    height: 100%;
+    float: right;
+    background: none;
+    color: rgb(153, 143, 177);
+    padding: 0%;
+    margin-right: 2%;
+}
+
+.navBand:hover {
+    color: rgb(219, 210, 241);
+}
+
+.button2 {
+    position: relative;
+    border: none;
+    height: 100%;
+    float: right;
+    background: none;
+    color: rgb(219, 210, 241);
+    padding: 0%;
+    margin-right: 10%;
+}
+
+.button2:hover {
+    color: rgb(219, 210, 241);
+    filter: brightness(1.20);
 }
 
 .buttonOutil {

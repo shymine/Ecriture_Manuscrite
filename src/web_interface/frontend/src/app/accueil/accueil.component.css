@@ -53,19 +53,19 @@ GREEN #66FF9C RVB 102 255 156
 /* boutons */
 
 .button1 {
-    border-left: 1px solid rgb(225, 220, 238);
-    border-right: 1px solid rgb(225, 220, 238);
+    border-left: 1px solid rgb(219, 210, 241);
+    border-right: 1px solid rgb(219, 210, 241);
     border-top: none;
     border-bottom: none;
-    color: rgb(236, 233, 243);
+    color: rgb(219, 210, 241);
     height: 100%;
     margin-left: 1px;
     margin-right: 1px;
-    background: rgba(255, 255, 255, 0.205)
+    background: none;
 }
 
 .button1:hover {
-    background: rgba(255, 255, 255, 0.055);
+    background: rgba(255, 255, 255, 0.151);
 }
 
 .button2 {
