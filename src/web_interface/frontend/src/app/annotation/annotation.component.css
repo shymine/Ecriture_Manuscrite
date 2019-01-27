@@ -9,7 +9,7 @@
     height:100%;
     min-height: 82vh;
     left: 0%;
-    width: 70%;
+    width: 75%;
     float: left;
     padding: 0px;
 }
@@ -66,35 +66,67 @@
     position: relative;
     float: left;
     height:100%;
-    width: 100%;
+    width: 99%;
     min-height: 82vh;
     padding: 5px;
     border: solid 2px rgb(218, 213, 230);
 }
 
-.navigation{
+.rightWindow{
     position: relative;
-    float: right;
+    float: left;
+    left: 10px;
+    right: 0px;
+    height:100%;
+    min-height: 82vh;
+    width: 22%;
+    padding: 0px;
+    border: none
+}
+
+.fullDocument{
     background: rgb(83, 70, 116);
     border: double rgb(218, 213, 230);
     border-width : 6px;
     padding:5px;
-    margin-right: 5px;
     top: 2px;
-    width: 27%;
-    height: 50vh;
+    width: 97%;
+    height: 40vh;
 }
 
 .image_doc{
     display: block;
     position: relative;
-    width: 90%;
-    height: auto;
+    max-height: 75%;
+    width: auto;
     margin-left: auto;
     margin-right: auto;
 }
 
-h1{
+.navigation{
+    background: rgb(219, 207, 247);
+    border: 2px solid rgb(141, 129, 170);
+    width: 99%;
+    height: 40vh;
+    color: rgb(81, 81, 83);
+}
+
+.navTitle{
+    background: rgb(219, 207, 247);
+    padding: 5px;
+    border-bottom: 2px solid rgb(141, 129, 170);
+    height: 15%;
+    width : 80%;
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+}
+
+h2{
+    margin-top: 5px;
+    margin-bottom: 5px;
     text-align: center;
     color: rgb(219, 210, 241);
 }
