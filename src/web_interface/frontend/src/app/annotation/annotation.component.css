@@ -1,15 +1,20 @@
+:root{
+    --left-window-width: 70vw;
+    --right-window-width: 22%;
+}
+
 .divisionParent{
-    height:100%;
+    height: 85vh;
+    width: 99vw;
     overflow: auto;
     padding: 0px;
 }
 
 .leftWindow{
     position: relative;
-    height:100%;
-    min-height: 82vh;
     left: 0%;
     width: 75%;
+    height: 98%;
     float: left;
     padding: 0px;
 }
@@ -65,21 +70,18 @@
 .annotationWindow{
     position: relative;
     float: left;
-    height:100%;
+    height: 90%;
     width: 99%;
-    min-height: 82vh;
+    min-height: 50vh;
     padding: 5px;
     border: solid 2px rgb(218, 213, 230);
 }
 
 .rightWindow{
     position: relative;
-    float: left;
-    left: 10px;
-    right: 0px;
-    height:100%;
-    min-height: 82vh;
-    width: 22%;
+    float: right;
+    height: 100%;
+    width: 24%;
     padding: 0px;
     border: none
 }
@@ -88,10 +90,10 @@
     background: rgb(83, 70, 116);
     border: double rgb(218, 213, 230);
     border-width : 6px;
-    padding:5px;
+    padding: 5px;
     top: 2px;
-    width: 97%;
-    height: 40vh;
+    width: 22% - 6px;
+    height: 40%;
 }
 
 .image_doc{
@@ -128,5 +130,7 @@ h2{
     margin-top: 5px;
     margin-bottom: 5px;
     text-align: center;
+    font-size: 1.3em;
+    padding: 10px;
     color: rgb(219, 210, 241);
 }
