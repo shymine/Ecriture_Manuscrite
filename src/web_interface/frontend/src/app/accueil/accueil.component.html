@@ -12,29 +12,13 @@
 
   <div class="divisionG">
     <p class="titreProjets">Mes projets</p>
-    <ul>
-      <li>Projet 1</li>
-      <ul>
-        <li>Document 1.1</li>
-        <li>Document 1.2</li>
-        <li>Document 1.3</li>
-      </ul> 
-      <br>
-      <li>Projet2</li>
-      <ul>
-        <li>Document 2.1</li>
-        <li>Document 2.2</li>
-      </ul> 
-      <br>
-      <li>Projet3</li>
-      <ul>
-        <li>Document 3.1</li>
-        <li>Document 3.2</li>
-        <li>Document 3.3</li>
-        <li>Document 3.4</li>
-        <li>Document 3.5</li>
+    
+    <ul *ngFor="let p of projects">
+      <li>{{p[0]}}</li>
+      <ul *ngFor="let d of p[1]">
+        <li>{{d}}</li>
       </ul>
-    </ul> 
+    </ul>
   </div>
 
   <button class="button2">
