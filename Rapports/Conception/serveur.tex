@@ -4,6 +4,25 @@
 
 \section{Traitement des données}
 
+Pour ce qui est du traitement des données, il nous faut un \textit{package} pour chacune des deux tâches concernées, à savoir la lecture des fichiers d'entrée ainsi que la découpe d'image.
+
+\subsection{Lecture des fichiers d'entrée : \textit{package} \texttt{input}}
+
+Comme expliqué dans le dernier rapport, nous avons choisi de ne traiter qu'un seul format dans notre logiciel, le format PiFF. Pour pouvoir lire les fichiers d'entrée, on doit construire une représentation des données contenues dans ces derniers sous la forme d'objets. Ceci constituera le \textit{package} \texttt{piff}. Il définit une classe \texttt{PiFF}, qui contient des pages (\texttt{PiFFPage}), qui elles-mêmes contiennent des portions de texte (\texttt{PiFFElement}). Ces classes peuvent être converties au format JSON (bibliothèque \href{https://mvnrepository.com/artifact/org.json/json}{org.json}), ce qui permet d'exporter les objets vers un fichier PiFF.
+
+\paragraph{}
+L'utilisateur doit toutefois pouvoir utiliser d'autres formats. Pour cette raison, nous avons un \textit{package} \texttt{converters} contenant une interface, \texttt{PiFFConverter}, qui permet de convertir un fichier quelconque en objet \texttt{PiFF}. Nous en fournissons une implémentation, la classe \texttt{GEDIToPiFFConverter}, qui permet au logiciel de lire le format GEDI, utilisé notamment par la base de données Maurdor, présentée dans les précédents rapports, et à laquelle nous avons accès pour nos tests. L'utilisateur peut rajouter autant d'implémentations qu'il le souhaite.
+
+\paragraph{}
+En plus de ces deux \textit{packages}, nous proposons un objet \texttt{PiFFReader} (singleton), qui permettra d'ouvrir un fichier, et d'utiliser les concepts présentés ci-dessus. Plus précisément, il permettra de lister des implémentations de \texttt{PiFFConverter}, et de les appeler une par une sur le fichier d'entrée pour réussir à le lire.
+
+\subsection{Découpe des images : \textit{package} \texttt{processing}}
+
+Pour la découpe d'image, il nous faut une classe \texttt{ImageProcessing}, qui appelle les méthodes de la bibliothèque OpenCV, que nous avons choisie précédemment. Après la découpe, les imagettes sont associées au texte pour former des exemples, que nous avons modélisés par une classe \texttt{Example}. 
+
+\paragraph{}
+La phase de découpe étant automatique, il nous faut faire appel à un détecteur de lignes. C'est la fonction du \textit{package} \texttt{linedetection}. Nous y plaçons une interface \texttt{LineDetector}, qui permet de trouver les lignes de texte dans un objet PiFF. Le détecteur de lignes utilisé pour le projet est fourni par l'encadrant, et fonctionne sous Linux. Les membres du groupe peuvent pourtant travailler sous Windows ou macOS. Pour faciliter le développement du logiciel, nous avons donc choisi de fournir une implémentation, la classe \texttt{BlurLineDetector} (nom dû à la méthode de détection), basée sur des connexions réseau, afin de pouvoir faire fonctionner le serveur sous n'importe quel système d'exploitation, avec un petit module serveur sous Linux qui appelle simplement l'exécutable. Ce petit module ne fait pas partie du cahier des charges mais sera développé pour les tests. L'utilisateur, ici aussi, pourra rajouter ses propres méthodes de détection de lignes s'il le souhaite.
+
 \section{Base de données}
 
 \section{Interface avec le reconnaisseur}
