@@ -1,4 +1,4 @@
-package main;
+package database.DataBase.src.main;
 
 /**
  * Enum containing the tables of our database.
