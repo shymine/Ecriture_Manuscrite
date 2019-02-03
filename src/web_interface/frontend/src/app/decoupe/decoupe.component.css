@@ -6,6 +6,11 @@
     margin-bottom: 5px;
 }
 
+.divOutils {
+    position: relative;
+    height: 10%;
+}
+
 .DivParent{
     height:100%;
     border: 2px solid #eeeeee;
@@ -156,14 +161,46 @@
 
 .buttonOutil {
     position: relative;
+    margin-top: 5%;
     border: none;
     height: 10%;
     margin: 0px;
     width: 100%;
     padding: 0px;
-    margin-top: 15px;
     background: none;
+    margin-top: 2%;
 }
 .buttonOutil:hover {
+    background: #ffffff1e;
+}
+
+.buttonOutil1 {
+    position: relative;
+    border: none;
+    height: 10%;
+    margin: 0px;
+    width: 75%;
+    padding: 0px;
+    background: none;
+    margin-top: 2%;
+}
+.buttonOutil1:hover {
+    background: #ffffff1e;
+}
+
+.selectOutils {
+    position: relative;
+    border: none;
+    color: #ffffff;
+    height: 10%;
+    margin: 0px;
+    width: 25%;
+    padding: 0px;
+    background: none;
+    float: right;
+    margin-top: 2%;
+}
+
+.selectOutils:hover {
     background: #ffffff1e;
 }

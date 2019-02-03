@@ -8,9 +8,24 @@ import { Router } from '@angular/router';
 })
 export class AccueilComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  public projects;
+
+  constructor(private router: Router) {
+    this.projects = [];
+  }
 
   ngOnInit() {
+
+    //test
+    this.projects[0]=["Project 1", ["Document Un", "Document Deux", "Document Trois"]];
+    this.projects[1]=["Project 2", ["Document Quatre", "Document Cinq", "Document Six"]];
+
+    this.afficheListe();
+
+  }
+
+  afficheListe(){
+
   }
 
   goToDecoupe(){
