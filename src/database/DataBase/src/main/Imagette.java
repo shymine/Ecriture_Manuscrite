@@ -1,4 +1,4 @@
-package main;
+package database.DataBase.src.main;
 
 import java.awt.*;
 

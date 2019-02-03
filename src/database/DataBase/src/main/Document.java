@@ -1,4 +1,4 @@
-package main;
+package database.DataBase.src.main;
 
 public class Document {
     int id;
