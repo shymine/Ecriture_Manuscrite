@@ -1,6 +1,6 @@
-package main.scala.model.recogniser
+package model.recogniser
 
-import main.scala.utils.Example
+import model.common.Example
 
 /**
   * The trait of a recognizer and the actions it can perform
@@ -13,7 +13,7 @@ trait Recogniser {
   def train(samples: Iterable[Example])
 
   /**
-    * Evaluate the Recognizer performance on a test set of Example
+    * Evaluate the Recognizer performance on a test set of Sample
     * @param samples The set to test the Recognizer
     */
   def evaluate(samples: Iterable[Example])

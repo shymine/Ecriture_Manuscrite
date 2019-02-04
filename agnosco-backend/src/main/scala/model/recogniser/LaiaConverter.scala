@@ -3,6 +3,8 @@ package main.scala.model.recogniser.laia
 import main.scala.model.recogniser.Converter
 import main.scala.utils.Example
 
+import model.common.Example
+
 /**
   * Laia constraints:
   * - 	must know the number of channel of the input images -> 3 if RGB, 1 if greyscale
