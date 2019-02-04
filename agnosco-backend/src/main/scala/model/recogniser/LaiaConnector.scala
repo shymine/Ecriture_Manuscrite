@@ -1,7 +1,5 @@
 package model.recogniser
 
-package main.scala.model.recogniser.laia
-
 import java.io.{File, PrintWriter}
 
 import model.common.Example
