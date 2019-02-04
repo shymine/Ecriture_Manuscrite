@@ -1,4 +1,4 @@
-package model.recogniser
+package main.scala.model.recogniser
 
 import model.common.Example
 

@@ -1,11 +1,12 @@
-package model.recogniser
+package main.scala.model.recogniser.laia
 
 import java.io.{File, PrintWriter}
 
+import main.scala.model.recogniser.{Converter, ConverterRecogniser}
 import model.common.Example
 
+import scala.sys.process._
 import scala.util.matching.Regex
-import sys.process._
 
 /**
   * The laia connector will be in charge of using the Laia recognizer to perform recognition

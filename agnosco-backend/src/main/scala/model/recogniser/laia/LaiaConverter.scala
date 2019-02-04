@@ -1,8 +1,6 @@
 package main.scala.model.recogniser.laia
 
 import main.scala.model.recogniser.Converter
-import main.scala.utils.Example
-
 import model.common.Example
 
 /**
