@@ -1,8 +1,8 @@
-package main.scala.model.recogniser.laia
+package model.recogniser.laia
 
 import java.io.{File, PrintWriter}
 
-import main.scala.model.recogniser.{Converter, ConverterRecogniser}
+import model.recogniser.{Converter, ConverterRecogniser}
 import model.common.Example
 
 import scala.sys.process._

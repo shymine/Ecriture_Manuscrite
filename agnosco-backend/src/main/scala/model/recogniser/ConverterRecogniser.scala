@@ -1,7 +1,6 @@
-package main.scala.model.recogniser
+package model.recogniser
 
 import model.common.Example
-import model.recogniser.Recogniser
 
 abstract class ConverterRecogniser(val converter: Converter) extends Recogniser {
 
