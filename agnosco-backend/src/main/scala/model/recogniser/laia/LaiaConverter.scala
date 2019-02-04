@@ -1,4 +1,7 @@
-package model.recogniser
+package main.scala.model.recogniser.laia
+
+import main.scala.model.recogniser.Converter
+import main.scala.utils.Example
 
 /**
   * Laia constraints:
@@ -17,9 +20,9 @@ class LaiaConverter extends Converter {
     * @param samples The samples to convert
     * @return The converted samples
     */
-  override def convertData(samples: Iterable[Sample]): Iterable[Sample] = ???
+  override def convertData(samples: Iterable[Example]): Iterable[Example] = ???
 
-  override def unconvertData(samples: Iterable[Sample]): Iterable[Sample] = ???
+  override def unconvertData(samples: Iterable[Example]): Iterable[Example] = ???
 
   def setHeight(h: Integer) : Unit = this.height = h
 }

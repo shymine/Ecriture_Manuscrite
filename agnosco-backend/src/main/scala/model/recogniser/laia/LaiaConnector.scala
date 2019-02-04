@@ -14,7 +14,7 @@ import sys.process._
   * Laia should be installed beforehand using docker
   * @param converter The converter from the Example to the laia input
   */
-class laiaConnector(converter: Converter, val height: Integer) extends ConverterRecogniser(converter){
+class LaiaConnector(converter: Converter, val height: Integer) extends ConverterRecogniser(converter){
 
 	/**
 	  * Laia needs all images to be the same height
