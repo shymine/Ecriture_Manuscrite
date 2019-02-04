@@ -13,7 +13,6 @@ import javax.ws.rs.core.MediaType
 
 @Singleton
 @Path("agnosco")
-@Api(value = "agnosco", description = "Agnosco")
 class AgnoscoResource {
 
   @POST
