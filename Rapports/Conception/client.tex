@@ -67,6 +67,26 @@ Enfin, la dernière page de l’interface sera la page de validation qui a déj�
 En résumé, à la fin de la deuxième itération, nous aurons cinq composants différents : la page d’accueil, la page de découpe des zones du document, la page d’annotation manuelle, la page de visualisation de la reconnaissance et la page de validation finale des transcriptions.
 
 
-
 %--------------------------------------------------------------------------------------------------------------
-\section{Interactions avec le serveur}
+\section{Interactions}
+
+\subsection{Interactions entre les composants de l'interface}
+
+\paragraph{}
+L’utilisateur peut naviguer entre les différents composants via les boutons de l’interface.
+Tout d’abord, une icône permettant de revenir à la page d’accueil sera présente en haut à gauche de chaque page - à l’exception de la page d’accueil. Sur cette dernière, le choix du document ouvre celui-ci dans la page de l’interface qui lui correspond, soit :
+
+\begin{itemize}[noitemsep]
+\item la page de découpe si aucun travail n’a été réalisé au préalable sur ce document;
+\item la page d’annotation manuelle si les découpes ont déjà été réalisées et que l’utilisateur n’a pas exporté le document vers le reconnaisseur;
+\item la page de visualisation des transcriptions du reconnaisseur si une reconnaissance a été réalisée sur le document;
+\item ou la page de validation finale si toutes les transcriptions ont déjà été renseignées.
+\end{itemize}
+
+Des boutons de navigation dans les différentes pages sont également présents sur certaines pages, comme décrit dans la partie précédente. Les interactions sont visibles dans le schéma ci-dessous :
+
+% inclure schéma de la navigation dans les différentes pages
+
+\subsection{Interactions entre le \textit{front-end} et le \textit{back-end}}
+
+L’interface affiche les informations de la base de données (les couples imagettes - transcriptions) et les modifie. Pour ce faire, elle est reliée au connecteur central via sa ressource Rest. Le connecteur traite les demandes de l’IHM et les envoie au connecteur de la base de données. Celui-ci effectue les ordres de l’utilisateur sur la BDD et renvoie les imagettes et les transcriptions au connecteur central qui les fait suivre à l’IHM. Les modifications (ajout ou modification d’une transcription ou suppression d’un couple) sont enregistrées en temps réel dans la base, il n’y a donc pas besoin d’un bouton pour enregistrer les modifications à l’issue du travail.
