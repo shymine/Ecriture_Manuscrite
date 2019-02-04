@@ -1,5 +1,6 @@
 package model.data.processing
 
+import model.common.Example
 import model.data.input.piff.PiFF
 
 abstract class ExampleMaker(p : PiFF) {

@@ -1,5 +1,7 @@
 package model.recogniser
 
+import model.common.Example
+
 /**
   * Laia constraints:
   * - 	must know the number of channel of the input images -> 3 if RGB, 1 if greyscale
@@ -17,9 +19,9 @@ class LaiaConverter extends Converter {
     * @param samples The samples to convert
     * @return The converted samples
     */
-  override def convertData(samples: Iterable[Sample]): Iterable[Sample] = ???
+  override def convertData(samples: Iterable[Example]): Iterable[Example] = ???
 
-  override def unconvertData(samples: Iterable[Sample]): Iterable[Sample] = ???
+  override def unconvertData(samples: Iterable[Example]): Iterable[Example] = ???
 
   def setHeight(h: Integer) : Unit = this.height = h
 }

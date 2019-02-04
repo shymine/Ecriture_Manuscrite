@@ -12,11 +12,9 @@ import javax.ws.rs.PUT
 import javax.ws.rs.core.MediaType
 
 @Singleton
-@Path("game")
-@Api(value = "game", description = "Operations on Diaballik")
+@Path("agnosco")
+@Api(value = "agnosco", description = "Agnosco")
 class AgnoscoResource {
-  private val pathGames = "games"
-  private val pathReplays = "replays"
 
   @POST
   @Path("/createGame/{p1}/{p2}/{name}/{ai}/{bt}")

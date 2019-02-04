@@ -1,6 +1,6 @@
-package main.scala.model.recogniser
+package model.recogniser
 
-import main.scala.utils.Example
+import model.common.Example
 
 /**
   * A two way converter between PiFF format and the input format

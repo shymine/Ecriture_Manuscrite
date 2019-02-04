@@ -1,4 +1,4 @@
-package model.data.processing
+package model.common
 
 import model.data.types.Image
 
