@@ -1,6 +1,6 @@
-package model.recogniser
+package main.scala.model.recogniser
 
-import utils.Sample
+import main.scala.utils.Example
 
 /**
   * The trait of a recognizer and the actions it can perform
@@ -10,13 +10,13 @@ trait Recogniser {
     * Train the Recognizer using the samples given in parameter
     * @param samples The samples the Recognizer trains on
     */
-  def train(samples: Iterable[Sample])
+  def train(samples: Iterable[Example])
 
   /**
-    * Evaluate the Recognizer performance on a test set of Sample
+    * Evaluate the Recognizer performance on a test set of Example
     * @param samples The set to test the Recognizer
     */
-  def evaluate(samples: Iterable[Sample])
+  def evaluate(samples: Iterable[Example])
 
   /**
     * Production mode of the Recognizer
@@ -29,6 +29,6 @@ trait Recogniser {
     *         it depending if the Recognizer output for a paragraph
     *         is an output per line or one output for the paragraph.
     */
-  def recognize(samples: List[Sample]) : List[Sample]
+  def recognize(samples: List[Example]) : List[Example]
 
 }
