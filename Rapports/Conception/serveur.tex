@@ -2,6 +2,23 @@
 
 \section{Architecture générale}
 
+\section{Contrôleur}
+
+\subsection{Architecture}
+
+\paragraph{}
+Le rôle du contrôleur est de mettre en relation les 4 parties du projet : le \textit{frontend}, \textit{i.e.} l'interface homme-machine, la base de données, ainsi que le traitement des données. Pour ce faire, nous avons 4 classes abstraites, un connecteur par \textit{package} du projet, chacun possédant des méthodes générales, qui appellent d'autres méthodes de leurs \textit{packages} respectifs. Cela permet d'avoir un objet \texttt{Controller} central qui manipule tous les éléments du projet avec un code très lisible. Nous fournissons une implémentation de chaque connecteur, pour le bon fonctionnement du projet. Une fabrique est également prévue, permettant de choisir l'implémentation des connecteurs de chaque partie sans avoir à modifier le code du connecteur central. En effet, le contrôleur récupèrera les instances des connecteurs à partir de cette fabrique. Cela permet à l'utilisateur de changer d'instance de connecteur en changeant une ligne de code seulement.
+
+\begin{mdframed}[frametitle={Architecture des modules avec le connecteur}, innerbottommargin=10]
+\begin{center}
+\includegraphics[trim={14cm, 0, 6cm, 0} ,scale=0.3, width=200mm]{assets/UML_connecteur.pdf}
+\end{center}
+\end{mdframed}
+
+\subsection{Interactions}
+\paragraph{}
+Le connecteur central reçoit donc, au travers du connecteur en relation avec le frontend les demandes de l'utilisateur et, afin d'exécuter ces demandes, appelle au travers des connecteurs des autres modules, les méthodes nécessaires. Le \texttt{Controller} sert alors d'intermédiaire entre l'utilisateur et les différents modules. Il permet notamment cette structure modulaire en détachant les appels de méthode des classes réelles qui peuvent alors être changées selon le bon vouloir de l'utilisateur.
+
 %-----------------------------------------------------------------------------------------------------------------------
 \section{Traitement des données}
 
@@ -36,7 +53,11 @@ Pour ce faire, on utilise une classe (...)
 
 Cette partie du projet a pour objectif de lier la base d'apprentissage de notre logiciel avec le reconnaisseur choisi par l'utilisateur. Ainsi, cette partie étant très liée à l'utilisateur, il faut lui permettre de pouvoir facilement attacher le reconnaisseur de son choix au logiciel. C'est avec cette contrainte en tête que nous avons conçu l'architecture de cette partie.
 
-\includepdf[pages=-]{assets/UML_Recognizer}
+\begin{mdframed}[frametitle={Architecture de l'interface avec le reconnaisseur}, innerbottommargin=10]
+\begin{center}
+\includegraphics[trim={0, 2cm, 0 , 7cm}, scale=0.55, height=100mm]{assets/UML_Recognizer.pdf}
+\end{center}
+\end{mdframed}
 
 \paragraph{Architecture}
 
@@ -51,11 +72,3 @@ Dans la première version délivrée le 27 Février, la possibilitée d'entraine
 L'interface avec le reconnaisseur sert de passerelle entre le noyau du projet qui est le connecteur central et le reconnaisseur que l'utilisateur souhaite utiliser. Ainsi, elle reçoit au travers de son propre connecteur (\texttt{AIConnector}) les ensembles d'\texttt{Example} à utiliser pour ses différents usages. L'implémentation de l'interface \texttt{Recognizer} se charge ensuite, de transmettre au reconnaisseur soit sous forme de jar, soit installé sur la machine de l'utilisateur les données d'exemple dans le format approprié. Lorsqu'il reçoit les réponses du reconnaisseur, il les convertit de nouveau en Example qui pourront être manipulé par le logiciel en interne.
 
 %-----------------------------------------------------------------------------------------------------------------------
-\section{Contrôleur}
-
-
-\paragraph{Architecture}
-Le rôle du contrôleur est de mettre en relation les 4 parties du projet : le \textit{frontend}, \textit{i.e.} l'interface homme-machine, la base de données, ainsi que le traitement des données. Pour ce faire, nous avons 4 classes abstraites, un connecteur par \textit{package} du projet, chacun possédant des méthodes générales, qui appellent d'autres méthodes de leurs \textit{packages} respectifs. Cela permet d'avoir un objet \texttt{Controller} central qui manipule tous les éléments du projet avec un code très lisible. Nous fournissons une implémentation de chaque connecteur, pour le bon fonctionnement du projet. Une fabrique est également prévue, permettant de choisir l'implémentation des connecteurs de chaque partie sans avoir à modifier le code du connecteur central. En effet, le contrôleur récupèrera les instances des connecteurs à partir de cette fabrique. Cela permet à l'utilisateur de changer d'instance de connecteur en changeant une ligne de code seulement.
-\includepdf{assets/UML_connecteur}
-\paragraph{Interaction}
-Le connecteur central reçoit donc, au travers du connecteur en relation avec le frontend les demandes de l'utilisateur et, afin d'exécuter ces demandes, appelle au travers des connecteurs des autres modules, les méthodes nécessaires. Le \texttt{Controller} sert alors d'intermédiaire entre l'utilisateur et les différents modules. Il permet notamment cette structure modulaire en détachant les appels de méthode des classes réelles qui peuvent alors être changées selon le bon vouloir de l'utilisateur.
