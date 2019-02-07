@@ -1,3 +1,8 @@
-<p>
-  mydialog works!
-</p>
+<div mat-dialog-content>
+  <p>Comment souhaitez-vous nommer le projet?</p>
+  <input matInput placeholder="Nom du projet">
+</div>
+<div mat-dialog-actions>
+  <button mat-button>Annuler</button>
+  <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Valider</button>
+</div>
