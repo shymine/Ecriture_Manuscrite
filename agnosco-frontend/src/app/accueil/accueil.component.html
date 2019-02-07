@@ -14,9 +14,9 @@
     <p class="titreProjets">Mes projets</p>
     
     <ul *ngFor="let p of projects">
-      <li>{{p[0]}}</li>
+      <li><button class="buttonList">{{p[0]}}</button></li>
       <ul *ngFor="let d of p[1]">
-        <li>{{d}}</li>
+        <li><button class="buttonList">{{d}}</button></li>
       </ul>
     </ul>
   </div>
