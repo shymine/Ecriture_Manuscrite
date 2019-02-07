@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ValidationComponent implements OnInit {
 
   private params = [];
+  private hidden = false; //peut-être faire un tableau de 6 boolean ?
 
   constructor(private router: Router, private route: ActivatedRoute) {
   }
@@ -22,5 +23,10 @@ export class ValidationComponent implements OnInit {
 
   goHome(){
     this.router.navigate(['']);
+  }
+
+  hide(){
+    this.hidden = true;
+    this.router.navigate(['/decoupe']);
   }
 }
