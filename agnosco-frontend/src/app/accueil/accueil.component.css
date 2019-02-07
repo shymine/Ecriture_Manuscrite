@@ -50,6 +50,18 @@ GREEN #66FF9C RVB 102 255 156
     float: right;
 }
 
+.selection {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.selection:hover {
+    visibility: visible;
+    width: auto;
+    height: auto;
+}
+
 /* boutons */
 
 .button1 {
