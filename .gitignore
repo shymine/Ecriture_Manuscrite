@@ -1,2 +1,4 @@
 .idea
 src/reco_interface/laia/models/.
+node_modules
+.vscode
