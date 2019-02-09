@@ -50,6 +50,18 @@ GREEN #66FF9C RVB 102 255 156
     float: right;
 }
 
+.selection {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.selection:hover {
+    visibility: visible;
+    width: auto;
+    height: auto;
+}
+
 /* boutons */
 
 .button1 {
@@ -87,6 +99,20 @@ GREEN #66FF9C RVB 102 255 156
 .button2:hover {
     background: #f7f7f781;
 }
+
+.buttonList {
+    background: none;
+    border: none;
+    color: rgb(124, 102, 180);
+    font-size: 20px;
+}
+
+.buttonList:hover {
+    color: rgb(79, 56, 138);
+
+}
+
+/* images */
 
 .images_petit {
     position: relative;

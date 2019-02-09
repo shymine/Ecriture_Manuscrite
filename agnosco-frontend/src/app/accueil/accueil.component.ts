@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MydialogComponent } from '../mydialog/mydialog.component';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-accueil',
@@ -9,8 +11,9 @@ import { Router } from '@angular/router';
 export class AccueilComponent implements OnInit {
 
   public projects;
+  public newProject;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public dialog: MatDialog) {
     this.projects = [];
   }
 
@@ -22,6 +25,17 @@ export class AccueilComponent implements OnInit {
 
     this.afficheListe();
 
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(MydialogComponent, {
+      data: {name: this.newProject}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+    });
   }
 
   afficheListe(){
