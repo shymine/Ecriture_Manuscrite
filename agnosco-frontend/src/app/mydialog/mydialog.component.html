@@ -1,8 +1,8 @@
 <div mat-dialog-content>
   <p>Comment souhaitez-vous nommer le projet?</p>
-  <input matInput placeholder="Nom du projet">
+  <input [(ngModel)]="popo" matInput placeholder="Nom du projet" (keyup.enter)="dialogRef.close(popo)" cdkFocusInitial>
 </div>
 <div mat-dialog-actions>
   <button class="buttonA" (click)="onNoClick()" mat-button>Annuler</button>
-  <button class="buttonV" mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Valider</button>
+  <button class="buttonV" mat-button [mat-dialog-close]="popo">Valider</button>
 </div>

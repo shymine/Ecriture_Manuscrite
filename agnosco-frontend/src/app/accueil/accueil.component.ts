@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MydialogComponent } from '../mydialog/mydialog.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
@@ -11,7 +11,6 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 export class AccueilComponent implements OnInit {
 
   public projects;
-  public newProject;
 
   constructor(private router: Router, public dialog: MatDialog) {
     this.projects = [];
@@ -23,23 +22,46 @@ export class AccueilComponent implements OnInit {
     this.projects[0]=["Project 1", ["Document Un", "Document Deux", "Document Trois"]];
     this.projects[1]=["Project 2", ["Document Quatre", "Document Cinq", "Document Six"]];
 
-    this.afficheListe();
-
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(MydialogComponent, {
-      data: {name: this.newProject}
-    });
+    const dialogRef = this.dialog.open(MydialogComponent, {});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
+      if(result) {
+        this.projects.push([result,[]]);
+      }
     });
   }
 
-  afficheListe(){
+  showActions(ev){
+    let el = ev.originalTarget.parentNode.parentNode.lastChild;
+    if(el.hidden) {
+      el.hidden = false;
+    }else {
+      el.hidden = true;
+    }
+  }
 
+  hideActions(ev){
+    let el = ev.originalTarget.lastChild;
+    el.hidden = true;
+  }
+
+  showX(ev) {
+    let el = ev.originalTarget.lastChild;
+    el.hidden = false;
+  }
+
+  hideX(ev) {
+    let el = ev.originalTarget.lastChild;
+    el.hidden = true;
+  }
+
+  deletePro(p) {
+    this.projects.splice(p,1);
   }
 
   goToDecoupe(){

@@ -112,6 +112,33 @@ GREEN #66FF9C RVB 102 255 156
 
 }
 
+.button1List {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: unset;
+}
+
+.buttonList2 {
+    background: none;
+    border: none;
+    color: #666666;
+    font-size: 15px;
+}
+
+.buttonList2:hover {
+    color: #333333;
+}
+
+/* */
+.liList{
+    color: rgb(124, 102, 180);
+}
+
+.liList:hover{
+    color: rgb(79, 56, 138);
+}
+
 /* images */
 
 .images_petit {
