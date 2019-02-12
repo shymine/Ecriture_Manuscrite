@@ -15,6 +15,13 @@ Notre projet étant composé de parties bien distinctes, la mise en place de mod
 \paragraph{}
 Dans notre projet, nous aurons également besoin de représenter les objets avec lesquels nous travaillons. Ainsi, nous avons choisi d'implémenter des classes de données pour représenter les exemples d'apprentissage (\texttt{Example}), les pages des documents utilisés (\texttt{Page}), les-dit documents (\texttt{Document}) et enfin les projets (\texttt{Project}) car on peut imaginer que l'utilisateur puisse vouloir avoir un projet sur des archives paroissiales et un autre sur des textes arabes anciens.
 
+\begin{mdframed}[frametitle={Structure du package de données}, innerbottommargin=10]
+\begin{center}
+\includegraphics[trim={14cm, 0, 6cm, 0} ,scale=0.3, width=200mm]{assets/UML_data.pdf}
+\end{center}
+\end{mdframed}
+
+L'attribut \texttt{Recognizer} est converti en \texttt{String} dans la base de données en passant par un \textit{enum} recensant les différents reconnaiseurs existant.
 
 \section{Contrôleur}
 \subsection{Architecture}
