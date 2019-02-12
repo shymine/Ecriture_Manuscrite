@@ -136,3 +136,42 @@ Des boutons de navigation dans les différentes pages sont également présents 
 \paragraph{Interactions entre le \textit{front-end} et le \textit{back-end}}
 
 L’interface affiche les informations de la base de données (les couples imagettes - transcriptions) et les modifie. Pour ce faire, elle est reliée au connecteur central via sa ressource Rest. Le connecteur traite les demandes de l’IHM et les envoie au connecteur de la base de données. Celui-ci effectue les ordres de l’utilisateur sur la base et renvoie les imagettes et les transcriptions au connecteur central qui les fait suivre à l’IHM. Les modifications (ajout ou modification d’une transcription ou suppression d’un couple) étant enregistrées en temps réel dans la base, il n’y a pas besoin d’un bouton pour enregistrer les modifications à l’issue du travail.
+
+\newpage{}
+
+\paragraph{API Rest}
+Pour communiquer avec le \textit{back-end}, nous utiliserons une API \texttt{Rest} dont les requêtes sont listées ci-dessous.
+\newline{}
+
+\begin{description}[align=left]
+\item [GET] base/getImages/\{project\_id\}/\{doc\_id\}/\{page\_id\}\newline{}
+\begin{itshape}
+Retourne la liste des imagettes et de leurs transcriptions de la page page\_id, du document doc\_id du projet project\_id. Les metadata des imagettes possèdent entre autres un attribut qui indique si les transcriptions ont été réalisées manuellement ou via un reconnaisseur, ainsi qu'un autre indiquant si les transcriptions ont déjà été validées auparavant.
+\end{itshape}
+
+\item [GET] base/getImage/\{project\_id\}/\{doc\_id\}/\{page\_id\}/\{im\_id\}\newline{}
+\begin{itshape}
+Retourne l'imagette im\_id de la page page\_id, du document doc\_id du projet project\_id ainsi que sa transcription.
+\end{itshape}
+
+\item [GET] base/getScan/\{doc\_id\}\newline{}
+\begin{itshape}
+Retourne le scan du document doc\_id. Ceci sera notamment utilisé dans la page de découpe des zones pour afficher l'image des pages entières.
+\end{itshape}
+
+\item [POST] base/setTranscription/\{im\_id\}\newline{}
+\begin{itshape}
+Modifie la transcription de l'imagette im\_id de la page courante.
+\end{itshape}
+
+\item [POST] base/setProjectId/\{doc\_id\}/\{project\_id\}\newline{}
+\begin{itshape}
+Attribue au document\_id (donc à la liste des imagettes de ce document) le numéro de projet project\_id.
+\end{itshape}
+
+\item [POST] base/setHidden/\{im\_id\}\newline{}
+\begin{itshape}
+Ceci est appelé au click sur la croix à droite de l'imagette pour la supprimer de l'apprentissage ou pour l'y réinsérer si elle avait été supprimée précédemment.
+\end{itshape}
+
+\end{description}
