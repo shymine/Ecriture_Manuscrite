@@ -6,7 +6,7 @@ import java.io.IOException
 import java.nio.file.Files
 import java.nio.file.Paths
 
-abstract class DatabaseConnector {
+class DatabaseConnector {
   val DATABASE_NAME = "agnosco"
   val THUMBNAILS_FOLDER = "thumbnails"
 
@@ -19,68 +19,33 @@ abstract class DatabaseConnector {
 
   // Tables creation (if they do not exist)
   createTable(
-    "table_author",
+    "projects",
     "id INTEGER PRIMARY KEY NOT NULL, " +
-    "name VARCHAR(256)")
+    "name VARCHAR(64), " +
+    "recogniser VARCHAR(64)")
 
   createTable(
-    "table_type",
+    "documents",
     "id INTEGER PRIMARY KEY NOT NULL, " +
-    "name VARCHAR(256)")
+    "name VARCHAR(64), " +
+    "projectId INTEGER, " +
+    "FOREIGN KEY(projectId) REFERENCES projects(id)")
 
   createTable(
-    "table_operating_mode",
+    "pages",
     "id INTEGER PRIMARY KEY NOT NULL, " +
-    "name VARCHAR(256)")
+    "imagePath VARCHAR(256), " +
+    "groundTruthPath VARCHAR(256), " +
+    "documentId INTEGER, " +
+    "FOREIGN KEY(documentId) REFERENCES documents(id)")
 
   createTable(
-    "table_recogniser",
+    "examples",
     "id INTEGER PRIMARY KEY NOT NULL, " +
-    "name VARCHAR(256)")
-
-  createTable(
-    "table_document",
-    "id INTEGER PRIMARY KEY NOT NULL, " +
-    "name VARCHAR(256), " +
-    "idAuthor INTEGER, " +
-    "idType INTEGER, " +
-    "idMode INTEGER, " +
-    "dateAdd DATETIME, " +
-    "FOREIGN KEY(idAuthor) REFERENCES table_author(id), " +
-    "FOREIGN KEY(idType) REFERENCES table_type(id), " +
-    "FOREIGN KEY(idMode) REFERENCES table_operating_mode(id)")
-
-  createTable(
-    "table_examples",
-    "id INTEGER PRIMARY KEY NOT NULL, " +
-    "idOwner INTEGER, " +
-    "picture VARCHAR(256), " +
-    "FOREIGN KEY(idOwner) REFERENCES table_document(id)")
-
-  createTable(
-    "table_ground_truth",
-    "id INTEGER PRIMARY KEY NOT NULL, " +
-    "transcript VARCHAR(1024), " +
-    "idExample INTEGER, " +
-    "FOREIGN KEY(idExample) REFERENCES table_examples(id)")
-
-  createTable(
-    "table_user_annotations",
-    "id INTEGER PRIMARY KEY NOT NULL, " +
+    "imagePath VARCHAR(256), " +
     "transcript VARCHAR(256), " +
-    "idExample INTEGER, " +
-    "creationDate DATETIME, " +
-    "FOREIGN KEY(idExample) REFERENCES table_examples(id)")
-
-  createTable(
-    "table_transcriptions",
-    "id INTEGER PRIMARY KEY NOT NULL, " +
-    "transcript VARCHAR(256), " +
-    "idExample INTEGER, " +
-    "idRecognizer INTEGER, " +
-    "creationDate DATETIME, " +
-    "FOREIGN KEY(idExample) REFERENCES table_examples(id), " +
-    "FOREIGN KEY(idRecognizer) REFERENCES table_recogniser(id)")
+    "pageId INTEGER, " +
+    "FOREIGN KEY(pageId) REFERENCES pages(id)")
 
   private def createFolder(folderPath : String) : Unit = {
     val path = Paths.get(folderPath)
