@@ -143,10 +143,77 @@ L’interface affiche les informations de la base de données (les couples image
 Pour communiquer avec le \textit{back-end}, nous utiliserons une API \texttt{Rest} dont les requêtes sont listées ci-dessous.
 \newline{}
 
-% \begin{description}[align=left]
-% \item [GET] base/getImages/\{project\_id\}/\{doc\_id\}/\{page\_id\}\newline{}
-% \begin{itshape}
-% Retourne la liste des imagettes et de leurs transcriptions de la page page\_id, du document doc\_id du projet project\_id. Les metadata des imagettes possèdent entre autres un attribut qui indique si les transcriptions ont été réalisées manuellement ou via un reconnaisseur, ainsi qu'un autre indiquant si les transcriptions ont déjà été validées auparavant.
-% \end{itshape}
+\begin{description}[align=left]
 
-%\end{description}
+\item [Général]
+
+\item [GET] \texttt{/base/projectsAndDocuments}\newline{}
+\begin{itshape}
+Renvoie la liste des noms des projets, contenant pour chaque projet une liste des noms des documents qui le composent.
+\end{itshape}
+
+\item [DELETE] \texttt{/base/deleteDocument/\{name\}}\newline{}
+\begin{itshape}
+Supprime le document de la base qui porte le nom donné, ainsi que son contenu.
+\end{itshape}
+
+\item [GET] \texttt{/base/availableRecognisers}\newline{}
+\begin{itshape}
+Renvoie la liste des noms des reconnaisseurs disponibles sur le serveur.
+\end{itshape}
+
+\item [POST] \texttt{/base/exportRecogniserExamples/\{name\}}\newline{}
+\begin{itshape}
+Récupère tous les exemples de la base qui sont contenus dans des projets utilisant le reconnaisseur dont le nom est passé en paramètre. Les exemples sont triés, ne sont retenus que ceux qui sont définis comme utilisables et validés. Ensuite, ces exemples sont exportés en tant que lot d'entraînement, vers le format d'entrée associé au reconnaisseur en question.
+\end{itshape}
+
+\item [Annotation / Validation]
+
+\item [GET] \texttt{/base/documentPages/\{name\}}\newline{}
+\begin{itshape}
+Renvoie la liste des identifiants en base de données des pages qui composent un document dont le nom est donné en paramètre.
+\end{itshape}
+
+\item [GET] \texttt{/base/pageData/\{id\}}\newline{}
+\begin{itshape}
+Renvoie l'image associée à la page dont l'identifiant est donné en paramètre, ainsi que la liste des imagettes et des transcriptions des exemples qui la composent.
+\end{itshape}
+
+\item [POST] \texttt{/base/saveExampleEdits/}\newline{}
+\begin{itshape}
+Enregistre dans la base de données les modifications de transcriptions décrites par l'objet JSON associé à la requête.
+\end{itshape}
+
+\item [PUT] \texttt{/base/disableExample/\{id\}}\newline{}
+\begin{itshape}
+Rend l'exemple dont l'identifiant est donné en paramètre inutilisable, \textit{i.e.} l'utilisateur juge que l'image est trop parasitée ou que l'exemple n'est pas pertinent.
+\end{itshape}
+
+\item [PUT] \texttt{/base/enableExample/\{id\}}\newline{}
+\begin{itshape}
+Rend l'exemple dont l'identifiant est donné en paramètre utilisable (principalement utilisé pour annuler l'action décrite ci-dessus).
+\end{itshape}
+
+\item [POST] \texttt{/base/validateExamples/}\newline{}
+\begin{itshape}
+Valide tous les exemples dont les identifiants sont fournis dans une liste JSON associée à la requête.
+\end{itshape}
+
+\item [Découpe]
+
+\item [GET] \texttt{/base/documentPagesWithImages/\{name\}}\newline{}
+\begin{itshape}
+Renvoie la liste des identifiants et des images associés aux pages qui composent le document portant le nom donné.
+\end{itshape}
+
+\item [POST] \texttt{/base/addDocumentGroundtruth/\{name\}}\newline{}
+\begin{itshape}
+Ajoute à la base la vérité terrain donnée dans l'objet PiFF (donc JSON) associé à la requête, et l'associe au document dont le nom est donné en paramètre.
+\end{itshape}
+
+\item [GET] \texttt{/base/recogniseImages/\{name\}}\newline{}
+\begin{itshape}
+Envoie la liste des imagettes contenues dans le document donné au reconnaisseur associé au projet contenant ce document. La réponse à cette requête est une liste de transcriptions trouvées par le reconnaisseur.
+\end{itshape}
+
+\end{description}
