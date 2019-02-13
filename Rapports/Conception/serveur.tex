@@ -23,14 +23,6 @@ Dans notre projet, nous aurons également besoin de représenter les objets avec
 
 L'attribut \texttt{Recognizer} est converti en \texttt{String} dans la base de données en passant par un \textit{enum} recensant les différents reconnaisseurs existant.
 
-\section{Contrôleur}
-\subsection{Architecture}
-
-Le rôle du contrôleur est de mettre en relation les 4 parties du projet : le \textit{frontend}, \textit{i.e.} l'interface homme-machine, la base de données, ainsi que le traitement des données. Pour ce faire, nous avons 4 classes abstraites, un connecteur par \textit{package} du projet, chacun possédant des méthodes générales, qui appellent d'autres méthodes de leurs \textit{packages} respectifs. Cela permet d'avoir un objet \texttt{Controller} central qui manipule tous les éléments du projet avec un code très lisible. Nous fournissons une implémentation de chaque connecteur, pour le bon fonctionnement du projet. Une fabrique est également prévue, permettant de choisir l'implémentation des connecteurs de chaque partie sans avoir à modifier le code du connecteur central. En effet, le contrôleur récupèrera les instances des connecteurs à partir de cette fabrique. Cela permet à l'utilisateur de changer d'instance de connecteur en changeant une ligne de code seulement.
-
-\subsection{Interactions}
-\paragraph{}
-Le connecteur central reçoit donc, au travers du connecteur en relation avec le frontend les demandes de l'utilisateur et, afin d'exécuter ces demandes, appelle au travers des connecteurs des autres modules, les méthodes nécessaires. Le \texttt{Controller} sert alors d'intermédiaire entre l'utilisateur et les différents modules. Il permet notamment cette structure modulaire en détachant les appels de méthode des classes réelles qui peuvent alors être changées selon le bon vouloir de l'utilisateur.
 
 %-----------------------------------------------------------------------------------------------------------------------
 \section{Traitement des données}
@@ -57,7 +49,12 @@ La phase de découpe étant automatique, il nous faut faire appel à un détecte
 %-----------------------------------------------------------------------------------------------------------------------
 \section{Base de données}
 
-Le Système de Gestion de Bases de Données (SGBD) choisi est SQLite. Le contenu des tables ainsi que l'UML de ce module du projet ont déjà été imaginés par les membres de l'équipe qui sont en mobilité ce semestre. La bibliothèque Java SQLite, une implémentation de l'API JDBC (Java DataBase Connectivity), nous servira à appeler des commandes SQL directement depuis notre programme. Elle nous est également fournie. Il ne nous reste donc plus qu'à implémenter ce module ainsi qu'à l'intégrer dans le projet.
+Le Système de Gestion de Bases de Données (SGBD) choisi est SQLite. La bibliothèque Java SQLite, une implémentation de l'API JDBC (Java DataBase Connectivity), nous servira à appeler des commandes SQL directement depuis notre programme. Elle nous est également fournie. Il ne nous reste donc plus qu'à implémenter ce module ainsi qu'à l'intégrer dans le projet.
+Il nous faut cependant remanier les relations entre les \texttt{Table} de la base de donnée car en nous concertant avec l'équipe sur l'ergonomie à apporter ainsi que la forme que devaient prendre les données, nous avons remarqué que notre précédente organisation ne pouvait fournir tous les éléments nécessaires. En effet, dans les précédents rapports, la forme que devait prendre l'IHM quand aux données venant du server dont elle aurait besoin était plutôt floue. C'est en se penchant plus en avant lors de ce rapport que nous l'avons donc remarqué.
+
+\subsection{Architecture}
+
+\subsection{Interaction}
 
 Pour ce faire, on utilise une classe (...)
 
@@ -84,4 +81,15 @@ Dans la première version délivrée le 27 Février, la possibilité d'entraîne
 \paragraph{Interactions}
 L'interface avec le reconnaisseur sert de passerelle entre le noyau du projet qui est le connecteur central et le reconnaisseur que l'utilisateur souhaite utiliser. Ainsi, elle reçoit au travers de son propre connecteur (\texttt{AIConnector}) les ensembles d'\texttt{Example} à utiliser pour ses différents usages. L'implémentation de l'interface \texttt{Recognizer} se charge ensuite, de transmettre au reconnaisseur soit sous forme de jar, soit installé sur la machine de l'utilisateur les données d'exemple dans le format approprié. Lorsqu'il reçoit les réponses du reconnaisseur, il les convertit de nouveau en Example qui pourront être manipulés par le logiciel en interne.
 
-%-----------------------------------------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------------------------
+
+\section{Contrôleur}
+\subsection{Architecture}
+
+Le rôle du contrôleur est de mettre en relation les 4 parties du projet : le \textit{frontend}, \textit{i.e.} l'interface homme-machine, la base de données, ainsi que le traitement des données. Pour ce faire, nous avons 4 classes abstraites, un connecteur par \textit{package} du projet, chacun possédant des méthodes générales, qui appellent d'autres méthodes de leurs \textit{packages} respectifs. Cela permet d'avoir un objet \texttt{Controller} central qui manipule tous les éléments du projet avec un code très lisible. Nous fournissons une implémentation de chaque connecteur, pour le bon fonctionnement du projet. Une fabrique est également prévue, permettant de choisir l'implémentation des connecteurs de chaque partie sans avoir à modifier le code du connecteur central. En effet, le contrôleur récupèrera les instances des connecteurs à partir de cette fabrique. Cela permet à l'utilisateur de changer d'instance de connecteur en changeant une ligne de code seulement.
+
+Pour la première version de notre projet, le \texttt{Controller} devra permettre de relier les différents modules au travers de leurs interfaces de connection ainsi que permettre les exécutions des demandes en provenance de l'utilisateur, c'est à dire, le frontend. 
+
+\subsection{Interactions}
+\paragraph{}
+Le connecteur central reçoit donc, au travers du connecteur en relation avec le frontend les demandes de l'utilisateur et, afin d'exécuter ces demandes, appelle au travers des connecteurs des autres modules, les méthodes nécessaires. Le \texttt{Controller} sert alors d'intermédiaire entre l'utilisateur et les différents modules. Il permet notamment cette structure modulaire en détachant les appels de méthode des classes réelles qui peuvent alors être changées selon le bon vouloir de l'utilisateur.
