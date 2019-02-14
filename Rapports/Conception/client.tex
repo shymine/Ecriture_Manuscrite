@@ -3,19 +3,13 @@
 \section{Choix du framework}
 
 \paragraph{}
-Pour réaliser l’interface Web de notre application, nous avons opté pour les technologies \texttt{HTML}, \texttt{CSS} et \href{https://angular.io/}{\texttt{Angular}}.
+Pour réaliser l’interface Web de notre application, nous avons opté pour la technologie \href{https://angular.io/}{\texttt{Angular}}.
 
 \paragraph{}
-\texttt{HTML} nous permettra de réaliser le corps des pages de l’interface, à l’aide de balises définissant les différents éléments de la page pour structurer logiquement le contenu et y inclure des fichiers multimédias, comme des images, par exemple.
+Celui-ci nous servira à gérer l’aspect dynamique de l’application web réalisée en \texttt{HTML} et \texttt{CSS}, comme la navigation d’une page de l’interface à une autre ou le passage de paramètres entre pages. \texttt{Angular} est un framework web développé en \texttt{TypeScript} et est l’un des plus utilisés pour le développement \textit{front-end} des applications web. Les principaux avantages d’\texttt{Angular} sont qu’il est mis à jour très régulièrement par les développeurs de Google, qu’il dispose d’une très bonne documentation et que le développement en \texttt{TypeScript} est stable, rapide et facile.
 
 \paragraph{}
-Avec le \texttt{CSS}, nous définirons la mise en forme et l’aspect graphique des pages \texttt{HTML}, soit l’agencement des éléments, leurs couleurs, leurs tailles et les polices de caractère.
-
-\paragraph{}
-Quant à \texttt{Angular}, il nous servira à gérer l’aspect dynamique de l’application web, comme la navigation d’une page de l’interface à une autre ou le passage de paramètres entre pages. \texttt{Angular} est un framework web développé en \texttt{TypeScript}, ce qui en fait l’un des plus utilisés pour le développement \textit{front-end} des applications web. Les principaux avantages d’\texttt{Angular} sont qu’il est mis à jour très régulièrement par les développeurs de Google, qu’il dispose d’une très bonne documentation et que le développement en \texttt{TypeScript} est stable, rapide et facile.
-
-\paragraph{}
-Ce sont des technologies largement utilisées par les développeurs et relativement simples d’utilisation. En outre, nous avons déjà été amenés à les utiliser dans des projets précédents, nous partons donc avec des bases. Nous avons fait le choix de la simplicité et de l’utilisation de technologies que nous avons déjà abordées afin de faciliter et d’accélérer la réalisation de l’interface, pour être en mesure de proposer un prototype fonctionnel pour la première itération le 27 février.
+\texttt{Angular}, \texttt{HTML} et \texttt{CSS} sont des technologies largement utilisées par les développeurs et relativement simples d’utilisation. En outre, nous avons déjà été amenés à les utiliser dans des projets précédents, nous partons donc avec des bases. Nous avons fait le choix de la simplicité et de l’utilisation de technologies que nous avons déjà abordées afin de faciliter et d’accélérer la réalisation de l’interface, pour être en mesure de proposer un prototype fonctionnel pour la première itération le 27 février.
 
 %-------------------------------------------------------------------------------
 \section{Les différents composants de l'interface}
@@ -36,7 +30,7 @@ La page d’accueil permet à l’utilisateur de choisir le projet sur lequel il
 \paragraph{}
 La page de validation (spécifications \textit{PVAL\_1} à \textit{PVAL\_7}), comme son nom l’indique, permet de valider ou d’invalider les transcriptions de la base de données relatives au document ouvert (\textit{PEA\_GEN\_1}). Ces transcriptions ayant été réalisées par des humains, elles sont considérées comme vraies et l’utilisateur pourrait les invalider seulement s’il manque des mots ou si l’imagette est jugée peu pertinente pour l’apprentissage (par exemple, si le texte est presque illisible ou si l’imagette ne contient pas de texte du tout).
 \newline{}
-Pour ce faire, les imagettes sont affichées les unes à la suite des autres et chacune possède sa transcription située dans une zone de texte en dessous. Les imagettes sont affichées par groupe de cinq ou six. Une croix à côté de chaque imagette permet à l’utilisateur d’invalider le couple imagette-transcription correspondant. Un simple appui sur la touche \texttt{Entrée} valide l’ensemble des couples affichés sur la page, afin de permettre à l’utilisateur de réaliser la validation le plus rapidement possible . Des flèches gauche et droite permettent de se déplacer dans les groupes d’imagettes pour parcourir l’ensemble des pages du document. Enfin, une icône en haut à gauche renvoie à la page d’accueil.
+Pour ce faire, les imagettes sont affichées les unes à la suite des autres et chacune possède sa transcription située dans une zone de texte en dessous. Les imagettes sont affichées par groupe de cinq ou six. Une croix à côté de chaque imagette permet à l’utilisateur d’invalider le couple imagette-transcription correspondant. Un simple appui sur la touche \texttt{Entrée} valide l’ensemble des couples affichés sur la page, afin de permettre à l’utilisateur de réaliser la validation le plus rapidement possible. Des flèches gauche et droite permettent de se déplacer dans les groupes d’imagettes pour parcourir l’ensemble des pages du document. Enfin, une icône en haut à gauche renvoie à la page d’accueil.
 
 \begin{mdframed}[frametitle={Figure 2 : Maquette de la page de validation des annotations}, innerbottommargin=10]
 \begin{center}
