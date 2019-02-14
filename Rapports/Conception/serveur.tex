@@ -7,7 +7,7 @@ Ce projet a pour but de fournir un programme permettant de concevoir des bases d
 Le serveur de ce projet est composé de trois principaux modules représentant les différents besoins du projet. Ainsi, il nous faut traiter les données d'entrées fournies par l'utilisateur sous la forme d'un document scanné et possiblement d'une vérité terrain afin de les transformer en données utilisables par les reconnaisseurs. Il nous faut également pouvoir stocker les bases d'apprentissage qui constituent le coeur de notre projet. Enfin, ces bases ne serviraient à rien s'il n'était pas possible d'interfacer notre projet avec le reconnaisseur de l'utilisateur.
 
 Notre projet étant composé de parties bien distinctes, la mise en place de modules indépendants et pouvant être remplacés par l'utilisateur n'a donc pas posé de problèmes. Nous avons donc créé une structure constituée des différents packages correspondant aux fonctionnalités ainsi qu'une interface faisant le lien entre tous. De cette manière, chaque partie est détachée de l'ensemble global et l'interface centrale qu'on appellera \texttt{Controller} fera appel aux méthodes nécessaires des différents packages afin de répondre aux demandes de l'utilisateur. Les packages auront alors une interface à implémenter permettant une utilisation indépendante de l'implémentation.
-
+\newpage
 \begin{mdframed}[frametitle={Architecture des modules avec le connecteur}, innerbottommargin=10]
 \begin{center}
 \includegraphics[trim={10cm, 0, 6cm, 0} ,scale=0.25]{assets/UML_connecteur.pdf}
@@ -19,7 +19,7 @@ Dans notre projet, nous aurons également besoin de représenter les objets avec
 
 \begin{mdframed}[frametitle={Structure du package de données}, innerbottommargin=10]
 \begin{center}
-\includegraphics[scale=0.5]{assets/UML_data.pdf}
+\includegraphics[scale=0.3]{assets/UML_data.pdf}
 \end{center}
 \end{mdframed}
 
@@ -56,7 +56,6 @@ Il nous faut cependant remanier les relations entre les tables de la base de don
 
 La nouvelle base de données se base sur les classes de données présentées dans la première partie. Elles sont donc composées d'une table \texttt{Projects} qui contient les projets existants ainsi que le \texttt{Recogniser} associé. Celui-ci est représenté sous la forme d'une \texttt{String} car un \textit{enum} sera mis en place afin de constituer les différents reconnaisseurs possibles et qu'on peut restorer l'\textit{enum} facilement à partir d'un \texttt{String}. Une autre table \texttt{Documents} représente les différents documents qui constituent notre base, par exemple, \textit{"Archives paroissiales de 1870-1872"}. Ceux-ci sont donc représentés par un nom et sont liés à un \texttt{Project}. Une troisième table nous permet de conserver les \texttt{Pages} des \texttt{Documents}. Elles sont donc liées à une image (le scan de la page) et à une vérité terrain (la description de l'image) qui sont stockées au travers de leur chemin dans le système de fichier pour les raisons expliquées dans les rapports précédents. Les \texttt{Pages} sont également associées au \texttt{Document} dont elles sont issues. Enfin, une dernière table \texttt{Examples} stocke les \textit{exemples} générés par la découpe. Ils sont constitués du chemin vers l'imagette correspondante ainsi que la transcription de celle-ci sachant que cette transcription peut être nulle dans le cas où on souhaite utiliser le \textit{reconnaisseur} pour proposer une transcription ou quand la vérité terrain n'a pas été fournie et qu'il faut la construire. Les \texttt{Examples} sont également liés à la \texttt{Page} d'où ils ont été découpés.
 
-\newpage
 \begin{mdframed}[frametitle={Structure de la base de données}, innerbottommargin=10]
 \begin{center}
 \includegraphics[scale=0.5]{assets/DatabaseEntity.pdf}
