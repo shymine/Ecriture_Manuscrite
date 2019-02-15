@@ -1,5 +1,7 @@
 \chapter{Serveur}
 
+Notre serveur est comme expliqué précédemment divisé en plusieurs modules : un module de traitement des données d'entrée, un module de gestion de la base de données contenant les différents projets sur lesquels travaille l'utilisateur, l'interface avec le reconnaisseur d'écriture manuscrite, ainsi que le contrôleur qui permet de diriger ces sous-parties du logiciel.
+
 %-----------------------------------------------------------------------------------------------------------------------
 \section{Traitement des données}
 
@@ -22,8 +24,8 @@ Pour la découpe d'image, il nous faut une classe \texttt{ImageProcessing}, qui 
 \paragraph{}
 La phase de découpe étant automatique, il nous faut faire appel à un détecteur de lignes. C'est la fonction du \textit{package} \texttt{linedetection}. Nous y plaçons une interface \texttt{LineDetector}, qui permet de trouver les lignes de texte dans un objet PiFF (spécification \textit{PR\_TR\_1}). Le détecteur de lignes utilisé pour le projet est fourni par l'encadrant, et fonctionne sous Linux. Les membres du groupe peuvent pourtant travailler sous Windows ou macOS. Pour faciliter le développement du logiciel, nous avons donc choisi de fournir une implémentation, la classe \texttt{BlurLineDetector} (nom dû à la méthode de détection), basée sur des connexions réseau, afin de pouvoir faire fonctionner le serveur sous n'importe quel système d'exploitation, avec un petit module serveur sous Linux qui appelle simplement l'exécutable. Ce petit module ne fait pas partie du cahier des charges mais sera développé pour les tests. L'utilisateur, ici aussi, pourra rajouter ses propres méthodes de détection de lignes s'il le souhaite.
 
-\paragraph{Version}
-Cette partie du projet sera intégralement développée pour la première itération. En effet, on a besoin des fonctionnalités de découpe d'image et de traitement des vérités terrain dès la première version que nous avons définie.
+\paragraph{Planification}
+Cette partie du projet sera intégralement développée pour la première itération. En effet, on a besoin des fonctionnalités de découpe d'image et de traitement des vérités terrain dès la première itération que nous avons définie.
 
 %----------------------------------------------------------------------------------------------------------------------
 \section{Base de données}
@@ -52,7 +54,7 @@ Le module de la base de données est constitué d'une interface représentant ce
 \end{center}
 \end{mdframed}
 
-\paragraph{Version}
+\paragraph{Planification}
 Comme l'ensemble des méthodes de la base de données sont nécessaires pour les appels de l'API REST, toute la classe devra être implémentée. L'ensemble des tables qu'elle manipule seront aussi créées. Pour la seconde itération de notre projet, de nouvelles méthodes ne seront pas nécessaires comme nous réutiliserons celles déjà créées pour les ajouts de méthodes dans le \texttt{contrôleur}. En revanche, pour cette seconde partie, le serveur et le client pouvant être sur des machines distinctes, nous devrons envisager un envoi des images au client, et non pas seulement des chemins de fichiers. La solution technique exacte n'est pas encore fixée, nous y réfléchissons en se basant sur les conseils de nos encadrants, qui ont eu des situations similaires dans leurs projets professionnels.
 
 %-----------------------------------------------------------------------------------------------------------------------
@@ -72,8 +74,9 @@ Cette partie du projet contient comme toutes les autres un connecteur qui la lie
 \newline{}
 Le reconnaisseur est représenté par une interface \texttt{Recogniser} qui permet trois actions possibles : entraîner le reconnaisseur à partir d'un ensemble d'apprentissage, évaluer ce même reconnaisseur sur un ensemble de validation, et enfin, lui demander de transcrire un ensemble non étiqueté. Ces fonctions ont été construites afin de répondre aux spécifications \textit{IR\_AP}, \textit{IR\_EV} ainsi que \textit{IR\_TR}.
 Cette interface permet notamment à l'utilisateur de connecter son propre reconnaisseur, et même s'il le souhaite, d'en créer un au sein de l'application. Elle est également la seule qu'il est obligé d'implémenter pour faire fonctionner l'ensemble. Cependant, il faut dans certains cas convertir les données dans la base de données en données compréhensibles par le reconnaisseur. Ainsi, deux autres interfaces sont nécessaires : une interface \texttt{Converter} permettant la conversion des données entrantes et sortantes du reconnaisseur (\textit{IR\_CV}) ainsi qu'une classe abstraite \texttt{ConverterRecogniser} héritant de \texttt{Recogniser} et possédant un convertisseur adapté au reconnaisseur utilisé. En effet, le reconnaisseur peut avoir besoin d'un formatage des images en entrée, mais également de la transcription associée. Par exemple, nous implémenterons la structure décrite précédemment pour un reconnaisseur particulier : \href{https://github.com/jpuigcerver/Laia}{Laia}. Ce reconnaisseur demande de transformer les images afin qu'elles aient la même hauteur en pixels, et que la transcription soit traduite dans les symboles qu'il peut reconnaître et organisée d'une certaine façon. Par exemple, il faut remplacer les ' ' par '<space>' et que l'identifiant de l'image correspondante à la transcription soit indiqué avant celle-ci dans un fichier. Le convertisseur va donc se charger de mettre en forme les données et de créer ce qui est nécessaire.
-\paragraph{Version}
-Dans la première version délivrée le 27 Février, la possibilité d'entraîner le reconnaisseur doit être implémentée ainsi que celle de changer de reconnaisseur. Dans un second temps, il sera possible de faire transcrire les imagettes par le reconnaisseur et de faire l'évaluation de celui-ci. Les données remontées lors de l'évaluation sont laissées libres à l'utilisateur puis la fonction rend un objet non défini à l'avance qui sera sous la forme d'un \textit{JSON} et qui contiendra les informations choisies par l'utilisateur dans son implémentation. Il pourra alors obtenir le nombre et la fréquence des erreurs, sur quelles lettres celles-ci surviennent et ainsi de suite.
+
+\paragraph{Planification}
+Dans la première itération délivrée le 27 Février, la possibilité d'entraîner le reconnaisseur doit être implémentée ainsi que celle de changer de reconnaisseur. Dans un second temps, il sera possible de faire transcrire les imagettes par le reconnaisseur et de faire l'évaluation de celui-ci. Les données remontées lors de l'évaluation sont laissées libres à l'utilisateur puis la fonction rend un objet non défini à l'avance qui sera sous la forme d'un \textit{JSON} et qui contiendra les informations choisies par l'utilisateur dans son implémentation. Il pourra alors obtenir le nombre et la fréquence des erreurs, sur quelles lettres celles-ci surviennent et ainsi de suite.
 
 %----------------------------------------------------------------------------------------------------------
 
@@ -82,7 +85,7 @@ Dans la première version délivrée le 27 Février, la possibilité d'entraîne
 
 Le rôle du contrôleur est de mettre en relation les 4 parties du projet : le \textit{client}, \textit{i.e.} l'interface homme-machine, la base de données, ainsi que le traitement des données. Pour ce faire, nous avons 4 classes abstraites, un connecteur par \textit{package} du projet, chacun possédant des méthodes générales, qui appellent d'autres méthodes de leurs \textit{packages} respectifs. Cela permet d'avoir un objet \texttt{Controller} central qui manipule tous les éléments du projet avec un code très lisible. Nous fournissons une implémentation de chaque connecteur, pour le bon fonctionnement du projet. Une fabrique est également prévue, permettant de choisir l'implémentation des connecteurs de chaque partie sans avoir à modifier le code du connecteur central. En effet, le contrôleur récupèrera les instances des connecteurs à partir de cette fabrique. Cela permet à l'utilisateur de changer d'instance de connecteur en changeant une ligne de code seulement.
 
-Pour la première version de notre projet, le \texttt{Controller} devra permettre de relier les différents modules au travers de leurs interfaces de connection ainsi que permettre les exécutions des demandes en provenance de l'utilisateur, c'est à dire le client. 
+Pour la première itération de notre projet, le \texttt{Controller} devra permettre de relier les différents modules au travers de leurs interfaces de connection ainsi que permettre les exécutions des demandes en provenance de l'utilisateur, c'est à dire le client. 
 
 \subsection{Interactions}
 \paragraph{}
