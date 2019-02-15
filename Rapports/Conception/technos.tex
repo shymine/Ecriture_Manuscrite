@@ -27,8 +27,14 @@ Dans notre projet, nous aurons également besoin de représenter les objets avec
 
 L'attribut \texttt{Recogniser} est converti en \texttt{String} dans la base de données en passant par un \textit{enum} recensant les différents reconnaisseurs existants. Ces classes de données sont liées à la structure de la base de données et seront donc expliquées plus profondément dans cette partie.
 
-\section{Technologies}
+\section{Interactions}
 
+Avant d'aller plus en avant dans le projet, il est important de comprendre comment les données circulent au sein de l'application. 
+
+\paragraph{}
+Tout d'abord, l'utilisateur choisi en entrée la page avec lequel il souhaite travailler qui est déjà enregistrée dans la base de données mais qui n'a pas été traitée. La page qui est associé à une vérité terrain passe alors dans le module Préparation des données afin d'être découpée en imagette et de lier à celles-ci la transcription correspondante. Une fois cela effectué, les examples ainsi générés vont être stockés dans la base de données en étant indiqués comme non validés. L'utilisateur va ensuite pouvoir valider les ensembles d'examples ainsi générés, et une fois que ceux-ci ont été validés, ils sont envoyés au reconnaisseur qui va les utiliser comme ensemble d'entrainement.
+
+\section{Technologies}
 
 
 \subsection{Serveur}
