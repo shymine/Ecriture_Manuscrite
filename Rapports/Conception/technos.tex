@@ -11,6 +11,18 @@ Le serveur étant un ensemble de modules, chaque module utilise une technologie 
 
 Pour gérer la découpe des images, nous avons décidé d'utiliser la bibliothèque OpenCV car celle-ci fournit des outils de découpe et de traitement d'image adaptés à ce que nous souhaitions faire.
 
+\subsection{Stockage des données}
+
+Pour stocker les données, nous avions décidé de nous orienter vers un système de gestion de base de données. Nous avions décider, par simplicité et du fait que peu de contraintes (demandes d'accès simultanés, lourd nombre d'image) allaient s'imposer à ce système, de choisir un gestionnaire de base de données n'utilisant pas de serveur et local. Ce qui nous a fait porter notre choix sur Sqlite qui est une technologie simple d'utilisation avec une bibliothèque d'interfacage avec java facile à prendre en main.
+
+\subsection{API Rest}
+
+Ayant fait le choix d'utiliser un client Web, nous avons alors du réfléchir à developper une API Rest afin que le client puisse effectuer ses requêtes sur le serveur. Il nous fallait tout d'abord établir un serveur qui serait en mesure de recevoir des requêtes Http en provenance du client. Notre choix s'est alors porté sur Grizzly et Jersey que nous avons utilisé dans un projet précédent en java. Il nous fallait également de quoi construire et déconstruire nos objects locaux au serveur en json afin de pourvoir les transmettre au client. Nous avons alors choisi d'utiliser la bibliothèque org.json qui répond à ces problèmes.
+
+\subsection{Interface avec le reconnaisseur}
+
+Nous avons décidé de permettre à l'utilisateur d'utiliser un reconnaisseur afin de proposer une première transcription des imagettes afin de permettre plus d'ergonomie dans l'utilisation de l'application. Pour cela, il nous a été proposé d'utiliser Laia qui est un système de reconnaissance d'écriture manuscrite
+
 \section{Client}
 
 Concernant le client, nous avons opté pour une application Web afin de permettre une évolution vers un possible contexte multiutilisateur dans le cas où notre projet serait deployé sur un serveur distant et d'où les utilisateurs y accèderaient au travers d'une page web. De nombreux framework web existent et nous avons choisi d'utiliser Angular7, soit la dernière version de celui-ci. Nous avions déjà utilisé ce framework durant un projet précédent ce qui ne nous obligeait pas à réapprendre un nouvel outil, mais à consolider les bases que nous avions dessus afin d'avoir au plus vite une version fonctionnelle. De plus, il possède une bonne documentation et de nombreux guides existent.
