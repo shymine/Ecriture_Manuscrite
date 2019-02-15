@@ -1,25 +1,127 @@
 \chapter{Client}
 
-\section{Choix du framework}
+\section{La communication client-serveur via l'API \texttt{REST}}
 
 \paragraph{}
-Pour réaliser l’interface Web de notre application, nous avons opté pour la technologie \href{https://angular.io/}{\texttt{Angular}}.
+Les communications entre le client et le serveur se feront via des appels à une API \texttt{REST} dont nous définissons les différentes requêtes dans la liste ci-dessous. Chaque composant du client nécessitant des requêtes \texttt{REST} différentes, la liste est donc organisée par composant et l'organisation des appels sera détaillée par la suite.
+\newline{}
 
-\paragraph{}
-Celle-ci nous servira à gérer l’aspect dynamique de l’application web réalisée en \texttt{HTML} et \texttt{CSS}, comme la navigation d’une page de l’interface à une autre ou le passage de paramètres entre pages. \texttt{Angular} est un framework web développé en \texttt{TypeScript} et est l’un des plus utilisés pour le développement \textit{front-end} des applications web. Les principaux avantages d’\texttt{Angular} sont qu’il est mis à jour très régulièrement par les développeurs de Google, qu’il dispose d’une très bonne documentation, et que le développement en \texttt{TypeScript} est stable, rapide et facile.
+\begin{description}[align=left]
 
-\paragraph{}
-\texttt{Angular}, \texttt{HTML} et \texttt{CSS} sont des technologies largement utilisées par les développeurs et relativement simples d’utilisation. En outre, nous avons déjà été amenés à les utiliser dans des projets précédents, nous partons donc avec des bases. Nous avons fait le choix de la simplicité et de l’utilisation de technologies que nous avions déjà abordées afin de faciliter et d’accélérer la réalisation de l’interface, pour être en mesure de proposer un prototype fonctionnel pour la première itération le 27 février.
+\item [Général]
+
+\item [GET] \texttt{/base/projectsAndDocuments}\newline{}
+\begin{itshape}
+Renvoie la liste des noms des projets, contenant pour chaque projet une liste des noms des documents qui le composent.
+\end{itshape}
+
+\item [DELETE] \texttt{/base/deleteDocument/\{name\}}\newline{}
+\begin{itshape}
+Supprime le document de la base qui porte le nom donné, ainsi que son contenu.
+\end{itshape}
+
+\item [GET] \texttt{/base/availableRecognisers}\newline{}
+\begin{itshape}
+Renvoie la liste des noms des reconnaisseurs disponibles sur le serveur.
+\end{itshape}
+
+\item [POST] \texttt{/base/exportRecogniserExamples/\{name\}}\newline{}
+\begin{itshape}
+Récupère tous les exemples de la base qui sont contenus dans des projets utilisant le reconnaisseur dont le nom est passé en paramètre. Les exemples sont triés, ne sont retenus que ceux qui sont définis comme utilisables et validés. Ensuite, ces exemples sont exportés en tant que lot d'entraînement, vers le format d'entrée associé au reconnaisseur en question.
+\end{itshape}
+
+\item [Annotation / Validation]
+
+\item [GET] \texttt{/base/documentPages/\{name\}}\newline{}
+\begin{itshape}
+Renvoie la liste des identifiants en base de données des pages qui composent un document dont le nom est donné en paramètre.
+\end{itshape}
+
+\item [GET] \texttt{/base/pageData/\{id\}}\newline{}
+\begin{itshape}
+Renvoie l'image associée à la page dont l'identifiant est donné en paramètre, ainsi que la liste des imagettes et des transcriptions des exemples qui la composent.
+\end{itshape}
+
+\item [POST] \texttt{/base/saveExampleEdits/}\newline{}
+\begin{itshape}
+Enregistre dans la base de données les modifications de transcriptions décrites par l'objet JSON associé à la requête.
+\end{itshape}
+
+\item [PUT] \texttt{/base/disableExample/\{id\}}\newline{}
+\begin{itshape}
+Rend l'exemple dont l'identifiant est donné en paramètre inutilisable, \textit{i.e.} l'utilisateur juge que l'image est trop parasitée ou que l'exemple n'est pas pertinent.
+\end{itshape}
+
+\item [PUT] \texttt{/base/enableExample/\{id\}}\newline{}
+\begin{itshape}
+Rend l'exemple dont l'identifiant est donné en paramètre utilisable (principalement utilisé pour annuler l'action décrite ci-dessus).
+\end{itshape}
+
+\item [POST] \texttt{/base/validateExamples/}\newline{}
+\begin{itshape}
+Valide tous les exemples dont les identifiants sont fournis dans une liste JSON associée à la requête.
+\end{itshape}
+
+\item [Découpe]
+
+\item [GET] \texttt{/base/documentPagesWithImages/\{name\}}\newline{}
+\begin{itshape}
+Renvoie la liste des identifiants et des images associés aux pages qui composent le document portant le nom donné.
+\end{itshape}
+
+\item [POST] \texttt{/base/addDocumentGroundtruth/\{name\}}\newline{}
+\begin{itshape}
+Ajoute à la base la vérité terrain donnée dans l'objet PiFF (donc JSON) associé à la requête, et l'associe au document dont le nom est donné en paramètre.
+\end{itshape}
+
+\item [GET] \texttt{/base/recogniseImages/\{name\}}\newline{}
+\begin{itshape}
+Envoie la liste des imagettes contenues dans le document donné au reconnaisseur associé au projet contenant ce document. La réponse à cette requête est une liste de transcriptions trouvées par le reconnaisseur.
+\end{itshape}
+
+\end{description}
 
 %-------------------------------------------------------------------------------
+
 \section{Les différents composants de l'interface}
+
+\paragraph{}
+\texttt{Angular} permet d'organiser les interfaces web par composants. Notre interface ne contiendra que des composants indépendants interagissant les uns avec les autres. Tous les composants seront regroupés dans le composant de \textit{routing} \texttt{app-root}.
 
 \subsection{Première itération}
 
 Pour la première itération, l’interface est réduite à sa forme la plus simple qui répond au cahier des charges, à savoir ouvrir un document de travail et valider ou invalider les transcriptions. L’IHM aura donc deux composants : la page d’accueil et la page de validation des annotations.
 
+
+
+\item [Général]
+
+\item [GET] \texttt{/base/projectsAndDocuments}\newline{}
+\begin{itshape}
+Renvoie la liste des noms des projets, contenant pour chaque projet une liste des noms des documents qui le composent.
+\end{itshape}
+
+\item [POST] \texttt{/base/createNewProject/\{project\_name\}}
+
+\item [DELETE] \texttt{/base/deleteDocument/\{name\}}\newline{}
+\begin{itshape}
+Supprime le document de la base qui porte le nom donné, ainsi que son contenu.
+\end{itshape}
+
+\item [GET] \texttt{/base/availableRecognisers}\newline{}
+\begin{itshape}
+Renvoie la liste des noms des reconnaisseurs disponibles sur le serveur.
+\end{itshape}
+
+\item [POST] \texttt{/base/exportRecogniserExamples/\{name\}}\newline{}
+\begin{itshape}
+Récupère tous les exemples de la base qui sont contenus dans des projets utilisant le reconnaisseur dont le nom est passé en paramètre. Les exemples sont triés, ne sont retenus que ceux qui sont définis comme utilisables et validés. Ensuite, ces exemples sont exportés en tant que lot d'entraînement, vers le format d'entrée associé au reconnaisseur en question.
+\end{itshape}
+
+
 \paragraph{}
-La page d’accueil permet à l’utilisateur de choisir le projet sur lequel il veut travailler, ainsi que d'en créer de nouveaux en choisissant les documents qui le composent. Un projet possède plusieurs documents qui possèdent eux-mêmes plusieurs pages contenant les imagettes (\textit{PEA\_GEN\_6}). Cette page possède une liste des projets qui ont été ouverts auparavant dans l’application, ainsi qu’un bouton pour en créer un nouveau. Un clic sur ce bouton ouvre une nouvelle fenêtre pour que l’utilisateur parcoure ses documents et fasse son choix (spécifications \textit{PEA\_GEN\_7} et \textit{PEA\_GEN\_8}).
+La page d’accueil permet à l’utilisateur de choisir le projet sur lequel il veut travailler, ainsi que d'en créer de nouveaux en choisissant les documents qui le composent. Pour afficher la liste des projets existants, le composant appellera la requête \texttt{GET} \texttt{/base/projectsAndDocuments}
+Un projet possède plusieurs documents qui possèdent eux-mêmes plusieurs pages contenant les imagettes (\textit{PEA\_GEN\_6}). Cette page possède une liste des projets qui ont été ouverts auparavant dans l’application, ainsi qu’un bouton pour en créer un nouveau. Un clic sur ce bouton ouvre une nouvelle fenêtre pour que l’utilisateur parcoure ses documents et fasse son choix (spécifications \textit{PEA\_GEN\_7} et \textit{PEA\_GEN\_8}).
 
 \newpage{}
 \begin{mdframed}[frametitle={Figure 1 : Maquette de la page d'accueil de l'IHM}, innerbottommargin=10]
@@ -27,6 +129,41 @@ La page d’accueil permet à l’utilisateur de choisir le projet sur lequel il
 \includegraphics[scale=0.04]{assets/maquetteIHMaccueil.jpg}
 \end{center}
 \end{mdframed}
+
+
+
+\item [Annotation / Validation]
+
+\item [GET] \texttt{/base/documentPages/\{name\}}\newline{}
+\begin{itshape}
+Renvoie la liste des identifiants en base de données des pages qui composent un document dont le nom est donné en paramètre.
+\end{itshape}
+
+\item [GET] \texttt{/base/pageData/\{id\}}\newline{}
+\begin{itshape}
+Renvoie l'image associée à la page dont l'identifiant est donné en paramètre, ainsi que la liste des imagettes et des transcriptions des exemples qui la composent.
+\end{itshape}
+
+\item [POST] \texttt{/base/saveExampleEdits/}\newline{}
+\begin{itshape}
+Enregistre dans la base de données les modifications de transcriptions décrites par l'objet JSON associé à la requête.
+\end{itshape}
+
+\item [PUT] \texttt{/base/disableExample/\{id\}}\newline{}
+\begin{itshape}
+Rend l'exemple dont l'identifiant est donné en paramètre inutilisable, \textit{i.e.} l'utilisateur juge que l'image est trop parasitée ou que l'exemple n'est pas pertinent.
+\end{itshape}
+
+\item [PUT] \texttt{/base/enableExample/\{id\}}\newline{}
+\begin{itshape}
+Rend l'exemple dont l'identifiant est donné en paramètre utilisable (principalement utilisé pour annuler l'action décrite ci-dessus).
+\end{itshape}
+
+\item [POST] \texttt{/base/validateExamples/}\newline{}
+\begin{itshape}
+Valide tous les exemples dont les identifiants sont fournis dans une liste JSON associée à la requête.
+\end{itshape}
+
 
 \paragraph{}
 La page de validation (spécifications \textit{PVAL\_1} à \textit{PVAL\_7}), comme son nom l’indique, permet de valider ou d’invalider les transcriptions de la base de données relatives au document ouvert (\textit{PEA\_GEN\_1}). Ces transcriptions ayant été réalisées par des humains, elles sont considérées comme vraies, et l’utilisateur pourrait les invalider seulement s’il manque des mots, ou si l’imagette est jugée peu pertinente pour l’apprentissage (par exemple, si le texte est presque illisible ou si l’imagette ne contient pas de texte du tout).
@@ -134,81 +271,3 @@ L’interface affiche les informations de la base de données (les couples image
 
 \newpage{}
 
-\paragraph{API REST}
-Pour communiquer avec le \textit{back-end}, nous utiliserons une API \texttt{REST} dont les requêtes sont listées ci-dessous.
-\newline{}
-
-\begin{description}[align=left]
-
-\item [Général]
-
-\item [GET] \texttt{/base/projectsAndDocuments}\newline{}
-\begin{itshape}
-Renvoie la liste des noms des projets, contenant pour chaque projet une liste des noms des documents qui le composent.
-\end{itshape}
-
-\item [DELETE] \texttt{/base/deleteDocument/\{name\}}\newline{}
-\begin{itshape}
-Supprime le document de la base qui porte le nom donné, ainsi que son contenu.
-\end{itshape}
-
-\item [GET] \texttt{/base/availableRecognisers}\newline{}
-\begin{itshape}
-Renvoie la liste des noms des reconnaisseurs disponibles sur le serveur.
-\end{itshape}
-
-\item [POST] \texttt{/base/exportRecogniserExamples/\{name\}}\newline{}
-\begin{itshape}
-Récupère tous les exemples de la base qui sont contenus dans des projets utilisant le reconnaisseur dont le nom est passé en paramètre. Les exemples sont triés, ne sont retenus que ceux qui sont définis comme utilisables et validés. Ensuite, ces exemples sont exportés en tant que lot d'entraînement, vers le format d'entrée associé au reconnaisseur en question.
-\end{itshape}
-
-\item [Annotation / Validation]
-
-\item [GET] \texttt{/base/documentPages/\{name\}}\newline{}
-\begin{itshape}
-Renvoie la liste des identifiants en base de données des pages qui composent un document dont le nom est donné en paramètre.
-\end{itshape}
-
-\item [GET] \texttt{/base/pageData/\{id\}}\newline{}
-\begin{itshape}
-Renvoie l'image associée à la page dont l'identifiant est donné en paramètre, ainsi que la liste des imagettes et des transcriptions des exemples qui la composent.
-\end{itshape}
-
-\item [POST] \texttt{/base/saveExampleEdits/}\newline{}
-\begin{itshape}
-Enregistre dans la base de données les modifications de transcriptions décrites par l'objet JSON associé à la requête.
-\end{itshape}
-
-\item [PUT] \texttt{/base/disableExample/\{id\}}\newline{}
-\begin{itshape}
-Rend l'exemple dont l'identifiant est donné en paramètre inutilisable, \textit{i.e.} l'utilisateur juge que l'image est trop parasitée ou que l'exemple n'est pas pertinent.
-\end{itshape}
-
-\item [PUT] \texttt{/base/enableExample/\{id\}}\newline{}
-\begin{itshape}
-Rend l'exemple dont l'identifiant est donné en paramètre utilisable (principalement utilisé pour annuler l'action décrite ci-dessus).
-\end{itshape}
-
-\item [POST] \texttt{/base/validateExamples/}\newline{}
-\begin{itshape}
-Valide tous les exemples dont les identifiants sont fournis dans une liste JSON associée à la requête.
-\end{itshape}
-
-\item [Découpe]
-
-\item [GET] \texttt{/base/documentPagesWithImages/\{name\}}\newline{}
-\begin{itshape}
-Renvoie la liste des identifiants et des images associés aux pages qui composent le document portant le nom donné.
-\end{itshape}
-
-\item [POST] \texttt{/base/addDocumentGroundtruth/\{name\}}\newline{}
-\begin{itshape}
-Ajoute à la base la vérité terrain donnée dans l'objet PiFF (donc JSON) associé à la requête, et l'associe au document dont le nom est donné en paramètre.
-\end{itshape}
-
-\item [GET] \texttt{/base/recogniseImages/\{name\}}\newline{}
-\begin{itshape}
-Envoie la liste des imagettes contenues dans le document donné au reconnaisseur associé au projet contenant ce document. La réponse à cette requête est une liste de transcriptions trouvées par le reconnaisseur.
-\end{itshape}
-
-\end{description}
