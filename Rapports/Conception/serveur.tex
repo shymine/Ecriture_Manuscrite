@@ -49,6 +49,7 @@ Pour la découpe d'image, il nous faut une classe \texttt{ImageProcessing}, qui 
 La phase de découpe étant automatique, il nous faut faire appel à un détecteur de lignes. C'est la fonction du \textit{package} \texttt{linedetection}. Nous y plaçons une interface \texttt{LineDetector}, qui permet de trouver les lignes de texte dans un objet PiFF (spécification \textit{PR\_TR\_1}). Le détecteur de lignes utilisé pour le projet est fourni par l'encadrant, et fonctionne sous Linux. Les membres du groupe peuvent pourtant travailler sous Windows ou macOS. Pour faciliter le développement du logiciel, nous avons donc choisi de fournir une implémentation, la classe \texttt{BlurLineDetector} (nom dû à la méthode de détection), basée sur des connexions réseau, afin de pouvoir faire fonctionner le serveur sous n'importe quel système d'exploitation, avec un petit module serveur sous Linux qui appelle simplement l'exécutable. Ce petit module ne fait pas partie du cahier des charges mais sera développé pour les tests. L'utilisateur, ici aussi, pourra rajouter ses propres méthodes de détection de lignes s'il le souhaite.
 
 \paragraph{Version}
+Cette partie du projet sera intégralement développée pour la première itération. En effet, on a besoin des fonctionnalités de découpe d'image et de traitement des vérités terrain dès la première version que nous avons définie.
 
 %----------------------------------------------------------------------------------------------------------------------
 \section{Base de données}
