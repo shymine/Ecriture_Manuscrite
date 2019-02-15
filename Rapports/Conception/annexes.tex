@@ -1,6 +1,44 @@
 \chapter{Annexes}
 
-\subsection{Codes de specification}
+\section*{Vocabulaire utile}
+
+Le \textbf{\textit{deep learning}} est une méthode d’apprentissage automatique
+basée sur un réseau de neurones. Ainsi, un algorithme utilisant le \textit{deep
+learning} apprend par lui-même et devient de plus en plus performant au fur et
+à mesure qu’il accumule les exemples. Il suffit de lui spécifier les paramètres
+du problème qu’il doit résoudre et lui donner des exemples sur lesquels
+s’entraîner. 
+
+\paragraph{}
+Une \textbf{base d’apprentissage (ou base d'entraînement)} est un ensemble
+d’exemples que l’on fournit à un algorithme de \textit{deep learning} afin que
+celui-ci puisse apprendre.
+
+\paragraph{}
+La \textbf{vérité terrain} est, dans le cadre de notre projet, un ensemble de
+documents numériques correspondant à des documents manuscrits. Ces documents
+numériques contiennent la transcription des documents manuscrits ainsi que
+diverses informations telles que la position des paragraphes dans ces documents
+ou encore les numéros de ligne par paragraphe. Cette vérité terrain a été
+établie au préalable par des humains et non de manière automatique.
+
+\paragraph{}
+Une \textbf{imagette} correspond, dans le cadre de notre projet, à une partie
+de texte manuscrit découpée au format image. Elle peut correspondre à une ligne
+ou à un paragraphe du document.
+
+\paragraph{}
+Une \textbf{retranscription} est, dans le cadre de notre projet, la
+transcription tapée d’un texte manuscrit.
+
+\paragraph{}
+Les formats \textbf{GEDI} et \textbf{PiFF} sont des formats de description
+d’images. Ils contiennent une image et des métadonnées (comme la position des
+paragraphes par exemple). Le format GEDI est le format de la base qui nous est
+donnée pour nourrir notre base d’apprentissage. Le format PiFF est un format
+de description d’images qui tend à être universel.
+
+\section*{Codes de specification}
 
 \begin{center}
 
