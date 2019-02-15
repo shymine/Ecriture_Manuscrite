@@ -8,7 +8,7 @@ Le serveur de ce projet est composé de trois principaux modules représentant l
 
 Notre projet étant composé de parties bien distinctes, la mise en place de modules indépendants et pouvant être remplacés par l'utilisateur n'a donc pas posé de problème. Nous avons donc créé une structure constituée des différents \textit{packages} correspondant aux fonctionnalités ainsi qu'une interface faisant le lien entre tous. De cette manière, chaque partie est détachée de l'ensemble global, et l'interface centrale qu'on appellera \texttt{Controller} fera appel aux méthodes nécessaires des différents \textit{packages}, afin de répondre aux demandes de l'utilisateur. Les \textit{packages} auront alors une interface à implémenter permettant une utilisation indépendante de l'implémentation.
 \newpage
-\begin{mdframed}[frametitle={Architecture des modules avec le connecteur}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 8 : Architecture des modules avec le connecteur}, innerbottommargin=10]
 \begin{center}
 \includegraphics[trim={10cm, 0, 6cm, 0} ,scale=0.25]{assets/UML_connecteur.pdf}
 \end{center}
@@ -17,7 +17,7 @@ Notre projet étant composé de parties bien distinctes, la mise en place de mod
 \paragraph{}
 Dans notre projet, nous aurons également besoin de représenter les objets avec lesquels nous travaillons. Ainsi, nous avons choisi d'implémenter des classes de données pour représenter les exemples d'apprentissage (\texttt{Example}), les pages des documents utilisés (\texttt{Page}), lesdits documents (\texttt{Document}) et enfin les projets (\texttt{Project}) car on peut imaginer que l'utilisateur puisse vouloir avoir un projet sur des archives paroissiales et un autre sur des textes arabes anciens.
 
-\begin{mdframed}[frametitle={Structure du package de données}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 9 : Structure du package de données}, innerbottommargin=10]
 \begin{center}
 \includegraphics[scale=0.4]{assets/UML_data.pdf}
 \end{center}
@@ -61,7 +61,7 @@ Il nous faut cependant remanier les relations entre les tables de la base de don
 
 La nouvelle base de données se base sur les classes de données présentées dans la première partie. Elles sont donc composées d'une table \texttt{Projects} qui contient les projets existants ainsi que le \texttt{Recogniser} associé. Celui-ci est représenté sous la forme d'une chaîne de caractères car un \textit{enum} sera mis en place afin de constituer les différents reconnaisseurs possibles et qu'on peut restorer l'\textit{enum} facilement à partir d'une chaîne de caractères. Une autre table \texttt{Documents} représente les différents documents qui constituent notre base, par exemple, \textit{"Archives paroissiales de 1870-1872"}. Ceux-ci sont donc représentés par un nom et sont liés à un \texttt{Project}. Une troisième table nous permet de conserver les \texttt{Pages} des \texttt{Documents}. Elles sont donc liées à une image (le scan de la page) et à une vérité terrain (la description de l'image) qui sont stockées au travers de leur chemin dans le système de fichier pour les raisons expliquées dans les rapports précédents (\textit{STO\_VER}). Les \texttt{Pages} sont également associées au \texttt{Document} dont elles sont issues. Enfin, une dernière table \texttt{Examples} stocke les \textit{exemples} générés par la découpe. Ils sont constitués du chemin vers l'imagette correspondante ainsi que la transcription de celle-ci, sachant que cette transcription peut être nulle dans le cas où on souhaite utiliser le \textit{reconnaisseur} pour proposer une transcription (\textit{STO\_REC}), ou quand la vérité terrain n'a pas été fournie et qu'il faut la construire (\textit{STO\_USR}). Les \texttt{Examples} sont également liés à la \texttt{Page} d'où ils ont été découpés.
 
-\begin{mdframed}[frametitle={Structure de la base de données}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 10 : Structure de la base de données}, innerbottommargin=10]
 \begin{center}
 \includegraphics[scale=0.53]{assets/DatabaseEntity.pdf}
 \end{center}
@@ -72,7 +72,7 @@ Cette structuration nous permet de hiérarchiser les exemples d'apprentissage g�
 Le module de la base de données est constitué d'une interface représentant cette base de données ainsi que les opérations qui seront effectuées dessus (\textit{STO\_SEL, STO\_UPD, STO\_INS, STO\_DEL}). Ainsi, il est possible de récupérer les différents instances de la hiérarchie de données. Nous avons préféré garder les requêtes sur la base de données simples et élémentaires afin de permettre plus de flexibilité sur les opérations qui les utiliseront ensuite. De cette manière, plusieurs fonctions du \texttt{Controller} pourront appeler la même fonction dans la base plutôt que d'avoir des demandes précises sur la base de données. De cette manière, l'évolution du projet en est simplifiée en permettant l'établissement simple de nouvelles fonctions dans le \texttt{Controller} sans avoir à rajouter de requêtes dans la base de données.
 
 \newpage
-\begin{mdframed}[frametitle={Architecture de la base de données}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 11 : Architecture de la base de données}, innerbottommargin=10]
 \begin{center}
 \includegraphics[scale=0.5]{assets/UML_Database.pdf}
 \end{center}
@@ -86,7 +86,7 @@ Comme l'ensemble des méthodes de la base de données sont nécessaires pour les
 
 Cette partie du projet a pour objectif de lier la base d'apprentissage de notre logiciel avec le reconnaisseur choisi par l'utilisateur. Ainsi, cette partie étant très liée à l'utilisateur, il faut lui permettre de pouvoir facilement attacher le reconnaisseur de son choix au logiciel. C'est avec cette contrainte en tête que nous avons conçu l'architecture de cette partie.
 
-\begin{mdframed}[frametitle={Architecture de l'interface avec le reconnaisseur}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 12 : Architecture de l'interface avec le reconnaisseur}, innerbottommargin=10]
 \begin{center}
 \includegraphics[trim={0, 0, 0, 0}, scale=0.55]{assets/UML_Recognizer.pdf}
 \end{center}
