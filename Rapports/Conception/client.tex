@@ -37,7 +37,6 @@ Renvoie la liste des noms des reconnaisseurs disponibles sur le serveur.
 Récupère tous les exemples de la base qui sont contenus dans des projets utilisant le reconnaisseur dont le nom est passé en paramètre. Les exemples sont triés, ne sont retenus que ceux qui sont définis comme utilisables et validés. Ensuite, ces exemples sont exportés en tant que lot d'entraînement, vers le format d'entrée associé au reconnaisseur en question.
 \end{itshape}
 
-\newline{}
 \item [Annotation / Validation]
 
 \item [GET] \texttt{/base/documentPages/\{name\}}\newline{}
@@ -70,7 +69,6 @@ Rend l'exemple dont l'identifiant est donné en paramètre utilisable (principal
 Valide tous les exemples dont les identifiants sont fournis dans une liste JSON associée à la requête.
 \end{itshape}
 
-\newline{}
 \item [Découpe]
 
 \item [GET] \texttt{/base/documentPagesWithImages/\{name\}}\newline{}
@@ -157,55 +155,10 @@ Tout d’abord, une icône permettant de revenir à la page d’accueil sera pr�
 \item ou la page de validation finale si toutes les transcriptions ont déjà été renseignées.
 \end{itemize}
 
-Des boutons de navigation dans les différentes pages sont également présents sur certaines pages, comme décrit dans la partie précédente. Les interactions sont visibles dans le schéma ci-dessous :
+Des boutons de navigation dans les différentes pages sont également présents sur certaines pages, comme décrit dans la partie précédente. Les interactions sont visibles dans le schéma de la figure 7.
 
 \begin{mdframed}[frametitle={Figure 7 : Schéma des interactions entre les différents composants de l'IHM}, innerbottommargin=10]
 \begin{center}
 \includegraphics[scale=0.5]{assets/schemaIHMinteractions.png}
-\end{center}
-\end{mdframed}
-
-
-
-
-\newpage{}
-\begin{mdframed}[frametitle={Figure 1 : Maquette de la page d'accueil de l'IHM}, innerbottommargin=10]
-\begin{center}
-\includegraphics[scale=0.04]{assets/maquetteIHMaccueil.jpg}
-\end{center}
-\end{mdframed}
-
-
-\begin{mdframed}[frametitle={Figure 2 : Maquette de la page de validation des annotations}, innerbottommargin=10]
-\begin{center}
-\includegraphics[scale=0.04]{assets/maquetteIHMvalidation1.jpg}
-\end{center}
-\end{mdframed}
-
-
-\begin{mdframed}[frametitle={Figure 3 : Maquette de la page de découpe des zones}, innerbottommargin=10]
-\begin{center}
-\includegraphics[scale=0.04]{assets/maquetteIHMdecoupes.jpg}
-\end{center}
-\end{mdframed}
-
-
-\begin{mdframed}[frametitle={Figure 4 : Maquette de la page d'annotation manuelle}, innerbottommargin=10]
-\begin{center}
-\includegraphics[scale=0.04]{assets/maquetteIHMtranscriptionmanu.jpg}
-\end{center}
-\end{mdframed}
-
-
-\begin{mdframed}[frametitle={Figure 5 : Maquette de la page de visualisation des transcriptions du reconnaisseur}, innerbottommargin=10]
-\begin{center}
-\includegraphics[scale=0.04]{assets/maquetteIHMcorrectionIA.jpg}
-\end{center}
-\end{mdframed}
-
-
-\begin{mdframed}[frametitle={Figure 6 : Maquette de la page de validation finale lors de la deuxième itération}, innerbottommargin=10]
-\begin{center}
-\includegraphics[scale=0.04]{assets/maquetteIHMvalidationIA.jpg}
 \end{center}
 \end{mdframed}
