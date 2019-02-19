@@ -15,10 +15,10 @@ import javax.ws.rs.core.MediaType
 @Path("agnosco")
 class AgnoscoResource {
 
-  @POST
+  /*@POST
   @Path("/createGame/{p1}/{p2}/{name}/{ai}/{bt}")
   @Produces(Array(MediaType.APPLICATION_JSON))
   def gameParameter(@PathParam("p1") p1: String, @PathParam("p2") p2: String, @PathParam("name") name: String, @PathParam("ai") ai: String, @PathParam("bt") bt: String): Nothing = {
 
-  }
+  }*/
 }

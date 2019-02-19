@@ -3,5 +3,5 @@ package model.preparation.processing.linedetection
 import model.preparation.types.Line
 
 trait LineDetector {
-  def detectLines : List[Line]
+  def detectLines(src : String) : List[Line]
 }

@@ -3,7 +3,6 @@ package model.preparation.processing.linedetection
 import java.io.{BufferedReader, DataOutputStream, IOException, InputStreamReader}
 import java.net.Socket
 
-import model.preparation.processing.linedetection.LineDetector
 import model.preparation.types.Line
 
 import scala.annotation.tailrec
@@ -17,7 +16,7 @@ object BlurLineDetector extends LineDetector {
 
   private def readServerAnswer() : List[String] = {
     val buf = new ListBuffer[String]
-    @tailrec def f() : List[String] = {
+    def f() : List[String] = {
       try {
         buf += input.readLine()
         f()
@@ -33,5 +32,6 @@ object BlurLineDetector extends LineDetector {
     output.writeBytes(fileContent)
     val answer = readServerAnswer()
     // TODO : parse answer
+    List.empty[Line]
   }
 }

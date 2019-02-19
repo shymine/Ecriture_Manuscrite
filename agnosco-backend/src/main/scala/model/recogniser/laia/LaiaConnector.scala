@@ -61,12 +61,12 @@ class LaiaConnector(converter: Converter, val height: Integer) extends Converter
     val writer2 = new PrintWriter(new File("./model/transcriptTraining.txt"))
     val writer3 = new PrintWriter(new File("./model/imageValidation.lst"))
     val writer4 = new PrintWriter(new File("./model/transcriptValidation.txt"))
-    samples.foreach(sample => writer1.write(sample.path))
+    samples.foreach(sample => writer1.write(sample.imagePath))
     val regID: Regex = (raw"(\w+)\.png").r
     samples.foreach(sample => {
       val inte: Regex.Match =
-        regID.findFirstMatchIn(sample.path)
-          .getOrElse(throw new MatchError(sample.path))
+        regID.findFirstMatchIn(sample.imagePath)
+          .getOrElse(throw new MatchError(sample.imagePath))
       val imgId: String = inte.group(1)
       println(imgId)
       writer2.write(imgId) // verifier l'append
@@ -77,7 +77,7 @@ class LaiaConnector(converter: Converter, val height: Integer) extends Converter
     * Need to recognize and then compare the result it gives with the real transcriptions
     * @param samples The set to test the Recognizer
     */
-  override def evaluate(samples: Iterable[Example]): Unit = ???
+  override def evaluate(samples: Iterable[Example]): Unit = {}
 
   /**
     *
@@ -90,7 +90,7 @@ class LaiaConnector(converter: Converter, val height: Integer) extends Converter
     *         it depending if the Recognizer output for a paragraph
     *         is an output per line or one output for the paragraph.
     */
-  override def recognize(samples: List[Example]): List[Example] = ???
+  override def recognize(samples: List[Example]): List[Example] = { List.empty }
 
   /**
     * To put in the module interface class
@@ -100,7 +100,7 @@ class LaiaConnector(converter: Converter, val height: Integer) extends Converter
     * @param recognizerPath
     * @param converter
     */
-  override def changeRecognizer(recognizerPath: String, converter: Converter): Unit = ???
+  override def changeRecognizer(recognizerPath: String, converter: Converter): Unit = {}
 
   /**
     * Initialise the network to use
@@ -113,8 +113,8 @@ class LaiaConnector(converter: Converter, val height: Integer) extends Converter
     -- 1 64 20 model.t7;
    */
   def init(symbol: Integer) = {
-    val ret: Integer = s"laia-docker create-model 1 $height $symbol model/model.t1" !
-    if(ret != 0) {
+    val ret: Integer = (s"laia-docker create-model 1 $height $symbol model/model.t1" !)
+    if (ret != 0) {
       throw new RuntimeException("problem with creation of the model")
     }
   }
