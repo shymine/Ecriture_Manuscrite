@@ -2,6 +2,4 @@ package model.common
 
 import scala.collection.mutable.ArrayBuffer
 
-class Document(val id : Int, val name : String, val pages : ArrayBuffer[Page]) {
-
-}
+case class Document(id : Int, name : String, pages : ArrayBuffer[Page])
