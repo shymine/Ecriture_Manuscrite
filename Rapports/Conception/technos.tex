@@ -4,11 +4,12 @@ Ce projet a pour but de fournir un programme permettant de concevoir des bases d
 
 \section{Architecture générale}
 
+\subsection{Architecture du serveur}
 Le serveur de ce projet est composé de trois principaux modules représentant les différents besoins du projet. Ainsi, il nous faut traiter les données d'entrée fournies par l'utilisateur sous la forme d'un document scanné et possiblement d'une vérité terrain afin de les transformer en données utilisables par les reconnaisseurs. Il nous faut également pouvoir stocker les bases d'apprentissage qui constituent le coeur de notre projet. Enfin, ces bases ne serviraient à rien s'il n'était pas possible d'interfacer notre projet avec le reconnaisseur de l'utilisateur.
 
 Notre projet étant composé de parties bien distinctes, la mise en place de modules indépendants et pouvant être remplacés par l'utilisateur n'a donc pas posé de problème. Nous avons créé une structure constituée des différents \textit{packages} correspondant aux fonctionnalités ainsi qu'une interface faisant le lien entre tous. De cette manière, chaque partie est détachée de l'ensemble global, et l'interface centrale qu'on appellera \texttt{Controller} fera appel aux méthodes nécessaires des différents \textit{packages}, afin de répondre aux demandes de l'utilisateur. Les \textit{packages} auront alors une interface à implémenter permettant une utilisation indépendante de l'implémentation.
 \newpage
-\begin{mdframed}[frametitle={Figure 8 : Architecture des modules avec le connecteur}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 1 : Architecture des modules avec le connecteur}, innerbottommargin=10]
 \begin{center}
 \includegraphics[trim={10cm, 0, 6cm, 0} ,scale=0.25]{assets/UML_connecteur.pdf}
 \end{center}
@@ -17,13 +18,46 @@ Notre projet étant composé de parties bien distinctes, la mise en place de mod
 \paragraph{}
 Dans notre projet, nous aurons également besoin de représenter les objets avec lesquels nous travaillons. Ainsi, nous avons choisi d'implémenter des classes de données pour représenter les exemples d'apprentissage (\texttt{Example}), les pages des documents utilisés (\texttt{Page}), lesdits documents (\texttt{Document}) et enfin les projets (\texttt{Project}) car on peut imaginer que l'utilisateur puisse vouloir avoir un projet sur des archives paroissiales et un autre sur des textes arabes anciens.
 
-\begin{mdframed}[frametitle={Figure 9 : Structure du package de données}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 2 : Structure du package de données}, innerbottommargin=10]
 \begin{center}
 \includegraphics[scale=0.4]{assets/UML_data.pdf}
 \end{center}
 \end{mdframed}
 
 L'attribut \texttt{Recogniser} est converti en chaîne de caractères dans la base de données en passant par un \textit{enum} recensant les différents reconnaisseurs existants. Ces classes de données sont liées à la structure de la base de données et seront donc expliquées plus profondément dans cette partie.
+
+\subsection{Architecture du client}
+L'interface est composée de cinq pages distinctes. Il y a tout d'abord la page d'accueil, où l'utilisateur choisit le projet sur lequel il veut travailler ou en crée un nouveau en choisissant les documents qui le composent. La page d'accueil est représentée par la maquette de la figure 3.
+
+\begin{mdframed}[frametitle={Figure 3 : Maquette de la page d'accueil de l'IHM}, innerbottommargin=10]
+\begin{center}
+\includegraphics[scale=0.04]{assets/maquetteIHMaccueil.jpg}
+\end{center}
+\end{mdframed}
+
+L'interface possède également une page de découpe des zones ou des paragraphes des pages des documents à l'aide d'outils graphiques dédiés. La maquette de cette page est présentée à la figure 4.
+
+\begin{mdframed}[frametitle={Figure 4 : Maquette de la page de découpe des zones}, innerbottommargin=10]
+\begin{center}
+\includegraphics[scale=0.04]{assets/maquetteIHMdecoupes.jpg}
+\end{center}
+\end{mdframed}
+
+Ensuite, l'utilisateur peut choisir d'annoter lui-même le document scanné en tapant à la main les transcriptions des imagettes ou de faire passer le document par un reconnaisseur d'écriture manuscrite. L'interface propose donc une page d'annotation manuelle ainsi qu'une page de visualisation et de correction des transcriptions proposées par le reconnaisseur. Ces deux pages sont sensiblement similaires et leur maquette est présentée à la figure 5.
+
+\begin{mdframed}[frametitle={Figure 5 : Maquette de la page d'annotation manuelle}, innerbottommargin=10]
+\begin{center}
+\includegraphics[scale=0.04]{assets/maquetteIHMtranscriptionmanu.jpg}
+\end{center}
+\end{mdframed}
+
+Enfin, la dernière page de l'interface est la page de validation des transcriptions où l'utilisateur fait une dernière relecture des annotations et les valide rapidement. La maquette de cette page est présentée à la figure 6.
+
+\begin{mdframed}[frametitle={Figure 6 : Maquette de la page de validation des annotations}, innerbottommargin=10]
+\begin{center}
+\includegraphics[scale=0.04]{assets/maquetteIHMvalidationIA.jpg}
+\end{center}
+\end{mdframed}
 
 \section{Interactions}
 
