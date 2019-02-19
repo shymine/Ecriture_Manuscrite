@@ -1,10 +1,10 @@
-package model.data.input.converters
+package model.preparation.input.converters
 
 import java.io.FileNotFoundException
 
-import model.data.input.FormatException
-import model.data.input.piff.{PiFF, PiFFElement, PiFFPage}
-import model.data.input.{string2Language, string2ScriptType}
+import model.preparation.input.FormatException
+import model.preparation.input.piff.{PiFF, PiFFElement, PiFFPage}
+import model.preparation.input.{string2Language, string2ScriptType}
 import org.xml.sax.SAXParseException
 
 import scala.collection.mutable.ListBuffer

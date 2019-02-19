@@ -1,6 +1,6 @@
-package model.data.input.converters
+package model.preparation.input.converters
 
-import model.data.input.piff.PiFF
+import model.preparation.input.piff.PiFF
 
 trait PiFFConverter {
   /** Converts the object into an optional PiFF object. */

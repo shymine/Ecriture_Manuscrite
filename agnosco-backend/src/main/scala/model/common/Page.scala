@@ -1,6 +1,6 @@
 package model.common
 
-import model.data.input.piff.PiFF
+import model.preparation.input.piff.PiFF
 
 import scala.collection.mutable.ArrayBuffer
 

@@ -1,4 +1,4 @@
-package model.data.types
+package model.preparation.types
 
 class Point(val x : Int, val y : Int) {
   override def toString: String = {

@@ -1,9 +1,10 @@
-package model.data.processing.linedetection
+package model.preparation.processing.linedetection
 
 import java.io.{BufferedReader, DataOutputStream, IOException, InputStreamReader}
 import java.net.Socket
 
-import model.data.types.Line
+import model.preparation.processing.linedetection.LineDetector
+import model.preparation.types.Line
 
 import scala.annotation.tailrec
 import scala.collection.mutable.ListBuffer

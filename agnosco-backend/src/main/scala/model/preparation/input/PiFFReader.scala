@@ -1,8 +1,8 @@
-package model.data.input
+package model.preparation.input
 
-import model.data.input.converters.{GEDIToPiFFConverter, PiFFConverter}
-import model.data.input.piff.{PiFF, PiFFElement, PiFFPage}
-import model.data.types.{Point, Polygon}
+import model.preparation.input.converters.{GEDIToPiFFConverter, PiFFConverter}
+import model.preparation.input.piff.{PiFF, PiFFElement, PiFFPage}
+import model.preparation.types.{Point, Polygon}
 import org.json.{JSONException, JSONObject}
 
 import scala.annotation.tailrec

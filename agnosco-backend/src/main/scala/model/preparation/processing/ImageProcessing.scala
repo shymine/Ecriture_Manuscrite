@@ -1,6 +1,6 @@
-package model.data.processing
+package model.preparation.processing
 
-import model.data.types.{Image, Line, Polygon}
+import model.preparation.types.{Image, Line, Polygon}
 import org.opencv.core.Rect
 
 object ImageProcessing {

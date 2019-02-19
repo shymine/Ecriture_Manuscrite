@@ -1,4 +1,4 @@
-package model.data
+package model.preparation
 
 package object input {
   sealed trait ScriptType

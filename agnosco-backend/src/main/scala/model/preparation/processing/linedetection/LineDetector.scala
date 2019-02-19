@@ -1,6 +1,6 @@
-package model.data.processing.linedetection
+package model.preparation.processing.linedetection
 
-import model.data.types.Line
+import model.preparation.types.Line
 
 trait LineDetector {
   def detectLines : List[Line]

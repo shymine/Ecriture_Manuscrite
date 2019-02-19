@@ -1,4 +1,4 @@
-package model.data.types
+package model.preparation.types
 
 class Polygon(val points : List[Point]) {
   override def toString : String = {

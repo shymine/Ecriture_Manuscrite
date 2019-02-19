@@ -1,7 +1,7 @@
-package model.data.input.piff
+package model.preparation.input.piff
 
-import model.data.input.{Language, ScriptType}
-import model.data.types.{Point, Polygon}
+import model.preparation.input.{Language, ScriptType}
+import model.preparation.types.{Point, Polygon}
 import org.json.JSONObject
 
 /*
