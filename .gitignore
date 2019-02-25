@@ -3,3 +3,5 @@ src/reco_interface/laia/models/.
 agnosco-frontend/node_modules/.
 .vscode
 agnosco-backend/project/target/.
+agnosco-backend/target
+agnosco-backend/target/.
