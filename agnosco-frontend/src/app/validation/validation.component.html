@@ -12,94 +12,21 @@
   </div>
 
   <div class="validationWindow">
-
-    <div class = "affichage">
-      <div class = "blocImagettePlusTrans">
-        <div class = "imagette">
-          <img class="imageAffiche" src="../../assets/images/Elephant.jpg" alt="page" />
-        </div>
-        <div class = "transcription">
-            <p>1 petit cochon</p>
-        </div>
-      </div>
-      <div class = "buttonDiv">
-        <button class = "hideButton" (click)="hide()"><i class="fas fa-times"></i></button>
-      </div>
-    </div>
-
-    <div class = "affichage">
-      <div class = "blocImagettePlusTrans">
-        <div class = "imagette">
-          <img class="imageAffiche" src="../../assets/images/Elephant.jpg" alt="page" />
-        </div>
-        <div class = "transcription">
-            <p>2 petits cochons</p>
-        </div>
-      </div>
-      <div class = "buttonDiv">
-        <button class = "hideButton" (click)="hide()"><i class="fas fa-times"></i></button>
-      </div>
-    </div>
-
-    <div class = "affichage">
-      <div class = "blocImagettePlusTrans">
-        <div class = "imagette">
-          <img class="imageAffiche" src="../../assets/images/Elephant.jpg" alt="page" />
-        </div>
-        <div class = "transcription">
-            <p>3 petits cochons</p>
-        </div>
-      </div>
-      <div class = "buttonDiv">
-        <button class = "hideButton" (click)="hide()"><i class="fas fa-times"></i></button>
-      </div>
-    </div>
-
-    <div class = "affichage">
-      <div class = "blocImagettePlusTrans">
-        <div class = "imagette">
-          <img class="imageAffiche" src="../../assets/images/Elephant.jpg" alt="page" />
-        </div>
-        <div class = "transcription">
-            <p>4 petits cochons</p>
-        </div>
-      </div>
-      <div class = "buttonDiv">
-        <button class = "hideButton" (click)="hide()"><i class="fas fa-times"></i></button>
-      </div>
-    </div>
-
-    <div class = "affichage">
-      <div class = "blocImagettePlusTrans">
-        <div class = "imagette">
-          <img class="imageAffiche" src="../../assets/images/Elephant.jpg" alt="page" />
-        </div>
-        <div class = "transcription">
-            <p>5 petits cochons</p>
-        </div>
-      </div>
-      <div class = "buttonDiv">
-        <button class = "hideButton" (click)="hide()"><i class="fas fa-times"></i></button>
-      </div>
-    </div>
-
-    <div class = "affichage">
-      <div class = "blocImagettePlusTrans">
-        <div class = "imagette">
-          <img class="imageAffiche" src="../../assets/images/Elephant.jpg" alt="page" />
-        </div>
-        <div class = "transcription">
-            <p>6 petits cochons</p>
-        </div>
-      </div>
-      <div class = "buttonDiv">
-        <button class = "hideButton" (click)="hide()"><i class="fas fa-times"></i></button>
-      </div>
-    </div>
-    <!--<p>
-      Validation works!
-    </p>
-    <p>{{params[0]}}</p>-->
+    <ul *ngFor="let p of examples ; let i = index" class="examplesList">
+      <li class= "affichage">
+        <div class= "blocImagettePlusTrans">
+          <div class = "imagette">
+            <img class="imageAffiche" src={{p[0]}} alt="page" />
+          </div>
+          <div class= "transcription">
+            <p>{{p[1]}}</p>
+          </div>
+        </div>  
+        <div class = "buttonDiv">
+          <button class = "hideButton" (click)="disableEx(p[2])" id=i><i class="fas fa-times"></i></button>
+        </div>      
+      </li>
+    </ul>
   </div>
 
 </div>
