@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Validation, ValidationService } from './validation.service';
+/* QUESTION : est-ce qu'on crée un service pour chaque appel rest différent ?
+              est-ce qu'il y a besoin d'un fichier json pour définir la façon dont on découpe la réponse à l'appel rest ? */
 
 @Component({
   selector: 'app-validation',
@@ -21,18 +23,17 @@ export class ValidationComponent implements OnInit {
   validation: Validation;
 
   constructor(private router: Router, private route: ActivatedRoute, private validationService: ValidationService) {
-    //private router: Router, private route: ActivatedRoute, private validationService: ValidationService, private http: HttpClient
     this.examples = [];
     this.pages = [];
   }
 
   ngOnInit() {
-    //parametres
     this.route.params.forEach(param => {
       this.params.push(param.id);
     });
 
     this.docName = this.params[0]; // le nom du document est le 1er paramètre
+
     //test
     this.examples[0] = ["../../assets/images/Elephant.jpg", "To be or not to be", 0];
     this.examples[1] = ["../../assets/images/Fraise.png", "That is the question", 1];
@@ -41,11 +42,12 @@ export class ValidationComponent implements OnInit {
     this.examples[4] = ["../../assets/images/Elephant.jpg", "Or to take arms against a sea of troubles", 4];
     this.examples[5] = ["../../assets/images/Fraise.png", "And by opposing end them.", 5];
 
-    //on récupère la liste des identifiants des pages du doc
+    //on récupère la liste des identifiants des pages du doc passé en paramètre
     //this.pages = this.http.get('/base/documentPages/{docName}', {}); 
 
-    //this.http.get('/base/pageData/{id}', {}).subscribe(response => {
-
+    //this.http.get('/base/pageData/{0}', {}).subscribe(examples => {
+      //on récupère la liste des exemples qui composent la première page
+      //this.examples = examples;
     //});
   }
 
@@ -72,11 +74,7 @@ export class ValidationComponent implements OnInit {
     icon.className = "fas fa-times";
   }
 
-  showConfig() {
-    this.validationService.getValidation()
-      .subscribe((data: Validation) => this.validation = {
-          heroesUrl: data['heroesUrl'],
-          textfile:  data['textfile']
-      });
+  validateAll(){
+    console.log("entrée");
   }
 }
