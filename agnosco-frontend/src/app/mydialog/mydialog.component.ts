@@ -13,6 +13,8 @@ export class MydialogComponent implements OnInit {
   public select="aucun";
   popo : string;
 
+  public reconnaisseurs = ["aucun"];
+
 
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<MydialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
@@ -22,9 +24,18 @@ export class MydialogComponent implements OnInit {
   ngOnInit() {
     /* */
     console.log("*** GET /base/availableRecognisers ***");
-    this.http.get(`/base/projectsAndDocuments`,{}).subscribe(returnedData => {
+    this.reconnaisseurs.push("rec 1");
+    this.reconnaisseurs.push("rec 2");
+    this.reconnaisseurs.push("rec 3");
+
+    /*
+    this.http.get(`/base/availableRecognisers`,{}).subscribe(returnedData => {
       console.log(returnedData);
+      Object.keys(returnedData).forEach( key => {
+        this.projects.push(returnedData[key]);
+        console.log(returnedData[key]);
     });
+    */
   }
 
   onNoClick(): void {

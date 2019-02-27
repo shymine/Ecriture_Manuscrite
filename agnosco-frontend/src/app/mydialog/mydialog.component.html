@@ -8,7 +8,7 @@
 <div>
   <p>Quel reconnaisseur souhaitez-vous utiliser?</p>
   <select [(ngModel)]="select" class="selectOutils #selection">
-    <option>aucun</option>
+    <option  *ngFor="let r of reconnaisseurs">{{r}}</option>
   </select>
 </div>
 
