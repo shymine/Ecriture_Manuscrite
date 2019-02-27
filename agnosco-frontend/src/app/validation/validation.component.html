@@ -21,10 +21,11 @@
           <div class= "transcription">
             <p>{{p[1]}}</p>
           </div>
-        </div>  
+        </div>
+        
         <div class = "buttonDiv">
-          <button class = "hideButton" (click)="disableEx(p[2])" id=i><i class="fas fa-times"></i></button>
-        </div>      
+          <button class = "hideButton" (click)="disableEx(i)"><i class="fas fa-times" data-name="cross" + i></i></button>
+        </div>
       </li>
     </ul>
   </div>
