@@ -1,17 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Validation, ValidationService } from './validation.service';
+import { PageData, PageDataService } from './pageData.service';
 /* QUESTION : est-ce qu'on crée un service pour chaque appel rest différent ?
               est-ce qu'il y a besoin d'un fichier json pour définir la façon dont on découpe la réponse à l'appel rest ? */
 
 @Component({
   selector: 'app-validation',
   templateUrl: './validation.component.html',
-  providers: [ ValidationService ],
+  providers: [ PageDataService ],
   styleUrls: ['./validation.component.css']
 })
 export class ValidationComponent implements OnInit {
+
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) { 
+    if(event.keyCode == 13){
+      this.validateAll();
+    }
+  }
 
   private params = [];
   private docName;
@@ -20,9 +27,12 @@ export class ValidationComponent implements OnInit {
   public pages;
   public examples;
 
-  validation: Validation;
 
-  constructor(private router: Router, private route: ActivatedRoute, private validationService: ValidationService) {
+  pageD : any[];
+
+  pageData: PageData;
+
+  constructor(private router: Router, private route: ActivatedRoute, private pageDataService: PageDataService, private http: HttpClient) {
     this.examples = [];
     this.pages = [];
   }
@@ -42,11 +52,15 @@ export class ValidationComponent implements OnInit {
     this.examples[4] = ["../../assets/images/Elephant.jpg", "Or to take arms against a sea of troubles", 4];
     this.examples[5] = ["../../assets/images/Fraise.png", "And by opposing end them.", 5];
 
-    //on récupère la liste des identifiants des pages du doc passé en paramètre
-    //this.pages = this.http.get('/base/documentPages/{docName}', {}); 
+    //on récupère la liste des identifiants des pages du doc passé en paramètre 
+    this.http.get('/base/documentPages/{docName}').subscribe(
+      pages => this.pages = pages
+    );
 
+    //on récupère la liste des exemples qui composent la première page
+    /*this.pageDataService.getPageData(0).subscribe(response => this.pageD = response.json() || {});*/
     //this.http.get('/base/pageData/{0}', {}).subscribe(examples => {
-      //on récupère la liste des exemples qui composent la première page
+      
       //this.examples = examples;
     //});
   }
@@ -76,5 +90,6 @@ export class ValidationComponent implements OnInit {
 
   validateAll(){
     console.log("entrée");
+    //this.http.post('/base/validateExamples', {}, {});
   }
 }

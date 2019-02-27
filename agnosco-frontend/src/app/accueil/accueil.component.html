@@ -29,12 +29,14 @@
         </div>
       </li>
       <ul *ngFor="let d of p[1]" (mouseleave)="hideActions($event)">
-        <li><button class="buttonList" (click)="showActions($event)">{{d}}</button></li>
+        <li>
+          <button class="buttonList" (click)="showActions($event)">{{d}}</button>
+          <button hidden="true" class="buttonList2" (click)="deleteDoc(d)"><i class="fas fa-times"></i></button>
+        </li>
         <ul style="list-style-type: disc; color: #666666;" hidden="true">
           <li><button class="buttonList2">Go To Decoupe</button></li>
           <li><button class="buttonList2">Go To Annotation</button></li>
           <li><button class="buttonList2">Go To Validation</button></li>
-          <li><button class="buttonList2">Supprimer</button></li>
         </ul>
       </ul>
     </ul>
