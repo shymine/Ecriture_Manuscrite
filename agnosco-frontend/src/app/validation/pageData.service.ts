@@ -1,29 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
-export interface Validation{
-  bla: string;
+export interface PageData{
+  image: string; //normalement, c'est une image et pas une string
+  examples: string[]; //liste des imagettes et des transcriptions
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class ValidationService {
+export class PageDataService {
   
   validationUrl = 'assets/validation.json';
 
   constructor(private http: HttpClient) { }
 
-  getValidation(){
-    return this.http.get<Validation>(this.validationUrl)
+  getPageData(id): Observable<Object>{
+    return this.http.get('base/pageData/{id}')
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
       );
-  }
+  } 
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
