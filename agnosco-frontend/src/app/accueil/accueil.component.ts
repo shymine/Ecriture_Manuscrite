@@ -23,7 +23,6 @@ export class AccueilComponent implements OnInit {
   ngOnInit() {
 
     //test
-
     
     this.getAllProjects();
     
@@ -32,16 +31,16 @@ export class AccueilComponent implements OnInit {
 
   getAllProjects() {
 
-    /**/
+    /*
     this.projects[0]=["Project 1", ["Document Un", "Document Deux", "Document Trois"]];
     this.projects[1]=["Project 2", ["Document Quatre", "Document Cinq", "Document Six"]];
-
+*/
     this.maxListIndex = -1;
   
     console.log("*** GET /base/projectsAndDocuments ***");
 
-    /*
-    this.http.get(`/base/projectsAndDocuments`,{}).subscribe(returnedData => {
+    /**/
+    this.http.get(`agnosco/base/projectsAndDocuments`,{}).subscribe(returnedData => {
       console.log(returnedData);
 
       Object.keys(returnedData).forEach( key => {
@@ -55,7 +54,7 @@ export class AccueilComponent implements OnInit {
 
       
     });
-    */
+    
   }
 
   deletePro(p) {
