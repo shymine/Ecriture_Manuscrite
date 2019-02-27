@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/htt
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
-export interface PageData{
+export interface Validation{
   image: string; //normalement, c'est une image et pas une string
   examples: string[]; //liste des imagettes et des transcriptions
 }
@@ -11,19 +11,31 @@ export interface PageData{
 @Injectable({
   providedIn: 'root'
 })
-export class PageDataService {
-  
-  validationUrl = 'assets/validation.json';
+export class ValidationService {
 
   constructor(private http: HttpClient) { }
 
-  getPageData(id): Observable<Object>{
-    return this.http.get('base/pageData/{id}')
-      .pipe(
+  /**
+   * Cette méthode permet de récupérer les données de la page numéro id, soit la liste des exemples (imagettes et transcriptions) ainsi que l'image associée à la page (utilisée que pour la V1).
+   * @param id numéro de la page dont on veut les données
+   */
+  getValidation(id): Observable<Object>{
+    return this.http.get('base/pageData/{id}');
+      /*.pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
-      );
-  } 
+      );*/
+  }
+
+  disableEx(id){
+    this.http.put('/base/disableExample/${id}', {}, {});
+    console.log("service disable " + id);
+  }
+
+  enableEx(id){
+    this.http.put('/base/enableExample/${id}', {}, {});
+    console.log("service enable " + id);
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
