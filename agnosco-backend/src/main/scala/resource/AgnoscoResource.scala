@@ -1,9 +1,12 @@
 package resource
 
+import java.util
+
 import javax.inject.Singleton
 import javax.naming.InvalidNameException
 import javax.ws.rs._
 import javax.ws.rs.core.MediaType
+import org.json.{JSONArray, JSONObject}
 
 @Singleton
 @Path("agnosco/base")
@@ -26,7 +29,20 @@ class AgnoscoResource {
 	@GET
 	@Path("/projectsAndDocuments")
 	@Produces(Array(MediaType.APPLICATION_JSON))
-	def getProjectAndDocuments = ???
+	def getProjectAndDocuments = {
+		val res = new JSONArray()
+		val project1 = new JSONObject()
+		val project2 = new JSONObject()
+		project1.put("name", "Project1")
+		project1.put("documents", List("document1.1", "document1.2"))
+		project2.put("name", "Project2")
+		project2.put("documents", List("document2.1", "document2.2"))
+
+		res.put(project1)
+		res.put(project2)
+
+		res
+	}
 
 	/**
 	  * Creates a new project from its name and the given list of documents
