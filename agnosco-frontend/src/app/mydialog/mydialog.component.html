@@ -1,8 +1,18 @@
 <div mat-dialog-content>
   <p>Comment souhaitez-vous nommer le projet?</p>
-  <input [(ngModel)]="popo" matInput placeholder="Nom du projet" (keyup.enter)="dialogRef.close(popo)" cdkFocusInitial>
+  <input [(ngModel)]="popo" matInput placeholder="Nom du projet" (keyup.enter)="onValidation()" cdkFocusInitial>
 </div>
+
+<br>
+
+<div>
+  <p>Quel reconnaisseur souhaitez-vous utiliser?</p>
+  <select [(ngModel)]="select" class="selectOutils #selection">
+    <option>aucun</option>
+  </select>
+</div>
+
 <div mat-dialog-actions>
   <button class="buttonA" (click)="onNoClick()" mat-button>Annuler</button>
-  <button class="buttonV" mat-button [mat-dialog-close]="popo">Valider</button>
+  <button class="buttonV" mat-button (click)="onValidation()">Valider</button>
 </div>

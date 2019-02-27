@@ -31,13 +31,14 @@ export class AccueilComponent implements OnInit {
   }
 
   getAllProjects() {
+
     /**/
     this.projects[0]=["Project 1", ["Document Un", "Document Deux", "Document Trois"]];
     this.projects[1]=["Project 2", ["Document Quatre", "Document Cinq", "Document Six"]];
 
     this.maxListIndex = -1;
   
-    console.log("*** get all projects ***");
+    console.log("*** GET /base/projectsAndDocuments ***");
 
     /*
     this.http.get(`/base/projectsAndDocuments`,{}).subscribe(returnedData => {
@@ -57,35 +58,76 @@ export class AccueilComponent implements OnInit {
     */
   }
 
+  deletePro(p) {
+    /* */
+    console.log("Delete all documents from "+ this.projects[p][0]);
+
+    
+    
+    this.projects[p][1].forEach(element => {
+      console.log("*** DELETE /base/deleteDocument/{" + element +"} ***");/*
+      this.http.delete(`/base/deleteDocument/${element}`).subscribe(returnedData =>{
+        this.getAllProjects();
+      });*/
+    });
+    
+
+    this.projects.splice(p,1);
+  }
+
+  deleteDoc(doc) {
+    /* */
+
+    console.log("*** DELETE /base/deleteDocument/{" + doc +"} ***");
+    /*
+    this.http.delete(`/base/deleteDocument/${doc}`).subscribe(returnedData =>{
+      this.getAllProjects();
+    });
+    */
+  }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(MydialogComponent, {});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      if(result) {
+      if(result && result[0]) {
         /**/
-        this.projects.push([result,[]]);
+        this.projects.push([result[0],[]]);
+        console.log("*** POST /base/createNewProject/{"+result[0]+"}/{[]} ***");
         /*
         const newlist = [];
-        this.http.post(`/base/createNewProject/${project_name}/${newlist}`,{},{}).subscribe(returnedData => {
+        this.http.post(`/base/createNewProject/${result[0]}/${newlist}`,{},{}).subscribe(returnedData => {
+          this.getAllProjects();
+        });
         */
+      }else{
+        console.log("no name");
       }
     });
   }
 
   showActions(ev){
     let el = ev.originalTarget.parentNode.parentNode.lastChild;
+    let es = ev.originalTarget.parentNode.children[1];
     if(el.hidden) {
       el.hidden = false;
     }else {
       el.hidden = true;
     }
+    if(es.hidden) {
+      es.hidden = false;
+    }else {
+      es.hidden = true;
+    }
   }
 
   hideActions(ev){
     let el = ev.originalTarget.lastChild;
+    let es = ev.originalTarget.firstChild.children[1];
     el.hidden = true;
+    es.hidden = true;
   }
 
   showX(ev) {
@@ -96,14 +138,6 @@ export class AccueilComponent implements OnInit {
   hideX(ev) {
     let el = ev.originalTarget.lastChild;
     el.hidden = true;
-  }
-
-  deletePro(p) {
-    /* */
-    this.projects.splice(p,1);
-    let name = p; //?
-    this.http.delete(`/base/deleteDocument/${name}`).subscribe(returnedData =>{
-    });
   }
 
   goToDecoupe(){

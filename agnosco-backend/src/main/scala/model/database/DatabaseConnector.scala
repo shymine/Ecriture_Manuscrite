@@ -93,7 +93,7 @@ class DatabaseConnector {
         case t => Some(t)
       }
 
-    Some(new Example(id, imagePath, transcript))
+    Some(Example(id, imagePath, transcript))
   }
 
   def getExamplesOfPage(id : Int) : ArrayBuffer[Example] = {
@@ -112,7 +112,7 @@ class DatabaseConnector {
           case t => Some(t)
         }
 
-      examples += new Example(id, imagePath, transcript)
+      examples += Example(id, imagePath, transcript)
     }
 
     examples
@@ -130,7 +130,7 @@ class DatabaseConnector {
     val groundTruthPath = resultSet.getString("groundTruthPath")
     val examples = getExamplesOfPage(id)
 
-    Some(new Page(id, imagePath, groundTruthPath, examples))
+    Some(Page(id, imagePath, groundTruthPath, examples))
   }
 
   def getPagesOfDocument(id : Int) : ArrayBuffer[Page] = {
@@ -146,7 +146,7 @@ class DatabaseConnector {
       val groundTruthPath = resultSet.getString("groundTruthPath")
       val examples = getExamplesOfPage(id)
 
-      pages += new Page(id, imagePath, groundTruthPath, examples)
+      pages += Page(id, imagePath, groundTruthPath, examples)
     }
 
     pages
@@ -163,7 +163,7 @@ class DatabaseConnector {
     val name = resultSet.getString("name")
     val pages = getPagesOfDocument(id)
 
-    Some(new Document(id, name, pages))
+    Some(Document(id, name, pages))
   }
 
   def getDocumentsOfProject(id : Int) : ArrayBuffer[Document] = {
@@ -178,7 +178,7 @@ class DatabaseConnector {
       val name = resultSet.getString("name")
       val pages = getPagesOfDocument(id)
 
-      documents += new Document(id, name, pages)
+      documents += Document(id, name, pages)
     }
 
     documents
@@ -197,7 +197,7 @@ class DatabaseConnector {
       val recogniser = null // TODO : resultSet.getString("recogniser")
       val documents = getDocumentsOfProject(id)
 
-      Some(new Project(id, name, recogniser, documents))
+      Some(Project(id, name, recogniser, documents))
     } catch {
       case e : Exception => None
     }
