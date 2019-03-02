@@ -1,8 +1,12 @@
 import java.net.URI
+import java.security.AccessController
+import java.util.logging.Logger
 
+import javax.ws.rs.core.UriBuilder
 import model.preparation.processing.linedetection.BlurLineDetector
 import org.glassfish.grizzly.http.server.HttpServer
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory
+import org.glassfish.jersey.internal.util.PropertiesHelper
 import org.glassfish.jersey.server.ResourceConfig
 import resource.AgnoscoResource
 
@@ -10,19 +14,19 @@ object Main {
 	// Base URI the Grizzly HTTP server will listen on
 	// When building docker images, replace the address with http://0.0.0.0:4444/
 	// http://localhost:4444/ is for testing purpose only.
-	val HTTP_ADDRESS = "http://localhost:4444/"
+	val HTTP_ADDRESS = "http://localhost:4200/"
+	val LOGGER = Logger.getLogger(Main.getClass.getName)
 
 	def startServer() : HttpServer = {
-	  val rc = new ResourceConfig(classOf[AgnoscoResource])
-
-	  GrizzlyHttpServerFactory.createHttpServer(URI.create(HTTP_ADDRESS), rc)
+	    val rc = new ResourceConfig()
+		rc.registerClasses(classOf[AgnoscoResource])
+		GrizzlyHttpServerFactory.createHttpServer(URI.create(HTTP_ADDRESS), rc)
 	}
 
 	def main(args: Array[String]) : Unit = {
-	  val server = startServer()
-
-	  System.in.read()
-	  server.shutdownNow()
+	    val server = startServer()
+	    System.in.read()
+	    server.shutdownNow()
 	}
 	/*
 	def main(args: Array[String]) : Unit = {
