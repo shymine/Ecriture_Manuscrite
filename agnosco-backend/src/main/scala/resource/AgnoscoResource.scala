@@ -7,7 +7,7 @@ import javax.ws.rs._
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 import model.Controller
-import model.common.Project
+import model.common.{Document, Page, Project}
 import org.json.{JSONArray, JSONObject}
 
 import scala.collection.mutable
@@ -27,6 +27,13 @@ class AgnoscoResource {
 	*/
 
 	val controller: Controller = new Controller
+
+	/*
+	 * Save the current state of the client work
+	 */
+	var currentProject: Project = null
+	var currentDocument: Document = null
+	var currentPage: Page = null
 
 	/**
 	  * Returns the list of the name of the projects with the list of the name of the documents for each project.
@@ -99,7 +106,7 @@ class AgnoscoResource {
 	  */
 //	@POST
 //	@Path("/exportRecogniserExamples/{name}")
-//	def exportRecogniserExample(@PathParam("name") name: String) = {
+//	def exportRecogniserExamples(@PathParam("name") name: String) = {
 	//      check the recogniser and change if needed
 	//      retrieve every examples where the project use this reco
 	//      controller.getAllProject
@@ -119,7 +126,8 @@ class AgnoscoResource {
 //	@Path("/documentPages/{name}")
 //	@Produces(Array(MediaType.APPLICATION_JSON))
 //	def getPagesOfDocuments(@PathParam("name") name: String) = {
-	//      controller.getAll
+	//      controller.getAllProject
+	//      filter correctly the data
 	//	}
 
 	/**
@@ -130,7 +138,10 @@ class AgnoscoResource {
 //	@GET
 //	@Path("pageData/{id}")
 //	@Produces(MediaType.APPLICATION_JSON)
-//	def getPageData(@PathParam("id") id: Int) = ???
+//	def getPageData(@PathParam("id") id: Int) = {
+	//      controller.getAllProject
+	//      filter correctly the data
+	//	}
 
 	/**
 	  * Save in the database the modifications of the transcription describes by the JSON associated with the request
@@ -139,7 +150,9 @@ class AgnoscoResource {
 //	@POST
 //	@Path("saveExampleEdits")
 //	@Consumes(MediaType.APPLICATION_JSON)
-//	def saveExamplesEdits = ???
+//	def saveExamplesEdits = {
+	//      controller.modifyTranscription(samples)
+	//	}
 
 	/**
 	  * Put the selected examples as Disabled
@@ -148,16 +161,20 @@ class AgnoscoResource {
 	  */
 //	@PUT
 //	@Path("disableExample/{id}")
-//	def disableExample(@PathParam("id") id: Int) = ???
+//	def disableExample(@PathParam("id") id: Int) = {
+	//      controller.disableExample(id)
+	//	}
 
 	/**
 	  * Put the selected examples as Enable
-	  * @param id The id of the exmaple to enable
+	  * @param id The id of the example to enable
 	  * @return
 	  */
 //	@PUT
 //	@Path("enableExample/{id}")
-//	def enableExample(@PathParam("id") id: Int) = ???
+//	def enableExample(@PathParam("id") id: Int) = {
+	//      controller.enableExample(id)
+	//	}
 
 	/**
 	  * Validate the examples given in the JSON associated with the request
@@ -166,7 +183,9 @@ class AgnoscoResource {
 //	@POST
 //	@Path("validateExamples")
 //	@Consumes(Array(MediaType.APPLICATION_JSON))
-//	def validateExamples = ???
+//	def validateExamples = {
+	//      controller.validateTranscription(samples)
+	//	}
 
 	/*
 	 * Processing
@@ -180,16 +199,21 @@ class AgnoscoResource {
 //	@GET
 //	@Path("documentPagesWithImages/{name}")
 //	@Produces(Array(MediaType.APPLICATION_JSON))
-//	def documentPagesWithImages(@PathParam("name") name: String) = ???
+//	def documentPagesWithImages(@PathParam("name") name: String) = {
+	//      controller.getAllProject
+	//      filter the data
+	//	}
 
 	/**
-	  * Add to the database the groundtruth given as JSON along with the request and bind it to the document which name is given as a parameter
+	  * Add to the database the groundtruth given as JSON along with the request and bind it to the page which name is given as a parameter
 	  * @param name The name of the document
 	  * @return
 	  */
 //	@POST
-//	@Path("addDocumentGroudtruth/{name}")
-//	def addCocumentGroundTruth(@PathParam("name") name: String) = ???
+//	@Path("addPageGroudtruth/{name}")
+//	def addDocumentGroundTruth(@PathParam("name") name: String) = {
+	//      controller.addGrounTruth(page, piff)
+	//	}
 
 	/**
 	  * Send the list of examples without transcription contained in the document to the recogniser associated with the project
@@ -199,6 +223,26 @@ class AgnoscoResource {
 //	@GET
 //	@Path("recogniseImages/{name}")
 //	@Produces(Array(MediaType.APPLICATION_JSON))
-//	def recogniseImages(@PathParam("name") name: String) = ???
+//	def recogniseImages(@PathParam("name") name: String) = {
+	//      samples = exmaples of the document
+	//      controller.recognizeAI(samples)
+	//	}
+
+	/**
+	  * Prepare the examples from the document given in parameter
+	  * @param document The name of the document to prepare
+	  * @return
+	  */
+//	@POST
+//	@Path("prepareExamplesOfDocument/{document}")
+//	def prepareExamplesOfDocument(@PathParam("document") document: String) = {
+//		controller.prepareData(imgFiles, vtFiles)
+//	}
+
+//	@POST
+//	@Path("prepareExamplesOfPage/{page}")
+//	def prepareExamplesOfPage(@PathParam("page") page: Int): Unit = {
+//		controller.prepareData(imgFile, vtFile)
+//	}
 
 }

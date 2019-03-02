@@ -1,6 +1,7 @@
 package model
 
-import model.common.{Example, Project, RecogniserType}
+import model.common.{Example, Page, Project, RecogniserType}
+import org.json.JSONObject
 
 class Controller {
 
@@ -23,6 +24,12 @@ class Controller {
 	def modifyTranscription(example: Example): Nothing = ???
 
 	def deleteTranscription(example: Example): Nothing = ???
+
+	def disableExample(id: Int): Nothing = ???
+
+	def enableExample(id: Int): Nothing = ???
+
+	def addGroundTruth(page: Page, groundTruth: JSONObject): Nothing = ???
 
 	def trainAI(samples: Iterable[Example]): Nothing = ???
 
