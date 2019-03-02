@@ -1,10 +1,16 @@
 package resource
 
+import java.util
+
 import javax.inject.Singleton
 import javax.ws.rs._
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
+import model.Controller
+import model.common.Project
 import org.json.{JSONArray, JSONObject}
+
+import scala.collection.mutable
 
 @Singleton
 @Path("agnosco/base")
@@ -20,14 +26,21 @@ class AgnoscoResource {
 	* General
 	*/
 
+	val controller: Controller = new Controller
+
 	/**
 	  * Returns the list of the name of the projects with the list of the name of the documents for each project.
+	  *
 	  * @return Returns an array of json describing the first level structure of the app: projects and documents
 	  */
 	@GET
 	@Path("/projectsAndDocuments")
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def getProjectAndDocuments = {
+		/*
+		 * controller.getAllProject
+		 */
+
 		val res = new JSONArray()
 		val project1 = new JSONObject()
 		val project2 = new JSONObject()
@@ -45,22 +58,28 @@ class AgnoscoResource {
 
 	/**
 	  * Creates a new project from its name and the given list of documents
+	  *
 	  * @param name The name of the project
 	  * @param list The list of the name of documents for the project
 	  * @return
 	  */
-//	@POST
-//	@Path("/createNewProject/{project_name}/{list_docs}")
-//	def createProject(@PathParam("project_name") name: String, @PathParam("list_docs") list: String) = ???
+	//	@POST
+	//	@Path("/createNewProject/{project_name}/{list_docs}")
+	//	def createProject(@PathParam("project_name") name: String, @PathParam("list_docs") list: Array[String]) = {
+	//      controller.createProject(name, list)
+	//	}
 
 	/**
 	  * Delete the document with the given name along with its datas
+	  *
 	  * @param name The name of the document to delete
 	  * @return
 	  */
-//	@DELETE
-//	@Path("/deleteDocument/{name}")
-//	def deleteDocument(@PathParam("name") name: String) = ???
+	//	@DELETE
+	//	@Path("/deleteDocument/{name}")
+	//	def deleteDocument(@PathParam("name") name: String) = {
+	//      controller.deleteDocument(name)
+	//	}
 
 	/**
 	  * Returns the list of the existing recognisers within the base
@@ -69,7 +88,9 @@ class AgnoscoResource {
 //	@GET
 //	@Path("/availableRecogniser")
 //	@Produces(MediaType.APPLICATION_JSON)
-//	def getAvailableRecogniser = ???
+//	def getAvailableRecogniser = {
+	//      controller.getAvailableRecognisers
+	//	}
 
 	/**
 	  * Groups every examples in the base that are contained in the projects using the recogniser wich name is given in parameter. The examples must be usable and validated. The examples are then exported as a training set to the named recogniser.
@@ -78,7 +99,12 @@ class AgnoscoResource {
 	  */
 //	@POST
 //	@Path("/exportRecogniserExamples/{name}")
-//	def exportRecogniserExample(@PathParam("name") name: String) = ???
+//	def exportRecogniserExample(@PathParam("name") name: String) = {
+	//      check the recogniser and change if needed
+	//      retrieve every examples where the project use this reco
+	//      controller.getAllProject
+	//      controller.trainAI(exampleSet)
+	//	}
 
 	/*
 	 * Annotation & Validation
@@ -92,7 +118,9 @@ class AgnoscoResource {
 //	@GET
 //	@Path("/documentPages/{name}")
 //	@Produces(Array(MediaType.APPLICATION_JSON))
-//	def getPagesOfDocuments(@PathParam("name") name: String) = ???
+//	def getPagesOfDocuments(@PathParam("name") name: String) = {
+	//      controller.getAll
+	//	}
 
 	/**
 	  * Return the picture associated with the page which id is given as a parameter, along with the list of example (image and transcription) of the page
