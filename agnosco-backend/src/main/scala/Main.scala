@@ -1,12 +1,9 @@
 import java.net.URI
-import java.security.AccessController
 import java.util.logging.Logger
 
-import javax.ws.rs.core.UriBuilder
 import model.preparation.processing.linedetection.BlurLineDetector
 import org.glassfish.grizzly.http.server.HttpServer
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory
-import org.glassfish.jersey.internal.util.PropertiesHelper
 import org.glassfish.jersey.server.ResourceConfig
 import resource.AgnoscoResource
 
