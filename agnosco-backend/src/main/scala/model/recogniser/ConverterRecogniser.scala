@@ -2,8 +2,9 @@ package model.recogniser
 
 import model.common.Example
 
-abstract class ConverterRecogniser(val converter: Converter) extends Recogniser {
+abstract class ConverterRecogniser extends Recogniser {
 
+  protected var converter: Converter
 
   /**
     * Train the Recognizer using the samples given in parameter

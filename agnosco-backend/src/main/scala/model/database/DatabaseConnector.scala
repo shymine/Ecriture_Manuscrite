@@ -12,6 +12,7 @@ import model.common.{Document, Example, Page, Project}
 import scala.collection.mutable.ArrayBuffer
 
 class DatabaseConnector {
+
   val DATABASE_NAME = "agnosco"
   val THUMBNAILS_FOLDER = "thumbnails"
 
@@ -130,7 +131,7 @@ class DatabaseConnector {
     val groundTruthPath = resultSet.getString("groundTruthPath")
     val examples = getExamplesOfPage(id)
 
-    Some(Page(id, imagePath, groundTruthPath, examples))
+    Some(Page(id, imagePath, groundTruthPath, examples, true))
   }
 
   def getPagesOfDocument(id : Int) : ArrayBuffer[Page] = {
@@ -146,7 +147,7 @@ class DatabaseConnector {
       val groundTruthPath = resultSet.getString("groundTruthPath")
       val examples = getExamplesOfPage(id)
 
-      pages += Page(id, imagePath, groundTruthPath, examples)
+      pages += Page(id, imagePath, groundTruthPath, examples, true)
     }
 
     pages
@@ -163,7 +164,7 @@ class DatabaseConnector {
     val name = resultSet.getString("name")
     val pages = getPagesOfDocument(id)
 
-    Some(Document(id, name, pages))
+    Some(Document(id, name, pages, true))
   }
 
   def getDocumentsOfProject(id : Int) : ArrayBuffer[Document] = {
@@ -178,7 +179,7 @@ class DatabaseConnector {
       val name = resultSet.getString("name")
       val pages = getPagesOfDocument(id)
 
-      documents += Document(id, name, pages)
+      documents += Document(id, name, pages, true)
     }
 
     documents

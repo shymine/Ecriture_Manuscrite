@@ -1,14 +1,12 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { PageData, PageDataService } from './pageData.service';
-/* QUESTION : est-ce qu'on crée un service pour chaque appel rest différent ?
-              est-ce qu'il y a besoin d'un fichier json pour définir la façon dont on découpe la réponse à l'appel rest ? */
+import { Validation, ValidationService } from '../service/validation.service';
 
 @Component({
   selector: 'app-validation',
   templateUrl: './validation.component.html',
-  providers: [ PageDataService ],
+  providers: [ ValidationService ],
   styleUrls: ['./validation.component.css']
 })
 export class ValidationComponent implements OnInit {
@@ -30,9 +28,9 @@ export class ValidationComponent implements OnInit {
 
   pageD : any[];
 
-  pageData: PageData;
+  validation: Validation;
 
-  constructor(private router: Router, private route: ActivatedRoute, private pageDataService: PageDataService, private http: HttpClient) {
+  constructor(private router: Router, private route: ActivatedRoute, private validationService: ValidationService, private http: HttpClient) {
     this.examples = [];
     this.pages = [];
   }
@@ -58,34 +56,40 @@ export class ValidationComponent implements OnInit {
     );
 
     //on récupère la liste des exemples qui composent la première page
-    /*this.pageDataService.getPageData(0).subscribe(response => this.pageD = response.json() || {});*/
-    //this.http.get('/base/pageData/{0}', {}).subscribe(examples => {
-      
-      //this.examples = examples;
-    //});
+    //getValidation() renvoie l'image de la page et les exemples, il faut donc faire un tri
+    this.validationService.getValidation(0).subscribe(response => console.log("getValidation"));
+
   }
 
   goHome(){
     this.router.navigate(['']);
   }
 
-  /*disableEx(id){
+  disableEx(id){
+    console.log("disable " + id);
     if(this.hidden[id] == false){
-      this.http.put('/base/disableExample/${id}', {}, {}).subscribe(example => this.changeIconArrow(id));
+      this.validationService.disableEx(id);
+      this.changeIconToArrow(id);
+      //this.http.put('/base/disableExample/${id}', {}, {}).subscribe(example => this.changeIconArrow(id));
     }else{
-      this.http.put('/base/enableExample/${id}', {}, {}).subscribe(example => this.changeIconCross(id));
+      this.validationService.enableEx(id);
+      this.changeIconToCross(id);
+      //this.http.put('/base/enableExample/${id}', {}, {}).subscribe(example => this.changeIconCross(id));
     }
     this.hidden[id] = !this.hidden[id];
-  }*/
-
-  changeIconArrow(id){
-    const icon = document.getElementById('cross' + id);
-    icon.className = "fas angle-double-up";
   }
 
-  changeIconCross(id){
-    const icon = document.getElementById('cross' + id);
+  changeIconToArrow(id){
+    const icon = document.querySelectorAll('[data-name]="cross"' + id);
+    //const icon = document.getElementById("cross");
+    //icon.className = "fas fa-angle-double-up";
+    console.log("change to arrow");
+  }
+
+  changeIconToCross(id){
+    const icon = document.getElementById("cross");
     icon.className = "fas fa-times";
+    console.log("change to cross");
   }
 
   validateAll(){

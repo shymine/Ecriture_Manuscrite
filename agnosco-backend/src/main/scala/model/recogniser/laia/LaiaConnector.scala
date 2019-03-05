@@ -13,7 +13,9 @@ import scala.util.matching.Regex
   * Laia should be installed beforehand using docker
   * @param converter The converter from the Example to the laia input
   */
-class LaiaConnector(converter: Converter, val height: Integer) extends ConverterRecogniser(converter){
+class LaiaConnector extends ConverterRecogniser{
+
+  LaiaConnector.super.converter = new LaiaConverter
 
   /**
     * Laia needs all images to be the same height

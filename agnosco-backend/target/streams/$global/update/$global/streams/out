@@ -9,8 +9,20 @@
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.8 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.8 {scala-tool=[default, optional(default)]}
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
-[debug] sbt-chain: module revision found in cache: org.scala-lang#scala-library;2.12.8
-[debug] 	found org.scala-lang#scala-library;2.12.8 in sbt-chain
+[debug] sbt-chain-delegate: Checking cache for: dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.scala-lang/scala-library/2.12.8/ivys/ivy.xml
+[debug] 	local: no ivy file found for org.scala-lang#scala-library;2.12.8
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.pom
+[debug] 	public: found md file for org.scala-lang#scala-library;2.12.8
+[debug] 		=> https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.pom (2.12.8)
+[debug] downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.pom ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.pom
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.pom.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.pom
+[debug] 	[SUCCESSFUL ] org.scala-lang#scala-library;2.12.8!scala-library.pom(pom.original) (184ms)
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.scala-lang/scala-library/2.12.8/jars/scala-library.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.jar
+[debug] 	found org.scala-lang#scala-library;2.12.8 in public
 [debug] 	[2.12.8] org.scala-lang#scala-library;2.12.8
 [debug] == resolving dependencies default#agnosco-backend_2.12;0.1->org.scala-lang#scala-library;2.12.8 [compile->runtime]
 [debug] == resolving dependencies default#agnosco-backend_2.12;0.1->org.scala-lang#scala-library;2.12.8 [compile->compile]
@@ -19,8 +31,20 @@
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.8 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.8 {scala-tool=[default, optional(default)]}
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-xml_2.12;1.1.1 {compile=[default(compile)]}
-[debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-xml_2.12;1.1.1
-[debug] 	found org.scala-lang.modules#scala-xml_2.12;1.1.1 in sbt-chain
+[debug] sbt-chain-delegate: Checking cache for: dependency: org.scala-lang.modules#scala-xml_2.12;1.1.1 {compile=[default(compile)]}
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.scala-lang.modules/scala-xml_2.12/1.1.1/ivys/ivy.xml
+[debug] 	local: no ivy file found for org.scala-lang.modules#scala-xml_2.12;1.1.1
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1.pom
+[debug] 	public: found md file for org.scala-lang.modules#scala-xml_2.12;1.1.1
+[debug] 		=> https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1.pom (1.1.1)
+[debug] downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1.pom ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1.pom
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1.pom.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1.pom
+[debug] 	[SUCCESSFUL ] org.scala-lang.modules#scala-xml_2.12;1.1.1!scala-xml_2.12.pom(pom.original) (137ms)
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.scala-lang.modules/scala-xml_2.12/1.1.1/bundles/scala-xml_2.12.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1.jar
+[debug] 	found org.scala-lang.modules#scala-xml_2.12;1.1.1 in public
 [debug] == resolving dependencies default#agnosco-backend_2.12;0.1->org.scala-lang.modules#scala-xml_2.12;1.1.1 [compile->runtime]
 [debug] == resolving dependencies default#agnosco-backend_2.12;0.1->org.scala-lang.modules#scala-xml_2.12;1.1.1 [compile->compile]
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.6 {test=[runtime(*), master(compile)]} => dependency: org.scala-lang#scala-compiler;2.12.8 {test=[runtime(*), master(compile)]}
@@ -53,7 +77,7 @@
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.jersey.containers#jersey-container-servlet;2.28 {compile=[default(compile)]}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.jersey.containers#jersey-container-servlet;2.28 {compile=[default(compile)]}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.containers/jersey-container-servlet/2.28/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.containers/jersey-container-servlet/2.28/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.jersey.containers#jersey-container-servlet;2.28
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28.pom
 [debug] 	public: found md file for org.glassfish.jersey.containers#jersey-container-servlet;2.28
@@ -62,10 +86,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.jersey.containers#jersey-container-servlet;2.28!jersey-container-servlet.pom(pom.original) (60ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.jersey.containers#jersey-container-servlet;2.28!jersey-container-servlet.pom(pom.original) (116ms)
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.jersey.containers#project;2.28 {}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.jersey.containers#project;2.28 {}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.containers/project/2.28/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.containers/project/2.28/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.jersey.containers#project;2.28
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/project/2.28/project-2.28.pom
 [debug] 	public: found md file for org.glassfish.jersey.containers#project;2.28
@@ -74,10 +98,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/project/2.28/project-2.28.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/project/2.28/project-2.28.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/containers/project/2.28/project-2.28.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.jersey.containers#project;2.28!project.pom(pom.original) (50ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.jersey.containers#project;2.28!project.pom(pom.original) (121ms)
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.jersey#project;2.28 {}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.jersey#project;2.28 {}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey/project/2.28/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey/project/2.28/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.jersey#project;2.28
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/project/2.28/project-2.28.pom
 [debug] 	public: found md file for org.glassfish.jersey#project;2.28
@@ -86,10 +110,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/project/2.28/project-2.28.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/project/2.28/project-2.28.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/project/2.28/project-2.28.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.jersey#project;2.28!project.pom(pom.original) (78ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.jersey#project;2.28!project.pom(pom.original) (148ms)
 [debug] sbt-chain: Checking cache for: dependency: org.eclipse.ee4j#project;1.0.5 {}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.eclipse.ee4j#project;1.0.5 {}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.eclipse.ee4j/project/1.0.5/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.eclipse.ee4j/project/1.0.5/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.eclipse.ee4j#project;1.0.5
 [debug] 		tried https://repo1.maven.org/maven2/org/eclipse/ee4j/project/1.0.5/project-1.0.5.pom
 [debug] 	public: found md file for org.eclipse.ee4j#project;1.0.5
@@ -98,15 +122,15 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/eclipse/ee4j/project/1.0.5/project-1.0.5.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/eclipse/ee4j/project/1.0.5/project-1.0.5.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/eclipse/ee4j/project/1.0.5/project-1.0.5.pom
-[debug] 	[SUCCESSFUL ] org.eclipse.ee4j#project;1.0.5!project.pom(pom.original) (47ms)
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.eclipse.ee4j/project/1.0.5/jars/project.jar
+[debug] 	[SUCCESSFUL ] org.eclipse.ee4j#project;1.0.5!project.pom(pom.original) (164ms)
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.eclipse.ee4j/project/1.0.5/jars/project.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/eclipse/ee4j/project/1.0.5/project-1.0.5.jar
 [debug] CLIENT ERROR: Not Found url=https://repo1.maven.org/maven2/org/eclipse/ee4j/project/1.0.5/project-1.0.5.jar
-[debug] 		tried /Users/cloudyhug/.sbt/preloaded/org.eclipse.ee4j/project/1.0.5/jars/project.jar
-[debug] 		tried file:////Users/cloudyhug/.sbt/preloaded/org/eclipse/ee4j/project/1.0.5/project-1.0.5.jar
+[debug] 		tried /home-reseau/tneittho/.sbt/preloaded/org.eclipse.ee4j/project/1.0.5/jars/project.jar
+[debug] 		tried file:////home-reseau/tneittho/.sbt/preloaded/org/eclipse/ee4j/project/1.0.5/project-1.0.5.jar
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.hk2#hk2-bom;2.5.0 {}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.hk2#hk2-bom;2.5.0 {}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.hk2/hk2-bom/2.5.0/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.hk2/hk2-bom/2.5.0/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.hk2#hk2-bom;2.5.0
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-bom/2.5.0/hk2-bom-2.5.0.pom
 [debug] 	public: found md file for org.glassfish.hk2#hk2-bom;2.5.0
@@ -115,25 +139,25 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-bom/2.5.0/hk2-bom-2.5.0.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-bom/2.5.0/hk2-bom-2.5.0.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-bom/2.5.0/hk2-bom-2.5.0.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.hk2#hk2-bom;2.5.0!hk2-bom.pom(pom.original) (48ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.hk2#hk2-bom;2.5.0!hk2-bom.pom(pom.original) (232ms)
 [debug] sbt-chain: Checking cache for: dependency: org.eclipse.ee4j#project;1.0.5 {}
 [debug] sbt-chain: module revision found in cache: org.eclipse.ee4j#project;1.0.5
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.hk2/hk2-bom/2.5.0/jars/hk2-bom.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.hk2/hk2-bom/2.5.0/jars/hk2-bom.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-bom/2.5.0/hk2-bom-2.5.0.jar
 [debug] CLIENT ERROR: Not Found url=https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-bom/2.5.0/hk2-bom-2.5.0.jar
-[debug] 		tried /Users/cloudyhug/.sbt/preloaded/org.glassfish.hk2/hk2-bom/2.5.0/jars/hk2-bom.jar
-[debug] 		tried file:////Users/cloudyhug/.sbt/preloaded/org/glassfish/hk2/hk2-bom/2.5.0/hk2-bom-2.5.0.jar
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey/project/2.28/jars/project.jar
+[debug] 		tried /home-reseau/tneittho/.sbt/preloaded/org.glassfish.hk2/hk2-bom/2.5.0/jars/hk2-bom.jar
+[debug] 		tried file:////home-reseau/tneittho/.sbt/preloaded/org/glassfish/hk2/hk2-bom/2.5.0/hk2-bom-2.5.0.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey/project/2.28/jars/project.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/project/2.28/project-2.28.jar
 [debug] CLIENT ERROR: Not Found url=https://repo1.maven.org/maven2/org/glassfish/jersey/project/2.28/project-2.28.jar
-[debug] 		tried /Users/cloudyhug/.sbt/preloaded/org.glassfish.jersey/project/2.28/jars/project.jar
-[debug] 		tried file:////Users/cloudyhug/.sbt/preloaded/org/glassfish/jersey/project/2.28/project-2.28.jar
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.containers/project/2.28/jars/project.jar
+[debug] 		tried /home-reseau/tneittho/.sbt/preloaded/org.glassfish.jersey/project/2.28/jars/project.jar
+[debug] 		tried file:////home-reseau/tneittho/.sbt/preloaded/org/glassfish/jersey/project/2.28/project-2.28.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.containers/project/2.28/jars/project.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/project/2.28/project-2.28.jar
 [debug] CLIENT ERROR: Not Found url=https://repo1.maven.org/maven2/org/glassfish/jersey/containers/project/2.28/project-2.28.jar
-[debug] 		tried /Users/cloudyhug/.sbt/preloaded/org.glassfish.jersey.containers/project/2.28/jars/project.jar
-[debug] 		tried file:////Users/cloudyhug/.sbt/preloaded/org/glassfish/jersey/containers/project/2.28/project-2.28.jar
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.containers/jersey-container-servlet/2.28/jars/jersey-container-servlet.jar
+[debug] 		tried /home-reseau/tneittho/.sbt/preloaded/org.glassfish.jersey.containers/project/2.28/jars/project.jar
+[debug] 		tried file:////home-reseau/tneittho/.sbt/preloaded/org/glassfish/jersey/containers/project/2.28/project-2.28.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.containers/jersey-container-servlet/2.28/jars/jersey-container-servlet.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28.jar
 [debug] 	found org.glassfish.jersey.containers#jersey-container-servlet;2.28 in public
 [debug] == resolving dependencies default#agnosco-backend_2.12;0.1->org.glassfish.jersey.containers#jersey-container-servlet;2.28 [compile->runtime]
@@ -143,7 +167,7 @@
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.jersey.containers#jersey-container-servlet-core;2.28 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.jersey.containers#jersey-container-servlet-core;2.28 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.containers/jersey-container-servlet-core/2.28/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.containers/jersey-container-servlet-core/2.28/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.jersey.containers#jersey-container-servlet-core;2.28
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28.pom
 [debug] 	public: found md file for org.glassfish.jersey.containers#jersey-container-servlet-core;2.28
@@ -152,10 +176,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.jersey.containers#jersey-container-servlet-core;2.28!jersey-container-servlet-core.pom(pom.original) (49ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.jersey.containers#jersey-container-servlet-core;2.28!jersey-container-servlet-core.pom(pom.original) (182ms)
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.jersey.containers#project;2.28 {}
 [debug] sbt-chain: module revision found in cache: org.glassfish.jersey.containers#project;2.28
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.containers/jersey-container-servlet-core/2.28/jars/jersey-container-servlet-core.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.containers/jersey-container-servlet-core/2.28/jars/jersey-container-servlet-core.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28.jar
 [debug] 	found org.glassfish.jersey.containers#jersey-container-servlet-core;2.28 in public
 [debug] == resolving dependencies org.glassfish.jersey.containers#jersey-container-servlet;2.28->org.glassfish.jersey.containers#jersey-container-servlet-core;2.28 [compile->compile(*)]
@@ -164,7 +188,7 @@
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.hk2.external#jakarta.inject;2.5.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.hk2.external#jakarta.inject;2.5.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.hk2.external/jakarta.inject/2.5.0/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.hk2.external/jakarta.inject/2.5.0/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.hk2.external#jakarta.inject;2.5.0
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0.pom
 [debug] 	public: found md file for org.glassfish.hk2.external#jakarta.inject;2.5.0
@@ -173,10 +197,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.hk2.external#jakarta.inject;2.5.0!jakarta.inject.pom(pom.original) (47ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.hk2.external#jakarta.inject;2.5.0!jakarta.inject.pom(pom.original) (187ms)
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.hk2#external;2.5.0 {}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.hk2#external;2.5.0 {}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.hk2/external/2.5.0/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.hk2/external/2.5.0/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.hk2#external;2.5.0
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/external/2.5.0/external-2.5.0.pom
 [debug] 	public: found md file for org.glassfish.hk2#external;2.5.0
@@ -185,10 +209,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/2.5.0/external-2.5.0.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/2.5.0/external-2.5.0.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/hk2/external/2.5.0/external-2.5.0.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.hk2#external;2.5.0!external.pom(pom.original) (45ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.hk2#external;2.5.0!external.pom(pom.original) (139ms)
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.hk2#hk2-parent;2.5.0 {}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.hk2#hk2-parent;2.5.0 {}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.hk2/hk2-parent/2.5.0/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.hk2/hk2-parent/2.5.0/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.hk2#hk2-parent;2.5.0
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-parent/2.5.0/hk2-parent-2.5.0.pom
 [debug] 	public: found md file for org.glassfish.hk2#hk2-parent;2.5.0
@@ -197,20 +221,20 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-parent/2.5.0/hk2-parent-2.5.0.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-parent/2.5.0/hk2-parent-2.5.0.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-parent/2.5.0/hk2-parent-2.5.0.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.hk2#hk2-parent;2.5.0!hk2-parent.pom(pom.original) (55ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.hk2#hk2-parent;2.5.0!hk2-parent.pom(pom.original) (255ms)
 [debug] sbt-chain: Checking cache for: dependency: org.eclipse.ee4j#project;1.0.5 {}
 [debug] sbt-chain: module revision found in cache: org.eclipse.ee4j#project;1.0.5
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.hk2/hk2-parent/2.5.0/jars/hk2-parent.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.hk2/hk2-parent/2.5.0/jars/hk2-parent.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-parent/2.5.0/hk2-parent-2.5.0.jar
 [debug] CLIENT ERROR: Not Found url=https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-parent/2.5.0/hk2-parent-2.5.0.jar
-[debug] 		tried /Users/cloudyhug/.sbt/preloaded/org.glassfish.hk2/hk2-parent/2.5.0/jars/hk2-parent.jar
-[debug] 		tried file:////Users/cloudyhug/.sbt/preloaded/org/glassfish/hk2/hk2-parent/2.5.0/hk2-parent-2.5.0.jar
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.hk2/external/2.5.0/jars/external.jar
+[debug] 		tried /home-reseau/tneittho/.sbt/preloaded/org.glassfish.hk2/hk2-parent/2.5.0/jars/hk2-parent.jar
+[debug] 		tried file:////home-reseau/tneittho/.sbt/preloaded/org/glassfish/hk2/hk2-parent/2.5.0/hk2-parent-2.5.0.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.hk2/external/2.5.0/jars/external.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/external/2.5.0/external-2.5.0.jar
 [debug] CLIENT ERROR: Not Found url=https://repo1.maven.org/maven2/org/glassfish/hk2/external/2.5.0/external-2.5.0.jar
-[debug] 		tried /Users/cloudyhug/.sbt/preloaded/org.glassfish.hk2/external/2.5.0/jars/external.jar
-[debug] 		tried file:////Users/cloudyhug/.sbt/preloaded/org/glassfish/hk2/external/2.5.0/external-2.5.0.jar
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.hk2.external/jakarta.inject/2.5.0/jars/jakarta.inject.jar
+[debug] 		tried /home-reseau/tneittho/.sbt/preloaded/org.glassfish.hk2/external/2.5.0/jars/external.jar
+[debug] 		tried file:////home-reseau/tneittho/.sbt/preloaded/org/glassfish/hk2/external/2.5.0/external-2.5.0.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.hk2.external/jakarta.inject/2.5.0/jars/jakarta.inject.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0.jar
 [debug] 	found org.glassfish.hk2.external#jakarta.inject;2.5.0 in public
 [debug] == resolving dependencies org.glassfish.jersey.containers#jersey-container-servlet-core;2.28->org.glassfish.hk2.external#jakarta.inject;2.5.0 [compile->compile(*)]
@@ -219,7 +243,7 @@
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.jersey.core#jersey-common;2.28 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.jersey.core#jersey-common;2.28 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.core/jersey-common/2.28/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.core/jersey-common/2.28/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.jersey.core#jersey-common;2.28
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28.pom
 [debug] 	public: found md file for org.glassfish.jersey.core#jersey-common;2.28
@@ -228,10 +252,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.jersey.core#jersey-common;2.28!jersey-common.pom(pom.original) (48ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.jersey.core#jersey-common;2.28!jersey-common.pom(pom.original) (233ms)
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.jersey#project;2.28 {}
 [debug] sbt-chain: module revision found in cache: org.glassfish.jersey#project;2.28
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.core/jersey-common/2.28/jars/jersey-common.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.core/jersey-common/2.28/jars/jersey-common.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28.jar
 [debug] 	found org.glassfish.jersey.core#jersey-common;2.28 in public
 [debug] == resolving dependencies org.glassfish.jersey.containers#jersey-container-servlet-core;2.28->org.glassfish.jersey.core#jersey-common;2.28 [compile->compile(*)]
@@ -240,7 +264,7 @@
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: jakarta.ws.rs#jakarta.ws.rs-api;2.1.5 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain-delegate: Checking cache for: dependency: jakarta.ws.rs#jakarta.ws.rs-api;2.1.5 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/jakarta.ws.rs/jakarta.ws.rs-api/2.1.5/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/jakarta.ws.rs/jakarta.ws.rs-api/2.1.5/ivys/ivy.xml
 [debug] 	local: no ivy file found for jakarta.ws.rs#jakarta.ws.rs-api;2.1.5
 [debug] 		tried https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.pom
 [debug] 	public: found md file for jakarta.ws.rs#jakarta.ws.rs-api;2.1.5
@@ -249,8 +273,8 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.pom
-[debug] 	[SUCCESSFUL ] jakarta.ws.rs#jakarta.ws.rs-api;2.1.5!jakarta.ws.rs-api.pom(pom.original) (51ms)
-[debug] 		tried /Users/cloudyhug/.ivy2/local/jakarta.ws.rs/jakarta.ws.rs-api/2.1.5/bundles/jakarta.ws.rs-api.jar
+[debug] 	[SUCCESSFUL ] jakarta.ws.rs#jakarta.ws.rs-api;2.1.5!jakarta.ws.rs-api.pom(pom.original) (214ms)
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/jakarta.ws.rs/jakarta.ws.rs-api/2.1.5/bundles/jakarta.ws.rs-api.jar
 [debug] 		tried https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.jar
 [debug] 	found jakarta.ws.rs#jakarta.ws.rs-api;2.1.5 in public
 [debug] == resolving dependencies org.glassfish.jersey.core#jersey-common;2.28->jakarta.ws.rs#jakarta.ws.rs-api;2.1.5 [compile->compile(*)]
@@ -261,7 +285,7 @@
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: jakarta.annotation#jakarta.annotation-api;1.3.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain-delegate: Checking cache for: dependency: jakarta.annotation#jakarta.annotation-api;1.3.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/jakarta.annotation/jakarta.annotation-api/1.3.4/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/jakarta.annotation/jakarta.annotation-api/1.3.4/ivys/ivy.xml
 [debug] 	local: no ivy file found for jakarta.annotation#jakarta.annotation-api;1.3.4
 [debug] 		tried https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4.pom
 [debug] 	public: found md file for jakarta.annotation#jakarta.annotation-api;1.3.4
@@ -270,10 +294,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4.pom
-[debug] 	[SUCCESSFUL ] jakarta.annotation#jakarta.annotation-api;1.3.4!jakarta.annotation-api.pom(pom.original) (48ms)
+[debug] 	[SUCCESSFUL ] jakarta.annotation#jakarta.annotation-api;1.3.4!jakarta.annotation-api.pom(pom.original) (333ms)
 [debug] sbt-chain: Checking cache for: dependency: org.eclipse.ee4j#project;1.0.4 {}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.eclipse.ee4j#project;1.0.4 {}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.eclipse.ee4j/project/1.0.4/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.eclipse.ee4j/project/1.0.4/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.eclipse.ee4j#project;1.0.4
 [debug] 		tried https://repo1.maven.org/maven2/org/eclipse/ee4j/project/1.0.4/project-1.0.4.pom
 [debug] 	public: found md file for org.eclipse.ee4j#project;1.0.4
@@ -282,13 +306,13 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/eclipse/ee4j/project/1.0.4/project-1.0.4.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/eclipse/ee4j/project/1.0.4/project-1.0.4.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/eclipse/ee4j/project/1.0.4/project-1.0.4.pom
-[debug] 	[SUCCESSFUL ] org.eclipse.ee4j#project;1.0.4!project.pom(pom.original) (51ms)
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.eclipse.ee4j/project/1.0.4/jars/project.jar
+[debug] 	[SUCCESSFUL ] org.eclipse.ee4j#project;1.0.4!project.pom(pom.original) (109ms)
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.eclipse.ee4j/project/1.0.4/jars/project.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/eclipse/ee4j/project/1.0.4/project-1.0.4.jar
 [debug] CLIENT ERROR: Not Found url=https://repo1.maven.org/maven2/org/eclipse/ee4j/project/1.0.4/project-1.0.4.jar
-[debug] 		tried /Users/cloudyhug/.sbt/preloaded/org.eclipse.ee4j/project/1.0.4/jars/project.jar
-[debug] 		tried file:////Users/cloudyhug/.sbt/preloaded/org/eclipse/ee4j/project/1.0.4/project-1.0.4.jar
-[debug] 		tried /Users/cloudyhug/.ivy2/local/jakarta.annotation/jakarta.annotation-api/1.3.4/jars/jakarta.annotation-api.jar
+[debug] 		tried /home-reseau/tneittho/.sbt/preloaded/org.eclipse.ee4j/project/1.0.4/jars/project.jar
+[debug] 		tried file:////home-reseau/tneittho/.sbt/preloaded/org/eclipse/ee4j/project/1.0.4/project-1.0.4.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/jakarta.annotation/jakarta.annotation-api/1.3.4/jars/jakarta.annotation-api.jar
 [debug] 		tried https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4.jar
 [debug] 	found jakarta.annotation#jakarta.annotation-api;1.3.4 in public
 [debug] == resolving dependencies org.glassfish.jersey.core#jersey-common;2.28->jakarta.annotation#jakarta.annotation-api;1.3.4 [compile->compile(*)]
@@ -299,7 +323,7 @@
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.hk2#osgi-resource-locator;1.0.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.hk2#osgi-resource-locator;1.0.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.hk2/osgi-resource-locator/1.0.1/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.hk2/osgi-resource-locator/1.0.1/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.hk2#osgi-resource-locator;1.0.1
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.pom
 [debug] 	public: found md file for org.glassfish.hk2#osgi-resource-locator;1.0.1
@@ -308,10 +332,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.hk2#osgi-resource-locator;1.0.1!osgi-resource-locator.pom(pom.original) (46ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.hk2#osgi-resource-locator;1.0.1!osgi-resource-locator.pom(pom.original) (192ms)
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish#pom;8 {}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish#pom;8 {}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish/pom/8/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish/pom/8/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish#pom;8
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/pom/8/pom-8.pom
 [debug] 	public: found md file for org.glassfish#pom;8
@@ -320,13 +344,13 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/pom/8/pom-8.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/pom/8/pom-8.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/pom/8/pom-8.pom
-[debug] 	[SUCCESSFUL ] org.glassfish#pom;8!pom.pom(pom.original) (44ms)
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish/pom/8/jars/pom.jar
+[debug] 	[SUCCESSFUL ] org.glassfish#pom;8!pom.pom(pom.original) (195ms)
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish/pom/8/jars/pom.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/pom/8/pom-8.jar
 [debug] CLIENT ERROR: Not Found url=https://repo1.maven.org/maven2/org/glassfish/pom/8/pom-8.jar
-[debug] 		tried /Users/cloudyhug/.sbt/preloaded/org.glassfish/pom/8/jars/pom.jar
-[debug] 		tried file:////Users/cloudyhug/.sbt/preloaded/org/glassfish/pom/8/pom-8.jar
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.hk2/osgi-resource-locator/1.0.1/jars/osgi-resource-locator.jar
+[debug] 		tried /home-reseau/tneittho/.sbt/preloaded/org.glassfish/pom/8/jars/pom.jar
+[debug] 		tried file:////home-reseau/tneittho/.sbt/preloaded/org/glassfish/pom/8/pom-8.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.hk2/osgi-resource-locator/1.0.1/jars/osgi-resource-locator.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.jar
 [debug] 	found org.glassfish.hk2#osgi-resource-locator;1.0.1 in public
 [debug] == resolving dependencies org.glassfish.jersey.core#jersey-common;2.28->org.glassfish.hk2#osgi-resource-locator;1.0.1 [compile->compile(*)]
@@ -345,7 +369,7 @@
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.jersey.core#jersey-server;2.28 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.jersey.core#jersey-server;2.28 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.core/jersey-server/2.28/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.core/jersey-server/2.28/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.jersey.core#jersey-server;2.28
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.pom
 [debug] 	public: found md file for org.glassfish.jersey.core#jersey-server;2.28
@@ -354,10 +378,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.jersey.core#jersey-server;2.28!jersey-server.pom(pom.original) (46ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.jersey.core#jersey-server;2.28!jersey-server.pom(pom.original) (273ms)
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.jersey#project;2.28 {}
 [debug] sbt-chain: module revision found in cache: org.glassfish.jersey#project;2.28
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.core/jersey-server/2.28/jars/jersey-server.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.core/jersey-server/2.28/jars/jersey-server.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.jar
 [debug] 	found org.glassfish.jersey.core#jersey-server;2.28 in public
 [debug] == resolving dependencies org.glassfish.jersey.containers#jersey-container-servlet-core;2.28->org.glassfish.jersey.core#jersey-server;2.28 [compile->compile(*)]
@@ -368,7 +392,7 @@
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.jersey.core#jersey-client;2.28 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.jersey.core#jersey-client;2.28 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.core/jersey-client/2.28/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.core/jersey-client/2.28/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.jersey.core#jersey-client;2.28
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28.pom
 [debug] 	public: found md file for org.glassfish.jersey.core#jersey-client;2.28
@@ -377,10 +401,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.jersey.core#jersey-client;2.28!jersey-client.pom(pom.original) (48ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.jersey.core#jersey-client;2.28!jersey-client.pom(pom.original) (197ms)
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.jersey#project;2.28 {}
 [debug] sbt-chain: module revision found in cache: org.glassfish.jersey#project;2.28
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.core/jersey-client/2.28/jars/jersey-client.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.core/jersey-client/2.28/jars/jersey-client.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28.jar
 [debug] 	found org.glassfish.jersey.core#jersey-client;2.28 in public
 [debug] == resolving dependencies org.glassfish.jersey.core#jersey-server;2.28->org.glassfish.jersey.core#jersey-client;2.28 [compile->compile(*)]
@@ -397,7 +421,7 @@
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.jersey.media#jersey-media-jaxb;2.28 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.jersey.media#jersey-media-jaxb;2.28 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.media/jersey-media-jaxb/2.28/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.media/jersey-media-jaxb/2.28/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.jersey.media#jersey-media-jaxb;2.28
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28.pom
 [debug] 	public: found md file for org.glassfish.jersey.media#jersey-media-jaxb;2.28
@@ -406,10 +430,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.jersey.media#jersey-media-jaxb;2.28!jersey-media-jaxb.pom(pom.original) (48ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.jersey.media#jersey-media-jaxb;2.28!jersey-media-jaxb.pom(pom.original) (140ms)
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.jersey.media#project;2.28 {}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.jersey.media#project;2.28 {}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.media/project/2.28/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.media/project/2.28/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.jersey.media#project;2.28
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/media/project/2.28/project-2.28.pom
 [debug] 	public: found md file for org.glassfish.jersey.media#project;2.28
@@ -418,15 +442,15 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/media/project/2.28/project-2.28.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/media/project/2.28/project-2.28.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/media/project/2.28/project-2.28.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.jersey.media#project;2.28!project.pom(pom.original) (48ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.jersey.media#project;2.28!project.pom(pom.original) (154ms)
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.jersey#project;2.28 {}
 [debug] sbt-chain: module revision found in cache: org.glassfish.jersey#project;2.28
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.media/project/2.28/jars/project.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.media/project/2.28/jars/project.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/media/project/2.28/project-2.28.jar
 [debug] CLIENT ERROR: Not Found url=https://repo1.maven.org/maven2/org/glassfish/jersey/media/project/2.28/project-2.28.jar
-[debug] 		tried /Users/cloudyhug/.sbt/preloaded/org.glassfish.jersey.media/project/2.28/jars/project.jar
-[debug] 		tried file:////Users/cloudyhug/.sbt/preloaded/org/glassfish/jersey/media/project/2.28/project-2.28.jar
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.media/jersey-media-jaxb/2.28/jars/jersey-media-jaxb.jar
+[debug] 		tried /home-reseau/tneittho/.sbt/preloaded/org.glassfish.jersey.media/project/2.28/jars/project.jar
+[debug] 		tried file:////home-reseau/tneittho/.sbt/preloaded/org/glassfish/jersey/media/project/2.28/project-2.28.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.media/jersey-media-jaxb/2.28/jars/jersey-media-jaxb.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28.jar
 [debug] 	found org.glassfish.jersey.media#jersey-media-jaxb;2.28 in public
 [debug] == resolving dependencies org.glassfish.jersey.core#jersey-server;2.28->org.glassfish.jersey.media#jersey-media-jaxb;2.28 [compile->compile(*)]
@@ -445,7 +469,7 @@
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: javax.validation#validation-api;2.0.1.Final {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain-delegate: Checking cache for: dependency: javax.validation#validation-api;2.0.1.Final {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/javax.validation/validation-api/2.0.1.Final/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/javax.validation/validation-api/2.0.1.Final/ivys/ivy.xml
 [debug] 	local: no ivy file found for javax.validation#validation-api;2.0.1.Final
 [debug] 		tried https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.pom
 [debug] 	public: found md file for javax.validation#validation-api;2.0.1.Final
@@ -454,8 +478,8 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.pom
-[debug] 	[SUCCESSFUL ] javax.validation#validation-api;2.0.1.Final!validation-api.pom(pom.original) (45ms)
-[debug] 		tried /Users/cloudyhug/.ivy2/local/javax.validation/validation-api/2.0.1.Final/jars/validation-api.jar
+[debug] 	[SUCCESSFUL ] javax.validation#validation-api;2.0.1.Final!validation-api.pom(pom.original) (241ms)
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/javax.validation/validation-api/2.0.1.Final/jars/validation-api.jar
 [debug] 		tried https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar
 [debug] 	found javax.validation#validation-api;2.0.1.Final in public
 [debug] == resolving dependencies org.glassfish.jersey.core#jersey-server;2.28->javax.validation#validation-api;2.0.1.Final [compile->compile(*)]
@@ -519,7 +543,7 @@
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.jersey.containers#jersey-container-grizzly2-http;2.28 {compile=[default(compile)]}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.jersey.containers#jersey-container-grizzly2-http;2.28 {compile=[default(compile)]}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.containers/jersey-container-grizzly2-http/2.28/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.containers/jersey-container-grizzly2-http/2.28/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.jersey.containers#jersey-container-grizzly2-http;2.28
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28.pom
 [debug] 	public: found md file for org.glassfish.jersey.containers#jersey-container-grizzly2-http;2.28
@@ -528,10 +552,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.jersey.containers#jersey-container-grizzly2-http;2.28!jersey-container-grizzly2-http.pom(pom.original) (51ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.jersey.containers#jersey-container-grizzly2-http;2.28!jersey-container-grizzly2-http.pom(pom.original) (193ms)
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.jersey.containers#project;2.28 {}
 [debug] sbt-chain: module revision found in cache: org.glassfish.jersey.containers#project;2.28
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.jersey.containers/jersey-container-grizzly2-http/2.28/jars/jersey-container-grizzly2-http.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.jersey.containers/jersey-container-grizzly2-http/2.28/jars/jersey-container-grizzly2-http.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28.jar
 [debug] 	found org.glassfish.jersey.containers#jersey-container-grizzly2-http;2.28 in public
 [debug] == resolving dependencies default#agnosco-backend_2.12;0.1->org.glassfish.jersey.containers#jersey-container-grizzly2-http;2.28 [compile->runtime]
@@ -543,7 +567,7 @@
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.grizzly#grizzly-http-server;2.4.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.grizzly#grizzly-http-server;2.4.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.grizzly/grizzly-http-server/2.4.4/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.grizzly/grizzly-http-server/2.4.4/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.grizzly#grizzly-http-server;2.4.4
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4.pom
 [debug] 	public: found md file for org.glassfish.grizzly#grizzly-http-server;2.4.4
@@ -552,10 +576,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-http-server;2.4.4!grizzly-http-server.pom(pom.original) (48ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-http-server;2.4.4!grizzly-http-server.pom(pom.original) (141ms)
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.grizzly#grizzly-project;2.4.4 {}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.grizzly#grizzly-project;2.4.4 {}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.grizzly/grizzly-project/2.4.4/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.grizzly/grizzly-project/2.4.4/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.grizzly#grizzly-project;2.4.4
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-project/2.4.4/grizzly-project-2.4.4.pom
 [debug] 	public: found md file for org.glassfish.grizzly#grizzly-project;2.4.4
@@ -564,10 +588,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-project/2.4.4/grizzly-project-2.4.4.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-project/2.4.4/grizzly-project-2.4.4.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-project/2.4.4/grizzly-project-2.4.4.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-project;2.4.4!grizzly-project.pom(pom.original) (46ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-project;2.4.4!grizzly-project.pom(pom.original) (169ms)
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.grizzly#grizzly-bom;2.4.4 {}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.grizzly#grizzly-bom;2.4.4 {}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.grizzly/grizzly-bom/2.4.4/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.grizzly/grizzly-bom/2.4.4/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.grizzly#grizzly-bom;2.4.4
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-bom/2.4.4/grizzly-bom-2.4.4.pom
 [debug] 	public: found md file for org.glassfish.grizzly#grizzly-bom;2.4.4
@@ -576,20 +600,20 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-bom/2.4.4/grizzly-bom-2.4.4.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-bom/2.4.4/grizzly-bom-2.4.4.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-bom/2.4.4/grizzly-bom-2.4.4.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-bom;2.4.4!grizzly-bom.pom(pom.original) (47ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-bom;2.4.4!grizzly-bom.pom(pom.original) (143ms)
 [debug] sbt-chain: Checking cache for: dependency: org.eclipse.ee4j#project;1.0.5 {}
 [debug] sbt-chain: module revision found in cache: org.eclipse.ee4j#project;1.0.5
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.grizzly/grizzly-bom/2.4.4/jars/grizzly-bom.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.grizzly/grizzly-bom/2.4.4/jars/grizzly-bom.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-bom/2.4.4/grizzly-bom-2.4.4.jar
 [debug] CLIENT ERROR: Not Found url=https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-bom/2.4.4/grizzly-bom-2.4.4.jar
-[debug] 		tried /Users/cloudyhug/.sbt/preloaded/org.glassfish.grizzly/grizzly-bom/2.4.4/jars/grizzly-bom.jar
-[debug] 		tried file:////Users/cloudyhug/.sbt/preloaded/org/glassfish/grizzly/grizzly-bom/2.4.4/grizzly-bom-2.4.4.jar
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.grizzly/grizzly-project/2.4.4/jars/grizzly-project.jar
+[debug] 		tried /home-reseau/tneittho/.sbt/preloaded/org.glassfish.grizzly/grizzly-bom/2.4.4/jars/grizzly-bom.jar
+[debug] 		tried file:////home-reseau/tneittho/.sbt/preloaded/org/glassfish/grizzly/grizzly-bom/2.4.4/grizzly-bom-2.4.4.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.grizzly/grizzly-project/2.4.4/jars/grizzly-project.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-project/2.4.4/grizzly-project-2.4.4.jar
 [debug] CLIENT ERROR: Not Found url=https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-project/2.4.4/grizzly-project-2.4.4.jar
-[debug] 		tried /Users/cloudyhug/.sbt/preloaded/org.glassfish.grizzly/grizzly-project/2.4.4/jars/grizzly-project.jar
-[debug] 		tried file:////Users/cloudyhug/.sbt/preloaded/org/glassfish/grizzly/grizzly-project/2.4.4/grizzly-project-2.4.4.jar
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.grizzly/grizzly-http-server/2.4.4/bundles/grizzly-http-server.jar
+[debug] 		tried /home-reseau/tneittho/.sbt/preloaded/org.glassfish.grizzly/grizzly-project/2.4.4/jars/grizzly-project.jar
+[debug] 		tried file:////home-reseau/tneittho/.sbt/preloaded/org/glassfish/grizzly/grizzly-project/2.4.4/grizzly-project-2.4.4.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.grizzly/grizzly-http-server/2.4.4/bundles/grizzly-http-server.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4.jar
 [debug] 	found org.glassfish.grizzly#grizzly-http-server;2.4.4 in public
 [debug] == resolving dependencies org.glassfish.jersey.containers#jersey-container-grizzly2-http;2.28->org.glassfish.grizzly#grizzly-http-server;2.4.4 [compile->compile(*)]
@@ -598,7 +622,7 @@
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.grizzly#grizzly-http;2.4.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.grizzly#grizzly-http;2.4.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.grizzly/grizzly-http/2.4.4/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.grizzly/grizzly-http/2.4.4/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.grizzly#grizzly-http;2.4.4
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4.pom
 [debug] 	public: found md file for org.glassfish.grizzly#grizzly-http;2.4.4
@@ -607,10 +631,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-http;2.4.4!grizzly-http.pom(pom.original) (47ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-http;2.4.4!grizzly-http.pom(pom.original) (173ms)
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.grizzly#grizzly-project;2.4.4 {}
 [debug] sbt-chain: module revision found in cache: org.glassfish.grizzly#grizzly-project;2.4.4
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.grizzly/grizzly-http/2.4.4/bundles/grizzly-http.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.grizzly/grizzly-http/2.4.4/bundles/grizzly-http.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4.jar
 [debug] 	found org.glassfish.grizzly#grizzly-http;2.4.4 in public
 [debug] == resolving dependencies org.glassfish.grizzly#grizzly-http-server;2.4.4->org.glassfish.grizzly#grizzly-http;2.4.4 [compile->compile(*)]
@@ -619,7 +643,7 @@
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.grizzly#grizzly-framework;2.4.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain-delegate: Checking cache for: dependency: org.glassfish.grizzly#grizzly-framework;2.4.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.grizzly/grizzly-framework/2.4.4/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.grizzly/grizzly-framework/2.4.4/ivys/ivy.xml
 [debug] 	local: no ivy file found for org.glassfish.grizzly#grizzly-framework;2.4.4
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4.pom
 [debug] 	public: found md file for org.glassfish.grizzly#grizzly-framework;2.4.4
@@ -628,10 +652,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4.pom
-[debug] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-framework;2.4.4!grizzly-framework.pom(pom.original) (47ms)
+[debug] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-framework;2.4.4!grizzly-framework.pom(pom.original) (200ms)
 [debug] sbt-chain: Checking cache for: dependency: org.glassfish.grizzly#grizzly-project;2.4.4 {}
 [debug] sbt-chain: module revision found in cache: org.glassfish.grizzly#grizzly-project;2.4.4
-[debug] 		tried /Users/cloudyhug/.ivy2/local/org.glassfish.grizzly/grizzly-framework/2.4.4/bundles/grizzly-framework.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.glassfish.grizzly/grizzly-framework/2.4.4/bundles/grizzly-framework.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4.jar
 [debug] 	found org.glassfish.grizzly#grizzly-framework;2.4.4 in public
 [debug] == resolving dependencies org.glassfish.grizzly#grizzly-http;2.4.4->org.glassfish.grizzly#grizzly-framework;2.4.4 [compile->compile(*)]
@@ -663,7 +687,7 @@
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: javax.servlet#javax.servlet-api;4.0.1 {compile=[default(compile)]}
 [debug] sbt-chain-delegate: Checking cache for: dependency: javax.servlet#javax.servlet-api;4.0.1 {compile=[default(compile)]}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/javax.servlet/javax.servlet-api/4.0.1/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/javax.servlet/javax.servlet-api/4.0.1/ivys/ivy.xml
 [debug] 	local: no ivy file found for javax.servlet#javax.servlet-api;4.0.1
 [debug] 		tried https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.pom
 [debug] 	public: found md file for javax.servlet#javax.servlet-api;4.0.1
@@ -672,10 +696,10 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.pom
-[debug] 	[SUCCESSFUL ] javax.servlet#javax.servlet-api;4.0.1!javax.servlet-api.pom(pom.original) (51ms)
+[debug] 	[SUCCESSFUL ] javax.servlet#javax.servlet-api;4.0.1!javax.servlet-api.pom(pom.original) (215ms)
 [debug] sbt-chain: Checking cache for: dependency: net.java#jvnet-parent;3 {}
 [debug] sbt-chain-delegate: Checking cache for: dependency: net.java#jvnet-parent;3 {}
-[debug] 		tried /Users/cloudyhug/.ivy2/local/net.java/jvnet-parent/3/ivys/ivy.xml
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/net.java/jvnet-parent/3/ivys/ivy.xml
 [debug] 	local: no ivy file found for net.java#jvnet-parent;3
 [debug] 		tried https://repo1.maven.org/maven2/net/java/jvnet-parent/3/jvnet-parent-3.pom
 [debug] 	public: found md file for net.java#jvnet-parent;3
@@ -684,13 +708,13 @@
 [debug] 	public: downloading https://repo1.maven.org/maven2/net/java/jvnet-parent/3/jvnet-parent-3.pom
 [debug] 	public: downloading https://repo1.maven.org/maven2/net/java/jvnet-parent/3/jvnet-parent-3.pom.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/net/java/jvnet-parent/3/jvnet-parent-3.pom
-[debug] 	[SUCCESSFUL ] net.java#jvnet-parent;3!jvnet-parent.pom(pom.original) (46ms)
-[debug] 		tried /Users/cloudyhug/.ivy2/local/net.java/jvnet-parent/3/jars/jvnet-parent.jar
+[debug] 	[SUCCESSFUL ] net.java#jvnet-parent;3!jvnet-parent.pom(pom.original) (166ms)
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/net.java/jvnet-parent/3/jars/jvnet-parent.jar
 [debug] 		tried https://repo1.maven.org/maven2/net/java/jvnet-parent/3/jvnet-parent-3.jar
 [debug] CLIENT ERROR: Not Found url=https://repo1.maven.org/maven2/net/java/jvnet-parent/3/jvnet-parent-3.jar
-[debug] 		tried /Users/cloudyhug/.sbt/preloaded/net.java/jvnet-parent/3/jars/jvnet-parent.jar
-[debug] 		tried file:////Users/cloudyhug/.sbt/preloaded/net/java/jvnet-parent/3/jvnet-parent-3.jar
-[debug] 		tried /Users/cloudyhug/.ivy2/local/javax.servlet/javax.servlet-api/4.0.1/jars/javax.servlet-api.jar
+[debug] 		tried /home-reseau/tneittho/.sbt/preloaded/net.java/jvnet-parent/3/jars/jvnet-parent.jar
+[debug] 		tried file:////home-reseau/tneittho/.sbt/preloaded/net/java/jvnet-parent/3/jvnet-parent-3.jar
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/javax.servlet/javax.servlet-api/4.0.1/jars/javax.servlet-api.jar
 [debug] 		tried https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar
 [debug] 	found javax.servlet#javax.servlet-api;4.0.1 in public
 [debug] == resolving dependencies default#agnosco-backend_2.12;0.1->javax.servlet#javax.servlet-api;4.0.1 [compile->runtime]
@@ -1231,8 +1255,20 @@
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.8 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.8 {scala-tool=[default, optional(default)]}
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.scalatest#scalatest_2.12;3.0.5 {test=[default(compile)]}
-[debug] sbt-chain: module revision found in cache: org.scalatest#scalatest_2.12;3.0.5
-[debug] 	found org.scalatest#scalatest_2.12;3.0.5 in sbt-chain
+[debug] sbt-chain-delegate: Checking cache for: dependency: org.scalatest#scalatest_2.12;3.0.5 {test=[default(compile)]}
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.scalatest/scalatest_2.12/3.0.5/ivys/ivy.xml
+[debug] 	local: no ivy file found for org.scalatest#scalatest_2.12;3.0.5
+[debug] 		tried https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5.pom
+[debug] 	public: found md file for org.scalatest#scalatest_2.12;3.0.5
+[debug] 		=> https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5.pom (3.0.5)
+[debug] downloading https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5.pom ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5.pom
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5.pom.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5.pom
+[debug] 	[SUCCESSFUL ] org.scalatest#scalatest_2.12;3.0.5!scalatest_2.12.pom(pom.original) (155ms)
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.scalatest/scalatest_2.12/3.0.5/bundles/scalatest_2.12.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5.jar
+[debug] 	found org.scalatest#scalatest_2.12;3.0.5 in public
 [debug] == resolving dependencies default#agnosco-backend_2.12;0.1->org.scalatest#scalatest_2.12;3.0.5 [test->runtime]
 [debug] == resolving dependencies default#agnosco-backend_2.12;0.1->org.scalatest#scalatest_2.12;3.0.5 [test->compile]
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.4 {provided=[compile(*), provided(*), runtime(*), master(compile)]} => dependency: org.scala-lang#scala-compiler;2.12.8 {provided=[compile(*), provided(*), runtime(*), master(compile)]}
@@ -1278,8 +1314,20 @@
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.8 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.8 {scala-tool=[default, optional(default)]}
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.scalactic#scalactic_2.12;3.0.5 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
-[debug] sbt-chain: module revision found in cache: org.scalactic#scalactic_2.12;3.0.5
-[debug] 	found org.scalactic#scalactic_2.12;3.0.5 in sbt-chain
+[debug] sbt-chain-delegate: Checking cache for: dependency: org.scalactic#scalactic_2.12;3.0.5 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.scalactic/scalactic_2.12/3.0.5/ivys/ivy.xml
+[debug] 	local: no ivy file found for org.scalactic#scalactic_2.12;3.0.5
+[debug] 		tried https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5.pom
+[debug] 	public: found md file for org.scalactic#scalactic_2.12;3.0.5
+[debug] 		=> https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5.pom (3.0.5)
+[debug] downloading https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5.pom ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5.pom
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5.pom.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5.pom
+[debug] 	[SUCCESSFUL ] org.scalactic#scalactic_2.12;3.0.5!scalactic_2.12.pom(pom.original) (166ms)
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.scalactic/scalactic_2.12/3.0.5/bundles/scalactic_2.12.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5.jar
+[debug] 	found org.scalactic#scalactic_2.12;3.0.5 in public
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.4 {provided=[compile(*), provided(*), runtime(*), master(compile)]} => dependency: org.scala-lang#scala-compiler;2.12.8 {provided=[compile(*), provided(*), runtime(*), master(compile)]}
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.8 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.8 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
@@ -1342,8 +1390,20 @@
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.8 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.8 {scala-tool=[default, optional(default)]}
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-reflect;2.12.8 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
-[debug] sbt-chain: module revision found in cache: org.scala-lang#scala-reflect;2.12.8
-[debug] 	found org.scala-lang#scala-reflect;2.12.8 in sbt-chain
+[debug] sbt-chain-delegate: Checking cache for: dependency: org.scala-lang#scala-reflect;2.12.8 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.scala-lang/scala-reflect/2.12.8/ivys/ivy.xml
+[debug] 	local: no ivy file found for org.scala-lang#scala-reflect;2.12.8
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8.pom
+[debug] 	public: found md file for org.scala-lang#scala-reflect;2.12.8
+[debug] 		=> https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8.pom (2.12.8)
+[debug] downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8.pom ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8.pom
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8.pom.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8.pom
+[debug] 	[SUCCESSFUL ] org.scala-lang#scala-reflect;2.12.8!scala-reflect.pom(pom.original) (177ms)
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.scala-lang/scala-reflect/2.12.8/jars/scala-reflect.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8.jar
+[debug] 	found org.scala-lang#scala-reflect;2.12.8 in public
 [debug] 	[2.12.8] org.scala-lang#scala-reflect;2.12.8
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.8 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.8 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] == resolving dependencies org.scalactic#scalactic_2.12;3.0.5->org.scala-lang#scala-reflect;2.12.8 [compile->compile(*)]
@@ -2644,8 +2704,20 @@
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.8 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.8 {scala-tool=[default, optional(default)]}
 [debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.8 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.8 {scala-tool=[default, optional(default)], compile=[default(compile)]}
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-compiler;2.12.8 {scala-tool=[default, optional(default)]}
-[debug] sbt-chain: module revision found in cache: org.scala-lang#scala-compiler;2.12.8
-[debug] 	found org.scala-lang#scala-compiler;2.12.8 in sbt-chain
+[debug] sbt-chain-delegate: Checking cache for: dependency: org.scala-lang#scala-compiler;2.12.8 {scala-tool=[default, optional(default)]}
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.scala-lang/scala-compiler/2.12.8/ivys/ivy.xml
+[debug] 	local: no ivy file found for org.scala-lang#scala-compiler;2.12.8
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8.pom
+[debug] 	public: found md file for org.scala-lang#scala-compiler;2.12.8
+[debug] 		=> https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8.pom (2.12.8)
+[debug] downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8.pom ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8.pom
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8.pom.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8.pom
+[debug] 	[SUCCESSFUL ] org.scala-lang#scala-compiler;2.12.8!scala-compiler.pom(pom.original) (111ms)
+[debug] 		tried /home-reseau/tneittho/.ivy2/local/org.scala-lang/scala-compiler/2.12.8/jars/scala-compiler.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8.jar
+[debug] 	found org.scala-lang#scala-compiler;2.12.8 in public
 [debug] == resolving dependencies default#agnosco-backend_2.12;0.1->org.scala-lang#scala-compiler;2.12.8 [scala-tool->runtime]
 [debug] == resolving dependencies default#agnosco-backend_2.12;0.1->org.scala-lang#scala-compiler;2.12.8 [scala-tool->compile]
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.8 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.8 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
@@ -2777,217 +2849,151 @@
 [debug] ignoring unhandled DependencyDescriptorMediator: class sbt.internal.librarymanagement.IvyScalaUtil$OverrideScalaMediator
 [debug] 	resolved ivy file produced in cache
 [debug] :: downloading artifacts ::
-[debug] 	[NOT REQUIRED] org.scala-lang#scala-library;2.12.8!scala-library.jar
-[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.12;1.1.1!scala-xml_2.12.jar(bundle)
-[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28.jar
-[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28.jar
-[debug] no default ivy user dir defined: set to /Users/cloudyhug/.ivy2
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1.jar
+[info] downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1.jar
 [debug] 		tried https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar
 [info] downloading https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar ...
 [debug] 	public: downloading https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar
-[info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28.jar ...
-[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28.jar
-[debug] no default ivy user dir defined: set to /Users/cloudyhug/.ivy2
-[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28.jar
 [info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28.jar ...
-[debug] no default ivy user dir defined: set to /Users/cloudyhug/.ivy2
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.jar
+[info] downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28.jar
 [info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28.jar ...
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28.jar
-[debug] no default ivy user dir defined: set to /Users/cloudyhug/.ivy2
-[debug] no default ivy user dir defined: set to /Users/cloudyhug/.ivy2
-[debug] no default ivy user dir defined: set to /Users/cloudyhug/.ivy2
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-public.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-public.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-public.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-public.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-public.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-public.xml
-[debug] no default cache defined: set to /Users/cloudyhug/.ivy2/cache
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-shared.xml
-[debug] no default cache defined: set to /Users/cloudyhug/.ivy2/cache
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-shared.xml
-[debug] no default cache defined: set to /Users/cloudyhug/.ivy2/cache
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-shared.xml
-[debug] no default cache defined: set to /Users/cloudyhug/.ivy2/cache
-[debug] no default cache defined: set to /Users/cloudyhug/.ivy2/cache
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-shared.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-shared.xml
-[debug] no default cache defined: set to /Users/cloudyhug/.ivy2/cache
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-shared.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-local.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-local.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-local.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-local.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-local.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-local.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-main-chain.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-main-chain.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-main-chain.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-main-chain.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-main-chain.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-main-chain.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-default-chain.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-default-chain.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-default-chain.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-default-chain.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-default-chain.xml
-[debug] including url: jar:file:/Users/cloudyhug/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-default-chain.xml
-[debug] settings loaded (42ms)
-[debug] 	default cache: /Users/cloudyhug/.ivy2/cache
-[debug] 	default resolver: default
-[debug] 	-- 5 resolvers:
-[debug] 	shared [file]
-[debug] 	default [chain] [local, main]
-[debug] 	public [ibiblio]
-[debug] 	main [chain] [shared, public]
-[debug] 	local [file]
-[debug] settings loaded (46ms)
-[debug] 	default cache: /Users/cloudyhug/.ivy2/cache
-[debug] 	default resolver: default
-[debug] 	-- 5 resolvers:
-[debug] 	shared [file]
-[debug] 	default [chain] [local, main]
-[debug] settings loaded (43ms)
-[debug] settings loaded (45ms)
-[debug] 	default cache: /Users/cloudyhug/.ivy2/cache
-[debug] 	default cache: /Users/cloudyhug/.ivy2/cache
-[debug] 	public [ibiblio]
-[debug] 	default resolver: default
-[debug] 	default resolver: default
-[debug] 	-- 5 resolvers:
-[debug] 	shared [file]
-[debug] 	default [chain] [local, main]
-[debug] 	-- 5 resolvers:
-[debug] 	public [ibiblio]
-[debug] 	shared [file]
-[debug] 	default [chain] [local, main]
-[debug] 	main [chain] [shared, public]
-[debug] 	public [ibiblio]
-[debug] 	local [file]
-[debug] 	main [chain] [shared, public]
-[debug] 	local [file]
-[debug] settings loaded (49ms)
-[debug] 	default cache: /Users/cloudyhug/.ivy2/cache
-[debug] 	default resolver: default
-[debug] 	-- 5 resolvers:
-[debug] 	shared [file]
-[debug] 	default [chain] [local, main]
-[debug] 	public [ibiblio]
-[debug] 	main [chain] [shared, public]
-[debug] 	local [file]
-[debug] 	main [chain] [shared, public]
-[debug] 	local [file]
-[debug] settings loaded (44ms)
-[debug] 	default cache: /Users/cloudyhug/.ivy2/cache
-[debug] 	default resolver: default
-[debug] 	-- 5 resolvers:
-[debug] 	shared [file]
-[debug] 	default [chain] [local, main]
-[debug] 	public [ibiblio]
-[debug] 	main [chain] [shared, public]
-[debug] 	local [file]
-[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1.jar
+[info] 	[SUCCESSFUL ] org.scala-lang.modules#scala-xml_2.12;1.1.1!scala-xml_2.12.jar(bundle) (143ms)
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28.jar
 [info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28.jar ...
-[info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.jar ...
-[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.jar
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28.jar
-[debug] 	public: downloading https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar.sha1
-[debug] sha1 OK for https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar
-[info] 	[SUCCESSFUL ] javax.servlet#javax.servlet-api;4.0.1!javax.servlet-api.jar (103ms)
-[debug] 		tried https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.jar
-[info] downloading https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.jar ...
-[debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.jar
-[debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.jar.sha1
-[debug] sha1 OK for https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.jar
-[info] 	[SUCCESSFUL ] jakarta.ws.rs#jakarta.ws.rs-api;2.1.5!jakarta.ws.rs-api.jar(bundle) (62ms)
-[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0.jar
-[info] downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0.jar ...
-[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0.jar
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28.jar.sha1
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28.jar.sha1
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28.jar.sha1
-[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0.jar.sha1
-[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28.jar
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28.jar
-[info] 	[SUCCESSFUL ] org.glassfish.jersey.containers#jersey-container-servlet;2.28!jersey-container-servlet.jar (213ms)
-[info] 	[SUCCESSFUL ] org.glassfish.jersey.containers#jersey-container-grizzly2-http;2.28!jersey-container-grizzly2-http.jar (213ms)
+[debug] sha1 OK for https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.containers#jersey-container-grizzly2-http;2.28!jersey-container-grizzly2-http.jar (241ms)
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.containers#jersey-container-servlet;2.28!jersey-container-servlet.jar (239ms)
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.containers#jersey-container-servlet-core;2.28!jersey-container-servlet-core.jar (246ms)
+[info] 	[SUCCESSFUL ] javax.servlet#javax.servlet-api;4.0.1!javax.servlet-api.jar (251ms)
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.jar
+[debug] 		tried https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.jar
+[info] downloading https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0.jar
 [debug] 		tried https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4.jar
-[info] 	[SUCCESSFUL ] org.glassfish.jersey.containers#jersey-container-servlet-core;2.28!jersey-container-servlet-core.jar (213ms)
-[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.jar
-[info] downloading https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.jar ...
-[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.jar
-[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28.jar
-[info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28.jar ...
-[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28.jar
 [info] downloading https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4.jar ...
 [debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4.jar
-[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0.jar.sha1
 [debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.jar.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0.jar
-[info] 	[SUCCESSFUL ] org.glassfish.hk2.external#jakarta.inject;2.5.0!jakarta.inject.jar (102ms)
+[debug] sha1 OK for https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.jar
+[info] 	[SUCCESSFUL ] org.glassfish.hk2.external#jakarta.inject;2.5.0!jakarta.inject.jar (202ms)
+[info] 	[SUCCESSFUL ] jakarta.annotation#jakarta.annotation-api;1.3.4!jakarta.annotation-api.jar (201ms)
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.core#jersey-server;2.28!jersey-server.jar (215ms)
+[info] 	[SUCCESSFUL ] jakarta.ws.rs#jakarta.ws.rs-api;2.1.5!jakarta.ws.rs-api.jar(bundle) (217ms)
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28.jar ...
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28.jar
 [info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28.jar ...
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28.jar
-[debug] sha1 OK for https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4.jar
-[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.jar
-[info] 	[SUCCESSFUL ] org.glassfish.hk2#osgi-resource-locator;1.0.1!osgi-resource-locator.jar (77ms)
-[info] 	[SUCCESSFUL ] jakarta.annotation#jakarta.annotation-api;1.3.4!jakarta.annotation-api.jar (78ms)
-[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4.jar
 [debug] 		tried https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar
 [info] downloading https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar ...
 [debug] 	public: downloading https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.jar
+[info] 	[SUCCESSFUL ] org.scala-lang#scala-library;2.12.8!scala-library.jar (536ms)
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4.jar
 [info] downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4.jar ...
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.jar.sha1
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28.jar.sha1
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28.jar.sha1
 [debug] 	public: downloading https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28.jar
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28.jar
-[info] 	[SUCCESSFUL ] org.glassfish.jersey.core#jersey-client;2.28!jersey-client.jar (118ms)
+[debug] sha1 OK for https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28.jar
+[info] 	[SUCCESSFUL ] org.glassfish.hk2#osgi-resource-locator;1.0.1!osgi-resource-locator.jar (142ms)
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.media#jersey-media-jaxb;2.28!jersey-media-jaxb.jar (138ms)
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.core#jersey-client;2.28!jersey-client.jar (144ms)
+[info] 	[SUCCESSFUL ] javax.validation#validation-api;2.0.1.Final!validation-api.jar (143ms)
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.core#jersey-common;2.28!jersey-common.jar (482ms)
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4.jar
 [info] downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4.jar ...
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4.jar
-[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28.jar.sha1
-[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.jar.sha1
-[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28.jar
-[info] 	[SUCCESSFUL ] org.glassfish.jersey.media#jersey-media-jaxb;2.28!jersey-media-jaxb.jar (77ms)
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4.jar
 [info] downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4.jar ...
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4.jar
-[debug] sha1 OK for https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar
-[info] 	[SUCCESSFUL ] javax.validation#validation-api;2.0.1.Final!validation-api.jar (68ms)
-[debug] 	[NOT REQUIRED] org.scalatest#scalatest_2.12;3.0.5!scalatest_2.12.jar(bundle)
-[debug] 	[NOT REQUIRED] org.scalactic#scalactic_2.12;3.0.5!scalactic_2.12.jar(bundle)
-[debug] 	[NOT REQUIRED] org.scala-lang#scala-reflect;2.12.8!scala-reflect.jar
-[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.12;1.0.6!scala-xml_2.12.jar(bundle)
-[debug] 	[NOT REQUIRED] org.scala-lang#scala-compiler;2.12.8!scala-compiler.jar
-[debug] 	[NOT REQUIRED] jline#jline;2.14.6!jline.jar
-[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28.jar
-[info] 	[SUCCESSFUL ] org.glassfish.jersey.core#jersey-common;2.28!jersey-common.jar (328ms)
-[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4.jar.sha1
-[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.jar
-[info] 	[SUCCESSFUL ] org.glassfish.jersey.core#jersey-server;2.28!jersey-server.jar (340ms)
+[debug] 		tried https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5.jar
+[info] downloading https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5.jar
+[info] downloading https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8.jar
+[info] downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8.jar
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4.jar.sha1
-[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4.jar
-[info] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-http;2.4.4!grizzly-http.jar(bundle) (78ms)
-[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4.jar
-[info] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-http-server;2.4.4!grizzly-http-server.jar(bundle) (134ms)
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4.jar
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4.jar
-[info] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-framework;2.4.4!grizzly-framework.jar(bundle) (153ms)
-[debug] :: resolution report :: resolve 3724ms :: artifacts dl 512ms
-[debug] 	report for default#agnosco-backend_2.12;0.1 compile produced in /Users/cloudyhug/Documents/cours/projet/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-compile.xml
-[debug] 	report for default#agnosco-backend_2.12;0.1 runtime produced in /Users/cloudyhug/Documents/cours/projet/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-runtime.xml
-[debug] 	report for default#agnosco-backend_2.12;0.1 test produced in /Users/cloudyhug/Documents/cours/projet/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-test.xml
-[debug] 	report for default#agnosco-backend_2.12;0.1 provided produced in /Users/cloudyhug/Documents/cours/projet/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-provided.xml
-[debug] 	report for default#agnosco-backend_2.12;0.1 optional produced in /Users/cloudyhug/Documents/cours/projet/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-optional.xml
-[debug] 	report for default#agnosco-backend_2.12;0.1 compile-internal produced in /Users/cloudyhug/Documents/cours/projet/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-compile-internal.xml
-[debug] 	report for default#agnosco-backend_2.12;0.1 runtime-internal produced in /Users/cloudyhug/Documents/cours/projet/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-runtime-internal.xml
-[debug] 	report for default#agnosco-backend_2.12;0.1 test-internal produced in /Users/cloudyhug/Documents/cours/projet/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-test-internal.xml
-[debug] 	report for default#agnosco-backend_2.12;0.1 plugin produced in /Users/cloudyhug/Documents/cours/projet/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-plugin.xml
-[debug] 	report for default#agnosco-backend_2.12;0.1 pom produced in /Users/cloudyhug/Documents/cours/projet/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-pom.xml
-[debug] 	report for default#agnosco-backend_2.12;0.1 scala-tool produced in /Users/cloudyhug/Documents/cours/projet/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-scala-tool.xml
-[debug] 	resolve done (3724ms resolve - 512ms download)
+[info] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-http-server;2.4.4!grizzly-http-server.jar(bundle) (283ms)
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5.jar
+[info] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-framework;2.4.4!grizzly-framework.jar(bundle) (213ms)
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.12;1.0.6!scala-xml_2.12.jar(bundle)
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8.jar.sha1
+[info] 	[SUCCESSFUL ] org.scalactic#scalactic_2.12;3.0.5!scalactic_2.12.jar(bundle) (213ms)
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8.jar
+[info] downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8.jar
+[debug] 	[NOT REQUIRED] jline#jline;2.14.6!jline.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8.jar
+[info] 	[SUCCESSFUL ] org.scala-lang#scala-reflect;2.12.8!scala-reflect.jar (331ms)
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4.jar
+[info] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-http;2.4.4!grizzly-http.jar(bundle) (460ms)
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8.jar
+[info] 	[SUCCESSFUL ] org.scala-lang#scala-compiler;2.12.8!scala-compiler.jar (851ms)
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5.jar
+[info] 	[SUCCESSFUL ] org.scalatest#scalatest_2.12;3.0.5!scalatest_2.12.jar(bundle) (1613ms)
+[debug] :: resolution report :: resolve 13084ms :: artifacts dl 2273ms
+[debug] 	report for default#agnosco-backend_2.12;0.1 compile produced in /home-reseau/tneittho/Documents/info/4A/project/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-compile.xml
+[debug] 	report for default#agnosco-backend_2.12;0.1 runtime produced in /home-reseau/tneittho/Documents/info/4A/project/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-runtime.xml
+[debug] 	report for default#agnosco-backend_2.12;0.1 test produced in /home-reseau/tneittho/Documents/info/4A/project/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-test.xml
+[debug] 	report for default#agnosco-backend_2.12;0.1 provided produced in /home-reseau/tneittho/Documents/info/4A/project/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-provided.xml
+[debug] 	report for default#agnosco-backend_2.12;0.1 optional produced in /home-reseau/tneittho/Documents/info/4A/project/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-optional.xml
+[debug] 	report for default#agnosco-backend_2.12;0.1 compile-internal produced in /home-reseau/tneittho/Documents/info/4A/project/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-compile-internal.xml
+[debug] 	report for default#agnosco-backend_2.12;0.1 runtime-internal produced in /home-reseau/tneittho/Documents/info/4A/project/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-runtime-internal.xml
+[debug] 	report for default#agnosco-backend_2.12;0.1 test-internal produced in /home-reseau/tneittho/Documents/info/4A/project/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-test-internal.xml
+[debug] 	report for default#agnosco-backend_2.12;0.1 plugin produced in /home-reseau/tneittho/Documents/info/4A/project/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-plugin.xml
+[debug] 	report for default#agnosco-backend_2.12;0.1 pom produced in /home-reseau/tneittho/Documents/info/4A/project/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-pom.xml
+[debug] 	report for default#agnosco-backend_2.12;0.1 scala-tool produced in /home-reseau/tneittho/Documents/info/4A/project/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend_2.12-scala-tool.xml
+[debug] 	resolve done (13084ms resolve - 2273ms download)
 [info] Done updating.
