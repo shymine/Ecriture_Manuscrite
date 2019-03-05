@@ -1,0 +1,20 @@
+.headband{
+    background-color: aqua; 
+}
+
+.bodyStyle{
+    border: 1px solid blueviolet;
+    padding: 5px;
+}
+
+.divArticle{
+    border: 1px solid chocolate;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.divPara{
+    border-color: 1px solid black;
+}
