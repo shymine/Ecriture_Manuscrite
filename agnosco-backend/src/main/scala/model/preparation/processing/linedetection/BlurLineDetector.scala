@@ -11,8 +11,12 @@ import scala.io.Source
 
 class BlurLineDetector(backendIp : String, detectorIp : String, port : Int) extends LineDetector {
   override def detectLines(src : String) : List[Line] = {
-    // send the file to the line detector
+    val ss = ServerSocketChannel.open()
+    ss.bind(new InetSocketAddress(backendIp, port))
+
     val sc = SocketChannel.open(new InetSocketAddress(detectorIp, port))
+
+    // send the file to the line detector
     val fc = new FileInputStream(src).getChannel
     fc.transferTo(0, fc.size(), sc)
     fc.force(true)
@@ -21,20 +25,20 @@ class BlurLineDetector(backendIp : String, detectorIp : String, port : Int) exte
     println("[INFO] File sent to the line detector")
 
     // read the answer from the server into a 'tmp' file
-    val ss = ServerSocketChannel.open()
-    ss.bind(new InetSocketAddress(backendIp, port))
     println("[INFO] Waiting for the answer...")
+    println(ss.getLocalAddress)
 
     val scAnswer = ss.accept()
+    println("[INFO] Connection incoming from the line detector")
+
     val fcAnswer = new FileOutputStream("tmp").getChannel
-    fcAnswer.transferFrom(sc, 0, Long.MaxValue)
+    fcAnswer.transferFrom(scAnswer, 0, Long.MaxValue)
     fcAnswer.force(true)
     fcAnswer.close()
     scAnswer.close()
     println("[INFO] Answer received from the line detector")
 
     val answer = Source.fromFile("tmp").getLines()
-    println(answer)
 
     // delete the temporary file
     new File("tmp").delete()
