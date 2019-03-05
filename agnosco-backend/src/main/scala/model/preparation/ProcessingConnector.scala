@@ -7,5 +7,5 @@ class ProcessingConnector {
 
 	private var impl = ImplFactory.processingImpl
 
-	def prepareData(imgFiles: Iterable[String], vtFiles: Iterable[String]): Iterable[Example] = ???
+	def prepareData(imgFiles: Iterable[String], vtFiles: Iterable[String]): Iterable[Example] = impl.prepareData(imgFiles, vtFiles)
 }
