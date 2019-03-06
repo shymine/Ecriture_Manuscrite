@@ -15,7 +15,10 @@ import scala.util.matching.Regex
   */
 class LaiaConnector extends ConverterRecogniser{
 
-  LaiaConnector.super.converter = new LaiaConverter
+  private val height = 256
+
+  override protected var converter: Converter = new LaiaConverter
+
 
   /**
     * Laia needs all images to be the same height
