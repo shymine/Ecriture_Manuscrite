@@ -1,62 +1,36 @@
 package model.database
 import java.io.IOException
 import java.nio.file.{Files, Paths}
-import java.sql.DriverManager
+import java.sql.{Connection, DriverManager}
 
 import model.common.{Document, Example, Page, Project}
 import org.sqlite.SQLiteException
 
 import scala.collection.mutable.ArrayBuffer
 
+object DatabaseSqlite {
+	private var idCount: Long = 0
+	def incrementID: Long = {
+		idCount += 1
+		idCount
+	}
+	def setIDCounter(id: Long) = idCount = id
+}
+
 class DatabaseSqlite extends Database {
 
 	val DATABASE_NAME = "agnosco"
 	val THUMBNAILS_FOLDER = "thumbnails"
 
-	Class.forName("org.sqlite.JDBC")
-	private val conn = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME + ".db")
-	conn.setAutoCommit(false)
+	private var conn: Connection = null
 
-	// Thumbnails folder creation (if it does not exist)
-	createFolder(THUMBNAILS_FOLDER)
-
-	// Tables creation (if they do not exist)
-	createTable(
-		"projects",
-		"id INTEGER PRIMARY KEY NOT NULL, " +
-			"name VARCHAR(64), " +
-			"recogniser VARCHAR(64)")
-
-	createTable(
-		"documents",
-		"id INTEGER PRIMARY KEY NOT NULL, " +
-			"name VARCHAR(64), " +
-			"projectId INTEGER, " +
-			"FOREIGN KEY(projectId) REFERENCES projects(id)")
-
-	createTable(
-		"pages",
-		"id INTEGER PRIMARY KEY NOT NULL, " +
-			"imagePath VARCHAR(256), " +
-			"groundTruthPath VARCHAR(256), " +
-			"documentId INTEGER, " +
-			"FOREIGN KEY(documentId) REFERENCES documents(id)")
-
-	createTable(
-		"examples",
-		"id INTEGER PRIMARY KEY NOT NULL, " +
-			"imagePath VARCHAR(256), " +
-			"transcript VARCHAR(256), " +
-			"pageId INTEGER, " +
-			"FOREIGN KEY(pageId) REFERENCES pages(id)")
 
 	private def createFolder(folderPath : String) : Unit = {
 		val path = Paths.get(folderPath)
 		try
 			Files.createDirectories(path)
 		catch {
-			case e: IOException =>
-				e.printStackTrace()
+			case e: IOException => e.printStackTrace()
 		}
 	}
 
@@ -66,19 +40,98 @@ class DatabaseSqlite extends Database {
 			val pstmt = conn.prepareStatement(sql)
 			pstmt.executeUpdate()
 			conn.commit()
-			System.out.println("Table " + tableName + " created successfully.")
+			println("Table " + tableName + " created successfully.")
 		} catch {
 			case e: SQLiteException =>
-				System.out.println("Table " + tableName + " has already been created.")
+				System.err.println("Table " + tableName + " has already been created.")
 				e.printStackTrace()
 			case e: Exception =>
 				System.err.println(e.getClass.getName + ": " + e.getMessage)
 		}
 	}
 
-	override def connect: Boolean = ???
+	override def connect: Boolean = {
+		Class.forName("org.sqlite.JDBC")
+		conn = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME + ".db")
+		conn.setAutoCommit(false)
 
-	override def disconnect: Boolean = ???
+		// Thumbnails folder creation (if it does not exist)
+		createFolder(THUMBNAILS_FOLDER)
+
+		// Tables creation (if they do not exist)
+		createTable(
+			"projects",
+			"id INTEGER PRIMARY KEY NOT NULL, " +
+				"name VARCHAR(64), " +
+				"recogniser VARCHAR(64)")
+
+		createTable(
+			"documents",
+			"id INTEGER PRIMARY KEY NOT NULL, " +
+				"name VARCHAR(64), " +
+				"projectId INTEGER, " +
+				"FOREIGN KEY(projectId) REFERENCES projects(id)")
+
+		createTable(
+			"pages",
+			"id INTEGER PRIMARY KEY NOT NULL, " +
+				"imagePath VARCHAR(256), " +
+				"groundTruthPath VARCHAR(256), " +
+				"documentId INTEGER, " +
+				"FOREIGN KEY(documentId) REFERENCES documents(id)")
+
+		createTable(
+			"examples",
+			"id INTEGER PRIMARY KEY NOT NULL, " +
+				"imagePath VARCHAR(256), " +
+				"transcript VARCHAR(256), " +
+				"pageId INTEGER, " +
+				"FOREIGN KEY(pageId) REFERENCES pages(id)")
+
+		createTable(
+			"identifiers",
+			"name VARCHAR(10) PRIMARY KEY NOT NULL, " +
+				"id INTEGER NOT NULL"
+		)
+
+		try {
+			val sql = "SELECT id FROM identifiers WHERE name = counter"
+			val pstmt = conn.createStatement()
+			val id = pstmt.executeQuery(sql)
+			println(id)
+			DatabaseSqlite.setIDCounter(id.getLong("id"))
+			pstmt.close()
+			conn.commit()
+			true
+		}catch {
+			case e: SQLiteException => {
+				println("First Time, setting the counter to 0")
+				DatabaseSqlite.setIDCounter(0)
+				true
+			}
+			case e: Exception => {
+					System.err.println(e.getStackTrace)
+					false
+			}
+		}
+	}
+
+	override def disconnect: Boolean = {
+		try {
+			val sql = s"UPDATE identifiers SET id = ${DatabaseSqlite.idCount} WHERE name = counter"
+			val pstmt = conn.createStatement()
+			pstmt.executeUpdate(sql)
+			pstmt.close()
+			conn.commit()
+			conn.close()
+			true
+		}catch {
+			case e: SQLiteException => {
+				System.err.println(e.getStackTrace)
+				false
+			}
+		}
+	}
 
 	override def getProject(id: Int): Option[Project] = {
 		val sql = "SELECT * FROM projects WHERE id = ?"
@@ -95,11 +148,13 @@ class DatabaseSqlite extends Database {
 
 			Some(Project(id, name, recogniser, documents))
 		} catch {
-			case e : Exception => None
+			case _ : Exception => None
 		}
 	}
 
-	override def addProject(project: Project): Unit = ???
+	override def addProject(project: Project): Unit = {
+		val sql = s"INSERT INTO projects (name, recogniser) VALUES (${DatabaseSqlite.incrementID}, ${project.name}, ${project.recogniser.toString})"
+	}
 
 	override def deleteProject(id: Int): Unit = ???
 
