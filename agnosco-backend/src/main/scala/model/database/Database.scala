@@ -6,19 +6,19 @@ trait Database {
 	def connect: Boolean
 	def disconnect: Boolean
 
-	def getProject(id: Int): Project
+	def getProject(id: Int): Option[Project]
 	def addProject(project: Project)
 	def deleteProject(id: Int)
 
-	def getDocument(id: Int): Document
+	def getDocument(id: Int): Option[Document]
 	def addDocument(document: Document)
 	def deleteDocument(id: Int)
 
-	def getPage(id: Int): Page
+	def getPage(id: Int): Option[Page]
 	def addPage(page: Page)
 	def deletePage(id: Int)
 
-	def getExample(id: Int): Example
+	def getExample(id: Int): Option[Example]
 	def addExample(example: Example)
 	def deleteExample(id: Int)
 

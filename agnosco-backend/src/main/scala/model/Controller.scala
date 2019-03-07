@@ -1,6 +1,9 @@
 package model
 
 import model.common.{Example, Page, Project, RecogniserType}
+import model.database.DatabaseConnector
+import model.preparation.ProcessingConnector
+import model.recogniser.RecogniserConnector
 import org.json.JSONObject
 
 class Controller {
@@ -8,12 +11,21 @@ class Controller {
 	var currentRecogniser: RecogniserType.Value = RecogniserType.Laia
 	var allProject: Iterable[Project] = List[Project]()
 
+	val databaseConnector = new DatabaseConnector
+	val processingConnector = new ProcessingConnector
+	val recogniserConnector = new RecogniserConnector
 
-	def prepareData(imgFiles: Iterable[String], vtFiles: Iterable[String]): Iterable[Example] = ???
+	def prepareData(imgFiles: Iterable[String], vtFiles: Iterable[String]): Iterable[Example] = {
+		processingConnector.prepareData(imgFiles, vtFiles)
+	}
 
-	def getProject(name: String): Project = ???
+	def getProject(id: Int): Project = {
+		databaseConnector.getProject(id)
+	}
 
-	def getAllProject: Iterable[Project] = ???
+	def getAllProject: Iterable[Project] = {
+
+	}
 
 	def createProject(name: String, list: Iterable[String]): Nothing = ???
 

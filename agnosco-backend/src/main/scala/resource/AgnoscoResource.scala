@@ -66,13 +66,13 @@ class AgnoscoResource {
 	/**
 	  * Creates a new project from its name and the given list of documents
 	  *
-	  * @param name The name of the project
+	  * @param id The ID of the project
 	  * @param list The list of the name of documents for the project
 	  * @return
 	  */
 	//	@POST
-	//	@Path("/createNewProject/{project_name}/{list_docs}")
-	//	def createProject(@PathParam("project_name") name: String, @PathParam("list_docs") list: Array[String]) = {
+	//	@Path("/createNewProject/{project_id}/{list_docs}")
+	//	def createProject(@PathParam("project_id") id: Int, @PathParam("list_docs") list: Array[String]) = {
 	//      controller.createProject(name, list)
 	//	}
 
