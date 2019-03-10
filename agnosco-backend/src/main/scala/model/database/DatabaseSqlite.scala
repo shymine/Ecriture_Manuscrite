@@ -328,4 +328,11 @@ class DatabaseSqlite extends Database {
 			pushStatement(sql)
 		})
 	}
+
+	override def documentArePrepared(documents: Iterable[Document]): Unit = {
+		documents.foreach(doc => {
+			val sql = s"UPDATE documents SET prepared=1 WHERE id=${doc.id}"
+			pushStatement(sql)
+		})
+	}
 }
