@@ -1,4 +1,4 @@
 package model.common
 
 
-case class Project(id : Int, name : String, var recogniser : RecogniserType.Value, documents : Iterable[Document])
+case class Project(id : Long, name : String, var recogniser : RecogniserType.Value, documents : Iterable[Document])

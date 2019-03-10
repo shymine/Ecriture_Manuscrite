@@ -11,18 +11,18 @@ trait Database {
 	def deleteProject(id: Int)
 
 	def getDocument(id: Int): Option[Document]
-	def addDocument(document: Document)
+	def addDocument(document: Document, projectId: Long)
 	def deleteDocument(id: Int)
 
 	def getPage(id: Int): Option[Page]
-	def addPage(page: Page)
+	def addPage(page: Page, documentId: Long)
 	def deletePage(id: Int)
 
 	def getExample(id: Int): Option[Example]
-	def addExample(example: Example)
+	def addExample(example: Example, pageId: Long)
 	def deleteExample(id: Int)
 
-	def getAllProject(): Iterable[Project]
+	def getAllProject: Iterable[Project]
 	def getDocumentsOfProject(id: Int): Iterable[Document]
 	def getPagesOfDocument(id: Int): Iterable[Page]
 	def getExamplesOfPage(id: Int): Iterable[Example]

@@ -1,5 +1,5 @@
 package model.common
 
 object RecogniserType extends Enumeration {
-	val Laia = Value
+	val None, Laia = Value
 }

@@ -20,12 +20,15 @@ class Controller {
 	}
 
 	def getProject(id: Int): Project = {
-		databaseConnector.getProject(id)
+		val project = databaseConnector.getProject(id)
+		if(project.nonEmpty) {
+			project.get
+		}else {
+			Project(-1, "", RecogniserType.None, List())
+		}
 	}
 
-	def getAllProject: Iterable[Project] = {
-
-	}
+	def getAllProject: Iterable[Project] = ???
 
 	def createProject(name: String, list: Iterable[String]): Nothing = ???
 
