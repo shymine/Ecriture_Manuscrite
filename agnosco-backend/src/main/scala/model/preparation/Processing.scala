@@ -4,5 +4,5 @@ import model.common.Example
 
 trait Processing {
 
-	def prepareData(imgFiles: Iterable[String], vtFiles: Iterable[String]): Iterable[Example]
+	def prepareData(groundTruthFiles: Iterable[String]): Iterable[Example]
 }
