@@ -37,6 +37,11 @@ export class ValidationService {
     console.log("service enable " + id);
   }
 
+  validateAll(){
+    this.http.post('/base/validateExamples', {}, {});
+    console.log("validate all examples");
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

@@ -80,20 +80,19 @@ export class ValidationComponent implements OnInit {
   }
 
   changeIconToArrow(id){
-    const icon = document.querySelectorAll('[data-name]="cross"' + id);
+    //const icon = document.querySelectorAll('[data-name]="cross"' + id);
     //const icon = document.getElementById("cross");
     //icon.className = "fas fa-angle-double-up";
     console.log("change to arrow");
   }
 
   changeIconToCross(id){
-    const icon = document.getElementById("cross");
-    icon.className = "fas fa-times";
+    //const icon = document.getElementById("cross");
+    //icon.className = "fas fa-times";
     console.log("change to cross");
   }
 
   validateAll(){
-    console.log("entrée");
-    //this.http.post('/base/validateExamples', {}, {});
+    this.validationService.validateAll();
   }
 }
