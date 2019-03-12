@@ -2,8 +2,17 @@ package model.preparation.processing
 
 import model.preparation.types.{Image, Line, Polygon}
 import org.opencv.core.Rect
+import org.opencv.imgcodecs.Imgcodecs
 
 object ImageProcessing {
+  def loadImageFromFile(src : String) : Image = {
+    Imgcodecs.imread(src)
+  }
+
+  def writeImageToFile(img : Image, src : String) : Unit = {
+    Imgcodecs.imwrite(src, img)
+  }
+
   def crop(image : Image, rect : Rect) : Image = {
     image.submat(rect)
   }
