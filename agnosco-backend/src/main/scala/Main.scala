@@ -11,7 +11,7 @@ object Main {
 	// Base URI the Grizzly HTTP server will listen on
 	// When building docker images, replace the address with http://0.0.0.0:4444/
 	// http://localhost:4444/ is for testing purpose only.
-	val HTTP_ADDRESS = "http://localhost:4200/"
+	val HTTP_ADDRESS = "http://localhost:8000/"
 	val LOGGER: Logger = Logger.getLogger(Main.getClass.getName)
 
 	def startServer() : HttpServer = {

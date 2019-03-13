@@ -1,7 +1,6 @@
 package resource
 
 
-import com.sun.tools.javac.util.DefinedBy.Api
 import javax.inject.Singleton
 import javax.ws.rs._
 import javax.ws.rs.core.MediaType
