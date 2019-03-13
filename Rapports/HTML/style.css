@@ -8,13 +8,26 @@
 }
 
 .divArticle{
+    position: relative;
     border: 1px solid chocolate;
     margin-top: 5px;
     margin-bottom: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    overflow: auto;
 }
 
 .divPara{
+    position: relative;
     border-color: 1px solid black;
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+
+.smallImage{
+    position: relative;
+    width: 500px;
 }
