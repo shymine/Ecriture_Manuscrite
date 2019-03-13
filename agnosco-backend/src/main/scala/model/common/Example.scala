@@ -1,3 +1,13 @@
 package model.common
 
-case class Example(id : Long, imagePath : String, var transcript : Option[String])
+import org.json.JSONObject
+
+case class Example(id : Long, imagePath : String, var transcript : Option[String]) {
+	def toJSON = {
+		val json = new JSONObject()
+		json.put("id", id)
+		json.put("imagePath", imagePath)
+		json.put("transcript", transcript)
+	}
+
+}

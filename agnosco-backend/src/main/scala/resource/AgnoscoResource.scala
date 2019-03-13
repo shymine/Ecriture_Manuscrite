@@ -1,6 +1,7 @@
 package resource
 
 
+import com.sun.tools.javac.util.DefinedBy.Api
 import javax.inject.Singleton
 import javax.ws.rs._
 import javax.ws.rs.core.MediaType
@@ -32,49 +33,30 @@ class AgnoscoResource {
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def getProjectAndDocuments: Response = {
 
-		val res = new JSONArray()
-		val project1 = new JSONObject()
-		val project2 = new JSONObject()
-
-		project1.put("name", "Project1")
-		project1.put("documents", List("document1.1", "document1.2"))
-		project2.put("name", "Project2")
-		project2.put("documents", List("document2.1", "document2.2"))
-
-		res.put(project1)
-		res.put(project2)
-
-
-		Response.status(200).entity(res.toString).build()
-
-		/*
 		val projects =  List(Project(3,"coucou", RecogniserType.None, List()),
 			Project(4,"bisoux", RecogniserType.Laia, List(Document(5, "docu", List(), false)))) //controller.getAllProject
 
 		val json = new JSONArray()
-
-		projects.foreach(project => {
-			val proj = new JSONObject(project)
-		})
-
+		projects.foreach(project => json.put(project.toJSON))
 		Response.status(200).entity(json.toString).build()
-		*/
+
 	}
 
-//	/**
-//	  * Creates a new project from its name and the given list of documents
-//	  *
-//	  * @param id The ID of the project
-//	  * @param list The list of the name of documents for the project
-//	  * @return
-//	  */
-//	@POST
-//	@Path("/createNewProject/{project_id}/{list_docs}")
-//	def createProject(@PathParam("project_id") name: String, @PathParam("list_docs") list: Array[String]): Response = {
-//		controller.createProject(name, list)
-//
-//		Response.status(200).entity().build()
-//	}
+	/**
+	  * Creates a new project from its name and the given list of documents
+	  *
+	  * @param id The ID of the project
+	  * @param list The list of the name of documents for the project
+	  * @return
+	  */
+	@POST
+	@Path("/createNewProject/{project_id}/{list_docs}")
+	@Consumes(Array(MediaType.APPLICATION_JSON))
+	@Produces(Array(MediaType.APPLICATION_JSON))
+	def createProject(@PathParam("project_id") name: String, @PathParam("list_docs") list: String): Response = {
+		val listTmp = list.replace('[', ' ').replace(']', ' ').split(",")
+		controller.createProject(name, listTmp)
+	}
 //
 //	/**
 //	  * Delete the document with the given name along with its datas
