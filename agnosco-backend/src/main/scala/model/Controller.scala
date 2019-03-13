@@ -8,16 +8,11 @@ import org.json.JSONObject
 
 class Controller {
 
-	var currentRecogniser: RecogniserType.Value = RecogniserType.Laia
-	var allProject: Iterable[Project] = List[Project]()
-
 	val databaseConnector = new DatabaseConnector
 	val processingConnector = new ProcessingConnector
 	val recogniserConnector = new RecogniserConnector
 
-	def prepareData(imgFiles: Iterable[String], vtFiles: Iterable[String]): Iterable[Example] = {
-		processingConnector.prepareData(vtFiles)
-	}
+	/* Database */
 
 	def getProject(id: Int): Project = {
 		val project = databaseConnector.getProject(id)
@@ -28,11 +23,14 @@ class Controller {
 		}
 	}
 
-	def getAllProject: Iterable[Project] = ???
+	def getAllProject: Iterable[Project] = databaseConnector.getAllProject
 
 	def createProject(name: String, list: Iterable[String]): Nothing = ???
 
+	def deleteDocument(id: Long) = ???
+
 	def getAvailableRecognisers : Iterable[RecogniserType.Value] = ???
+
 
 	def validateTranscriptions(samples: Iterable[Example]): Nothing = ???
 
@@ -44,7 +42,16 @@ class Controller {
 
 	def enableExample(id: Int): Nothing = ???
 
+
+	/* Data Processing */
+
+	def prepareData(vtFiles: Iterable[String]): Iterable[Example] = {
+		processingConnector.prepareData(vtFiles)
+	}
+
 	def addGroundTruth(page: Page, groundTruth: JSONObject): Nothing = ???
+
+	/* AI Interactions */
 
 	def trainAI(samples: Iterable[Example]): Nothing = ???
 
