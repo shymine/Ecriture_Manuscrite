@@ -16,7 +16,7 @@ class Controller {
 	val recogniserConnector = new RecogniserConnector
 
 	def prepareData(imgFiles: Iterable[String], vtFiles: Iterable[String]): Iterable[Example] = {
-		processingConnector.prepareData(imgFiles, vtFiles)
+		processingConnector.prepareData(vtFiles)
 	}
 
 	def getProject(id: Int): Project = {

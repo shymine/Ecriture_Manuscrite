@@ -23,7 +23,7 @@ class DatabaseConnector {
 	def addExample(example: Example, pageId: Long): Unit = impl.addExample(example, pageId)
 	def deleteExample(id: Int): Unit = impl.deleteExample(id)
 
-	def getAllProject: Iterable[Project] = impl.getAllProject()
+	def getAllProject: Iterable[Project] = impl.getAllProject
 	def getDocumentsOfProject(id: Int): Iterable[Document] = impl.getDocumentsOfProject(id)
 	def getPagesOfDocument(id: Int): Iterable[Page] = impl.getPagesOfDocument(id)
 	def getExamplesOfPage(id: Int): Iterable[Example] = impl.getExamplesOfPage(id)
