@@ -60,7 +60,8 @@ class AgnoscoResource {
 		res.put(project1)
 		res.put(project2)
 
-		Response.status(200).entity(res).build()
+
+		Response.status(200).entity(res.toString).build()
 	}
 
 	/**
