@@ -6,26 +6,26 @@ trait Database {
 	def connect: Boolean
 	def disconnect: Boolean
 
-	def getProject(id: Int): Option[Project]
+	def getProject(id: Long): Option[Project]
 	def addProject(project: Project)
-	def deleteProject(id: Int)
+	def deleteProject(id: Long)
 
-	def getDocument(id: Int): Option[Document]
+	def getDocument(id: Long): Option[Document]
 	def addDocument(document: Document, projectId: Long)
-	def deleteDocument(id: Int)
+	def deleteDocument(id: Long)
 
-	def getPage(id: Int): Option[Page]
+	def getPage(id: Long): Option[Page]
 	def addPage(page: Page, documentId: Long)
-	def deletePage(id: Int)
+	def deletePage(id: Long)
 
-	def getExample(id: Int): Option[Example]
+	def getExample(id: Long): Option[Example]
 	def addExample(example: Example, pageId: Long)
-	def deleteExample(id: Int)
+	def deleteExample(id: Long)
 
 	def getAllProject: Iterable[Project]
-	def getDocumentsOfProject(id: Int): Iterable[Document]
-	def getPagesOfDocument(id: Int): Iterable[Page]
-	def getExamplesOfPage(id: Int): Iterable[Example]
+	def getDocumentsOfProject(id: Long): Iterable[Document]
+	def getPagesOfDocument(id: Long): Iterable[Page]
+	def getExamplesOfPage(id: Long): Iterable[Example]
 	def saveExampleEdition(examples: Iterable[Example])
 
 	def documentArePrepared(documents: Iterable[Document])

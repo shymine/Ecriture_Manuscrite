@@ -1,10 +1,12 @@
 package model
 
-import model.common.{Example, Page, Project, RecogniserType}
+import model.common._
 import model.database.DatabaseConnector
 import model.preparation.ProcessingConnector
 import model.recogniser.RecogniserConnector
 import org.json.JSONObject
+
+import scala.collection.mutable.ArrayBuffer
 
 class Controller {
 
@@ -25,9 +27,18 @@ class Controller {
 
 	def getAllProject: Iterable[Project] = databaseConnector.getAllProject
 
-	def createProject(name: String, list: Iterable[String]): Nothing = ???
 
-	def deleteDocument(id: Long) = ???
+	/*
+	 * Il faut faire attention lors qu'on connectera avec la base de données à gérer l'ID et la création des pages et tout
+	 */
+	def createProject(name: String, list: Iterable[String]): Project = {
+		val documents = ArrayBuffer[Document]()
+		list.foreach(doc => documents += Document(-1, doc, List(), false))
+		val project = Project(-1, name, RecogniserType.None, documents)
+		project
+	}
+
+	def deleteDocument(id: Long) = databaseConnector.deleteDocument(id)
 
 	def getAvailableRecognisers : Iterable[RecogniserType.Value] = ???
 

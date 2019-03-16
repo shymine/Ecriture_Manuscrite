@@ -43,8 +43,8 @@ class AgnoscoResource {
 
 	/**
 	  * Creates a new project from its name and the given list of documents
-	  *
-	  * @param id The ID of the project
+	  * The list of document is represented as a String of names such as "[ 'blabla','blibli' ]"
+	  * @param name The name of the project
 	  * @param list The list of the name of documents for the project
 	  * @return
 	  */
@@ -53,35 +53,37 @@ class AgnoscoResource {
 	@Consumes(Array(MediaType.APPLICATION_JSON))
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def createProject(@PathParam("project_id") name: String, @PathParam("list_docs") list: String): Response = {
-		val listTmp = list.replace('[', ' ').replace(']', ' ').split(",")
-		controller.createProject(name, listTmp)
+		val listTmp = list.split(",")
+		val project = controller.createProject(name, listTmp)
+		Response.status(200).entity(project.toJSON.toString()).build()
 	}
-//
-//	/**
-//	  * Delete the document with the given name along with its datas
-//	  *
-//	  * @param name The name of the document to delete
-//	  * @return
-//	  */
-//	@DELETE
-//	@Path("/deleteDocument/{id}")
-//	def deleteDocument(@PathParam("id") id: Long) = {
-//	     controller.deleteDocument(id)
-//	}
-//
-//	/**
-//	  * Returns the list of the existing recognisers within the base
-//	  * @return Returns the list of name of the existing recognisers
-//	  */
-//	@GET
-//	@Path("/availableRecogniser")
-//	@Produces(Array(MediaType.APPLICATION_JSON))
-//	def getAvailableRecogniser = {
-//        controller.getAvailableRecognisers
-//		val json = new JSONObject()
-//		Response.status(200).entity(json.toString).build()
-//	}
-//
+
+	/**
+	  * Delete the document with the given name along with its datas
+	  *
+	  * @param id The id of the document to delete
+	  * @return
+	  */
+	@DELETE
+	@Path("/deleteDocument/{id}")
+	def deleteDocument(@PathParam("id") id: Long): Nothing = {
+	     controller.deleteDocument(id)
+	}
+
+	/**
+	  * Returns the list of the existing recognisers within the base
+	  * @return Returns the list of name of the existing recognisers
+	  */
+	@GET
+	@Path("/availableRecogniser")
+	@Produces(Array(MediaType.APPLICATION_JSON))
+	def getAvailableRecogniser: Response = {
+        val recos = controller.getAvailableRecognisers
+		val json = new JSONArray()
+		recos.foreach(reco => json.put(reco))
+		Response.status(200).entity(json.toString).build()
+	}
+
 //	/**
 //	  * Groups every examples in the base that are contained in the projects using the recogniser wich name is given in parameter. The examples must be usable and validated. The examples are then exported as a training set to the named recogniser.
 //	  * @param name The name of the Recogniser to export to
