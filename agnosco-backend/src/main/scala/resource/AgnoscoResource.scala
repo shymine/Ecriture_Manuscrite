@@ -7,6 +7,7 @@ import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 import model.Controller
 import model.common.{Document, Page, Project, RecogniserType}
+import org.glassfish.json.JsonParserImpl
 import org.json.{JSONArray, JSONObject}
 
 
@@ -66,8 +67,9 @@ class AgnoscoResource {
 	  */
 	@DELETE
 	@Path("/deleteDocument/{id}")
-	def deleteDocument(@PathParam("id") id: Long): Nothing = {
-	     controller.deleteDocument(id)
+	def deleteDocument(@PathParam("id") id: Long): Response = {
+		//controller.deleteDocument(id)
+		Response.status(200).build()
 	}
 
 	/**
@@ -102,19 +104,23 @@ class AgnoscoResource {
 //	 * Annotation & Validation
 //	 */
 //
-//	/**
-//	  * Returns the list of id in the database of the pages that compose a document which name is given as a parameter.
-//	  * @param name The name of the document from which the pages are extracted
-//	  * @return The list of the id of the pages
-//	  */
-//	@GET
-//	@Path("/documentPages/{name}")
-//	@Produces(Array(MediaType.APPLICATION_JSON))
-//	def getPagesOfDocuments(@PathParam("name") name: String) = {
-//	      controller.getAllProject
-//	      //filter correctly the data
-//	}
-//
+	/**
+	  * Returns the list of id in the database of the pages that compose a document which name is given as a parameter.
+	  * @param id The id of the document from which the pages are extracted
+	  * @return The list of the id of the pages
+	  */
+	@GET
+	@Path("/documentPages/{id}")
+	@Produces(Array(MediaType.APPLICATION_JSON))
+	def getPagesOfDocuments(@PathParam("id") id: Long): Response = {
+		val json = new JSONArray()
+		json.put(1)
+		json.put(2)
+		json.put(36)
+
+		Response.status(200).entity(json.toString()).build()
+	}
+
 //	/**
 //	  * Return the picture associated with the page which id is given as a parameter, along with the list of example (image and transcription) of the page
 //	  * @param id The id of the page in the database
@@ -123,29 +129,29 @@ class AgnoscoResource {
 //	@GET
 //	@Path("pageData/{id}")
 //	@Produces(Array(MediaType.APPLICATION_JSON))
-//	def getPageData(@PathParam("id") id: Int) = {
-//	    controller.getAllProject
-//		//filter correctly the data
-//		val json = new JSONObject()
+//	def getPageData(@PathParam("id") id: Long): Response = {
+//		val json = new JSONArray()
+//
 //
 //		Response.status(200).entity(json.toString).build()
 //	}
-//
-//	/**
-//	  * Save in the database the modifications of the transcription describes by the JSON associated with the request
-//	  * @return
-//	  */
-//	@POST
-//	@Path("saveExampleEdits")
-//	@Consumes(Array(MediaType.APPLICATION_JSON))
-//	def saveExamplesEdits = {
-//	      //controller.modifyTranscription(samples)
-//
-//		val json = new JSONObject()
-//
-//		Response.status(200).entity(json.toString).build()
-//	}
-//
+
+	/**
+	  * Save in the database the modifications of the transcription describes by the JSON associated with the request
+	  * The examples are send using the body. Thus, we collect it with examples as a string
+	  * @return
+	  */
+	@POST
+	@Path("saveExampleEdits")
+	@Consumes(Array(MediaType.APPLICATION_JSON))
+	def saveExamplesEdits(examples: String): Response = {
+	    //controller.modifyTranscription(samples)
+		val json = new JSONObject(examples)
+
+
+		Response.status(200).build()
+	}
+
 //	/**
 //	  * Put the selected examples as Disabled
 //	  * @param id The id of the example to disable

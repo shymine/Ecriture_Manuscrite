@@ -38,9 +38,9 @@ class Controller {
 		project
 	}
 
-	def deleteDocument(id: Long) = databaseConnector.deleteDocument(id)
+	def deleteDocument(id: Long): Unit = databaseConnector.deleteDocument(id)
 
-	def getAvailableRecognisers : Iterable[RecogniserType.Value] = ???
+	def getAvailableRecognisers : Iterable[RecogniserType.Value] = RecogniserType.values
 
 
 	def validateTranscriptions(samples: Iterable[Example]): Nothing = ???
