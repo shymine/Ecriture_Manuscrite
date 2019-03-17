@@ -6,7 +6,7 @@ import javax.ws.rs._
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 import model.Controller
-import model.common.{Document, Page, Project, RecogniserType}
+import model.common._
 import org.glassfish.json.JsonParserImpl
 import org.json.{JSONArray, JSONObject}
 
@@ -142,12 +142,11 @@ class AgnoscoResource {
 	  * @return
 	  */
 	@POST
-	@Path("saveExampleEdits")
+	@Path("/saveExampleEdits")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
-	def saveExamplesEdits(examples: String): Response = {
-	    //controller.modifyTranscription(samples)
+	def saveExamplesEdits(examples: Array[Example]): Response = {
 		val json = new JSONObject(examples)
-
+		println(json.toString())
 
 		Response.status(200).build()
 	}
