@@ -162,7 +162,7 @@ class DatabaseSqlite extends Database {
 		}
 	}
 
-	override def getProject(id: Int): Option[Project] = {
+	override def getProject(id: Long): Option[Project] = {
 		val sql = s"SELECT * FROM projects WHERE id = $id"
 		val res = getStatement(sql)
 
@@ -183,12 +183,12 @@ class DatabaseSqlite extends Database {
 		pushStatement(sql)
 	}
 
-	override def deleteProject(id: Int): Unit = {
+	override def deleteProject(id: Long): Unit = {
 		val sql = s"DELETE FROM projects WHERE id=$id"
 		pushStatement(sql)
 	}
 
-	override def getDocument(id: Int): Option[Document] = {
+	override def getDocument(id: Long): Option[Document] = {
 		val sql = s"SELECT * FROM pages WHERE id = $id"
 		val res = getStatement(sql)
 
@@ -206,12 +206,12 @@ class DatabaseSqlite extends Database {
 		pushStatement(sql)
 	}
 
-	override def deleteDocument(id: Int): Unit = {
+	override def deleteDocument(id: Long): Unit = {
 		val sql = s"DELETE FROM documents WHERE id=$id"
 		pushStatement(sql)
 	}
 
-	override def getPage(id: Int): Option[Page] = {
+	override def getPage(id: Long): Option[Page] = {
 		val sql = s"SELECT * FROM pages WHERE id = $id"
 		val res = getStatement(sql)
 
@@ -229,12 +229,12 @@ class DatabaseSqlite extends Database {
 		pushStatement(sql)
 	}
 
-	override def deletePage(id: Int): Unit = {
+	override def deletePage(id: Long): Unit = {
 		val sql = s"DELETE FROM pages WHERE id=$id"
 		pushStatement(sql)
 	}
 
-	override def getExample(id: Int): Option[Example] = {
+	override def getExample(id: Long): Option[Example] = {
 		val sql = s"SELECT * FROM examples WHERE id = $id"
 		val res = getStatement(sql)
 
@@ -255,7 +255,7 @@ class DatabaseSqlite extends Database {
 		pushStatement(sql)
 	}
 
-	override def deleteExample(id: Int): Unit = {
+	override def deleteExample(id: Long): Unit = {
 		val sql = s"DELETE FROM examples WHERE id=$id"
 		pushStatement(sql)
 	}
@@ -273,7 +273,7 @@ class DatabaseSqlite extends Database {
 		projects
 	}
 
-	override def getDocumentsOfProject(id: Int): Iterable[Document] = {
+	override def getDocumentsOfProject(id: Long): Iterable[Document] = {
 		val sql = s"SELECT * FROM documents WHERE idProject = $id"
 		val res = getStatement(sql)
 		val documents = new ArrayBuffer[Document]()
@@ -288,7 +288,7 @@ class DatabaseSqlite extends Database {
 		documents
 	}
 
-	override def getPagesOfDocument(id: Int): Iterable[Page] = {
+	override def getPagesOfDocument(id: Long): Iterable[Page] = {
 		val sql = s"SELECT * FROM pages WHERE idDocument = $id"
 		val res = getStatement(sql)
 		val pages = new ArrayBuffer[Page]()
@@ -304,7 +304,7 @@ class DatabaseSqlite extends Database {
 		pages
 	}
 
-	override def getExamplesOfPage(id: Int): Iterable[Example] = {
+	override def getExamplesOfPage(id: Long): Iterable[Example] = {
 		val sql = s"SELECT * FROM examples WHERE pageId = $id"
 		val res = getStatement(sql)
 		val examples = new ArrayBuffer[Example]()
