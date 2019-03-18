@@ -12,8 +12,8 @@
   </div>
 
   <div class="validationWindow">
-    <ul *ngFor="let p of examples ; let i = index" class="examplesList">
-      <li class= "affichage">
+    <ul class="examplesList">
+      <li *ngFor="let p of examples ; let i = index" class= "affichage">
         <div class= "blocImagettePlusTrans">
           <div class = "imagette">
             <img class="imageAffiche" src={{p[0]}} alt="page" />
@@ -24,7 +24,7 @@
         </div>
         
         <div class = "buttonDiv">
-          <button class = "hideButton" (click)="disableEx(i)"><i class="fas fa-times"></i></button>
+          <button class = "hideButton" (click)="disableEx(i)" data-imgid=i><i [class]="isCross(i) ? 'fas fa-times' : 'fas fa-angle-double-up'"></i></button>
         </div>
       </li>
     </ul>

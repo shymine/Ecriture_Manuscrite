@@ -43,12 +43,12 @@ export class ValidationComponent implements OnInit {
     this.docName = this.params[0]; // le nom du document est le 1er paramètre
 
     //test
-    this.examples[0] = ["../../assets/images/Elephant.jpg", "To be or not to be", 0];
-    this.examples[1] = ["../../assets/images/Fraise.png", "That is the question", 1];
-    this.examples[2] = ["../../assets/images/Elephant.jpg", "Whether 'tis nobler in the mind", 2];
-    this.examples[3] = ["../../assets/images/Fraise.png", "To suffer the slings and arrows of outrageous fortune", 3];
-    this.examples[4] = ["../../assets/images/Elephant.jpg", "Or to take arms against a sea of troubles", 4];
-    this.examples[5] = ["../../assets/images/Fraise.png", "And by opposing end them.", 5];
+    this.examples[0] = ["../../assets/images/Elephant.jpg", "To be or not to be", 0, "cross"];
+    this.examples[1] = ["../../assets/images/Fraise.png", "That is the question", 1, "cross"];
+    this.examples[2] = ["../../assets/images/Elephant.jpg", "Whether 'tis nobler in the mind", 2, "cross"];
+    this.examples[3] = ["../../assets/images/Fraise.png", "To suffer the slings and arrows of outrageous fortune", 3, "cross"];
+    this.examples[4] = ["../../assets/images/Elephant.jpg", "Or to take arms against a sea of troubles", 4, "cross"];
+    this.examples[5] = ["../../assets/images/Fraise.png", "And by opposing end them.", 5, "cross"];
 
     //on récupère la liste des identifiants des pages du doc passé en paramètre 
     this.http.get('/base/documentPages/{docName}').subscribe(
@@ -61,6 +61,13 @@ export class ValidationComponent implements OnInit {
 
   }
 
+  isCross(id){
+    if(this.examples[id][3] === "cross") {
+      return true;
+    }
+    return false;
+  }
+
   goHome(){
     this.router.navigate(['']);
   }
@@ -69,27 +76,24 @@ export class ValidationComponent implements OnInit {
     console.log("disable " + id);
     if(this.hidden[id] == false){
       this.validationService.disableEx(id);
-      this.changeIconToArrow(id);
       //this.http.put('/base/disableExample/${id}', {}, {}).subscribe(example => this.changeIconArrow(id));
     }else{
       this.validationService.enableEx(id);
-      this.changeIconToCross(id);
       //this.http.put('/base/enableExample/${id}', {}, {}).subscribe(example => this.changeIconCross(id));
     }
+    this.changeIcon(id);
     this.hidden[id] = !this.hidden[id];
   }
 
-  changeIconToArrow(id){
-    //const icon = document.querySelectorAll('[data-name]="cross"' + id);
-    //const icon = document.getElementById("cross");
-    //icon.className = "fas fa-angle-double-up";
+  changeIcon(id){
+    if(this.examples[id][3] === "cross"){
+      this.examples[id][3] = "arrow";
+    }else if(this.examples[id][3] === "arrow"){
+      this.examples[id][3] = "cross";
+    }else{
+      console.log("erreur this.examples[id][2] correspond à rien")
+    }
     console.log("change to arrow");
-  }
-
-  changeIconToCross(id){
-    //const icon = document.getElementById("cross");
-    //icon.className = "fas fa-times";
-    console.log("change to cross");
   }
 
   validateAll(){
