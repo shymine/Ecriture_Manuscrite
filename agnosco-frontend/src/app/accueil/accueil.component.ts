@@ -35,7 +35,7 @@ export class AccueilComponent implements OnInit {
     this.projects[0]=["Project 1", ["Document Un", "Document Deux", "Document Trois"]];
     this.projects[1]=["Project 2", ["Document Quatre", "Document Cinq", "Document Six"]];
 */
-    this.maxListIndex = -1;
+    //this.maxListIndex = -1;
   
     console.log("*** GET /base/projectsAndDocuments ***");
 
@@ -44,13 +44,24 @@ export class AccueilComponent implements OnInit {
       console.log(returnedData);
 
       Object.keys(returnedData).forEach( key => {
-        this.maxListIndex += 1;
-        //this.projects[this.maxListIndex]= returnedData[key];
-        console.log(returnedData[key]);
+        //this.maxListIndex += 1;
+        let data = returnedData[key];
+        let nomPro = returnedData[key].name;
+        let docPro = returnedData[key].documents;
+
+        console.log("suivant:");
+        console.log(data);
+        console.log("nom:");
+        console.log(nomPro);
+        console.log("doc");
+        console.log(docPro);
+
+        this.projects.push([nomPro,docPro]);
 
       });
 
       console.log("projects");
+      console.log(this.projects);
 
       
     });
@@ -64,7 +75,7 @@ export class AccueilComponent implements OnInit {
     
     
     this.projects[p][1].forEach(element => {
-      console.log("*** DELETE /base/deleteDocument/{" + element +"} ***");/*
+      console.log("*** DELETE /base/deleteDocument/{" + element.name +"} ***");/*
       this.http.delete(`/base/deleteDocument/${element}`).subscribe(returnedData =>{
         this.getAllProjects();
       });*/
