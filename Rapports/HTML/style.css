@@ -1,5 +1,39 @@
 .headband{
-    background-color: aqua; 
+    background-color: rgb(8, 25, 82);
+    height: 25px;
+}
+
+.headband2{
+    background-color: rgb(8, 33, 116);
+    height: 55px;
+
+}
+
+.boutonHaut{
+    float: right;
+    background: none;
+    height: 25px;
+    width: 100;
+    color: white;
+    margin: 0;
+    padding: 0;
+    border: 1px solid rgb(53, 62, 92);
+}
+
+.boutonChoix{
+    position: relative;
+    width: 33.33%;
+    margin: 0;
+    padding: 0;
+    border: 1px solid rgb(44, 63, 126);
+    background : none;
+    height : 55px;
+    color: white;
+}
+
+.title {
+    text-align: center;
+    color:  rgb(122, 145, 221);
 }
 
 .bodyStyle{
