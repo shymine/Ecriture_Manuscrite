@@ -4,9 +4,9 @@
 }
 
 .headband2{
-    background-color: rgb(8, 33, 116);
+    background-color: rgb(97, 124, 212);
     height: 55px;
-
+    margin-bottom: 5px;
 }
 
 .boutonHaut{
@@ -22,22 +22,31 @@
 
 .boutonChoix{
     position: relative;
-    width: 33.33%;
+    width: 50%;
     margin: 0;
     padding: 0;
-    border: 1px solid rgb(44, 63, 126);
+    border: 1px solid rgb(102, 130, 221);
     background : none;
     height : 55px;
     color: white;
 }
 
+.boutonChoix:hover{
+    background : rgb(102, 127, 206);
+}
+
 .title {
     text-align: center;
     color:  rgb(122, 145, 221);
+    border: 1px solid rgb(163, 182, 243);
+    margin: 2px;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding : 10px;
 }
 
 .bodyStyle{
-    border: 1px solid blueviolet;
+    border: 1px solid rgb(185, 199, 248);
     padding: 5px;
 }
 
@@ -63,5 +72,14 @@
 
 .smallImage{
     position: relative;
-    width: 500px;
+    width: 38%;
+}
+
+.faceImage{
+    position: relative;
+    width: 50px;
+}
+
+p{
+    color: #4e4e4e
 }
