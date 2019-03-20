@@ -7,7 +7,6 @@ import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 import model.Controller
 import model.common._
-import org.glassfish.json.JsonParserImpl
 import org.json.{JSONArray, JSONObject}
 
 
