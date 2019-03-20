@@ -22,7 +22,7 @@
 
 .boutonChoix{
     position: relative;
-    width: 33.33%;
+    width: 50%;
     margin: 0;
     padding: 0;
     border: 1px solid rgb(44, 63, 126);
@@ -31,13 +31,17 @@
     color: white;
 }
 
+.boutonChoix:hover{
+    background : rgb(25, 49, 126);
+}
+
 .title {
     text-align: center;
     color:  rgb(122, 145, 221);
 }
 
 .bodyStyle{
-    border: 1px solid blueviolet;
+    border: 1px solid rgb(122, 145, 221);
     padding: 5px;
 }
 
@@ -64,4 +68,9 @@
 .smallImage{
     position: relative;
     width: 500px;
+}
+
+.faceImage{
+    position: relative;
+    width: 50px;
 }
