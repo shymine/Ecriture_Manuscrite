@@ -7,7 +7,11 @@
 		revision="0.1"
 		conf="compile"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
+<<<<<<< Updated upstream
 		date="20190316174310"/>
+=======
+		date="20190313205920"/>
+>>>>>>> Stashed changes
 	<dependencies>
 		<module organisation="org.glassfish.jersey.media" name="jersey-media-moxy">
 			<revision name="2.28" status="release" pubdate="20190125164034" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="27">
@@ -21,10 +25,17 @@
 				<license name="jQuery license" url="jquery.org/license"/>
 				<license name="MIT license" url="http://www.opensource.org/licenses/mit-license.php"/>
 				<license name="W3C license" url="https://www.w3.org/Consortium/Legal/copyright-documents-19990405"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="33469" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.media/jersey-media-moxy/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-moxy/2.28/jersey-media-moxy-2.28.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jersey-media-moxy" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="34236" time="87" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.media/jersey-media-moxy/srcs/jersey-media-moxy-2.28-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="33469" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.media/jersey-media-moxy/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-moxy/2.28/jersey-media-moxy-2.28.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jersey-media-moxy" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="34236" time="139" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.media/jersey-media-moxy/srcs/jersey-media-moxy-2.28-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-moxy/2.28/jersey-media-moxy-2.28-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -34,10 +45,17 @@
 			<revision name="1.1.5" status="release" pubdate="20181228103059" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://javaee.github.io/jsonp" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="36">
 				<license name="Eclipse Public License 2.0" url="https://projects.eclipse.org/license/epl-2.0"/>
 				<license name="GNU General Public License, version 2 with the GNU Classpath Exception" url="https://projects.eclipse.org/license/secondary-gpl-2.0-cp"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="6400" time="0" location="/home/laolao/.ivy2/cache/org.glassfish/jakarta.json/ivy-1.1.5.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jakarta.json/1.1.5/jakarta.json-1.1.5.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="1.1.5" rev-constraint-default="1.1.5" rev-constraint-dynamic="1.1.5" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jakarta.json" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="72159" time="106" location="/home/laolao/.ivy2/cache/org.glassfish/jakarta.json/srcs/jakarta.json-1.1.5-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="6400" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish/jakarta.json/ivy-1.1.5.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jakarta.json/1.1.5/jakarta.json-1.1.5.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="1.1.5" rev-constraint-default="1.1.5" rev-constraint-dynamic="1.1.5" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jakarta.json" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="72159" time="147" location="/home-reseau/charicha/.ivy2/cache/org.glassfish/jakarta.json/srcs/jakarta.json-1.1.5-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/jakarta.json/1.1.5/jakarta.json-1.1.5-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -47,10 +65,17 @@
 			<revision name="1.1.5" status="release" pubdate="20181228103045" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://javaee.github.io/jsonp" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="33">
 				<license name="Eclipse Public License 2.0" url="https://projects.eclipse.org/license/epl-2.0"/>
 				<license name="GNU General Public License, version 2 with the GNU Classpath Exception" url="https://projects.eclipse.org/license/secondary-gpl-2.0-cp"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="5970" time="0" location="/home/laolao/.ivy2/cache/jakarta.json/jakarta.json-api/ivy-1.1.5.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/jakarta/json/jakarta.json-api/1.1.5/jakarta.json-api-1.1.5.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="1.1.5" rev-constraint-default="1.1.5" rev-constraint-dynamic="1.1.5" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jakarta.json-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="72529" time="99" location="/home/laolao/.ivy2/cache/jakarta.json/jakarta.json-api/srcs/jakarta.json-api-1.1.5-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="5970" time="0" location="/home-reseau/charicha/.ivy2/cache/jakarta.json/jakarta.json-api/ivy-1.1.5.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/jakarta/json/jakarta.json-api/1.1.5/jakarta.json-api-1.1.5.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="1.1.5" rev-constraint-default="1.1.5" rev-constraint-dynamic="1.1.5" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jakarta.json-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="72529" time="136" location="/home-reseau/charicha/.ivy2/cache/jakarta.json/jakarta.json-api/srcs/jakarta.json-api-1.1.5-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/jakarta/json/jakarta.json-api/1.1.5/jakarta.json-api-1.1.5-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -60,10 +85,17 @@
 			<revision name="2.7.4" status="release" pubdate="20190118074012" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/eclipselink" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="25">
 				<license name="Eclipse Public License v. 2.0" url="http://www.eclipse.org/legal/epl-v20.html"/>
 				<license name="Eclipse Distribution License v. 1.0" url="http://www.eclipse.org/org/documents/edl-v10.php"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="2887" time="0" location="/home/laolao/.ivy2/cache/org.eclipse.persistence/org.eclipse.persistence.moxy/ivy-2.7.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.moxy/2.7.4/org.eclipse.persistence.moxy-2.7.4.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.7.4" rev-constraint-default="2.7.4" rev-constraint-dynamic="2.7.4" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="org.eclipse.persistence.moxy" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="488400" time="167" location="/home/laolao/.ivy2/cache/org.eclipse.persistence/org.eclipse.persistence.moxy/srcs/org.eclipse.persistence.moxy-2.7.4-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="2887" time="0" location="/home-reseau/charicha/.ivy2/cache/org.eclipse.persistence/org.eclipse.persistence.moxy/ivy-2.7.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.moxy/2.7.4/org.eclipse.persistence.moxy-2.7.4.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.7.4" rev-constraint-default="2.7.4" rev-constraint-dynamic="2.7.4" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="org.eclipse.persistence.moxy" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="488400" time="197" location="/home-reseau/charicha/.ivy2/cache/org.eclipse.persistence/org.eclipse.persistence.moxy/srcs/org.eclipse.persistence.moxy-2.7.4-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.moxy/2.7.4/org.eclipse.persistence.moxy-2.7.4-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -73,10 +105,17 @@
 			<revision name="2.7.4" status="release" pubdate="20190118073741" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/eclipselink" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="26">
 				<license name="Eclipse Public License v. 2.0" url="http://www.eclipse.org/legal/epl-v20.html"/>
 				<license name="Eclipse Distribution License v. 1.0" url="http://www.eclipse.org/org/documents/edl-v10.php"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="2886" time="0" location="/home/laolao/.ivy2/cache/org.eclipse.persistence/org.eclipse.persistence.core/ivy-2.7.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.core/2.7.4/org.eclipse.persistence.core-2.7.4.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.7.4" rev-constraint-default="2.7.4" rev-constraint-dynamic="2.7.4" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="org.eclipse.persistence.core" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="4695215" time="865" location="/home/laolao/.ivy2/cache/org.eclipse.persistence/org.eclipse.persistence.core/srcs/org.eclipse.persistence.core-2.7.4-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="2886" time="0" location="/home-reseau/charicha/.ivy2/cache/org.eclipse.persistence/org.eclipse.persistence.core/ivy-2.7.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.core/2.7.4/org.eclipse.persistence.core-2.7.4.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.7.4" rev-constraint-default="2.7.4" rev-constraint-dynamic="2.7.4" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="org.eclipse.persistence.core" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="4695215" time="562" location="/home-reseau/charicha/.ivy2/cache/org.eclipse.persistence/org.eclipse.persistence.core/srcs/org.eclipse.persistence.core-2.7.4-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.core/2.7.4/org.eclipse.persistence.core-2.7.4-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -85,10 +124,17 @@
 		<module organisation="javax.servlet" name="javax.servlet-api">
 			<revision name="4.0.1" status="release" pubdate="20180420091920" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://javaee.github.io/servlet-spec/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="24">
 				<license name="CDDL + GPLv2 with classpath exception" url="https://oss.oracle.com/licenses/CDDL+GPL-1.1"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="4275" time="0" location="/home/laolao/.ivy2/cache/javax.servlet/javax.servlet-api/ivy-4.0.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="4.0.1" rev-constraint-default="4.0.1" rev-constraint-dynamic="4.0.1" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="javax.servlet-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="203006" time="121" location="/home/laolao/.ivy2/cache/javax.servlet/javax.servlet-api/srcs/javax.servlet-api-4.0.1-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="4275" time="0" location="/home-reseau/charicha/.ivy2/cache/javax.servlet/javax.servlet-api/ivy-4.0.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="4.0.1" rev-constraint-default="4.0.1" rev-constraint-dynamic="4.0.1" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="javax.servlet-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="203006" time="155" location="/home-reseau/charicha/.ivy2/cache/javax.servlet/javax.servlet-api/srcs/javax.servlet-api-4.0.1-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -106,10 +152,17 @@
 				<license name="jQuery license" url="jquery.org/license"/>
 				<license name="MIT license" url="http://www.opensource.org/licenses/mit-license.php"/>
 				<license name="W3C license" url="https://www.w3.org/Consortium/Legal/copyright-documents-19990405"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="33307" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.containers/jersey-container-grizzly2-http/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jersey-container-grizzly2-http" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="28640" time="115" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.containers/jersey-container-grizzly2-http/srcs/jersey-container-grizzly2-http-2.28-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="33307" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.containers/jersey-container-grizzly2-http/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jersey-container-grizzly2-http" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="28640" time="111" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.containers/jersey-container-grizzly2-http/srcs/jersey-container-grizzly2-http-2.28-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -118,10 +171,17 @@
 		<module organisation="org.glassfish.grizzly" name="grizzly-http-server">
 			<revision name="2.4.4" status="release" pubdate="20190103123021" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="28">
 				<license name="EPL-2.0" url="http://www.eclipse.org/legal/epl-2.0"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="10904" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.grizzly/grizzly-http-server/ivy-2.4.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.4.4" rev-constraint-default="2.4.4" rev-constraint-dynamic="2.4.4" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="grizzly-http-server" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="215253" time="136" location="/home/laolao/.ivy2/cache/org.glassfish.grizzly/grizzly-http-server/srcs/grizzly-http-server-2.4.4-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="10904" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.grizzly/grizzly-http-server/ivy-2.4.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.4.4" rev-constraint-default="2.4.4" rev-constraint-dynamic="2.4.4" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="grizzly-http-server" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="215253" time="165" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.grizzly/grizzly-http-server/srcs/grizzly-http-server-2.4.4-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -130,10 +190,17 @@
 		<module organisation="org.glassfish.jaxb" name="jaxb-runtime">
 			<revision name="2.3.2" status="release" pubdate="20190102163223" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="22">
 				<license name="Eclipse Distribution License - v 1.0" url="http://www.eclipse.org/org/documents/edl-v10.php"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="10786" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.jaxb/jaxb-runtime/ivy-2.3.2.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jaxb/jaxb-runtime/2.3.2/jaxb-runtime-2.3.2.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.3.2" rev-constraint-default="2.3.2" rev-constraint-dynamic="2.3.2" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jaxb-runtime" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="757829" time="198" location="/home/laolao/.ivy2/cache/org.glassfish.jaxb/jaxb-runtime/srcs/jaxb-runtime-2.3.2-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="10786" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jaxb/jaxb-runtime/ivy-2.3.2.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jaxb/jaxb-runtime/2.3.2/jaxb-runtime-2.3.2.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.3.2" rev-constraint-default="2.3.2" rev-constraint-dynamic="2.3.2" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jaxb-runtime" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="757829" time="192" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jaxb/jaxb-runtime/srcs/jaxb-runtime-2.3.2-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/jaxb/jaxb-runtime/2.3.2/jaxb-runtime-2.3.2-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -142,10 +209,17 @@
 		<module organisation="com.sun.istack" name="istack-commons-runtime">
 			<revision name="3.0.8" status="release" pubdate="20181227154938" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="31">
 				<license name="Eclipse Distribution License - v 1.0" url="http://www.eclipse.org/org/documents/edl-v10.php"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="8068" time="0" location="/home/laolao/.ivy2/cache/com.sun.istack/istack-commons-runtime/ivy-3.0.8.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/sun/istack/istack-commons-runtime/3.0.8/istack-commons-runtime-3.0.8.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="3.0.8" rev-constraint-default="3.0.8" rev-constraint-dynamic="3.0.8" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="istack-commons-runtime" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="25886" time="114" location="/home/laolao/.ivy2/cache/com.sun.istack/istack-commons-runtime/srcs/istack-commons-runtime-3.0.8-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="8068" time="0" location="/home-reseau/charicha/.ivy2/cache/com.sun.istack/istack-commons-runtime/ivy-3.0.8.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/sun/istack/istack-commons-runtime/3.0.8/istack-commons-runtime-3.0.8.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="3.0.8" rev-constraint-default="3.0.8" rev-constraint-dynamic="3.0.8" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="istack-commons-runtime" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="25886" time="121" location="/home-reseau/charicha/.ivy2/cache/com.sun.istack/istack-commons-runtime/srcs/istack-commons-runtime-3.0.8-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/sun/istack/istack-commons-runtime/3.0.8/istack-commons-runtime-3.0.8-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -155,10 +229,17 @@
 			<revision name="1.2.16" status="release" pubdate="20181227153400" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="21">
 				<license name="Apache License, Version 2.0" url="http://www.opensource.org/licenses/apache2.0.php"/>
 				<license name="Eclipse Distribution License - v 1.0" url="http://www.eclipse.org/org/documents/edl-v10.php"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="4573" time="0" location="/home/laolao/.ivy2/cache/com.sun.xml.fastinfoset/FastInfoset/ivy-1.2.16.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/sun/xml/fastinfoset/FastInfoset/1.2.16/FastInfoset-1.2.16.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="1.2.16" rev-constraint-default="1.2.16" rev-constraint-dynamic="1.2.16" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="FastInfoset" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="267403" time="220" location="/home/laolao/.ivy2/cache/com.sun.xml.fastinfoset/FastInfoset/srcs/FastInfoset-1.2.16-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="4573" time="0" location="/home-reseau/charicha/.ivy2/cache/com.sun.xml.fastinfoset/FastInfoset/ivy-1.2.16.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/sun/xml/fastinfoset/FastInfoset/1.2.16/FastInfoset-1.2.16.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="1.2.16" rev-constraint-default="1.2.16" rev-constraint-dynamic="1.2.16" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="FastInfoset" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="267403" time="183" location="/home-reseau/charicha/.ivy2/cache/com.sun.xml.fastinfoset/FastInfoset/srcs/FastInfoset-1.2.16-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/sun/xml/fastinfoset/FastInfoset/1.2.16/FastInfoset-1.2.16-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -176,10 +257,17 @@
 				<license name="jQuery license" url="jquery.org/license"/>
 				<license name="MIT license" url="http://www.opensource.org/licenses/mit-license.php"/>
 				<license name="W3C license" url="https://www.w3.org/Consortium/Legal/copyright-documents-19990405"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="33440" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.containers/jersey-container-servlet/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jersey-container-servlet" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="28769" time="111" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.containers/jersey-container-servlet/srcs/jersey-container-servlet-2.28-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="33440" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.containers/jersey-container-servlet/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jersey-container-servlet" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="28769" time="128" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.containers/jersey-container-servlet/srcs/jersey-container-servlet-2.28-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -188,10 +276,17 @@
 		<module organisation="org.scala-lang.modules" name="scala-xml_2.12">
 			<revision name="1.1.1" status="release" pubdate="20180926193248" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="18">
 				<license name="BSD 3-clause" url="http://opensource.org/licenses/BSD-3-Clause"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="3266" time="0" location="/home/laolao/.ivy2/cache/org.scala-lang.modules/scala-xml_2.12/ivy-1.1.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="1.1.1" rev-constraint-default="1.1.1" rev-constraint-dynamic="1.1.1" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="scala-xml_2.12" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="111158" time="102" location="/home/laolao/.ivy2/cache/org.scala-lang.modules/scala-xml_2.12/srcs/scala-xml_2.12-1.1.1-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="3266" time="0" location="/home-reseau/charicha/.ivy2/cache/org.scala-lang.modules/scala-xml_2.12/ivy-1.1.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="1.1.1" rev-constraint-default="1.1.1" rev-constraint-dynamic="1.1.1" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="scala-xml_2.12" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="111158" time="135" location="/home-reseau/charicha/.ivy2/cache/org.scala-lang.modules/scala-xml_2.12/srcs/scala-xml_2.12-1.1.1-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -200,10 +295,17 @@
 		<module organisation="org.glassfish.hk2.external" name="javax.inject">
 			<revision name="2.5.0-b62" status="release" pubdate="20180803114745" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="17">
 				<license name="CDDL + GPLv2 with classpath exception" url="https://oss.oracle.com/licenses/CDDL+GPL-1.1"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="17941" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.hk2.external/javax.inject/ivy-2.5.0-b62.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/hk2/external/javax.inject/2.5.0-b62/javax.inject-2.5.0-b62.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.5.0-b62" rev-constraint-default="2.5.0-b62" rev-constraint-dynamic="2.5.0-b62" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="javax.inject" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="13158" time="81" location="/home/laolao/.ivy2/cache/org.glassfish.hk2.external/javax.inject/srcs/javax.inject-2.5.0-b62-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="17941" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.hk2.external/javax.inject/ivy-2.5.0-b62.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/hk2/external/javax.inject/2.5.0-b62/javax.inject-2.5.0-b62.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.5.0-b62" rev-constraint-default="2.5.0-b62" rev-constraint-dynamic="2.5.0-b62" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="javax.inject" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="13158" time="216" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.hk2.external/javax.inject/srcs/javax.inject-2.5.0-b62-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/hk2/external/javax.inject/2.5.0-b62/javax.inject-2.5.0-b62-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -212,10 +314,17 @@
 		<module organisation="org.jvnet.staxex" name="stax-ex">
 			<revision name="1.8.1" status="release" pubdate="20181227161428" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="16">
 				<license name="Eclipse Distribution License - v 1.0" url="http://www.eclipse.org/org/documents/edl-v10.php"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="4215" time="0" location="/home/laolao/.ivy2/cache/org.jvnet.staxex/stax-ex/ivy-1.8.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/jvnet/staxex/stax-ex/1.8.1/stax-ex-1.8.1.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="1.8.1" rev-constraint-default="1.8.1" rev-constraint-dynamic="1.8.1" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="stax-ex" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="36627" time="79" location="/home/laolao/.ivy2/cache/org.jvnet.staxex/stax-ex/srcs/stax-ex-1.8.1-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="4215" time="0" location="/home-reseau/charicha/.ivy2/cache/org.jvnet.staxex/stax-ex/ivy-1.8.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/jvnet/staxex/stax-ex/1.8.1/stax-ex-1.8.1.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="1.8.1" rev-constraint-default="1.8.1" rev-constraint-dynamic="1.8.1" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="stax-ex" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="36627" time="146" location="/home-reseau/charicha/.ivy2/cache/org.jvnet.staxex/stax-ex/srcs/stax-ex-1.8.1-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/jvnet/staxex/stax-ex/1.8.1/stax-ex-1.8.1-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -224,10 +333,17 @@
 		<module organisation="org.glassfish.jaxb" name="txw2">
 			<revision name="2.3.2" status="release" pubdate="20190102163211" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="14">
 				<license name="Eclipse Distribution License - v 1.0" url="http://www.eclipse.org/org/documents/edl-v10.php"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="9633" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.jaxb/txw2/ivy-2.3.2.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jaxb/txw2/2.3.2/txw2-2.3.2.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.3.2" rev-constraint-default="2.3.2" rev-constraint-dynamic="2.3.2" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="txw2" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="70320" time="86" location="/home/laolao/.ivy2/cache/org.glassfish.jaxb/txw2/srcs/txw2-2.3.2-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="9633" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jaxb/txw2/ivy-2.3.2.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jaxb/txw2/2.3.2/txw2-2.3.2.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.3.2" rev-constraint-default="2.3.2" rev-constraint-dynamic="2.3.2" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="txw2" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="70320" time="152" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jaxb/txw2/srcs/txw2-2.3.2-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/jaxb/txw2/2.3.2/txw2-2.3.2-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -245,10 +361,17 @@
 				<license name="jQuery license" url="jquery.org/license"/>
 				<license name="MIT license" url="http://www.opensource.org/licenses/mit-license.php"/>
 				<license name="W3C license" url="https://www.w3.org/Consortium/Legal/copyright-documents-19990405"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="33180" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.ext/jersey-entity-filtering/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/ext/jersey-entity-filtering/2.28/jersey-entity-filtering-2.28.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jersey-entity-filtering" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="77259" time="90" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.ext/jersey-entity-filtering/srcs/jersey-entity-filtering-2.28-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="33180" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.ext/jersey-entity-filtering/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/ext/jersey-entity-filtering/2.28/jersey-entity-filtering-2.28.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jersey-entity-filtering" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="77259" time="149" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.ext/jersey-entity-filtering/srcs/jersey-entity-filtering-2.28-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/jersey/ext/jersey-entity-filtering/2.28/jersey-entity-filtering-2.28-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -258,10 +381,17 @@
 			<revision name="2.7.4" status="release" pubdate="20190118073720" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/eclipselink" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="10">
 				<license name="Eclipse Public License v. 2.0" url="http://www.eclipse.org/legal/epl-v20.html"/>
 				<license name="Eclipse Distribution License v. 1.0" url="http://www.eclipse.org/org/documents/edl-v10.php"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="2682" time="0" location="/home/laolao/.ivy2/cache/org.eclipse.persistence/org.eclipse.persistence.asm/ivy-2.7.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.asm/2.7.4/org.eclipse.persistence.asm-2.7.4.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.7.4" rev-constraint-default="2.7.4" rev-constraint-dynamic="2.7.4" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="org.eclipse.persistence.asm" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="506668" time="186" location="/home/laolao/.ivy2/cache/org.eclipse.persistence/org.eclipse.persistence.asm/srcs/org.eclipse.persistence.asm-2.7.4-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="2682" time="0" location="/home-reseau/charicha/.ivy2/cache/org.eclipse.persistence/org.eclipse.persistence.asm/ivy-2.7.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.asm/2.7.4/org.eclipse.persistence.asm-2.7.4.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.7.4" rev-constraint-default="2.7.4" rev-constraint-dynamic="2.7.4" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="org.eclipse.persistence.asm" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="506668" time="201" location="/home-reseau/charicha/.ivy2/cache/org.eclipse.persistence/org.eclipse.persistence.asm/srcs/org.eclipse.persistence.asm-2.7.4-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.asm/2.7.4/org.eclipse.persistence.asm-2.7.4-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -270,10 +400,17 @@
 		<module organisation="org.scala-lang" name="scala-library">
 			<revision name="2.12.8" status="release" pubdate="20181204111556" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.12.8/" downloaded="false" searched="false" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="8">
 				<license name="Apache-2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="2656" time="0" location="/home/laolao/.ivy2/cache/org.scala-lang/scala-library/ivy-2.12.8.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.12.8" rev-constraint-default="2.12.8" rev-constraint-dynamic="2.12.8" callerrev="0.1" extra-info.apiURL="http://www.scala-lang.org/api/2.12.8/"/>
 				<artifacts>
 					<artifact name="scala-library" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="1020924" time="0" location="/home/laolao/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.12.8-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="2656" time="0" location="/home-reseau/charicha/.ivy2/cache/org.scala-lang/scala-library/ivy-2.12.8.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.12.8" rev-constraint-default="2.12.8" rev-constraint-dynamic="2.12.8" callerrev="0.1" extra-info.apiURL="http://www.scala-lang.org/api/2.12.8/"/>
+				<artifacts>
+					<artifact name="scala-library" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="1020924" time="260" location="/home-reseau/charicha/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.12.8-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -291,10 +428,17 @@
 				<license name="jQuery license" url="jquery.org/license"/>
 				<license name="MIT license" url="http://www.opensource.org/licenses/mit-license.php"/>
 				<license name="W3C license" url="https://www.w3.org/Consortium/Legal/copyright-documents-19990405"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="33481" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.containers/jersey-container-servlet-core/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jersey-container-servlet-core" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="64073" time="140" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.containers/jersey-container-servlet-core/srcs/jersey-container-servlet-core-2.28-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="33481" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.containers/jersey-container-servlet-core/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jersey-container-servlet-core" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="64073" time="151" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.containers/jersey-container-servlet-core/srcs/jersey-container-servlet-core-2.28-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -306,10 +450,17 @@
 				<license name="The GNU General Public License (GPL), Version 2, With Classpath Exception" url="https://www.gnu.org/software/classpath/license.html"/>
 				<license name="Apache License, 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
 				<license name="Modified BSD" url="http://asm.objectweb.org/license.html"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="33450" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.core/jersey-server/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jersey-server" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="746787" time="340" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.core/jersey-server/srcs/jersey-server-2.28-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="33450" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.core/jersey-server/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jersey-server" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="746787" time="204" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.core/jersey-server/srcs/jersey-server-2.28-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -318,10 +469,17 @@
 		<module organisation="javax.validation" name="validation-api">
 			<revision name="2.0.1.Final" status="release" pubdate="20171219172341" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://beanvalidation.org" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="7">
 				<license name="Apache License 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="3427" time="0" location="/home/laolao/.ivy2/cache/javax.validation/validation-api/ivy-2.0.1.Final.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.0.1.Final" rev-constraint-default="2.0.1.Final" rev-constraint-dynamic="2.0.1.Final" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="validation-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="97838" time="139" location="/home/laolao/.ivy2/cache/javax.validation/validation-api/srcs/validation-api-2.0.1.Final-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="3427" time="0" location="/home-reseau/charicha/.ivy2/cache/javax.validation/validation-api/ivy-2.0.1.Final.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.0.1.Final" rev-constraint-default="2.0.1.Final" rev-constraint-dynamic="2.0.1.Final" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="validation-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="97838" time="136" location="/home-reseau/charicha/.ivy2/cache/javax.validation/validation-api/srcs/validation-api-2.0.1.Final-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -339,10 +497,17 @@
 				<license name="jQuery license" url="jquery.org/license"/>
 				<license name="MIT license" url="http://www.opensource.org/licenses/mit-license.php"/>
 				<license name="W3C license" url="https://www.w3.org/Consortium/Legal/copyright-documents-19990405"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="33226" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.media/jersey-media-jaxb/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jersey-media-jaxb" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="58298" time="71" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.media/jersey-media-jaxb/srcs/jersey-media-jaxb-2.28-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="33226" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.media/jersey-media-jaxb/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jersey-media-jaxb" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="58298" time="135" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.media/jersey-media-jaxb/srcs/jersey-media-jaxb-2.28-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -351,10 +516,17 @@
 		<module organisation="jakarta.xml.bind" name="jakarta.xml.bind-api">
 			<revision name="2.3.2" status="release" pubdate="20181227163107" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="29">
 				<license name="Eclipse Distribution License - v 1.0" url="http://www.eclipse.org/org/documents/edl-v10.php"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="4662" time="0" location="/home/laolao/.ivy2/cache/jakarta.xml.bind/jakarta.xml.bind-api/ivy-2.3.2.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.3.2" rev-constraint-default="2.3.2" rev-constraint-dynamic="2.3.2" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jakarta.xml.bind-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="194036" time="124" location="/home/laolao/.ivy2/cache/jakarta.xml.bind/jakarta.xml.bind-api/srcs/jakarta.xml.bind-api-2.3.2-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="4662" time="0" location="/home-reseau/charicha/.ivy2/cache/jakarta.xml.bind/jakarta.xml.bind-api/ivy-2.3.2.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.3.2" rev-constraint-default="2.3.2" rev-constraint-dynamic="2.3.2" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jakarta.xml.bind-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="194036" time="300" location="/home-reseau/charicha/.ivy2/cache/jakarta.xml.bind/jakarta.xml.bind-api/srcs/jakarta.xml.bind-api-2.3.2-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -372,10 +544,17 @@
 				<license name="jQuery license" url="jquery.org/license"/>
 				<license name="MIT license" url="http://www.opensource.org/licenses/mit-license.php"/>
 				<license name="W3C license" url="https://www.w3.org/Consortium/Legal/copyright-documents-19990405"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="32883" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.core/jersey-client/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jersey-client" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="137667" time="101" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.core/jersey-client/srcs/jersey-client-2.28-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="32883" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.core/jersey-client/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jersey-client" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="137667" time="254" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.core/jersey-client/srcs/jersey-client-2.28-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -393,10 +572,17 @@
 				<license name="jQuery license" url="jquery.org/license"/>
 				<license name="MIT license" url="http://www.opensource.org/licenses/mit-license.php"/>
 				<license name="W3C license" url="https://www.w3.org/Consortium/Legal/copyright-documents-19990405"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="32716" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.inject/jersey-hk2/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/inject/jersey-hk2/2.28/jersey-hk2-2.28.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jersey-hk2" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="46666" time="72" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.inject/jersey-hk2/srcs/jersey-hk2-2.28-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="32716" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.inject/jersey-hk2/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/inject/jersey-hk2/2.28/jersey-hk2-2.28.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jersey-hk2" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="46666" time="242" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.inject/jersey-hk2/srcs/jersey-hk2-2.28-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/jersey/inject/jersey-hk2/2.28/jersey-hk2-2.28-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -406,10 +592,17 @@
 			<revision name="2.5.0" status="release" pubdate="20190102165621" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="35">
 				<license name="EPL 2.0" url="http://www.eclipse.org/legal/epl-2.0"/>
 				<license name="GPL2 w/ CPE" url="https://www.gnu.org/software/classpath/license.html"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="17448" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.hk2/hk2-locator/ivy-2.5.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-locator/2.5.0/hk2-locator-2.5.0.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.5.0" rev-constraint-default="2.5.0" rev-constraint-dynamic="2.5.0" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="hk2-locator" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="106852" time="107" location="/home/laolao/.ivy2/cache/org.glassfish.hk2/hk2-locator/srcs/hk2-locator-2.5.0-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="17448" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.hk2/hk2-locator/ivy-2.5.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-locator/2.5.0/hk2-locator-2.5.0.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.5.0" rev-constraint-default="2.5.0" rev-constraint-dynamic="2.5.0" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="hk2-locator" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="106852" time="193" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.hk2/hk2-locator/srcs/hk2-locator-2.5.0-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-locator/2.5.0/hk2-locator-2.5.0-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -420,10 +613,17 @@
 				<license name="MPL 1.1" url="http://www.mozilla.org/MPL/MPL-1.1.html"/>
 				<license name="LGPL 2.1" url="http://www.gnu.org/licenses/lgpl-2.1.html"/>
 				<license name="Apache License 2.0" url="http://www.apache.org/licenses/"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="3199" time="0" location="/home/laolao/.ivy2/cache/org.javassist/javassist/ivy-3.22.0-CR2.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/javassist/javassist/3.22.0-CR2/javassist-3.22.0-CR2.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="3.22.0-CR2" rev-constraint-default="3.22.0-CR2" rev-constraint-dynamic="3.22.0-CR2" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="javassist" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="533469" time="142" location="/home/laolao/.ivy2/cache/org.javassist/javassist/srcs/javassist-3.22.0-CR2-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="3199" time="0" location="/home-reseau/charicha/.ivy2/cache/org.javassist/javassist/ivy-3.22.0-CR2.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/javassist/javassist/3.22.0-CR2/javassist-3.22.0-CR2.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="3.22.0-CR2" rev-constraint-default="3.22.0-CR2" rev-constraint-dynamic="3.22.0-CR2" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="javassist" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="533469" time="181" location="/home-reseau/charicha/.ivy2/cache/org.javassist/javassist/srcs/javassist-3.22.0-CR2-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/javassist/javassist/3.22.0-CR2/javassist-3.22.0-CR2-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -433,10 +633,17 @@
 			<revision name="2.5.0" status="release" pubdate="20190102165724" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="13">
 				<license name="EPL 2.0" url="http://www.eclipse.org/legal/epl-2.0"/>
 				<license name="GPL2 w/ CPE" url="https://www.gnu.org/software/classpath/license.html"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="17130" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.hk2/hk2-api/ivy-2.5.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-api/2.5.0/hk2-api-2.5.0.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.5.0" rev-constraint-default="2.5.0" rev-constraint-dynamic="2.5.0" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="hk2-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="203480" time="109" location="/home/laolao/.ivy2/cache/org.glassfish.hk2/hk2-api/srcs/hk2-api-2.5.0-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="17130" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.hk2/hk2-api/ivy-2.5.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-api/2.5.0/hk2-api-2.5.0.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.5.0" rev-constraint-default="2.5.0" rev-constraint-dynamic="2.5.0" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="hk2-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="203480" time="192" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.hk2/hk2-api/srcs/hk2-api-2.5.0-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-api/2.5.0/hk2-api-2.5.0-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -446,10 +653,17 @@
 			<revision name="2.5.0" status="release" pubdate="20190102165534" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="11">
 				<license name="EPL 2.0" url="http://www.eclipse.org/legal/epl-2.0"/>
 				<license name="GPL2 w/ CPE" url="https://www.gnu.org/software/classpath/license.html"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="17426" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.hk2.external/aopalliance-repackaged/ivy-2.5.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/hk2/external/aopalliance-repackaged/2.5.0/aopalliance-repackaged-2.5.0.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.5.0" rev-constraint-default="2.5.0" rev-constraint-dynamic="2.5.0" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="aopalliance-repackaged" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="23086" time="129" location="/home/laolao/.ivy2/cache/org.glassfish.hk2.external/aopalliance-repackaged/srcs/aopalliance-repackaged-2.5.0-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="17426" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.hk2.external/aopalliance-repackaged/ivy-2.5.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/hk2/external/aopalliance-repackaged/2.5.0/aopalliance-repackaged-2.5.0.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.5.0" rev-constraint-default="2.5.0" rev-constraint-dynamic="2.5.0" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="aopalliance-repackaged" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="23086" time="123" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.hk2.external/aopalliance-repackaged/srcs/aopalliance-repackaged-2.5.0-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/hk2/external/aopalliance-repackaged/2.5.0/aopalliance-repackaged-2.5.0-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -461,10 +675,17 @@
 				<license name="The GNU General Public License (GPL), Version 2, With Classpath Exception" url="https://www.gnu.org/software/classpath/license.html"/>
 				<license name="Apache License, 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
 				<license name="Public Domain" url="https://creativecommons.org/publicdomain/zero/1.0/"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="32840" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.core/jersey-common/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jersey-common" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="780479" time="204" location="/home/laolao/.ivy2/cache/org.glassfish.jersey.core/jersey-common/srcs/jersey-common-2.28-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="32840" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.core/jersey-common/ivy-2.28.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.28" rev-constraint-default="2.28" rev-constraint-dynamic="2.28" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jersey-common" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="780479" time="206" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.jersey.core/jersey-common/srcs/jersey-common-2.28-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -473,10 +694,17 @@
 		<module organisation="org.glassfish.hk2" name="osgi-resource-locator">
 			<revision name="1.0.1" status="release" pubdate="20110113160008" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="32">
 				<license name="CDDL + GPLv2 with classpath exception" url="https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="3175" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.hk2/osgi-resource-locator/ivy-1.0.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="osgi-resource-locator" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="13010" time="93" location="/home/laolao/.ivy2/cache/org.glassfish.hk2/osgi-resource-locator/srcs/osgi-resource-locator-1.0.1-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="3175" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.hk2/osgi-resource-locator/ivy-1.0.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="osgi-resource-locator" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="13010" time="144" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.hk2/osgi-resource-locator/srcs/osgi-resource-locator-1.0.1-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -486,10 +714,17 @@
 			<revision name="2.1.5" status="release" pubdate="20190122191029" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/eclipse-ee4j/jaxrs-api" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="37">
 				<license name="EPL 2.0" url="http://www.eclipse.org/legal/epl-2.0"/>
 				<license name="GPL2 w/ CPE" url="https://www.gnu.org/software/classpath/license.html"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="4986" time="0" location="/home/laolao/.ivy2/cache/jakarta.ws.rs/jakarta.ws.rs-api/ivy-2.1.5.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.1.5" rev-constraint-default="2.1.5" rev-constraint-dynamic="2.1.5" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jakarta.ws.rs-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="246696" time="149" location="/home/laolao/.ivy2/cache/jakarta.ws.rs/jakarta.ws.rs-api/srcs/jakarta.ws.rs-api-2.1.5-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="4986" time="0" location="/home-reseau/charicha/.ivy2/cache/jakarta.ws.rs/jakarta.ws.rs-api/ivy-2.1.5.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.1.5" rev-constraint-default="2.1.5" rev-constraint-dynamic="2.1.5" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jakarta.ws.rs-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="246696" time="159" location="/home-reseau/charicha/.ivy2/cache/jakarta.ws.rs/jakarta.ws.rs-api/srcs/jakarta.ws.rs-api-2.1.5-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -498,10 +733,17 @@
 		<module organisation="org.glassfish.grizzly" name="grizzly-http">
 			<revision name="2.4.4" status="release" pubdate="20190103123059" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="2">
 				<license name="EPL-2.0" url="http://www.eclipse.org/legal/epl-2.0"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="10630" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.grizzly/grizzly-http/ivy-2.4.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.4.4" rev-constraint-default="2.4.4" rev-constraint-dynamic="2.4.4" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="grizzly-http" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="250648" time="104" location="/home/laolao/.ivy2/cache/org.glassfish.grizzly/grizzly-http/srcs/grizzly-http-2.4.4-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="10630" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.grizzly/grizzly-http/ivy-2.4.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.4.4" rev-constraint-default="2.4.4" rev-constraint-dynamic="2.4.4" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="grizzly-http" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="250648" time="187" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.grizzly/grizzly-http/srcs/grizzly-http-2.4.4-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -510,10 +752,17 @@
 		<module organisation="org.glassfish.grizzly" name="grizzly-framework">
 			<revision name="2.4.4" status="release" pubdate="20190103123137" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="30">
 				<license name="EPL-2.0" url="http://www.eclipse.org/legal/epl-2.0"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="10612" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.grizzly/grizzly-framework/ivy-2.4.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.4.4" rev-constraint-default="2.4.4" rev-constraint-dynamic="2.4.4" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="grizzly-framework" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="565043" time="172" location="/home/laolao/.ivy2/cache/org.glassfish.grizzly/grizzly-framework/srcs/grizzly-framework-2.4.4-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="10612" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.grizzly/grizzly-framework/ivy-2.4.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.4.4" rev-constraint-default="2.4.4" rev-constraint-dynamic="2.4.4" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="grizzly-framework" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="565043" time="223" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.grizzly/grizzly-framework/srcs/grizzly-framework-2.4.4-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -522,10 +771,17 @@
 		<module organisation="jakarta.activation" name="jakarta.activation-api">
 			<revision name="1.2.1" status="release" pubdate="20181120231634" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="1">
 				<license name="EDL 1.0" url="http://www.eclipse.org/org/documents/edl-v10.php"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="5389" time="0" location="/home/laolao/.ivy2/cache/jakarta.activation/jakarta.activation-api/ivy-1.2.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="1.2.1" rev-constraint-default="1.2.1" rev-constraint-dynamic="1.2.1" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jakarta.activation-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="43221" time="252" location="/home/laolao/.ivy2/cache/jakarta.activation/jakarta.activation-api/srcs/jakarta.activation-api-1.2.1-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="5389" time="0" location="/home-reseau/charicha/.ivy2/cache/jakarta.activation/jakarta.activation-api/ivy-1.2.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="1.2.1" rev-constraint-default="1.2.1" rev-constraint-dynamic="1.2.1" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jakarta.activation-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="43221" time="150" location="/home-reseau/charicha/.ivy2/cache/jakarta.activation/jakarta.activation-api/srcs/jakarta.activation-api-1.2.1-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -535,10 +791,17 @@
 			<revision name="2.5.0" status="release" pubdate="20190102165732" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="0">
 				<license name="EPL 2.0" url="http://www.eclipse.org/legal/epl-2.0"/>
 				<license name="GPL2 w/ CPE" url="https://www.gnu.org/software/classpath/license.html"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="17615" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.hk2/hk2-utils/ivy-2.5.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-utils/2.5.0/hk2-utils-2.5.0.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.5.0" rev-constraint-default="2.5.0" rev-constraint-dynamic="2.5.0" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="hk2-utils" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="78353" time="87" location="/home/laolao/.ivy2/cache/org.glassfish.hk2/hk2-utils/srcs/hk2-utils-2.5.0-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="17615" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.hk2/hk2-utils/ivy-2.5.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-utils/2.5.0/hk2-utils-2.5.0.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.5.0" rev-constraint-default="2.5.0" rev-constraint-dynamic="2.5.0" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="hk2-utils" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="78353" time="129" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.hk2/hk2-utils/srcs/hk2-utils-2.5.0-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-utils/2.5.0/hk2-utils-2.5.0-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -548,10 +811,17 @@
 			<revision name="2.5.0" status="release" pubdate="20190102165628" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="3">
 				<license name="EPL 2.0" url="http://www.eclipse.org/legal/epl-2.0"/>
 				<license name="GPL2 w/ CPE" url="https://www.gnu.org/software/classpath/license.html"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="17509" time="0" location="/home/laolao/.ivy2/cache/org.glassfish.hk2.external/jakarta.inject/ivy-2.5.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.5.0" rev-constraint-default="2.5.0" rev-constraint-dynamic="2.5.0" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jakarta.inject" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="12592" time="74" location="/home/laolao/.ivy2/cache/org.glassfish.hk2.external/jakarta.inject/srcs/jakarta.inject-2.5.0-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="17509" time="0" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.hk2.external/jakarta.inject/ivy-2.5.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="2.5.0" rev-constraint-default="2.5.0" rev-constraint-dynamic="2.5.0" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jakarta.inject" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="12592" time="231" location="/home-reseau/charicha/.ivy2/cache/org.glassfish.hk2.external/jakarta.inject/srcs/jakarta.inject-2.5.0-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -561,10 +831,17 @@
 			<revision name="1.3.4" status="release" pubdate="20181211130859" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://projects.eclipse.org/projects/ee4j.ca" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="34">
 				<license name="EPL 2.0" url="http://www.eclipse.org/legal/epl-2.0"/>
 				<license name="GPL2 w/ CPE" url="https://www.gnu.org/software/classpath/license.html"/>
+<<<<<<< Updated upstream
 				<metadata-artifact status="no" details="" size="4211" time="0" location="/home/laolao/.ivy2/cache/jakarta.annotation/jakarta.annotation-api/ivy-1.3.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4.pom"/>
 				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="1.3.4" rev-constraint-default="1.3.4" rev-constraint-dynamic="1.3.4" callerrev="0.1"/>
 				<artifacts>
 					<artifact name="jakarta.annotation-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="38508" time="93" location="/home/laolao/.ivy2/cache/jakarta.annotation/jakarta.annotation-api/srcs/jakarta.annotation-api-1.3.4-sources.jar">
+=======
+				<metadata-artifact status="no" details="" size="4211" time="0" location="/home-reseau/charicha/.ivy2/cache/jakarta.annotation/jakarta.annotation-api/ivy-1.3.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4.pom"/>
+				<caller organisation="default" name="agnosco-backend$sources" conf="compile" rev="1.3.4" rev-constraint-default="1.3.4" rev-constraint-dynamic="1.3.4" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="jakarta.annotation-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="38508" time="164" location="/home-reseau/charicha/.ivy2/cache/jakarta.annotation/jakarta.annotation-api/srcs/jakarta.annotation-api-1.3.4-sources.jar">
+>>>>>>> Stashed changes
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4-sources.jar"/>
 					</artifact>
 				</artifacts>

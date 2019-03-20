@@ -4,7 +4,11 @@
 		module="agnosco-backend_2.12"
 		revision="0.1"
 		status="integration"
+<<<<<<< Updated upstream
 		publication="20190316174301"
+=======
+		publication="20190313205840"
+>>>>>>> Stashed changes
 	>
 		<description>
 		agnosco-backend
