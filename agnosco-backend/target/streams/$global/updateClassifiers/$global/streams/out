@@ -5842,6 +5842,7 @@
 [debug] == resolving dependencies default#agnosco-backend$sources;0.1->jline#jline;2.14.6 [scala-tool->master]
 [debug] 	resolved ivy file produced in cache
 [debug] :: downloading artifacts ::
+<<<<<<< Updated upstream
 [debug] 		tried /home/laolao/.ivy2/local/org.glassfish.hk2/hk2-utils/2.5.0/srcs/hk2-utils-sources.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-utils/2.5.0/hk2-utils-2.5.0-sources.jar
 [debug] 		tried /home/laolao/.ivy2/local/jakarta.activation/jakarta.activation-api/1.2.1/srcs/jakarta.activation-api-sources.jar
@@ -5854,10 +5855,33 @@
 [debug] 		tried /home/laolao/.ivy2/local/org.glassfish.jersey.inject/jersey-hk2/2.28/srcs/jersey-hk2-sources.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/inject/jersey-hk2/2.28/jersey-hk2-2.28-sources.jar
 [debug] 		tried https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1-sources.jar
+=======
+[debug] 		tried /home-reseau/charicha/.ivy2/local/jakarta.activation/jakarta.activation-api/1.2.1/srcs/jakarta.activation-api-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.grizzly/grizzly-http/2.4.4/srcs/grizzly-http-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.jersey.core/jersey-client/2.28/srcs/jersey-client-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.hk2.external/jakarta.inject/2.5.0/srcs/jakarta.inject-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.hk2/hk2-utils/2.5.0/srcs/hk2-utils-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.jersey.inject/jersey-hk2/2.28/srcs/jersey-hk2-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-utils/2.5.0/hk2-utils-2.5.0-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/inject/jersey-hk2/2.28/jersey-hk2-2.28-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28-sources.jar
+[info] downloading https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-utils/2.5.0/hk2-utils-2.5.0-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-utils/2.5.0/hk2-utils-2.5.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-utils/2.5.0/hk2-utils-2.5.0-sources.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1-sources.jar.sha1
+>>>>>>> Stashed changes
 [info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/inject/jersey-hk2/2.28/jersey-hk2-2.28-sources.jar ...
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/inject/jersey-hk2/2.28/jersey-hk2-2.28-sources.jar
 [info] downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0-sources.jar ...
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0-sources.jar
+<<<<<<< Updated upstream
 [info] downloading https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-utils/2.5.0/hk2-utils-2.5.0-sources.jar ...
 [info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28-sources.jar ...
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-utils/2.5.0/hk2-utils-2.5.0-sources.jar
@@ -5984,10 +6008,138 @@
 [debug] 		tried /home/laolao/.ivy2/local/org.glassfish.jersey.containers/jersey-container-grizzly2-http/2.28/srcs/jersey-container-grizzly2-http-sources.jar
 [debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28-sources.jar
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28-sources.jar.sha1
+=======
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-utils/2.5.0/hk2-utils-2.5.0-sources.jar
+[info] 	[SUCCESSFUL ] org.glassfish.hk2#hk2-utils;2.5.0!hk2-utils.jar(src) (129ms)
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4-sources.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.jersey.containers/jersey-container-servlet-core/2.28/srcs/jersey-container-servlet-core-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28-sources.jar
+[info] 	[SUCCESSFUL ] jakarta.activation#jakarta.activation-api;1.2.1!jakarta.activation-api.jar(src) (150ms)
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0-sources.jar.sha1
+[debug] 		tried /home-reseau/charicha/.ivy2/local/javax.validation/validation-api/2.0.1.Final/srcs/validation-api-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http/2.4.4/grizzly-http-2.4.4-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/inject/jersey-hk2/2.28/jersey-hk2-2.28-sources.jar.sha1
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28-sources.jar
+[info] downloading https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final-sources.jar
+[info] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-http;2.4.4!grizzly-http.jar(src) (187ms)
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.scala-lang/scala-library/2.12.8/srcs/scala-library-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/hk2/external/jakarta.inject/2.5.0/jakarta.inject-2.5.0-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28-sources.jar.sha1
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/inject/jersey-hk2/2.28/jersey-hk2-2.28-sources.jar
+[info] 	[SUCCESSFUL ] org.glassfish.hk2.external#jakarta.inject;2.5.0!jakarta.inject.jar(src) (231ms)
+[info] downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-client/2.28/jersey-client-2.28-sources.jar
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.inject#jersey-hk2;2.28!jersey-hk2.jar(src) (242ms)
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.jersey.core/jersey-common/2.28/srcs/jersey-common-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28-sources.jar.sha1
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final-sources.jar.sha1
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.eclipse.persistence/org.eclipse.persistence.asm/2.7.4/srcs/org.eclipse.persistence.asm-sources.jar
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.core#jersey-client;2.28!jersey-client.jar(src) (254ms)
+[debug] 		tried https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.asm/2.7.4/org.eclipse.persistence.asm-2.7.4-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.hk2.external/aopalliance-repackaged/2.5.0/srcs/aopalliance-repackaged-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/external/aopalliance-repackaged/2.5.0/aopalliance-repackaged-2.5.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/aopalliance-repackaged/2.5.0/aopalliance-repackaged-2.5.0-sources.jar ...
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet-core/2.28/jersey-container-servlet-core-2.28-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/aopalliance-repackaged/2.5.0/aopalliance-repackaged-2.5.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.asm/2.7.4/org.eclipse.persistence.asm-2.7.4-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.asm/2.7.4/org.eclipse.persistence.asm-2.7.4-sources.jar
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.containers#jersey-container-servlet-core;2.28!jersey-container-servlet-core.jar(src) (151ms)
+[info] 	[SUCCESSFUL ] javax.validation#validation-api;2.0.1.Final!validation-api.jar(src) (136ms)
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.jersey.ext/jersey-entity-filtering/2.28/srcs/jersey-entity-filtering-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.hk2/hk2-api/2.5.0/srcs/hk2-api-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/ext/jersey-entity-filtering/2.28/jersey-entity-filtering-2.28-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-api/2.5.0/hk2-api-2.5.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-api/2.5.0/hk2-api-2.5.0-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-api/2.5.0/hk2-api-2.5.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/ext/jersey-entity-filtering/2.28/jersey-entity-filtering-2.28-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/ext/jersey-entity-filtering/2.28/jersey-entity-filtering-2.28-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/aopalliance-repackaged/2.5.0/aopalliance-repackaged-2.5.0-sources.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8-sources.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28-sources.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.asm/2.7.4/org.eclipse.persistence.asm-2.7.4-sources.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/hk2/external/aopalliance-repackaged/2.5.0/aopalliance-repackaged-2.5.0-sources.jar
+[info] 	[SUCCESSFUL ] org.glassfish.hk2.external#aopalliance-repackaged;2.5.0!aopalliance-repackaged.jar(src) (123ms)
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.jaxb/txw2/2.3.2/srcs/txw2-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jaxb/txw2/2.3.2/txw2-2.3.2-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/ext/jersey-entity-filtering/2.28/jersey-entity-filtering-2.28-sources.jar.sha1
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/jaxb/txw2/2.3.2/txw2-2.3.2-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jaxb/txw2/2.3.2/txw2-2.3.2-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.asm/2.7.4/org.eclipse.persistence.asm-2.7.4-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-common/2.28/jersey-common-2.28-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/ext/jersey-entity-filtering/2.28/jersey-entity-filtering-2.28-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-api/2.5.0/hk2-api-2.5.0-sources.jar.sha1
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.core#jersey-common;2.28!jersey-common.jar(src) (206ms)
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.ext#jersey-entity-filtering;2.28!jersey-entity-filtering.jar(src) (149ms)
+[info] 	[SUCCESSFUL ] org.eclipse.persistence#org.eclipse.persistence.asm;2.7.4!org.eclipse.persistence.asm.jar(src) (201ms)
+[info] 	[SUCCESSFUL ] org.scala-lang#scala-library;2.12.8!scala-library.jar(src) (260ms)
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.jvnet.staxex/stax-ex/1.8.1/srcs/stax-ex-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.jersey.media/jersey-media-jaxb/2.28/srcs/jersey-media-jaxb-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.scala-lang.modules/scala-xml_2.12/1.1.1/srcs/scala-xml_2.12-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/jvnet/staxex/stax-ex/1.8.1/stax-ex-1.8.1-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.hk2.external/javax.inject/2.5.0-b62/srcs/javax.inject-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/external/javax.inject/2.5.0-b62/javax.inject-2.5.0-b62-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-api/2.5.0/hk2-api-2.5.0-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jaxb/txw2/2.3.2/txw2-2.3.2-sources.jar.sha1
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1-sources.jar
+[info] 	[SUCCESSFUL ] org.glassfish.hk2#hk2-api;2.5.0!hk2-api.jar(src) (192ms)
+[info] downloading https://repo1.maven.org/maven2/org/jvnet/staxex/stax-ex/1.8.1/stax-ex-1.8.1-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/jvnet/staxex/stax-ex/1.8.1/stax-ex-1.8.1-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.javassist/javassist/3.22.0-CR2/srcs/javassist-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/javassist/javassist/3.22.0-CR2/javassist-3.22.0-CR2-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jaxb/txw2/2.3.2/txw2-2.3.2-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/javassist/javassist/3.22.0-CR2/javassist-3.22.0-CR2-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/javassist/javassist/3.22.0-CR2/javassist-3.22.0-CR2-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1-sources.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28-sources.jar.sha1
+[info] 	[SUCCESSFUL ] org.glassfish.jaxb#txw2;2.3.2!txw2.jar(src) (152ms)
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/jvnet/staxex/stax-ex/1.8.1/stax-ex-1.8.1-sources.jar.sha1
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.jersey.containers/jersey-container-servlet/2.28/srcs/jersey-container-servlet-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/javax.inject/2.5.0-b62/javax.inject-2.5.0-b62-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/javax.inject/2.5.0-b62/javax.inject-2.5.0-b62-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-jaxb/2.28/jersey-media-jaxb-2.28-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/jvnet/staxex/stax-ex/1.8.1/stax-ex-1.8.1-sources.jar
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.media#jersey-media-jaxb;2.28!jersey-media-jaxb.jar(src) (135ms)
+[info] 	[SUCCESSFUL ] org.scala-lang.modules#scala-xml_2.12;1.1.1!scala-xml_2.12.jar(src) (135ms)
+[info] 	[SUCCESSFUL ] org.jvnet.staxex#stax-ex;1.8.1!stax-ex.jar(src) (146ms)
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.jaxb/jaxb-runtime/2.3.2/srcs/jaxb-runtime-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/com.sun.xml.fastinfoset/FastInfoset/1.2.16/srcs/FastInfoset-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jaxb/jaxb-runtime/2.3.2/jaxb-runtime-2.3.2-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/com/sun/xml/fastinfoset/FastInfoset/1.2.16/FastInfoset-1.2.16-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/javassist/javassist/3.22.0-CR2/javassist-3.22.0-CR2-sources.jar.sha1
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.jersey.containers/jersey-container-grizzly2-http/2.28/srcs/jersey-container-grizzly2-http-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/external/javax.inject/2.5.0-b62/javax.inject-2.5.0-b62-sources.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28-sources.jar.sha1
+[info] downloading https://repo1.maven.org/maven2/com/sun/xml/fastinfoset/FastInfoset/1.2.16/FastInfoset-1.2.16-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/com/sun/xml/fastinfoset/FastInfoset/1.2.16/FastInfoset-1.2.16-sources.jar
+>>>>>>> Stashed changes
 [info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28-sources.jar ...
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28-sources.jar
 [info] downloading https://repo1.maven.org/maven2/org/glassfish/jaxb/jaxb-runtime/2.3.2/jaxb-runtime-2.3.2-sources.jar ...
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jaxb/jaxb-runtime/2.3.2/jaxb-runtime-2.3.2-sources.jar
+<<<<<<< Updated upstream
 [debug] 	public: downloading https://repo1.maven.org/maven2/org/javassist/javassist/3.22.0-CR2/javassist-3.22.0-CR2-sources.jar.sha1
 [debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.1.1/scala-xml_2.12-1.1.1-sources.jar
 [info] 	[SUCCESSFUL ] org.scala-lang.modules#scala-xml_2.12;1.1.1!scala-xml_2.12.jar(src) (102ms)
@@ -6140,3 +6292,168 @@
 [debug] 	report for default#agnosco-backend$sources;0.1 pom produced in /media/laolao/Data1/DOCUMENTS/INSA/4ANNEE/Projet Couasnon/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend$sources-pom.xml
 [debug] 	report for default#agnosco-backend$sources;0.1 scala-tool produced in /media/laolao/Data1/DOCUMENTS/INSA/4ANNEE/Projet Couasnon/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend$sources-scala-tool.xml
 [debug] 	resolve done (1279ms resolve - 1357ms download)
+=======
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/hk2/external/javax.inject/2.5.0-b62/javax.inject-2.5.0-b62-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-servlet/2.28/jersey-container-servlet-2.28-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/javassist/javassist/3.22.0-CR2/javassist-3.22.0-CR2-sources.jar
+[info] 	[SUCCESSFUL ] org.glassfish.hk2.external#javax.inject;2.5.0-b62!javax.inject.jar(src) (216ms)
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.containers#jersey-container-servlet;2.28!jersey-container-servlet.jar(src) (128ms)
+[info] 	[SUCCESSFUL ] org.javassist#javassist;3.22.0-CR2!javassist.jar(src) (181ms)
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.eclipse.persistence/org.eclipse.persistence.moxy/2.7.4/srcs/org.eclipse.persistence.moxy-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/javax.servlet/javax.servlet-api/4.0.1/srcs/javax.servlet-api-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.moxy/2.7.4/org.eclipse.persistence.moxy-2.7.4-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.eclipse.persistence/org.eclipse.persistence.core/2.7.4/srcs/org.eclipse.persistence.core-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28-sources.jar.sha1
+[debug] 		tried https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.core/2.7.4/org.eclipse.persistence.core-2.7.4-sources.jar
+[info] downloading https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.moxy/2.7.4/org.eclipse.persistence.moxy-2.7.4-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.moxy/2.7.4/org.eclipse.persistence.moxy-2.7.4-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.28/jersey-container-grizzly2-http-2.28-sources.jar
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.containers#jersey-container-grizzly2-http;2.28!jersey-container-grizzly2-http.jar(src) (111ms)
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jaxb/jaxb-runtime/2.3.2/jaxb-runtime-2.3.2-sources.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/com/sun/xml/fastinfoset/FastInfoset/1.2.16/FastInfoset-1.2.16-sources.jar.sha1
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.jersey.media/jersey-media-moxy/2.28/srcs/jersey-media-moxy-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-moxy/2.28/jersey-media-moxy-2.28-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-moxy/2.28/jersey-media-moxy-2.28-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-moxy/2.28/jersey-media-moxy-2.28-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.core/2.7.4/org.eclipse.persistence.core-2.7.4-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.core/2.7.4/org.eclipse.persistence.core-2.7.4-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/com/sun/xml/fastinfoset/FastInfoset/1.2.16/FastInfoset-1.2.16-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jaxb/jaxb-runtime/2.3.2/jaxb-runtime-2.3.2-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1-sources.jar.sha1
+[info] 	[SUCCESSFUL ] com.sun.xml.fastinfoset#FastInfoset;1.2.16!FastInfoset.jar(src) (183ms)
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.moxy/2.7.4/org.eclipse.persistence.moxy-2.7.4-sources.jar.sha1
+[info] 	[SUCCESSFUL ] org.glassfish.jaxb#jaxb-runtime;2.3.2!jaxb-runtime.jar(src) (192ms)
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.grizzly/grizzly-http-server/2.4.4/srcs/grizzly-http-server-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/jakarta.xml.bind/jakarta.xml.bind-api/2.3.2/srcs/jakarta.xml.bind-api-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-moxy/2.28/jersey-media-moxy-2.28-sources.jar.sha1
+[debug] 		tried https://repo1.maven.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4-sources.jar
+[info] 	[SUCCESSFUL ] javax.servlet#javax.servlet-api;4.0.1!javax.servlet-api.jar(src) (155ms)
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/media/jersey-media-moxy/2.28/jersey-media-moxy-2.28-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.grizzly/grizzly-framework/2.4.4/srcs/grizzly-framework-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.moxy/2.7.4/org.eclipse.persistence.moxy-2.7.4-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4-sources.jar
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.media#jersey-media-moxy;2.28!jersey-media-moxy.jar(src) (139ms)
+[info] 	[SUCCESSFUL ] org.eclipse.persistence#org.eclipse.persistence.moxy;2.7.4!org.eclipse.persistence.moxy.jar(src) (197ms)
+[debug] 		tried /home-reseau/charicha/.ivy2/local/com.sun.istack/istack-commons-runtime/3.0.8/srcs/istack-commons-runtime-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/com/sun/istack/istack-commons-runtime/3.0.8/istack-commons-runtime-3.0.8-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.hk2/osgi-resource-locator/1.0.1/srcs/osgi-resource-locator-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4-sources.jar.sha1
+[info] downloading https://repo1.maven.org/maven2/com/sun/istack/istack-commons-runtime/3.0.8/istack-commons-runtime-3.0.8-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/com/sun/istack/istack-commons-runtime/3.0.8/istack-commons-runtime-3.0.8-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-http-server/2.4.4/grizzly-http-server-2.4.4-sources.jar
+[info] downloading https://repo1.maven.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/com/sun/istack/istack-commons-runtime/3.0.8/istack-commons-runtime-3.0.8-sources.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1-sources.jar.sha1
+[info] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-http-server;2.4.4!grizzly-http-server.jar(src) (165ms)
+[debug] 		tried /home-reseau/charicha/.ivy2/local/jakarta.json/jakarta.json-api/1.1.5/srcs/jakarta.json-api-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4-sources.jar.sha1
+[debug] 		tried https://repo1.maven.org/maven2/jakarta/json/jakarta.json-api/1.1.5/jakarta.json-api-1.1.5-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/com/sun/istack/istack-commons-runtime/3.0.8/istack-commons-runtime-3.0.8-sources.jar
+[info] downloading https://repo1.maven.org/maven2/jakarta/json/jakarta.json-api/1.1.5/jakarta.json-api-1.1.5-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/json/jakarta.json-api/1.1.5/jakarta.json-api-1.1.5-sources.jar
+[info] 	[SUCCESSFUL ] com.sun.istack#istack-commons-runtime;3.0.8!istack-commons-runtime.jar(src) (121ms)
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/grizzly/grizzly-framework/2.4.4/grizzly-framework-2.4.4-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/jakarta.annotation/jakarta.annotation-api/1.3.4/srcs/jakarta.annotation-api-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4-sources.jar
+[info] 	[SUCCESSFUL ] org.glassfish.hk2#osgi-resource-locator;1.0.1!osgi-resource-locator.jar(src) (144ms)
+[debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2-sources.jar.sha1
+[info] downloading https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/json/jakarta.json-api/1.1.5/jakarta.json-api-1.1.5-sources.jar.sha1
+[info] 	[SUCCESSFUL ] org.glassfish.grizzly#grizzly-framework;2.4.4!grizzly-framework.jar(src) (223ms)
+[debug] sha1 OK for https://repo1.maven.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.hk2/hk2-locator/2.5.0/srcs/hk2-locator-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-locator/2.5.0/hk2-locator-2.5.0-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/jakarta/json/jakarta.json-api/1.1.5/jakarta.json-api-1.1.5-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish/jakarta.json/1.1.5/srcs/jakarta.json-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.core/2.7.4/org.eclipse.persistence.core-2.7.4-sources.jar.sha1
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jakarta.json/1.1.5/jakarta.json-1.1.5-sources.jar
+[info] 	[SUCCESSFUL ] jakarta.xml.bind#jakarta.xml.bind-api;2.3.2!jakarta.xml.bind-api.jar(src) (300ms)
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-locator/2.5.0/hk2-locator-2.5.0-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-locator/2.5.0/hk2-locator-2.5.0-sources.jar
+[info] 	[SUCCESSFUL ] jakarta.json#jakarta.json-api;1.1.5!jakarta.json-api.jar(src) (136ms)
+[debug] 		tried /home-reseau/charicha/.ivy2/local/jakarta.ws.rs/jakarta.ws.rs-api/2.1.5/srcs/jakarta.ws.rs-api-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/jakarta.json/1.1.5/jakarta.json-1.1.5-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jakarta.json/1.1.5/jakarta.json-1.1.5-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.glassfish.jersey.core/jersey-server/2.28/srcs/jersey-server-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4-sources.jar.sha1
+[info] downloading https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.4/jakarta.annotation-api-1.3.4-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jakarta.json/1.1.5/jakarta.json-1.1.5-sources.jar.sha1
+[info] 	[SUCCESSFUL ] jakarta.annotation#jakarta.annotation-api;1.3.4!jakarta.annotation-api.jar(src) (164ms)
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.scalatest/scalatest_2.12/3.0.5/srcs/scalatest_2.12-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/eclipse/persistence/org.eclipse.persistence.core/2.7.4/org.eclipse.persistence.core-2.7.4-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5-sources.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-locator/2.5.0/hk2-locator-2.5.0-sources.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jakarta.json/1.1.5/jakarta.json-1.1.5-sources.jar
+[info] 	[SUCCESSFUL ] org.eclipse.persistence#org.eclipse.persistence.core;2.7.4!org.eclipse.persistence.core.jar(src) (562ms)
+[info] 	[SUCCESSFUL ] org.glassfish#jakarta.json;1.1.5!jakarta.json.jar(src) (147ms)
+[info] downloading https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28-sources.jar.sha1
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.scalactic/scalactic_2.12/3.0.5/srcs/scalactic_2.12-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/jakarta/ws/rs/jakarta.ws.rs-api/2.1.5/jakarta.ws.rs-api-2.1.5-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/hk2/hk2-locator/2.5.0/hk2-locator-2.5.0-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.scala-lang/scala-reflect/2.12.8/srcs/scala-reflect-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8-sources.jar
+[info] 	[SUCCESSFUL ] jakarta.ws.rs#jakarta.ws.rs-api;2.1.5!jakarta.ws.rs-api.jar(src) (159ms)
+[info] 	[SUCCESSFUL ] org.glassfish.hk2#hk2-locator;2.5.0!hk2-locator.jar(src) (193ms)
+[info] downloading https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5-sources.jar
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.12;1.0.6!scala-xml_2.12.jar(src)
+[info] downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/glassfish/jersey/core/jersey-server/2.28/jersey-server-2.28-sources.jar
+[debug] 		tried /home-reseau/charicha/.ivy2/local/org.scala-lang/scala-compiler/2.12.8/srcs/scala-compiler-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8-sources.jar
+[debug] 	[NOT REQUIRED] jline#jline;2.14.6!jline.jar(src)
+[info] 	[SUCCESSFUL ] org.glassfish.jersey.core#jersey-server;2.28!jersey-server.jar(src) (204ms)
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5-sources.jar.sha1
+[info] downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5-sources.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8-sources.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5-sources.jar
+[info] 	[SUCCESSFUL ] org.scalactic#scalactic_2.12;3.0.5!scalactic_2.12.jar(src) (134ms)
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5-sources.jar
+[info] 	[SUCCESSFUL ] org.scala-lang#scala-reflect;2.12.8!scala-reflect.jar(src) (183ms)
+[info] 	[SUCCESSFUL ] org.scalatest#scalatest_2.12;3.0.5!scalatest_2.12.jar(src) (256ms)
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8-sources.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8-sources.jar
+[info] 	[SUCCESSFUL ] org.scala-lang#scala-compiler;2.12.8!scala-compiler.jar(src) (253ms)
+[debug] :: resolution report :: resolve 1155ms :: artifacts dl 1610ms
+[debug] 	report for default#agnosco-backend$sources;0.1 compile produced in /home-reseau/charicha/Bureau/GItProjet/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend$sources-compile.xml
+[debug] 	report for default#agnosco-backend$sources;0.1 runtime produced in /home-reseau/charicha/Bureau/GItProjet/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend$sources-runtime.xml
+[debug] 	report for default#agnosco-backend$sources;0.1 test produced in /home-reseau/charicha/Bureau/GItProjet/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend$sources-test.xml
+[debug] 	report for default#agnosco-backend$sources;0.1 provided produced in /home-reseau/charicha/Bureau/GItProjet/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend$sources-provided.xml
+[debug] 	report for default#agnosco-backend$sources;0.1 optional produced in /home-reseau/charicha/Bureau/GItProjet/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend$sources-optional.xml
+[debug] 	report for default#agnosco-backend$sources;0.1 compile-internal produced in /home-reseau/charicha/Bureau/GItProjet/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend$sources-compile-internal.xml
+[debug] 	report for default#agnosco-backend$sources;0.1 runtime-internal produced in /home-reseau/charicha/Bureau/GItProjet/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend$sources-runtime-internal.xml
+[debug] 	report for default#agnosco-backend$sources;0.1 test-internal produced in /home-reseau/charicha/Bureau/GItProjet/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend$sources-test-internal.xml
+[debug] 	report for default#agnosco-backend$sources;0.1 plugin produced in /home-reseau/charicha/Bureau/GItProjet/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend$sources-plugin.xml
+[debug] 	report for default#agnosco-backend$sources;0.1 pom produced in /home-reseau/charicha/Bureau/GItProjet/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend$sources-pom.xml
+[debug] 	report for default#agnosco-backend$sources;0.1 scala-tool produced in /home-reseau/charicha/Bureau/GItProjet/Ecriture_Manuscrite/agnosco-backend/target/scala-2.12/resolution-cache/reports/default-agnosco-backend$sources-scala-tool.xml
+[debug] 	resolve done (1155ms resolve - 1610ms download)
+>>>>>>> Stashed changes
