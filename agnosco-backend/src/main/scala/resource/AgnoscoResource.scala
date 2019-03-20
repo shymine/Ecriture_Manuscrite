@@ -7,8 +7,9 @@ import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 import model.Controller
 import model.common._
-import org.glassfish.json.JsonParserImpl
 import org.json.{JSONArray, JSONObject}
+
+import scala.collection.mutable
 
 
 @Singleton
@@ -32,7 +33,6 @@ class AgnoscoResource {
 	@Path("/projectsAndDocuments")
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def getProjectAndDocuments: Response = {
-
 		val projects =  List(Project(3,"coucou", RecogniserType.None, List()),
 			Project(4,"bisoux", RecogniserType.Laia, List(Document(5, "docu", List(), false)))) //controller.getAllProject
 
@@ -144,46 +144,59 @@ class AgnoscoResource {
 	@POST
 	@Path("/saveExampleEdits")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
-	def saveExamplesEdits(examples: Array[Example]): Response = {
-		val json = new JSONObject(examples)
-		println(json.toString())
-
+	def saveExamplesEdits(examples: String): Response = {
+		println(examples)
+		try {
+			val json = new JSONArray(examples)
+			println(s"examples: ${json.toString()}")
+		}catch {
+			case e: Exception => e.printStackTrace()
+		}
 		Response.status(200).build()
 	}
 
-//	/**
-//	  * Put the selected examples as Disabled
-//	  * @param id The id of the example to disable
-//	  * @return
-//	  */
-//	@PUT
-//	@Path("disableExample/{id}")
-//	def disableExample(@PathParam("id") id: Int) = {
-//		controller.disableExample(id)
-//	}
-//
-//	/**
-//	  * Put the selected examples as Enable
-//	  * @param id The id of the example to enable
-//	  * @return
-//	  */
-//	@PUT
-//	@Path("enableExample/{id}")
-//	def enableExample(@PathParam("id") id: Int) = {
-//	     controller.enableExample(id)
-//	}
-//
-//	/**
-//	  * Validate the examples given in the JSON associated with the request
-//	  * @return
-//	  */
-//	@POST
-//	@Path("validateExamples")
-//	@Consumes(Array(MediaType.APPLICATION_JSON))
-//	def validateExamples = {
-//	     //controller.validateTranscription(samples)
-//	}
-//
+	/**
+	  * Put the selected examples as Disabled
+	  * @param id The id of the example to disable
+	  * @return
+	  */
+	@PUT
+	@Path("disableExample/{id}")
+	def disableExample(@PathParam("id") id: Int): Response = {
+		controller.disableExample(id)
+		Response.status(200).build()
+	}
+
+	/**
+	  * Put the selected examples as Enable
+	  * @param id The id of the example to enable
+	  * @return
+	  */
+	@PUT
+	@Path("enableExample/{id}")
+	def enableExample(@PathParam("id") id: Int): Response = {
+	     controller.enableExample(id)
+		Response.status(200).build()
+	}
+
+	/**
+	  * Validate the examples given in the JSON associated with the request
+	  * @return
+	  */
+	@POST
+	@Path("validateExamples")
+	@Consumes(Array(MediaType.APPLICATION_JSON))
+	def validateExamples(samples: String) = {
+		val array = new JSONArray(samples)
+		var examples = new mutable.MutableList[Example]
+		array.forEach(obj => {
+			val json = obj.asInstanceOf[JSONObject]
+			examples += Example(json.getLong("id"), json.getString("imagePath"), Some(json.getString("transcript")), true)
+		})
+	    controller.validateTranscriptions(examples)
+		Response.status(200).build()
+	}
+
 //	/*
 //	 * Processing
 //	 */

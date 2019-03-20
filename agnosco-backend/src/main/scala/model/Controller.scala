@@ -49,9 +49,21 @@ class Controller {
 
 	def deleteTranscription(example: Example): Nothing = ???
 
-	def disableExample(id: Int): Nothing = ???
+	def disableExample(id: Long): Unit = {
+		var example: Option[Example] = databaseConnector.getExample(id)
+		if(example.nonEmpty) {
+			example = Some (example.get.copy(enabled = false))
+			databaseConnector.saveExampleEdition(List(example.get))
+		}
+	}
 
-	def enableExample(id: Int): Nothing = ???
+	def enableExample(id: Long): Unit = {
+		var example = databaseConnector.getExample(id)
+		if(example.nonEmpty) {
+			example = Some(example.get.copy(enabled = true))
+			databaseConnector.saveExampleEdition(List(example.get))
+		}
+	}
 
 
 	/* Data Processing */
