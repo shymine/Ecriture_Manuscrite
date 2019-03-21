@@ -206,23 +206,30 @@ class AgnoscoResource {
 		Response.status(200).build()
 	}
 
-//	/*
-//	 * Processing
-//	 */
-//
-//	/**
-//	  * Returns the list of id and images associated with the pages of the documents with the given name
-//	  * @param name The name of the documents
-//	  * @return The JSON of the list of id and images of the pages of the document
-//	  */
-//	@GET
-//	@Path("documentPagesWithImages/{name}")
-//	@Produces(Array(MediaType.APPLICATION_JSON))
-//	def documentPagesWithImages(@PathParam("name") name: String) = {
-//		controller.getAllProject
-//		//filter the data
-//	}
-//
+	/*
+	 * Processing
+	 */
+
+	/**
+	  * Returns the list of id and images associated with the pages of the documents with the given id
+	  * @param id The id of the documents
+	  * @return The JSON of the list of id and images of the pages of the document
+	  */
+	@GET
+	@Path("documentPagesWithImages/{id}")
+	@Produces(Array(MediaType.APPLICATION_JSON))
+	def documentPagesWithImages(@PathParam("id") id: Long): Response = {
+		val json = new JSONArray()
+		for(i <- 0 to 1) {
+			val obj = new JSONObject()
+			obj.put("id", i)
+			obj.put("imgPath", s"assets/images/coucou$i.png")
+			json.put(obj)
+		}
+		println(json)
+		Response.status(200).entity(json.toString).build()
+	}
+
 //	/**
 //	  * Add to the database the groundtruth given as JSON along with the request and bind it to the page which name is given as a parameter
 //	  * @param name The name of the document
