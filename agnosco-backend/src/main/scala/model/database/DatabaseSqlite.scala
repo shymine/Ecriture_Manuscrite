@@ -110,6 +110,8 @@ class DatabaseSqlite extends Database {
 			"id INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT, " +
 				"imagePath VARCHAR(256), " +
 				"transcript VARCHAR(256), " +
+				"enabled BOOL, " +
+				"validated BOOL, " +
 				"pageId INTEGER, " +
 				"FOREIGN KEY(pageId) REFERENCES pages(id)")
 		/*
@@ -324,7 +326,7 @@ class DatabaseSqlite extends Database {
 
 	override def saveExampleEdition(examples: Iterable[Example]): Unit = {
 		examples.foreach(example => {
-			val sql = s"UPDATE examples SET imagePath=${example.imagePath} transcript=${example.transcript} WHERE id=${example.id}"
+			val sql = s"UPDATE examples SET imagePath=${example.imagePath} transcript=${example.transcript}  WHERE id=${example.id}"
 			pushStatement(sql)
 		})
 	}

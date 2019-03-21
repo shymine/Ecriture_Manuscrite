@@ -9,6 +9,7 @@ case class Example(id : Long, imagePath : String, var transcript : Option[String
 		json.put("imagePath", imagePath)
 		json.put("transcript", transcript)
 		json.put("enabled", enabled)
+		json.put("validated", validated)
 	}
 
 }
