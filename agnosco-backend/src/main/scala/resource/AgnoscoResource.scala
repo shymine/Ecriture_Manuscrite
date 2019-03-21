@@ -10,6 +10,7 @@ import model.common._
 import org.json.{JSONArray, JSONObject}
 
 import scala.collection.mutable
+import scala.collection.mutable.ArrayBuffer
 
 
 @Singleton
@@ -145,12 +146,17 @@ class AgnoscoResource {
 	@Path("/saveExampleEdits")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
 	def saveExamplesEdits(examples: String): Response = {
-		println(examples)
-		try {
-			val json = new JSONArray(examples)
-			println(s"examples: ${json.toString()}")
-		}catch {
-			case e: Exception => e.printStackTrace()
+		val json = new JSONArray(examples)
+		println(s"examples: ${json.toString()}, length: ${json.length()}")
+		for(i <- 0 until json.length()) {
+			try {
+				val obj = json.getJSONObject(i)
+				println(s"exemple $i: $obj")
+				val example = Example(obj.getLong("id"), obj.getString("imagePath"), Some(obj.getString("transcript")))
+				//controller.modifyTranscription(example)
+			}catch {
+				case e: Exception => e.printStackTrace()
+			}
 		}
 		Response.status(200).build()
 	}
@@ -159,11 +165,12 @@ class AgnoscoResource {
 	  * Put the selected examples as Disabled
 	  * @param id The id of the example to disable
 	  * @return
-	  */
+	  */Example
 	@PUT
 	@Path("disableExample/{id}")
-	def disableExample(@PathParam("id") id: Int): Response = {
-		controller.disableExample(id)
+	def disableExample(@PathParam("id") id: Long): Response = {
+		//controller.disableExample(id)
+		println("c est bien disable")
 		Response.status(200).build()
 	}
 
@@ -174,8 +181,9 @@ class AgnoscoResource {
 	  */
 	@PUT
 	@Path("enableExample/{id}")
-	def enableExample(@PathParam("id") id: Int): Response = {
-	     controller.enableExample(id)
+	def enableExample(@PathParam("id") id: Long): Response = {
+		//controller.enableExample(id)
+		println("c est bien enable")
 		Response.status(200).build()
 	}
 
@@ -186,14 +194,15 @@ class AgnoscoResource {
 	@POST
 	@Path("validateExamples")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
-	def validateExamples(samples: String) = {
+	def validateExamples(samples: String): Response = {
 		val array = new JSONArray(samples)
 		var examples = new mutable.MutableList[Example]
 		array.forEach(obj => {
 			val json = obj.asInstanceOf[JSONObject]
-			examples += Example(json.getLong("id"), json.getString("imagePath"), Some(json.getString("transcript")), true)
+			examples += Example(json.getLong("id"), json.getString("imagePath"), Some(json.getString("transcript")), validated = true)
 		})
-	    controller.validateTranscriptions(examples)
+		println(s"examples: $examples")
+	    //controller.validateTranscriptions(examples)
 		Response.status(200).build()
 	}
 

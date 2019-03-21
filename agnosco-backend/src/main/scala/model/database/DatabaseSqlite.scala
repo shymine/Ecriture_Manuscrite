@@ -248,12 +248,14 @@ class DatabaseSqlite extends Database {
 				case "null" => None
 				case t => Some(t)
 			}
+		val enabled = res.getBoolean("enabled")
+		val validated = res.getBoolean("validated")
 
-		Some(Example(id, imagePath, transcript))
+		Some(Example(id, imagePath, transcript, enabled, validated))
 	}
 
 	override def addExample(example: Example, pageId: Long): Unit = {
-		val sql = s"INSERT INTO examples (imagePath, transcript, pageId) VALUES (${example.imagePath}, ${example.transcript}, $pageId)"
+		val sql = s"INSERT INTO examples (imagePath, transcript, pageId, enabled, validated) VALUES (${example.imagePath}, ${example.transcript}, $pageId, ${example.enabled}, ${example.validated})"
 		pushStatement(sql)
 	}
 
@@ -318,7 +320,9 @@ class DatabaseSqlite extends Database {
 					case "null" => None
 					case t => Some(t)
 				}
-			examples += Example(id, imagePath, transcript)
+			val enabled = res.getBoolean("enabled")
+			val validated = res.getBoolean("validated")
+			examples += Example(id, imagePath, transcript, enabled, validated)
 		}
 
 		examples
