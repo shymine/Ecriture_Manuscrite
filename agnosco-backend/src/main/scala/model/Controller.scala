@@ -43,15 +43,39 @@ class Controller {
 	def getAvailableRecognisers : Iterable[RecogniserType.Value] = RecogniserType.values
 
 
-	def validateTranscriptions(samples: Iterable[Example]): Nothing = ???
+	def validateTranscriptions(samples: Iterable[Example]): Unit = {
+		val list = new ArrayBuffer[Example]()
+		samples.foreach(example => {
+			val trueExample = databaseConnector.getExample(example.id)
+			val newExample = example.copy(enabled = trueExample.get.enabled)
+			list += newExample
+		})
+		databaseConnector.saveExampleEdition(list)
+	}
 
-	def modifyTranscription(example: Example): Nothing = ???
+	def modifyTranscription(example: Example): Unit = {
+		val trueExample = databaseConnector.getExample(example.id)
+		val newExample = example.copy(enabled = trueExample.get.enabled, validated = trueExample.get.validated)
+		databaseConnector.saveExampleEdition(List(newExample))
+	}
 
 	def deleteTranscription(example: Example): Nothing = ???
 
-	def disableExample(id: Int): Nothing = ???
+	def disableExample(id: Long): Unit = {
+		var example: Option[Example] = databaseConnector.getExample(id)
+		if(example.nonEmpty) {
+			example = Some (example.get.copy(enabled = false))
+			databaseConnector.saveExampleEdition(List(example.get))
+		}
+	}
 
-	def enableExample(id: Int): Nothing = ???
+	def enableExample(id: Long): Unit = {
+		var example = databaseConnector.getExample(id)
+		if(example.nonEmpty) {
+			example = Some(example.get.copy(enabled = true))
+			databaseConnector.saveExampleEdition(List(example.get))
+		}
+	}
 
 
 	/* Data Processing */

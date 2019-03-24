@@ -9,6 +9,9 @@ import model.Controller
 import model.common._
 import org.json.{JSONArray, JSONObject}
 
+import scala.collection.mutable
+import scala.collection.mutable.ArrayBuffer
+
 
 @Singleton
 @Path("agnosco/base")
@@ -31,7 +34,6 @@ class AgnoscoResource {
 	@Path("/projectsAndDocuments")
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def getProjectAndDocuments: Response = {
-
 		val projects =  List(Project(3,"coucou", RecogniserType.None, List()),
 			Project(4,"bisoux", RecogniserType.Laia, List(Document(5, "docu", List(), false)))) //controller.getAllProject
 
@@ -143,63 +145,91 @@ class AgnoscoResource {
 	@POST
 	@Path("/saveExampleEdits")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
-	def saveExamplesEdits(examples: Array[Example]): Response = {
-		val json = new JSONObject(examples)
-		println(json.toString())
-
+	def saveExamplesEdits(examples: String): Response = {
+		val json = new JSONArray(examples)
+		println(s"examples: ${json.toString()}, length: ${json.length()}")
+		for(i <- 0 until json.length()) {
+			try {
+				val obj = json.getJSONObject(i)
+				println(s"exemple $i: $obj")
+				val example = Example(obj.getLong("id"), obj.getString("imagePath"), Some(obj.getString("transcript")))
+				//controller.modifyTranscription(example)
+			}catch {
+				case e: Exception => e.printStackTrace()
+			}
+		}
 		Response.status(200).build()
 	}
 
-//	/**
-//	  * Put the selected examples as Disabled
-//	  * @param id The id of the example to disable
-//	  * @return
-//	  */
-//	@PUT
-//	@Path("disableExample/{id}")
-//	def disableExample(@PathParam("id") id: Int) = {
-//		controller.disableExample(id)
-//	}
-//
-//	/**
-//	  * Put the selected examples as Enable
-//	  * @param id The id of the example to enable
-//	  * @return
-//	  */
-//	@PUT
-//	@Path("enableExample/{id}")
-//	def enableExample(@PathParam("id") id: Int) = {
-//	     controller.enableExample(id)
-//	}
-//
-//	/**
-//	  * Validate the examples given in the JSON associated with the request
-//	  * @return
-//	  */
-//	@POST
-//	@Path("validateExamples")
-//	@Consumes(Array(MediaType.APPLICATION_JSON))
-//	def validateExamples = {
-//	     //controller.validateTranscription(samples)
-//	}
-//
-//	/*
-//	 * Processing
-//	 */
-//
-//	/**
-//	  * Returns the list of id and images associated with the pages of the documents with the given name
-//	  * @param name The name of the documents
-//	  * @return The JSON of the list of id and images of the pages of the document
-//	  */
-//	@GET
-//	@Path("documentPagesWithImages/{name}")
-//	@Produces(Array(MediaType.APPLICATION_JSON))
-//	def documentPagesWithImages(@PathParam("name") name: String) = {
-//		controller.getAllProject
-//		//filter the data
-//	}
-//
+	/**
+	  * Put the selected examples as Disabled
+	  * @param id The id of the example to disable
+	  * @return
+	  */Example
+	@PUT
+	@Path("disableExample/{id}")
+	def disableExample(@PathParam("id") id: Long): Response = {
+		//controller.disableExample(id)
+		println("c est bien disable")
+		Response.status(200).build()
+	}
+
+	/**
+	  * Put the selected examples as Enable
+	  * @param id The id of the example to enable
+	  * @return
+	  */
+	@PUT
+	@Path("enableExample/{id}")
+	def enableExample(@PathParam("id") id: Long): Response = {
+		//controller.enableExample(id)
+		println("c est bien enable")
+		Response.status(200).build()
+	}
+
+	/**
+	  * Validate the examples given in the JSON associated with the request
+	  * @return
+	  */
+	@POST
+	@Path("validateExamples")
+	@Consumes(Array(MediaType.APPLICATION_JSON))
+	def validateExamples(samples: String): Response = {
+		val array = new JSONArray(samples)
+		var examples = new mutable.MutableList[Example]
+		array.forEach(obj => {
+			val json = obj.asInstanceOf[JSONObject]
+			examples += Example(json.getLong("id"), json.getString("imagePath"), Some(json.getString("transcript")), validated = true)
+		})
+		println(s"examples: $examples")
+	    //controller.validateTranscriptions(examples)
+		Response.status(200).build()
+	}
+
+	/*
+	 * Processing
+	 */
+
+	/**
+	  * Returns the list of id and images associated with the pages of the documents with the given id
+	  * @param id The id of the documents
+	  * @return The JSON of the list of id and images of the pages of the document
+	  */
+	@GET
+	@Path("documentPagesWithImages/{id}")
+	@Produces(Array(MediaType.APPLICATION_JSON))
+	def documentPagesWithImages(@PathParam("id") id: Long): Response = {
+		val json = new JSONArray()
+		for(i <- 0 to 1) {
+			val obj = new JSONObject()
+			obj.put("id", i)
+			obj.put("imgPath", s"assets/images/coucou$i.png")
+			json.put(obj)
+		}
+		println(json)
+		Response.status(200).entity(json.toString).build()
+	}
+
 //	/**
 //	  * Add to the database the groundtruth given as JSON along with the request and bind it to the page which name is given as a parameter
 //	  * @param name The name of the document

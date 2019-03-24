@@ -1,7 +1,7 @@
 package model.database
 import java.io.IOException
 import java.nio.file.{Files, Paths}
-import java.sql.{Connection, DriverManager, ResultSet}
+import java.sql.{Connection, DriverManager, PreparedStatement, ResultSet}
 
 import model.common._
 import org.sqlite.SQLiteException
@@ -19,11 +19,12 @@ object DatabaseSqlite {
 	def setIDCounter(id: Long) = idCount = id
 }
 */
-// Using AUTOINCREMENT funtionnality so if it works, no need for this
+// Using AUTOINCREMENT funtionality so if it works, no need for this
 class DatabaseSqlite extends Database {
 
 	val DATABASE_NAME = "agnosco"
 	val THUMBNAILS_FOLDER = "thumbnails"
+	private var statements : mutable.Map[String, PreparedStatement] = _
 
 	private var conn: Connection = _
 
@@ -53,27 +54,6 @@ class DatabaseSqlite extends Database {
 		}
 	}
 
-	/**
-	  * Used for add, delete and update queries
-	  * @param query The query to perform onto the database
-	  */
-	private def pushStatement(query: String): Unit = {
-		try {
-			val pstmt = conn.prepareStatement(query)
-			pstmt.executeUpdate()
-			pstmt.close()
-			conn.commit()
-		} catch {
-			case e: SQLiteException => System.err.println(e.getStackTrace)
-		}
-	}
-
-	private def getStatement(query: String): ResultSet = {
-		val pstmt = conn.prepareStatement(query)
-		val resultSet = pstmt.executeQuery()
-		resultSet
-	}
-
 	override def connect: Boolean = {
 		Class.forName("org.sqlite.JDBC")
 		conn = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME + ".db")
@@ -85,73 +65,66 @@ class DatabaseSqlite extends Database {
 		// Tables creation (if they do not exist)
 		createTable(
 			"projects",
-			"id INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT, " +
+			"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 				"name VARCHAR(64), " +
 				"recogniser VARCHAR(64)")
 
 		createTable(
 			"documents",
-			"id INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT, " +
+			"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 				"name VARCHAR(64), " +
-				"prepared BOOL" +
-				"projectId INTEGER, " +
+				"prepared BOOL, " +
+				"projectId INTEGER NOT NULL, " +
 				"FOREIGN KEY(projectId) REFERENCES projects(id)")
 
 		createTable(
 			"pages",
-			"id INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT, " +
+			"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 				"imagePath VARCHAR(256), " +
 				"groundTruthPath VARCHAR(256), " +
-				"documentId INTEGER, " +
+				"documentId INTEGER NOT NULL, " +
 				"FOREIGN KEY(documentId) REFERENCES documents(id)")
 
 		createTable(
 			"examples",
-			"id INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT, " +
+			"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 				"imagePath VARCHAR(256), " +
 				"transcript VARCHAR(256), " +
-				"pageId INTEGER, " +
+				"enabled BOOL, " +
+				"validated BOOL, " +
+				"pageId INTEGER NOT NULL, " +
 				"FOREIGN KEY(pageId) REFERENCES pages(id)")
-		/*
-		createTable(
-			"identifiers",
-			"name VARCHAR(10) PRIMARY KEY NOT NULL, " +
-				"id INTEGER NOT NULL"
-		)
 
-		try {
-			val sql = "SELECT id FROM identifiers WHERE name = counter"
-			val pstmt = conn.createStatement()
-			val id = pstmt.executeQuery(sql)
-			println(id)
-			DatabaseSqlite.setIDCounter(id.getLong("id"))
-			pstmt.close()
-			conn.commit()
-			true
-		}catch {
-			case e: SQLiteException => {
-				println("First Time, setting the counter to 0")
-				DatabaseSqlite.setIDCounter(0)
-				true
-			}
-			case e: Exception => {
-					System.err.println(e.getStackTrace)
-					false
-			}
+		statements = {
+			val map = mutable.Map[String, PreparedStatement]()
+
+			var name = "getProject"
+			var statement = conn.prepareStatement("SELECT * FROM projects WHERE id=?")
+			map.put(name, statement)
+
+
+			name = "addProject"
+			statement = conn.prepareStatement("INSERT INTO projects (name, recogniser) VALUES (?,?)")
+			map.put(name, statement)
+
+			name = "deleteProject"
+			statement = conn.prepareStatement("DELETE FROM projects WHERE id=?")
+			map.put(name, statement)
+
+			name = "getAllProjects"
+			statement = conn.prepareStatement("SELECT * FROM projects")
+			map.put(name, statement)
+
+
+
+			map
 		}
-		*/
+
 		true
 	}
 
 	override def disconnect: Boolean = {
 		try {
-			/*
-			val sql = s"UPDATE identifiers SET id = ${DatabaseSqlite.idCount} WHERE name = counter"
-			val pstmt = conn.createStatement()
-			pstmt.executeUpdate(sql)
-			pstmt.close()
-			conn.commit()
-			*/
 			conn.close()
 			conn = null
 			true
@@ -162,7 +135,9 @@ class DatabaseSqlite extends Database {
 		}
 	}
 
-	override def getProject(id: Long): Option[Project] = {
+
+
+	override def getProject(id: Long): Option[Project] = {/*
 		val sql = s"SELECT * FROM projects WHERE id = $id"
 		val res = getStatement(sql)
 
@@ -175,20 +150,24 @@ class DatabaseSqlite extends Database {
 			Some(Project(id, name, recogniser, documents))
 		} catch {
 			case _ : Exception => None
-		}
+		}*/
+		None
 	}
 
 	override def addProject(project: Project): Unit = {
-		val sql = s"INSERT INTO projects (name, recogniser) VALUES (${project.name}, ${project.recogniser.toString})"
-		pushStatement(sql)
+		val pstmt = statements("addProjects")
+		pstmt.setString(1, project.name)
+		pstmt.setString(2, project.recogniser.toString)
+		pstmt.executeUpdate()
 	}
 
 	override def deleteProject(id: Long): Unit = {
-		val sql = s"DELETE FROM projects WHERE id=$id"
-		pushStatement(sql)
+		val stmt = statements("deleteProject")
+		stmt.setLong(1, id)
+		stmt.executeUpdate()
 	}
 
-	override def getDocument(id: Long): Option[Document] = {
+	override def getDocument(id: Long): Option[Document] = {/*
 		val sql = s"SELECT * FROM pages WHERE id = $id"
 		val res = getStatement(sql)
 
@@ -198,20 +177,21 @@ class DatabaseSqlite extends Database {
 		val pages = getPagesOfDocument(id)
 		val prepared = res.getBoolean("prepared")
 
-		Some(Document(id, name, pages, prepared))
+		Some(Document(id, name, pages, prepared))*/
+		None
 	}
 
-	override def addDocument(document: Document, projectID: Long): Unit = {
+	override def addDocument(document: Document, projectID: Long): Unit = {/*
 		val sql = s"INSERT INTO documents (name, prepared, projectId) VALUES (${document.name}, 0, $projectID)"
-		pushStatement(sql)
+		pushStatement(sql)*/
 	}
 
-	override def deleteDocument(id: Long): Unit = {
+	override def deleteDocument(id: Long): Unit = {/*
 		val sql = s"DELETE FROM documents WHERE id=$id"
-		pushStatement(sql)
+		pushStatement(sql)*/
 	}
 
-	override def getPage(id: Long): Option[Page] = {
+	override def getPage(id: Long): Option[Page] = {/*
 		val sql = s"SELECT * FROM pages WHERE id = $id"
 		val res = getStatement(sql)
 
@@ -221,20 +201,21 @@ class DatabaseSqlite extends Database {
 		val groundTruthPath = res.getString("groundTruthPath")
 		val examples = getExamplesOfPage(id)
 
-		Some(Page(id, imagePath, groundTruthPath, examples))
+		Some(Page(id, imagePath, groundTruthPath, examples))*/
+		None
 	}
 
-	override def addPage(page: Page, documentId: Long): Unit = {
+	override def addPage(page: Page, documentId: Long): Unit = {/*
 		val sql = s"INSERT INTO pages (imagePath, groundTruthPath, documentId) VALUES (${page.imagePath}, ${page.groundTruthPath}, $documentId)"
-		pushStatement(sql)
+		pushStatement(sql)*/
 	}
 
-	override def deletePage(id: Long): Unit = {
+	override def deletePage(id: Long): Unit = {/*
 		val sql = s"DELETE FROM pages WHERE id=$id"
-		pushStatement(sql)
+		pushStatement(sql)*/
 	}
 
-	override def getExample(id: Long): Option[Example] = {
+	override def getExample(id: Long): Option[Example] = {/*
 		val sql = s"SELECT * FROM examples WHERE id = $id"
 		val res = getStatement(sql)
 
@@ -246,23 +227,26 @@ class DatabaseSqlite extends Database {
 				case "null" => None
 				case t => Some(t)
 			}
+		val enabled = res.getBoolean("enabled")
+		val validated = res.getBoolean("validated")
 
-		Some(Example(id, imagePath, transcript))
+		Some(Example(id, imagePath, transcript, enabled, validated))*/
+		None
 	}
 
-	override def addExample(example: Example, pageId: Long): Unit = {
-		val sql = s"INSERT INTO examples (imagePath, transcript, pageId) VALUES (${example.imagePath}, ${example.transcript}, $pageId)"
-		pushStatement(sql)
+	override def addExample(example: Example, pageId: Long): Unit = {/*
+		val sql = s"INSERT INTO examples (imagePath, transcript, pageId, enabled, validated) VALUES (${example.imagePath}, ${example.transcript}, $pageId, ${example.enabled}, ${example.validated})"
+		pushStatement(sql)*/
 	}
 
-	override def deleteExample(id: Long): Unit = {
+	override def deleteExample(id: Long): Unit = {/*
 		val sql = s"DELETE FROM examples WHERE id=$id"
-		pushStatement(sql)
+		pushStatement(sql)*/
 	}
 
 	override def getAllProject: Iterable[Project] = {
-		val sql = s"SELECT * FROM projects"
-		val res = getStatement(sql)
+		val stmt = statements("getAllProjects")
+		val res = stmt.executeQuery()
 		val projects = new ArrayBuffer[Project]()
 		while(res.next) {
 			val name = res.getString("name")
@@ -273,7 +257,7 @@ class DatabaseSqlite extends Database {
 		projects
 	}
 
-	override def getDocumentsOfProject(id: Long): Iterable[Document] = {
+	override def getDocumentsOfProject(id: Long): Iterable[Document] = {/*
 		val sql = s"SELECT * FROM documents WHERE idProject = $id"
 		val res = getStatement(sql)
 		val documents = new ArrayBuffer[Document]()
@@ -285,10 +269,11 @@ class DatabaseSqlite extends Database {
 			documents += Document(id, name, pages, prepared)
 		}
 
-		documents
+		documents*/
+		List()
 	}
 
-	override def getPagesOfDocument(id: Long): Iterable[Page] = {
+	override def getPagesOfDocument(id: Long): Iterable[Page] = {/*
 		val sql = s"SELECT * FROM pages WHERE idDocument = $id"
 		val res = getStatement(sql)
 		val pages = new ArrayBuffer[Page]()
@@ -301,10 +286,11 @@ class DatabaseSqlite extends Database {
 			pages += Page(id, imagePath, groundTruthPath, examples)
 		}
 
-		pages
+		pages*/
+		List()
 	}
 
-	override def getExamplesOfPage(id: Long): Iterable[Example] = {
+	override def getExamplesOfPage(id: Long): Iterable[Example] = {/*
 		val sql = s"SELECT * FROM examples WHERE pageId = $id"
 		val res = getStatement(sql)
 		val examples = new ArrayBuffer[Example]()
@@ -316,23 +302,26 @@ class DatabaseSqlite extends Database {
 					case "null" => None
 					case t => Some(t)
 				}
-			examples += Example(id, imagePath, transcript)
+			val enabled = res.getBoolean("enabled")
+			val validated = res.getBoolean("validated")
+			examples += Example(id, imagePath, transcript, enabled, validated)
 		}
 
-		examples
+		examples*/
+		List()
 	}
 
-	override def saveExampleEdition(examples: Iterable[Example]): Unit = {
+	override def saveExampleEdition(examples: Iterable[Example]): Unit = {/*
 		examples.foreach(example => {
-			val sql = s"UPDATE examples SET imagePath=${example.imagePath} transcript=${example.transcript} WHERE id=${example.id}"
+			val sql = s"UPDATE examples SET imagePath=${example.imagePath} transcript=${example.transcript}  WHERE id=${example.id}"
 			pushStatement(sql)
-		})
+		})*/
 	}
 
-	override def documentArePrepared(documents: Iterable[Document]): Unit = {
+	override def documentArePrepared(documents: Iterable[Document]): Unit = {/*
 		documents.foreach(doc => {
 			val sql = s"UPDATE documents SET prepared=1 WHERE id=${doc.id}"
 			pushStatement(sql)
-		})
+		})*/
 	}
 }
