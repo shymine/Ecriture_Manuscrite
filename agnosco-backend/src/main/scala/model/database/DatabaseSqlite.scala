@@ -179,7 +179,7 @@ class DatabaseSqlite extends Database {
 
 	override def disconnect: Boolean = {
 		try {
-			conn.commit()
+			//conn.commit() //TODO uncomment this line for production
 			statements.keys.foreach(key => statements(key).close())
 
 			conn.close()
@@ -205,11 +205,13 @@ class DatabaseSqlite extends Database {
 		Some(Project(result.getLong("id"), result.getString("name"), RecogniserType.withName(result.getString("recogniser")), List()))
 	}
 
-	override def addProject(project: Project): Unit = {
+	override def addProject(project: Project): Project = {
 		val pstmt = statements("addProject")
 		pstmt.setString(1, project.name)
 		pstmt.setString(2, project.recogniser.toString)
 		pstmt.executeUpdate()
+		val res = getAllProject.find(p => p.name == project.name)
+		res.get
 	}
 
 	override def deleteProject(id: Long): Unit = {
@@ -231,12 +233,14 @@ class DatabaseSqlite extends Database {
 		Some(Document(id, name, List(), prepared))
 	}
 
-	override def addDocument(document: Document, projectID: Long): Unit = {
+	override def addDocument(document: Document, projectID: Long): Document = {
 		val stmt = statements("addDocument")
 		stmt.setString(1, document.name)
 		stmt.setBoolean(2, document.prepared)
 		stmt.setLong(3, projectID)
 		stmt.executeUpdate()
+		val res = getDocumentsOfProject(projectID).find(d => d.name == document.name).get
+		res
 	}
 
 	override def deleteDocument(id: Long): Unit = {
@@ -258,12 +262,14 @@ class DatabaseSqlite extends Database {
 		Some(Page(id, imagePath, groundTruthPath, List()))
 	}
 
-	override def addPage(page: Page, documentId: Long): Unit = {
+	override def addPage(page: Page, documentId: Long): Page = {
 		val stmt = statements("addPage")
 		stmt.setString(1, page.imagePath)
 		stmt.setString(2, page.groundTruthPath)
 		stmt.setLong(3, documentId)
 		stmt.executeUpdate()
+		val res = getPagesOfDocument(documentId).find(p => p.imagePath == page.imagePath).get
+		res
 	}
 
 	override def deletePage(id: Long): Unit = {
@@ -291,7 +297,7 @@ class DatabaseSqlite extends Database {
 		Some(Example(id, imagePath, transcript, enabled, validated))
 	}
 
-	override def addExample(example: Example, pageId: Long): Unit = {
+	override def addExample(example: Example, pageId: Long): Example = {
 		val stmt = statements("addExample")
 		stmt.setString(1, example.imagePath)
 		stmt.setString(2, example.transcript.orNull)
@@ -299,6 +305,8 @@ class DatabaseSqlite extends Database {
 		stmt.setBoolean(4, example.enabled)
 		stmt.setBoolean(5, example.validated)
 		stmt.executeUpdate()
+		val res = getExamplesOfPage(pageId).find(e => e.imagePath == example.imagePath).get
+		res
 	}
 
 	override def deleteExample(id: Long): Unit = {

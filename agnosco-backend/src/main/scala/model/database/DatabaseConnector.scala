@@ -7,6 +7,9 @@ class DatabaseConnector {
 
 	var impl: Database = new DatabaseSqlite
 
+	def connect: Boolean = impl.connect
+	def disconnect: Boolean = impl.disconnect
+
 	def getProject(id: Long): Option[Project] = impl.getProject(id)
 	def addProject(project: Project): Unit = impl.addProject(project)
 	def deleteProject(id: Long): Unit = impl.deleteProject(id)

@@ -16,21 +16,21 @@ class Controller {
 
 	/* Database */
 
-	def getProject(id: Int): Project = {
+	def getProject(id: Long): Option[Project] = {
+		databaseConnector.connect
 		val project = databaseConnector.getProject(id)
-		if(project.nonEmpty) {
-			project.get
-		}else {
-			Project(-1, "", RecogniserType.None, List())
-		}
+		databaseConnector.disconnect
+		project
 	}
 
-	def getAllProject: Iterable[Project] = databaseConnector.getAllProject
+	def getAllProject: Iterable[Project] = {
+		databaseConnector.connect
+		val projects = databaseConnector.getAllProject
+		databaseConnector.disconnect
+		projects
+	}
 
-
-	/*
-	 * Il faut faire attention lors qu'on connectera avec la base de données à gérer l'ID et la création des pages et tout
-	 */
+	//TODO think of how it works
 	def createProject(name: String, list: Iterable[String]): Project = {
 		val documents = ArrayBuffer[Document]()
 		list.foreach(doc => documents += Document(-1, doc, List(), false))
@@ -38,43 +38,66 @@ class Controller {
 		project
 	}
 
-	def deleteDocument(id: Long): Unit = databaseConnector.deleteDocument(id)
+	def deleteDocument(id: Long): Unit = {
+		databaseConnector.connect
+		databaseConnector.deleteDocument(id)
+		databaseConnector.disconnect
+	}
 
 	def getAvailableRecognisers : Iterable[RecogniserType.Value] = RecogniserType.values
 
 
 	def validateTranscriptions(samples: Iterable[Example]): Unit = {
-		val list = new ArrayBuffer[Example]()
-		samples.foreach(example => {
-			val trueExample = databaseConnector.getExample(example.id)
-			val newExample = example.copy(enabled = trueExample.get.enabled)
-			list += newExample
+		val array = new ArrayBuffer[Example]()
+		databaseConnector.connect
+		samples.foreach(it => {
+			val sample = databaseConnector.getExample(it.id)
+			if(sample.nonEmpty) {
+				val newSample = sample.get.copy(validated = true)
+				array += newSample
+			}
 		})
-		databaseConnector.saveExampleEdition(list)
+		databaseConnector.saveExampleEdition(array)
+		databaseConnector.disconnect
 	}
 
 	def modifyTranscription(example: Example): Unit = {
-		val trueExample = databaseConnector.getExample(example.id)
-		val newExample = example.copy(enabled = trueExample.get.enabled, validated = trueExample.get.validated)
-		databaseConnector.saveExampleEdition(List(newExample))
+		databaseConnector.connect
+		val sample = databaseConnector.getExample(example.id)
+		if(sample.nonEmpty) {
+			val newSample = sample.get.copy(transcript = example.transcript)
+			databaseConnector.saveExampleEdition(List(newSample))
+		}
+		databaseConnector.disconnect
 	}
 
-	def deleteTranscription(example: Example): Nothing = ???
+	//TODO WTF is this
+	/*
+	def deleteTranscription(example: Example): Unit = {
+		databaseConnector.connect
+
+
+
+		databaseConnector.disconnect
+	}
+	*/
 
 	def disableExample(id: Long): Unit = {
-		var example: Option[Example] = databaseConnector.getExample(id)
+		databaseConnector.connect
+		val example = databaseConnector.getExample(id)
 		if(example.nonEmpty) {
-			example = Some (example.get.copy(enabled = false))
-			databaseConnector.saveExampleEdition(List(example.get))
+			val newExample = example.get.copy(enabled = false)
 		}
+		databaseConnector.disconnect
 	}
 
 	def enableExample(id: Long): Unit = {
-		var example = databaseConnector.getExample(id)
+		databaseConnector.connect
+		val example = databaseConnector.getExample(id)
 		if(example.nonEmpty) {
-			example = Some(example.get.copy(enabled = true))
-			databaseConnector.saveExampleEdition(List(example.get))
+			val newExample = example.get.copy(enabled = true)
 		}
+		databaseConnector.disconnect
 	}
 
 
