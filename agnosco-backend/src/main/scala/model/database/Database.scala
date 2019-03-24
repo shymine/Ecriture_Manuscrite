@@ -28,5 +28,5 @@ trait Database {
 	def getExamplesOfPage(id: Long): Iterable[Example]
 	def saveExampleEdition(examples: Iterable[Example])
 
-	def documentArePrepared(documents: Iterable[Document])
+	def documentArePrepared(documents: Iterable[Long])
 }
