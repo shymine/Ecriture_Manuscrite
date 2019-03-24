@@ -5,6 +5,7 @@ import java.io.FileNotFoundException
 import model.preparation.input.FormatException
 import model.preparation.input.piff.{PiFF, PiFFElement, PiFFPage}
 import model.preparation.input.{string2Language, string2ScriptType}
+import model.preparation.types.{Point, Polygon}
 import org.xml.sax.SAXParseException
 
 import scala.collection.mutable.ListBuffer
@@ -78,8 +79,23 @@ object GEDIToPiFFConverter extends PiFFConverter {
           elements +=
             new PiFFElement(
               col, row, width, height, contents, scriptType, language)
-        case polygon =>
-
+        case polygonStr =>
+          val point = raw"\((\d+),(\d+)\)".r
+          val polygon =
+            polygonStr
+              .split(';')
+              .map(pointStr => {
+                pointStr match {
+                  case point(x, y) => new Point(x.toInt, y.toInt)
+                  case _ =>
+                    throw new FormatException(
+                      s"Wrong polygon format : $polygonStr")
+                }
+              })
+              .toList
+          elements +=
+            new PiFFElement(
+              new Polygon(polygon), contents, scriptType, language)
       }
     })
     elements.toList

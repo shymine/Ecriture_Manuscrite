@@ -1,11 +1,10 @@
 package model.preparation.processing
 
-import model.preparation.types.{Image, Line, Polygon}
-import org.opencv.core.Rect
-import org.opencv.imgcodecs.Imgcodecs
+import sys.process._
+import model.preparation.types.Polygon
 
 object ImageProcessing {
-  def loadImageFromFile(src : String) : Image = {
+  /*def loadImageFromFile(src : String) : Image = {
     Imgcodecs.imread(src)
   }
 
@@ -15,21 +14,36 @@ object ImageProcessing {
 
   def crop(image : Image, rect : Rect) : Image = {
     image.submat(rect)
-  }
+  }*/
+  val pythonExecutablePath = "./imagecropper.py"
 
-  def crop(image : Image, polygon : Polygon) : Image = {
-    val s = image.size
+  def createThumbnail(imgPath : String, imageId : Int, polygon : Polygon) : String = {
     val (x1, y1, x2, y2) =
-      polygon.points.foldLeft((s.width, 0.0, s.width, s.height)) {
+      polygon.points.foldLeft((Int.MaxValue, Int.MaxValue, Int.MinValue, Int.MinValue)) {
         (acc, p) =>
           val (xmin, ymin, xmax, ymax) = acc
           (xmin min p.x, ymin min p.y, xmax max p.x, ymax max p.y)
       }
-    val r = new Rect(x1.toInt, y1.toInt, (x2 - x1).toInt, (y2 - y1).toInt)
-    image.submat(r)
+
+    val row = x1
+    val col = y1
+    val height = x2 - x1
+    val width = y2 - y1
+
+    val exitCode = s"$pythonExecutablePath $imgPath $imageId $width $height".!
+    if (exitCode != 0) {
+      println("ERROR: Python OpenCV script returned an error code")
+    }
+
+    val (file, extension) = {
+      val s = imgPath.split('.')
+      (s(0), s(1))
+    }
+
+    s"$file$imageId.$extension"
   }
 
-  def getThumbnail(image : Image, line : Line, averageLineMargin : Double) : Image = {
+  /*def getThumbnail(image : Image, line : Line, averageLineMargin : Double) : Image = {
     val (xmin, xmax, sumy) =
       line.foldLeft((image.size.width, 0.0, 0.0)) {
         (acc, p) =>
@@ -39,5 +53,5 @@ object ImageProcessing {
     val ymean = sumy.toDouble / line.length
     val r = new Rect(xmin.toInt, (ymean - averageLineMargin).toInt, (xmax - xmin).toInt, (2 * averageLineMargin).toInt)
     image.submat(r)
-  }
+  }*/
 }
