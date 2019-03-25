@@ -25,13 +25,13 @@
       <li>
         <div class="liList" (mouseenter)="showX($event)" (mouseleave)="hideX($event)">
           <button class="button1List">{{p[0]}}</button>
-          <button hidden="true" class="button1List" (click)="deletePro(i)"><i class="fas fa-times"></i></button>
+          <button hidden="true" class="button1List" (click)="deletePro(p)"><i class="fas fa-times"></i></button>
         </div>
       </li>
-      <ul *ngFor="let d of p[1]" (mouseleave)="hideActions($event)">
+      <ul *ngFor="let d of p[2]" (mouseleave)="hideActions($event)">
         <li>
           <button class="buttonList" (click)="showActions($event)">{{d.name}}</button>
-          <button hidden="true" class="buttonList2" (click)="deleteDoc(d.name)"><i class="fas fa-times"></i></button>
+          <button hidden="true" class="buttonList2" (click)="deleteDoc(d)"><i class="fas fa-times"></i></button>
         </li>
         <ul style="list-style-type: disc; color: #666666;" hidden="true">
           <li><button class="buttonList2">Go To Decoupe</button></li>

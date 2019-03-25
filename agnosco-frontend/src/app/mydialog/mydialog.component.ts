@@ -24,18 +24,19 @@ export class MydialogComponent implements OnInit {
   ngOnInit() {
     /* */
     console.log("*** GET /base/availableRecognisers ***");
-    this.reconnaisseurs.push("rec 1");
-    this.reconnaisseurs.push("rec 2");
-    this.reconnaisseurs.push("rec 3");
+    //this.reconnaisseurs.push("rec 1");
+    //this.reconnaisseurs.push("rec 2");
+    //this.reconnaisseurs.push("rec 3");
 
-    /*
-    this.http.get(`/base/availableRecognisers`,{}).subscribe(returnedData => {
+    
+    this.http.get(`agnosco/base/availableRecognisers`,{}).subscribe(returnedData => {
       console.log(returnedData);
+
       Object.keys(returnedData).forEach( key => {
-        this.projects.push(returnedData[key]);
+        this.reconnaisseurs.push(returnedData[key]);
         console.log(returnedData[key]);
+      });
     });
-    */
   }
 
   onNoClick(): void {
