@@ -80,6 +80,11 @@
     width: 50px;
 }
 
+.tutoImage{
+    position: relative;
+    width: 800px;
+}
+
 p{
     color: #4e4e4e
 }
