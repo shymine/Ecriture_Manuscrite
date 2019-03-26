@@ -34,8 +34,7 @@ class AgnoscoResource {
 	@Path("/projectsAndDocuments")
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def getProjectAndDocuments: Response = {
-		val projects =  List(Project(3,"coucou", RecogniserType.None, List()),
-			Project(4,"bisoux", RecogniserType.Laia, List(Document(5, "docu", List(), false)))) //controller.getAllProject
+		val projects =  controller.getAllProject
 
 		val json = new JSONArray()
 		projects.foreach(project => json.put(project.toJSON))
@@ -69,8 +68,8 @@ class AgnoscoResource {
 	@DELETE
 	@Path("/deleteDocument/{id}")
 	def deleteDocument(@PathParam("id") id: Long): Response = {
-		//controller.deleteDocument(id)
-		Response.status(200).build()
+		controller.deleteDocument(id)
+		Response.status(200).entity(true).build()
 	}
 
 	/**
@@ -106,19 +105,17 @@ class AgnoscoResource {
 //	 */
 //
 	/**
-	  * Returns the list of id in the database of the pages that compose a document which name is given as a parameter.
+	  * Returns the list of pages in the database of the pages that compose a document which name is given as a parameter.
 	  * @param id The id of the document from which the pages are extracted
-	  * @return The list of the id of the pages
+	  * @return The list of the pages of the document
 	  */
 	@GET
 	@Path("/documentPages/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def getPagesOfDocuments(@PathParam("id") id: Long): Response = {
 		val json = new JSONArray()
-		json.put(1)
-		json.put(2)
-		json.put(36)
-
+		val pages = controller.getPagesOfDocuments(id)
+		pages.foreach(it => json.put(it.toJSON))
 		Response.status(200).entity(json.toString()).build()
 	}
 
@@ -153,12 +150,12 @@ class AgnoscoResource {
 				val obj = json.getJSONObject(i)
 				println(s"exemple $i: $obj")
 				val example = Example(obj.getLong("id"), obj.getString("imagePath"), Some(obj.getString("transcript")))
-				//controller.modifyTranscription(example)
+				controller.modifyTranscription(example)
 			}catch {
 				case e: Exception => e.printStackTrace()
 			}
 		}
-		Response.status(200).build()
+		Response.status(200).entity(true).build()
 	}
 
 	/**
@@ -169,9 +166,9 @@ class AgnoscoResource {
 	@PUT
 	@Path("disableExample/{id}")
 	def disableExample(@PathParam("id") id: Long): Response = {
-		//controller.disableExample(id)
+		controller.disableExample(id)
 		println("c est bien disable")
-		Response.status(200).build()
+		Response.status(200).entity(true).build()
 	}
 
 	/**
@@ -182,7 +179,7 @@ class AgnoscoResource {
 	@PUT
 	@Path("enableExample/{id}")
 	def enableExample(@PathParam("id") id: Long): Response = {
-		//controller.enableExample(id)
+		controller.enableExample(id)
 		println("c est bien enable")
 		Response.status(200).build()
 	}
@@ -202,33 +199,13 @@ class AgnoscoResource {
 			examples += Example(json.getLong("id"), json.getString("imagePath"), Some(json.getString("transcript")), validated = true)
 		})
 		println(s"examples: $examples")
-	    //controller.validateTranscriptions(examples)
+	    controller.validateTranscriptions(examples)
 		Response.status(200).build()
 	}
 
 	/*
 	 * Processing
 	 */
-
-	/**
-	  * Returns the list of id and images associated with the pages of the documents with the given id
-	  * @param id The id of the documents
-	  * @return The JSON of the list of id and images of the pages of the document
-	  */
-	@GET
-	@Path("documentPagesWithImages/{id}")
-	@Produces(Array(MediaType.APPLICATION_JSON))
-	def documentPagesWithImages(@PathParam("id") id: Long): Response = {
-		val json = new JSONArray()
-		for(i <- 0 to 1) {
-			val obj = new JSONObject()
-			obj.put("id", i)
-			obj.put("imgPath", s"assets/images/coucou$i.png")
-			json.put(obj)
-		}
-		println(json)
-		Response.status(200).entity(json.toString).build()
-	}
 
 //	/**
 //	  * Add to the database the groundtruth given as JSON along with the request and bind it to the page which name is given as a parameter
