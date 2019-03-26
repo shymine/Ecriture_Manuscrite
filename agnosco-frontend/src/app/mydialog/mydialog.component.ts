@@ -10,10 +10,10 @@ import { projection } from '@angular/core/src/render3';
 })
 export class MydialogComponent implements OnInit {
 
-  public select="aucun";
+  public select;
   popo : string;
 
-  public reconnaisseurs = ["aucun"];
+  public reconnaisseurs = [];
 
 
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<MydialogComponent>,
@@ -23,13 +23,13 @@ export class MydialogComponent implements OnInit {
 
   ngOnInit() {
     /* */
-    console.log("*** GET /base/availableRecognisers ***");
+    console.log("*** GET agnosco/base/availableRecogniser ***");
     //this.reconnaisseurs.push("rec 1");
     //this.reconnaisseurs.push("rec 2");
     //this.reconnaisseurs.push("rec 3");
 
     
-    this.http.get(`agnosco/base/availableRecognisers`,{}).subscribe(returnedData => {
+    this.http.get(`agnosco/base/availableRecogniser`,{}).subscribe(returnedData => {
       console.log(returnedData);
 
       Object.keys(returnedData).forEach( key => {

@@ -86,7 +86,7 @@ export class AccueilComponent implements OnInit {
     p[2].forEach(element => {
       console.log("document:");
       console.log(element);
-      console.log("*** DELETE /base/deleteDocument/{" + element.id +"} ***");
+      console.log("*** DELETE `agnosco/base/deleteDocument/{" + element.id +"} ***");
 
       this.http.delete(`agnosco/base/deleteDocument/${element.id}`).subscribe(returnedData =>{
         this.getAllProjects();
@@ -99,10 +99,10 @@ export class AccueilComponent implements OnInit {
 
   deleteDoc(doc) {
 
-    console.log("*** DELETE /base/deleteDocument/{" + doc.id +"} ***");
+    console.log("*** DELETE `agnosco/base/deleteDocument/{" + doc.id +"} ***");
     console.log("doc name:" + doc.name);
     
-    this.http.delete(`/base/deleteDocument/${doc.id}`).subscribe(returnedData =>{
+    this.http.delete(`agnosco/base/deleteDocument/${doc.id}`).subscribe(returnedData =>{
       this.getAllProjects();
     });
     
@@ -116,16 +116,11 @@ export class AccueilComponent implements OnInit {
       console.log(result);
       if(result && result[0]) {
         /**/
-        this.projects.push([result[0],[]]);
+        this.projects.push([result[0],result[1],[]]);
         console.log("reconaisseur:");
         console.log(result[1]);
-        console.log("*** POST /base/createNewProject/{"+result[0]+"}/{[]} ***");
-        /*
-        const newlist = [];
-        this.http.post(`/base/createNewProject/${result[0]}/${newlist}`,{},{}).subscribe(returnedData => {
-          this.getAllProjects();
-        });
-        */
+        console.log("*** POST agnosco/base/createNewProject/{"+result[0]+"}/{[]} ***");
+        this.getAllProjects();
       }else{
         console.log("no name");
       }
