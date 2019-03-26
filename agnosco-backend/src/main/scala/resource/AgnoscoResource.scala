@@ -36,6 +36,9 @@ class AgnoscoResource {
 	def getProjectAndDocuments: Response = {
 
 		val projects =  controller.getAllProject
+		projects.foreach(it => {
+			it.documents = controller.getDocumentOfProject(it.id)
+		})
 		val json = new JSONArray()
 		projects.foreach(project => json.put(project.toJSON))
 		Response.status(200).entity(json.toString).build()
