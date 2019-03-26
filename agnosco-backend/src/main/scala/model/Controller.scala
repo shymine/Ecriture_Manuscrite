@@ -50,6 +50,13 @@ class Controller {
 		databaseConnector.disconnect
 	}
 
+	def getDocumentOfProject(id: Long): Iterable[Document] = {
+		databaseConnector.connect
+		val res = databaseConnector.getDocumentsOfProject(id)
+		databaseConnector.disconnect
+		res
+	}
+
 	def getAvailableRecognisers : Iterable[RecogniserType.Value] = RecogniserType.values
 
 
