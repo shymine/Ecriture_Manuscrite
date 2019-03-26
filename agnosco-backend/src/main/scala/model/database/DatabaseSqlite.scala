@@ -44,7 +44,7 @@ class DatabaseSqlite extends Database {
 			val pstmt = conn.prepareStatement(sql)
 			pstmt.executeUpdate()
 			conn.commit()
-			println("Table " + tableName + " created successfully.")
+			//println("Table " + tableName + " created successfully.")
 		} catch {
 			case e: SQLiteException =>
 				System.err.println("Table " + tableName + " has already been created.")
@@ -179,7 +179,7 @@ class DatabaseSqlite extends Database {
 
 	override def disconnect: Boolean = {
 		try {
-			//conn.commit() //TODO uncomment this line for production
+			conn.commit() //TODO uncomment this line for production
 			statements.keys.foreach(key => statements(key).close())
 
 			conn.close()

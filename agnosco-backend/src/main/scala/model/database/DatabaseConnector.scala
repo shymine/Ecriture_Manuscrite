@@ -11,19 +11,19 @@ class DatabaseConnector {
 	def disconnect: Boolean = impl.disconnect
 
 	def getProject(id: Long): Option[Project] = impl.getProject(id)
-	def addProject(project: Project): Unit = impl.addProject(project)
+	def addProject(project: Project): Project = impl.addProject(project)
 	def deleteProject(id: Long): Unit = impl.deleteProject(id)
 
 	def getDocument(id: Long): Option[Document] = impl.getDocument(id)
-	def addDocument(document: Document, projectId: Long): Unit = impl.addDocument(document, projectId)
+	def addDocument(document: Document, projectId: Long): Document = impl.addDocument(document, projectId)
 	def deleteDocument(id: Long): Unit = impl.deleteDocument(id)
 
 	def getPage(id: Long): Option[Page] = impl.getPage(id)
-	def addPage(page: Page, documentId: Long): Unit = impl.addPage(page, documentId)
+	def addPage(page: Page, documentId: Long): Page = impl.addPage(page, documentId)
 	def deletePage(id: Long): Unit = impl.deletePage(id)
 
 	def getExample(id: Long): Option[Example] = impl.getExample(id)
-	def addExample(example: Example, pageId: Long): Unit = impl.addExample(example, pageId)
+	def addExample(example: Example, pageId: Long): Example = impl.addExample(example, pageId)
 	def deleteExample(id: Long): Unit = impl.deleteExample(id)
 
 	def getAllProject: Iterable[Project] = impl.getAllProject

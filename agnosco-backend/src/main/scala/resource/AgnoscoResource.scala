@@ -34,12 +34,20 @@ class AgnoscoResource {
 	@Path("/projectsAndDocuments")
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def getProjectAndDocuments: Response = {
-		val projects =  controller.getAllProject
 
+		val projects =  controller.getAllProject
 		val json = new JSONArray()
 		projects.foreach(project => json.put(project.toJSON))
 		Response.status(200).entity(json.toString).build()
 
+	}
+
+
+	@DELETE
+	@Path("/deleteProject/{id}")
+	def deleteProject(@PathParam("id") id: Long): Response = {
+		controller.deleteProject(id)
+		Response.status(200).entity(true).build()
 	}
 
 	/**

@@ -38,6 +38,12 @@ class Controller {
 		project
 	}
 
+	def deleteProject(id: Long): Unit = {
+		databaseConnector.connect
+		databaseConnector.deleteProject(id)
+		databaseConnector.disconnect
+	}
+
 	def deleteDocument(id: Long): Unit = {
 		databaseConnector.connect
 		databaseConnector.deleteDocument(id)
