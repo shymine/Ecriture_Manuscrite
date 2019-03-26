@@ -10,9 +10,9 @@ import scala.collection.mutable.ArrayBuffer
 
 class Controller {
 
-	val databaseConnector = new DatabaseConnector
-	val processingConnector = new ProcessingConnector
-	val recogniserConnector = new RecogniserConnector
+	private val databaseConnector = new DatabaseConnector
+	private val processingConnector = new ProcessingConnector
+	private val recogniserConnector = new RecogniserConnector
 
 	/* Database */
 
@@ -100,6 +100,12 @@ class Controller {
 		databaseConnector.disconnect
 	}
 
+	def getPagesOfDocuments(id: Long): Iterable[Page] = {
+		databaseConnector.connect
+		val pages = databaseConnector.getPagesOfDocument(id)
+		databaseConnector.disconnect
+		pages
+	}
 
 	/* Data Processing */
 
