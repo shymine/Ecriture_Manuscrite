@@ -43,6 +43,8 @@ export class ValidationComponent implements OnInit {
     this.docName = this.params[0]; // le nom du document est le 1er paramètre
 
     //test
+    this.docName = 0;
+
     this.examples[0] = ["../../assets/images/Elephant.jpg", "To be or not to be", 0, "cross"];
     this.examples[1] = ["../../assets/images/Fraise.png", "That is the question", 1, "cross"];
     this.examples[2] = ["../../assets/images/Elephant.jpg", "Whether 'tis nobler in the mind", 2, "cross"];
@@ -51,13 +53,23 @@ export class ValidationComponent implements OnInit {
     this.examples[5] = ["../../assets/images/Fraise.png", "And by opposing end them.", 5, "cross"];
 
     //on récupère la liste des identifiants des pages du doc passé en paramètre 
-    this.http.get('/base/documentPages/{docName}').subscribe(
-      pages => this.pages = pages
-    );
+    console.log("*** GET /base/documentPages ***");
+    
+    this.http.get(`agnosco/base/documentPages/${this.docName}`,{}).subscribe(returnedData => {
+      console.log(returnedData);
+
+      this.pages = returnedData;
+    });
 
     //on récupère la liste des exemples qui composent la première page
     //getValidation() renvoie l'image de la page et les exemples, il faut donc faire un tri
-    this.validationService.getValidation(0).subscribe(response => console.log("getValidation"));
+    /*this.validationService.getValidation(0).subscribe
+    (response => {
+      console.log("getValidation");
+
+      //tri : on récupère que la liste des exemples et pas l'image de la page
+      this.examples = response[1];
+    });*/
 
   }
 
@@ -76,10 +88,9 @@ export class ValidationComponent implements OnInit {
     console.log("disable " + id);
     if(this.hidden[id] == false){
       this.validationService.disableEx(id);
-      //this.http.put('/base/disableExample/${id}', {}, {}).subscribe(example => this.changeIconArrow(id));
-    }else{
+    }
+    else{
       this.validationService.enableEx(id);
-      //this.http.put('/base/enableExample/${id}', {}, {}).subscribe(example => this.changeIconCross(id));
     }
     this.changeIcon(id);
     this.hidden[id] = !this.hidden[id];

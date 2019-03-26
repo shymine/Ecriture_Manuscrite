@@ -13,14 +13,23 @@ export interface Validation{
 })
 export class ValidationService {
 
-  constructor(private http: HttpClient) { }
+  private JsonFileValidation;
+  private fd = new FormData();
+
+
+  constructor(private http: HttpClient) { 
+    this.JsonFileValidation = "./validateExample.js";
+    this.fd.append('data', this.JsonFileValidation);
+  }
 
   /**
    * Cette méthode permet de récupérer les données de la page numéro id, soit la liste des exemples (imagettes et transcriptions) ainsi que l'image associée à la page (utilisée que pour la V1).
    * @param id numéro de la page dont on veut les données
    */
   getValidation(id): Observable<Object>{
-    return this.http.get('base/pageData/{id}');
+    console.log("*** GET `agnosco/base/pageData/${id}` ***");
+
+    return this.http.get(`agnosco/base/pageData/${id}`);
       /*.pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -28,17 +37,27 @@ export class ValidationService {
   }
 
   disableEx(id){
-    this.http.put('/base/disableExample/${id}', {}, {});
+    console.log("*** PUT `agnosco/base/disableExample/${id}` ***");
+
+    this.http.put(`agnosco/base/disableExample/${id}`, {}, {});
+
     console.log("service disable " + id);
   }
 
   enableEx(id){
-    this.http.put('/base/enableExample/${id}', {}, {});
+    console.log("*** PUT `agnosco/base/enableExample/${id}` ***");
+
+    this.http.put(`agnosco/base/enableExample/${id}`, {}, {});
+
     console.log("service enable " + id);
   }
 
   validateAll(){
-    this.http.post('/base/validateExamples', {}, {});
+    console.log("*** POST `agnosco/base/validateExamples` ***");
+
+    this.http.post(`agnosco/base/validateExamples`, this.fd, {}).subscribe
+    (response => console.log(response));
+    
     console.log("validate all examples");
   }
 
