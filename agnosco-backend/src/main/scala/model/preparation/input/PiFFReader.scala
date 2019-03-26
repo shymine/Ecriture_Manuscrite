@@ -90,9 +90,7 @@ object PiFFReader {
     try {
       fromJSON(new JSONObject(content))
     } catch {
-      case e : JSONException =>
-        e.printStackTrace()
-        None
+      case e : JSONException => None
     }
   }
 
