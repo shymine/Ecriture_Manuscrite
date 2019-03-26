@@ -2,7 +2,7 @@ package scala.model
 
 import java.io.{File, PrintWriter}
 
-import model.preparation.input.{ArabicLanguage, TypedScriptType}
+import model.preparation.input.{ArabicLanguage, PiFFReader, TypedScriptType}
 import model.preparation.input.converters.GEDIToPiFFConverter
 import model.preparation.input.piff.{PiFF, PiFFElement, PiFFPage}
 import org.scalatest.FlatSpec
@@ -44,6 +44,32 @@ class InputTest extends FlatSpec {
     assert(piff.get.equals(expectedPiFF))
 
     new File("gediTest.xml").delete()
+  }
+
+  "PiFFReader" should "work for GEDI files" in {
+    val pw = new PrintWriter(new File("gediTest.xml"))
+    pw.println(gediTest.toString())
+    pw.close()
+
+    val piff = PiFFReader.fromFile("gediTest.xml")
+    assert(piff.isDefined)
+
+    assert(piff.get.equals(expectedPiFF))
+
+    new File("gediTest.xml").delete()
+  }
+
+  "PiFFReader" should "work for PiFF files" in {
+    val pw = new PrintWriter(new File("gediTest.json"))
+    pw.println(expectedPiFF.toString)
+    pw.close()
+
+    val piff = PiFFReader.fromFile("gediTest.json")
+    assert(piff.isDefined)
+
+    assert(piff.get.equals(expectedPiFF))
+
+    new File("gediTest.json").delete()
   }
 
 }
