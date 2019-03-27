@@ -130,20 +130,20 @@ class AgnoscoResource {
 		Response.status(200).entity(json.toString()).build()
 	}
 
-//	/**
-//	  * Return the picture associated with the page which id is given as a parameter, along with the list of example (image and transcription) of the page
-//	  * @param id The id of the page in the database
-//	  * @return The picture of the selected page and the list of its examples
-//	  */
-//	@GET
-//	@Path("pageData/{id}")
-//	@Produces(Array(MediaType.APPLICATION_JSON))
-//	def getPageData(@PathParam("id") id: Long): Response = {
-//		val json = new JSONArray()
-//
-//
-//		Response.status(200).entity(json.toString).build()
-//	}
+	/**
+	  * Return the picture associated with the page which id is given as a parameter, along with the list of example (image and transcription) of the page
+	  * @param id The id of the page in the database
+	  * @return The picture of the selected page and the list of its examples
+	  */
+	@GET
+	@Path("pageData/{id}")
+	@Produces(Array(MediaType.APPLICATION_JSON))
+	def getPageData(@PathParam("id") id: Long): Response = {
+		val json = new JSONArray()
+		val examples = controller.getExamplesOfPage(id)
+		examples.foreach(it => json.put(it.toJSON))
+		Response.status(200).entity(json.toString).build()
+	}
 
 	/**
 	  * Save in the database the modifications of the transcription describes by the JSON associated with the request

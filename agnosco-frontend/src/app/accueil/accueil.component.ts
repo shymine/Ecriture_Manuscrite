@@ -83,14 +83,8 @@ export class AccueilComponent implements OnInit {
 
     //console.log("Delete all documents from "+ this.projects[p][0]);
 
-    p[2].forEach(element => {
-      console.log("document:");
-      console.log(element);
-      console.log("*** DELETE `agnosco/base/deleteDocument/{" + element.id +"} ***");
-
-      this.http.delete(`agnosco/base/deleteDocument/${element.id}`).subscribe(returnedData =>{
-        this.getAllProjects();
-      });
+    this.http.delete(`agnosco/base/deleteProject/${p[1]}`).subscribe(returnedData =>{
+      this.getAllProjects();
     });
     
 
@@ -169,8 +163,10 @@ export class AccueilComponent implements OnInit {
     this.router.navigate(['/annotation',{'id':JSON.stringify(p)}]);
   }
 
-  goToValidation(p){
-    this.router.navigate(['/validation',{'id':JSON.stringify(p)}]);
+  goToValidation(d){
+    console.log("VALIDATION");
+    console.log(d);
+    this.router.navigate(['/validation',{'id':JSON.stringify(d)}]);
   }
 
 }
