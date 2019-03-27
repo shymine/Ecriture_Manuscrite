@@ -1,3 +1,26 @@
+@font-face {
+    font-family: QuicksandBold;
+    src: url(Quicksand-Bold.otf);
+}
+
+@font-face {
+    font-family: QuicksandRegular;
+    src: url(Quicksand-Regular.otf);
+}
+
+@font-face {
+    font-family: QuicksandLight;
+    src: url(Quicksand-Light.otf);
+}
+
+h1, h2 {
+    font-family: QuicksandBold
+}
+
+body {
+    font-family: QuicksandRegular
+}
+
 .headband{
     background-color: rgb(8, 25, 82);
     height: 25px;

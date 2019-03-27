@@ -28,3 +28,4 @@ row2 = row + height
 col2 = col + width
 img2 = img[row:row2, col:col2]
 cv2.imwrite(filename_out, img2)
+exit(0)
