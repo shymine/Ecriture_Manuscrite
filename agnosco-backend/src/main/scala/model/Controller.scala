@@ -120,6 +120,13 @@ class Controller {
 		pages
 	}
 
+	def getExamplesOfPage(id: Long): Iterable[Example] = {
+		databaseConnector.connect
+		val examples = databaseConnector.getExamplesOfPage(id)
+		databaseConnector.disconnect
+		examples
+	}
+
 	/* Data Processing */
 
 	def prepareData(vtFiles: Iterable[String]): Iterable[Example] = {
