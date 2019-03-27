@@ -1,5 +1,5 @@
 package model.database
-import java.io.IOException
+import java.io.{File, FileNotFoundException, IOException, PrintWriter}
 import java.nio.file.{Files, Paths}
 import java.sql.{Connection, DriverManager, PreparedStatement, ResultSet}
 
@@ -8,6 +8,7 @@ import org.sqlite.SQLiteException
 
 import scala.collection.mutable
 import scala.collection.mutable.{ArrayBuffer, ArrayBuilder}
+import scala.io.Source
 
 
 object DatabaseSqlite {
@@ -63,15 +64,16 @@ class DatabaseSqlite extends Database {
 		createFolder(THUMBNAILS_FOLDER)
 
 		// Tables creation (if they do not exist)
+
 		createTable(
 			"projects",
-			"id INTEGER PRIMARY KEY, " +
+			"id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
 				"name VARCHAR(64), " +
 				"recogniser VARCHAR(64)")
 
 		createTable(
 			"documents",
-			"id INTEGER PRIMARY KEY, " +
+			"id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
 				"name VARCHAR(64), " +
 				"prepared BOOL, " +
 				"projectId INTEGER NOT NULL, " +
@@ -79,7 +81,7 @@ class DatabaseSqlite extends Database {
 
 		createTable(
 			"pages",
-			"id INTEGER PRIMARY KEY, " +
+			"id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
 				"imagePath VARCHAR(256), " +
 				"groundTruthPath VARCHAR(256), " +
 				"documentId INTEGER NOT NULL, " +
@@ -87,7 +89,7 @@ class DatabaseSqlite extends Database {
 
 		createTable(
 			"examples",
-			"id INTEGER PRIMARY KEY, " +
+			"id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
 				"imagePath VARCHAR(256), " +
 				"transcript VARCHAR(256), " +
 				"enabled BOOL, " +
@@ -104,7 +106,7 @@ class DatabaseSqlite extends Database {
 
 
 			name = "addProject"
-			statement = conn.prepareStatement("INSERT INTO projects (name, recogniser) VALUES (?,?)")
+			statement = conn.prepareStatement("INSERT INTO projects ( name, recogniser) VALUES (?,?)")
 			map.put(name, statement)
 
 			name = "deleteProject"
@@ -116,7 +118,7 @@ class DatabaseSqlite extends Database {
 			map.put(name, statement)
 
 			name = "addDocument"
-			statement = conn.prepareStatement("INSERT INTO documents (name, prepared, projectId) VALUES (?,?,?)")
+			statement = conn.prepareStatement("INSERT INTO documents ( name, prepared, projectId) VALUES (?,?,?)")
 			map.put(name, statement)
 
 			name = "deleteDocument"
@@ -128,7 +130,7 @@ class DatabaseSqlite extends Database {
 			map.put(name, statement)
 
 			name = "addPage"
-			statement = conn.prepareStatement("INSERT INTO pages (imagePath, groundTruthPath, documentId) VALUES (?,?,?)")
+			statement = conn.prepareStatement("INSERT INTO pages ( imagePath, groundTruthPath, documentId) VALUES (?,?,?)")
 			map.put(name, statement)
 
 			name = "deletePage"
@@ -140,7 +142,7 @@ class DatabaseSqlite extends Database {
 			map.put(name, statement)
 
 			name = "addExample"
-			statement = conn.prepareStatement("INSERT INTO examples (imagePath, transcript, pageId, enabled, validated) VALUES (?,?,?,?,?)")
+			statement = conn.prepareStatement("INSERT INTO examples ( imagePath, transcript, pageId, enabled, validated) VALUES (?,?,?,?,?)")
 			map.put(name, statement)
 
 			name = "deleteExample"
@@ -173,7 +175,27 @@ class DatabaseSqlite extends Database {
 
 			map
 		}
+		val file = "stock"
+		try {
+			val buffer = Source.fromFile(file)
+			val line = buffer.getLines().mkString
+			buffer.close
 
+			val value = {
+				if (line.isEmpty) {
+					DatabaseSqlite.idCount
+				} else {
+					line.toInt.toLong
+				}
+			}
+			println(s"value: $value")
+			DatabaseSqlite.setIDCounter(value)
+		}catch {
+			case e: FileNotFoundException =>
+				val pw = new PrintWriter(new File(file))
+				pw.write(DatabaseSqlite.idCount.toString)
+				pw.close()
+		}
 		true
 	}
 
@@ -181,9 +203,12 @@ class DatabaseSqlite extends Database {
 		try {
 			conn.commit() //TODO uncomment this line for production
 			statements.keys.foreach(key => statements(key).close())
-
 			conn.close()
 			conn = null
+			val pw = new PrintWriter(new File("stock"))
+			pw.flush()
+			pw.write(DatabaseSqlite.idCount.toString)
+			pw.close()
 			true
 		}catch {
 			case e: SQLiteException =>
@@ -207,6 +232,8 @@ class DatabaseSqlite extends Database {
 
 	override def addProject(project: Project): Project = {
 		val pstmt = statements("addProject")
+		//pstmt.setLong(1, DatabaseSqlite.incrementID)
+		//println(s"pr: ${DatabaseSqlite.idCount}")
 		pstmt.setString(1, project.name)
 		pstmt.setString(2, project.recogniser.toString)
 		pstmt.executeUpdate()
@@ -235,6 +262,8 @@ class DatabaseSqlite extends Database {
 
 	override def addDocument(document: Document, projectID: Long): Document = {
 		val stmt = statements("addDocument")
+		//stmt.setLong(1, DatabaseSqlite.incrementID)
+		//println(s"pr: ${DatabaseSqlite.idCount}")
 		stmt.setString(1, document.name)
 		stmt.setBoolean(2, document.prepared)
 		stmt.setLong(3, projectID)
@@ -264,9 +293,10 @@ class DatabaseSqlite extends Database {
 
 	override def addPage(page: Page, documentId: Long): Page = {
 		val stmt = statements("addPage")
-		stmt.setString(1, page.imagePath)
-		stmt.setString(2, page.groundTruthPath)
-		stmt.setLong(3, documentId)
+		stmt.setLong(1, DatabaseSqlite.incrementID)
+		stmt.setString(2, page.imagePath)
+		stmt.setString(3, page.groundTruthPath)
+		stmt.setLong(4, documentId)
 		stmt.executeUpdate()
 		val res = getPagesOfDocument(documentId).find(p => p.imagePath == page.imagePath).get
 		res
@@ -299,11 +329,12 @@ class DatabaseSqlite extends Database {
 
 	override def addExample(example: Example, pageId: Long): Example = {
 		val stmt = statements("addExample")
-		stmt.setString(1, example.imagePath)
-		stmt.setString(2, example.transcript.orNull)
-		stmt.setLong(3, pageId)
-		stmt.setBoolean(4, example.enabled)
-		stmt.setBoolean(5, example.validated)
+		stmt.setLong(1, DatabaseSqlite.incrementID)
+		stmt.setString(2, example.imagePath)
+		stmt.setString(3, example.transcript.orNull)
+		stmt.setLong(4, pageId)
+		stmt.setBoolean(5, example.enabled)
+		stmt.setBoolean(6, example.validated)
 		stmt.executeUpdate()
 		val res = getExamplesOfPage(pageId).find(e => e.imagePath == example.imagePath).get
 		res

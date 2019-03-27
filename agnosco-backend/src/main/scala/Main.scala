@@ -47,7 +47,7 @@ object Main {
 		documents += database.addDocument(Document(-1, "docu numero uno", List(), false), projects(0).id)
 		documents += database.addDocument(Document(-1, "docu numero dos", List(), false), projects(0).id)
 		documents += database.addDocument(Document(-1, "Glouglou", List(), false), projects(1).id)
-
+/*
 		pages += database.addPage(Page(-1, "imagePath1", "groundTruth1", List()), documents(0).id)
 		pages += database.addPage(Page(-1, "imagePath2", "groundTruth2", List()), documents(0).id)
 		pages += database.addPage(Page(-1, "imagePath3", "groundTruth3", List()), documents(0).id)
@@ -74,7 +74,7 @@ object Main {
 		examples += database.addExample(Example(-1, "example15/imgPath", None, true, false), pages(7).id)
 		examples += database.addExample(Example(-1, "example16/imgPath", None, true, false), pages(7).id)
 		examples += database.addExample(Example(-1, "example17/imgPath", Some("baba ba alors,"), true, false), pages(7).id)
-
+*/
 		database.disconnect
 		println("projects")
 		projects.foreach(p => print(s"id: ${p.id},"))
