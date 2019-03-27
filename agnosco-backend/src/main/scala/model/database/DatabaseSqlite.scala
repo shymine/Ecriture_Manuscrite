@@ -9,16 +9,16 @@ import org.sqlite.SQLiteException
 import scala.collection.mutable
 import scala.collection.mutable.{ArrayBuffer, ArrayBuilder}
 
-/*
+
 object DatabaseSqlite {
 	private var idCount: Long = 0
 	def incrementID: Long = {
 		idCount += 1
 		idCount
 	}
-	def setIDCounter(id: Long) = idCount = id
+	def setIDCounter(id: Long): Unit = idCount = id
 }
-*/
+
 // Using AUTOINCREMENT funtionality so if it works, no need for this
 class DatabaseSqlite extends Database {
 
@@ -65,13 +65,13 @@ class DatabaseSqlite extends Database {
 		// Tables creation (if they do not exist)
 		createTable(
 			"projects",
-			"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+			"id INTEGER PRIMARY KEY, " +
 				"name VARCHAR(64), " +
 				"recogniser VARCHAR(64)")
 
 		createTable(
 			"documents",
-			"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+			"id INTEGER PRIMARY KEY, " +
 				"name VARCHAR(64), " +
 				"prepared BOOL, " +
 				"projectId INTEGER NOT NULL, " +
@@ -79,7 +79,7 @@ class DatabaseSqlite extends Database {
 
 		createTable(
 			"pages",
-			"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+			"id INTEGER PRIMARY KEY, " +
 				"imagePath VARCHAR(256), " +
 				"groundTruthPath VARCHAR(256), " +
 				"documentId INTEGER NOT NULL, " +
@@ -87,7 +87,7 @@ class DatabaseSqlite extends Database {
 
 		createTable(
 			"examples",
-			"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+			"id INTEGER PRIMARY KEY, " +
 				"imagePath VARCHAR(256), " +
 				"transcript VARCHAR(256), " +
 				"enabled BOOL, " +
@@ -313,6 +313,7 @@ class DatabaseSqlite extends Database {
 		val stmt = statements("deleteExample")
 		stmt.setLong(1, id)
 		stmt.executeUpdate()
+		conn.commit()
 	}
 
 	override def getAllProject: Iterable[Project] = {
