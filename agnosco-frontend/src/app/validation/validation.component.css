@@ -132,3 +132,13 @@
 .examplesList {
     list-style-type: none;
 }
+
+.previousPage {
+    float: left;
+    margin-left: 10%;
+}
+
+.nextPage {
+    float: right;
+    margin-right: 10%;
+}
