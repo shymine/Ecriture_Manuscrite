@@ -9,23 +9,25 @@
       <link href="../librairies/bootstrap.min.css" rel="stylesheet"> 
 
       <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
-      
   </head>
   <body>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <a class="navbar-brand" style="pointer-events: none; cursor: default;" href="#">Projet 4INFO</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="position:fixed; overflow: hidden; top:0; width:100%; z-index: 1;">
+        <a class="navbar-brand" style="pointer-events: none; cursor: default;" href="#">Projet 4INFO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarsExample04">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active"><!-- current page -->
-                    <a class="nav-link" href="home.html">Accueil</a>
+                    <a class="nav-link" href="#home">Accueil</a>
                 </li>
                 <li class="nav-item"><!-- not the current page -->
-                    <a class="nav-link" href="tuto.html">Tutoriel</a>
+                    <a class="nav-link" href="#tuto">Détails</a>
                 </li>
             </ul>
+            <div class=" navbar-brand" style="text-align: center; color:white;">Logiciel de génération de données d'apprentissage pour la reconnaissance d'écriture manuscrite</div>
             <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
@@ -39,34 +41,47 @@
         </div>
     </nav>
 
-    <section class="mb-3 mx-3 my-3">
-        <h1 class="mx-3 my-3 text-primary" style="text-align: center;">Logiciel de génération de données d'apprentissage pour la reconnaissance d'écriture manuscrite</h1>
-        <hr>
-    </section>    
+    <div style="position: fixed;">
+    <img style="width: 100%; z-index: 0;" src="../images/bibliotheque3.jpg" alt="biblio">
+    <img style="width: 100%; z-index: 0;" src="../images/bibliotheque3.jpg" alt="biblio"> 
+    </div>
+    
 
-    <div class="card mb-3 mx-3 my-3 border-primary">
+    <div style="height: 50px;">
+    </div>
+
+  
+    
+    <div id="home" style="height: 50px;"></div>
+    <div class="card mb-3 mx-3 my-3 border-primary" >
         <div class="card-body">
-            <h2>Agnosco c'est quoi?</h2>
             <div class="row">
-                <div class="col-lg-6 themed-grid-col"> 
-                    <p style="text-align: justify;">
-                     Notre projet a pour but de fournir un programme permettant de concevoir automatiquement des bases d’apprentissage pour l’entraînement de divers systèmes de reconnaissance d’écriture manuscrite ainsi que leur exploitation. Ces reconnaisseurs seront par exemple capables de retranscrire de manière informatique des documents manuscrits (registres paroissiaux, registres d’état civil, documents d’entreprise...) pour les rendre plus exploitables. Ce projet permettra donc de gagner du temps sur la compréhension de documents anciens en simplifiant l’entraînement de systèmes complexes.
-                    <br>
-                    <br>
-                    Plus concrètement, Agnosco est une application qui prend des documents scannés en entrée, qui les découpe ligne par ligne, puis qui permet à l'utilisateur de créer, de modifier et de valider la transcription de chaque ligne. L'application propose deux modes à l'utilisateur :
-                    <br>
-                    - un mode d'annotation manuelle où l'utilisateur tape lui-même les transcriptions du manuscrit scanné;
-                    <br>
-                    - un mode de reconnaissance automatique où les transcriptions sont générées par un reconnaisseur d'écriture manuscrite. L'application permet à l'utilisateur de les visualiser, de les modifier puis de les valider.
-                    <br>
-                    <br>
-                    Agnosco génère donc un ensemble d'exemples d'apprentissage validés par l'utilisateur pour entraîner des reconnaisseurs d'écriture manuscrite.
-                    </p> 
+                <div class="col-lg-8">
+                    <h2>Agnosco c'est quoi?</h2>
+            
+                    <div class="row">
+                        <div class="col-lg-12 themed-grid-col"> 
+                            <p style="text-align: justify;">
+                            Notre projet a pour but de fournir un programme permettant de concevoir automatiquement des bases d’apprentissage pour l’entraînement de divers systèmes de reconnaissance d’écriture manuscrite ainsi que leur exploitation. Ces reconnaisseurs seront par exemple capables de retranscrire de manière informatique des documents manuscrits (registres paroissiaux, registres d’état civil, documents d’entreprise...) pour les rendre plus exploitables. Ce projet permettra donc de gagner du temps sur la compréhension de documents anciens en simplifiant l’entraînement de systèmes complexes.
+                            <br>
+                            <br>
+                            Plus concrètement, Agnosco est une application qui prend des documents scannés en entrée, qui les découpe ligne par ligne, puis qui permet à l'utilisateur de créer, de modifier et de valider la transcription de chaque ligne. L'application propose deux modes à l'utilisateur :
+                            <br>
+                            - un mode d'annotation manuelle où l'utilisateur tape lui-même les transcriptions du manuscrit scanné;
+                            <br>
+                            - un mode de reconnaissance automatique où les transcriptions sont générées par un reconnaisseur d'écriture manuscrite. L'application permet à l'utilisateur de les visualiser, de les modifier puis de les valider.
+                            <br>
+                            <br>
+                            Agnosco génère donc un ensemble d'exemples d'apprentissage validés par l'utilisateur pour entraîner des reconnaisseurs d'écriture manuscrite.
+                            </p> 
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-6 themed-grid-col">
-                    <img class="img-fluid rounded float-right"   src="../images/chat.jpg" alt="chat" />
+                <div class="col-lg-4 themed-grid-col">
+                    <img class="img-fluid rounded float-right"   src="../images/schema.png" alt="schema" />
                 </div>
             </div>
+            
         </div>
     </div>
 
@@ -74,13 +89,15 @@
         <div class="card-body">
             <h2>Qui sommes nous?</h2>
             <div class="row">
-                <div class="col-lg-6 themed-grid-col">
+                <div class="col-lg-4 themed-grid-col">
                     <img class="img-fluid rounded float-left" src="../images/noeud.jpg" alt="noeud" />
                 </div>
-                <div class="col-lg-6 themed-grid-col"> 
+                <div class="col-lg-8 themed-grid-col">
+                    <br>
                     <p style="text-align: justify;">
                     Notre équipe se compose de huit étudiants en quatrième année au département INFORMATIQUE de l'INSA Rennes.
                     </p>
+                    <br>
                     <div>
                         <img class="faceImage" style="position: relative; width: 70px;" src="../images/enzoV2.png" alt="enzo" />
                         <img class="faceImage" style="position: relative; width: 70px;" src="../images/laureV2.png" alt="laure" />
@@ -88,6 +105,7 @@
                         <img class="faceImage" style="position: relative; width: 70px;" src="../images/timV2.png" alt="timothee" />
                         <img class="faceImage" style="position: relative; width: 70px;" src="../images/charlotteV2.png" alt="charlotte" />
                     </div>
+                    <br><br>
                     <p style="text-align: justify;">
                     Ce projet nous a été proposé par l'équipe IntuiDoc de l'IRISA, en collaboration avec la startup Doptim et avec le soutien de Jean-Yves LE CLERC, conservateur du patrimoine aux archives départementales d'Ille-et-Vilaine. Tout au long de l'année, nous avons été encadrés par Bertrand COÜASNON, enseignant-chercheur membre d'IntuiDoc, Erwan FOUCHÉ, chef de projet chez Sopra Steria et Julien BOUVET, ingénieur chez Sopra Steria également. Nous avons aussi été accompagnés par Sophie TARDIVEL, responsable et data scientist chez Doptim.
                     </p>
@@ -100,18 +118,111 @@
         <div class="card-body">
             <h2>Pourquoi Agnosco?</h2>
             <div class="row">
-                <div class="col-lg-6 themed-grid-col"> 
+                <div class="col-lg-8 themed-grid-col"> 
                     <p style="text-align: justify;">
                      Dans le cadre de ses recherches, l’équipe IntuiDoc de l’IRISA, en collaboration avec les archives départementales d’Ille-et-Vilaine, cherche à faire avancer le domaine de la reconnaissance d’écriture manuscrite afin de rendre plus accessibles des textes anciens qui sont souvent peu compréhensibles. En effet, l'écriture manuscrite des siècles passés ainsi que les dégradations dues au passage du temps diminuent la lisibilité des documents.
                     <br>
                     Il n’est pas simple d’écrire un programme qui reconnaît les textes manuscrits, c’est pourquoi la plupart des systèmes de reconnaissance d’écriture sont basés sur des algorithmes intelligents. Ces algorithmes sont souvent formés de réseaux de neurones qui ont besoin d’apprendre à reconnaître les différents caractères, quels que soient la langue et le style du rédacteur. Pour apprendre, ils ont besoin d’un grand nombre d’exemples (plusieurs milliers) qui sont longs et fastidieux à construire à la main. Dans ce contexte, les base d’apprentissage sont des associations entre les textes manuscrits et leurs retranscriptions informatiques. Ainsi, l’algorithme apprend à reconnaître les caractères en comparant sa sortie avec la retranscription fournie. Agnosco permet donc de construire un système qui génère des bases d’apprentissage à partir d’images et d’une vérité terrain de manière automatique, afin de faciliter le travail des chercheurs.
                     </p> 
                 </div>
-                <div class="col-lg-6 themed-grid-col">
+                <div class="col-lg-4 themed-grid-col">
                     <img class="img-fluid rounded float-right" src="../images/manager.png" alt="manager" />
                 </div>
             </div>
         </div>
     </div>
-  </body>
+
+    <div id="tuto" style="height: 70px;"></div>
+
+    <div class="row">
+        <div class="card border-primary offset-lg-2 col-lg-8" style="border-radius: 10px;" >
+            <div class="card-body">
+                <div style="text-align: center">
+                        
+                     Sur la page d'accueil d'Agnosco, l'utilisateur a accès à tous ses projets et peut également en créer de nouveau en sélectionnant les documents scannés qu'il veut transcrire.
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="card col-lg-6 offset-lg-3">
+            <img class="img-fluid"  src="../images/accueil.jpg" alt="accueil" />   
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="row">
+        <div class="card border-primary offset-lg-2 col-lg-8" style="border-radius: 10px;" >
+            <div class="card-body">
+                <div style="text-align: center">
+                    Agnosco propose également une page de découpe du document pour localiser manuellement les paragraphes du manuscrit, afin de permettre une découpe ligne par ligne du document.
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="card col-lg-6 offset-lg-3">
+            <img class="img-fluid"  src="../images/decoupe.jpg" alt="accueil" />   
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="row">
+        <div class="card border-primary offset-lg-2 col-lg-8" style="border-radius: 10px;" >
+            <div class="card-body">
+                <div style="text-align: center">
+                    Une fois que le document est découpé ligne par ligne en imagettes, elles sont affichées les unes à la suite des autres avec la transcription qui leur correspond dans la page d'annotation manuelle. L'utilisateur peut taper ces transcriptions à la main et les modifier. Grâce à la croix en haut à droite de l'imagette, il peut également cacher un exemple jugé peu pertinent qui ne sera pris en compte pour l'apprentissage.
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="card col-lg-6 offset-lg-3">
+            <img class="img-fluid"  src="../images/annotation.jpg" alt="accueil" />   
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="row">
+        <div class="card border-primary offset-lg-2 col-lg-8" style="border-radius: 10px;" >
+            <div class="card-body">
+                <div style="text-align: center">
+                    Agnosco propose une page de visualisation des résultats de l'apprentissage du reconnaisseur où l'utilisateur peut modifier les transcriptions erronées.
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="card col-lg-6 offset-lg-3">
+            <img class="img-fluid"  src="../images/ia.jpg" alt="accueil" />   
+        </div>
+    </div>
+
+
+    <br><br>
+
+    <div class="row">
+        <div class="card border-primary offset-lg-2 col-lg-8" style="border-radius: 10px;" >
+            <div class="card-body">
+                <div style="text-align: center">
+                    Enfin, l'étape finale de la création de bases d'apprentissage est la validation des transcriptions dans la page de validation. Par un simple appui sur la touche Entrée, l'utilisateur peut valider toutes les transcriptions affichées sur la page qui n'ont pas été cachées au préalable.
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="card col-lg-6 offset-3">
+            <img class="img-fluid"  src="../images/validation.jpg" alt="accueil" />   
+        </div>
+    </div>
+
+</body>
 </html>
