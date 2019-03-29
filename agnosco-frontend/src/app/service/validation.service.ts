@@ -22,11 +22,23 @@ export class ValidationService {
     this.fd.append('data', this.JsonFileValidation);
   }
 
+
+  /**
+   * Cette méthode permet de récupérer les id des pages du document dont le nom est passé en paramètre.
+   * @param docName 
+   */
+  getPages(docName): Observable<Object>{
+    console.log("*** GET /base/documentPages ***");    
+    
+    return this.http.get(`agnosco/base/documentPages/${docName}`,{});
+  }
+
+
   /**
    * Cette méthode permet de récupérer les données de la page numéro id, soit la liste des exemples (imagettes et transcriptions) ainsi que l'image associée à la page (utilisée que pour la V1).
    * @param id numéro de la page dont on veut les données
    */
-  getValidation(id): Observable<Object>{
+  getPageData(id): Observable<Object>{
     console.log("*** GET `agnosco/base/pageData/${id}` ***");
 
     return this.http.get(`agnosco/base/pageData/${id}`);
@@ -36,6 +48,7 @@ export class ValidationService {
       );*/
   }
 
+
   disableEx(id){
     console.log("*** PUT `agnosco/base/disableExample/${id}` ***");
 
@@ -44,6 +57,7 @@ export class ValidationService {
     console.log("service disable " + id);
   }
 
+
   enableEx(id){
     console.log("*** PUT `agnosco/base/enableExample/${id}` ***");
 
@@ -51,6 +65,7 @@ export class ValidationService {
 
     console.log("service enable " + id);
   }
+
 
   validateAll(){
     console.log("*** POST `agnosco/base/validateExamples` ***");
@@ -61,6 +76,7 @@ export class ValidationService {
     console.log("validate all examples");
   }
 
+  
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

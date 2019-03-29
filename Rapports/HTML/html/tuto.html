@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+      <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/navbars/">
+      <!-- Bootstrap core CSS -->
+      <link href="../librairies/bootstrap.min.css" rel="stylesheet"> 
+
+      <!-- pour les icons-->
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <a class="navbar-brand" style="pointer-events: none; cursor: default;" href="#">Projet 4INFO</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarsExample04">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><!-- not the current page -->
+                    <a class="nav-link" href="home.html">Accueil</a>
+                </li>
+                <li class="nav-item active"><!-- current page -->
+                    <a class="nav-link" href="tuto.html">Tutoriel</a>
+                </li>
+            </ul>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Francais</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tuto_ENG.html">English</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>    
+    <section class="mb-3 mx-3 my-3">
+        <h1 class="mx-3 my-3 text-primary" style="text-align: center;">Logiciel de génération de données d'apprentissage pour la reconnaissance d'écriture manuscrite</h1>
+        <hr>
+    </section> 
+
+    <div class="card mb-3 mx-3 my-3 border-primary">
+        <div class="card-body">
+            <p style="text-align: center">
+            Sur la page d'accueil d'Agnosco, l'utilisateur a accès à tous ses projets et peut également en créer de nouveau en sélectionnant les documents scannés qu'il veut transcrire.
+            <br><br>
+            <img class="img-fluid" style="width: fit-content;"  src="../images/accueil.jpg" alt="accueil" />
+            <br><br>
+            Agnosco propose également une page de découpe du document pour localiser manuellement les paragraphes du manuscrit, afin de permettre une découpe ligne par ligne du document.
+            <br><br>
+            <img class="img-fluid" style="width: fit-content;"  src="../images/decoupe.jpg" alt="decoupe" />
+            <br><br>
+            Une fois que le document est découpé ligne par ligne en imagettes, elles sont affichées les unes à la suite des autres avec la transcription qui leur correspond dans la page d'annotation manuelle. L'utilisateur peut taper ces transcriptions à la main et les modifier. Grâce à la croix en haut à droite de l'imagette, il peut également cacher un exemple jugé peu pertinent qui ne sera pris en compte pour l'apprentissage.
+            <br><br>
+            <img class="img-fluid" style="width: fit-content;"  src="../images/annotation.jpg" alt="annotation" />
+            <br><br>
+            Agnosco propose une page de visualisation des résultats de l'apprentissage du reconnaisseur où l'utilisateur peut modifier les transcriptions erronées.
+            <br><br>
+            <img class="img-fluid" style="width: fit-content;"  src="../images/ia.jpg" alt="ia" />
+            <br><br>
+            Enfin, l'étape finale de la création de bases d'apprentissage est la validation des transcriptions dans la page de validation. Par un simple appui sur la touche Entrée, l'utilisateur peut valider toutes les transcriptions affichées sur la page qui n'ont pas été cachées au préalable.
+            <br><br>
+            <img class="img-fluid" style="width: fit-content;"  src="../images/validation.jpg" alt="validation" />
+            <br>
+            <br>
+        </p>
+        </div>
+    </div>
+  </body>
+</html>
