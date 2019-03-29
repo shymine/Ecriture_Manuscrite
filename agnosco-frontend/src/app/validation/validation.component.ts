@@ -25,6 +25,7 @@ export class ValidationComponent implements OnInit {
   private params = [];
   private docName;
   private hidden = [false, false, false, false, false, false];
+  private pagesObtained;
 
   public pages = [];
   public examples = [];
@@ -46,6 +47,7 @@ export class ValidationComponent implements OnInit {
     this.currentPage = 0;
     this.isFirstPage = true;
     this.isLastPage = false;
+    this.pagesObtained = false;
   }
 
   ngOnInit() {
@@ -58,26 +60,28 @@ export class ValidationComponent implements OnInit {
 
     //test
 
-    this.examples[0] = ["../../assets/images/Elephant.jpg", "To be or not to be", 0, "cross"];
-    this.examples[1] = ["../../assets/images/Fraise.png", "That is the question", 1, "cross"];
-    this.examples[2] = ["../../assets/images/Elephant.jpg", "Whether 'tis nobler in the mind", 2, "cross"];
-    this.examples[3] = ["../../assets/images/Fraise.png", "To suffer the slings and arrows of outrageous fortune", 3, "cross"];
-    this.examples[4] = ["../../assets/images/Elephant.jpg", "Or to take arms against a sea of troubles", 4, "cross"];
-    this.examples[5] = ["../../assets/images/Fraise.png", "And by opposing end them.", 5, "cross"];
+    /*this.examples[0] = ["../../assets/images/Elephant.jpg", "To be or not to be", 0, true];
+    this.examples[1] = ["../../assets/images/Fraise.png", "That is the question", 1, true];
+    this.examples[2] = ["../../assets/images/Elephant.jpg", "Whether 'tis nobler in the mind", 2, true];
+    this.examples[3] = ["../../assets/images/Fraise.png", "To suffer the slings and arrows of outrageous fortune", 3, true];
+    this.examples[4] = ["../../assets/images/Elephant.jpg", "Or to take arms against a sea of troubles", 4, true];
+    this.examples[5] = ["../../assets/images/Fraise.png", "And by opposing end them.", 5, true];*/
 
-    
+    this.getPages();
+
+    this.checkPageNumber();
+  }
+
+
+  getPages(){
     //on récupère la liste des identifiants des pages du doc passé en paramètre 
     this.validationService.getPages(this.docName).subscribe(returnedData => {
       console.log("get pages : ");
       console.log(returnedData);
-
-      //on parcourt la returnedData pour ne prendre que l'id des pages
+      
+      //on parcourt la returnedData pour ne prendre que l'image, la transcription
       Object.keys(returnedData).forEach( key => {
-        //let data = returnedData[key];
-        //let pageExamples = returnedData[key].examples;
-        //let groundTruth = returnedData[key].groundTruthPath;
         let id = returnedData[key].id;
-        //let imPath = returnedData[key].imagePath;
 
         console.log("### " + key + " / id = " + id + " ###");
         this.pages.push(id);
@@ -85,26 +89,37 @@ export class ValidationComponent implements OnInit {
 
       this.currentPage = this.pages[this.currentPageIndex];
         
-      console.log("current page : " + this.currentPage);
+      console.log("current page : " + this.currentPage);         
+
+      this.getPageData(); 
     });
-
-    this.checkPageNumber();
-    
-    this.getPageData();
   }
-
   /**
    * On récupère la liste des exemples qui composent la première page.
    * validation.getPageData() renvoie l'image de la page et les exemples, il faut donc faire un tri
    */
   getPageData(){
-    /*this.validationService.getPageData(this.currentPage).subscribe
-    (returnedData => {
-      console.log("get data : " + returnedData);
+    this.examples = [];
 
-      //tri : on récupère que la liste des exemples et pas l'image de la page
-      this.examples = returnedData[1];
-    });*/
+    this.validationService.getPageData(this.currentPage).subscribe
+    (returnedData => {
+      console.log("get data : ");
+      console.log(returnedData);
+
+      //on parcourt la returnedData pour ne prendre que l'id des pages
+      Object.keys(returnedData).forEach( key => {
+        let data = returnedData[key];
+        let enabled = returnedData[key].enabled;
+        let id = returnedData[key].id;
+        let imagePath = returnedData[key].imagePath;
+        let transcript = returnedData[key].transcript; //enlever le Some()
+        let validated = returnedData[key].validated;
+
+        let newExample = [imagePath, transcript, id, enabled];
+
+        this.examples.push(newExample);
+      });
+    });
 
   }
 
@@ -123,13 +138,12 @@ export class ValidationComponent implements OnInit {
     }else{
       this.isLastPage = false;
     }
+    this.currentPage = this.pages[this.currentPageIndex];
+    console.log("check page : " + this.currentPage);
   }
 
-  isCross(id){
-    if(this.examples[id][3] === "cross") {
-      return true;
-    }
-    return false;
+  isEnabled(id){
+    return this.examples[id][3];
   }
 
   goHome(){
@@ -144,19 +158,8 @@ export class ValidationComponent implements OnInit {
     else{
       this.validationService.enableEx(id);
     }
-    this.changeIcon(id);
+    this.examples[id][3] = !this.examples[id][3];
     this.hidden[id] = !this.hidden[id];
-  }
-
-  changeIcon(id){
-    if(this.examples[id][3] === "cross"){
-      this.examples[id][3] = "arrow";
-    }else if(this.examples[id][3] === "arrow"){
-      this.examples[id][3] = "cross";
-    }else{
-      console.log("erreur this.examples[id][2] correspond à rien")
-    }
-    console.log("change to arrow");
   }
 
   previousPage(){

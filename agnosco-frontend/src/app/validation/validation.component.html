@@ -25,7 +25,7 @@
         
         <div class = "buttonDiv">
           <button class = "hideButton" (click)="disableEx(i)" data-imgid=i>
-            <i [class]="isCross(i) ? 'fas fa-times' : 'fas fa-angle-double-up'"></i>
+            <i [class]="isEnabled(i) ? 'fas fa-times' : 'fas fa-angle-double-up'"></i>
           </button>
         </div>
       </li>
