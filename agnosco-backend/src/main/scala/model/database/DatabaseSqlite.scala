@@ -10,7 +10,7 @@ import scala.collection.mutable
 import scala.collection.mutable.{ArrayBuffer, ArrayBuilder}
 import scala.io.Source
 
-
+/*
 object DatabaseSqlite {
 	private var idCount: Long = 0
 	def incrementID: Long = {
@@ -19,7 +19,7 @@ object DatabaseSqlite {
 	}
 	def setIDCounter(id: Long): Unit = idCount = id
 }
-
+*/
 // Using AUTOINCREMENT funtionality so if it works, no need for this
 class DatabaseSqlite extends Database {
 
@@ -73,7 +73,7 @@ class DatabaseSqlite extends Database {
 
 		createTable(
 			"documents",
-			"id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
+			"idD INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
 				"name VARCHAR(64), " +
 				"prepared BOOL, " +
 				"projectId INTEGER NOT NULL, " +
@@ -81,21 +81,21 @@ class DatabaseSqlite extends Database {
 
 		createTable(
 			"pages",
-			"id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
+			"idP INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
 				"imagePath VARCHAR(256), " +
 				"groundTruthPath VARCHAR(256), " +
 				"documentId INTEGER NOT NULL, " +
-				"FOREIGN KEY(documentId) REFERENCES documents(id)")
+				"FOREIGN KEY(documentId) REFERENCES documents(idD)")
 
 		createTable(
 			"examples",
-			"id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
+			"idE INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
 				"imagePath VARCHAR(256), " +
 				"transcript VARCHAR(256), " +
 				"enabled BOOL, " +
 				"validated BOOL, " +
 				"pageId INTEGER NOT NULL, " +
-				"FOREIGN KEY(pageId) REFERENCES pages(id)")
+				"FOREIGN KEY(pageId) REFERENCES pages(idP)")
 
 		statements = {
 			val map = mutable.Map[String, PreparedStatement]()
@@ -114,7 +114,7 @@ class DatabaseSqlite extends Database {
 			map.put(name, statement)
 
 			name = "getDocument"
-			statement = conn.prepareStatement("SELECT * FROM documents WHERE id=?")
+			statement = conn.prepareStatement("SELECT * FROM documents WHERE idD=?")
 			map.put(name, statement)
 
 			name = "addDocument"
@@ -122,11 +122,11 @@ class DatabaseSqlite extends Database {
 			map.put(name, statement)
 
 			name = "deleteDocument"
-			statement = conn.prepareStatement("DELETE FROM documents WHERE id=?")
+			statement = conn.prepareStatement("DELETE FROM documents WHERE idD=?")
 			map.put(name, statement)
 
 			name = "getPage"
-			statement = conn.prepareStatement("SELECT * FROM pages WHERE id=?")
+			statement = conn.prepareStatement("SELECT * FROM pages WHERE idP=?")
 			map.put(name, statement)
 
 			name = "addPage"
@@ -134,11 +134,11 @@ class DatabaseSqlite extends Database {
 			map.put(name, statement)
 
 			name = "deletePage"
-			statement = conn.prepareStatement("DELETE FROM pages WHERE id=?")
+			statement = conn.prepareStatement("DELETE FROM pages WHERE idP=?")
 			map.put(name, statement)
 
 			name = "getExample"
-			statement = conn.prepareStatement("SELECT * FROM examples WHERE id=?")
+			statement = conn.prepareStatement("SELECT * FROM examples WHERE idE=?")
 			map.put(name, statement)
 
 			name = "addExample"
@@ -146,7 +146,7 @@ class DatabaseSqlite extends Database {
 			map.put(name, statement)
 
 			name = "deleteExample"
-			statement = conn.prepareStatement("DELETE FROM examples WHERE id=?")
+			statement = conn.prepareStatement("DELETE FROM examples WHERE idE=?")
 			map.put(name, statement)
 
 			name = "getAllProjects"
@@ -166,15 +166,16 @@ class DatabaseSqlite extends Database {
 			map.put(name, statement)
 
 			name = "saveExampleEdition"
-			statement = conn.prepareStatement("UPDATE examples SET imagePath=?, transcript=?, enabled=?, validated=? WHERE id=?")
+			statement = conn.prepareStatement("UPDATE examples SET imagePath=?, transcript=?, enabled=?, validated=? WHERE idE=?")
 			map.put(name, statement)
 
 			name = "documentPrepared"
-			statement = conn.prepareStatement("UPDATE documents SET prepared=1 WHERE id=?")
+			statement = conn.prepareStatement("UPDATE documents SET prepared=1 WHERE idD=?")
 			map.put(name, statement)
 
 			map
 		}
+		/*
 		val file = "stock"
 		try {
 			val buffer = Source.fromFile(file)
@@ -196,6 +197,7 @@ class DatabaseSqlite extends Database {
 				pw.write(DatabaseSqlite.idCount.toString)
 				pw.close()
 		}
+		 */
 		true
 	}
 
@@ -205,10 +207,12 @@ class DatabaseSqlite extends Database {
 			statements.keys.foreach(key => statements(key).close())
 			conn.close()
 			conn = null
+			/*
 			val pw = new PrintWriter(new File("stock"))
 			pw.flush()
 			pw.write(DatabaseSqlite.idCount.toString)
 			pw.close()
+			 */
 			true
 		}catch {
 			case e: SQLiteException =>
@@ -256,8 +260,9 @@ class DatabaseSqlite extends Database {
 
 		val name = result.getString("name")
 		val prepared = result.getBoolean("prepared")
+		val idD = result.getLong("idD")
 
-		Some(Document(id, name, List(), prepared))
+		Some(Document(idD, name, List(), prepared))
 	}
 
 	override def addDocument(document: Document, projectID: Long): Document = {
@@ -287,16 +292,17 @@ class DatabaseSqlite extends Database {
 
 		val imagePath = res.getString("imagePath")
 		val groundTruthPath = res.getString("groundTruthPath")
+		val idP = res.getLong("idP")
 
-		Some(Page(id, imagePath, groundTruthPath, List()))
+		Some(Page(idP, imagePath, groundTruthPath, List()))
 	}
 
 	override def addPage(page: Page, documentId: Long): Page = {
 		val stmt = statements("addPage")
-		stmt.setLong(1, DatabaseSqlite.incrementID)
-		stmt.setString(2, page.imagePath)
-		stmt.setString(3, page.groundTruthPath)
-		stmt.setLong(4, documentId)
+		//stmt.setLong(1, DatabaseSqlite.incrementID)
+		stmt.setString(1, page.imagePath)
+		stmt.setString(2, page.groundTruthPath)
+		stmt.setLong(3, documentId)
 		stmt.executeUpdate()
 		val res = getPagesOfDocument(documentId).find(p => p.imagePath == page.imagePath).get
 		res
@@ -323,18 +329,19 @@ class DatabaseSqlite extends Database {
 			}
 		val enabled = res.getBoolean("enabled")
 		val validated = res.getBoolean("validated")
+		val idE = res.getLong("idE")
 
-		Some(Example(id, imagePath, transcript, enabled, validated))
+		Some(Example(idE, imagePath, transcript, enabled, validated))
 	}
 
 	override def addExample(example: Example, pageId: Long): Example = {
 		val stmt = statements("addExample")
-		stmt.setLong(1, DatabaseSqlite.incrementID)
-		stmt.setString(2, example.imagePath)
-		stmt.setString(3, example.transcript.orNull)
-		stmt.setLong(4, pageId)
-		stmt.setBoolean(5, example.enabled)
-		stmt.setBoolean(6, example.validated)
+		//stmt.setLong(1, DatabaseSqlite.incrementID)
+		stmt.setString(1, example.imagePath)
+		stmt.setString(2, example.transcript.orNull)
+		stmt.setLong(3, pageId)
+		stmt.setBoolean(4, example.enabled)
+		stmt.setBoolean(5, example.validated)
 		stmt.executeUpdate()
 		val res = getExamplesOfPage(pageId).find(e => e.imagePath == example.imagePath).get
 		res
@@ -369,7 +376,8 @@ class DatabaseSqlite extends Database {
 		while (res.next) {
 			val name = res.getString("name")
 			val prepared = res.getBoolean("prepared")
-			documents += Document(id, name, List(), prepared)
+			val idD = res.getLong("idD")
+			documents += Document(idD, name, List(), prepared)
 		}
 
 		documents
@@ -384,7 +392,8 @@ class DatabaseSqlite extends Database {
 		while (res.next) {
 			val imagePath = res.getString("imagePath")
 			val groundTruthPath = res.getString("groundTruthPath")
-			pages += Page(id, imagePath, groundTruthPath, List())
+			val idP = res.getLong("idP")
+			pages += Page(idP, imagePath, groundTruthPath, List())
 		}
 
 		pages
@@ -405,7 +414,8 @@ class DatabaseSqlite extends Database {
 				}
 			val enabled = res.getBoolean("enabled")
 			val validated = res.getBoolean("validated")
-			examples += Example(id, imagePath, transcript, enabled, validated)
+			val idE = res.getLong("idE")
+			examples += Example(idE, imagePath, transcript, enabled, validated)
 		}
 
 		examples
