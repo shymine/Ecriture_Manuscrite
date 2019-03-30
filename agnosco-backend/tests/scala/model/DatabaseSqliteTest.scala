@@ -9,7 +9,7 @@ import scala.collection.mutable.ArrayBuffer
 
 // When testing, please comment the database.commit line in disconnect
 class DatabaseSqliteTest extends FlatSpec {
-/*
+	/*
 	"Project" should "be gettable" in {
 		val database = new DatabaseSqlite()
 		database.connect
@@ -330,22 +330,30 @@ class DatabaseSqliteTest extends FlatSpec {
 	}
 
 
-*/
+	*/
 	"test" should "pass" in {
 		val database = new DatabaseSqlite()
 		database.connect
+
 		val project1 = Project(-1, "coucou", RecogniserType.None, List())
 		val project2 = Project(-1, "au revoir", RecogniserType.None, List())
+		val project3 = Project(-1, "bijour", RecogniserType.None, List())
 		database.addProject(project1)
 		database.addProject(project2)
+		database.addProject(project3)
+
 		val projectsData: Iterable[Project] = database.getAllProject
+
 		val document1 = Document(-1, "super docu", List(), false)
 		val document2 = Document(-1, "mega docu", List(), false)
 		val idPr1 = projectsData.find(it => it.name == project1.name).get.id
 		database.addDocument(document1, idPr1)
 		database.addDocument(document2, idPr1)
+
 		val docuOfProj1 = database.getDocumentsOfProject(idPr1)
+
 		database.disconnect
+
 		println(projectsData)
 		println(docuOfProj1)
 	}
