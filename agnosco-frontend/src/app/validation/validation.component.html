@@ -8,7 +8,7 @@
     
     <button class = "textBand">Validation des transcriptions</button>
 
-    <button class = "tickButton" (click)="hide()"><i class="fas fa-check"></i></button>
+    <button class = "tickButton" (click)="leave()"><i class="fas fa-check"></i></button>
   </div>
 
   <div class="validationWindow">
@@ -24,10 +24,21 @@
         </div>
         
         <div class = "buttonDiv">
-          <button class = "hideButton" (click)="disableEx(i)" data-imgid=i><i [class]="isCross(i) ? 'fas fa-times' : 'fas fa-angle-double-up'"></i></button>
+          <button class = "hideButton" (click)="disableEx(i)" data-imgid=i>
+            <i [class]="isEnabled(i) ? 'fas fa-times' : 'fas fa-angle-double-up'"></i>
+          </button>
         </div>
       </li>
     </ul>
   </div>
 
+</div>
+
+<div class = "footer">
+  <button id = "previousPage" class="previousPage"[disabled]="isFirstPage" (click)="previousPage()">
+      <i class="fas fa-chevron-left"></i>
+  </button>
+  <button id = "nextPage" class="nextPage" [disabled]="isLastPage" (click)="nextPage()">
+      <i class="fas fa-chevron-right"></i>
+  </button>
 </div>

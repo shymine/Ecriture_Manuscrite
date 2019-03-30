@@ -18,7 +18,7 @@ GREEN #66FF9C RVB 102 255 156
 
 .divisionParent{
     position: relative;
-    border: 1px solid rgba(95, 75, 140, 0.425);
+    border: 1px solid rgba(203, 185, 245, 0.425);
     padding: 5px;
     margin: 0px;
     overflow: auto;
@@ -38,7 +38,7 @@ GREEN #66FF9C RVB 102 255 156
     color: rgb(124, 102, 180);
     font-size: 20px;
     float: left;
-    background: rgba(255, 255, 255, 0.479);
+    background: rgba(255, 255, 255, 0.329);
 }
 
 .divisionD {
@@ -86,8 +86,8 @@ GREEN #66FF9C RVB 102 255 156
     top: 18vh;
     left: 10%;
     border: 1px solid rgba(95, 75, 140, 0.096);;
-    color: rgb(124, 102, 180);
-    background: rgba(255, 255, 255, 0.479);
+    color: rgba(126, 100, 190, 0.877);
+    background: rgba(255, 255, 255, 0.377);
     margin-left: 3%;
     margin-right: 3%;
     height: 50vh;
@@ -98,6 +98,7 @@ GREEN #66FF9C RVB 102 255 156
 
 .button2:hover {
     background: #f7f7f781;
+    color: rgb(124, 102, 180);
 }
 
 .buttonList {

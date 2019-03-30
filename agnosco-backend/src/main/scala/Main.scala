@@ -22,7 +22,14 @@ object Main {
 	}
 
 	def main(args: Array[String]) : Unit = {
-		launch()
+		/*import model.preparation.ProcessingImpl
+
+		val examples = new ProcessingImpl().prepareData(
+			List("/Users/cloudyhug/Documents/cours/projet/test.xml",
+					 "/Users/cloudyhug/Documents/cours/projet/testtest.xml"))
+		println(examples)*/
+		
+		launch
 	    val server = startServer()
 	    System.in.read()
 	    server.shutdownNow()
