@@ -24,26 +24,15 @@ object GEDIToPiFFConverter extends PiFFConverter {
     }
   }
 
-  // Finds a source image filename in the document and adds it to the builder.
-  private def findSourceImageFilename(xml : Node) : String = {
+  // Finds the DL_PAGE XML objects in the document.
+  private def findPages(xml : Node) : NodeSeq = {
     val nodeSeq = xml \ "DL_DOCUMENT"
 
     val nslen = nodeSeq.length
     if (nslen == 0) throw new FormatException("No document found")
     if (nslen > 1) throw new FormatException("Several documents in one file")
 
-    val xmldoc = nodeSeq.head
-
-    val src = xmldoc \@ "src"
-    if (src == "")
-      throw new FormatException("No image linked to the file")
-
-    src
-  }
-
-  // Finds the DL_PAGE XML objects in the document.
-  private def findPages(xml : Node) : NodeSeq = {
-    val pages = (xml \ "DL_DOCUMENT").head \ "DL_PAGE"
+    val pages = nodeSeq.head \ "DL_PAGE"
     if (pages.length == 0)
       throw new FormatException("No pages found in the document")
 
@@ -103,6 +92,10 @@ object GEDIToPiFFConverter extends PiFFConverter {
 
   // Gets all the interesting data from a page in the XML document.
   private def readPage(page : Node) : PiFFPage = {
+    val src = page \@ "src"
+    if (src == "")
+      throw new FormatException("No image linked to a page")
+
     val width = (page \@ "width").toInt
     val height = (page \@ "height").toInt
 
@@ -110,16 +103,15 @@ object GEDIToPiFFConverter extends PiFFConverter {
     if (zones.length == 0)
       throw new FormatException("No zones found in the page")
 
-    new PiFFPage(width, height, elementsFromZones(zones))
+    new PiFFPage(src, width, height, elementsFromZones(zones))
   }
 
   override def toPiFF(filename : String) : Option[PiFF] = {
     try {
       val xml = XML.loadFile(filename)
       val date = findDate(xml)
-      val src = findSourceImageFilename(xml)
       val pages = findPages(xml).map(readPage)
-      Some(new PiFF(date, src, pages.toList))
+      Some(new PiFF(date, pages.toList))
     } catch {
       case e @ (_ : FileNotFoundException | _ : SAXParseException
                 | _ : NullPointerException | _ : NumberFormatException
