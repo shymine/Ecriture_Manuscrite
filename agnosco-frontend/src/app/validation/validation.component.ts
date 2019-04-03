@@ -58,24 +58,21 @@ export class ValidationComponent implements OnInit {
     this.docName = this.params[0]; // le nom du document est le 1er paramètre
     console.log("ID du document : " + this.docName);
 
-    //test
-
-    /*this.examples[0] = ["../../assets/images/Elephant.jpg", "To be or not to be", 0, true];
-    this.examples[1] = ["../../assets/images/Fraise.png", "That is the question", 1, true];
-    this.examples[2] = ["../../assets/images/Elephant.jpg", "Whether 'tis nobler in the mind", 2, true];
-    this.examples[3] = ["../../assets/images/Fraise.png", "To suffer the slings and arrows of outrageous fortune", 3, true];
-    this.examples[4] = ["../../assets/images/Elephant.jpg", "Or to take arms against a sea of troubles", 4, true];
-    this.examples[5] = ["../../assets/images/Fraise.png", "And by opposing end them.", 5, true];*/
-
     this.getPages();
 
     this.checkPageNumber();
+    
   }
 
 
   getPages(){
+    //test
+
+    this.pages = [1,5,7];
+
+    this.getPageData(); 
     //on récupère la liste des identifiants des pages du doc passé en paramètre 
-    this.validationService.getPages(this.docName).subscribe(returnedData => {
+    /*this.validationService.getPages(this.docName).subscribe(returnedData => {
       console.log("get pages : ");
       console.log(returnedData);
       
@@ -91,8 +88,8 @@ export class ValidationComponent implements OnInit {
         
       console.log("current page : " + this.currentPage);         
 
-      this.getPageData(); 
-    });
+    });*/
+
   }
   /**
    * On récupère la liste des exemples qui composent la première page.
@@ -101,7 +98,7 @@ export class ValidationComponent implements OnInit {
   getPageData(){
     this.examples = [];
 
-    this.validationService.getPageData(this.currentPage).subscribe
+    /*this.validationService.getPageData(this.currentPage).subscribe
     (returnedData => {
       console.log("get data : ");
       console.log(returnedData);
@@ -119,8 +116,16 @@ export class ValidationComponent implements OnInit {
 
         this.examples.push(newExample);
       });
-    });
+    });*/
 
+    //test
+
+    this.examples[0] = ["../../assets/images/Elephant.jpg", "To be or not to be", 0, true];
+    this.examples[1] = ["../../assets/images/Fraise.png", "That is the question", 1, true];
+    this.examples[2] = ["../../assets/images/Elephant.jpg", "Whether 'tis nobler in the mind", 2, true];
+    this.examples[3] = ["../../assets/images/Fraise.png", "To suffer the slings and arrows of outrageous fortune", 3, true];
+    this.examples[4] = ["../../assets/images/Elephant.jpg", "Or to take arms against a sea of troubles", 4, true];
+    this.examples[5] = ["../../assets/images/Fraise.png", "And by opposing end them.", 5, true];
   }
 
   //méthode qui vérifie si on est à la 1e ou à la dernière page

@@ -134,11 +134,20 @@
 }
 
 .previousPage {
+    border: none;
     float: left;
     margin-left: 10%;
 }
 
 .nextPage {
+    border: none;
     float: right;
     margin-right: 10%;
+}
+
+.pageNumbers {
+    border: none;
+    display: inline;
+    position: relative;
+    margin-left: 5px;
 }
