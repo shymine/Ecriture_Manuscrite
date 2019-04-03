@@ -1,8 +1,15 @@
 #!/usr/local/bin/python3
 
+# pip3 install python-opencv
+
 import sys
 import cv2
 import numpy as np
+
+# This script cuts an image and makes a thumbnail from it, following the given
+# coordinates (row, column, width, and height, giving the exact position of
+# the thumbnail to make). The user is expected to give an image ID, so that the
+# image files this script generates remain unique.
 
 if len(sys.argv) != 7:
     print("Usage: {} <filename> <id> <row> <col> <width> <height>"

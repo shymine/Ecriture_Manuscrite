@@ -7,6 +7,12 @@ import sys
 import subprocess
 import defusedxml.ElementTree as ET
 
+# This script cuts an image file "img.x" containing several pages
+# into several ("img1.x", "img2.x", ...) image files with only one
+# page each. It also updates the GEDI ground truth file ("img.xml")
+# accordingly, so that every page is still associated to the right
+# image even after the cut.
+
 if len(sys.argv) != 2:
     print("Usage: {} <directory>"
           .format(sys.argv[0]))
