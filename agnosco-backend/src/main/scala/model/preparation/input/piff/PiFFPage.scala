@@ -4,6 +4,7 @@ import org.json.JSONObject
 
 /*
 {
+  "src": "src.jpg",
   "width": 34,
   "height": 55,
   "elements": [
@@ -18,10 +19,11 @@ import org.json.JSONObject
 }
 */
 
-class PiFFPage(val width : Int, val height : Int,
+class PiFFPage(val src : String, val width : Int, val height : Int,
                val elements : List[PiFFElement]) {
   def toJSON : JSONObject = {
     val json = new JSONObject()
+    json.put("src", src)
     json.put("width", width)
     json.put("height", height)
     elements.foldLeft(json)(
@@ -33,8 +35,7 @@ class PiFFPage(val width : Int, val height : Int,
 
     val pageObj = obj.asInstanceOf[PiFFPage]
 
-    width == pageObj.width &&
-      height == pageObj.height &&
+    src == pageObj.src && width == pageObj.width && height == pageObj.height &&
       elements.equals(pageObj.elements)
   }
 

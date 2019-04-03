@@ -7,8 +7,6 @@ import scala.collection.mutable.ListBuffer
 
 object BaseExampleMaker extends ExampleMaker {
   override def makeExamples(p : PiFF): List[Example] = {
-    val imgPath = p.src
-
     val examples = new ListBuffer[Example]
 
     /*
