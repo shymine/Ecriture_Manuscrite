@@ -46,41 +46,12 @@ object Main {
 		val pages = new ArrayBuffer[Page]()
 		val examples = new ArrayBuffer[Example]()
 
+		projects += Project(-1, "project test", RecogniserType.None, List())
+
+
 		database.connect
 
-		projects += database.addProject(Project(-1, "super projet", RecogniserType.Laia, List()))
-		projects += database.addProject(Project(-1, "project de la vida", RecogniserType.None, List()))
-
-		documents += database.addDocument(Document(-1, "docu numero uno", List(), false), projects(0).id)
-		documents += database.addDocument(Document(-1, "docu numero dos", List(), false), projects(0).id)
-		documents += database.addDocument(Document(-1, "Glouglou", List(), false), projects(1).id)
-
-		pages += database.addPage(Page(-1, "imagePath1", "groundTruth1", List()), documents(0).id)
-		pages += database.addPage(Page(-1, "imagePath2", "groundTruth2", List()), documents(0).id)
-		pages += database.addPage(Page(-1, "imagePath3", "groundTruth3", List()), documents(0).id)
-		pages += database.addPage(Page(-1, "imagePath4", "groundTruth4", List()), documents(1).id)
-		pages += database.addPage(Page(-1, "imagePath5", "groundTruth5", List()), documents(1).id)
-		pages += database.addPage(Page(-1, "imagePath6", "groundTruth6", List()), documents(2).id)
-		pages += database.addPage(Page(-1, "imagePath7", "groundTruth7", List()), documents(2).id)
-		pages += database.addPage(Page(-1, "imagePath8", "groundTruth8", List()), documents(2).id)
-
-		examples += database.addExample(Example(-1, "example1/imgPath", None, true, false), pages(0).id)
-		examples += database.addExample(Example(-1, "example2/imgPath", Some("pouark"), true, false), pages(0).id)
-		examples += database.addExample(Example(-1, "example3/imgPath", None, true, false), pages(0).id)
-		examples += database.addExample(Example(-1, "example4/imgPath", None, true, false), pages(1).id)
-		examples += database.addExample(Example(-1, "example5/imgPath", None, true, false), pages(2).id)
-		examples += database.addExample(Example(-1, "example6/imgPath", None, true, false), pages(2).id)
-		examples += database.addExample(Example(-1, "example7/imgPath", Some("couclaclou"), true, false), pages(2).id)
-		examples += database.addExample(Example(-1, "example8/imgPath", Some("biyour missieur"), true, false), pages(2).id)
-		examples += database.addExample(Example(-1, "example9/imgPath", None, true, false), pages(3).id)
-		examples += database.addExample(Example(-1, "example10/imgPath", None, true, false), pages(4).id)
-		examples += database.addExample(Example(-1, "example11/imgPath", Some("bouark"), true, false), pages(4).id)
-		examples += database.addExample(Example(-1, "example12/imgPath", None, true, false), pages(5).id)
-		examples += database.addExample(Example(-1, "example13/imgPath", None, true, false), pages(6).id)
-		examples += database.addExample(Example(-1, "example14/imgPath", Some("plougastel"), true, false), pages(6).id)
-		examples += database.addExample(Example(-1, "example15/imgPath", None, true, false), pages(7).id)
-		examples += database.addExample(Example(-1, "example16/imgPath", None, true, false), pages(7).id)
-		examples += database.addExample(Example(-1, "example17/imgPath", Some("baba ba alors,"), true, false), pages(7).id)
+		projects.foreach(database.addProject)
 
 		database.disconnect
 		println("projects")

@@ -1,6 +1,7 @@
 package model.recogniser
 
 import model.common.Example
+import org.json.JSONObject
 
 /**
   * The trait of a recognizer and the actions it can perform
@@ -10,13 +11,13 @@ trait Recogniser {
     * Train the Recognizer using the samples given in parameter
     * @param samples The samples the Recognizer trains on
     */
-  def train(samples: Iterable[Example])
+  def train(samples: Iterable[Example]): Unit
 
   /**
     * Evaluate the Recognizer performance on a test set of Sample
     * @param samples The set to test the Recognizer
     */
-  def evaluate(samples: Iterable[Example])
+  def evaluate(samples: Iterable[Example]): JSONObject
 
   /**
     * Production mode of the Recognizer
@@ -29,6 +30,6 @@ trait Recogniser {
     *         it depending if the Recognizer output for a paragraph
     *         is an output per line or one output for the paragraph.
     */
-  def recognize(samples: List[Example]) : List[Example]
+  def recognize(samples: Iterable[Example]) : List[Example]
 
 }

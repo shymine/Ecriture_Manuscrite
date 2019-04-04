@@ -1,6 +1,7 @@
 package model.recogniser
 
 import model.common.Example
+import org.json.JSONObject
 
 abstract class ConverterRecogniser extends Recogniser {
 
@@ -18,7 +19,7 @@ abstract class ConverterRecogniser extends Recogniser {
     *
     * @param samples The set to test the Recognizer
     */
-  override def evaluate(samples: Iterable[Example]): Unit
+  override def evaluate(samples: Iterable[Example]): JSONObject
 
   /**
     * Production mode of the Recognizer
@@ -32,13 +33,13 @@ abstract class ConverterRecogniser extends Recogniser {
     *         it depending if the Recognizer output for a paragraph
     *         is an output per line or one output for the paragraph.
     */
-  override def recognize(samples: List[Example]): List[Example]
+  override def recognize(samples: Iterable[Example]): List[Example]
 
   /**
-    * Allows to change the recognizer by another
-    *
-    * @param path The path where the Recognizer to use is
+    * Allow the user to change the type of his recogniser
+    * @param recognizerPath The path of the recognizer to use
+    * @param converter The converter refering to the right recogniser
     */
-  def changeRecognizer(recognizerPath: String, converter: Converter): Unit
+  def changeRecogniser(recognizerPath: String, converter: Converter): Unit
 }
 

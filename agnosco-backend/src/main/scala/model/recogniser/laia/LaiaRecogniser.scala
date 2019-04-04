@@ -13,7 +13,7 @@ import scala.util.matching.Regex
   * Laia should be installed beforehand using docker
   * @param converter The converter from the Example to the laia input
   */
-class LaiaConnector extends ConverterRecogniser{
+class LaiaRecogniser extends ConverterRecogniser{
 
   private val height = 256
 

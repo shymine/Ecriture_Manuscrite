@@ -3,7 +3,7 @@ package model
 import model.common._
 import model.database.DatabaseConnector
 import model.preparation.ProcessingConnector
-import model.recogniser.RecogniserConnector
+import model.recogniser.{Recogniser, RecogniserConnector}
 import org.json.JSONObject
 
 import scala.collection.mutable.ArrayBuffer
@@ -137,11 +137,16 @@ class Controller {
 
 	/* AI Interactions */
 
-	def trainAI(samples: Iterable[Example]): Nothing = ???
+	def trainAI(samples: Iterable[Example]): Unit = recogniserConnector.trainAI(samples)
 
-	def evaluateAI(samples: Iterable[Example]): Any = ???
+	def evaluateAI(samples: Iterable[Example]): JSONObject = recogniserConnector.evaluateAI(samples)
 
-	def recognizeAI(samples: Iterable[Example]): Iterable[Example] = ???
+	def recognizeAI(samples: Iterable[Example]): Iterable[Example] = recogniserConnector.recognizeAI(samples)
 
-	def changeRecogniser(name: String): Nothing = ???
+	def changeRecogniser(name: String): Unit = {
+		val classe = Class.forName(name)
+		if(classe.isAssignableFrom(classOf[Recogniser])) {
+			recogniserConnector.changeRecogniser(name)
+		}
+	}
 }
