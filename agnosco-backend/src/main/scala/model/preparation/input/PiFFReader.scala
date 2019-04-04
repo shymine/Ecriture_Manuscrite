@@ -53,6 +53,7 @@ object PiFFReader {
 
   // Reads a PiFFPage from a JSON object.
   private def readPage(json : JSONObject) : PiFFPage = {
+    val src = json.getString("src")
     val width = json.getInt("width")
     val height = json.getInt("height")
     val jsonElements = json.getJSONArray("elements")
@@ -60,20 +61,19 @@ object PiFFReader {
     for (i <- 0 until jsonElements.length()) {
       elements += readElement(jsonElements.getJSONObject(i))
     }
-    new PiFFPage(width, height, elements.toList)
+    new PiFFPage(src, width, height, elements.toList)
   }
 
   /** Builds an optional PiFF object from a JSON object. */
   def fromJSON(json : JSONObject) : Option[PiFF] = {
     try {
       val date = json.getString("date")
-      val src = json.getString("src")
       val jsonPages = json.getJSONArray("pages")
       var pages = new ListBuffer[PiFFPage]
       for (i <- 0 until jsonPages.length()) {
         pages += readPage(jsonPages.getJSONObject(i))
       }
-      Some(new PiFF(date, src, pages.toList))
+      Some(new PiFF(date, pages.toList))
     } catch {
       case e : JSONException =>
         e.printStackTrace()

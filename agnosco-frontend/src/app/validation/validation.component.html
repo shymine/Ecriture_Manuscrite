@@ -34,10 +34,13 @@
 
 </div>
 
-<div class = "footer">
+<div>
   <button id = "previousPage" class="previousPage"[disabled]="isFirstPage" (click)="previousPage()">
       <i class="fas fa-chevron-left"></i>
   </button>
+  
+  <button class="pageNumbers" *ngFor="let p of pages">{{pages.indexOf(p) + 1}}</button>
+
   <button id = "nextPage" class="nextPage" [disabled]="isLastPage" (click)="nextPage()">
       <i class="fas fa-chevron-right"></i>
   </button>
