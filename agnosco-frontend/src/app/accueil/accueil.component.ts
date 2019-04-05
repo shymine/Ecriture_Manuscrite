@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MydialogComponent } from '../mydialog/mydialog.component';
+import { SuppressionDialogComponent } from '../suppression-dialog/suppression-dialog.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 
@@ -83,10 +84,16 @@ export class AccueilComponent implements OnInit {
 
     //console.log("Delete all documents from "+ this.projects[p][0]);
 
-    this.http.delete(`agnosco/base/deleteProject/${p[1]}`).subscribe(returnedData =>{
-      this.getAllProjects();
+    const dialogRef = this.dialog.open(SuppressionDialogComponent, {});
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if(result){
+        this.http.delete(`agnosco/base/deleteProject/${p[1]}`).subscribe(returnedData =>{
+          this.getAllProjects();
+        });
+      }
     });
-    
 
     //this.projects.splice(p,1);
   }

@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/htt
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
+
 export interface Validation{
   image: string; //normalement, c'est une image et pas une string
   examples: string[]; //liste des imagettes et des transcriptions
@@ -13,13 +14,8 @@ export interface Validation{
 })
 export class ValidationService {
 
-  private JsonFileValidation;
-  private fd = new FormData();
-
 
   constructor(private http: HttpClient) { 
-    this.JsonFileValidation = "./validateExample.js";
-    this.fd.append('data', this.JsonFileValidation);
   }
 
 
@@ -67,10 +63,11 @@ export class ValidationService {
   }
 
 
-  validateAll(){
+  validateAll(valid){
     console.log("*** POST `agnosco/base/validateExamples` ***");
 
-    this.http.post(`agnosco/base/validateExamples`, this.fd, {}).subscribe
+    valid.concat("]");
+    this.http.post(`agnosco/base/validateExamples`, valid, {}).subscribe
     (response => console.log(response));
     
     console.log("validate all examples");

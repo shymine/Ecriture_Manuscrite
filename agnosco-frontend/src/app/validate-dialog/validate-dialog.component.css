@@ -1,0 +1,36 @@
+.buttonA {
+    position: relative;
+    background: none;
+    border: 1px solid #f8b2a1;
+    left: 35%;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 40px;
+    color: #fd8c70;
+}
+
+.buttonA:hover {
+    border: 1px solid #ff9b83;
+    color: #f87656;
+}
+
+.buttonV {
+    position: relative;
+    left: 35%;
+    background: none;
+    border: 1px solid #9ada69;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 40px;
+    color: #6dac3e;
+}
+
+.buttonV:hover {
+    border: 1px solid #7ecc43;
+    color: #459707;
+}
+
+p{
+    margin-top: 0px;
+    color: #48327f;
+}
