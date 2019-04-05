@@ -25,7 +25,8 @@ object BaseExampleMaker extends ExampleMaker {
           }
 
         // new image from the polygon
-        val imgPath = getClass.getResource("").toString + ""
+        val imgPath = "/home/timothee/Documents/Workspace/Ecriture_Manuscrite/Ecriture_Manuscrite/maurdor/" + s"${page.src}"
+        println("img path : " + imgPath)
         val newExampleImgPath = ImageProcessing.createThumbnail(imgPath, imageId, element.polygon)
 
         // adding the newly created example to the list
