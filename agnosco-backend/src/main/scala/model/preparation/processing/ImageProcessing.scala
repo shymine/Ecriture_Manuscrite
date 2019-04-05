@@ -15,9 +15,13 @@ object ImageProcessing {
   def crop(image : Image, rect : Rect) : Image = {
     image.submat(rect)
   }*/
-  val pythonExecutablePath = "/Users/cloudyhug/Documents/cours/projet/Ecriture_Manuscrite/imagecropper.py"
 
   def createThumbnail(imgPath : String, imageId : Int, polygon : Polygon) : String = {
+
+    val pathToClass = getClass.getResource("../../../").getPath
+    println(pathToClass)
+    val pythonExecutablePath = "/home/timothee/Documents/Workspace/Ecriture_Manuscrite/Ecriture_Manuscrite/imagecropper.py" // /Users/cloudyhug/Documents/cours/projet/Ecriture_Manuscrite/imagecropper.py"
+
     val (x1, y1, x2, y2) =
       polygon.points.foldLeft((Int.MaxValue, Int.MaxValue, Int.MinValue, Int.MinValue)) {
         (acc, p) =>
@@ -31,7 +35,7 @@ object ImageProcessing {
     val height = y2 - y1
 
     println(s"debug: $pythonExecutablePath $imgPath $imageId $row $col $width $height")
-    val exitCode = s"$pythonExecutablePath $imgPath $imageId $row $col $width $height".!
+    val exitCode = s"python $pythonExecutablePath $imgPath $imageId $row $col $width $height".!
     if (exitCode != 0) {
       println("ERROR: Python OpenCV script returned an error code")
     }

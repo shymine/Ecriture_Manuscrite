@@ -22,14 +22,16 @@ object Main {
 	}
 
 	def main(args: Array[String]) : Unit = {
-		/*import model.preparation.ProcessingImpl
-
+		/*
+		// target/scala-2.12/classes/
+		// ../../../../maurdor/AFGHJK.xml
+		// ../../../../maurdor/AFGIJM.xml
+		val pathToMain = getClass.getResource("").getPath
 		val examples = new ProcessingImpl().prepareData(
-			List("/Users/cloudyhug/Documents/cours/projet/test.xml",
-					 "/Users/cloudyhug/Documents/cours/projet/testtest.xml"))
+			List(pathToMain+"../../../../maurdor/AFGHJK.xml", pathToMain+"../../../../maurdor/AFGIJM.xml"))
 		println(examples)*/
-		
-		launch
+
+		 launch
 	    val server = startServer()
 	    System.in.read()
 	    server.shutdownNow()
@@ -47,9 +49,16 @@ object Main {
 		val examples = new ArrayBuffer[Example]()
 
 		projects += Project(-1, "project test", RecogniserType.None, List())
-
+		documents += Document(-1, "coucou", List(), false)
+		pages += Page(-1, "imagepath", "groundtruthpage", List())
+		examples += Example(-1, "example image path", Some("super transcript"))
 
 		database.connect
+
+		projects.foreach(database.addProject)
+		documents.foreach(database.addDocument(_, 1))
+		pages.foreach(database.addPage(_,1))
+		examples.foreach(database.addExample(_,1))
 
 		projects.foreach(database.addProject)
 

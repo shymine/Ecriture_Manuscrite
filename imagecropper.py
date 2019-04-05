@@ -1,6 +1,6 @@
-#!/usr/local/bin/python3
+#!/usr/local/bin/python
 
-# pip3 install python-opencv
+#pip3 install python-opencv
 
 import sys
 import cv2

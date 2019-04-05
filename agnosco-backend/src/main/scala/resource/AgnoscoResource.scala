@@ -140,8 +140,10 @@ class AgnoscoResource {
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def getPageData(@PathParam("id") id: Long): Response = {
 		val json = new JSONArray()
+		println(id)
 		val examples = controller.getExamplesOfPage(id)
 		examples.foreach(it => json.put(it.toJSON))
+		println(json.toString)
 		Response.status(200).entity(json.toString).build()
 	}
 

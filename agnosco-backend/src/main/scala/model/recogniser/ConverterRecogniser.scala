@@ -33,13 +33,7 @@ abstract class ConverterRecogniser extends Recogniser {
     *         it depending if the Recognizer output for a paragraph
     *         is an output per line or one output for the paragraph.
     */
-  override def recognize(samples: Iterable[Example]): List[Example]
+  override def recognize(samples: Iterable[Example]): Iterable[Example]
 
-  /**
-    * Allow the user to change the type of his recogniser
-    * @param recognizerPath The path of the recognizer to use
-    * @param converter The converter refering to the right recogniser
-    */
-  def changeRecogniser(recognizerPath: String, converter: Converter): Unit
 }
 

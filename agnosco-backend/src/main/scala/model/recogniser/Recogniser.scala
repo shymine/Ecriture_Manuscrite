@@ -30,6 +30,6 @@ trait Recogniser {
     *         it depending if the Recognizer output for a paragraph
     *         is an output per line or one output for the paragraph.
     */
-  def recognize(samples: Iterable[Example]) : List[Example]
+  def recognize(samples: Iterable[Example]) : Iterable[Example]
 
 }

@@ -7,7 +7,7 @@ case class Example(id : Long, imagePath : String, var transcript : Option[String
 		val json = new JSONObject()
 		json.put("id", id)
 		json.put("imagePath", imagePath)
-		json.put("transcript", transcript)
+		json.put("transcript", transcript.get)
 		json.put("enabled", enabled)
 		json.put("validated", validated)
 	}
