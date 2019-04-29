@@ -1,6 +1,8 @@
 package resource
 
 
+import java.util.Base64
+
 import javax.inject.Singleton
 import javax.ws.rs._
 import javax.ws.rs.core.MediaType
@@ -34,15 +36,36 @@ class AgnoscoResource {
 	@Path("/projectsAndDocuments")
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def getProjectAndDocuments: Response = {
+		try {
+			val projects = controller.getAllProject
+			projects.foreach(it => {
+				it.documents = controller.getDocumentOfProject(it.id)
+			})
+			val json = new JSONArray()
+			projects.foreach(project => json.put(project.toJSON))
+			Response.status(200).entity(json.toString).build()
+		} catch {
+			case e => e.printStackTrace()
+				Response.status(500).build()
+		}
 
-		val projects =  controller.getAllProject
-		projects.foreach(it => {
-			it.documents = controller.getDocumentOfProject(it.id)
-		})
-		val json = new JSONArray()
-		projects.foreach(project => json.put(project.toJSON))
-		Response.status(200).entity(json.toString).build()
+	}
 
+	@POST
+	@Path("/test")
+	@Consumes(Array(MediaType.APPLICATION_JSON))
+	def test(json: String) = {
+		// println(json)
+		val j = new JSONObject(json)
+		println(j.getString("test"))
+
+		try {
+			val decoded = Base64.getDecoder.decode(j.getString("test"))
+		} catch {
+			case e => e.printStackTrace()
+		}
+		// println(decoded)/**/
+		Response.status(200).build()
 	}
 
 
