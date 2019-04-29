@@ -1,33 +1,39 @@
 package model.preparation.processing.linedetection
 
 import java.io._
-import java.net.{InetSocketAddress, Socket}
-import java.nio.channels.SocketChannel
+import java.net.Socket
+import java.nio.file.Files
+import java.util.Base64
 
 import model.preparation.types.Line
 
 class BlurLineDetector(detectorIp : String, filePort : Int, answerPort : Int) extends LineDetector {
   override def detectLines(src : String) : List[Line] = {
-
-    val fileSocketChannel = SocketChannel.open(new InetSocketAddress(detectorIp, filePort))
+    val fileSocket = new Socket(detectorIp, filePort)
     val answerSocket = new Socket(detectorIp, answerPort)
 
     // send the file to the line detector
-    val fileChannel = new FileInputStream(src).getChannel
-    fileChannel.transferTo(0, fileChannel.size(), fileSocketChannel)
-    fileChannel.force(true)
-    fileChannel.close()
-    fileSocketChannel.close()
+    val fileBytes = Files.readAllBytes(new File(src).toPath)
+
+    val encodedBytes = Base64.getEncoder.encode(fileBytes)
+
+    val out = new DataOutputStream(fileSocket.getOutputStream)
+    out.writeInt(encodedBytes.length)
+    out.write(encodedBytes)
     println("[INFO] File sent to the line detector")
 
     // read the answer from the server
-    val answerReader = new BufferedReader(new InputStreamReader(answerSocket.getInputStream))
-    val answer = answerReader.readLine() + answerReader.readLine()
+    val in = new DataInputStream(answerSocket.getInputStream)
+    val length = in.readInt
+    val answerBytes = new Array[Byte](length)
+    in.readFully(answerBytes)
     answerSocket.close()
     println("[INFO] Answer received from the line detector")
 
     // operations on the answer to get Line objects
-    // TODO
+    // TODO : answerBytes
+
+    // TODO : peut-être passer par le controller pour demander la base64 directement au lieu de lire un fichier
 
     List.empty[Line]
   }
