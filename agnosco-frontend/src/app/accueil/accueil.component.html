@@ -25,7 +25,8 @@
       <li>
         <div class="liList" (mouseenter)="showX($event)" (mouseleave)="hideX($event)">
           <button class="button1List">{{p[0]}}</button>
-          <button hidden="true" class="button1List" (click)="deletePro(p)"><i class="fas fa-times"></i></button>
+          <button hidden="true" class="button1ListX" (click)="deletePro(p)"><i class="fas fa-times"></i></button>
+          <button hidden="true" class="button1ListP" (click)="addDoc(p)"><i class="fas fa-plus"></i></button>
         </div>
       </li>
       <ul *ngFor="let d of p[2]" (mouseleave)="hideActions($event)">
@@ -37,6 +38,7 @@
           <li><button class="buttonList2">Go To Decoupe</button></li>
           <li><button class="buttonList2">Go To Annotation</button></li>
           <li><button class="buttonList2"(click)="goToValidation(d.id)" >Go To Validation</button></li>
+          <li><button class="buttonList2">Gestion des pages</button></li>
         </ul>
       </ul>
     </ul>

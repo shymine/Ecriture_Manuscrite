@@ -4,6 +4,7 @@ import { MydialogComponent } from '../mydialog/mydialog.component';
 import { SuppressionDialogComponent } from '../suppression-dialog/suppression-dialog.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { HttpClient } from '@angular/common/http';
+import { AddDocComponent } from '../add-doc/add-doc.component';
 
 @Component({
   selector: 'app-accueil',
@@ -151,13 +152,17 @@ export class AccueilComponent implements OnInit {
   }
 
   showX(ev) {
-    let el = ev.originalTarget.lastChild;
-    el.hidden = false;
+    let elX = ev.originalTarget.children[1];
+    let elY = ev.originalTarget.children[2];
+    elX.hidden = false;
+    elY.hidden = false;
   }
 
   hideX(ev) {
-    let el = ev.originalTarget.lastChild;
-    el.hidden = true;
+    let elX = ev.originalTarget.children[1];
+    let elY = ev.originalTarget.children[2];
+    elX.hidden = true;
+    elY.hidden = true;
   }
 
   goToDecoupe(){
@@ -174,6 +179,17 @@ export class AccueilComponent implements OnInit {
     console.log("VALIDATION");
     console.log(d);
     this.router.navigate(['/validation',{'id':JSON.stringify(d)}]);
+  }
+
+  addDoc(p){
+    console.log("addDoc");
+    console.log(p);
+
+    let config = new MdDialogConfig();
+    const dialogRef = this.dialog.open(AddDocComponent, {'id':JSON.stringify(p)});
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
 }

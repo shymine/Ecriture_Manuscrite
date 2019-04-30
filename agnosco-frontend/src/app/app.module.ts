@@ -15,6 +15,9 @@ import { DecoupeComponent } from './decoupe/decoupe.component';
 import { AnnotationComponent } from './annotation/annotation.component';
 import { ValidationComponent } from './validation/validation.component';
 import { MydialogComponent } from './mydialog/mydialog.component';
+import { AddDocComponent } from './add-doc/add-doc.component';
+import { SuppressionDialogComponent } from './suppression-dialog/suppression-dialog.component';
+import {MdDialogModule} from 'md-dialog/dialog';
 
 
 
@@ -25,7 +28,9 @@ import { MydialogComponent } from './mydialog/mydialog.component';
     DecoupeComponent,
     AnnotationComponent,
     ValidationComponent,
-    MydialogComponent
+    MydialogComponent,
+    AddDocComponent,
+    SuppressionDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,8 @@ import { MydialogComponent } from './mydialog/mydialog.component';
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MdDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

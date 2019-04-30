@@ -1,5 +1,5 @@
 <div mat-dialog-content>
-  <span style="font-size: 130%;font-weight: bold;">Comment souhaitez-vous nommer le projet?</span><input [(ngModel)]="popo" matInput placeholder="Nom du projet" (keyup.enter)="onValidation()" cdkFocusInitial>
+  <span style="font-size: 130%;font-weight: bold;">Comment souhaitez-vous nommer le projet?</span><input [(ngModel)]="pName" matInput placeholder="Nom du projet" (keyup.enter)="onValidation()" cdkFocusInitial>
 </div>
 
 <br>
@@ -9,15 +9,6 @@
   <select [(ngModel)]="select" class="selectOutils #selection">
     <option  *ngFor="let r of reconnaisseurs">{{r}}</option>
   </select>
-</div>
-
-<br>
-
-<div>
-  <p>Documents</p>
-  <input type="file" (change)="encodeImageFile($event)"/>
-  <br>
-  <button class="plusB">+</button>
 </div>
 
 <div mat-dialog-actions>

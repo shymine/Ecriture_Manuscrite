@@ -1,0 +1,30 @@
+<div>
+  <h1>Ajout d'un document</h1>
+  <br>
+  <div mat-dialog-content>
+    <span>Comment souhaitez-vous nommer le projet?</span>
+    <input [(ngModel)]="dName" matInput placeholder="Nom du Document" (keyup.enter)="onValidation()" cdkFocusInitial>
+  </div>
+</div>
+
+  <br>
+
+<div style="font-size: 80%">
+  <p><b>Pour chaque page, suivre la disposition suivante :</b> a) fichier image b) fichier vérité terrain</p>
+  <br>
+  <div *ngFor="let p of pages ; let i = index">
+    <span>page {{i}} : </span>
+    <span>a)</span>
+    <input type="file" (change)="encodeImageFile([$event,i])"/>
+    <span>b)</span>
+    <input type="file" (change)="encodeDataFile([$event,i])"/><button class="button1ListX ">x</button>
+    <br><br>
+  </div>
+  <br>
+  <button class="plusB" (click)="plusPage()">+ 1 page</button>
+</div>
+
+<div mat-dialog-actions>
+  <button class="buttonA" (click)="onNoClick()" mat-button>Annuler</button>
+  <button class="buttonV" mat-button (click)="onValidation()">Valider</button>
+</div>

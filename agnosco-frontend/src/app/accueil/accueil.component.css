@@ -120,6 +120,28 @@ GREEN #66FF9C RVB 102 255 156
     color: unset;
 }
 
+.button1ListX {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color:#ee9e43;
+}
+
+.button1ListX:hover {
+    color:#ee7524;
+}
+
+.button1ListP {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color:#8de65a
+}
+
+.button1ListP:hover {
+    color:#6abe39
+}
+
 .buttonList2 {
     background: none;
     border: none;

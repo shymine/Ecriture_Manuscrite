@@ -1,5 +1,7 @@
 .buttonA {
     background: none;
+    position: relative;
+    left: 80%;
     border: 1px solid #f8b2a1;
     margin-left: 5px;
     margin-right: 5px;
@@ -13,6 +15,8 @@
 }
 
 .buttonV {
+    left: 80%;
+    position: relative;
     background: none;
     border: 1px solid #9ada69;
     margin-left: 5px;
@@ -23,34 +27,6 @@
 
 .buttonV:hover {
     border: 1px solid #7ecc43;
-    color: #459707;
-}
-
-.moinsB {
-    font-weight: bold;
-    font-size: 130%;
-    background: none;
-    border: none;
-    margin-left: 5px;
-    margin-right: 5px;
-    color: #ffac97;
-}
-
-.moinsB:hover {
-    color: #f87656;
-}
-
-.plusB {
-    font-weight: bold;
-    font-size: 130%;
-    background: none;
-    border: none;
-    margin-left: 5px;
-    margin-right: 5px;
-    color: #92d361;
-}
-
-.plusB:hover {
     color: #459707;
 }
 
