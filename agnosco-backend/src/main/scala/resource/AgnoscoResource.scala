@@ -2,7 +2,7 @@ package resource
 
 
 import java.awt.image.BufferedImage
-import java.io.{ByteArrayInputStream, File, FileOutputStream, PrintWriter}
+import java.io.{ByteArrayInputStream, DataOutputStream, File, FileOutputStream, PrintWriter}
 import java.util.Base64
 
 import javax.imageio.ImageIO
@@ -66,10 +66,15 @@ class AgnoscoResource {
 			val res = j.getString("test")
 			val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(res)
 			val image: BufferedImage = ImageIO.read(new ByteArrayInputStream(imgByte))
-			val file = new File("image.png")
+			val file = new File("data/image.png")
 			ImageIO.write(image, "png", file)
 			/*val out = new FileOutputStream("image.tiff")
 			out.write(image)
+			out.close()
+			 */
+			/*val b = Base64.getDecoder.decode(res)
+			val out = new FileOutputStream(new File("image.tif"))
+			out.write(b)
 			out.close()*/
 		} catch {
 			case e => e.printStackTrace()
@@ -107,6 +112,13 @@ class AgnoscoResource {
 	  * @param id The id of the project
 	  * @param document The json of the document to add
 	  */
+	// TODO: si un tuple donné en param est [0,0] alors il faut l'éliminer, si seulement un des deux est 0 alors il faut planter, le format du json est:
+	/*
+		{
+			'name':'truc',
+			'pages':[[img64,vt],[img64,vt]]
+		}
+	 */
 	@POST
 	@Path("/addDocToProject/{project_id}")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
@@ -117,7 +129,7 @@ class AgnoscoResource {
 		val arr = json.getJSONArray("pages")
 		for(i <- 0 until arr.length()) {
 			val obj = arr.getJSONObject(i)
-			pageList += Page(-1, obj.getString("image64"), obj.getString("groundTruth"), List())
+			pageList += Page(-1, obj.getString("groundTruth"), List())
 		}
 		println(pageList, arr)
 		val doc = Document(-1, json.getString("name"), pageList, json.getBoolean("prepared"))
@@ -131,7 +143,7 @@ class AgnoscoResource {
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def addPageToDocument(@PathParam("doc_id") id: Long, page: String): Response = {
 		val json = new JSONObject(page)
-		val pag = Page(-1, json.getString("image64"),json.getString("groundTruth"),List())
+		val pag = Page(-1,json.getString("groundTruth"),List())
 		println(pag)
 		val res = controller.addPageToDocument(id, pag)
 		Response.status(200).entity(res.toJSON.toString()).build()
@@ -214,7 +226,6 @@ class AgnoscoResource {
 		println(jsonA.toString)
 		val json = new JSONObject()
 		json.put("examples", jsonA)
-		json.put("image64", page.image64)
 		Response.status(200).entity(json.toString).build()
 	}
 
@@ -329,7 +340,7 @@ class AgnoscoResource {
 
 	@POST
 	@Path("prepareExamplesOfPage/{page}")
-	def prepareExamplesOfPage(@PathParam("page") page: Int): Unit = {
+	def prepareExamplesOfPage(@PathParam("page") page: Long): Unit = {
 		//controller.prepareData(vtFile)
 	}
 

@@ -82,15 +82,15 @@ class DatabaseSqlite extends Database {
 		createTable(
 			"pages",
 			"idP INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
-				"image64 VARCHAR(500000), " +
-				"groundTruth VARCHAR(500000), " +
+				// "imagePath VARCHAR(500000), " +
+				"groundTruth VARCHAR(256), " +
 				"documentId INTEGER NOT NULL, " +
 				"FOREIGN KEY(documentId) REFERENCES documents(idD)")
 
 		createTable(
 			"examples",
 			"idE INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
-				"image64 VARCHAR(500000), " +
+				"imagePath VARCHAR(256), " +
 				"transcript VARCHAR(256), " +
 				"enabled BOOL, " +
 				"validated BOOL, " +
@@ -130,7 +130,8 @@ class DatabaseSqlite extends Database {
 			map.put(name, statement)
 
 			name = "addPage"
-			statement = conn.prepareStatement("INSERT INTO pages ( image64, groundTruth, documentId) VALUES (?,?,?)")
+			statement = conn.prepareStatement("INSERT INTO pages (groundTruth, documentId) VALUES (?,?)")
+				//conn.prepareStatement("INSERT INTO pages ( imagePath, groundTruth, documentId) VALUES (?,?,?)")
 			map.put(name, statement)
 
 			name = "deletePage"
@@ -142,7 +143,7 @@ class DatabaseSqlite extends Database {
 			map.put(name, statement)
 
 			name = "addExample"
-			statement = conn.prepareStatement("INSERT INTO examples ( image64, transcript, pageId, enabled, validated) VALUES (?,?,?,?,?)")
+			statement = conn.prepareStatement("INSERT INTO examples ( imagePath, transcript, pageId, enabled, validated) VALUES (?,?,?,?,?)")
 			map.put(name, statement)
 
 			name = "deleteExample"
@@ -166,7 +167,7 @@ class DatabaseSqlite extends Database {
 			map.put(name, statement)
 
 			name = "saveExampleEdition"
-			statement = conn.prepareStatement("UPDATE examples SET image64=?, transcript=?, enabled=?, validated=? WHERE idE=?")
+			statement = conn.prepareStatement("UPDATE examples SET imagePath=?, transcript=?, enabled=?, validated=? WHERE idE=?")
 			map.put(name, statement)
 
 			name = "documentPrepared"
@@ -290,21 +291,21 @@ class DatabaseSqlite extends Database {
 
 		if (!res.next) return None
 
-		val image64 = res.getString("image64")
+		// val imagePath = res.getString("imagePath")
 		val groundTruth = res.getString("groundTruth")
 		val idP = res.getLong("idP")
 
-		Some(Page(idP, image64, groundTruth, List()))
+		Some(Page(idP, /*imagePath,*/ groundTruth, List()))
 	}
 
 	override def addPage(page: Page, documentId: Long): Page = {
 		val stmt = statements("addPage")
 		//stmt.setLong(1, DatabaseSqlite.incrementID)
-		stmt.setString(1, page.image64)
-		stmt.setString(2, page.groundTruth)
-		stmt.setLong(3, documentId)
+		// stmt.setString(1, page.imagePath)
+		stmt.setString(1, page.groundTruth)
+		stmt.setLong(2, documentId)
 		stmt.executeUpdate()
-		val res = getPagesOfDocument(documentId).find(p => p.image64 == page.image64).get
+		val res = getPagesOfDocument(documentId).find(p => p.groundTruth == page.groundTruth).get
 		res
 	}
 
@@ -321,7 +322,7 @@ class DatabaseSqlite extends Database {
 
 		if (!res.next) return None
 
-		val image64 = res.getString("image64")
+		val imagePath = res.getString("imagePath")
 		val transcript =
 			res.getString("transcript") match {
 				case "null" => None
@@ -331,19 +332,19 @@ class DatabaseSqlite extends Database {
 		val validated = res.getBoolean("validated")
 		val idE = res.getLong("idE")
 
-		Some(Example(idE, image64, transcript, enabled, validated))
+		Some(Example(idE, imagePath, transcript, enabled, validated))
 	}
 
 	override def addExample(example: Example, pageId: Long): Example = {
 		val stmt = statements("addExample")
 		//stmt.setLong(1, DatabaseSqlite.incrementID)
-		stmt.setString(1, example.image64)
+		stmt.setString(1, example.imagePath)
 		stmt.setString(2, example.transcript.orNull)
 		stmt.setLong(3, pageId)
 		stmt.setBoolean(4, example.enabled)
 		stmt.setBoolean(5, example.validated)
 		stmt.executeUpdate()
-		val res = getExamplesOfPage(pageId).find(e => e.image64 == example.image64).get
+		val res = getExamplesOfPage(pageId).find(e => e.imagePath == example.imagePath).get
 		res
 	}
 
@@ -390,10 +391,10 @@ class DatabaseSqlite extends Database {
 		val pages = new ArrayBuffer[Page]()
 
 		while (res.next) {
-			val image64 = res.getString("image64")
+			// val imagePath = res.getString("imagePath")
 			val groundTruth = res.getString("groundTruth")
 			val idP = res.getLong("idP")
-			pages += Page(idP, image64, groundTruth, List())
+			pages += Page(idP, /*imagePath,*/ groundTruth, List())
 		}
 
 		pages
@@ -406,7 +407,7 @@ class DatabaseSqlite extends Database {
 		val examples = new ArrayBuffer[Example]()
 
 		while (res.next) {
-			val image64 = res.getString("image64")
+			val imagePath = res.getString("imagePath")
 			val transcript =
 				res.getString("transcript") match {
 					case "null" => None
@@ -415,7 +416,7 @@ class DatabaseSqlite extends Database {
 			val enabled = res.getBoolean("enabled")
 			val validated = res.getBoolean("validated")
 			val idE = res.getLong("idE")
-			examples += Example(idE, image64, transcript, enabled, validated)
+			examples += Example(idE, imagePath, transcript, enabled, validated)
 		}
 
 		examples
@@ -424,7 +425,7 @@ class DatabaseSqlite extends Database {
 	override def saveExampleEdition(examples: Iterable[Example]): Unit = {
 		examples.foreach(example => {
 			val stmt = statements("saveExampleEdition")
-			stmt.setString(1, example.image64)
+			stmt.setString(1, example.imagePath)
 			stmt.setString(2, example.transcript.orNull)
 			stmt.setBoolean(3, example.enabled)
 			stmt.setBoolean(4, example.validated)
