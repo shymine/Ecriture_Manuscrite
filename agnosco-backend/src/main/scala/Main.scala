@@ -32,7 +32,7 @@ object Main {
 			List(pathToMain+"../../../../maurdor/AFGHJK.xml", pathToMain+"../../../../maurdor/AFGIJM.xml"))
 		println(examples)
 		*/
-		// launch
+//		launch
 	    val server = startServer()
 	    System.in.read()
 	    server.shutdownNow()
@@ -60,14 +60,14 @@ object Main {
 		documents += database.addDocument(Document(-1, "docu numero dos", List(), false), projects(0).id)
 		documents += database.addDocument(Document(-1, "Glouglou", List(), false), projects(1).id)
 
-		pages += database.addPage(Page(-1, "image1", "groundTruth1", List()), documents(0).id)
-		pages += database.addPage(Page(-1, "image2", "groundTruth2", List()), documents(0).id)
-		pages += database.addPage(Page(-1, "image3", "groundTruth3", List()), documents(0).id)
-		pages += database.addPage(Page(-1, "image4", "groundTruth4", List()), documents(1).id)
-		pages += database.addPage(Page(-1, "image5", "groundTruth5", List()), documents(1).id)
-		pages += database.addPage(Page(-1, "image6", "groundTruth6", List()), documents(2).id)
-		pages += database.addPage(Page(-1, "image7", "groundTruth7", List()), documents(2).id)
-		pages += database.addPage(Page(-1, "image8", "groundTruth8", List()), documents(2).id)
+		pages += database.addPage(Page(-1, "groundTruth1", List()), documents(0).id)
+		pages += database.addPage(Page(-1, "groundTruth2", List()), documents(0).id)
+		pages += database.addPage(Page(-1, "groundTruth3", List()), documents(0).id)
+		pages += database.addPage(Page(-1, "groundTruth4", List()), documents(1).id)
+		pages += database.addPage(Page(-1, "groundTruth5", List()), documents(1).id)
+		pages += database.addPage(Page(-1, "groundTruth6", List()), documents(2).id)
+		pages += database.addPage(Page(-1, "groundTruth7", List()), documents(2).id)
+		pages += database.addPage(Page(-1, "groundTruth8", List()), documents(2).id)
 
 		examples += database.addExample(Example(-1, "example1/imgPath", None, true, false), pages(0).id)
 		examples += database.addExample(Example(-1, "example2/imgPath", Some("pouark"), true, false), pages(0).id)
