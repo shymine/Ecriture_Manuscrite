@@ -1,8 +1,8 @@
 package model.preparation
 
-import model.common.Example
+import model.common.{Example, Page}
 
 trait Processing {
 
-	def prepareData(groundTruthFiles: Iterable[String]): Iterable[Example]
+	def prepareData(page: Page): Iterable[Example]
 }

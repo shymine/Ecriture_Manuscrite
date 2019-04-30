@@ -66,12 +66,12 @@ class LaiaRecogniser extends ConverterRecogniser{
 		val writer2 = new PrintWriter(new File("./model/transcriptTraining.txt"))
 		val writer3 = new PrintWriter(new File("./model/imageValidation.lst"))
 		val writer4 = new PrintWriter(new File("./model/transcriptValidation.txt"))
-		samples.foreach(sample => writer1.write(sample.image64))
+		samples.foreach(sample => writer1.write(sample.imagePath))
 		val regID: Regex = raw"(\w+)\.png".r
 		samples.foreach(sample => {
 			val inte: Regex.Match =
-				regID.findFirstMatchIn(sample.image64)
-					.getOrElse(throw new MatchError(sample.image64))
+				regID.findFirstMatchIn(sample.imagePath)
+					.getOrElse(throw new MatchError(sample.imagePath))
 			val imgId: String = inte.group(1)
 			println(imgId)
 			writer2.write(imgId) // verifier l'append

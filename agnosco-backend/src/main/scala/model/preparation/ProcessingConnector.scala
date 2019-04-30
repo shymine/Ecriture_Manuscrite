@@ -1,12 +1,12 @@
 package model.preparation
 
 import model.ImplFactory
-import model.common.Example
+import model.common.{Example, Page}
 
 class ProcessingConnector {
 
 	private var impl = ImplFactory.processingImpl
 
-	def prepareData(groundTruthFiles: Iterable[String]): Iterable[Example] =
-		impl.prepareData(groundTruthFiles)
+	def prepareData(page: Page): Iterable[Example] =
+		impl.prepareData(page)
 }

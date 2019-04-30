@@ -1,8 +1,11 @@
 package resource
 
 
+import java.awt.image.BufferedImage
+import java.io.{ByteArrayInputStream, DataOutputStream, File, FileOutputStream, PrintWriter}
 import java.util.Base64
 
+import javax.imageio.ImageIO
 import javax.inject.Singleton
 import javax.ws.rs._
 import javax.ws.rs.core.MediaType
@@ -57,10 +60,22 @@ class AgnoscoResource {
 	def test(json: String) = {
 		// println(json)
 		val j = new JSONObject(json)
-		println(j.getString("test"))
+		// println(j.getString("test"))
 
 		try {
-			val decoded = Base64.getDecoder.decode(j.getString("test"))
+			val res = j.getString("test")
+			val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(res)
+			val image: BufferedImage = ImageIO.read(new ByteArrayInputStream(imgByte))
+			val file = new File("data/image.png")
+			ImageIO.write(image, "png", file)
+			/*val out = new FileOutputStream("image.tiff")
+			out.write(image)
+			out.close()
+			 */
+			/*val b = Base64.getDecoder.decode(res)
+			val out = new FileOutputStream(new File("image.tif"))
+			out.write(b)
+			out.close()*/
 		} catch {
 			case e => e.printStackTrace()
 		}
@@ -80,17 +95,58 @@ class AgnoscoResource {
 	  * Creates a new project from its name and the given list of documents
 	  * The list of document is represented as a String of names such as "[ 'blabla','blibli' ]"
 	  * @param name The name of the project
-	  * @param list The list of the name of documents for the project
+	  * @param recogniser The type of the recogniser
 	  * @return
 	  */
 	@POST
-	@Path("/createNewProject/{project_id}/{list_docs}")
+	@Path("/createNewProject/{project_id}/{selected_reco}")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
 	@Produces(Array(MediaType.APPLICATION_JSON))
-	def createProject(@PathParam("project_id") name: String, @PathParam("list_docs") list: String): Response = {
-		val listTmp = list.split(",")
-		val project = controller.createProject(name, listTmp)
+	def createProject(@PathParam("project_id") name: String, @PathParam("selected_reco") recogniser: String): Response = {
+		val project = controller.createProject(name, recogniser)
 		Response.status(200).entity(project.toJSON.toString()).build()
+	}
+
+	/**
+	  * Add a document to the project with the given id
+	  * @param id The id of the project
+	  * @param document The json of the document to add
+	  */
+	// TODO: si un tuple donné en param est [0,0] alors il faut l'éliminer, si seulement un des deux est 0 alors il faut planter, le format du json est:
+	/*
+		{
+			'name':'truc',
+			'pages':[[img64,vt],[img64,vt]]
+		}
+	 */
+	@POST
+	@Path("/addDocToProject/{project_id}")
+	@Consumes(Array(MediaType.APPLICATION_JSON))
+	@Produces(Array(MediaType.APPLICATION_JSON))
+	def addDocToProject(@PathParam("project_id") id: Long, document: String): Response = {
+		val json = new JSONObject(document)
+		val pageList = new ArrayBuffer[Page]()
+		val arr = json.getJSONArray("pages")
+		for(i <- 0 until arr.length()) {
+			val obj = arr.getJSONObject(i)
+			pageList += Page(-1, obj.getString("groundTruth"), List())
+		}
+		println(pageList, arr)
+		val doc = Document(-1, json.getString("name"), pageList, json.getBoolean("prepared"))
+		val res = controller.addDocToProject(id, doc)
+		Response.status(200).entity(res.toJSON.toString()).build()
+	}
+
+	@POST
+	@Path("/addPageToDocument/{doc_id}")
+	@Consumes(Array(MediaType.APPLICATION_JSON))
+	@Produces(Array(MediaType.APPLICATION_JSON))
+	def addPageToDocument(@PathParam("doc_id") id: Long, page: String): Response = {
+		val json = new JSONObject(page)
+		val pag = Page(-1,json.getString("groundTruth"),List())
+		println(pag)
+		val res = controller.addPageToDocument(id, pag)
+		Response.status(200).entity(res.toJSON.toString()).build()
 	}
 
 	/**
@@ -159,14 +215,17 @@ class AgnoscoResource {
 	  * @return The picture of the selected page and the list of its examples
 	  */
 	@GET
-	@Path("pageData/{id}")
+	@Path("/pageData/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def getPageData(@PathParam("id") id: Long): Response = {
-		val json = new JSONArray()
+		val jsonA = new JSONArray()
 		println(id)
 		val examples = controller.getExamplesOfPage(id)
-		examples.foreach(it => json.put(it.toJSON))
-		println(json.toString)
+		val page = controller.getPage(id)
+		examples.foreach(it => jsonA.put(it.toJSON))
+		println(jsonA.toString)
+		val json = new JSONObject()
+		json.put("examples", jsonA)
 		Response.status(200).entity(json.toString).build()
 	}
 
@@ -200,7 +259,7 @@ class AgnoscoResource {
 	  * @return
 	  */Example
 	@PUT
-	@Path("disableExample/{id}")
+	@Path("/disableExample/{id}")
 	def disableExample(@PathParam("id") id: Long): Response = {
 		controller.disableExample(id)
 		println("c est bien disable")
@@ -213,7 +272,7 @@ class AgnoscoResource {
 	  * @return
 	  */
 	@PUT
-	@Path("enableExample/{id}")
+	@Path("/enableExample/{id}")
 	def enableExample(@PathParam("id") id: Long): Response = {
 		controller.enableExample(id)
 		println("c est bien enable")
@@ -225,7 +284,7 @@ class AgnoscoResource {
 	  * @return
 	  */
 	@POST
-	@Path("validateExamples")
+	@Path("/validateExamples")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
 	def validateExamples(samples: String): Response = {
 		val array = new JSONArray(samples)
@@ -267,21 +326,22 @@ class AgnoscoResource {
 //		//controller.recognizeAI(samples)
 //	}
 //
-//	/**
-//	  * Prepare the examples from the document given in parameter
-//	  * @param document The name of the document to prepare
-//	  * @return
-//	  */
-//	@POST
-//	@Path("prepareExamplesOfDocument/{document}")
-//	def prepareExamplesOfDocument(@PathParam("document") document: String) = {
-//		// controller.prepareData(vtFiles)
-//	}
-//
-//	@POST
-//	@Path("prepareExamplesOfPage/{page}")
-//	def prepareExamplesOfPage(@PathParam("page") page: Int): Unit = {
-//		//controller.prepareData(vtFile)
-//	}
+	/**
+	  * Prepare the examples from the document given in parameter
+	  * @param document The name of the document to prepare
+	  * @return
+	  */
+	@POST
+	@Path("prepareExamplesOfDocument/{document}")
+	def prepareExamplesOfDocument(@PathParam("document") document: String) = {
+		// controller.prepareData(vtFiles)
+
+	}
+
+	@POST
+	@Path("prepareExamplesOfPage/{page}")
+	def prepareExamplesOfPage(@PathParam("page") page: Long): Unit = {
+		//controller.prepareData(vtFile)
+	}
 
 }
