@@ -1,6 +1,6 @@
 package model.preparation.processing
 
-import model.common.Example
+import model.common.{Example, globalDataFolder}
 import model.preparation.input.piff.PiFF
 
 import scala.collection.mutable.ListBuffer
@@ -25,7 +25,7 @@ object BaseExampleMaker extends ExampleMaker {
           }
 
         // new image from the polygon
-        val imgPath = "/home/timothee/Documents/Workspace/Ecriture_Manuscrite/Ecriture_Manuscrite/maurdor/" + s"${page.src}"
+        val imgPath = s"$globalDataFolder/${page.src}"
         println("img path : " + imgPath)
         val newExampleImgPath = ImageProcessing.createThumbnail(imgPath, imageId, element.polygon)
 
