@@ -32,7 +32,7 @@ object Main {
 			List(pathToMain+"../../../../maurdor/AFGHJK.xml", pathToMain+"../../../../maurdor/AFGIJM.xml"))
 		println(examples)
 		*/
-		launch
+		// launch
 	    val server = startServer()
 	    System.in.read()
 	    server.shutdownNow()

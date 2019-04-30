@@ -36,7 +36,12 @@ export class AccueilComponent implements OnInit {
     const reader = new FileReader();
     const http = this.http;
     reader.onloadend = function() {
-      http.post(`agnosco/base/test`, {'test':reader.result}).subscribe(data => console.log(data,"ok"));
+      let res: string = reader.result as string;
+      let encoded = res.replace(/^data:(.*;base64,)?/,'');
+      if((encoded.length%4)>0) {
+        encoded += '='.repeat(4-(encoded.length%4));
+      }
+      http.post(`agnosco/base/test`, {'test':encoded}).subscribe(data => console.log(data,"ok"));
     }
     reader.readAsDataURL(file);
     console.log("j'encode");

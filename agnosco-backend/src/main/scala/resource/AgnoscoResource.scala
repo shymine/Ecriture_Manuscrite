@@ -1,8 +1,11 @@
 package resource
 
 
+import java.awt.image.BufferedImage
+import java.io.{ByteArrayInputStream, File, FileOutputStream, PrintWriter}
 import java.util.Base64
 
+import javax.imageio.ImageIO
 import javax.inject.Singleton
 import javax.ws.rs._
 import javax.ws.rs.core.MediaType
@@ -57,10 +60,17 @@ class AgnoscoResource {
 	def test(json: String) = {
 		// println(json)
 		val j = new JSONObject(json)
-		println(j.getString("test"))
+		// println(j.getString("test"))
 
 		try {
-			val decoded = Base64.getDecoder.decode(j.getString("test"))
+			val res = j.getString("test")
+			val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(res)
+			val image: BufferedImage = ImageIO.read(new ByteArrayInputStream(imgByte))
+			val file = new File("image.png")
+			ImageIO.write(image, "png", file)
+			/*val out = new FileOutputStream("image.tiff")
+			out.write(image)
+			out.close()*/
 		} catch {
 			case e => e.printStackTrace()
 		}
