@@ -2,7 +2,7 @@ package resource
 
 
 import java.awt.image.BufferedImage
-import java.io.{ByteArrayInputStream, File, FileOutputStream, PrintWriter}
+import java.io.{ByteArrayInputStream, DataOutputStream, File, FileOutputStream, PrintWriter}
 import java.util.Base64
 
 import javax.imageio.ImageIO
@@ -66,10 +66,15 @@ class AgnoscoResource {
 			val res = j.getString("test")
 			val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(res)
 			val image: BufferedImage = ImageIO.read(new ByteArrayInputStream(imgByte))
-			val file = new File("image.png")
-			ImageIO.write(image, "png", file)
+			val file = new File("image.tiff")
+			ImageIO.write(image, "TIFF", file)
 			/*val out = new FileOutputStream("image.tiff")
 			out.write(image)
+			out.close()
+			 */
+			/*val b = Base64.getDecoder.decode(res)
+			val out = new FileOutputStream(new File("image.tif"))
+			out.write(b)
 			out.close()*/
 		} catch {
 			case e => e.printStackTrace()
@@ -329,7 +334,7 @@ class AgnoscoResource {
 
 	@POST
 	@Path("prepareExamplesOfPage/{page}")
-	def prepareExamplesOfPage(@PathParam("page") page: Int): Unit = {
+	def prepareExamplesOfPage(@PathParam("page") page: Long): Unit = {
 		//controller.prepareData(vtFile)
 	}
 

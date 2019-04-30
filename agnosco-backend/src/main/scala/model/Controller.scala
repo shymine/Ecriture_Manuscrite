@@ -144,8 +144,19 @@ class Controller {
 
 	/* Data Processing */
 
+	/**
+	  * Prepare the examples from the vt and images of pages
+	  * @param vtFiles
+	  * @param images64
+	  * // @param pageId
+	  * @return
+	  */
 	def prepareData(vtFiles: Iterable[String], images64: Iterable[String]): Iterable[Example] = {
-		processingConnector.prepareData(vtFiles, images64)
+		val examples = processingConnector.prepareData(vtFiles, images64)
+		databaseConnector.connect
+		//examples.foreach(e => databaseConnector.addExample())
+		databaseConnector.disconnect
+		List()
 	}
 
 	/* AI Interactions */
