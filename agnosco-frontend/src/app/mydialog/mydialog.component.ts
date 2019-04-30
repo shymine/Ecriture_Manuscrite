@@ -12,12 +12,15 @@ export class MydialogComponent implements OnInit {
 
   public select;
   popo : string;
+  fileNb;
+  public files = []
 
   public reconnaisseurs = [];
 
 
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<MydialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
+      this.fileNb = 0;
     
   }
 
@@ -50,6 +53,24 @@ export class MydialogComponent implements OnInit {
     console.log(this.select);
     let project=[this.popo, this.select];
     this.dialogRef.close(project);
+  }
+
+  encodeImageFile(event) {
+    const file = event.target.files[0];
+    console.log(file)
+    const reader = new FileReader();
+    const http = this.http;
+    const files = this.files;
+    reader.onloadend = function() {
+      let res: string = reader.result as string;
+      let encoded = res.replace(/^data:(.*;base64;)?/,'');
+      if((encoded.length%4)>0) {
+        encoded += '='.repeat(4-(encoded.length%4));
+      }
+      files.push(encoded); 
+    }
+    reader.readAsDataURL(file);
+    console.log("j'encode");
   }
 
 }

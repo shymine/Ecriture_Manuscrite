@@ -30,18 +30,6 @@ export class AccueilComponent implements OnInit {
 
   }
 
-  encodeImageFile(event) {
-    const file = event.target.files[0];
-    console.log(file)
-    const reader = new FileReader();
-    const http = this.http;
-    reader.onloadend = function() {
-      http.post(`agnosco/base/test`, {'test':reader.result}).subscribe(data => console.log(data,"ok"));
-    }
-    reader.readAsDataURL(file);
-    console.log("j'encode");
-  }
-
   getAllProjects() {
 
     /*
