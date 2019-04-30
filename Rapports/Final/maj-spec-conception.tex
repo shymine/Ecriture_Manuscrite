@@ -1,7 +1,7 @@
 \chapter{Mise à jour des rapports de spécification et conception}
 
 \paragraph{}
-Nous avons déterminé les spécifications en novembre et la conception en février. Au fur et à mesure de l'évolution du projet pendant le second semestre, nous y avons apporté des mises à jour que nous allons détailler ci-dessous. Nous avons repris la liste des spécifications du rapport de conception. Les lignes en bleu sont les règles que nous avons rajoutées et les lignes en rouge sont celles que nous avons dû écarter par manque de temps.
+Nous avons déterminé les spécifications en novembre et la conception en février. Au fur et à mesure de l'évolution du projet pendant le second semestre, nous y avons apporté des mises à jour que nous allons détailler ci-dessous. Nous avons repris la liste des spécifications du rapport de conception, les lignes en bleu sont les règles que nous avons rajoutées et les lignes en rouge sont celles que nous avons dû écarter par manque de temps.
 
 %\rowcolor{red}
 \begin{center}
@@ -28,7 +28,7 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         PR\_RE\_2 & Associer la vérité terrain à une transcription \\
         \hline
-        PR\_RE\_3 & Permettre de générer une vérité terrain si besoin, grâce à un reconnaisseur \\
+        \rowcolor{red}PR\_RE\_3 & Permettre de générer une vérité terrain si besoin, grâce à un reconnaisseur \\
         \hline
     \end{tabular}
 
@@ -66,9 +66,9 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         IR\_AP & Fournir les données au reconnaisseur \\
         \hline
-        IR\_EV & Pouvoir lancer une évaluation du reconnaisseur  \\
+        \rowcolor{red}IR\_EV & Pouvoir lancer une évaluation du reconnaisseur  \\
         \hline
-        IR\_TR & Pouvoir lancer une transcription d’un document par le reconnaisseur   \\
+        \rowcolor{red}IR\_TR & Pouvoir lancer une transcription d’un document par le reconnaisseur   \\
         \hline
     \end{tabular}
 
@@ -99,6 +99,8 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         PEA\_GEN\_10 & Basculer vers la page d’édition des annotations \\
         \hline
         PEA\_GEN\_11 & Basculer vers la page de validation des transcriptions \\
+        \hline
+        \rowcolor{blue}PEA\_GEN\_12 & Supprimer un projet ou un document d'un projet \\
         \hline
         \rowcolor{red}PDEC\_OD\_1 & Créer une nouvelle zone à l’aide d’un rectangle (outil "nouvelle sélection") \\
         \hline
@@ -136,7 +138,7 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         PEMA\_3 & Proposer un raccourci clavier permettant de basculer vers la prochaine imagette sans vérité-terrain \\
         \hline
-        PEMA\_4 & Posséder un bouton intitulé “modifier les zones du manuscrit” \\
+        \rowcolor{red}PEMA\_4 & Posséder un bouton intitulé “modifier les zones du manuscrit” \\
         \hline
         PEMA\_5 & Afficher la liste des imagettes du document découpé \\
         \hline
@@ -168,7 +170,7 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         PVAL\_4 & Pouvoir modifier une annotation fausse en cliquant dessus pour y positionner son curseur et en effectuant ses modifications manuellement \\
         \hline
-        PVAL\_5 & Indique si les transcriptions ont été fournies manuellement par un humain ou si elles proviennent d’un reconnaisseur \\
+        PVAL\_5 & Indiquer si les transcriptions ont été fournies manuellement par un humain ou si elles proviennent d’un reconnaisseur \\
         \hline
         PVAL\_6 & Faire figurer une fenêtre montrant la page entière découpée en zones avec la zone courante dans une couleur différente \\
         \hline
