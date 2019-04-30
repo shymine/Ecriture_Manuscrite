@@ -1,25 +1,16 @@
 package model.preparation
-import model.common.Example
+import model.common.{Example, Page}
 import model.preparation.input.PiFFReader
 import model.preparation.processing.BaseExampleMaker
 
-import scala.collection.mutable.ListBuffer
-
 class ProcessingImpl extends Processing {
-	override def prepareData(groundTruthFiles: Iterable[String], images64: Iterable[String]): Iterable[Example] = {
-		val examples = new ListBuffer[Example]
-
+	override def prepareData(page: Page): Iterable[Example] = {
 		// ground truth to PiFF
-		val piffs =
-			groundTruthFiles
-				.map(filename => PiFFReader.fromFile(filename))
-				.map(o => o.get)
-
-		piffs.foreach(piff => {
-			// PiFF to examples
-			examples ++= BaseExampleMaker.makeExamples(piff)
-		})
-
-		examples.toList
+		val piffOpt = PiFFReader.fromFile(page.groundTruth)
+		// PiFF to examples
+		piffOpt match {
+			case Some(piff) => BaseExampleMaker.makeExamples(piff)
+			case _ => List.empty
+		}
 	}
 }

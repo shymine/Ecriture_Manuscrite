@@ -144,8 +144,8 @@ class Controller {
 
 	/* Data Processing */
 
-	def prepareData(vtFiles: Iterable[String], images64: Iterable[String]): Iterable[Example] = {
-		processingConnector.prepareData(vtFiles, images64)
+	def prepareData(page: Page): Iterable[Example] = {
+		processingConnector.prepareData(page)
 	}
 
 	/* AI Interactions */
