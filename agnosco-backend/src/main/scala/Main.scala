@@ -1,3 +1,4 @@
+import java.io.{File, FileNotFoundException}
 import java.net.URI
 import java.util.logging.Logger
 
@@ -8,6 +9,7 @@ import org.glassfish.jersey.server.ResourceConfig
 import resource.AgnoscoResource
 
 import scala.collection.mutable.ArrayBuffer
+import model.common.{globalDataFolder, pythonImageCropperExecutablePath}
 
 object Main {
 	// Base URI the Grizzly HTTP server will listen on
@@ -20,6 +22,17 @@ object Main {
 	    val rc = new ResourceConfig()
 		rc.registerClasses(classOf[AgnoscoResource])
 		GrizzlyHttpServerFactory.createHttpServer(URI.create(HTTP_ADDRESS), rc)
+	}
+
+	def environmentSetup() : Unit = {
+		if (!new File(pythonImageCropperExecutablePath).exists()) {
+			throw new FileNotFoundException(s"missing file : $pythonImageCropperExecutablePath")
+		}
+
+		val dataFolder = new File(globalDataFolder)
+		if (!dataFolder.exists() || !dataFolder.isDirectory) {
+			throw new FileNotFoundException(s"missing directory : $globalDataFolder")
+		}
 	}
 
 	def main(args: Array[String]) : Unit = {
