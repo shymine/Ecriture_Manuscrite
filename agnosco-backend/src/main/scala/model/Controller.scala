@@ -30,12 +30,31 @@ class Controller {
 		projects
 	}
 
-	//TODO think of how it works
-	def createProject(name: String, list: Iterable[String]): Project = {
-		val documents = ArrayBuffer[Document]()
-		list.foreach(doc => documents += Document(-1, doc, List(), false))
-		val project = Project(-1, name, RecogniserType.None, documents)
-		project
+	def createProject(name: String, recogniser: String): Project = {
+		val recoType = RecogniserType.withName(recogniser)
+		println(recoType)
+		val project = Project(-1, name, recoType, List())
+		databaseConnector.connect
+		databaseConnector.addProject(project)
+		val res = databaseConnector.getAllProject.find(it => it.name == name).get
+		databaseConnector.disconnect
+		res
+	}
+
+	def addDocToProject(project_id : Long, document: Document): Document = {
+		databaseConnector.connect
+		databaseConnector.addDocument(document, project_id)
+		val res = databaseConnector.getDocumentsOfProject(project_id).find(it => it.name == document.name).get
+		databaseConnector.disconnect
+		res
+	}
+
+	def addPageToDocument(id: Long, page: Page): Page = {
+		databaseConnector.connect
+		databaseConnector.addPage(page, id)
+		val res = databaseConnector.getPagesOfDocument(id).find(it => it.groundTruth==page.groundTruth).get
+		databaseConnector.disconnect
+		res
 	}
 
 	def deleteProject(id: Long): Unit = {
@@ -84,17 +103,6 @@ class Controller {
 		databaseConnector.disconnect
 	}
 
-	//TODO WTF is this
-	/*
-	def deleteTranscription(example: Example): Unit = {
-		databaseConnector.connect
-
-
-
-		databaseConnector.disconnect
-	}
-	*/
-
 	def disableExample(id: Long): Unit = {
 		databaseConnector.connect
 		val example = databaseConnector.getExample(id)
@@ -120,6 +128,13 @@ class Controller {
 		pages
 	}
 
+	def getPage(id: Long): Page = {
+		databaseConnector.connect
+		val page = databaseConnector.getPage(id).get
+		databaseConnector.disconnect
+		page
+	}
+
 	def getExamplesOfPage(id: Long): Iterable[Example] = {
 		databaseConnector.connect
 		val examples = databaseConnector.getExamplesOfPage(id)
@@ -129,11 +144,9 @@ class Controller {
 
 	/* Data Processing */
 
-	def prepareData(vtFiles: Iterable[String]): Iterable[Example] = {
-		processingConnector.prepareData(vtFiles)
+	def prepareData(vtFiles: Iterable[String], images64: Iterable[String]): Iterable[Example] = {
+		processingConnector.prepareData(vtFiles, images64)
 	}
-
-	def addGroundTruth(page: Page, groundTruth: JSONObject): Nothing = ???
 
 	/* AI Interactions */
 

@@ -6,7 +6,7 @@ import model.preparation.processing.BaseExampleMaker
 import scala.collection.mutable.ListBuffer
 
 class ProcessingImpl extends Processing {
-	override def prepareData(groundTruthFiles: Iterable[String]): Iterable[Example] = {
+	override def prepareData(groundTruthFiles: Iterable[String], images64: Iterable[String]): Iterable[Example] = {
 		val examples = new ListBuffer[Example]
 
 		// ground truth to PiFF
