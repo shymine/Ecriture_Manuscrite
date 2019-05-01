@@ -19,13 +19,14 @@ export class AddDocComponent implements OnInit {
 
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<AddDocComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-    
+    console.log("data");
+    console.log(data.id);
+
+    this.id = data.id;
+
   }
 
   ngOnInit() {
-
-    console.log("id");
-    console.log(this.id);
   }
 
   encodeImageFile(param) {
@@ -121,22 +122,24 @@ export class AddDocComponent implements OnInit {
   }
 
   onValidation(): void {
-    console.log(this.dName);
-    console.log(this.dName);
+
+    console.log("validation");
+
     const json = {
       'name': this.dName,
       'pages': this.pages
     }
 
+    console.log(json);
+
     if(this.id>=0){
       this.http.post(`agnosco/base/addDocToProject/${this.id}`,json,{}).subscribe(data => {
-
+        console.log("envoye");
       });
     }else{
       console.log("FAIL ID");
     }
-    
-
+  
 
     this.dialogRef.close(1);
   }
