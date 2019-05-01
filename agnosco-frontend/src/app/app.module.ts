@@ -17,7 +17,6 @@ import { ValidationComponent } from './validation/validation.component';
 import { MydialogComponent } from './mydialog/mydialog.component';
 import { AddDocComponent } from './add-doc/add-doc.component';
 import { SuppressionDialogComponent } from './suppression-dialog/suppression-dialog.component';
-import {MdDialogModule} from 'md-dialog/dialog';
 
 
 
@@ -40,8 +39,7 @@ import {MdDialogModule} from 'md-dialog/dialog';
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    MdDialogModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -121,7 +121,10 @@ export class AccueilComponent implements OnInit {
         this.projects.push([result[0],result[1],[]]);
         console.log("reconaisseur:");
         console.log(result[1]);
-        console.log("*** POST agnosco/base/createNewProject/{"+result[0]+"}/{[]} ***");
+        console.log("*** POST agnosco/base/createNewProject/{"+result[0]+"}/{"+result[1]+"} ***");
+        this.http.post(`agnosco/base/createNewProject/${result[0]}/${result[1]}`,{},{}).subscribe(data => {
+          console.log("created");
+        });
         this.getAllProjects();
       }else{
         console.log("no name");
@@ -185,7 +188,6 @@ export class AccueilComponent implements OnInit {
     console.log("addDoc");
     console.log(p);
 
-    let config = new MdDialogConfig();
     const dialogRef = this.dialog.open(AddDocComponent, {'id':JSON.stringify(p)});
 
     dialogRef.afterClosed().subscribe(result => {

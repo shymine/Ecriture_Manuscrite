@@ -103,8 +103,13 @@ class AgnoscoResource {
 	@Consumes(Array(MediaType.APPLICATION_JSON))
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def createProject(@PathParam("project_id") name: String, @PathParam("selected_reco") recogniser: String): Response = {
-		val project = controller.createProject(name, recogniser)
-		Response.status(200).entity(project.toJSON.toString()).build()
+		try {
+			val project = controller.createProject(name, recogniser)
+			Response.status(200).entity(project.toJSON.toString()).build()
+		}catch {
+			case e => e.printStackTrace()
+				Response.status(500).build()
+		}
 	}
 
 	/**
