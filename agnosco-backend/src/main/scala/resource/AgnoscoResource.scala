@@ -46,6 +46,7 @@ class AgnoscoResource {
 			})
 			val json = new JSONArray()
 			projects.foreach(project => json.put(project.toJSON))
+			println(json)
 			Response.status(200).entity(json.toString).build()
 		} catch {
 			case e => e.printStackTrace()
@@ -102,7 +103,7 @@ class AgnoscoResource {
 	@Path("/createNewProject/{project_name}/{selected_reco}")
 	// @Consumes(Array(MediaType.APPLICATION_JSON))
 	@Produces(Array(MediaType.APPLICATION_JSON))
-	def createProject(@PathParam("project_id") name: String, @PathParam("selected_reco") recogniser: String): Response = {
+	def createProject(@PathParam("project_name") name: String, @PathParam("selected_reco") recogniser: String): Response = {
 		try {
 			val project = controller.createProject(name, recogniser)
 			Response.status(200).entity(project.toJSON.toString()).build()

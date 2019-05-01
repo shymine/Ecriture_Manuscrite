@@ -5,7 +5,7 @@ import model.common.{Document, Example, Page, Project}
 
 class DatabaseConnector {
 
-	var impl: Database = new DatabaseSqlite
+	var impl: Database = new DatabaseSqlite()
 
 	def connect: Boolean = impl.connect
 	def disconnect: Boolean = impl.disconnect

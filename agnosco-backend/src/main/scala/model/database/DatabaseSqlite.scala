@@ -68,7 +68,7 @@ class DatabaseSqlite extends Database {
 		createTable(
 			"projects",
 			"id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
-				"name VARCHAR(64), " +
+			"name VARCHAR(64), " +
 				"recogniser VARCHAR(64)")
 
 		createTable(

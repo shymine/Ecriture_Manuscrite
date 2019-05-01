@@ -1,7 +1,7 @@
 package model
 
 import model.common._
-import model.database.DatabaseSqlite
+import model.database.{DatabaseConnector, DatabaseSqlite}
 import org.scalatest.FlatSpec
 
 import scala.collection.mutable.ArrayBuffer
@@ -332,15 +332,19 @@ class DatabaseSqliteTest extends FlatSpec {
 
 	*/
 	"test" should "pass" in {
-		val database = new DatabaseSqlite()
+		//val database = new DatabaseSqlite()
+		val database = new DatabaseConnector()
 		database.connect
 
 		val project1 = Project(-1, "coucou", RecogniserType.None, List())
 		val project2 = Project(-1, "au revoir", RecogniserType.None, List())
 		val project3 = Project(-1, "bijour", RecogniserType.None, List())
-		database.addProject(project1)
-		database.addProject(project2)
-		database.addProject(project3)
+		var p = database.addProject(project1)
+		println(p)
+		p = database.addProject(project2)
+		println(p)
+		p = database.addProject(project3)
+		println(p)
 
 		val projectsData: Iterable[Project] = database.getAllProject
 
@@ -351,10 +355,10 @@ class DatabaseSqliteTest extends FlatSpec {
 		database.addDocument(document2, idPr1)
 
 		val docuOfProj1 = database.getDocumentsOfProject(idPr1)
-
+		val projects = database.getAllProject
 		database.disconnect
 
-		println(projectsData)
+		println(projects)
 		println(docuOfProj1)
 	}
 }

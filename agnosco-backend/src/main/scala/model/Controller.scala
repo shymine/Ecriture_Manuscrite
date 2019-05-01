@@ -32,8 +32,9 @@ class Controller {
 
 	def createProject(name: String, recogniser: String): Project = {
 		val recoType = RecogniserType.withName(recogniser)
-		println(recoType)
+		println(name)
 		val project = Project(-1, name, recoType, List())
+		println(project)
 		databaseConnector.connect
 		databaseConnector.addProject(project)
 		val res = databaseConnector.getAllProject.find(it => it.name == name).get
