@@ -99,8 +99,8 @@ class AgnoscoResource {
 	  * @return
 	  */
 	@POST
-	@Path("/createNewProject/{project_id}/{selected_reco}")
-	@Consumes(Array(MediaType.APPLICATION_JSON))
+	@Path("/createNewProject/{project_name}/{selected_reco}")
+	// @Consumes(Array(MediaType.APPLICATION_JSON))
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def createProject(@PathParam("project_id") name: String, @PathParam("selected_reco") recogniser: String): Response = {
 		try {

@@ -61,7 +61,7 @@ object Main {
 		val documents = new ArrayBuffer[Document]()
 		val pages = new ArrayBuffer[Page]()
 		val examples = new ArrayBuffer[Example]()
-
+		
 		database.connect
 
 		projects += database.addProject(Project(-1, "super projet", RecogniserType.Laia, List()))
