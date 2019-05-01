@@ -3,7 +3,7 @@
     font-weight: bold;
     font-size: 120%;
     background: none;
-    border: none;
+    border: 1px dotted #a9e67b;
     margin-left: 4%;
     color: #92d361;
 }
@@ -30,7 +30,7 @@ span{
 .buttonA {
     background: none;
     position: relative;
-    left: 70%;
+    left: 75%;
     border: 1px solid #f8b2a1;
     margin-left: 5px;
     margin-right: 5px;
@@ -44,7 +44,7 @@ span{
 }
 
 .buttonV {
-    left: 70%;
+    left: 75%;
     position: relative;
     background: none;
     border: 1px solid #9ada69;

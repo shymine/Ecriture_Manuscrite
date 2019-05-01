@@ -187,8 +187,10 @@ export class AccueilComponent implements OnInit {
   addDoc(p){
     console.log("addDoc");
     console.log(p);
-
-    const dialogRef = this.dialog.open(AddDocComponent, {'id':JSON.stringify(p)});
+    
+    const dialogRef = this.dialog.open(AddDocComponent, {
+      data: {'id': p[1], "pname": p[0]}
+    });
 
     dialogRef.afterClosed().subscribe(result => {
     });

@@ -10,7 +10,7 @@ import { projection } from '@angular/core/src/render3';
 })
 export class MydialogComponent implements OnInit {
 
-  public select;
+  public select = "None";
   pName : string;
 
   public reconnaisseurs = [];
@@ -46,6 +46,7 @@ export class MydialogComponent implements OnInit {
   }
 
   onValidation(): void {
+    console.log("Validation");
     console.log(this.pName);
     console.log(this.select);
     let project=[this.pName, this.select];
