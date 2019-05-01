@@ -12,6 +12,8 @@ import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 import model.Controller
 import model.common._
+import model.preparation.input.PiFFReader
+import model.preparation.input.piff.{PiFF, PiFFPage}
 import org.json.{JSONArray, JSONObject}
 
 import scala.collection.mutable
@@ -122,7 +124,8 @@ class AgnoscoResource {
 	/*
 		{
 			'name':'truc',
-			'pages':[[img64,vt],[img64,vt]]
+			// 'pages':[[img64,vt],[img64,vt]]
+			'pages':[{name:'truc',image64:'ezrgrgz',vtText:'eofigzpieguh'},..]
 		}
 	 */
 	@POST
@@ -130,17 +133,55 @@ class AgnoscoResource {
 	@Consumes(Array(MediaType.APPLICATION_JSON))
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def addDocToProject(@PathParam("project_id") id: Long, document: String): Response = {
-		val json = new JSONObject(document)
-		val pageList = new ArrayBuffer[Page]()
-		val arr = json.getJSONArray("pages")
-		for(i <- 0 until arr.length()) {
-			val obj = arr.getJSONObject(i)
-			pageList += Page(-1, obj.getString("groundTruth"), List())
+		try {
+			val json = new JSONObject(document)
+			val arr = json.getJSONArray("pages")
+			val pageList = new ArrayBuffer[Page]()
+			/*for(i <- 0 until arr.length()) {
+			val obj = arr.getJSONArray(i)
+			pageList += Page(-1, , List())
+		}*/
+			for (i <- 0 until arr.length()) {
+				val obj = arr.getJSONObject(i)
+				println(obj)
+				// écriture de l'image
+				val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(obj.getString("image64"))
+				val image = ImageIO.read(new ByteArrayInputStream(imgByte))
+				val name = getFileName(obj.getString("name"))
+				val file = new File(globalDataFolder + "/" + name + ".png")
+				ImageIO.write(image, "png", file)
+				// écriture de la vt
+				val vt = PiFFReader.fromString(obj.getString("vtText"))
+				if (vt.isDefined) {
+					val piff = vt.get
+					val newPages = piff.pages.map(it => new PiFFPage(replaceImgFormat(it.src), it.width, it.height, it.elements))
+					val newPiff = new PiFF(piff.date, newPages)
+					val pw = new PrintWriter(new File(globalDataFolder + "/" + name + ".piff"))
+					pw.write(newPiff.toJSON.toString())
+					pw.close()
+					pageList += Page(-1, globalDataFolder + "/" + name + ".piff", List())
+				} else {
+					return Response.status(200).entity("{'error':'unhandled file format'}").build()
+				}
+			}
+			println(arr, pageList)
+			val doc = Document(-1, json.getString("name"), pageList, false)
+			val res = controller.addDocToProject(id, doc)
+			Response.status(200).entity(res.toJSON.toString()).build()
+		}catch {
+			case e => e.printStackTrace()
+				Response.status(500).build()
 		}
-		println(pageList, arr)
-		val doc = Document(-1, json.getString("name"), pageList, json.getBoolean("prepared"))
-		val res = controller.addDocToProject(id, doc)
-		Response.status(200).entity(res.toJSON.toString()).build()
+	}
+
+	def getFileName(str: String): String = {
+		val regexp = "[.][a-zA-Z]+".r
+		regexp.replaceAllIn(str,"")
+	}
+
+	def replaceImgFormat(str: String): String = {
+		val regexp = "[.][a-zA-Z]+".r
+		regexp.replaceAllIn(str,".png")
 	}
 
 	@POST
