@@ -122,7 +122,8 @@ class AgnoscoResource {
 	/*
 		{
 			'name':'truc',
-			'pages':[[img64,vt],[img64,vt]]
+			// 'pages':[[img64,vt],[img64,vt]]
+			'pages':[{name:'truc',image64:'ezrgrgz',vtText:'eofigzpieguh'},..]
 		}
 	 */
 	@POST
@@ -133,14 +134,34 @@ class AgnoscoResource {
 		val json = new JSONObject(document)
 		val pageList = new ArrayBuffer[Page]()
 		val arr = json.getJSONArray("pages")
+		/*for(i <- 0 until arr.length()) {
+			val obj = arr.getJSONArray(i)
+			pageList += Page(-1, , List())
+		}*/
 		for(i <- 0 until arr.length()) {
 			val obj = arr.getJSONObject(i)
-			pageList += Page(-1, obj.getString("groundTruth"), List())
+			// écriture de l'image
+			val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(obj.getString("image64"))
+			val image = ImageIO.read(new ByteArrayInputStream(imgByte))
+			val name = getFileName(obj.getString("name"))
+			val file = new File(globalDataFolder+"/"+name+".png")
+			ImageIO.write(image, "png", file)
+			// écriture de la vt
+			val replacedImgFormat = replaceImgFormat(obj.getString("vtText"))
 		}
 		println(pageList, arr)
-		val doc = Document(-1, json.getString("name"), pageList, json.getBoolean("prepared"))
+		val doc = Document(-1, json.getString("name"), pageList, false)
 		val res = controller.addDocToProject(id, doc)
 		Response.status(200).entity(res.toJSON.toString()).build()
+	}
+
+	def getFileName(str: String): String = {
+		val regexp = "[.][a-zA-Z]+".r
+		regexp.replaceAllIn(str,"")
+	}
+
+	def replaceImgFormat(str: String): String = {
+		
 	}
 
 	@POST
