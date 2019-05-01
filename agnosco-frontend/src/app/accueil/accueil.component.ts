@@ -118,14 +118,15 @@ export class AccueilComponent implements OnInit {
       console.log(result);
       if(result && result[0]) {
         /**/
-        this.projects.push([result[0],result[1],[]]);
+        // this.projects.push([result[0],result[1],[]]);
         console.log("reconaisseur:");
         console.log(result[1]);
         console.log("*** POST agnosco/base/createNewProject/{"+result[0]+"}/{"+result[1]+"} ***");
-        this.http.post(`agnosco/base/createNewProject/${result[0]}/${result[1]}`,{},{}).subscribe(data => {
+        this.http.post(`agnosco/base/createNewProject/${result[0]}/${result[1]}`,{},{}).subscribe((data: any) => {
           console.log("created");
+          this.projects.push([data.name, data.id, data.documents]);
         });
-        this.getAllProjects();
+        // this.getAllProjects();
       }else{
         console.log("no name");
       }
