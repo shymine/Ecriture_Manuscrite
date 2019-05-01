@@ -5,6 +5,7 @@ import { SuppressionDialogComponent } from '../suppression-dialog/suppression-di
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { AddDocComponent } from '../add-doc/add-doc.component';
+import { GestionPagesComponent } from '../gestion-pages/gestion-pages.component';
 
 @Component({
   selector: 'app-accueil',
@@ -85,7 +86,12 @@ export class AccueilComponent implements OnInit {
 
     //console.log("Delete all documents from "+ this.projects[p][0]);
 
-    const dialogRef = this.dialog.open(SuppressionDialogComponent, {});
+    const dialogRef = this.dialog.open(SuppressionDialogComponent, {
+      data : {
+        'support': "projet",
+        'nom' : p[0]
+      }
+    });
 
     dialogRef.afterClosed().subscribe(result => {
 
@@ -103,9 +109,21 @@ export class AccueilComponent implements OnInit {
 
     console.log("*** DELETE `agnosco/base/deleteDocument/{" + doc.id +"} ***");
     console.log("doc name:" + doc.name);
-    
-    this.http.delete(`agnosco/base/deleteDocument/${doc.id}`).subscribe(returnedData =>{
-      this.getAllProjects();
+
+    const dialogRef = this.dialog.open(SuppressionDialogComponent, {
+      data: {
+        'support':"document",
+        'nom': doc.name
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if(result){
+        this.http.delete(`agnosco/base/deleteDocument/${doc.id}`).subscribe(returnedData =>{
+          this.getAllProjects();
+        });
+      }
     });
     
   }
@@ -183,6 +201,23 @@ export class AccueilComponent implements OnInit {
     console.log("VALIDATION");
     console.log(d);
     this.router.navigate(['/validation',{'id':JSON.stringify(d)}]);
+  }
+
+  goToGestionPages(p,d){
+    console.log("gestion Pages");
+    console.log(p);
+    console.log(d);
+    
+    const dialogRef = this.dialog.open(GestionPagesComponent, {
+      data: {
+        'pid': p[1],
+        'pname': p[0],
+        'd' : d
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
   addDoc(p){

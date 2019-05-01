@@ -1,8 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSelect} from '@angular/material';
 import { HttpClient } from '@angular/common/http';
-import { projection } from '@angular/core/src/render3';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-doc',
@@ -11,7 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AddDocComponent implements OnInit {
 
-  public pages: [string,string][] = [];
+  public pages = [];
   public id = -1;
   public params = [];
 
@@ -48,22 +46,12 @@ export class AddDocComponent implements OnInit {
       if((encoded.length%4)>0) {
         encoded += '='.repeat(4-(encoded.length%4));
       }
+      pages[page].image = encoded;
 
-      console.log("pages[page][0]");
-      console.log(pages[page][0]);
+      console.log("encoded");
 
-      console.log("pages[page][1]");
-      console.log(pages[page][1]);
-
-      pages[page][0] = encoded;
-
-      console.log("AFTER");
-
-      console.log("pages[page][0]");
-      console.log(pages[page][0]);
-
-      console.log("pages[page][1]");
-      console.log(pages[page][1]);
+      console.log("pages[page]");
+      console.log(pages[page]);
     }
     reader.readAsDataURL(file);
     console.log("j'encode");
@@ -88,31 +76,21 @@ export class AddDocComponent implements OnInit {
     const pages = this.pages;
     reader.onloadend = function() {
       let res: string = reader.result as string;
-      let encoded = res.replace(/^data:(.*;base64;)?/,'');
-      if((encoded.length%4)>0) {
-        encoded += '='.repeat(4-(encoded.length%4));
-      }
 
-      console.log("ENCODED");
-      console.log(encoded);
+      console.log("encoded");
 
-      console.log("pages[page][0]");
-      console.log(pages[page][0]);
+      console.log("file.name");
+      console.log(file.name);
 
-      console.log("pages[page][1]");
-      console.log(pages[page][1]);
+      pages[page].data = res;
+      pages[page].name = file.name;
 
-      pages[page][1] = encoded;
+      
 
-      console.log("AFTER");
-
-      console.log("pages[page][0]");
-      console.log(pages[page][0]);
-
-      console.log("pages[page][1]");
-      console.log(pages[page][1]);
+      console.log("pages[page]");
+      console.log(pages[page]);
     }
-    reader.readAsDataURL(file);
+    reader.readAsText(file);
     console.log("j'encode");
   }
 
@@ -120,6 +98,14 @@ export class AddDocComponent implements OnInit {
     console.log("");
     this.dialogRef.close(0);
   }
+  /*
+  pages sont de la forme:
+  {
+    'nameVT' : nvt,
+    'fichierImage' : imb64,
+    'fichierVT' : vt
+  }
+  */
 
   onValidation(): void {
 
@@ -146,13 +132,21 @@ export class AddDocComponent implements OnInit {
 
   plusPage(){
     console.log("add one page");
-    this.pages.push(["0","0"]);
+    this.pages.push({'name':"default", 'image': "default", 'data':"default"});
     console.log(this.pages);
+  }
+
+  deletePage(page){
+    console.log("DELETE ONE PAGE");
+
+    for (var _i = page; _i < this.pages.length; _i++){
+      this.pages[_i] = this.pages[_i+1];
     }
-  /* const json = {
-    'name': "coucou",
-    'prepared': false,
-    'pages': []
-  } */
+    this.pages.pop();
+
+    console.log("end of delete page");
+    console.log(this.pages);
+    
+  }
 
 }
