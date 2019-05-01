@@ -123,4 +123,16 @@ object PiFFReader {
 
     tryConverters(filename, piffConverters)
   }
+
+  /** Builds an optional PiFF object from a string JSON object.
+    * @param str the JSON object as a String
+    * @return an optional PiFF object
+    */
+  def fromString(str : String) : Option[PiFF] = {
+    try {
+      fromJSON(new JSONObject(str))
+    } catch {
+      case e : JSONException => None
+    }
+  }
 }
