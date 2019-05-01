@@ -1,14 +1,9 @@
 <div>
-  <h1>Ajout d'un document à '{{data.pname}}'</h1>
-  <br>
-  <div mat-dialog-content>
-    <span>Comment souhaitez-vous nommer le document?</span>
-    <input [(ngModel)]="dName" matInput placeholder="Nom du Document" (keyup.enter)="onValidation()" cdkFocusInitial>
-  </div>
+    <h1>Gestion des pages du document '{{data.pname}}/{{data.d.name}}'</h1>
 </div>
-
-  <br>
-
+  
+<br>
+  
 <div style="font-size: 80%">
   <p><b>Pour chaque page, suivre la disposition suivante :</b> a) fichier image b) fichier vérité terrain</p>
   <br>

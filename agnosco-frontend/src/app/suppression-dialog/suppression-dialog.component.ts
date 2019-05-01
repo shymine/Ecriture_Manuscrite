@@ -15,7 +15,12 @@ export class SuppressionDialogComponent implements OnInit {
 
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<SuppressionDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-    
+    console.log("data");
+    console.log(data);
+    console.log("support");
+    console.log(data.support);
+    console.log("nom");
+    console.log(data.nom);
   }
 
   ngOnInit() {

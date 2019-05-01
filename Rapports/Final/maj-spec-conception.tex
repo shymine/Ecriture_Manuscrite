@@ -1,7 +1,7 @@
 \chapter{Mise à jour des rapports de spécification et conception}
 
 \paragraph{}
-Nous avons déterminé les spécifications en novembre et la conception en février. Au fur et à mesure de l'évolution du projet pendant le second semestre, nous y avons apporté des mises à jour que nous allons détailler ci-dessous. Nous avons repris la liste des spécifications du rapport de conception, les lignes en bleu sont les règles que nous avons rajoutées et les lignes en rouge sont celles que nous avons dû écarter par manque de temps.
+Nous avons déterminé les spécifications en novembre et la conception en février. Au fur et à mesure de l'évolution du projet pendant le second semestre, nous y avons apporté des mises à jour que nous allons détailler ci-dessous. Nous avons repris la liste des spécifications du rapport de conception, les lignes en bleu sont les règles que nous avons rajoutées et les lignes en rouge sont celles que nous avons dû écarter par manque de temps. Les deux fonctionnalités principales que nous n'avons pas pu réaliser sont le lien avec un reconnaisseur d'écriture manuscrite et la page de l'interface dédiée à la découpe manuelle des zones du manuscrit.
 
 %\rowcolor{red}
 \begin{center}
@@ -16,13 +16,13 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         PR\_FO\_2 & Fournir un convertisseur du format GEDI vers PiFF \\
         \hline
-        PR\_TR\_1 & Intégrer une fonction de détection de lignes au logiciel \\
+        \rowcolor{red}PR\_TR\_1 & Intégrer une fonction de détection de lignes au logiciel \\
         \hline
         PR\_TR\_2 & Permettre un découpage des images en lignes \\
         \hline
-        PR\_TR\_3 & Localiser les paragraphes \\
+        \rowcolor{red}PR\_TR\_3 & Localiser les paragraphes \\
         \hline
-        PR\_TR\_4 & Permettre un découpage des images en paragraphes \\
+        \rowcolor{red}PR\_TR\_4 & Permettre un découpage des images en paragraphes \\
         \hline
         PR\_RE\_1 & Associer les images à leur transcription \\
         \hline
@@ -43,7 +43,7 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         STO\_USR & Stocker des imagettes associées à une transcription générée par l’utilisateur \\
         \hline
-        STO\_REC & Stocker des imagettes associées à une transcription générée par un reconnaisseur  \\
+        \rowcolor{red}STO\_REC & Stocker des imagettes associées à une transcription générée par un reconnaisseur  \\
         \hline
         STO\_SEL & Fournir des méthodes pour accéder aux données stockées  \\
         \hline
@@ -64,7 +64,7 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         IR\_CV & Convertir les données au format d’entrée du reconnaisseur \\
         \hline
-        IR\_AP & Fournir les données au reconnaisseur \\
+        \rowcolor{red}IR\_AP & Fournir les données au reconnaisseur \\
         \hline
         \rowcolor{red}IR\_EV & Pouvoir lancer une évaluation du reconnaisseur  \\
         \hline
@@ -82,7 +82,7 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         PEA\_GEN\_2 & Éditer manuellement les transcriptions \\
         \hline
-        PEA\_GEN\_3 & Corriger les annotations proposées par un reconnaisseur externe à l'application \\
+        \rowcolor{red}PEA\_GEN\_3 & Corriger les annotations proposées par un reconnaisseur externe à l'application \\
         \hline
         PEA\_GEN\_4 & Envoyer les modifications à la base de données lorsque la vérité-terrain d’une imagette est modifiée \\
         \hline
@@ -101,6 +101,7 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         PEA\_GEN\_11 & Basculer vers la page de validation des transcriptions \\
         \hline
         \rowcolor{blue}PEA\_GEN\_12 & Supprimer un projet ou un document d'un projet \\
+        \rowcolor{blue}PEA\_GEN\_13 & Exporter les données d'un projet dans le format d'entrée du reconnaisseur associé au projet
         \hline
         \rowcolor{red}PDEC\_OD\_1 & Créer une nouvelle zone à l’aide d’un rectangle (outil "nouvelle sélection") \\
         \hline
@@ -150,7 +151,7 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         PCORIA\_2 & Pouvoir modifier une annotation fausse en cliquant dessus pour y positionner son curseur et en effectuant ses modifications manuellement \\
         \hline
-        PCORIA\_3 & La zone de visualisation des imagettes se présente de la même manière que sur la page d’édition manuelle des transcriptions \\
+        PCORIA\_3 & Présenter la zone de visualisation des imagettes de la même manière que sur la page d’édition manuelle des transcriptions \\
         \hline
         PCORIA\_4 & Posséder également la fonctionnalité de mise à l’écart d’un couple imagette-transcription \\
         \hline
@@ -172,7 +173,7 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         PVAL\_5 & Indiquer si les transcriptions ont été fournies manuellement par un humain ou si elles proviennent d’un reconnaisseur \\
         \hline
-        PVAL\_6 & Faire figurer une fenêtre montrant la page entière découpée en zones avec la zone courante dans une couleur différente \\
+        \rowcolor{red}PVAL\_6 & Faire figurer une fenêtre montrant la page entière découpée en zones avec la zone courante dans une couleur différente \\
         \hline
         PVAL\_7 & Valider le travail pour de bon et fermer le document à l’aide d’un bouton prévu à cet effet \\
         \hline
@@ -193,7 +194,7 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         LINK\_IHM\_STO & Envoyer les demandes de l’IHM au système de stockage \\
         \hline
-        LINK\_IHM\_IR & Envoyer les résultats du reconnaisseur vers le système de stockage \\
+        \rowcolor{red}LINK\_IHM\_IR & Envoyer les résultats du reconnaisseur vers le système de stockage \\
         \hline
         LINK\_COH & Fournir un logiciel composés de blocs communiquant entre eux de manière fonctionnelle et cohérente \\
         \hline
