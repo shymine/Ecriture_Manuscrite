@@ -3,7 +3,7 @@
 \paragraph{}
 Nous avons déterminé les spécifications en novembre et la conception en février. Au fur et à mesure de l'évolution du projet pendant le second semestre, nous y avons apporté des mises à jour que nous allons détailler ci-dessous. Nous avons repris la liste des spécifications du rapport de conception, les lignes en bleu sont les règles que nous avons rajoutées et les lignes en rouge sont celles que nous avons dû écarter par manque de temps. Les deux fonctionnalités principales que nous n'avons pas pu réaliser sont le lien avec un reconnaisseur d'écriture manuscrite et la page de l'interface dédiée à la découpe manuelle des zones du manuscrit.
 
-%\rowcolor{red}
+%\rowcolor{red!30}
 \begin{center}
 
     \begin{tabular}{ | l | l | }
@@ -16,19 +16,19 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         PR\_FO\_2 & Fournir un convertisseur du format GEDI vers PiFF \\
         \hline
-        \rowcolor{red}PR\_TR\_1 & Intégrer une fonction de détection de lignes au logiciel \\
+        \rowcolor{red!30}PR\_TR\_1 & Intégrer une fonction de détection de lignes au logiciel \\
         \hline
         PR\_TR\_2 & Permettre un découpage des images en lignes \\
         \hline
-        \rowcolor{red}PR\_TR\_3 & Localiser les paragraphes \\
+        \rowcolor{red!30}PR\_TR\_3 & Localiser les paragraphes \\
         \hline
-        \rowcolor{red}PR\_TR\_4 & Permettre un découpage des images en paragraphes \\
+        \rowcolor{red!30}PR\_TR\_4 & Permettre un découpage des images en paragraphes \\
         \hline
         PR\_RE\_1 & Associer les images à leur transcription \\
         \hline
         PR\_RE\_2 & Associer la vérité terrain à une transcription \\
         \hline
-        \rowcolor{red}PR\_RE\_3 & Permettre de générer une vérité terrain si besoin, grâce à un reconnaisseur \\
+        \rowcolor{red!30}PR\_RE\_3 & Permettre de générer une vérité terrain si besoin, grâce à un reconnaisseur \\
         \hline
     \end{tabular}
 
@@ -43,7 +43,7 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         STO\_USR & Stocker des imagettes associées à une transcription générée par l’utilisateur \\
         \hline
-        \rowcolor{red}STO\_REC & Stocker des imagettes associées à une transcription générée par un reconnaisseur  \\
+        \rowcolor{red!30}STO\_REC & Stocker des imagettes associées à une transcription générée par un reconnaisseur  \\
         \hline
         STO\_SEL & Fournir des méthodes pour accéder aux données stockées  \\
         \hline
@@ -64,11 +64,11 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         IR\_CV & Convertir les données au format d’entrée du reconnaisseur \\
         \hline
-        \rowcolor{red}IR\_AP & Fournir les données au reconnaisseur \\
+        \rowcolor{red!30}IR\_AP & Fournir les données au reconnaisseur \\
         \hline
-        \rowcolor{red}IR\_EV & Pouvoir lancer une évaluation du reconnaisseur  \\
+        \rowcolor{red!30}IR\_EV & Pouvoir lancer une évaluation du reconnaisseur  \\
         \hline
-        \rowcolor{red}IR\_TR & Pouvoir lancer une transcription d’un document par le reconnaisseur   \\
+        \rowcolor{red!30}IR\_TR & Pouvoir lancer une transcription d’un document par le reconnaisseur   \\
         \hline
     \end{tabular}
 
@@ -82,7 +82,7 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         PEA\_GEN\_2 & Éditer manuellement les transcriptions \\
         \hline
-        \rowcolor{red}PEA\_GEN\_3 & Corriger les annotations proposées par un reconnaisseur externe à l'application \\
+        \rowcolor{red!30}PEA\_GEN\_3 & Corriger les annotations proposées par un reconnaisseur externe à l'application \\
         \hline
         PEA\_GEN\_4 & Envoyer les modifications à la base de données lorsque la vérité-terrain d’une imagette est modifiée \\
         \hline
@@ -94,44 +94,45 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         PEA\_GEN\_8 & Créer un nouveau projet \\
         \hline
-        \rowcolor{red}PEA\_GEN\_9 & Basculer vers la page de découpe des zones \\
+        \rowcolor{red!30}PEA\_GEN\_9 & Basculer vers la page de découpe des zones \\
         \hline
         PEA\_GEN\_10 & Basculer vers la page d’édition des annotations \\
         \hline
         PEA\_GEN\_11 & Basculer vers la page de validation des transcriptions \\
         \hline
-        \rowcolor{blue}PEA\_GEN\_12 & Supprimer un projet ou un document d'un projet \\
-        \rowcolor{blue}PEA\_GEN\_13 & Exporter les données d'un projet dans le format d'entrée du reconnaisseur associé au projet
+        \rowcolor{blue!30}PEA\_GEN\_12 & Supprimer un projet ou un document d'un projet \\
         \hline
-        \rowcolor{red}PDEC\_OD\_1 & Créer une nouvelle zone à l’aide d’un rectangle (outil "nouvelle sélection") \\
+        \rowcolor{blue!30}PEA\_GEN\_13 & Exporter les données d'un projet dans le format d'entrée du reconnaisseur associé au projet \\
         \hline
-        \rowcolor{red}PDEC\_OD\_2 & Pouvoir modifier la position des sommets des rectangles \\
+        \rowcolor{red!30}PDEC\_OD\_1 & Créer une nouvelle zone à l’aide d’un rectangle (outil "nouvelle sélection") \\
         \hline
-        \rowcolor{red}PDEC\_OD\_3 & Rajouter des sommets à la zone \\
+        \rowcolor{red!30}PDEC\_OD\_2 & Pouvoir modifier la position des sommets des rectangles \\
         \hline
-        \rowcolor{red}PDEC\_OD\_4 & Changer le type de la zone avec un menu déroulant \\
+        \rowcolor{red!30}PDEC\_OD\_3 & Rajouter des sommets à la zone \\
         \hline
-        \rowcolor{red}PDEC\_OD\_5 & Déplace la zone sélectionnée sur le document (outil “déplacer”) \\
+        \rowcolor{red!30}PDEC\_OD\_4 & Changer le type de la zone avec un menu déroulant \\
         \hline
-        \rowcolor{red}PDEC\_OD\_6 & Zoomer et dézoomer sur le document (outils “zoom +” et “zoom -”) \\
+        \rowcolor{red!30}PDEC\_OD\_5 & Déplacer la zone sélectionnée sur le document (outil “déplacer”) \\
         \hline
-        \rowcolor{red}PDEC\_OD\_7 & Annuler la dernière action (outil “annuler”) \\
+        \rowcolor{red!30}PDEC\_OD\_6 & Zoomer et dézoomer sur le document (outils “zoom +” et “zoom -”) \\
         \hline
-        \rowcolor{red}PDEC\_OD\_8 & Refaire l’action annulée précédemment (outil “refaire”) \\
+        \rowcolor{red!30}PDEC\_OD\_7 & Annuler la dernière action (outil “annuler”) \\
         \hline
-        \rowcolor{red}PDEC\_OD\_9 & Supprime toutes les zones de la page pour retourner au document vierge (outil “réinitialiser”) \\
+        \rowcolor{red!30}PDEC\_OD\_8 & Refaire l’action annulée précédemment (outil “refaire”) \\
         \hline
-        \rowcolor{red}PDEC\_OD\_10 & Applique un détecteur de lignes sur la zone sélectionnée (outil “appliquer la détection de lignes sur la zone”) \\
+        \rowcolor{red!30}PDEC\_OD\_9 & Supprimer toutes les zones de la page pour retourner au document vierge (outil “réinitialiser”) \\
         \hline
-        \rowcolor{red}PDEC\_OD\_11 & Continuer la découpe du document sur la page suivante \\
+        \rowcolor{red!30}PDEC\_OD\_10 & Appliquer un détecteur de lignes sur la zone sélectionnée (outil “appliquer la détection de lignes sur la zone”) \\
         \hline
-        \rowcolor{red}PDEC\_OD\_12 & Passer à l’édition des annotations sur la page qu’il vient de découper \\
+        \rowcolor{red!30}PDEC\_OD\_11 & Continuer la découpe du document sur la page suivante \\
         \hline
-        \rowcolor{red}PDEC\_OD\_13 & Exporter la page découpée au format PiFF afin de soumettre les données à un reconnaisseur externe à l’application \\
+        \rowcolor{red!30}PDEC\_OD\_12 & Passer à l’édition des annotations sur la page qui été découpée \\
         \hline
-        \rowcolor{red}PDEC\_OD\_14 & Posséder un bouton de retour au menu principal \\
+        \rowcolor{red!30}PDEC\_OD\_13 & Exporter la page découpée au format PiFF afin de soumettre les données à un reconnaisseur externe à l’application \\
         \hline
-        \rowcolor{red}PDEC\_OD\_15 & Permettre à l’utilisateur de se déplacer sur le manuscrit à l’aide d’un scroll horizontal et vertical \\
+        \rowcolor{red!30}PDEC\_OD\_14 & Posséder un bouton de retour au menu principal \\
+        \hline
+        \rowcolor{red!30}PDEC\_OD\_15 & Permettre à l’utilisateur de se déplacer sur le manuscrit à l’aide d’un scroll horizontal et vertical \\
         \hline
         PEMA\_1 & Placer le curseur sur la première imagette ne possédant pas de transcription \\
         \hline
@@ -139,7 +140,7 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         PEMA\_3 & Proposer un raccourci clavier permettant de basculer vers la prochaine imagette sans vérité-terrain \\
         \hline
-        \rowcolor{red}PEMA\_4 & Posséder un bouton intitulé “modifier les zones du manuscrit” \\
+        \rowcolor{red!30}PEMA\_4 & Posséder un bouton intitulé “modifier les zones du manuscrit” \\
         \hline
         PEMA\_5 & Afficher la liste des imagettes du document découpé \\
         \hline
@@ -173,7 +174,7 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         PVAL\_5 & Indiquer si les transcriptions ont été fournies manuellement par un humain ou si elles proviennent d’un reconnaisseur \\
         \hline
-        \rowcolor{red}PVAL\_6 & Faire figurer une fenêtre montrant la page entière découpée en zones avec la zone courante dans une couleur différente \\
+        \rowcolor{red!30}PVAL\_6 & Faire figurer une fenêtre montrant la page entière découpée en zones avec la zone courante dans une couleur différente \\
         \hline
         PVAL\_7 & Valider le travail pour de bon et fermer le document à l’aide d’un bouton prévu à cet effet \\
         \hline
@@ -194,7 +195,7 @@ Nous avons déterminé les spécifications en novembre et la conception en févr
         \hline
         LINK\_IHM\_STO & Envoyer les demandes de l’IHM au système de stockage \\
         \hline
-        \rowcolor{red}LINK\_IHM\_IR & Envoyer les résultats du reconnaisseur vers le système de stockage \\
+        \rowcolor{red!30}LINK\_IHM\_IR & Envoyer les résultats du reconnaisseur vers le système de stockage \\
         \hline
         LINK\_COH & Fournir un logiciel composés de blocs communiquant entre eux de manière fonctionnelle et cohérente \\
         \hline
