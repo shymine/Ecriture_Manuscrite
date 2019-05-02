@@ -1,10 +1,20 @@
 \chapter{Bilan de planification}
 
-Conformément au rapport de conception, nous avons construit le projet sur deux itérations. La première réduisait l'interface au maximum tout en répondant au cahier des charges. Cette interface permettait donc d'ouvrir un document de travail, et de valider ou invalider les transcriptions.
+\paragraph{}
+Conformément au rapport de conception, nous avons construit le projet sur deux itérations. La première réduisait l'interface au maximum tout en répondant au cahier des charges. Cette interface permettait donc d'ouvrir un document de travail, et de valider ou invalider les transcriptions. La première itération a été rendue avec un mois de retard, en accord avec l'encadrant de projet. Le but est ici d'en expliquer les raisons. Nous avons été confrontés à plusieurs risques, listés dans le rapport de planification pour la plupart.
 
-1 mois de retard rendu 1ère version, à justifier
+\paragraph{}
+Le premier élément qui nous a concernés est la surcharge de travail avec les cours. Pour éviter ce problème, nous avions prévu de prendre de l'avance au semestre précédent, qui étant cependant très chargé. Nous avons réussi à dégager des heures de travail, qui ont servi à installer et mettre en place les différentes technologies nécessaires au projet. Cette phase d'installation a pris beaucoup plus de temps que prévu, et nous nous sommes retrouvés avec une installation partiellement effectuée en début de S8, mais très peu de code utile au projet préparé à l'avance. Cette solution d'anticipation n'a donc pas fonctionné, et nous nous sommes retrouvés en retard.
+
+\paragraph{}
+Un second élément inattendu était une mauvaise pratique logicielle. En d'autres termes, dans le souci de bien faire, et de par nos habitudes en cours, nous avons souhaité dans un premier temps réaliser l'intégralité du projet en un seul bloc, tout le code étant écrit en Scala ou Java. Ceci s'est révélé être une solution beaucoup moins efficace que celle que nous avons finalement mise en place, qui consiste à utiliser des scripts externes pour nous aider au besoin. Par exemple, pour traiter les documents de la base Maurdor, nous avons écrit un script Python qui parcourt un dossier et qui découpe les pages des documents ainsi que leurs vérités terrain, pour obtenir un couple image - vérité terrain par page de chaque document. La découpe d'images est également réalisée avec un script externe. La bibliothèque graphique est toujours OpenCV comme prévu initialement, mais cette bibliothèque a un très mauvais support de Java, et est beaucoup plus mature en C++ et en Python. Il était donc plus raisonnable d'utiliser la bibliothèque dans un script Python, et de l'appeler depuis notre application en Scala, d'autant plus que Scala propose une manière concise et élégante d'appeler des commandes externes, via un opérateur dédié à cette tâche.
+
+\paragraph{}
+Le dernier élément auquel nous avons été confrontés est l'absence d'un des membres du groupe, Valentin. En effet, il a déjà été beaucoup absent au premier semestre pour raison personnelle, et n'a pu nous aider que sur le rapport de pré-étude du projet. Nous pensions pouvoir le réintégrer à l'équipe au second semestre, en lui proposant des tâches qui pourraient nous aider sans pour autant prendre trop de risques, c'est-à-dire que nous lui avons confié des tâches non critiques. Il n'a malheureusement pas pu les effectuer, et a quitté l'équipe du projet car il souhaite quitter l'INSA et se réorienter. Ce sont des choses qui arrivent, mais ayant prévu des heures pour Valentin à la fois dans la planification et en réunion avec l'encadrant au second semestre, nous avons réparti son travail entre les membres du groupe, et avons effectué l'intégralité de la partie technique du projet à quatre, ce qui a accentué l'effet du premier élément mentionné, à savoir la surcharge de travail. Au total, un mois de retard a été comptabilisé, et accepté sans souci par l'encadrant au vu de ces circonstances particulières.
+
+
 pourquoi on a mal estimé, en tirer des connaissances pour la suite
 détecter les dérapages plus rapidement, proposer des solutions
-utiliser un outil, ne pas utiliser un outil (OpenCV Java -> Python)
 ne pas hésiter à scripter
 voir petit, puis faire des améliorations
+
