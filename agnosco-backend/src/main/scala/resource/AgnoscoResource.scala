@@ -61,26 +61,26 @@ class AgnoscoResource {
 	@Path("/test")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
 	def test(json: String) = {
-		// println(json)
+		println(json)
 		val j = new JSONObject(json)
 		// println(j.getString("test"))
 
 		try {
 			val res = j.getString("test")
 			val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(res)
-			val image: BufferedImage = ImageIO.read(new ByteArrayInputStream(imgByte))
+			/*val image: BufferedImage = ImageIO.read(new ByteArrayInputStream(imgByte))
 			val file = new File("data/image.png")
-			ImageIO.write(image, "png", file)
-			/*val out = new FileOutputStream("image.tiff")
-			out.write(image)
+			ImageIO.write(image, "png", file)*/
+			val out = new FileOutputStream("data/image.tiff")
+			out.write(imgByte)
 			out.close()
-			 */
+			/* */
 			/*val b = Base64.getDecoder.decode(res)
 			val out = new FileOutputStream(new File("image.tif"))
 			out.write(b)
 			out.close()*/
 		} catch {
-			case e => e.printStackTrace()
+			case e: Exception => e.printStackTrace()
 		}
 		// println(decoded)/**/
 		Response.status(200).build()
@@ -123,7 +123,7 @@ class AgnoscoResource {
 	// TODO: si un tuple donné en param est [0,0] alors il faut l'éliminer, si seulement un des deux est 0 alors il faut planter, le format du json est:
 	/*
 		{
-			'name':'truc',
+			'name':'truc', -> le nom de l'image
 			// 'pages':[[img64,vt],[img64,vt]]
 			'pages':[{name:'truc',image64:'ezrgrgz',vtText:'eofigzpieguh'},..]
 		}
@@ -135,27 +135,27 @@ class AgnoscoResource {
 	def addDocToProject(@PathParam("project_id") id: Long, document: String): Response = {
 		try {
 			val json = new JSONObject(document)
-			json.keySet().forEach(println(_))
+//			json.keySet().forEach(println(_))
 			val arr = json.getJSONArray("pages")
 			val pageList = new ArrayBuffer[Page]()
 			for (i <- 0 until arr.length()) {
 				val obj = arr.getJSONObject(i)
-				obj.keySet().forEach(it => println("  "+it))
-				println()
-				// écriture de l'image
 				val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(obj.getString("image64"))
-				val image = ImageIO.read(new ByteArrayInputStream(imgByte))
+//				val image = ImageIO.read(new ByteArrayInputStream(imgByte))
 				val name = getFileName(obj.getString("name"))
-				val file = new File(globalDataFolder + "/" + name + ".png")
-				ImageIO.write(image, "png", file)
+//				val file = new File(globalDataFolder + "/" + name + ".png")
+//				ImageIO.write(image, "png", file)
+				val out = new FileOutputStream(globalDataFolder+"/"+obj.getString("name")+".tiff")
+				out.write(imgByte)
+				out.close()
 				// écriture de la vt
 				val vt = PiFFReader.fromString(obj.getString("vtText"))
 				if (vt.isDefined) {
 					val piff = vt.get
-					val newPage = new PiFFPage(replaceImgFormat(piff.page.src), piff.page.width, piff.page.height, piff.page.elements)
-					val newPiff = new PiFF(piff.date, newPage)
+//					val newPage = new PiFFPage(replaceImgFormat(piff.page.src), piff.page.width, piff.page.height, piff.page.elements)
+//					val newPiff = new PiFF(piff.date, newPage)
 					val pw = new PrintWriter(new File(globalDataFolder + "/" + name + ".piff"))
-					pw.write(newPiff.toJSON.toString())
+					pw.write(piff.toJSON.toString())
 					pw.close()
 					pageList += Page(-1, globalDataFolder + "/" + name + ".piff", List())
 				} else {
@@ -339,7 +339,7 @@ class AgnoscoResource {
 	  * Put the selected examples as Disabled
 	  * @param id The id of the example to disable
 	  * @return
-	  */Example
+	  */
 	@PUT
 	@Path("/disableExample/{id}")
 	def disableExample(@PathParam("id") id: Long): Response = {

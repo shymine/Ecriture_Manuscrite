@@ -33,6 +33,23 @@ export class AccueilComponent implements OnInit {
 
   }
 
+
+  encodeImageFileAsURL(event: any) {
+    var file = event.target.files[0];
+  
+    var reader = new FileReader();
+    var http = this.http;
+    reader.onloadend = function() {
+        let encoded = (reader.result as string).replace(/^data:(.)*(;base64,)/,'');
+        if ((encoded.length % 4) > 0) {
+          encoded += '='.repeat(4 - (encoded.length % 4));
+        }
+      console.log('RESULT', encoded)
+      http.post(`agnosco/base/test`, {"test":encoded}).subscribe(data => console.log(data))
+    }
+    reader.readAsDataURL(file);
+  }
+
   getAllProjects() {
 
     /*
