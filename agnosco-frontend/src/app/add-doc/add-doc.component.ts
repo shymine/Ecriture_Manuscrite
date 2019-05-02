@@ -29,29 +29,36 @@ export class AddDocComponent implements OnInit {
 
   encodeImageFile(param) {
 
-    console.log("ENCODE..IMAGE");
-    console.log(param);
+    // console.log("ENCODE..IMAGE");
+    // console.log(param);
 
     const event = param[0];
     const page = param[1];
 
     const file = event.target.files[0];
-    console.log(file)
+    // console.log(file)
     const reader = new FileReader();
     const http = this.http;
     const pages = this.pages;
     reader.onloadend = function() {
       let res: string = reader.result as string;
-      let encoded = res.replace(/^data:(.*;base64;)?/,'');
+      let encoded =  res.replace(/^data:(.)*(;base64,)/,'');
       if((encoded.length%4)>0) {
         encoded += '='.repeat(4-(encoded.length%4));
       }
-      pages[page].image = encoded;
+      console.log("encoded: ",encoded)
+      console.log("non encoded:", res)
+
+      console.log("file.name");
+      console.log(file.name);
+
+      pages[page].image64 = encoded;
+      pages[page].name = file.name;
 
       console.log("encoded");
 
-      console.log("pages[page]");
-      console.log(pages[page]);
+      // console.log("pages[page]");
+      // console.log(pages[page]);
     }
     reader.readAsDataURL(file);
     console.log("j'encode");
@@ -79,13 +86,7 @@ export class AddDocComponent implements OnInit {
 
       console.log("encoded");
 
-      console.log("file.name");
-      console.log(file.name);
-
-      pages[page].data = res;
-      pages[page].name = file.name;
-
-      
+      pages[page].vtText = res;
 
       console.log("pages[page]");
       console.log(pages[page]);
@@ -132,7 +133,7 @@ export class AddDocComponent implements OnInit {
 
   plusPage(){
     console.log("add one page");
-    this.pages.push({'name':"default", 'image': "default", 'data':"default"});
+    this.pages.push({'name':"default", 'image64': "default", 'vtText':"default"});
     console.log(this.pages);
   }
 
