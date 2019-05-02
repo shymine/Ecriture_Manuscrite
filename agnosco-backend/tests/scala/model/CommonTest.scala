@@ -1,7 +1,12 @@
-package scala.model
+package model
 
-import model.common.Example
+import model.common.{Example, Page}
 import org.scalatest.FlatSpec
 
 class CommonTest extends FlatSpec {
+
+
+	"page" should "give a nice json" in {
+		val page = Page(-1,"AFGHJK1.xml", List())
+	}
 }
