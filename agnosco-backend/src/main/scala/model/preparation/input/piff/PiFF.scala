@@ -5,7 +5,7 @@ import org.json.JSONObject
 /*
 {
   "date": "01-01-2000",
-  "pages: [
+  "page":
     {
       "src": "src.jpg",
       "width": 34,
@@ -19,18 +19,16 @@ import org.json.JSONObject
         },
         ...
       ]
-    },
-    ...
-  ]
+    }
 }
  */
 
 /** This class represents a PiFF file as an object. */
-class PiFF(val date : String, val pages : List[PiFFPage]) {
+class PiFF(val date : String, val page : PiFFPage) {
   def toJSON : JSONObject = {
     val json = new JSONObject()
     json.put("date", date)
-    pages.foldLeft(json)((json, page) => json.append("pages", page.toJSON))
+    json.put("page", page.toJSON)
   }
 
   override def equals(obj : Any) : Boolean = {
@@ -38,7 +36,7 @@ class PiFF(val date : String, val pages : List[PiFFPage]) {
 
     val piffObj = obj.asInstanceOf[PiFF]
 
-    date.equals(piffObj.date) && pages.equals(piffObj.pages)
+    date.equals(piffObj.date) && page.equals(piffObj.page)
   }
 
   override def toString : String = toJSON.toString

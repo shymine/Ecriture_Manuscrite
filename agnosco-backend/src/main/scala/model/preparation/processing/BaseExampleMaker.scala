@@ -16,24 +16,24 @@ object BaseExampleMaker extends ExampleMaker {
     */
     var imageId = 0
 
-    p.pages.foreach(page => {
-      page.elements.foreach(element => {
-        val transcript =
-          element.contents match {
-            case "" => None
-            case c => Some(c)
-          }
+    val page = p.page
 
-        // new image from the polygon
-        val imgPath = s"$globalDataFolder/${page.src}"
-        println("img path : " + imgPath)
-        val newExampleImgPath = ImageProcessing.createThumbnail(imgPath, imageId, element.polygon)
+    page.elements.foreach(element => {
+      val transcript =
+        element.contents match {
+          case "" => None
+          case c => Some(c)
+        }
 
-        // adding the newly created example to the list
-        examples += Example(-1, newExampleImgPath, transcript)
+      // new image from the polygon
+      val imgPath = s"$globalDataFolder/${page.src}"
+      println("img path : " + imgPath)
+      val newExampleImgPath = ImageProcessing.createThumbnail(imgPath, imageId, element.polygon)
 
-        imageId += 1
-      })
+      // adding the newly created example to the list
+      examples += Example(-1, newExampleImgPath, transcript)
+
+      imageId += 1
     })
 
     examples.toList
