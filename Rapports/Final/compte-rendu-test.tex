@@ -1,3 +1,18 @@
 \chapter{Compte rendu des phases de test}
 
-TODO
+Nous avons réalisé des tests successifs pour chaque composant de l'application : la base de données, la découpe d'images, l'API REST et l'interface.
+
+\subsection{Base de données}
+Pour tester la base de données, nous avons utilisé les tests unitaires de \texttt{Scala} afin de tester toutes les fonctionnalités de la base. Nous avons testé de stocker des données de types différents, de les modifier et de les supprimer.
+
+\subsection{Découpe d'images}
+Pour le traitement d'images, nous n'avons pas eu d'autre choix que de vérifier manuellement les images obtenues pour vérifier qu'elles ont été correctement découpées. Nous avons sélectionné au hasard un certain nombre d'images parmi celles qui ont été produites pour vérifier le découpage.
+
+\subsection{API REST}
+Afin de tester l'API REST, nous avons utilisé \texttt{Postman}, un logiciel particulier dédié au test d'API à partir duquel nous avons pu vérifier le bon fonctionnement de l'envoi de nos requêtes ainsi que les réponses obtenues.
+
+\subsection{IHM}
+Enfin, pour tester l'interface web, nous avons effectué une série de tests utilisateur en essayant chaque bouton et chaque fonctionnalité manuellement, en vérifiant les résultats à l'aide de la console intégrée au navigateur web.
+
+\paragraph{}
+Tous ces tests nous ont permis de nous rendre compte de certaines erreurs qui avaient été commises et de les corriger. Les tests ont été réalisés au fur et à mesure de l'implémentation pour éviter d'accumuler des erreurs que nous n'aurions pas détectées.
