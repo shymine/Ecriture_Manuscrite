@@ -5,10 +5,11 @@ Conformément au rapport de conception, nous avons construit le projet sur deux 
 
 \section{Problèmes rencontrés}
 
+\paragraph{}
 Lors de la phase de réalisation du projet au second semestre, nous avons été confrontés à plusieurs problèmes, listés comme risques dans le rapport de planification pour la plupart. Nous allons détailler les trois problèmes principaux.
 
 \paragraph{}
-Le premier élément qui nous a concernés faisait partie de la liste des risques dans le rapport de planification. Il s'agit de la surcharge de travail avec les cours. Pour éviter ce problème, nous avions prévu de prendre de l'avance au semestre précédent, qui étant cependant très chargé. Nous avons réussi à dégager des heures de travail, qui ont servi à installer et mettre en place les différentes technologies nécessaires au projet. Cette phase d'installation a pris beaucoup plus de temps que prévu, et nous nous sommes retrouvés avec une installation partiellement effectuée en début de S8, mais très peu de code utile au projet préparé à l'avance. Cette solution d'anticipation n'a donc pas fonctionné, et nous nous sommes retrouvés en retard.
+Le premier élément qui nous a concernés faisait partie de la liste des risques dans le rapport de planification. Il s'agit de la surcharge de travail avec les cours. Pour éviter ce problème, nous avions prévu de prendre de l'avance au semestre précédent, qui étant cependant très chargé. Nous avons réussi à dégager des heures de travail, qui ont servi à installer et mettre en place les différentes technologies nécessaires au projet. Cette phase d'installation a pris beaucoup plus de temps que prévu, et nous nous sommes retrouvés avec une installation partiellement effectuée en début de S8, mais très peu de code utile au projet préparé à l'avance. Cette solution d'anticipation n'a donc pas fonctionné, et nous nous sommes retrouvés en retard. Un autre facteur était la quantité d'éléments présents dans le cahier des charges. En effet, nous avons vu trop grand au départ, en sous-estimant le temps nécessaire pour développer le logiciel, ce qui semble toutefois être une erreur récurrente chaque année en 4INFO.
 
 \paragraph{}
 Un second élément inattendu était une mauvaise pratique logicielle. En d'autres termes, dans le souci de bien faire, et de par nos habitudes en cours, nous avons souhaité dans un premier temps réaliser l'intégralité du projet en un seul bloc, tout le code étant écrit en Scala ou Java. Ceci s'est révélé être une solution beaucoup moins efficace que celle que nous avons finalement mise en place, qui consiste à utiliser des scripts externes pour nous aider au besoin. Par exemple, pour traiter les documents de la base Maurdor, nous avons écrit un script Python qui parcourt un dossier et qui découpe les pages des documents ainsi que leurs vérités terrain, pour obtenir un couple image - vérité terrain par page de chaque document. La découpe d'images est également réalisée avec un script externe. La bibliothèque graphique est toujours OpenCV comme prévu initialement, mais cette bibliothèque a un très mauvais support de Java, et est beaucoup plus mature en C++ et en Python. Il était donc plus raisonnable d'utiliser la bibliothèque dans un script Python, et de l'appeler depuis notre application en Scala, d'autant plus que Scala propose une manière concise et élégante d'appeler des commandes externes, via un opérateur dédié à cette tâche.
@@ -18,17 +19,18 @@ Le dernier élément auquel nous avons été confrontés est l'absence d'un des 
 
 \section{Quantification des impacts}
 
+prendre le timekeeper et comparer au diagramme de Gantt / a-t-on modifié le cahier des charges ? si oui, le dire ici
+
 \section{Conclusions et connaissances acquises pour les projets futurs}
 
-Pour résumer, on peut dire que le retard est lié à trois éléments :
-\begin{itemize}
-\item une mauvaise estimation du temps nécessaire sur les différentes tâches (donc un manque d'expérience en gestion de projet) ;
-\item des mauvais choix logiciels au début du projet (donc un manque d'expérience en développement) ;
-\item le départ d'un membre de l'équipe pour la phase de développement.
-\end{itemize}
+\paragraph{}
+Pour résumer, on peut dire que le retard est lié à trois éléments : une mauvaise estimation du temps nécessaire sur les différentes tâches, des mauvais choix logiciels au début du projet, et le départ d'un membre de l'équipe pour la phase de développement.
 
-pourquoi on a mal estimé, en tirer des connaissances pour la suite
-détecter les dérapages plus rapidement, proposer des solutions
-ne pas hésiter à scripter
-voir petit, puis faire des améliorations
+\paragraph{}
+Le premier point nous a apporté de l'expérience en gestion pour les projets futurs. En effet, nous avons à présent vécu un projet dans lequel nous avons sous-estimé le temps pris par les différentes tâches de la phase de développement. En d'autres termes, nous pouvons dire que nous avons obtenu la preuve empirique que le développement ne peut pas se résumer à l'écriture du code. L'installation et la configuration des différents logiciels et technologies utilisés peut prendre un temps non négligeable, ce à quoi nous n'avons pas fait assez attention. Partir d'une solution simple, puis ajouter peu à peu des améliorations logicielles, c'est-à-dire voir le cahier des charges comme un objet itératif, semble également être une méthode à privilégier.
 
+\paragraph{}
+Le second point nous a apporté de l'expérience quant à lui sur la phase de développement. Nous avons bien compris le fait qu'une application en bloc unique entièrement écrite dans le même langage n'est pas toujours la meilleure solution. Dans un tel projet destiné à des chercheurs, ajouter un langage (qui plus est, répandu) dans les dépendances du logiciel n'est pas une contrainte, et les développeurs ne doivent pas hésiter à scripter certaines tâches, surtout lorsque cette solution est beaucoup plus simple que de s'entêter à vouloir intégrer ces tâches à l'intérieur du logiciel principal. Les langages de script, comme leur nom l'indique, sont faits pour répondre à ce genre de besoins, en permettant de développer des scripts annexes qui viennent appuyer efficacement un plus gros projet.
+
+\paragraph{}
+Enfin, le dernier point a permis de montrer que malgré toute planification préalable, un projet peut toujours avoir des imprévus d'ordre plus ou moins important. Dans notre cas, développer la partie technique d'un projet à quatre et sans reprise de code a été un réel défi, et nous avons fait au mieux lors de ce semestre pour livrer un logiciel fonctionnel en conservant un maximum d'éléments du cahier des charges d'origine.
