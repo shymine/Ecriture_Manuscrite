@@ -135,11 +135,13 @@ class AgnoscoResource {
 	def addDocToProject(@PathParam("project_id") id: Long, document: String): Response = {
 		try {
 			val json = new JSONObject(document)
+			json.keySet().forEach(println(_))
 			val arr = json.getJSONArray("pages")
 			val pageList = new ArrayBuffer[Page]()
 			for (i <- 0 until arr.length()) {
 				val obj = arr.getJSONObject(i)
-				// println(obj)
+				obj.keySet().forEach(it => println("  "+it))
+				println()
 				// écriture de l'image
 				val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(obj.getString("image64"))
 				val image = ImageIO.read(new ByteArrayInputStream(imgByte))
@@ -202,8 +204,9 @@ class AgnoscoResource {
 		val vt = PiFFReader.fromString(json.getString("vtText"))
 		if(vt.isDefined) {
 			val piff = vt.get
-			val newPages = piff.pages.map(it=>new PiFFPage(replaceImgFormat(it.src), it.width, it.height, it.elements))
-			val newPiff = new PiFF(piff.date, newPages)
+			//val newPages = piff.pages.map(it=>new PiFFPage(replaceImgFormat(it.src), it.width, it.height, it.elements))
+			val newPage = new PiFFPage(replaceImgFormat(piff.page.src), piff.page.width, piff.page.height, piff.page.elements)
+			val newPiff = new PiFF(piff.date, newPage)
 			val pw = new PrintWriter(new File(globalDataFolder+"/"+name+".piff"))
 			pw.write(newPiff.toJSON.toString())
 			pw.close()
