@@ -15,6 +15,7 @@ import { DecoupeComponent } from './decoupe/decoupe.component';
 import { AnnotationComponent } from './annotation/annotation.component';
 import { ValidationComponent } from './validation/validation.component';
 import { MydialogComponent } from './mydialog/mydialog.component';
+import { ValidateDialogComponent} from './validate-dialog/validate-dialog.component';
 import { AddDocComponent } from './add-doc/add-doc.component';
 import { SuppressionDialogComponent } from './suppression-dialog/suppression-dialog.component';
 import { GestionPagesComponent } from './gestion-pages/gestion-pages.component';
@@ -30,6 +31,7 @@ import { ExportProjetComponent } from './export-projet/export-projet.component';
     AnnotationComponent,
     ValidationComponent,
     MydialogComponent,
+    ValidateDialogComponent,
     AddDocComponent,
     SuppressionDialogComponent,
     GestionPagesComponent,
