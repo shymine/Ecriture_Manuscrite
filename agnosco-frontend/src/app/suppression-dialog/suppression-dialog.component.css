@@ -2,7 +2,7 @@
     position: relative;
     background: none;
     border: 1px solid #f8b2a1;
-    left: 35%;
+    left: 40%;
     margin-left: 5px;
     margin-right: 5px;
     height: 40px;
@@ -16,7 +16,7 @@
 
 .buttonV {
     position: relative;
-    left: 35%;
+    left: 40%;
     background: none;
     border: 1px solid #9ada69;
     margin-left: 5px;
@@ -31,6 +31,11 @@
 }
 
 p{
+    margin-top: 0px;
+    color: #48327f;
+}
+
+h3{
     margin-top: 0px;
     color: #48327f;
 }

@@ -124,7 +124,7 @@ GREEN #66FF9C RVB 102 255 156
     background: none;
     border: none;
     font-size: 20px;
-    color:#ee9e43;
+    color:#f7ab55;
 }
 
 .button1ListX:hover {
@@ -135,11 +135,23 @@ GREEN #66FF9C RVB 102 255 156
     background: none;
     border: none;
     font-size: 20px;
-    color:#8de65a
+    color:#a3f772
 }
 
 .button1ListP:hover {
     color:#6abe39
+}
+
+.button1ListE {
+    background: none;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    color:#c7a9ff;
+}
+
+.button1ListE:hover {
+    color:#9e71f1;
 }
 
 .buttonList2 {
