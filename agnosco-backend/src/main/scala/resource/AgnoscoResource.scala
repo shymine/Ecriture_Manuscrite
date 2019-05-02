@@ -137,13 +137,9 @@ class AgnoscoResource {
 			val json = new JSONObject(document)
 			val arr = json.getJSONArray("pages")
 			val pageList = new ArrayBuffer[Page]()
-			/*for(i <- 0 until arr.length()) {
-			val obj = arr.getJSONArray(i)
-			pageList += Page(-1, , List())
-		}*/
 			for (i <- 0 until arr.length()) {
 				val obj = arr.getJSONObject(i)
-				println(obj)
+				// println(obj)
 				// écriture de l'image
 				val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(obj.getString("image64"))
 				val image = ImageIO.read(new ByteArrayInputStream(imgByte))
@@ -164,12 +160,12 @@ class AgnoscoResource {
 					return Response.status(200).entity("{'error':'unhandled file format'}").build()
 				}
 			}
-			println(arr, pageList)
+			// println(arr, pageList)
 			val doc = Document(-1, json.getString("name"), pageList, false)
 			val res = controller.addDocToProject(id, doc)
 			Response.status(200).entity(res.toJSON.toString()).build()
 		}catch {
-			case e => e.printStackTrace()
+			case e: Exception => e.printStackTrace()
 				Response.status(500).build()
 		}
 	}
@@ -184,16 +180,44 @@ class AgnoscoResource {
 		regexp.replaceAllIn(str,".png")
 	}
 
+	/**
+	  * {name:'truc',image64:'ezrgrgz',vtText:'eofigzpieguh'}
+	  * @param id
+	  * @param page
+	  * @return
+	  */
 	@POST
 	@Path("/addPageToDocument/{doc_id}")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def addPageToDocument(@PathParam("doc_id") id: Long, page: String): Response = {
 		val json = new JSONObject(page)
-		val pag = Page(-1,json.getString("groundTruth"),List())
+		// écriture image
+		val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(json.getString("image64"))
+		val image = ImageIO.read(new ByteArrayInputStream(imgByte))
+		val name = getFileName(json.getString("vText"))
+		val file = new File(globalDataFolder+"/"+name+".png")
+		ImageIO.write(image,"png",file)
+		// écriture vt
+		val vt = PiFFReader.fromString(json.getString("vtText"))
+		if(vt.isDefined) {
+			val piff = vt.get
+			val newPages = piff.pages.map(it=>new PiFFPage(replaceImgFormat(it.src), it.width, it.height, it.elements))
+			val newPiff = new PiFF(piff.date, newPages)
+			val pw = new PrintWriter(new File(globalDataFolder+"/"+name+".piff"))
+			pw.write(newPiff.toJSON.toString())
+			pw.close()
+			val page = Page(-1, globalDataFolder+"/"+name+".piff", List())
+			val res = controller.addPageToDocument(id, page)
+
+			Response.status(200).entity(res.toJSON.toString).build()
+		}else {
+			Response.status(500).build()
+		}
+		/*val pag = Page(-1,json.getString("groundTruth"),List())
 		println(pag)
 		val res = controller.addPageToDocument(id, pag)
-		Response.status(200).entity(res.toJSON.toString()).build()
+		Response.status(200).entity(res.toJSON.toString()).build()*/
 	}
 
 	/**
@@ -207,6 +231,14 @@ class AgnoscoResource {
 	def deleteDocument(@PathParam("id") id: Long): Response = {
 		controller.deleteDocument(id)
 		Response.status(200).entity(true).build()
+	}
+
+
+	@POST
+	@Path("/modifyPage/{page_id}")
+	@Consumes(Array(MediaType.APPLICATION_JSON))
+	def modifyPage(@PathParam("page_id") id: Long, newPage : String): Unit = {
+
 	}
 
 	/**
