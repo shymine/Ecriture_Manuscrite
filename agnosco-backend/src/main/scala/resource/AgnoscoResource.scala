@@ -150,8 +150,8 @@ class AgnoscoResource {
 				val vt = PiFFReader.fromString(obj.getString("vtText"))
 				if (vt.isDefined) {
 					val piff = vt.get
-					val newPages = piff.pages.map(it => new PiFFPage(replaceImgFormat(it.src), it.width, it.height, it.elements))
-					val newPiff = new PiFF(piff.date, newPages)
+					val newPage = new PiFFPage(replaceImgFormat(piff.page.src), piff.page.width, piff.page.height, piff.page.elements)
+					val newPiff = new PiFF(piff.date, newPage)
 					val pw = new PrintWriter(new File(globalDataFolder + "/" + name + ".piff"))
 					pw.write(newPiff.toJSON.toString())
 					pw.close()

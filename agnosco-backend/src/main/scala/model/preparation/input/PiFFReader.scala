@@ -69,12 +69,8 @@ object PiFFReader {
 	def fromJSON(json : JSONObject) : Option[PiFF] = {
 		try {
 			val date = json.getString("date")
-			val jsonPages = json.getJSONArray("pages")
-			var pages = new ListBuffer[PiFFPage]
-			for (i <- 0 until jsonPages.length()) {
-				pages += readPage(jsonPages.getJSONObject(i))
-			}
-			Some(new PiFF(date, pages.toList))
+			val page = readPage(json.getJSONObject("page"))
+			Some(new PiFF(date, page))
 		} catch {
 			case e : JSONException =>
 				e.printStackTrace()
@@ -117,11 +113,6 @@ object PiFFReader {
 		if (piff.isDefined) return piff
 
 		// If it fails, we need to try every PiFFConverter
-//		val piffConverters = List(
-//			GEDIToPiFFConverter
-//			// add all the other converters here
-//		)
-
 		tryConverters(filename, PIFF_CONVERTERS)
 	}
 

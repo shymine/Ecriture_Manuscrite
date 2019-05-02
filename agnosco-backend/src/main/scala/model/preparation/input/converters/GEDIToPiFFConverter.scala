@@ -24,8 +24,8 @@ object GEDIToPiFFConverter extends PiFFConverter {
     }
   }
 
-  // Finds the DL_PAGE XML objects in the document.
-  private def findPages(xml : Node) : NodeSeq = {
+  // Finds the DL_PAGE XML object in the document.
+  private def findPage(xml : Node) : Node = {
     val nodeSeq = xml \ "DL_DOCUMENT"
 
     val nslen = nodeSeq.length
@@ -33,10 +33,13 @@ object GEDIToPiFFConverter extends PiFFConverter {
     if (nslen > 1) throw new FormatException("Several documents in one file")
 
     val pages = nodeSeq.head \ "DL_PAGE"
-    if (pages.length == 0)
+    val plen = pages.length
+    if (plen == 0)
       throw new FormatException("No pages found in the document")
+    if (plen > 1)
+      throw new FormatException("Several pages in one file")
 
-    pages
+    pages.head
   }
 
   // Reads PiFFElement objects from DL_ZONE XML objects in the document.
@@ -110,8 +113,8 @@ object GEDIToPiFFConverter extends PiFFConverter {
     try {
       val xml = XML.loadFile(filename)
       val date = findDate(xml)
-      val pages = findPages(xml).map(readPage)
-      Some(new PiFF(date, pages.toList))
+      val page = readPage(findPage(xml))
+      Some(new PiFF(date, page))
     } catch {
       case e @ (_ : FileNotFoundException | _ : SAXParseException
                 | _ : NullPointerException | _ : NumberFormatException

@@ -24,14 +24,18 @@ class InputTest extends FlatSpec {
     </GEDI>
 
   private val expectedPiFF =
-    new PiFF("12/23/2011",
-      List(
-        new PiFFPage("image.tif", 1700, 2338,
-          List(
-            new PiFFElement(414, 189, 253, 57, "سلام", TypedScriptType, ArabicLanguage),
-            new PiFFElement(793, 1855, 155, 53, "سلام", TypedScriptType, ArabicLanguage)
-          ))
-      ))
+    new PiFF(
+      "12/23/2011",
+      new PiFFPage(
+        "image.tif",
+        1700,
+        2338,
+        List(
+          new PiFFElement(414, 189, 253, 57, "سلام", TypedScriptType, ArabicLanguage),
+          new PiFFElement(793, 1855, 155, 53, "سلام", TypedScriptType, ArabicLanguage)
+        )
+      )
+    )
 
   "GEDI -> PiFF converter" should "produce the expected PiFF file" in {
     val pw = new PrintWriter(new File("gediTest.xml"))
