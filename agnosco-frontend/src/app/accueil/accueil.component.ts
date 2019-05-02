@@ -6,6 +6,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { AddDocComponent } from '../add-doc/add-doc.component';
 import { GestionPagesComponent } from '../gestion-pages/gestion-pages.component';
+import { ExportProjetComponent } from '../export-projet/export-projet.component';
 
 @Component({
   selector: 'app-accueil',
@@ -176,15 +177,19 @@ export class AccueilComponent implements OnInit {
   showX(ev) {
     let elX = ev.originalTarget.children[1];
     let elY = ev.originalTarget.children[2];
+    let elZ = ev.originalTarget.children[3];
     elX.hidden = false;
     elY.hidden = false;
+    elZ.hidden = false;
   }
 
   hideX(ev) {
     let elX = ev.originalTarget.children[1];
     let elY = ev.originalTarget.children[2];
+    let elZ = ev.originalTarget.children[3];
     elX.hidden = true;
     elY.hidden = true;
+    elZ.hidden = true;
   }
 
   goToDecoupe(){
@@ -230,6 +235,16 @@ export class AccueilComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
     });
+  }
+
+  export(p){
+    console.log("export");
+    console.log(p);
+
+    const dialogRef = this.dialog.open(ExportProjetComponent, {
+      data: {'id': p[1], "pname": p[0]}
+    });
+
   }
 
 }

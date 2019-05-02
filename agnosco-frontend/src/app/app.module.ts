@@ -18,6 +18,7 @@ import { MydialogComponent } from './mydialog/mydialog.component';
 import { AddDocComponent } from './add-doc/add-doc.component';
 import { SuppressionDialogComponent } from './suppression-dialog/suppression-dialog.component';
 import { GestionPagesComponent } from './gestion-pages/gestion-pages.component';
+import { ExportProjetComponent } from './export-projet/export-projet.component';
 
 
 
@@ -31,7 +32,8 @@ import { GestionPagesComponent } from './gestion-pages/gestion-pages.component';
     MydialogComponent,
     AddDocComponent,
     SuppressionDialogComponent,
-    GestionPagesComponent
+    GestionPagesComponent,
+    ExportProjetComponent
   ],
   imports: [
     BrowserModule,
