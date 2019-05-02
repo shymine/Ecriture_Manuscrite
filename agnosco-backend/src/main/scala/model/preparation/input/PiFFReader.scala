@@ -1,5 +1,7 @@
 package model.preparation.input
 
+import java.io.{BufferedOutputStream, DataOutputStream, File, FileOutputStream}
+
 import model.preparation.input.converters.{GEDIToPiFFConverter, PiFFConverter}
 import model.preparation.input.piff.{PiFF, PiFFElement, PiFFPage}
 import model.preparation.types.{Point, Polygon}
@@ -117,13 +119,18 @@ object PiFFReader {
 	}
 
 
-  /** Builds an optional PiFF object from a string JSON object.
-    * @param str the JSON object as a String
+  /** Builds an optional PiFF object from a string.
+    * @param str the String
     * @return an optional PiFF object
     */
   def fromString(str : String) : Option[PiFF] = {
     try {
-      fromJSON(new JSONObject(str))
+			val outTmp = new FileOutputStream("fromString.tmp")
+			outTmp.write(str.getBytes)
+			outTmp.close()
+			val piffOpt = fromFile("fromString.tmp")
+			new File("fromString.tmp").delete()
+			piffOpt
     } catch {
       case e : JSONException => None
     }
