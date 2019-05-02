@@ -48,7 +48,12 @@ export class AddDocComponent implements OnInit {
       }
       console.log("encoded: ",encoded)
       console.log("non encoded:", res)
+
+      console.log("file.name");
+      console.log(file.name);
+
       pages[page].image64 = encoded;
+      pages[page].name = file.name;
 
       console.log("encoded");
 
@@ -81,13 +86,7 @@ export class AddDocComponent implements OnInit {
 
       console.log("encoded");
 
-      console.log("file.name");
-      console.log(file.name);
-
       pages[page].vtText = res;
-      pages[page].name = file.name;
-
-      
 
       console.log("pages[page]");
       console.log(pages[page]);
