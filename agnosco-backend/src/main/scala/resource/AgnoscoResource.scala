@@ -145,12 +145,14 @@ class AgnoscoResource {
 				val name = getFileName(obj.getString("name"))
 //				val file = new File(globalDataFolder + "/" + name + ".png")
 //				ImageIO.write(image, "png", file)
-				val out = new FileOutputStream(globalDataFolder+"/"+obj.getString("name")+".tiff")
+				val out = new FileOutputStream(globalDataFolder+"/"+obj.getString("name"))
 				out.write(imgByte)
 				out.close()
 				// écriture de la vt
+				println(obj.getString("vtText"))
 				val vt = PiFFReader.fromString(obj.getString("vtText"))
 				if (vt.isDefined) {
+					println("it s defined")
 					val piff = vt.get
 //					val newPage = new PiFFPage(replaceImgFormat(piff.page.src), piff.page.width, piff.page.height, piff.page.elements)
 //					val newPiff = new PiFF(piff.date, newPage)
@@ -159,6 +161,7 @@ class AgnoscoResource {
 					pw.close()
 					pageList += Page(-1, globalDataFolder + "/" + name + ".piff", List())
 				} else {
+					println("not defined")
 					return Response.status(200).entity("{'error':'unhandled file format'}").build()
 				}
 			}
