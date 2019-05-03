@@ -135,6 +135,7 @@ class Controller {
 		val example = databaseConnector.getExample(id)
 		if(example.nonEmpty) {
 			val newExample = example.get.copy(enabled = false)
+			databaseConnector.saveExampleEdition(List(newExample))
 		}
 		databaseConnector.disconnect
 	}
@@ -144,6 +145,7 @@ class Controller {
 		val example = databaseConnector.getExample(id)
 		if(example.nonEmpty) {
 			val newExample = example.get.copy(enabled = true)
+			databaseConnector.saveExampleEdition(List(newExample))
 		}
 		databaseConnector.disconnect
 	}

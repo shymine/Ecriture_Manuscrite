@@ -1,11 +1,8 @@
 package resource
 
 
-import java.awt.image.BufferedImage
-import java.io.{ByteArrayInputStream, DataOutputStream, File, FileOutputStream, PrintWriter}
-import java.util.Base64
+import java.io.{File, FileOutputStream, PrintWriter}
 
-import javax.imageio.ImageIO
 import javax.inject.Singleton
 import javax.ws.rs._
 import javax.ws.rs.core.MediaType
@@ -13,7 +10,6 @@ import javax.ws.rs.core.Response
 import model.Controller
 import model.common._
 import model.preparation.input.PiFFReader
-import model.preparation.input.piff.{PiFF, PiFFPage}
 import org.json.{JSONArray, JSONObject}
 
 import scala.collection.mutable
@@ -51,7 +47,7 @@ class AgnoscoResource {
 			println(json)
 			Response.status(200).entity(json.toString).build()
 		} catch {
-			case e => e.printStackTrace()
+			case e: Exception => e.printStackTrace()
 				Response.status(500).build()
 		}
 
@@ -60,7 +56,7 @@ class AgnoscoResource {
 	@POST
 	@Path("/test")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
-	def test(json: String) = {
+	def test(json: String): Response = {
 		println(json)
 		val j = new JSONObject(json)
 		// println(j.getString("test"))
@@ -68,21 +64,12 @@ class AgnoscoResource {
 		try {
 			val res = j.getString("test")
 			val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(res)
-			/*val image: BufferedImage = ImageIO.read(new ByteArrayInputStream(imgByte))
-			val file = new File("data/image.png")
-			ImageIO.write(image, "png", file)*/
 			val out = new FileOutputStream("data/image.tiff")
 			out.write(imgByte)
 			out.close()
-			/* */
-			/*val b = Base64.getDecoder.decode(res)
-			val out = new FileOutputStream(new File("image.tif"))
-			out.write(b)
-			out.close()*/
 		} catch {
 			case e: Exception => e.printStackTrace()
 		}
-		// println(decoded)/**/
 		Response.status(200).build()
 	}
 
@@ -90,8 +77,13 @@ class AgnoscoResource {
 	@DELETE
 	@Path("/deleteProject/{id}")
 	def deleteProject(@PathParam("id") id: Long): Response = {
-		controller.deleteProject(id)
-		Response.status(200).entity(true).build()
+		try {
+			controller.deleteProject(id)
+			Response.status(200).entity(true).build()
+		}catch {
+			case e: Exception => e.printStackTrace()
+				Response.status(500).build()
+		}
 	}
 
 	/**
@@ -110,7 +102,7 @@ class AgnoscoResource {
 			val project = controller.createProject(name, recogniser)
 			Response.status(200).entity(project.toJSON.toString()).build()
 		}catch {
-			case e => e.printStackTrace()
+			case e: Exception => e.printStackTrace()
 				Response.status(500).build()
 		}
 	}

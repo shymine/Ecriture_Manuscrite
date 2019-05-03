@@ -1,11 +1,18 @@
 package model.recogniser
-import java.io.FileOutputStream
+import java.io.{File, FileInputStream, FileOutputStream}
+import java.nio.file.{Files, Paths, StandardCopyOption}
 
 import model.common.Example
 import org.json.JSONObject
+import model.common.globalDataFolder
 
 class SampleExport extends ConverterRecogniser {
   override protected var converter: Converter = _
+
+  def getFileName(str: String): String = {
+    val regexp = "[.][a-zA-Z]+".r
+    regexp.replaceAllIn(str,"")
+  }
 
   /**
     * Train the Recognizer using the samples given in parameter
@@ -19,9 +26,21 @@ class SampleExport extends ConverterRecogniser {
   */
 
     samples.foreach(example => {
-      val exName = example.id
-      val fileIm = new FileOutputStream("export/image.png")
-      val fileTr = new FileOutputStream("export/image.png")
+      val pathIm = "export/"+example.imagePath
+
+      val pathTr = "export/"+getFileName(example.imagePath)+".txt"
+
+      new File(pathIm)
+
+      val path = Files.copy(
+        Paths.get(globalDataFolder + "/" + example.imagePath),
+        Paths.get(pathIm),
+        StandardCopyOption.REPLACE_EXISTING
+      )
+
+      val fileTr = new FileOutputStream(pathTr)
+      fileTr.write(example.transcript.get.toArray.map(_.toByte))
+      fileTr.close()
 
     })
 //    try {
