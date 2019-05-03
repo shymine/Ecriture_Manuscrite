@@ -150,4 +150,21 @@
     display: inline;
     position: relative;
     margin-left: 5px;
+    font-size: 2ch;
+}
+
+.currentPage {
+    border: none;
+    border-bottom: solid 1px #48327F;
+    color: #110f3d;
+    font-style: normal;
+    font-weight: bold;
+    background: none;
+}
+
+.notCurrentPage {
+    border: none;
+    color: #110f3d;
+    font-style: normal;
+    background: none;
 }

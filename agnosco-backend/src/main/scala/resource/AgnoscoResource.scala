@@ -373,9 +373,15 @@ class AgnoscoResource {
 	@PUT
 	@Path("/disableExample/{id}")
 	def disableExample(@PathParam("id") id: Long): Response = {
-		controller.disableExample(id)
-		println("c est bien disable")
-		Response.status(200).entity(true).build()
+		try{
+			controller.disableExample(id)
+			println("c est bien disable")
+			Response.status(200).entity(true).build()
+		}catch {
+			case e: Exception => e.printStackTrace()
+			Response.status(500).build()
+		}
+
 	}
 
 	/**
@@ -386,9 +392,14 @@ class AgnoscoResource {
 	@PUT
 	@Path("/enableExample/{id}")
 	def enableExample(@PathParam("id") id: Long): Response = {
-		controller.enableExample(id)
-		println("c est bien enable")
-		Response.status(200).build()
+		try{
+			controller.enableExample(id)
+			println("c est bien enable")
+			Response.status(200).build()
+		}catch {
+			case e: Exception => e.printStackTrace()
+				Response.status(500).build()
+		}
 	}
 
 	/**
