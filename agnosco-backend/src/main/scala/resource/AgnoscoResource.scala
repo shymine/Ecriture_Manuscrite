@@ -448,20 +448,19 @@ class AgnoscoResource {
 //
 	/**
 	  * Prepare the examples from the document given in parameter
-	  * @param document The name of the document to prepare
+	  * @param id The id of the document to prepare
 	  * @return
 	  */
 	@POST
-	@Path("prepareExamplesOfDocument/{document}")
-	def prepareExamplesOfDocument(@PathParam("document") document: String) = {
+	@Path("prepareExamplesOfDocument/{doc_id}")
+	def prepareExamplesOfDocument(@PathParam("doc_id") id: Long): Response = {
 		// controller.prepareData(vtFiles)
+		val pages = controller.getPagesOfDocuments(id)
+		pages.foreach(it => controller.prepareData(it))
 
+		Response.status(200).build()
 	}
 
-	@POST
-	@Path("prepareExamplesOfPage/{page}")
-	def prepareExamplesOfPage(@PathParam("page") page: Long): Unit = {
-		//controller.prepareData(vtFile)
-	}
+
 
 }

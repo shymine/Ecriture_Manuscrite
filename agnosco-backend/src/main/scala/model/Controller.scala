@@ -96,6 +96,13 @@ class Controller {
 		res
 	}
 
+	def getDocument(id: Long): Document = {
+		databaseConnector.connect
+		val doc = databaseConnector.getDocument(id).get
+		databaseConnector.disconnect
+		doc
+	}
+
 	def getAvailableRecognisers : Iterable[RecogniserType.Value] = RecogniserType.values
 
 
