@@ -38,10 +38,6 @@ export class ValidationService {
     console.log("*** GET `agnosco/base/pageData/${id}` ***");
 
     return this.http.get(`agnosco/base/pageData/${id}`);
-      /*.pipe(
-        retry(3), // retry a failed request up to 3 times
-        catchError(this.handleError) // then handle the error
-      );*/
   }
 
 

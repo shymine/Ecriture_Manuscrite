@@ -303,15 +303,19 @@ class AgnoscoResource {
 	@Path("/pageData/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def getPageData(@PathParam("id") id: Long): Response = {
-		val jsonA = new JSONArray()
-		println(id)
-		val examples = controller.getExamplesOfPage(id)
-		val page = controller.getPage(id)
-		examples.foreach(it => jsonA.put(it.toJSON))
-		println(jsonA.toString)
-		val json = new JSONObject()
-		json.put("examples", jsonA)
-		Response.status(200).entity(json.toString).build()
+		try{
+			val jsonA = new JSONArray()
+			println(id)
+			val examples = controller.getExamplesOfPage(id)
+			println(examples)
+			val page = controller.getPage(id)
+			examples.foreach(it => jsonA.put(it.toJSON))
+			println(jsonA.toString)
+			Response.status(200).entity(jsonA.toString).build()
+		}catch{
+			case e: Exception=> e.printStackTrace()
+				Response.status(500).build()
+		}
 	}
 
 	/**

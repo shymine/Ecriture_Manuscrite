@@ -410,7 +410,7 @@ class DatabaseSqlite extends Database {
 			val imagePath = res.getString("imagePath")
 			val transcript =
 				res.getString("transcript") match {
-					case "null" => None
+					case "null" | null => None
 					case t => Some(t)
 				}
 			val enabled = res.getBoolean("enabled")

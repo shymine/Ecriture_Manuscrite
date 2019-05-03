@@ -8,16 +8,17 @@ import org.json.JSONObject
 
 case class Example(id : Long, imagePath : String, var transcript : Option[String], var enabled: Boolean = true, var validated: Boolean = false) {
 
-	/*def toJSON: JSONObject = {
+	def toJSON: JSONObject = {
 		val json = new JSONObject()
 		json.put("id", id)
 		json.put("imagePath", imagePath)
-		json.put("transcript", transcript.get)
+		json.put("transcript", transcript.getOrElse(""))
 		json.put("enabled", enabled)
 		json.put("validated", validated)
-	}*/
+		json
+	}
 
-	def toJSON: JSONObject = {
+	/*def toJSON: JSONObject = {
 		val json = new JSONObject()
 		json.put("id", id)
 		json.put("transcipt", transcript.get)
@@ -32,6 +33,6 @@ case class Example(id : Long, imagePath : String, var transcript : Option[String
 
 		json.put("image64", image64)
 		json
-	}
+	}*/
 
 }

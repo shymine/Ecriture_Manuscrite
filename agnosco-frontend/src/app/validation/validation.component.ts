@@ -16,7 +16,7 @@ export class ValidationComponent implements OnInit {
 
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
-    if(event.keyCode == 13){
+    if((event.keyCode == 13) && !this.isLastPage){
       this.validateAll();
       this.nextPage();
     }
@@ -103,7 +103,7 @@ export class ValidationComponent implements OnInit {
     (returnedData => {
       console.log("get data : ");
       console.log(returnedData);
-
+      
       //on parcourt la returnedData pour ne prendre que l'id des pages
       Object.keys(returnedData).forEach( key => {
         let data = returnedData[key];
@@ -114,8 +114,13 @@ export class ValidationComponent implements OnInit {
         let validated = returnedData[key].validated;
 
         let newExample = [imagePath, transcript, id, enabled];
+        //console.log("example tout seul");
+        //console.log(newExample);
 
         this.examples.push(newExample);
+
+        //console.log("EXAMPLES :");
+        //console.log(this.examples);
       });
     });
 
