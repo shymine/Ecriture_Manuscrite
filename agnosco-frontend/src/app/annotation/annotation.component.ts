@@ -58,8 +58,8 @@ export class AnnotationComponent implements OnInit {
     this.router.navigate(['/decoupe']);
   }
 
-  goToValidation(p){
-    this.router.navigate(['/validation',{'id':JSON.stringify(p)}]);
+  goToValidation(){
+    this.router.navigate(['/validation',{'id':this.docName}]);
   }
 
   getPages(){
