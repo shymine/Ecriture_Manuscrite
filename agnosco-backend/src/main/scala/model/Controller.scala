@@ -46,6 +46,7 @@ class Controller {
 		databaseConnector.connect
 		databaseConnector.addDocument(document, project_id)
 		val res = databaseConnector.getDocumentsOfProject(project_id).find(it => it.name == document.name).get
+		document.pages.foreach(it => databaseConnector.addPage(it, res.id))
 		databaseConnector.disconnect
 		res
 	}
@@ -58,6 +59,12 @@ class Controller {
 		res
 	}
 
+	def addExampleToPage(id: Long, example: Example): Unit = {
+		databaseConnector.connect
+		databaseConnector.addExample(example, id)
+		databaseConnector.disconnect
+	}
+
 	def deleteProject(id: Long): Unit = {
 		databaseConnector.connect
 		databaseConnector.deleteProject(id)
@@ -67,6 +74,18 @@ class Controller {
 	def deleteDocument(id: Long): Unit = {
 		databaseConnector.connect
 		databaseConnector.deleteDocument(id)
+		databaseConnector.disconnect
+	}
+
+	def deletePage(id: Long): Unit = {
+		databaseConnector.connect
+		databaseConnector.deletePage(id)
+		databaseConnector.disconnect
+	}
+
+	def deleteExample(id: Long): Unit = {
+		databaseConnector.connect
+		databaseConnector.deleteExample(id)
 		databaseConnector.disconnect
 	}
 
