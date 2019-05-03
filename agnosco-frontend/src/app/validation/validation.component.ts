@@ -92,6 +92,8 @@ export class ValidationComponent implements OnInit {
     });
 
   }
+
+  
   /**
    * On récupère la liste des exemples qui composent la première page.
    * validation.getPageData() renvoie l'image de la page et les exemples, il faut donc faire un tri
