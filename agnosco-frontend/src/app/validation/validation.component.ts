@@ -24,7 +24,7 @@ export class ValidationComponent implements OnInit {
 
   private params = [];
   private docName;
-  private hidden = [false, false, false, false, false, false];
+  private hidden = [];
   public validationString;
 
   public pages = [];
@@ -114,13 +114,9 @@ export class ValidationComponent implements OnInit {
         let validated = returnedData[key].validated;
 
         let newExample = [imagePath, transcript, id, enabled];
-        //console.log("example tout seul");
-        //console.log(newExample);
 
         this.examples.push(newExample);
-
-        //console.log("EXAMPLES :");
-        //console.log(this.examples);
+        this.hidden.push(!enabled);
       });
     });
 
@@ -164,10 +160,12 @@ export class ValidationComponent implements OnInit {
   disableEx(id){
     console.log("disable " + id);
     if(this.hidden[id] == false){
-      this.validationService.disableEx(id);
+      let i = this.examples[id][2];
+      this.validationService.disableEx(i);
     }
     else{
-      this.validationService.enableEx(id);
+      let i = this.examples[id][2];
+      this.validationService.enableEx(i);
     }
     this.examples[id][3] = !this.examples[id][3];
     this.hidden[id] = !this.hidden[id];
@@ -218,7 +216,8 @@ export class ValidationComponent implements OnInit {
       {
         'id':3,
         'imagePath':'assets/images/coucou.png',
-        'transcript':'coucou'
+        'transcript':'coucou',
+        'enabled'
       },
       {
         'id':4,
@@ -228,6 +227,10 @@ export class ValidationComponent implements OnInit {
       }
     ]
 */
+  }
+
+  isCurrentPage(p){
+    return (p==this.currentPageIndex+1);
   }
 
   leave(){
