@@ -11,7 +11,7 @@ import scala.io.Source
 
 case class Page(id : Long, /*image64 : String,*/ groundTruth : String, examples : Iterable[Example]) {
 
-	def toJSON: JSONObject = {
+	/*def toJSON: JSONObject = {
 		val json = new JSONObject()
 		json.put("id", id)
 		// json.put("image64", image64)
@@ -19,9 +19,9 @@ case class Page(id : Long, /*image64 : String,*/ groundTruth : String, examples 
 		val jsonExamples = new JSONArray()
 		examples.foreach(example => jsonExamples.put(example.toJSON))
 		json.put("examples", jsonExamples)
-	}
+	}*/
 
-/*def toJSON: JSONObject = {
+def toJSON: JSONObject = {
   val json = new JSONObject()
   json.put("id", id)
   val vtFile = Source.fromFile(globalDataFolder + "/" + groundTruth)
@@ -40,6 +40,6 @@ case class Page(id : Long, /*image64 : String,*/ groundTruth : String, examples 
   json.put("image64", image64)
   json.put("vtText", content)
   json
-}*/
+}
 
 }
