@@ -135,40 +135,36 @@ class AgnoscoResource {
 	def addDocToProject(@PathParam("project_id") id: Long, document: String): Response = {
 		try {
 			val json = new JSONObject(document)
-//			json.keySet().forEach(println(_))
 			val arr = json.getJSONArray("pages")
 			val pageList = new ArrayBuffer[Page]()
+
 			for (i <- 0 until arr.length()) {
 				val obj = arr.getJSONObject(i)
 				val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(obj.getString("image64"))
-//				val image = ImageIO.read(new ByteArrayInputStream(imgByte))
 				val name = getFileName(obj.getString("name"))
-//				val file = new File(globalDataFolder + "/" + name + ".png")
-//				ImageIO.write(image, "png", file)
+
 				val out = new FileOutputStream(globalDataFolder+"/"+obj.getString("name"))
 				out.write(imgByte)
 				out.close()
+
 				// écriture de la vt
-				println(obj.getString("vtText"))
 				val vt = PiFFReader.fromString(obj.getString("vtText"))
 				if (vt.isDefined) {
-					println("it s defined")
 					val piff = vt.get
-//					val newPage = new PiFFPage(replaceImgFormat(piff.page.src), piff.page.width, piff.page.height, piff.page.elements)
-//					val newPiff = new PiFF(piff.date, newPage)
+
 					val pw = new PrintWriter(new File(globalDataFolder + "/" + name + ".piff"))
 					pw.write(piff.toJSON.toString())
 					pw.close()
+
 					pageList += Page(-1, globalDataFolder + "/" + name + ".piff", List())
 				} else {
-					println("not defined")
 					return Response.status(200).entity("{'error':'unhandled file format'}").build()
 				}
 			}
-			// println(arr, pageList)
 			val doc = Document(-1, json.getString("name"), pageList, false)
 			val res = controller.addDocToProject(id, doc)
 			Response.status(200).entity(res.toJSON.toString()).build()
+
 		}catch {
 			case e: Exception => e.printStackTrace()
 				Response.status(500).build()
@@ -197,22 +193,25 @@ class AgnoscoResource {
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def addPageToDocument(@PathParam("doc_id") id: Long, page: String): Response = {
 		val json = new JSONObject(page)
+
 		// écriture image
 		val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(json.getString("image64"))
-		val image = ImageIO.read(new ByteArrayInputStream(imgByte))
-		val name = getFileName(json.getString("vText"))
-		val file = new File(globalDataFolder+"/"+name+".png")
-		ImageIO.write(image,"png",file)
+
+		val name = getFileName(json.getString("name"))
+
+		val out = new FileOutputStream(globalDataFolder+"/"+json.getString("name"))
+		out.write(imgByte)
+		out.close()
+
 		// écriture vt
 		val vt = PiFFReader.fromString(json.getString("vtText"))
 		if(vt.isDefined) {
 			val piff = vt.get
-			//val newPages = piff.pages.map(it=>new PiFFPage(replaceImgFormat(it.src), it.width, it.height, it.elements))
-			val newPage = new PiFFPage(replaceImgFormat(piff.page.src), piff.page.width, piff.page.height, piff.page.elements)
-			val newPiff = new PiFF(piff.date, newPage)
+
 			val pw = new PrintWriter(new File(globalDataFolder+"/"+name+".piff"))
-			pw.write(newPiff.toJSON.toString())
+			pw.write(piff.toJSON.toString())
 			pw.close()
+
 			val page = Page(-1, globalDataFolder+"/"+name+".piff", List())
 			val res = controller.addPageToDocument(id, page)
 
@@ -220,10 +219,6 @@ class AgnoscoResource {
 		}else {
 			Response.status(500).build()
 		}
-		/*val pag = Page(-1,json.getString("groundTruth"),List())
-		println(pag)
-		val res = controller.addPageToDocument(id, pag)
-		Response.status(200).entity(res.toJSON.toString()).build()*/
 	}
 
 	/**
@@ -241,10 +236,46 @@ class AgnoscoResource {
 
 
 	@POST
-	@Path("/modifyPage/{page_id}")
+	@Path("/modifyPage/{doc_id}/{page_id}")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
-	def modifyPage(@PathParam("page_id") id: Long, newPage : String): Unit = {
+	def modifyPage(@PathParam("page_id") id: Long, @PathParam("doc_id") id_doc: Long, newPage : String): Response = {
+		val json = new JSONObject(newPage)
+		val name = getFileName(json.getString("name"))
+		val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(json.getString("image64"))
 
+		val page = controller.getPage(id)
+		val vtFile = new File(globalDataFolder+"/"+page.groundTruth)
+		val imgPath = PiFFReader.fromFile(globalDataFolder+"/"+page.groundTruth).get.page.src
+		val imgFile = new File(globalDataFolder+"/"+imgPath)
+		vtFile.delete()
+		imgFile.delete()
+
+		val out = new FileOutputStream(globalDataFolder+"/"+json.getString("name"))
+		out.write(imgByte)
+		out.close()
+
+		val vt = PiFFReader.fromString(json.getString("vtText"))
+		if(vt.isDefined) {
+			val piff = vt.get
+
+			val pw = new PrintWriter(new File(globalDataFolder+"/"+name+".piff"))
+			pw.write(piff.toJSON.toString())
+			pw.close()
+
+
+			val nPage = Page(-1, globalDataFolder+"/"+name+".piff", page.examples)
+			val examples = controller.getExamplesOfPage(page.id)
+
+			controller.deletePage(page.id)
+			examples.foreach(it => controller.deleteExample(it.id))
+
+			val tPage = controller.addPageToDocument(id_doc, nPage)
+			examples.foreach(it=>controller.addExampleToPage(tPage.id, it))
+
+			Response.status(200).build()
+		}else {
+			Response.status(500).build()
+		}
 	}
 
 	/**
