@@ -1,11 +1,8 @@
 package resource
 
 
-import java.awt.image.BufferedImage
-import java.io.{ByteArrayInputStream, DataOutputStream, File, FileOutputStream, PrintWriter}
-import java.util.Base64
+import java.io.{File, FileOutputStream, PrintWriter}
 
-import javax.imageio.ImageIO
 import javax.inject.Singleton
 import javax.ws.rs._
 import javax.ws.rs.core.MediaType
@@ -13,7 +10,6 @@ import javax.ws.rs.core.Response
 import model.Controller
 import model.common._
 import model.preparation.input.PiFFReader
-import model.preparation.input.piff.{PiFF, PiFFPage}
 import org.json.{JSONArray, JSONObject}
 
 import scala.collection.mutable
@@ -51,7 +47,7 @@ class AgnoscoResource {
 			println(json)
 			Response.status(200).entity(json.toString).build()
 		} catch {
-			case e => e.printStackTrace()
+			case e: Exception => e.printStackTrace()
 				Response.status(500).build()
 		}
 
@@ -60,7 +56,7 @@ class AgnoscoResource {
 	@POST
 	@Path("/test")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
-	def test(json: String) = {
+	def test(json: String): Response = {
 		println(json)
 		val j = new JSONObject(json)
 		// println(j.getString("test"))
@@ -68,21 +64,12 @@ class AgnoscoResource {
 		try {
 			val res = j.getString("test")
 			val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(res)
-			/*val image: BufferedImage = ImageIO.read(new ByteArrayInputStream(imgByte))
-			val file = new File("data/image.png")
-			ImageIO.write(image, "png", file)*/
 			val out = new FileOutputStream("data/image.tiff")
 			out.write(imgByte)
 			out.close()
-			/* */
-			/*val b = Base64.getDecoder.decode(res)
-			val out = new FileOutputStream(new File("image.tif"))
-			out.write(b)
-			out.close()*/
 		} catch {
 			case e: Exception => e.printStackTrace()
 		}
-		// println(decoded)/**/
 		Response.status(200).build()
 	}
 
@@ -90,8 +77,13 @@ class AgnoscoResource {
 	@DELETE
 	@Path("/deleteProject/{id}")
 	def deleteProject(@PathParam("id") id: Long): Response = {
-		controller.deleteProject(id)
-		Response.status(200).entity(true).build()
+		try {
+			controller.deleteProject(id)
+			Response.status(200).entity(true).build()
+		}catch {
+			case e: Exception => e.printStackTrace()
+				Response.status(500).build()
+		}
 	}
 
 	/**
@@ -110,7 +102,7 @@ class AgnoscoResource {
 			val project = controller.createProject(name, recogniser)
 			Response.status(200).entity(project.toJSON.toString()).build()
 		}catch {
-			case e => e.printStackTrace()
+			case e: Exception => e.printStackTrace()
 				Response.status(500).build()
 		}
 	}
@@ -381,9 +373,15 @@ class AgnoscoResource {
 	@PUT
 	@Path("/disableExample/{id}")
 	def disableExample(@PathParam("id") id: Long): Response = {
-		controller.disableExample(id)
-		println("c est bien disable")
-		Response.status(200).entity(true).build()
+		try{
+			controller.disableExample(id)
+			println("c est bien disable")
+			Response.status(200).entity(true).build()
+		}catch {
+			case e: Exception => e.printStackTrace()
+			Response.status(500).build()
+		}
+
 	}
 
 	/**
@@ -394,9 +392,14 @@ class AgnoscoResource {
 	@PUT
 	@Path("/enableExample/{id}")
 	def enableExample(@PathParam("id") id: Long): Response = {
-		controller.enableExample(id)
-		println("c est bien enable")
-		Response.status(200).build()
+		try{
+			controller.enableExample(id)
+			println("c est bien enable")
+			Response.status(200).build()
+		}catch {
+			case e: Exception => e.printStackTrace()
+				Response.status(500).build()
+		}
 	}
 
 	/**
@@ -448,20 +451,19 @@ class AgnoscoResource {
 //
 	/**
 	  * Prepare the examples from the document given in parameter
-	  * @param document The name of the document to prepare
+	  * @param id The id of the document to prepare
 	  * @return
 	  */
 	@POST
-	@Path("prepareExamplesOfDocument/{document}")
-	def prepareExamplesOfDocument(@PathParam("document") document: String) = {
+	@Path("prepareExamplesOfDocument/{doc_id}")
+	def prepareExamplesOfDocument(@PathParam("doc_id") id: Long): Response = {
 		// controller.prepareData(vtFiles)
+		val pages = controller.getPagesOfDocuments(id)
+		pages.foreach(it => controller.prepareData(it))
 
+		Response.status(200).build()
 	}
 
-	@POST
-	@Path("prepareExamplesOfPage/{page}")
-	def prepareExamplesOfPage(@PathParam("page") page: Long): Unit = {
-		//controller.prepareData(vtFile)
-	}
+
 
 }

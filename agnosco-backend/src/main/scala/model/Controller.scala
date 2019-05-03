@@ -96,6 +96,13 @@ class Controller {
 		res
 	}
 
+	def getDocument(id: Long): Document = {
+		databaseConnector.connect
+		val doc = databaseConnector.getDocument(id).get
+		databaseConnector.disconnect
+		doc
+	}
+
 	def getAvailableRecognisers : Iterable[RecogniserType.Value] = RecogniserType.values
 
 
@@ -128,6 +135,7 @@ class Controller {
 		val example = databaseConnector.getExample(id)
 		if(example.nonEmpty) {
 			val newExample = example.get.copy(enabled = false)
+			databaseConnector.saveExampleEdition(List(newExample))
 		}
 		databaseConnector.disconnect
 	}
@@ -137,6 +145,7 @@ class Controller {
 		val example = databaseConnector.getExample(id)
 		if(example.nonEmpty) {
 			val newExample = example.get.copy(enabled = true)
+			databaseConnector.saveExampleEdition(List(newExample))
 		}
 		databaseConnector.disconnect
 	}

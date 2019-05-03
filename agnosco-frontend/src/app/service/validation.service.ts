@@ -44,7 +44,7 @@ export class ValidationService {
   disableEx(id){
     console.log("*** PUT `agnosco/base/disableExample/${id}` ***");
 
-    this.http.put(`agnosco/base/disableExample/${id}`, {}, {});
+    this.http.put(`agnosco/base/disableExample/${id}`, {}, {}).subscribe();
 
     console.log("service disable " + id);
   }
@@ -53,7 +53,7 @@ export class ValidationService {
   enableEx(id){
     console.log("*** PUT `agnosco/base/enableExample/${id}` ***");
 
-    this.http.put(`agnosco/base/enableExample/${id}`, {}, {});
+    this.http.put(`agnosco/base/enableExample/${id}`, {}, {}).subscribe();
 
     console.log("service enable " + id);
   }
