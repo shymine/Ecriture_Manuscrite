@@ -254,7 +254,7 @@ export class AccueilComponent implements OnInit {
       this.getAllProjects();
     });
   }
-
+  
   export(p){
     console.log("export");
     console.log(p);
