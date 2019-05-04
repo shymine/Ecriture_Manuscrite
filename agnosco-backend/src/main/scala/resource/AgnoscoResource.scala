@@ -2,15 +2,17 @@ package resource
 
 
 import java.io.{File, FileOutputStream, PrintWriter}
+import java.util
 
 import javax.inject.Singleton
 import javax.ws.rs._
-import javax.ws.rs.core.MediaType
-import javax.ws.rs.core.Response
+import javax.ws.rs.core.{MediaType, Response, Variant}
 import model.Controller
 import model.common._
 import model.preparation.input.PiFFReader
 import org.json.{JSONArray, JSONObject}
+
+import scala.util.control.Breaks._
 
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
@@ -129,33 +131,48 @@ class AgnoscoResource {
 			val json = new JSONObject(document)
 			val arr = json.getJSONArray("pages")
 			val pageList = new ArrayBuffer[Page]()
+			var ok = true
 
-			for (i <- 0 until arr.length()) {
-				val obj = arr.getJSONObject(i)
-				val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(obj.getString("image64"))
-				val name = getFileName(obj.getString("name"))
+			breakable {
+				for (i <- 0 until arr.length()) {
+					val obj = arr.getJSONObject(i)
+					val name = getFileName(obj.getString("name"))
 
-				val out = new FileOutputStream(globalDataFolder+"/"+obj.getString("name"))
-				out.write(imgByte)
-				out.close()
+					val vt = PiFFReader.fromString(obj.getString("vtText"))
+					if (vt.isDefined) {
+						val piff = vt.get
 
-				// écriture de la vt
-				val vt = PiFFReader.fromString(obj.getString("vtText"))
-				if (vt.isDefined) {
-					val piff = vt.get
+						if(piff.page.src != name) {
+							ok = false
+							break()
+						}
 
-					val pw = new PrintWriter(new File(globalDataFolder + "/" + name + ".piff"))
-					pw.write(piff.toJSON.toString())
-					pw.close()
+						// écriture image
+						val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(obj.getString("image64"))
 
-					pageList += Page(-1, name + ".piff", List())
-				} else {
-					return Response.status(200).entity("{'error':'unhandled file format'}").build()
+						val out = new FileOutputStream(globalDataFolder+"/"+obj.getString("name"))
+						out.write(imgByte)
+						out.close()
+
+						// écriture de la vt
+						val pw = new PrintWriter(new File(globalDataFolder + "/" + name + ".piff"))
+						pw.write(piff.toJSON.toString())
+						pw.close()
+
+						pageList += Page(-1, name + ".piff", List())
+					} else {
+						return Response.status(200).entity("{'error':'unhandled file format'}").build()
+					}
 				}
 			}
+
 			val doc = Document(-1, json.getString("name"), pageList, false)
 			val res = controller.addDocToProject(id, doc)
-			Response.status(200).entity(res.toJSON.toString()).build()
+			if(ok) {
+				Response.status(200).entity(res.toJSON.toString()).build()
+			}else {
+				Response.notAcceptable(new util.ArrayList[Variant]()).entity("{\"error\":400}").build()
+			}
 
 		}catch {
 			case e: Exception => e.printStackTrace()
@@ -186,19 +203,16 @@ class AgnoscoResource {
 	def addPageToDocument(@PathParam("doc_id") id: Long, page: String): Response = {
 		val json = new JSONObject(page)
 
-		// écriture image
-		val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(json.getString("image64"))
-
 		val name = getFileName(json.getString("name"))
-
-		val out = new FileOutputStream(globalDataFolder+"/"+json.getString("name"))
-		out.write(imgByte)
-		out.close()
 
 		// écriture vt
 		val vt = PiFFReader.fromString(json.getString("vtText"))
 		if(vt.isDefined) {
 			val piff = vt.get
+
+			if(piff.page.src != name) {
+				return Response.notAcceptable(new util.ArrayList[Variant]()).entity("{\"error\":400}").build()
+			}
 
 			val pw = new PrintWriter(new File(globalDataFolder+"/"+name+".piff"))
 			pw.write(piff.toJSON.toString())
@@ -206,6 +220,13 @@ class AgnoscoResource {
 
 			val page = Page(-1, name+".piff", List())
 			val res = controller.addPageToDocument(id, page)
+
+			// écriture image
+			val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(json.getString("image64"))
+
+			val out = new FileOutputStream(globalDataFolder+"/"+json.getString("name"))
+			out.write(imgByte)
+			out.close()
 
 			Response.status(200).entity(res.toJSON.toString).build()
 		}else {
