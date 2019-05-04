@@ -162,14 +162,29 @@ export class GestionPagesComponent implements OnInit {
   }
   */
 
+  /* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
   onValidation(): void {
 
     console.log("validation");
+    console.log("pages");
+    console.log(this.pages);
+
+    console.log("voilà ce qui va se passer!");
+
+    console.log(" X à modifier X ");
+    console.log(this.modifypages);
+    
+    console.log(" X à supprimer X ");
+    console.log(this.cancelledpages);
+
+    console.log(" X à ajouter X ");
+    console.log(this.newpages);
 
     /* 1) si pas à supprimer : modifier 2) supprimer 3) ajouter */
 
     this.dialogRef.close(1);
   }
+  /* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 
   plusPage(){
     console.log("add one page");

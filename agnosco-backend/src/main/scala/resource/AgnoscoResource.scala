@@ -148,7 +148,7 @@ class AgnoscoResource {
 					pw.write(piff.toJSON.toString())
 					pw.close()
 
-					pageList += Page(-1, globalDataFolder + "/" + name + ".piff", List())
+					pageList += Page(-1, name + ".piff", List())
 				} else {
 					return Response.status(200).entity("{'error':'unhandled file format'}").build()
 				}
@@ -204,7 +204,7 @@ class AgnoscoResource {
 			pw.write(piff.toJSON.toString())
 			pw.close()
 
-			val page = Page(-1, globalDataFolder+"/"+name+".piff", List())
+			val page = Page(-1, name+".piff", List())
 			val res = controller.addPageToDocument(id, page)
 
 			Response.status(200).entity(res.toJSON.toString).build()
@@ -311,10 +311,15 @@ class AgnoscoResource {
 	@Path("/documentPages/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def getPagesOfDocuments(@PathParam("id") id: Long): Response = {
-		val json = new JSONArray()
-		val pages = controller.getPagesOfDocuments(id)
-		pages.foreach(it => json.put(it.toJSON))
-		Response.status(200).entity(json.toString()).build()
+		try {
+			val json = new JSONArray()
+			val pages = controller.getPagesOfDocuments(id)
+			pages.foreach(it => json.put(it.toJSON))
+			Response.status(200).entity(json.toString()).build()
+		}catch {
+			case e: Exception => e.printStackTrace()
+				Response.status(500).build()
+		}
 	}
 
 	/**
