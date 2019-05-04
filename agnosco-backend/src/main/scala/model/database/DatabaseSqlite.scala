@@ -25,9 +25,87 @@ class DatabaseSqlite extends Database {
 
 	val DATABASE_NAME = "agnosco"
 	val THUMBNAILS_FOLDER = "thumbnails"
-	private var statements : mutable.Map[String, PreparedStatement] = _
+	private lazy val statements : mutable.Map[String, PreparedStatement] = {
+		val map = mutable.Map[String, PreparedStatement]()
 
-	private var conn: Connection = _
+		var name = "getProject"
+		var statement = conn.prepareStatement("SELECT * FROM projects WHERE id=?")
+		map.put(name, statement)
+
+
+		name = "addProject"
+		statement = conn.prepareStatement("INSERT INTO projects ( name, recogniser) VALUES (?,?)")
+		map.put(name, statement)
+
+		name = "deleteProject"
+		statement = conn.prepareStatement("DELETE FROM projects WHERE id=?")
+		map.put(name, statement)
+
+		name = "getDocument"
+		statement = conn.prepareStatement("SELECT * FROM documents WHERE idD=?")
+		map.put(name, statement)
+
+		name = "addDocument"
+		statement = conn.prepareStatement("INSERT INTO documents ( name, prepared, projectId) VALUES (?,?,?)")
+		map.put(name, statement)
+
+		name = "deleteDocument"
+		statement = conn.prepareStatement("DELETE FROM documents WHERE idD=?")
+		map.put(name, statement)
+
+		name = "getPage"
+		statement = conn.prepareStatement("SELECT * FROM pages WHERE idP=?")
+		map.put(name, statement)
+
+		name = "addPage"
+		statement = conn.prepareStatement("INSERT INTO pages (groundTruth, documentId) VALUES (?,?)")
+		//conn.prepareStatement("INSERT INTO pages ( imagePath, groundTruth, documentId) VALUES (?,?,?)")
+		map.put(name, statement)
+
+		name = "deletePage"
+		statement = conn.prepareStatement("DELETE FROM pages WHERE idP=?")
+		map.put(name, statement)
+
+		name = "getExample"
+		statement = conn.prepareStatement("SELECT * FROM examples WHERE idE=?")
+		map.put(name, statement)
+
+		name = "addExample"
+		statement = conn.prepareStatement("INSERT INTO examples ( imagePath, transcript, pageId, enabled, validated) VALUES (?,?,?,?,?)")
+		map.put(name, statement)
+
+		name = "deleteExample"
+		statement = conn.prepareStatement("DELETE FROM examples WHERE idE=?")
+		map.put(name, statement)
+
+		name = "getAllProjects"
+		statement = conn.prepareStatement("SELECT * FROM projects")
+		map.put(name, statement)
+
+		name = "getDocumentsOfProject"
+		statement = conn.prepareStatement("SELECT * FROM documents WHERE projectId=?")
+		map.put(name, statement)
+
+		name = "getPagesOfDocument"
+		statement = conn.prepareStatement("SELECT * FROM pages WHERE documentId=?")
+		map.put(name, statement)
+
+		name = "getExamplesOfPage"
+		statement = conn.prepareStatement("SELECT * FROM examples WHERE pageId=?")
+		map.put(name, statement)
+
+		name = "saveExampleEdition"
+		statement = conn.prepareStatement("UPDATE examples SET imagePath=?, transcript=?, enabled=?, validated=? WHERE idE=?")
+		map.put(name, statement)
+
+		name = "documentPrepared"
+		statement = conn.prepareStatement("UPDATE documents SET prepared=1 WHERE idD=?")
+		map.put(name, statement)
+
+		map
+	}
+
+	private lazy val conn: Connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME + ".db")
 
 
 	private def createFolder(folderPath : String) : Unit = {
@@ -57,7 +135,7 @@ class DatabaseSqlite extends Database {
 
 	override def connect: Boolean = {
 		Class.forName("org.sqlite.JDBC")
-		conn = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME + ".db")
+		/*conn = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME + ".db")*/
 		conn.setAutoCommit(false)
 
 		// Thumbnails folder creation (if it does not exist)
@@ -97,7 +175,7 @@ class DatabaseSqlite extends Database {
 				"pageId INTEGER NOT NULL, " +
 				"FOREIGN KEY(pageId) REFERENCES pages(idP)")
 
-		statements = {
+		/*statements = {
 			val map = mutable.Map[String, PreparedStatement]()
 
 			var name = "getProject"
@@ -175,7 +253,7 @@ class DatabaseSqlite extends Database {
 			map.put(name, statement)
 
 			map
-		}
+		}*/
 		/*
 		val file = "stock"
 		try {
@@ -205,9 +283,12 @@ class DatabaseSqlite extends Database {
 	override def disconnect: Boolean = {
 		try {
 			conn.commit() //TODO uncomment this line for production
-			statements.keys.foreach(key => statements(key).close())
-			conn.close()
-			conn = null
+			statements.keys.foreach(key => {
+				statements(key).clearParameters()
+				//statements(key).close()
+			})
+			//conn.close()
+			//conn = null
 			/*
 			val pw = new PrintWriter(new File("stock"))
 			pw.flush()
@@ -226,37 +307,47 @@ class DatabaseSqlite extends Database {
 
 
 	override def getProject(id: Long): Option[Project] = {
-		val pstmt = statements("getProject")
-		pstmt.setLong(1, id)
-		val result = pstmt.executeQuery()
-
+		val stmt = statements("getProject")
+		//val stmt = conn.prepareStatement("SELECT * FROM projects WHERE id=?")
+		stmt.setLong(1, id)
+		val result = stmt.executeQuery()
+		stmt.clearParameters()
+//		stmt.close()
 		if(!result.next()) return None
 
 		Some(Project(result.getLong("id"), result.getString("name"), RecogniserType.withName(result.getString("recogniser")), List()))
 	}
 
 	override def addProject(project: Project): Project = {
-		val pstmt = statements("addProject")
+		val stmt = statements("addProject")
+		//val stmt = conn.prepareStatement("INSERT INTO projects ( name, recogniser) VALUES (?,?)")
 		//pstmt.setLong(1, DatabaseSqlite.incrementID)
 		//println(s"pr: ${DatabaseSqlite.idCount}")
-		pstmt.setString(1, project.name)
-		pstmt.setString(2, project.recogniser.toString)
-		pstmt.executeUpdate()
+		stmt.setString(1, project.name)
+		stmt.setString(2, project.recogniser.toString)
+		stmt.executeUpdate()
+		stmt.clearParameters()
+//		stmt.close()
 		val res = getAllProject.find(p => p.name == project.name)
 		res.get
 	}
 
 	override def deleteProject(id: Long): Unit = {
 		val stmt = statements("deleteProject")
+		//val stmt = conn.prepareStatement("DELETE FROM projects WHERE id=?")
 		stmt.setLong(1, id)
 		stmt.executeUpdate()
+		stmt.clearParameters()
+//		stmt.close()
 	}
 
 	override def getDocument(id: Long): Option[Document] = {
 		val stmt = statements("getDocument")
+//		val stmt = conn.prepareStatement("SELECT * FROM documents WHERE idD=?")
 		stmt.setLong(1, id)
 		val result = stmt.executeQuery()
-
+		stmt.clearParameters()
+//		stmt.close()
 		if (!result.next) return None
 
 		val name = result.getString("name")
@@ -268,27 +359,35 @@ class DatabaseSqlite extends Database {
 
 	override def addDocument(document: Document, projectID: Long): Document = {
 		val stmt = statements("addDocument")
+//		val stmt = conn.prepareStatement("INSERT INTO documents ( name, prepared, projectId) VALUES (?,?,?)")
 		//stmt.setLong(1, DatabaseSqlite.incrementID)
 		//println(s"pr: ${DatabaseSqlite.idCount}")
 		stmt.setString(1, document.name)
 		stmt.setBoolean(2, document.prepared)
 		stmt.setLong(3, projectID)
 		stmt.executeUpdate()
+		stmt.clearParameters()
+//		stmt.close()
 		val res = getDocumentsOfProject(projectID).find(d => d.name == document.name).get
 		res
 	}
 
 	override def deleteDocument(id: Long): Unit = {
-		val stmt = statements("deleteDocument")
+		 val stmt = statements("deleteDocument")
+//		val stmt = conn.prepareStatement("DELETE FROM documents WHERE idD=?")
 		stmt.setLong(1, id)
 		stmt.executeUpdate()
+		stmt.clearParameters()
+		stmt.close()
 	}
 
 	override def getPage(id: Long): Option[Page] = {
-		val stmt = statements("getPage")
+		 val stmt = statements("getPage")
+//		val stmt = conn.prepareStatement("SELECT * FROM pages WHERE idP=?")
 		stmt.setLong(1, id)
 		val res = stmt.executeQuery()
-
+		stmt.clearParameters()
+//		stmt.close()
 		if (!res.next) return None
 
 		// val imagePath = res.getString("imagePath")
@@ -299,27 +398,35 @@ class DatabaseSqlite extends Database {
 	}
 
 	override def addPage(page: Page, documentId: Long): Page = {
-		val stmt = statements("addPage")
+		 val stmt = statements("addPage")
+//		val stmt = conn.prepareStatement("INSERT INTO pages (groundTruth, documentId) VALUES (?,?)")
 		//stmt.setLong(1, DatabaseSqlite.incrementID)
 		// stmt.setString(1, page.imagePath)
 		stmt.setString(1, page.groundTruth)
 		stmt.setLong(2, documentId)
 		stmt.executeUpdate()
+		stmt.clearParameters()
+//		stmt.close()
 		val res = getPagesOfDocument(documentId).find(p => p.groundTruth == page.groundTruth).get
 		res
 	}
 
 	override def deletePage(id: Long): Unit = {
 		val stmt = statements("deletePage")
+//		val stmt = conn.prepareStatement("DELETE FROM pages WHERE idP=?")
 		stmt.setLong(1, id)
 		stmt.executeUpdate()
+		stmt.clearParameters()
+//		stmt.close()
 	}
 
 	override def getExample(id: Long): Option[Example] = {
-		val stmt = statements("getExample")
+		 val stmt = statements("getExample")
+//		val stmt = conn.prepareStatement("SELECT * FROM examples WHERE idE=?")
 		stmt.setLong(1, id)
 		val res = stmt.executeQuery()
-
+		stmt.clearParameters()
+//		stmt.close()
 		if (!res.next) return None
 
 		val imagePath = res.getString("imagePath")
@@ -337,6 +444,7 @@ class DatabaseSqlite extends Database {
 
 	override def addExample(example: Example, pageId: Long): Example = {
 		val stmt = statements("addExample")
+//		val stmt = conn.prepareStatement("INSERT INTO examples ( imagePath, transcript, pageId, enabled, validated) VALUES (?,?,?,?,?)")
 		//stmt.setLong(1, DatabaseSqlite.incrementID)
 		stmt.setString(1, example.imagePath)
 		stmt.setString(2, example.transcript.orNull)
@@ -344,20 +452,27 @@ class DatabaseSqlite extends Database {
 		stmt.setBoolean(4, example.enabled)
 		stmt.setBoolean(5, example.validated)
 		stmt.executeUpdate()
+		stmt.clearParameters()
+//		stmt.close()
 		val res = getExamplesOfPage(pageId).find(e => e.imagePath == example.imagePath).get
 		res
 	}
 
 	override def deleteExample(id: Long): Unit = {
 		val stmt = statements("deleteExample")
+//		val stmt = conn.prepareStatement("DELETE FROM examples WHERE idE=?")
 		stmt.setLong(1, id)
 		stmt.executeUpdate()
-		conn.commit()
+		stmt.clearParameters()
+//		stmt.close()
 	}
 
 	override def getAllProject: Iterable[Project] = {
 		val stmt = statements("getAllProjects")
+//		val stmt = conn.prepareStatement("SELECT * FROM projects")
 		val res = stmt.executeQuery()
+		stmt.clearParameters()
+//		stmt.close()
 		val projects = new ArrayBuffer[Project]()
 		while(res.next) {
 			val name = res.getString("name")
@@ -369,9 +484,12 @@ class DatabaseSqlite extends Database {
 	}
 
 	override def getDocumentsOfProject(id: Long): Iterable[Document] = {
-		val stmt = statements("getDocumentsOfProject")
+		 val stmt = statements("getDocumentsOfProject")
+//		val stmt = conn.prepareStatement("SELECT * FROM documents WHERE projectId=?")
 		stmt.setLong(1, id)
 		val res = stmt.executeQuery()
+		stmt.clearParameters()
+//		stmt.close()
 		val documents = new ArrayBuffer[Document]()
 
 		while (res.next) {
@@ -386,8 +504,11 @@ class DatabaseSqlite extends Database {
 
 	override def getPagesOfDocument(id: Long): Iterable[Page] = {
 		val stmt = statements("getPagesOfDocument")
+//		val stmt = conn.prepareStatement("SELECT * FROM pages WHERE documentId=?")
 		stmt.setLong(1, id)
 		val res = stmt.executeQuery()
+		stmt.clearParameters()
+//		stmt.close()
 		val pages = new ArrayBuffer[Page]()
 
 		while (res.next) {
@@ -402,8 +523,11 @@ class DatabaseSqlite extends Database {
 
 	override def getExamplesOfPage(id: Long): Iterable[Example] = {
 		val stmt = statements("getExamplesOfPage")
+//		val stmt = conn.prepareStatement("SELECT * FROM examples WHERE pageId=?")
 		stmt.setLong(1, id)
 		val res = stmt.executeQuery()
+		stmt.clearParameters()
+//		stmt.close()
 		val examples = new ArrayBuffer[Example]()
 
 		while (res.next) {
@@ -424,21 +548,27 @@ class DatabaseSqlite extends Database {
 
 	override def saveExampleEdition(examples: Iterable[Example]): Unit = {
 		examples.foreach(example => {
-			val stmt = statements("saveExampleEdition")
+			 val stmt = statements("saveExampleEdition")
+//			val stmt = conn.prepareStatement("UPDATE examples SET imagePath=?, transcript=?, enabled=?, validated=? WHERE idE=?")
 			stmt.setString(1, example.imagePath)
 			stmt.setString(2, example.transcript.orNull)
 			stmt.setBoolean(3, example.enabled)
 			stmt.setBoolean(4, example.validated)
 			stmt.setLong(5, example.id)
 			stmt.executeUpdate()
+			stmt.clearParameters()
+//			stmt.close()
 		})
 	}
 
 	override def documentArePrepared(documentsId: Iterable[Long]): Unit = {
 		documentsId.foreach(docId => {
-			val stmt = statements("documentPrepared")
+			//val stmt = statements("documentPrepared")
+			val stmt = conn.prepareStatement("UPDATE documents SET prepared=1 WHERE idD=?")
 			stmt.setLong(1, docId)
 			stmt.executeUpdate()
+			stmt.clearParameters()
+//			stmt.close()
 		})
 	}
 }

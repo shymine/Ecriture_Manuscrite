@@ -10,9 +10,28 @@ import { isLoweredSymbol } from '@angular/compiler';
 })
 export class GestionPagesComponent implements OnInit {
 
+  /* 4 tableaux:
+  . pages: les pages visibles sur l'IHM (manipulables)
+  4 manipulations possibles:
+    - Ajouter une pages (ok sous reserve de tests)
+    - Supprimer une page (ok sous reserve de tests)
+    - Modifier une page (que les nouvelles)
+    - Restaurer une page (pas fait)
+
+  . newpages: les pages ajoutées depuis le début de la manipulation
+
+  . cancelledpages: les pages présentes dans la base de données et demandant à être supprimées
+  en effet, seules les pages déjà intégrées à la base de données impliqueront une action de suppression
+  si, lors de la manipulation, une page est ajoutée puis supprimée alors cette page ne sera tout simplement pas ajouté à la base de donnée.
+  cette page n'apparait plus dans le tableau de pages à manipuler
+
+  .modifypages: notifier les pages étant modifiées pour les modifier ensuite dans la base de données
+  
+  */
+
   public pages = [];
-  public newpages = [];
-  public cancelledpages = [];
+  public oldpages = [];
+
   public pid = -1;
   public did = -1;
 
@@ -32,10 +51,12 @@ export class GestionPagesComponent implements OnInit {
 
     console.log("`agnosco/base/documentPages/${data.d.id}`");
     this.http.get(`agnosco/base/documentPages/${data.d.id}`,{}).subscribe(returnedData => {
+      console.log("returned data");
       console.log(returnedData);
       Object.keys(returnedData).forEach( key => {
         console.log("key");
         console.log(returnedData[key]);
+        this.oldpages.push({'nameIm':returnedData[key].name, 'nameVt': returnedData[key].image64, 'modified': 0, cancelled: 0}); //
       });
     });
   }
@@ -50,35 +71,44 @@ export class GestionPagesComponent implements OnInit {
 
     const event = param[0];
     const page = param[1];
+    const tab = param[2];
 
-    if(this.isNew(page)>=0){
+    const file = event.target.files[0];
+    console.log(file)
+    const reader = new FileReader();
+    const http = this.http;
 
-      const file = event.target.files[0];
-      console.log(file)
-      const reader = new FileReader();
-      const http = this.http;
-      const pages = this.pages;
+    let pages;
 
-      reader.onloadend = function() {
-        let res: string = reader.result as string;
-        let encoded = res.replace(/^data:(.*;base64;)?/,'');
-        if((encoded.length%4)>0) {
-          encoded += '='.repeat(4-(encoded.length%4));
-        }
-
-        
-        pages[page].image = encoded;
-        
-        
-
-        console.log("encoded");
-
-        console.log("pages[page]");
-        console.log(pages[page]);
-      }
-      reader.readAsDataURL(file);
-      console.log("j'encode");
+    if(tab == "old"){
+      pages = this.oldpages;
+      this.oldpages[page].modified = 1;
+    }else{
+      pages = this.pages;
     }
+
+    reader.onloadend = function() {
+      let res: string = reader.result as string;
+      let encoded = res.replace(/^data:(.*;base64;)?/,'');
+      if((encoded.length%4)>0) {
+        encoded += '='.repeat(4-(encoded.length%4));
+      }
+
+      console.log("file.name");
+      console.log(file.name);
+
+      pages[page].image = encoded;
+      pages[page].name = file.name;
+
+      
+      console.log("encoded");
+
+      console.log("pages[page]");
+      console.log(pages[page]);
+    }
+
+    reader.readAsDataURL(file);
+    console.log("j'encode");
   }
 
   encodeDataFile(param) {
@@ -88,37 +118,39 @@ export class GestionPagesComponent implements OnInit {
 
     const event = param[0];
     const page = param[1];
+    const tab = param[2];
 
-    if(this.isNew(page)>=0){
+    console.log("page");
+    console.log(page);
 
-      console.log("page");
-      console.log(page);
+    const file = event.target.files[0];
+    console.log(file)
 
-      const file = event.target.files[0];
-      console.log(file)
+    const reader = new FileReader();
+    const http = this.http;
 
-      const reader = new FileReader();
-      const http = this.http;
-      const pages = this.pages;
-      reader.onloadend = function() {
-        let res: string = reader.result as string;
+    let pages;
 
-        console.log("encoded");
-
-        console.log("file.name");
-        console.log(file.name);
-
-        pages[page].data = res;
-        pages[page].name = file.name;
-
-        
-
-        console.log("pages[page]");
-        console.log(pages[page]);
-      }
-      reader.readAsText(file);
-      console.log("j'encode");
+    if(tab == "old"){
+      pages = this.oldpages;
+      this.oldpages[page].modified = 1;
+    }else{
+      pages = this.pages;
     }
+
+    reader.onloadend = function() {
+      let res: string = reader.result as string;
+
+      console.log("encoded");
+
+      pages[page].data = res;      
+
+      console.log("pages[page]");
+      console.log(pages[page]);
+    }
+
+    reader.readAsText(file);
+    console.log("j'encode");
   }
 
   onNoClick(): void {
@@ -134,87 +166,57 @@ export class GestionPagesComponent implements OnInit {
   }
   */
 
+  /* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
   onValidation(): void {
 
     console.log("validation");
-/*
-    const json = {
-      'name': this.dName,
-      'pages': this.pages
-    }
 
-    console.log(json);
+    console.log("voilà ce qui va se passer!");
 
-    if(this.pid>=0){
-      this.http.post(`agnosco/base/addDocToProject/${this.pid}`,json,{}).subscribe(data => {
-        console.log("envoye");
-      });
-    }else{
-      console.log("FAIL ID");
-    }
-  
-*/
+    console.log("les vieilles et leurs etats");
+    console.log(this.oldpages);
+
+    console.log(" X à ajouter X ");
+    console.log(this.pages);
+
+    /* 1) si pas à supprimer : modifier 2) supprimer 3) ajouter */
+
     this.dialogRef.close(1);
   }
+  /* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 
   plusPage(){
     console.log("add one page");
     
-    this.newpages.push(this.pages.length);
     this.pages.push({'name':"default", 'image': "default", 'data':"default"});
     
     console.log(this.pages);
   }
 
-  deletePage(page){
-    console.log("DELETE ONE PAGE");
+  deleteOld(page){
+    //page = index dans oldpages
+    console.log("DELETE OLD PAGE");
 
-    let n = this.isNew(page);
-    console.log("N");
-    console.log(n);
-    console.log("length");
-    console.log(this.newpages.length);
-    if(n >= 0){
-      console.log("annulation de l'ajout");
-      for (var _i = n; _i < this.newpages.length-1; _i++){
-        console.log("_i");
-        console.log(_i);
-        console.log("avant: "+this.newpages[_i]);
-        console.log("normalement: "+this.newpages[_i+1]);
-        this.newpages[_i] = this.newpages[_i+1]-1;
-      }
-      this.newpages.pop();
-      console.log("objets à ajouter:");
-      console.log(this.newpages);
+    if(this.oldpages[page].cancelled == 1){
+      console.log("RESTAURATION");
+      this.oldpages[page].cancelled = 0;
+
     }else{
-      console.log("ajout des pages à supprimer");
-      this.cancelledpages.push(page);
-      console.log("objets à supprimer:");
-      console.log(this.cancelledpages);
+      console.log("SUPPRESSION");
+      this.oldpages[page].cancelled = 1;
+      
     }
+  }
+
+  deleteNew(page){
+    //page = index dans pages
+
+    console.log("DELETE NEW PAGE");
+    console.log("annulation de l'ajout => suppression dans pages");
 
     for (var _j = page; _j < this.pages.length-1; _j++){
       this.pages[_j] = this.pages[_j+1];
     }
     this.pages.pop();
-
-    console.log("end of delete page");
-    console.log(this.pages);
-    
-  }
-
-  isNew(p){
-    console.log("IS NEW?");
-    console.log(p)
-    console.log("les news");
-    console.log(this.newpages);
-    for(var _i = 0; _i < this.newpages.length ; _i++){
-      if(this.newpages[_i] == p){
-        console.log(_i);
-        return _i;
-      }
-    }
-    console.log(-1);
-    return -1;
   }
 }

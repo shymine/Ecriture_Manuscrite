@@ -122,13 +122,12 @@ export class AddDocComponent implements OnInit {
     if(this.id>=0){
       this.http.post(`agnosco/base/addDocToProject/${this.id}`,json,{}).subscribe(data => {
         console.log("envoye");
+        this.dialogRef.close(1);
       });
     }else{
       console.log("FAIL ID");
+      this.dialogRef.close(0);
     }
-  
-
-    this.dialogRef.close(1);
   }
 
   plusPage(){
