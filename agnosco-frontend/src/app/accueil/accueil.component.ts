@@ -70,7 +70,7 @@ export class AccueilComponent implements OnInit {
         let nomPro = returnedData[key].name;
         let docPro = returnedData[key].documents;
         let id = returnedData[key].id;
-        let reco = returnedData[key].recognizer;
+        let reco = returnedData[key].recogniser;
 
         console.log(".............");
         console.log("suivant:");
@@ -81,7 +81,7 @@ export class AccueilComponent implements OnInit {
         console.log(id);
         console.log("doc");
         console.log(docPro);
-        console.log("reco");
+        console.log("recogniser");
         console.log(reco);
         console.log(".............");
 
@@ -251,6 +251,7 @@ export class AccueilComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.getAllProjects();
     });
   }
 
@@ -260,6 +261,10 @@ export class AccueilComponent implements OnInit {
 
     const dialogRef = this.dialog.open(ExportProjetComponent, {
       data: {'id': p[1], "pname": p[0]}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllProjects();
     });
 
   }
