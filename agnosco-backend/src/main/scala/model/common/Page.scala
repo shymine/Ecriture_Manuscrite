@@ -5,6 +5,8 @@ import java.util.Base64
 
 import javax.imageio.ImageIO
 import model.preparation.input.PiFFReader
+import org.apache.commons.io.FileUtils
+import org.eclipse.persistence.tools.file.FileUtil
 import org.json.{JSONArray, JSONObject}
 
 import scala.io.Source
@@ -29,11 +31,13 @@ case class Page(id : Long, /*image64 : String,*/ groundTruth : String, examples 
 
 		val piff = PiFFReader.fromString(content)
 		val imgPath = piff.get.page.src
-		val image = ImageIO.read(new File(globalDataFolder+"/"+imgPath))
+		/*val image = ImageIO.read(new File(globalDataFolder+"/"+imgPath))
 		val baos = new ByteArrayOutputStream()
 		ImageIO.write(image,"png",baos)
 		baos.flush()
-		val image64 = Base64.getEncoder.encodeToString(baos.toByteArray)
+		val image64 = Base64.getEncoder.encodeToString(baos.toByteArray)*/
+		val fileContent = FileUtils.readFileToByteArray(new File(globalDataFolder+"/"+imgPath))
+		val image64 = Base64.getEncoder.encodeToString(fileContent)
 
 		val name = "[.][a-zA-Z]+".r.replaceAllIn(groundTruth, "")
 		json.put("name", name)
