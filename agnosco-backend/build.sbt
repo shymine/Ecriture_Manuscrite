@@ -17,3 +17,7 @@ libraryDependencies += "org.glassfish.jersey.containers" % "jersey-container-gri
 
 libraryDependencies += "javax.servlet" % "javax.servlet-api" % "4.0.1"
 libraryDependencies += "org.glassfish.jaxb" % "jaxb-runtime" % "2.3.2"
+
+libraryDependencies += "org.xerial" % "sqlite-jdbc" % "3.27.2.1"
+
+libraryDependencies += "org.json" % "json" % "20180813"

@@ -21,25 +21,25 @@ case class Page(id : Long, /*image64 : String,*/ groundTruth : String, examples 
 		json.put("examples", jsonExamples)
 	}*/
 
-def toJSON: JSONObject = {
-  val json = new JSONObject()
-  json.put("id", id)
-  val vtFile = Source.fromFile(globalDataFolder + "/" + groundTruth)
-  val content = vtFile.getLines().toList.reduce(_+" "+_)
+	def toJSON: JSONObject = {
+		val json = new JSONObject()
+		json.put("id", id)
+		val vtFile = Source.fromFile(globalDataFolder + "/" + groundTruth)
+		val content = vtFile.getLines().toList.reduce(_+" "+_)
 
-  val piff = PiFFReader.fromString(content)
-  val imgPath = piff.get.page.src
-  val image = ImageIO.read(new File(globalDataFolder+"/"+imgPath))
-  val baos = new ByteArrayOutputStream()
-  ImageIO.write(image,"png",baos)
-  baos.flush()
-  val image64 = Base64.getEncoder.encodeToString(baos.toByteArray)
+		val piff = PiFFReader.fromString(content)
+		val imgPath = piff.get.page.src
+		val image = ImageIO.read(new File(globalDataFolder+"/"+imgPath))
+		val baos = new ByteArrayOutputStream()
+		ImageIO.write(image,"png",baos)
+		baos.flush()
+		val image64 = Base64.getEncoder.encodeToString(baos.toByteArray)
 
-  val name = "[.][a-zA-Z]+".r.replaceAllIn(groundTruth, "")
-  json.put("name", name)
-  json.put("image64", image64)
-  json.put("vtText", content)
-  json
-}
+		val name = "[.][a-zA-Z]+".r.replaceAllIn(groundTruth, "")
+		json.put("name", name)
+		json.put("image64", image64)
+		json.put("vtText", content)
+		json
+	}
 
 }
