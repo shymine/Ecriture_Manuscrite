@@ -2,7 +2,8 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Validation, ValidationService } from '../service/validation.service';
-import { ValidateDialogComponent } from '../validate-dialog/validate-dialog.component';
+import { HelpAnnotationComponent } from '../help-annotation/help-annotation.component';
+import { EndAnnotationComponent } from '../end-annotation/end-annotation.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { forEach } from '@angular/router/src/utils/collection';
 
@@ -13,13 +14,24 @@ import { forEach } from '@angular/router/src/utils/collection';
 })
 export class AnnotationComponent implements OnInit {
 
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) { 
+    if(event.keyCode == 13){
+      this.sendEdits();
+      if(!this.isLastPage){
+        this.nextPage();
+      }else{
+        this.endAnnotation();
+      }
+    }
+  }
+
   private params = [];
   private docName;
   private hidden = [];
-  public validationString;
 
-  public pages = [];
-  public examples = []; //0 : path - 1 : transcription -  2 : id - 3 : enabled
+  public pages;
+  public examples; //0 : path - 1 : transcription -  2 : id - 3 : enabled
   public currentPageIndex;
   public currentPage;
 
@@ -34,7 +46,6 @@ export class AnnotationComponent implements OnInit {
     this.currentPage = 0;
     this.isFirstPage = true;
     this.isLastPage = false;
-    this.validationString = "[";
   }
 
   ngOnInit() {
@@ -62,6 +73,9 @@ export class AnnotationComponent implements OnInit {
     this.router.navigate(['/validation',{'id':this.docName}]);
   }
 
+  /**
+   * Méthode qui récupère la liste des pages sous forme d'id.
+   */
   getPages(){
     //on récupère la liste des identifiants des pages du doc passé en paramètre 
     this.validationService.getPages(this.docName).subscribe(returnedData => {
@@ -115,7 +129,9 @@ export class AnnotationComponent implements OnInit {
     });
   }
 
-  //méthode qui vérifie si on est à la 1e ou à la dernière page
+  /**
+   * Méthode qui vérifie si on est à la 1e ou à la dernière page
+   */
   checkPageNumber(){
     if(this.currentPageIndex == 0){
       //on grise la 1e flèche
@@ -134,10 +150,18 @@ export class AnnotationComponent implements OnInit {
     console.log("check page : " + this.currentPage);
   }
 
+  /**
+   * Retourne true si l'exemple n'est pas caché et vice-versa.
+   * @param id index de l'exemple dans le tableau examples
+   */
   isEnabled(id){
     return this.examples[id][3];
   }
 
+  /**
+   * Méthode qui cache l'exemple qui manque de pertinence.
+   * @param id index de l'exemple dans le tableau examples
+   */
   disableEx(id){
     console.log("disable " + id);
     if(this.hidden[id] == false){
@@ -152,6 +176,9 @@ export class AnnotationComponent implements OnInit {
     this.hidden[id] = !this.hidden[id];
   }
 
+  /**
+   * Méthode qui fait passer à la page précédente.
+   */
   previousPage(){
     console.log("PREVIOUS PAGE");
     this.currentPageIndex--;
@@ -163,6 +190,9 @@ export class AnnotationComponent implements OnInit {
     console.log("page number : " + this.currentPage);
   }
 
+  /**
+   * Méthode qui fait passer à la page suivante.
+   */
   nextPage(){
     console.log("NEXT PAGE");
     this.currentPageIndex++;
@@ -174,8 +204,110 @@ export class AnnotationComponent implements OnInit {
     console.log("page number : " + this.currentPage);
   }
 
+  /**
+   * Méthode qui renvoie true si le numéro de page p correspond à la page courante, false sinon. Elle est utilisée pour souligner le bon numéro de page dans l'interface.
+   * @param p numéro de la page demandée
+   */
   isCurrentPage(p){
     return (p==this.currentPageIndex+1);
+  }
+
+  /**
+   * Méthode qui envoie au back-end les exemples dont les transcriptions ont été modifiées sous ce format :
+   * [
+      {
+        'id':3,
+        'imagePath':'assets/images/coucou.png',
+        'transcript':'coucou',
+      },
+      {
+        'id':4,
+        'imagePath':'assets/images/salut.png',
+        'transcript':'salut'
+        
+      }
+     ]
+   */
+  sendEdits() {
+    console.log("Send edits");
+
+    let str = "[\n";
+
+    let notEmpty = false;
+
+    for (let i = 0; i < this.examples.length; i++) {
+      let e = this.examples[i];
+
+      // on récupère la transcription affichée qui a pu être modifiée
+      let newTranscript = document.getElementById(i.toString()).innerHTML;
+
+      //si elle a été modifiée, on ajoute l'exemple dans str
+      if(this.examples[i][1] !== newTranscript){
+        str = str.concat("{\n\'id\':" + e[2] + ",\n\'imagePath\':\"" + e[0] + "\",\n\'transcript\':\"" + e[1] + "\"\n},\n");
+      }
+
+      notEmpty = true;
+    }
+
+    //on enlève la dernière virgule s'il y a au moins un exemple dans la string
+    if(notEmpty){
+      str = str.substr(0, str.length -1);
+    }
+
+    str = str.concat("]");
+
+    console.log(str);
+    this.validationService.sendEdits(str);
+    
+  }
+
+  /**
+   * Méthode qui ouvre un dialog pour donner des informations sur le fonctionnement de la page.
+   */
+  getHelp(){
+    const dialogRef = this.dialog.open(HelpAnnotationComponent, {});
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The help dialog was closed');
+    });
+  }
+
+  /**
+   * Fonction pour traduire une image en base 64
+   * @param event 
+   */
+  getBase64(event) {
+    let file = event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      //me.modelvalue = reader.result;
+      console.log(reader.result);
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+  }
+
+
+  endAnnotation(){
+    const dialogRef = this.dialog.open(EndAnnotationComponent, {});
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The validation dialog was closed');
+      console.log(result);
+      if(result == 1) {
+        this.sendEdits();
+        this.router.navigate(['']);
+        console.log("SEND EDITS ET RETOUR A L'ACCUEIL");
+      }else if(result == 2){
+        this.sendEdits();
+        this.router.navigate(['/validation',{'id':this.docName}]);
+        console.log("SEND EDITS ET VALIDATION");
+      }else{
+        console.log("ANNULATION");
+      }
+    });
   }
 
 }

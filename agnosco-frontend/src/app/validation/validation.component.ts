@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Validation, ValidationService } from '../service/validation.service';
 import { ValidateDialogComponent } from '../validate-dialog/validate-dialog.component';
+import { HelpValidationComponent } from '../help-validation/help-validation.component';
+import { EndValidationComponent } from '../end-validation/end-validation.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { forEach } from '@angular/router/src/utils/collection';
 
@@ -16,16 +18,19 @@ export class ValidationComponent implements OnInit {
 
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
-    if((event.keyCode == 13) && !this.isLastPage){
+    if(event.keyCode == 13){
       this.validateAll();
-      this.nextPage();
+      if(!this.isLastPage){
+        this.nextPage();
+      }else{
+        this.endOfDocument();
+      }
     }
   }
 
   private params = [];
   private docName;
   private hidden = [];
-  public validationString;
 
   public pages = [];
   public examples = []; //0 : path - 1 : transcription -  2 : id - 3 : enabled
@@ -35,10 +40,10 @@ export class ValidationComponent implements OnInit {
   public isFirstPage;
   public isLastPage;
 
-
   pageD : any[];
 
   validation: Validation;
+
 
   constructor(private router: Router, private route: ActivatedRoute, private validationService: ValidationService, public dialog: MatDialog, private http: HttpClient) {
     this.examples = [];
@@ -47,7 +52,6 @@ export class ValidationComponent implements OnInit {
     this.currentPage = 0;
     this.isFirstPage = true;
     this.isLastPage = false;
-    this.validationString = "[";
   }
 
   ngOnInit() {
@@ -65,6 +69,14 @@ export class ValidationComponent implements OnInit {
   }
 
 
+  goHome(){
+    this.router.navigate(['']);
+  }
+
+
+  /**
+   * Méthode qui récupère la liste des pages sous forme d'id.
+   */
   getPages(){
     //test
     /*this.pages = [1,5,7];
@@ -75,7 +87,7 @@ export class ValidationComponent implements OnInit {
       console.log("get pages : ");
       console.log(returnedData);
       
-      //on parcourt la returnedData pour ne prendre que l'image, la transcription
+      //on parcourt la returnedData pour ne prendre que l'id de la page
       Object.keys(returnedData).forEach( key => {
         let id = returnedData[key].id;
 
@@ -132,7 +144,10 @@ export class ValidationComponent implements OnInit {
     this.examples[5] = ["../../assets/images/Fraise.png", "And by opposing end them.", 5, true];*/
   }
 
-  //méthode qui vérifie si on est à la 1e ou à la dernière page
+
+  /**
+   * Méthode qui vérifie si on est à la 1e ou à la dernière page
+   */
   checkPageNumber(){
     if(this.currentPageIndex == 0){
       //on grise la 1e flèche
@@ -151,14 +166,20 @@ export class ValidationComponent implements OnInit {
     console.log("check page : " + this.currentPage);
   }
 
+
+  /**
+   * Retourne true si l'exemple n'est pas caché et vice-versa.
+   * @param id index de l'exemple dans le tableau examples
+   */
   isEnabled(id){
     return this.examples[id][3];
   }
 
-  goHome(){
-    this.router.navigate(['']);
-  }
 
+  /**
+   * Méthode qui cache l'exemple qui manque de pertinence.
+   * @param id index de l'exemple dans le tableau examples
+   */
   disableEx(id){
     console.log("disable " + id);
     if(this.hidden[id] == false){
@@ -173,6 +194,10 @@ export class ValidationComponent implements OnInit {
     this.hidden[id] = !this.hidden[id];
   }
 
+
+  /**
+   * Méthode qui fait passer à la page précédente.
+   */
   previousPage(){
     console.log("PREVIOUS PAGE");
     this.currentPageIndex--;
@@ -184,6 +209,10 @@ export class ValidationComponent implements OnInit {
     console.log("page number : " + this.currentPage);
   }
 
+
+  /**
+   * Méthode qui fait passer à la page suivante.
+   */
   nextPage(){
     console.log("NEXT PAGE");
     this.currentPageIndex++;
@@ -195,31 +224,14 @@ export class ValidationComponent implements OnInit {
     console.log("page number : " + this.currentPage);
   }
 
-  validateAll(){
-    console.log("VAAAAALIDDDDDAAATIOOOOOOOON");
-    if(this.examples[0][3] === true){ //si l'exemple est validé
-      this.validationString = this.validationString.concat("{\n\'id\':" + this.examples[0][2] + ",\n\'imagePath\':\"" + this.examples[0][0] + "\",\n\'transcript\':\"" + this.examples[0][1] + "\"\n}");
-    }
 
-    for (let i = 1; i < this.examples.length; i++) {
-      let e = this.examples[i];
-      if(e[3] === true){ //si l'exemple est validé
-      this.validationString = this.validationString.concat(",\n{\n\'id\':" + e[2] + ",\n\'imagePath\':\"" + e[0] + "\",\n\'transcript\':\"" + e[1] + "\"\n}");
-      }
-    }
-    
-    this.validationString.concat("]");
-
-    console.log(this.validationString);
-    this.validationService.validateAll(this.validationString);
-
-    /*
-    [
+  /**
+   * Méthode qui fabrique une string (str) contenant les exemples validés sous ce format :
+   * [
       {
         'id':3,
         'imagePath':'assets/images/coucou.png',
-        'transcript':'coucou',
-        'enabled'
+        'transcript':'coucou'
       },
       {
         'id':4,
@@ -228,19 +240,84 @@ export class ValidationComponent implements OnInit {
         
       }
     ]
-*/
+   * Puis qui envoie cette string au back-end.
+   */
+  validateAll(){
+    console.log("Validation");
+
+    let str = "[\n";
+
+    let notEmpty = false;
+
+    for (let i = 0; i < this.examples.length; i++) {
+      let e = this.examples[i];
+      if(e[3] === true){ //si l'exemple est validé
+        str = str.concat("{\n\'id\':" + e[2] + ",\n\'imagePath\':\"" + e[0] + "\",\n\'transcript\':\"" + e[1] + "\"\n},\n");
+      }
+      notEmpty = true;
+    }
+
+    //on enlève la dernière virgule s'il y a au moins un exemple dans la string
+    if(notEmpty){
+      str = str.substr(0, str.length -1);
+    }
+
+    str = str.concat("]");
+
+    console.log(str);
+    this.validationService.validateAll(str);
   }
 
+
+  /**
+   * Méthode qui renvoie true si le numéro de page p correspond à la page courante, false sinon. Elle est utilisée pour souligner le bon numéro de page dans l'interface.
+   * @param p numéro de la page demandée
+   */
   isCurrentPage(p){
     return (p==this.currentPageIndex+1);
   }
 
-  leave(){
-    const dialogRef = this.dialog.open(ValidateDialogComponent, {});
 
+  /**
+   * Méthode qui ouvre un dialog pour donner des informations sur le fonctionnement de la page.
+   */
+  getHelp(){
+    const dialogRef = this.dialog.open(HelpValidationComponent, {});
     
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The help dialog was closed');
+    });
+  }
+
+
+  /**
+   * Méthode appelée quand l'utilisateur quitte le dialog. Si le dialog renvoie un résultat, on valide tous les exemples de la page et on retourne à l'accueil. Sinon, on quitte juste le dialog et on reste sur la page de validation.
+   */
+  leave(){
+    const dialogRef = this.dialog.open(EndValidationComponent, {});
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The validation dialog was closed');
+      console.log(result);
+      if(result) {
+        this.validateAll();
+        this.router.navigate(['']);
+        console.log("VALIDATION ET RETOUR A L'ACCUEIL");
+      }else{
+        console.log("ANNULATION");
+      }
+    });
+  }
+
+
+  /**
+   * Méthode appelée quand c'est la fin du document : un dialog s'ouvre pour indiquer que c'est la fin du document et pour demander si on valide tout et si on retourne à l'accueil.
+   */
+  endOfDocument(){
+    const dialogRef = this.dialog.open(EndValidationComponent, {});
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The validation dialog was closed');
       console.log(result);
       if(result) {
         this.validateAll();

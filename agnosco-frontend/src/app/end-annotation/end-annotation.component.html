@@ -1,0 +1,10 @@
+<div mat-dialog-content>
+  <p>Vous êtes arrivé à la fin du document.<br>
+    Souhaitez-vous sauvegarder les modifications des transcriptions de cette page et quitter la page d'annotation manuelle ?</p>
+</div>
+
+<div mat-dialog-actions>
+  <button class="buttonA" (click)="onNoClick()" mat-button>Annuler</button>
+  <button class="buttonV" mat-button (click)="retourAccueil()">Sauvegarder et retourner à l'accueil</button>
+  <button class="buttonV" mat-button (click)="goToValidation()">Sauvegarder et aller à la page de validation</button>
+</div>

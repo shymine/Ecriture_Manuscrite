@@ -62,11 +62,20 @@ export class ValidationService {
   validateAll(valid){
     console.log("*** POST `agnosco/base/validateExamples` ***");
 
-    valid.concat("]");
     this.http.post(`agnosco/base/validateExamples`, valid, {}).subscribe
     (response => console.log(response));
     
-    console.log("validate all examples");
+    console.log("examples validated");
+  }
+
+
+  sendEdits(str){
+    console.log("*** POST `agnosco/base/saveExamplesEdits` ***");
+
+    this.http.post(`agnosco/base/saveExamplesEdits`, str, {}).subscribe
+    (response => console.log(response));
+    
+    console.log("edits sent");
   }
 
   

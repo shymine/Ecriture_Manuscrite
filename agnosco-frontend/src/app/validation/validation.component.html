@@ -4,11 +4,13 @@
 
 <div class = "divisionParent">
   <div class="band">  
-    <button class = "homeButton" (click)="goHome()"><i class="fas fa-home"></i></button>
+    <button class = "bandButton" (click)="goHome()"><i class="fas fa-home"></i></button>
     
     <button class = "textBand">Validation des transcriptions</button>
 
-    <button class = "tickButton" (click)="leave()"><i class="fas fa-check"></i></button>
+    <button class="bandButton" (click)="getHelp()"><i class="fas fa-question-circle"></i></button>
+
+    <button class = "bandButton" (click)="leave()"><i class="fas fa-check"></i></button>
   </div>
 
   <div class="validationWindow">

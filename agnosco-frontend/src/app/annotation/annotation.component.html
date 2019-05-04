@@ -5,11 +5,12 @@
 <div class = "divisionParent">
   <div class = "leftWindow">
     <div class="band">  
-          <button class = "homeButton" (click)="goHome()"><i class="fas fa-home"></i></button>
-          
-          <button class = "navBand" style="padding-left: 5px; margin-right: 5px;" (click)="goToValidation(params[0])">validation</button>
-          <button class = "navBandTranscription">/ transcription manuscrite /</button>
-          <button class = "navBand" style="padding-right: 5px;" (click)="goToDecoupe()">édition des zones de découpe</button>
+      <button class = "bandButton" (click)="goHome()"><i class="fas fa-home"></i></button>
+      
+      <button class = "navBand" style="padding-left: 5px; margin-right: 5px;" (click)="goToValidation(params[0])">validation</button>
+      <button class = "navBandTranscription">/ transcription manuscrite /</button>
+
+      <button class="bandButton" (click)="getHelp()"><i class="fas fa-question-circle"></i></button>
     </div>
 
     <div class="annotationWindow">
@@ -20,7 +21,7 @@
               <img class="imageAffiche" src={{p[0]}} alt="page" />
             </div>
             <div class= "transcription">
-              <p>{{p[1]}}</p>
+              <p contenteditable="true" id=i>{{p[1]}}</p>
             </div>
           </div>
           
@@ -31,18 +32,6 @@
           </div>
         </li>
       </ul>
-    </div>
-
-    <div>
-      <button id = "previousPage" class="previousPage"[disabled]="isFirstPage" (click)="previousPage()">
-          <i class="fas fa-chevron-left"></i>
-      </button>
-      
-      <button class="pageNumbers" *ngFor="let p of pages">{{pages.indexOf(p) + 1}}</button>
-    
-      <button id = "nextPage" class="nextPage" [disabled]="isLastPage" (click)="nextPage()">
-          <i class="fas fa-chevron-right"></i>
-      </button>
     </div>
 
   </div>
@@ -57,6 +46,18 @@
         <h2 style="color: rgb(45, 45, 46)">Documents du même projet</h2>
       </div>
     </div>
+  </div>
+
+  <div class="changePage">
+    <button id = "previousPage" class="previousPage"[disabled]="isFirstPage" (click)="previousPage()">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    
+    <button class="pageNumbers" *ngFor="let p of pages">{{pages.indexOf(p) + 1}}</button>
+  
+    <button id = "nextPage" class="nextPage" [disabled]="isLastPage" (click)="nextPage()">
+        <i class="fas fa-chevron-right"></i>
+    </button>
   </div>
 
 </div>

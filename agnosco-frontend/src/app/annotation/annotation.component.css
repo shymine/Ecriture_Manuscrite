@@ -27,7 +27,7 @@
     margin-bottom: 5px;
 }
 
-.homeButton{
+.bandButton{
     border-left: 1px solid rgb(225, 220, 238);
     border-right: 1px solid rgb(225, 220, 238);
     border-top: none;
@@ -39,7 +39,7 @@
     background: rgba(255, 255, 255, 0.205)
 }
 
-.homeButton:hover {
+.bandButton:hover {
     background: rgba(255, 255, 255, 0.055);
 }
 
@@ -233,4 +233,10 @@ h2{
     color: #110f3d;
     font-style: normal;
     background: none;
+}
+
+.changePage {
+    border: none;
+    position: relative;
+    width: inherit;
 }
