@@ -7,6 +7,7 @@ class CommonTest extends FlatSpec {
 
 
 	"page" should "give a nice json" in {
-		val page = Page(-1,"AFGHJK1.xml", List())
+		val page = Page(-1,"AFGHJK1.piff", List())
+		println(page.toJSON.toString())
 	}
 }
