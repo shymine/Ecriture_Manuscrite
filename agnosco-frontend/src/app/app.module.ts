@@ -20,6 +20,10 @@ import { AddDocComponent } from './add-doc/add-doc.component';
 import { SuppressionDialogComponent } from './suppression-dialog/suppression-dialog.component';
 import { GestionPagesComponent } from './gestion-pages/gestion-pages.component';
 import { ExportProjetComponent } from './export-projet/export-projet.component';
+import { EndValidationComponent} from './end-validation/end-validation.component';
+
+import { HelpValidationComponent } from './help-validation/help-validation.component';
+import { HelpAnnotationComponent} from './help-annotation/help-annotation.component';
 
 
 
@@ -35,7 +39,10 @@ import { ExportProjetComponent } from './export-projet/export-projet.component';
     AddDocComponent,
     SuppressionDialogComponent,
     GestionPagesComponent,
-    ExportProjetComponent
+    ExportProjetComponent,
+    HelpAnnotationComponent,
+    HelpValidationComponent,
+    EndValidationComponent
   ],
   imports: [
     BrowserModule,

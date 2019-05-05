@@ -481,7 +481,7 @@ class AgnoscoResource {
 	  * @return
 	  */
 	@POST
-	@Path("prepareExamplesOfDocument/{doc_id}")
+	@Path("/prepareExamplesOfDocument/{doc_id}")
 	def prepareExamplesOfDocument(@PathParam("doc_id") id: Long): Response = {
 		// controller.prepareData(vtFiles)
 		val pages = controller.getPagesOfDocuments(id)
