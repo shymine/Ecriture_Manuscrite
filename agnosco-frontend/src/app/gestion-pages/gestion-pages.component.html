@@ -8,9 +8,11 @@
   <p><b>Pour chaque page, suivre la disposition suivante :</b> a) fichier image b) fichier vérité terrain</p>
   <br>
   <div *ngFor="let p of oldpages ; let i = index">
+    <div [class]="isCancelled(i) ? 'divGrise' : 'divViolette'">
     <span><b>page {{i+1}} : </b></span>
-    <span>a) {{oldpages[i].nameIm}}</span>
-    <span>b) {{oldpages[i].nameVt}}</span><button (click)="deletePage(i)" class="button1ListX ">x</button>
+    a) <i>{{oldpages[i].nameIm}}</i>
+    b) <i>{{oldpages[i].nameVt}}</i><button (click)="deleteOld(i)" class="button1ListX "><i [class]="isCancelled(i) ? 'fas fa-angle-up' : 'fas fa-times'"></i></button>
+    </div>
     <br><br>
   </div>
 
@@ -19,7 +21,7 @@
     <span>a)</span>
     <input type="file" (change)="encodeImageFile([$event,i])"/>
     <span>b)</span>
-    <input type="file" (change)="encodeDataFile([$event,i])"/><button (click)="deletePage(i)" class="button1ListX ">x</button>
+    <input type="file" (change)="encodeDataFile([$event,i])"/><button (click)="deleteNew(i)" class="button1ListX "><i class="fas fa-times"></i></button>
     <br><br>
   </div>
 
@@ -29,5 +31,5 @@
 
 <div mat-dialog-actions>
   <button class="buttonA" (click)="onNoClick()" mat-button>Annuler</button>
-  <button class="buttonV" mat-button (click)="onValidation()">Valider</button>
+  <button class="buttonV" mat-button (click)="onValidation()" cdkFocusInitial>Valider</button>
 </div>
