@@ -7,7 +7,7 @@
 	<ns0:USER date="10/16/2012 15:47" dateFormat="mm/dd/yyyy hh:mm" name="MDR_P1">	</ns0:USER>
 	<ns0:USER date="3/6/2012 16:45" dateFormat="mm/dd/yyyy hh:mm" name="Mailys">	</ns0:USER>
 	<ns0:USER date="5/23/2012 15:12" dateFormat="mm/dd/yyyy hh:mm" name="soumaya">	</ns0:USER>
-	<ns0:DL_DOCUMENT NrOfPages="1" docTag="xml" src="AFGHJK.tif">
+	<ns0:DL_DOCUMENT NrOfPages="1" docTag="xml" src="AFGHJK1.tif">
 		<ns0:DL_PAGE Category="C1" Document_Date="20/12/2011" Document_Location="La Brigue" Document_Object="AVIS DE CHANGEMENT DE SITUATION" Language_1="french" Language_2="" Language_3="" Language_4="" NumPage="2" Receiver_Address="" Receiver_Company="ALLOCATIONS FAMILIALES" Receiver_Fax="" Receiver_Name="" Receiver_Phone="" Script_1="typed" Script_2="hand" Sender_Address="30, rue Famille ARNALDI 06430 La Brigue" Sender_Company="" Sender_Fax="" Sender_Name="Arnaud MARIE" Sender_Phone="" gedi_type="DL_PAGE" height="3508" pageID="1" src="AFGHJK1.tif" width="2480">
 			<ns0:DL_ZONE col="1732" contents="Livre V du code de la S&#233;curit&#233; Sociale" gedi_type="TextRegion" height="50" id="1" language="french" row="469" script="typed" width="591"> </ns0:DL_ZONE>
 			<ns0:DL_ZONE col="165" contents="N&#176; d'allocataire :" gedi_type="TextRegion" height="54" id="2" language="french" nextZoneID="238" row="652" script="typed" width="285"> </ns0:DL_ZONE>

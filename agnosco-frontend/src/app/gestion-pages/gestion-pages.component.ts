@@ -56,7 +56,7 @@ export class GestionPagesComponent implements OnInit {
       Object.keys(returnedData).forEach( key => {
         console.log("key");
         console.log(returnedData[key]);
-        this.oldpages.push({'nameIm':returnedData[key].name, 'nameVt': returnedData[key].image64, 'modified': 0, cancelled: 0}); //
+        this.oldpages.push({'nameIm':returnedData[key].imgName, 'nameVt': returnedData[key].vtName, 'modified': 0, cancelled: 0}); //
       });
     });
   }
