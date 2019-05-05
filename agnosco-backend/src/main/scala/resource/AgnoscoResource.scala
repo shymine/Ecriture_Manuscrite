@@ -210,7 +210,7 @@ class AgnoscoResource {
 		if(vt.isDefined) {
 			val piff = vt.get
 
-			if(piff.page.src != name) {
+			if(piff.page.src != json.getString("vtText")) {
 				return Response.notAcceptable(new util.ArrayList[Variant]()).entity("{\"error\":400}").build()
 			}
 
@@ -484,10 +484,15 @@ class AgnoscoResource {
 	@Path("/prepareExamplesOfDocument/{doc_id}")
 	def prepareExamplesOfDocument(@PathParam("doc_id") id: Long): Response = {
 		// controller.prepareData(vtFiles)
-		val pages = controller.getPagesOfDocuments(id)
-		pages.foreach(it => controller.prepareData(it))
+		try {
+			val pages = controller.getPagesOfDocuments(id)
+			pages.foreach(it => controller.prepareData(it))
 
-		Response.status(200).build()
+			Response.status(200).build()
+		}catch {
+			case e: Exception => e.printStackTrace()
+				Response.status(500).build()
+		}
 	}
 
 
