@@ -174,7 +174,11 @@ class Controller {
 	/* Data Processing */
 
 	def prepareData(page: Page): Iterable[Example] = {
-		processingConnector.prepareData(page)
+		val examples: Iterable[Example] = processingConnector.prepareData(page)
+		databaseConnector.connect
+		examples.foreach(it => databaseConnector.addExample(it, page.id))
+		databaseConnector.disconnect
+		examples
 	}
 
 	/* AI Interactions */
