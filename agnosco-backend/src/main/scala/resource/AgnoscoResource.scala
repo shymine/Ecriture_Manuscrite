@@ -141,7 +141,7 @@ class AgnoscoResource {
 					val vt = PiFFReader.fromString(obj.getString("vtText"))
 					if (vt.isDefined) {
 						val piff = vt.get
-						println(piff.page.src, name)
+
 						if(piff.page.src != obj.getString("name")) {
 							ok = false
 							break()

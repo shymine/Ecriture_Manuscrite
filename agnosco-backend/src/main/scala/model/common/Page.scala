@@ -23,7 +23,7 @@ case class Page(id : Long, /*image64 : String,*/ groundTruth : String, examples 
 		val fileContent = FileUtils.readFileToByteArray(new File(globalDataFolder+"/"+imgPath))
 		val image64 = Base64.getEncoder.encodeToString(fileContent)
 
-		val vtName = "[.][a-zA-Z]+".r.replaceAllIn(groundTruth, "")
+		val vtName = groundTruth
 		json.put("imgName", imgPath)
 		json.put("vtName", vtName)
 		json.put("image64", image64)
