@@ -387,25 +387,31 @@ class AgnoscoResource {
 	/**
 	  * Save in the database the modifications of the transcription describes by the JSON associated with the request
 	  * The examples are send using the body. Thus, we collect it with examples as a string
+	  * @param examples An array of tuple with id and transcript corresponding to the example modification
 	  * @return
 	  */
 	@POST
 	@Path("/saveExampleEdits")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
 	def saveExamplesEdits(examples: String): Response = {
-		val json = new JSONArray(examples)
-		println(s"examples: ${json.toString()}, length: ${json.length()}")
-		for(i <- 0 until json.length()) {
-			try {
-				val obj = json.getJSONObject(i)
-				println(s"exemple $i: $obj")
-				val example = Example(obj.getLong("id"), obj.getString("imagePath"), Some(obj.getString("transcript")))
-				controller.modifyTranscription(example)
-			}catch {
-				case e: Exception => e.printStackTrace()
+		try {
+			val json = new JSONArray(examples)
+			for (i <- 0 until json.length()) {
+				try {
+					val obj = json.getJSONObject(i)
+					println(s"exemple $i: $obj")
+					val example = controller.getExample(obj.getLong("id"))
+						.copy(transcript = Some(obj.getString("transcript")))
+					controller.modifyTranscription(example)
+				} catch {
+					case e: Exception => e.printStackTrace()
+				}
 			}
+			Response.status(200).build()
+		}catch {
+			case e: Exception => e.printStackTrace()
+				Response.status(500).build()
 		}
-		Response.status(200).entity(true).build()
 	}
 
 	/**
@@ -483,17 +489,7 @@ class AgnoscoResource {
 	 * Processing
 	 */
 
-//	/**
-//	  * Add to the database the groundtruth given as JSON along with the request and bind it to the page which name is given as a parameter
-//	  * @param name The name of the document
-//	  * @return
-//	  */
-//	@POST
-//	@Path("addPageGroudtruth/{name}")
-//	def addDocumentGroundTruth(@PathParam("name") name: String) = {
-//		//controller.addGrounTruth(page, piff)
-//	}
-//
+
 //	/**
 //	  * Send the list of examples without transcription contained in the document to the recogniser associated with the project
 //	  * @param name The name of the document
