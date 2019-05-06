@@ -11,7 +11,7 @@ class ExportationTest extends FlatSpec {
     //val database = new DatabaseSqlite()
 
 
-    val example = Example(-1, "hute.jpg", Some("transcription"))
+    val example = Example(-1, "AFGHJK10.tif", Some("transcription"), true, true)
 
     val export = new SampleExport()
     export.train(List(example))

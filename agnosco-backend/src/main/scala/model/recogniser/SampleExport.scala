@@ -1,6 +1,7 @@
 package model.recogniser
 import java.io.{File, FileInputStream, FileOutputStream}
 import java.nio.file.{Files, Paths, StandardCopyOption}
+import java.util.Calendar
 
 import model.common.Example
 import org.json.JSONObject
@@ -20,14 +21,16 @@ class SampleExport extends ConverterRecogniser {
 	  * @param samples The samples the Recognizer trains on
 	  */
 	override def train(samples: Iterable[Example]): Unit = {
+		val path: String = globalExportFolder+"/"+ "[ ]".r.replaceAllIn(Calendar.getInstance().getTime.toString, "_")
+		new File(path).mkdir()
 		samples.foreach(example => {
-			val pathIm = globalExportFolder+"/"+example.imagePath
+			val pathIm = path +"/"+example.imagePath
 
-			val pathTr = globalExportFolder+"/"+getFileName(example.imagePath)+".txt"
+			val pathTr = path +"/"+getFileName(example.imagePath)+".txt"
 
 			new File(pathIm)
 
-			val path = Files.copy(
+			val pathTmp = Files.copy(
 				Paths.get(globalDataFolder + "/" + example.imagePath),
 				Paths.get(pathIm),
 				StandardCopyOption.REPLACE_EXISTING

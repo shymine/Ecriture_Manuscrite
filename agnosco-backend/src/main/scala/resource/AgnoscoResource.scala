@@ -13,9 +13,8 @@ import model.preparation.input.PiFFReader
 import org.json.{JSONArray, JSONObject}
 
 import scala.util.control.Breaks._
-
 import scala.collection.mutable
-import scala.collection.mutable.ArrayBuffer
+import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 
 
 @Singleton
@@ -305,24 +304,42 @@ class AgnoscoResource {
 		Response.status(200).entity(json.toString).build()
 	}
 
-//	/**
-//	  * Groups every examples in the base that are contained in the projects using the recogniser wich name is given in parameter. The examples must be usable and validated. The examples are then exported as a training set to the named recogniser.
-//	  * @param name The name of the Recogniser to export to
-//	  * @return
-//	  */
-//	@POST
-//	@Path("/exportRecogniserExamples/{name}")
-//	def exportRecogniserExamples(@PathParam("name") name: String) = {
-//      //check the recogniser and change if needed
-//      //retrieve every examples where the project use this reco
-//      //controller.getAllProject
-//      //controller.trainAI(exampleSet)
-//	}
-//
-//	/*
-//	 * Annotation & Validation
-//	 */
-//
+	/**
+	  * Groups every examples in the base that are contained in the projects using the recogniser wich name is given in parameter. The examples must be usable and validated. The examples are then exported as a training set to the named recogniser.
+	  * @param id The id of the Doc to export
+	  * @return
+	  */
+	@POST
+	@Path("/exportExamples/{id}")
+	def exportExamples(@PathParam("id") id: Long): Response = {
+      //check the recogniser and change if needed
+      //retrieve every examples where the project use this reco
+      //controller.getAllProject
+      //controller.trainAI(exampleSet)
+		try {
+			val rec = controller.getAllProject.find(proj => {
+				val docs = controller.getDocumentOfProject(proj.id)
+				docs.exists(doc => doc.id == id)
+			}).get.recogniser
+			controller.changeRecogniser(rec.toString)
+
+			val examples = controller.getPagesOfDocuments(id)
+				.flatMap(page => controller.getExamplesOfPage(page.id))
+				.filter(example => example.validated&&example.enabled)
+			println(examples)
+
+			controller.trainAI(examples)
+			Response.status(200).build()
+		}catch  {
+			case e: Exception => e.printStackTrace()
+				Response.status(500).build()
+		}
+	}
+
+	/*
+	 * Annotation & Validation
+	 */
+
 	/**
 	  * Returns the list of pages in the database of the pages that compose a document which name is given as a parameter.
 	  * @param id The id of the document from which the pages are extracted
@@ -370,25 +387,31 @@ class AgnoscoResource {
 	/**
 	  * Save in the database the modifications of the transcription describes by the JSON associated with the request
 	  * The examples are send using the body. Thus, we collect it with examples as a string
+	  * @param examples An array of tuple with id and transcript corresponding to the example modification
 	  * @return
 	  */
 	@POST
 	@Path("/saveExampleEdits")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
 	def saveExamplesEdits(examples: String): Response = {
-		val json = new JSONArray(examples)
-		println(s"examples: ${json.toString()}, length: ${json.length()}")
-		for(i <- 0 until json.length()) {
-			try {
-				val obj = json.getJSONObject(i)
-				println(s"exemple $i: $obj")
-				val example = Example(obj.getLong("id"), obj.getString("imagePath"), Some(obj.getString("transcript")))
-				controller.modifyTranscription(example)
-			}catch {
-				case e: Exception => e.printStackTrace()
+		try {
+			val json = new JSONArray(examples)
+			for (i <- 0 until json.length()) {
+				try {
+					val obj = json.getJSONObject(i)
+					println(s"exemple $i: $obj")
+					val example = controller.getExample(obj.getLong("id"))
+						.copy(transcript = Some(obj.getString("transcript")))
+					controller.modifyTranscription(example)
+				} catch {
+					case e: Exception => e.printStackTrace()
+				}
 			}
+			Response.status(200).build()
+		}catch {
+			case e: Exception => e.printStackTrace()
+				Response.status(500).build()
 		}
-		Response.status(200).entity(true).build()
 	}
 
 	/**
@@ -430,38 +453,43 @@ class AgnoscoResource {
 
 	/**
 	  * Validate the examples given in the JSON associated with the request
+	  * @param samples The array of example id
 	  * @return
 	  */
 	@POST
 	@Path("/validateExamples")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
 	def validateExamples(samples: String): Response = {
-		val array = new JSONArray(samples)
-		var examples = new mutable.MutableList[Example]
-		array.forEach(obj => {
-			val json = obj.asInstanceOf[JSONObject]
-			examples += Example(json.getLong("id"), json.getString("imagePath"), Some(json.getString("transcript")), validated = true)
-		})
-		println(s"examples: $examples")
-	    controller.validateTranscriptions(examples)
-		Response.status(200).build()
+//		val array = new JSONArray(samples)
+//		var examples = new mutable.MutableList[Example]
+//		array.forEach(obj => {
+//			val json = obj.asInstanceOf[JSONObject]
+//			examples += Example(json.getLong("id"), json.getString("imagePath"), Some(json.getString("transcript")), validated = true)
+//		})
+//		println(s"examples: $examples")
+//	    controller.validateTranscriptions(examples)
+//		Response.status(200).build()
+		try {
+			val array = new JSONArray(samples)
+			val examples = new ListBuffer[Example]()
+			for(i <- 0 until array.length()) {
+				val id = array.getLong(i)
+				examples += controller.getExample(id)
+			}
+			controller.validateTranscriptions(examples)
+
+			Response.status(200).build()
+		}catch {
+			case e: Exception => e.printStackTrace()
+				Response.status(500).build()
+		}
 	}
 
 	/*
 	 * Processing
 	 */
 
-//	/**
-//	  * Add to the database the groundtruth given as JSON along with the request and bind it to the page which name is given as a parameter
-//	  * @param name The name of the document
-//	  * @return
-//	  */
-//	@POST
-//	@Path("addPageGroudtruth/{name}")
-//	def addDocumentGroundTruth(@PathParam("name") name: String) = {
-//		//controller.addGrounTruth(page, piff)
-//	}
-//
+
 //	/**
 //	  * Send the list of examples without transcription contained in the document to the recogniser associated with the project
 //	  * @param name The name of the document

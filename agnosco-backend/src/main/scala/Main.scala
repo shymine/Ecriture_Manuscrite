@@ -64,7 +64,7 @@ object Main {
 		
 		database.connect
 
-		projects += database.addProject(Project(-1, "super projet", RecogniserType.Laia, List()))
+		projects += database.addProject(Project(-1, "super projet", RecogniserType.LaiaRecogniser, List()))
 		projects += database.addProject(Project(-1, "project de la vida", RecogniserType.None, List()))
 
 		documents += database.addDocument(Document(-1, "docu numero uno", List(), false), projects(0).id)
