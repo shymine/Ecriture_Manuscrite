@@ -27,10 +27,20 @@ span{
     margin-right: 5px;
 }
 
+.divGrise{
+    color: #969696;
+    margin-right: 5px;
+}
+
+.divViolette{
+    color: #6746bb;
+    margin-right: 5px;
+}
+
 .buttonA {
     background: none;
     position: relative;
-    left: 75%;
+    left: 80%;
     border: 1px solid #f8b2a1;
     margin-left: 5px;
     margin-right: 5px;
@@ -44,7 +54,7 @@ span{
 }
 
 .buttonV {
-    left: 75%;
+    left: 80%;
     position: relative;
     background: none;
     border: 1px solid #9ada69;
@@ -73,4 +83,8 @@ input{
 
 .button1ListX:hover {
     color:#ee7524;
+}
+
+i{
+    margin-right: 18px;
 }

@@ -1,11 +1,82 @@
 \chapter{État de finalisation du projet}
 
 \paragraph{}
-En cette fin de projet, nous sommes en capacité de fournir une application fonctionnelle qui remplit les exigences principales du cahier des charges.
+En cette fin de projet, nous sommes en capacité de fournir une application fonctionnelle qui remplit les exigences principales du cahier des charges. Nous expliquerons en détail les différentes fonctionnalités implémentées, pour le serveur puis pour le client. Au besoin, nous introduirons des éléments techniques, facilement compréhensibles pour un lecteur ayant déjà programmé en Java.
 
-\subsection{Back-end}
+\section{Côté serveur}
 
-\subsection{Front-end}
+\paragraph{}
+Du côté du serveur, nous avons développé une application principale en Scala, ainsi que quelques scripts en Python pour le prétraitement des données XML et le traitement d'images, que nous présenterons également.
+
+\subsection{Application en Scala}
+
+\paragraph{}
+L'application principale se construit autour de deux paquetages en plus de l'objet \texttt{Main} qui lance le serveur web :
+\begin{itemize}
+\item un premier paquetage \texttt{model} qui contient tous les éléments utiles du serveur, \textit{i.e.} des outils pour traiter les données d'entrée, les images, créer les exemples, et interagir avec la base de données et les reconnaisseurs d'écriture manuscrite ;
+\item un paquetage \texttt{resource} qui contient une classe permettant de recevoir les appels REST du client, d'appeler les bonnes méthodes dans les classes du paquetage précédent, et de façonner les réponses HTTP qui contiennent les résultats de ces méthodes.
+\end{itemize}
+Détaillons à présent le paquetage \texttt{model}. Celui-ci est composé de plusieurs sous-paquetages : \texttt{common}, \texttt{database}, \texttt{preparation}, et \texttt{recogniser}.
+
+\begin{mdframed}[frametitle={Figure 1 : Paquetage \texttt{common}}, innerbottommargin=10]
+\begin{center}
+\includegraphics[scale=0.7]{assets/common.png}
+\end{center}
+\end{mdframed}
+
+\paragraph{}
+Le paquetage \texttt{common} présenté en Figure 1 contient les classes qui correspondent aux éléments stockés en base de données : des projets contenant des documents composés de pages, ces pages contenant après traitement des exemples d'apprentissage pour les reconnaisseurs d'écriture manuscrite. Le \textit{package object} est une particularité de Scala. Il s'agit d'un objet associé au paquetage, qui contient des définitions utilisées dans le paquetage ainsi qu'en dehors, sémantiquement dépendantes de ce paquetage, mais n'appartenant pas à une classe en particulier. Une valeur \texttt{value} pourra être appelée avec \texttt{common.value}. Dans ce cas, le \textit{package object} contient des chemins vers différents dossiers ou exécutables sur le système de fichiers, notamment l'endroit où sont stockés les fichiers temporaires ou les scripts de traitement d'images.
+
+\begin{mdframed}[frametitle={Figure 1 : Paquetage \texttt{database}}, innerbottommargin=10]
+\begin{center}
+\includegraphics[scale=0.7]{assets/database.png}
+\end{center}
+\end{mdframed}
+
+\paragraph{}
+Le paquetage \texttt{database} contient les classes qui permettent au logiciel de faire des requêtes sur la base de données associée au serveur, qui contient les différents exemples qui seront fournis aux reconnaisseurs d'écriture manuscrite. Le \textit{trait} \texttt{Database} (un \textit{trait} en Scala est l'équivalent d'une interface en Java) décrit toutes les actions que l'on doit pouvoir effectuer depuis l'extérieur sur la base de données, et la classe \texttt{DatabaseSqlite} l'implémente pour le SGBD SQLite que nous avons choisi pour ce projet. L'utilisation d'un \textit{trait} permet à un développeur réutilisant le projet de changer le SGBD du serveur au besoin. Par exemple, pour un passage réel en production, une base de données MySQL peut être un choix judicieux. 
+
+\paragraph{}
+La classe \texttt{DatabaseConnector} vient d'un concept que nous avons décidé de suivre tout au long du projet du côté du serveur. Pour chaque paquetage du serveur, le connecteur reçoit les différents appels de l'extérieur, et les relaie vers l'implémentation choisie du \textit{trait} concerné par ce paquetage. Cela permet de choisir localement l'implémentation en changeant une ligne dans un fichier.
+
+\begin{mdframed}[frametitle={Figure 1 : Paquetage \texttt{preparation}}, innerbottommargin=10]
+\begin{center}
+\includegraphics[scale=0.7]{assets/preparation.png}
+\end{center}
+\end{mdframed}
+
+\paragraph{}
+Le paquetage \texttt{preparation} est assez complexe. Il est en trois parties : un sous-paquetage \texttt{input} qui gère la lecture des données d'entrée, un sous-paquetage \texttt{processing} qui réalise le traitement d'images et la création d'exemples, et un sous-paquetage \texttt{types} qui contient des définitions d'objets géométriques tels que les points ou les polygones, utiles pour les autres classes du paquetage.
+
+\paragraph{}
+Le sous-paquetage \texttt{input} contient la définition du format PiFF, format principal manipulé par notre logiciel. Il contient également un \textit{trait} définissant un convertisseur d'un format quelconque vers PiFF ainsi qu'une implémentation de ce dernier pour traiter le format GEDI dans lequel sont écrites toutes les vérités terrain de la base Maurdor, base d'apprentissage à laquelle nous avons eu accès tout au long du projet. Enfin, il contient un objet \texttt{PiFFReader} permettant de lire une vérité terrain dans les formats PiFF (ou GEDI à l'aide des convertisseurs) à partir d'un fichier, et d'en faire un objet \texttt{PiFF} manipulable par toutes les autres parties de notre logiciel.
+
+\paragraph{}
+Le sous-paquetage \texttt{processing} a quant à lui pour \textit{trait} principal \texttt{ExampleMaker}, qui définit un créateur d'exemples à partir d'un objet \texttt{PiFF}. Il en contient une implémentation, \texttt{BaseExampleMaker}. Ces créateurs d'exemples se basent sur l'objet \texttt{ImageProcessing} pour toutes leurs découpes d'images. La découpe est réalisée avec un script Python qui sera présentée plus tard dans ce rapport.
+
+TODO : linedetector ???
+
+\paragraph{}
+Enfin, ce paquetage \texttt{preparation} contient un \textit{trait} \texttt{Preparator}, qui définit un objet qui crée des exemples à partir d'une page d'un document et de sa vérité terrain. Comme pour le paquetage précédent, nous fournissons également une implémentation du \textit{trait} ainsi qu'un connecteur.
+
+\begin{mdframed}[frametitle={Figure 1 : Paquetage \texttt{recogniser}}, innerbottommargin=10]
+\begin{center}
+\includegraphics[scale=0.7]{assets/recogniser.png}
+\end{center}
+\end{mdframed}
+
+\paragraph{}
+TODO : recogniser
+
+\paragraph{}
+Enfin, ce paquetage \texttt{model} contient une classe \texttt{Controller} avec toutes les méthodes du modèle utilisées par la ressource REST, ainsi qu'une classe \texttt{ImplFactory} donnant toutes les implémentations choisies des différents \textit{traits} dans chaque sous-paquetage.
+
+\subsection{Scripts Python}
+
+\paragraph{}
+TODO : scripts Python
+
+\section{Côté client}
 \paragraph{}
 Notre IHM contient trois pages : une page d'accueil, une page d'annotation manuelle et une page de validation des transcriptions.
 \paragraph{}
