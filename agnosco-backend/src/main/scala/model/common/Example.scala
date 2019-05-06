@@ -1,6 +1,6 @@
 package model.common
 
-import java.io.{ File}
+import java.io.File
 import java.util.Base64
 
 import org.apache.commons.io.FileUtils
@@ -19,6 +19,14 @@ case class Example(id : Long, imagePath : String, var transcript : Option[String
 		val image64 = Base64.getEncoder.encodeToString(fileContent)
 
 		json.put("image64", image64)
+		json
+	}
+
+	// toJSON + image extension info
+	def toRequestJSON: JSONObject = {
+		val json = toJSON
+		val extension = imagePath.split('.')(1)
+		json.put("extension", extension)
 		json
 	}
 

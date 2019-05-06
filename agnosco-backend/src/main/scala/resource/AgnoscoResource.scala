@@ -200,41 +200,36 @@ class AgnoscoResource {
 	@Consumes(Array(MediaType.APPLICATION_JSON))
 	@Produces(Array(MediaType.APPLICATION_JSON))
 	def addPageToDocument(@PathParam("doc_id") id: Long, page: String): Response = {
-		try {
-			val json = new JSONObject(page)
-			//println(json)
-			val name = getFileName(json.getString("name"))
+		val json = new JSONObject(page)
 
-			// écriture vt
-			val vt = PiFFReader.fromString(json.getString("vtText"))
-			if (vt.isDefined) {
-				val piff = vt.get
+		val name = getFileName(json.getString("name"))
 
-				if (piff.page.src != json.getString("name")) {
-					return Response.notAcceptable(new util.ArrayList[Variant]()).entity("{\"error\":400}").build()
-				}
+		// écriture vt
+		val vt = PiFFReader.fromString(json.getString("vtText"))
+		if(vt.isDefined) {
+			val piff = vt.get
 
-				// écriture image
-				val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(json.getString("image64"))
-
-				val out = new FileOutputStream(globalDataFolder + "/" + json.getString("name"))
-				out.write(imgByte)
-				out.close()
-
-				val pw = new PrintWriter(new File(globalDataFolder + "/" + name + ".piff"))
-				pw.write(piff.toJSON.toString())
-				pw.close()
-
-				val page = Page(-1, name + ".piff", List())
-				val res = controller.addPageToDocument(id, page)
-
-				Response.status(200).entity(res.toJSON.toString).build()
-			} else {
-				Response.status(500).build()
+			if(piff.page.src != json.getString("vtText")) {
+				return Response.notAcceptable(new util.ArrayList[Variant]()).entity("{\"error\":400}").build()
 			}
-		}catch {
-			case e: Exception => e.printStackTrace()
-				Response.status(500).build()
+
+			val pw = new PrintWriter(new File(globalDataFolder+"/"+name+".piff"))
+			pw.write(piff.toJSON.toString())
+			pw.close()
+
+			val page = Page(-1, name+".piff", List())
+			val res = controller.addPageToDocument(id, page)
+
+			// écriture image
+			val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(json.getString("image64"))
+
+			val out = new FileOutputStream(globalDataFolder+"/"+json.getString("name"))
+			out.write(imgByte)
+			out.close()
+
+			Response.status(200).entity(res.toJSON.toString).build()
+		}else {
+			Response.status(500).build()
 		}
 	}
 
@@ -252,48 +247,48 @@ class AgnoscoResource {
 	}
 
 
-//	@POST
-//	@Path("/modifyPage/{doc_id}/{page_id}")
-//	@Consumes(Array(MediaType.APPLICATION_JSON))
-//	def modifyPage(@PathParam("page_id") id: Long, @PathParam("doc_id") id_doc: Long, newPage : String): Response = {
-//		val json = new JSONObject(newPage)
-//		val name = getFileName(json.getString("name"))
-//		val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(json.getString("image64"))
-//
-//		val page = controller.getPage(id)
-//		val vtFile = new File(globalDataFolder+"/"+page.groundTruth)
-//		val imgPath = PiFFReader.fromFile(globalDataFolder+"/"+page.groundTruth).get.page.src
-//		val imgFile = new File(globalDataFolder+"/"+imgPath)
-//		vtFile.delete()
-//		imgFile.delete()
-//
-//		val out = new FileOutputStream(globalDataFolder+"/"+json.getString("name"))
-//		out.write(imgByte)
-//		out.close()
-//
-//		val vt = PiFFReader.fromString(json.getString("vtText"))
-//		if(vt.isDefined) {
-//			val piff = vt.get
-//
-//			val pw = new PrintWriter(new File(globalDataFolder+"/"+name+".piff"))
-//			pw.write(piff.toJSON.toString())
-//			pw.close()
-//
-//
-//			val nPage = Page(-1, globalDataFolder+"/"+name+".piff", page.examples)
-//			val examples = controller.getExamplesOfPage(page.id)
-//
-//			controller.deletePage(page.id)
-//			examples.foreach(it => controller.deleteExample(it.id))
-//
-//			val tPage = controller.addPageToDocument(id_doc, nPage)
-//			examples.foreach(it=>controller.addExampleToPage(tPage.id, it))
-//
-//			Response.status(200).build()
-//		}else {
-//			Response.status(500).build()
-//		}
-//	}
+	@POST
+	@Path("/modifyPage/{doc_id}/{page_id}")
+	@Consumes(Array(MediaType.APPLICATION_JSON))
+	def modifyPage(@PathParam("page_id") id: Long, @PathParam("doc_id") id_doc: Long, newPage : String): Response = {
+		val json = new JSONObject(newPage)
+		val name = getFileName(json.getString("name"))
+		val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(json.getString("image64"))
+
+		val page = controller.getPage(id)
+		val vtFile = new File(globalDataFolder+"/"+page.groundTruth)
+		val imgPath = PiFFReader.fromFile(globalDataFolder+"/"+page.groundTruth).get.page.src
+		val imgFile = new File(globalDataFolder+"/"+imgPath)
+		vtFile.delete()
+		imgFile.delete()
+
+		val out = new FileOutputStream(globalDataFolder+"/"+json.getString("name"))
+		out.write(imgByte)
+		out.close()
+
+		val vt = PiFFReader.fromString(json.getString("vtText"))
+		if(vt.isDefined) {
+			val piff = vt.get
+
+			val pw = new PrintWriter(new File(globalDataFolder+"/"+name+".piff"))
+			pw.write(piff.toJSON.toString())
+			pw.close()
+
+
+			val nPage = Page(-1, globalDataFolder+"/"+name+".piff", page.examples)
+			val examples = controller.getExamplesOfPage(page.id)
+
+			controller.deletePage(page.id)
+			examples.foreach(it => controller.deleteExample(it.id))
+
+			val tPage = controller.addPageToDocument(id_doc, nPage)
+			examples.foreach(it=>controller.addExampleToPage(tPage.id, it))
+
+			Response.status(200).build()
+		}else {
+			Response.status(500).build()
+		}
+	}
 
 	/**
 	  * Returns the list of the existing recognisers within the base
@@ -309,7 +304,37 @@ class AgnoscoResource {
 		Response.status(200).entity(json.toString).build()
 	}
 
+	/**
+	  * Groups every examples in the base that are contained in the projects using the recogniser wich name is given in parameter. The examples must be usable and validated. The examples are then exported as a training set to the named recogniser.
+	  * @param id The id of the Doc to export
+	  * @return
+	  */
+	@POST
+	@Path("/exportExamples/{id}")
+	def exportExamples(@PathParam("id") id: Long): Response = {
+      //check the recogniser and change if needed
+      //retrieve every examples where the project use this reco
+      //controller.getAllProject
+      //controller.trainAI(exampleSet)
+		try {
+			val rec = controller.getAllProject.find(proj => {
+				val docs = controller.getDocumentOfProject(proj.id)
+				docs.exists(doc => doc.id == id)
+			}).get.recogniser
+			controller.changeRecogniser(rec.toString)
 
+			val examples = controller.getPagesOfDocuments(id)
+				.flatMap(page => controller.getExamplesOfPage(page.id))
+				.filter(example => example.validated&&example.enabled)
+			println(examples)
+
+			controller.trainAI(examples)
+			Response.status(200).build()
+		}catch  {
+			case e: Exception => e.printStackTrace()
+				Response.status(500).build()
+		}
+	}
 
 	/*
 	 * Annotation & Validation
@@ -350,7 +375,7 @@ class AgnoscoResource {
 			val examples = controller.getExamplesOfPage(id)
 			println(examples)
 			val page = controller.getPage(id)
-			examples.foreach(it => jsonA.put(it.toJSON))
+			examples.foreach(it => jsonA.put(it.toRequestJSON))
 			println(jsonA.toString)
 			Response.status(200).entity(jsonA.toString).build()
 		}catch{
@@ -435,6 +460,15 @@ class AgnoscoResource {
 	@Path("/validateExamples")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
 	def validateExamples(samples: String): Response = {
+//		val array = new JSONArray(samples)
+//		var examples = new mutable.MutableList[Example]
+//		array.forEach(obj => {
+//			val json = obj.asInstanceOf[JSONObject]
+//			examples += Example(json.getLong("id"), json.getString("imagePath"), Some(json.getString("transcript")), validated = true)
+//		})
+//		println(s"examples: $examples")
+//	    controller.validateTranscriptions(examples)
+//		Response.status(200).build()
 		try {
 			val array = new JSONArray(samples)
 			val examples = new ListBuffer[Example]()
@@ -489,36 +523,6 @@ class AgnoscoResource {
 		}
 	}
 
-	/**
-	  * Groups every examples in the base that are contained in the projects using the recogniser wich name is given in parameter. The examples must be usable and validated. The examples are then exported as a training set to the named recogniser.
-	  * @param id The id of the Doc to export
-	  * @return
-	  */
-	@POST
-	@Path("/exportExamples/{id}")
-	def exportExamples(@PathParam("id") id: Long): Response = {
-		//check the recogniser and change if needed
-		//retrieve every examples where the project use this reco
-		//controller.getAllProject
-		//controller.trainAI(exampleSet)
-		try {
-			val rec = controller.getAllProject.find(proj => {
-				val docs = controller.getDocumentOfProject(proj.id)
-				docs.exists(doc => doc.id == id)
-			}).get.recogniser
-			controller.changeRecogniser(rec.toString)
 
-			val examples = controller.getPagesOfDocuments(id)
-				.flatMap(page => controller.getExamplesOfPage(page.id))
-				.filter(example => example.validated&&example.enabled)
-			println(examples)
-
-			controller.trainAI(examples)
-			Response.status(200).build()
-		}catch  {
-			case e: Exception => e.printStackTrace()
-				Response.status(500).build()
-		}
-	}
 
 }
