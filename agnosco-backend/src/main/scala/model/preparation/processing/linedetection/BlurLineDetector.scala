@@ -34,8 +34,6 @@ class BlurLineDetector(detectorIp : String, filePort : Int, answerPort : Int) ex
     // TODO : answerBytes
     println(new String(answerBytes))
 
-    // TODO : peut-être passer par le controller pour demander la base64 directement au lieu de lire un fichier
-
     List.empty[Line]
   }
 }

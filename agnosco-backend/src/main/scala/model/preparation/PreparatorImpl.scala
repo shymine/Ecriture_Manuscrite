@@ -3,7 +3,7 @@ import model.common.{Example, Page, globalDataFolder}
 import model.preparation.input.PiFFReader
 import model.preparation.processing.BaseExampleMaker
 
-class ProcessingImpl extends Processing {
+class PreparatorImpl extends Preparator {
 	override def prepareData(page: Page): Iterable[Example] = {
 		// ground truth to PiFF
 		val piffOpt = PiFFReader.fromFile(globalDataFolder+"/"+page.groundTruth)

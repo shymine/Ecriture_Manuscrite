@@ -2,7 +2,6 @@ package model.preparation
 
 import model.common.{Example, Page}
 
-trait Processing {
-
+trait Preparator {
 	def prepareData(page: Page): Iterable[Example]
 }
