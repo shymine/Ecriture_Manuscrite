@@ -2,7 +2,7 @@ package model
 
 import model.common._
 import model.database.DatabaseConnector
-import model.preparation.ProcessingConnector
+import model.preparation.PreparatorConnector
 import model.recogniser.{Recogniser, RecogniserConnector}
 import org.json.JSONObject
 
@@ -11,7 +11,7 @@ import scala.collection.mutable.ArrayBuffer
 class Controller {
 
 	private val databaseConnector = new DatabaseConnector
-	private val processingConnector = new ProcessingConnector
+	private val processingConnector = new PreparatorConnector
 	private val recogniserConnector = new RecogniserConnector
 
 	/* Database */

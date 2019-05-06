@@ -485,6 +485,7 @@ class AgnoscoResource {
 	def prepareExamplesOfDocument(@PathParam("doc_id") id: Long): Response = {
 		// controller.prepareData(vtFiles)
 		try {
+			val rec = controller.getAllProject.find()
 			val pages = controller.getPagesOfDocuments(id)
 			pages.foreach(it => controller.prepareData(it))
 

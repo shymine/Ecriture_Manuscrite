@@ -3,7 +3,7 @@ package model.preparation
 import model.ImplFactory
 import model.common.{Example, Page}
 
-class ProcessingConnector {
+class PreparatorConnector {
 
 	private var impl = ImplFactory.processingImpl
 
