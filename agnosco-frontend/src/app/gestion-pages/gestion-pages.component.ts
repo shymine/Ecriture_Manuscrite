@@ -144,7 +144,7 @@ export class GestionPagesComponent implements OnInit {
       }
     }
 
-    for (var _j = 0; _j < this.oldpages.length; _j++){
+    for (var _j = 0; _j < this.pages.length; _j++){
       console.log("ajouter:");
       console.log(this.pages[_j]);
       let json = {
