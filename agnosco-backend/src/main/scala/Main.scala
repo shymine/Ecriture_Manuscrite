@@ -9,7 +9,7 @@ import org.glassfish.jersey.server.ResourceConfig
 import resource.AgnoscoResource
 
 import scala.collection.mutable.ArrayBuffer
-import model.common.{globalDataFolder, pythonImageCropperExecutablePath}
+import model.common.{globalDataFolder, pythonImageCropperExecutablePath, globalExportFolder}
 
 object Main {
 	// Base URI the Grizzly HTTP server will listen on
@@ -30,21 +30,17 @@ object Main {
 		}
 
 		val dataFolder = new File(globalDataFolder)
-		if (!dataFolder.exists() || !dataFolder.isDirectory) {
-			throw new FileNotFoundException(s"missing directory : $globalDataFolder")
+		if(!dataFolder.exists()) {
+			dataFolder.mkdir()
+		}
+		val exportFolder = new File(globalExportFolder)
+		if(!exportFolder.exists()) {
+			exportFolder.mkdir()
 		}
 	}
 
 	def main(args: Array[String]) : Unit = {
-		/*
-		// target/scala-2.12/classes/
-		// ../../../../maurdor/AFGHJK.xml
-		// ../../../../maurdor/AFGIJM.xml
-		val pathToMain = getClass.getResource("").getPath
-		val examples = new ProcessingImpl().prepareData(
-			List(pathToMain+"../../../../maurdor/AFGHJK.xml", pathToMain+"../../../../maurdor/AFGIJM.xml"))
-		println(examples)
-		*/
+		environmentSetup()
 		//launch
 	    val server = startServer()
 	    System.in.read()
