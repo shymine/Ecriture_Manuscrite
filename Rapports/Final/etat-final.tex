@@ -74,7 +74,7 @@ Enfin, ce paquetage \texttt{model} contient une classe \texttt{Controller} avec 
 \subsection{Scripts Python}
 
 \paragraph{}
-TODO : scripts Python
+Pour appuyer l'application serveur en Scala, nous avons développé trois scripts en Python. Le premier, \texttt{tiffsplitter.py}, permet de découper à l'aide d'\href{https://opencv.org/}{OpenCV} une image TIFF multipages en plusieurs images TIFF avec une seule page chacune. Le second, \texttt{gedisplitter.py}, permet de couper un fichier de vérité terrain dans le format GEDI en plusieurs fichiers GEDI, chacun faisant référence à une seule image, donc une seule page. Ce script utilise la bibliothèque \href{https://pypi.org/project/defusedxml/}{defusedxml} car l'outil de manipulation des fichiers XML présent dans la bibliothèque standard de Python présente d'après leur site Internet des vulnérabilités logicielles. Ces deux premiers scripts permettent d'avoir des données d'entrée qui correspondent à un couple image - vérité terrain pour une page de texte manuscrit. Le dernier script, \texttt{imagecropper}, réalisé aussi avec OpenCV, permet de réaliser les découpes d'images à partir d'une zone rectangulaire donnée en argument.
 
 \section{Côté client}
 \paragraph{}
