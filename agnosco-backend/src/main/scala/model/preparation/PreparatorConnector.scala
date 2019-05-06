@@ -5,7 +5,7 @@ import model.common.{Example, Page}
 
 class PreparatorConnector {
 
-	private var impl = ImplFactory.processingImpl
+	private var impl = ImplFactory.preparatorImpl
 
 	def prepareData(page: Page): Iterable[Example] =
 		impl.prepareData(page)

@@ -9,5 +9,5 @@ object ImplFactory {
 
 	def databaseImpl: Database = new DatabaseSqlite
 	def recogniserImpl: Recogniser = new SampleExport //new LaiaRecogniser
-	def processingImpl: Preparator = new PreparatorImpl
+	def preparatorImpl: Preparator = new PreparatorImpl
 }
