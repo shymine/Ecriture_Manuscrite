@@ -89,6 +89,13 @@ class Controller {
 		databaseConnector.disconnect
 	}
 
+	def getExample(id: Long): Example = {
+		databaseConnector.connect
+		val ex = databaseConnector.getExample(id).get
+		databaseConnector.disconnect
+		ex
+	}
+
 	def getDocumentOfProject(id: Long): Iterable[Document] = {
 		databaseConnector.connect
 		val res = databaseConnector.getDocumentsOfProject(id)
@@ -110,11 +117,8 @@ class Controller {
 		val array = new ArrayBuffer[Example]()
 		databaseConnector.connect
 		samples.foreach(it => {
-			val sample = databaseConnector.getExample(it.id)
-			if(sample.nonEmpty) {
-				val newSample = sample.get.copy(validated = true)
-				array += newSample
-			}
+			val newSample = it.copy(validated = true)
+			array += newSample
 		})
 		databaseConnector.saveExampleEdition(array)
 		databaseConnector.disconnect
@@ -189,10 +193,5 @@ class Controller {
 
 	def recognizeAI(samples: Iterable[Example]): Iterable[Example] = recogniserConnector.recognizeAI(samples)
 
-	def changeRecogniser(name: String): Unit = {
-		val classe = Class.forName(name)
-		if(classe.isAssignableFrom(classOf[Recogniser])) {
-			recogniserConnector.changeRecogniser(name)
-		}
-	}
+	def changeRecogniser(name: String): Unit = recogniserConnector.changeRecogniser(name)
 }
