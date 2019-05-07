@@ -301,7 +301,7 @@ class AgnoscoResource {
 				.filter(example => example.validated&&example.enabled)
 			println(examples)
 
-			controller.trainAI(examples)
+			controller.exportExamples(examples)
 			Response.status(200).build()
 		}catch  {
 			case e: Exception => e.printStackTrace()
@@ -322,7 +322,7 @@ class AgnoscoResource {
 				.filter(example => example.validated&&example.enabled)
 			println("export",examples)
 
-			controller.trainAI(examples)
+			controller.exportExamples(examples)
 			Response.status(200).build()
 		}catch {
 			case e: Exception => e.printStackTrace()

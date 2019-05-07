@@ -10,11 +10,7 @@ class RecogniserConnector {
 
 	private var impl = ImplFactory.recogniserImpl
 
-	def trainAI(samples: Iterable[Example]): Unit = impl.train(samples)
-
-	def evaluateAI(samples: Iterable[Example]): JSONObject = impl.evaluate(samples)
-
-	def recognizeAI(samples: Iterable[Example]) : Iterable[Example] = impl.recognize(samples)
+	def export(samples: Iterable[Example]): Unit = impl.export(samples)
 
 	def changeRecogniser(name: String ) : Unit = {
 		name match {
