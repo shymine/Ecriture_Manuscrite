@@ -378,7 +378,7 @@ class DatabaseSqlite extends Database {
 		stmt.setLong(1, id)
 		stmt.executeUpdate()
 		stmt.clearParameters()
-		stmt.close()
+//		stmt.close()
 	}
 
 	override def getPage(id: Long): Option[Page] = {
