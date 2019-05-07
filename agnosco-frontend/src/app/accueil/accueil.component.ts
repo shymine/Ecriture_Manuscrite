@@ -51,12 +51,6 @@ export class AccueilComponent implements OnInit {
   // }
 
   getAllProjects() {
-
-    /*
-    this.projects[0]=["Project 1",id, ["Document Un", "Document Deux", "Document Trois"]];
-    this.projects[1]=["Project 2",id, ["Document Quatre", "Document Cinq", "Document Six"]];
-*/
-    //this.maxListIndex = -1;
   
     console.log("*** GET /base/projectsAndDocuments ***");
     this.projects = [];
@@ -86,14 +80,10 @@ export class AccueilComponent implements OnInit {
         console.log("............");
 
         this.projects.push([nomPro,id,docPro]);
-
       });
-
       console.log("projects");
       console.log(this.projects);
-      
     });
-    
   }
 
   deletePro(p) {
