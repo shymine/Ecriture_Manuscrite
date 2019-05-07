@@ -100,17 +100,15 @@ export class AnnotationComponent implements OnInit {
         console.log("le document a été préparé");
         
         this.getPages();
+
+        this.checkPageNumber();
       });
-
-      //
-
-      //this.checkPageNumber();
     }
 
     else{
-      //this.getPages();
+      this.getPages();
 
-      //this.checkPageNumber();
+      this.checkPageNumber();
     }
   }
 
@@ -198,16 +196,21 @@ export class AnnotationComponent implements OnInit {
         let extension = returnedData[key].extension;
 
         let imageType = "";
+        console.log("extension : " + extension);
 
         switch(extension) {
           case "jpg": {
             imageType = "jpeg";
+            break;
           }
           case "tif": {
+            console.log("MOOUUUUUUUAAAAAAAAAAAAAA");
             imageType = "tiff";
+            break;
           }
           default: {
             imageType = extension;
+            break;
           }
         }
 
@@ -228,7 +231,7 @@ export class AnnotationComponent implements OnInit {
 
     //Test    
 
-    let p64 = "data:image/jpeg;base64/fdnjGHLIaUHBFELZBQJRNSKIJOIZEF=";
+    let p64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==";
     let securePath64 = this.sanitizer.bypassSecurityTrustUrl(p64);
     this.examples.push([1, securePath64, "yo man", true, false]);
 
