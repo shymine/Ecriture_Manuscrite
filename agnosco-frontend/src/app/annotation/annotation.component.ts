@@ -91,18 +91,27 @@ export class AnnotationComponent implements OnInit {
     console.log("nom du document : " + this.docName);
     console.log("ID du projet : " + this.projectId);
     console.log("nom du projet : " + this.projectName);
+    console.log("doc prepared : " + this.docPrepared);
 
-    if(!this.docPrepared){
+    if(this.docPrepared == "false"){
       console.log("doc not prepared !!!!!");
-      this.http.post(`agnosco/base/prepareExamplesOfDocument/`, this.docId, {}).subscribe(response => console.log(response));
+      this.http.post(`agnosco/base/prepareExamplesOfDocument/${this.docId}`, {}, {}).subscribe(response => {
+        console.log(response);
+        console.log("le document a été préparé");
+        
+        this.getPages();
+      });
+
+      //
+
+      //this.checkPageNumber();
     }
 
-    this.getPages();
+    else{
+      //this.getPages();
 
-    this.checkPageNumber();
-
-    this.dangerousUrl = 'javascript:alert("Hi there")';
-    this.trustedUrl = this.sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
+      //this.checkPageNumber();
+    }
   }
 
   showActions(ev){
