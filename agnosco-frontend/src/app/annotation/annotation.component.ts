@@ -33,6 +33,8 @@ export class AnnotationComponent implements OnInit {
   private projectId;
   private projectName;
 
+  private docMmPro = [];
+
   private hidden = [];
 
   public pages;
@@ -85,6 +87,28 @@ export class AnnotationComponent implements OnInit {
     this.getPages();
 
     this.checkPageNumber();
+  }
+
+  showActions(ev){
+    let es = ev.originalTarget.parentNode.parentNode.lastChild;
+    if(es.hidden) {
+      es.hidden = false;
+    }else {
+      es.hidden = true;
+    }
+  }
+
+  goToAnnotation(d){
+    console.log("annotation");
+    console.log("document: "+d.id);
+    console.log("projet: "+this.projectId);
+    this.router.navigate(['/annotation',{'idd':d.id, 'named':d.name, 'idp':this.projectId, 'namep': this.projectName}]);
+  }
+
+  goToValidationD(d){
+    console.log("VALIDATION");
+    console.log("document: "+d.id);
+    this.router.navigate(['/validation',{'idd':d.id, 'named': d.name}]);
   }
 
   goHome(){
