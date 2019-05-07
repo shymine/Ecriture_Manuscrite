@@ -40,7 +40,7 @@ object Main {
 	}
 
 	def main(args: Array[String]) : Unit = {
-		environmentSetup()
+		//environmentSetup()
 		//launch
 	    val server = startServer()
 	    System.in.read()
