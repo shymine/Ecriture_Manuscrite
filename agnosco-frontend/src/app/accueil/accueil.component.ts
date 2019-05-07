@@ -181,12 +181,8 @@ export class AccueilComponent implements OnInit {
     console.log("show X");
     console.log(ev);
     let el = ev.originalTarget.parentNode.children[1];
-    /* 
-    if(el.hidden) {
-      el.hidden = false;
-    }else {
-      el.hidden = true;
-    }*/
+    console.log(el);
+    el.hidden = false;
   }
 
   hideActions(ev){
