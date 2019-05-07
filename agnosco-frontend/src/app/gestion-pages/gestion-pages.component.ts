@@ -155,7 +155,12 @@ export class GestionPagesComponent implements OnInit {
       }
       this.http.post(`agnosco/base/addPageToDocument/${this.did}`,json,{}).subscribe(data => {
         console.log("data: "+data);
-      });
+      },
+      error => {
+        console.log("catch error:", error);
+        this.hideMessage = false;
+      }
+    );
     }
 
     this.dialogRef.close(1);

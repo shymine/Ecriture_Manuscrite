@@ -125,8 +125,8 @@ export class AddDocComponent implements OnInit {
         console.log("data:"+data);
         this.dialogRef.close(1);
       },
-      error=> {
-        console.log("catch error:");
+      error => {
+        console.log("catch error:", error);
         this.hideMessage = false;
       });
     }else{
