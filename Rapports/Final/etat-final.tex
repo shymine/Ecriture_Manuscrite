@@ -73,9 +73,11 @@ Enfin, ce paquetage \texttt{preparation} contient un \textit{trait} \texttt{Prep
 \end{mdframed}
 
 \paragraph{Reconnaisseur}
-TODO : recogniser
+Dans la première vision de l'interface avec le reconnaisseur que nous avions, nous souhaitions intégrer celui-ci à notre application. C'est-à-dire, pourvoir effectuer depuis celle-ci son entrainement, son évaluation ainsi que son utilisation pour reconnaître des imagettes. Cependant, nous avons dû réduire ces fonctionnalités afin de permettre une meilleure souplesse à l'utilisateur. En effet, celui-ci n'est plus obligé de brancher son reconnaisseur au logiciel afin que celui-ci puisse utiliser la base de connaissance. Cette modification de point de vue nous a également permit de gagner du temps vis-à-vis de cette partie. Ainsi, nous n'avons plus qu'une fonction \textit{export} permettant l'exportation des exemples générés dans le format du reconnaisseur avec les fichiers nécessaires afin d'en faciliter l'utilisation.
+Nous avons fourni une exportation par défaut qui permet d'obtenir l'image de l'exemple ansi qu'un fichier texte contenant sa transcription. Ces deux fichiers étant nommés de la même manière afin de pouvoir les associer facilement.
+Cependant, il n'est pas certain que dans le temps restant l'implémentation de l'exportation pour le reconnaisseur de Laia soit opérationnel comme il était prévu à l'origine.
 
-\paragraph{}
+\paragraph{Controleur}
 Enfin, ce paquetage \texttt{model} contient une classe \texttt{Controller} avec toutes les méthodes du modèle utilisées par la ressource REST, ainsi qu'une classe \texttt{ImplFactory} donnant toutes les implémentations choisies des différents \textit{traits} dans chaque sous-paquetage.
 
 \subsection{Scripts Python}
