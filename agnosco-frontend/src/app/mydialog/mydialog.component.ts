@@ -10,7 +10,7 @@ import { projection } from '@angular/core/src/render3';
 })
 export class MydialogComponent implements OnInit {
 
-  public select = "None";
+  public select = "Default";
   pName : string;
 
   public reconnaisseurs = [];

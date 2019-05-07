@@ -19,8 +19,8 @@ export class ExportProjetComponent implements OnInit {
       if(data.support == "doc"){
         this.http.post(`agnosco/base/exportDocument/${data.id}`,{},{}).subscribe(data => {
           console.log("returned data");
-  
-          if(data != null){
+          console.log(data);
+          if(data){
             console.log("non null");
             this.isFinished = true;
           }
