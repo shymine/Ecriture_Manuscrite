@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AddDocComponent implements OnInit {
 
+  public hideMessage = true;
   public pages = [];
   public id = -1;
   public params = [];
@@ -121,8 +122,12 @@ export class AddDocComponent implements OnInit {
 
     if(this.id>=0){
       this.http.post(`agnosco/base/addDocToProject/${this.id}`,json,{}).subscribe(data => {
-        console.log("envoye");
+        console.log("data:"+data);
         this.dialogRef.close(1);
+      },
+      error=> {
+        console.log("catch error:");
+        this.hideMessage = false;
       });
     }else{
       console.log("FAIL ID");

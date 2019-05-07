@@ -30,10 +30,22 @@ export class ValidationComponent implements OnInit {
 
   private params = [];
   private docName;
+  private projectName;
   private hidden = [];
 
   public pages = [];
-  public examples = []; //0 : path - 1 : transcription -  2 : id - 3 : enabled
+  public examples = [];
+  //0 : path
+  //1 : transcription
+  //2 : id
+  //3 : enabled
+
+  //new version
+  //0 : id
+  //1 : path64
+  //2 : transcription
+  //3 : enabled
+  //4 : validated
   public currentPageIndex;
   public currentPage;
 
@@ -59,7 +71,16 @@ export class ValidationComponent implements OnInit {
       this.params.push(param.id);
     });
 
-    this.docName = this.params[0]; // le nom du document est le 1er paramètre
+    console.log("TEEEEEEEEEEEEEST");
+    //test
+    let imPath = "iFbeo6dO+joe/nvuepzHRLZJ.DpejHEZO805+Kd/nerhs=.png";
+    let regex = new RegExp('[.]([a-z]+)');
+    let format = imPath.match(regex)[1];
+    console.log("FORMAT : "+format);
+    
+
+    this.docName = this.params[1]; // le nom du document est le 1er paramètre
+    this.projectName = this.params[0];
     console.log("ID du document : " + this.docName);
 
     this.getPages();
@@ -78,12 +99,8 @@ export class ValidationComponent implements OnInit {
    * Méthode qui récupère la liste des pages sous forme d'id.
    */
   getPages(){
-    //test
-    /*this.pages = [1,5,7];
-    this.getPageData(); 
-*/
     //on récupère la liste des identifiants des pages du doc passé en paramètre 
-    this.validationService.getPages(this.docName).subscribe(returnedData => {
+    /*this.validationService.getPages(this.docName).subscribe(returnedData => {
       console.log("get pages : ");
       console.log(returnedData);
       
@@ -101,8 +118,15 @@ export class ValidationComponent implements OnInit {
 	
 		  this.getPageData();
 
-    });
+    });*/
 
+
+    //Test    
+    this.examples.push([1,"data:image/jpeg;base64/fdnjGHLIaUHBFELZBQJRNSKIJOIZEF=", "yo man", true, false]);
+
+    console.log("ex pushed");
+
+    this.hidden.push(false);
   }
 
   
@@ -121,27 +145,40 @@ export class ValidationComponent implements OnInit {
       //on parcourt la returnedData pour ne prendre que l'id des pages
       Object.keys(returnedData).forEach( key => {
         let data = returnedData[key];
-        let enabled = returnedData[key].enabled;
         let id = returnedData[key].id;
-        let imagePath = returnedData[key].imagePath;
         let transcript = returnedData[key].transcript;
+        let image64 = returnedData[key].image64;
+        let enabled = returnedData[key].enabled;
         let validated = returnedData[key].validated;
+        let extension = returnedData[key].extension;
 
-        let newExample = [imagePath, transcript, id, enabled];
+        let imageType = "";
+
+        switch(extension) {
+          case "jpg": {
+            imageType = "jpeg";
+          }
+          case "tif": {
+            imageType = "tiff";
+          }
+          default: {
+            imageType = extension;
+          }
+        }
+
+        console.log("type de l'image = " + imageType)
+
+        let path64 = "data:image/" + imageType + ";base64," + image64;
+        console.log("path base 64 : ");
+        console.log(path64);
+
+        let newExample = [id, path64, transcript, enabled, validated];
 
         this.examples.push(newExample);
         this.hidden.push(!enabled);
       });
     });
 
-    //test
-
-    /*this.examples[0] = ["../../assets/images/Elephant.jpg", "To be or not to be", 0, true];
-    this.examples[1] = ["../../assets/images/Fraise.png", "That is the question", 1, true];
-    this.examples[2] = ["../../assets/images/Elephant.jpg", "Whether 'tis nobler in the mind", 2, true];
-    this.examples[3] = ["../../assets/images/Fraise.png", "To suffer the slings and arrows of outrageous fortune", 3, true];
-    this.examples[4] = ["../../assets/images/Elephant.jpg", "Or to take arms against a sea of troubles", 4, true];
-    this.examples[5] = ["../../assets/images/Fraise.png", "And by opposing end them.", 5, true];*/
   }
 
 
@@ -177,17 +214,27 @@ export class ValidationComponent implements OnInit {
 
 
   /**
+   * Retourne true si l'exemple est validé.
+   * @param id index de l'exemple dans le tableau examples
+   */
+  isValidated(id){
+    return this.examples[id][4];
+  }
+
+
+  /**
    * Méthode qui cache l'exemple qui manque de pertinence.
    * @param id index de l'exemple dans le tableau examples
    */
   disableEx(id){
     console.log("disable " + id);
     if(this.hidden[id] == false){
-      let i = this.examples[id][2];
+      //on récupère l'id de l'exemple à cacher
+      let i = this.examples[id][0];
       this.validationService.disableEx(i);
     }
     else{
-      let i = this.examples[id][2];
+      let i = this.examples[id][0];
       this.validationService.enableEx(i);
     }
     this.examples[id][3] = !this.examples[id][3];
@@ -226,20 +273,8 @@ export class ValidationComponent implements OnInit {
 
 
   /**
-   * Méthode qui fabrique une string (str) contenant les exemples validés sous ce format :
-   * [
-      {
-        'id':3,
-        'imagePath':'assets/images/coucou.png',
-        'transcript':'coucou'
-      },
-      {
-        'id':4,
-        'imagePath':'assets/images/salut.png',
-        'transcript':'salut'
-        
-      }
-    ]
+   * Méthode qui fabrique une string (str) contenant les id des exemples validés sous ce format :
+   * [3,6,9]
    * Puis qui envoie cette string au back-end.
    */
   validateAll(){
@@ -252,14 +287,15 @@ export class ValidationComponent implements OnInit {
     for (let i = 0; i < this.examples.length; i++) {
       let e = this.examples[i];
       if(e[3] === true){ //si l'exemple est validé
-        str = str.concat("{\n\'id\':" + e[2] + ",\n\'imagePath\':\"" + e[0] + "\",\n\'transcript\':\"" + e[1] + "\"\n},\n");
+        str.concat(e[0]);
+        //str = str.concat("{\n\'id\':" + e[2] + ",\n\'imagePath\':\"" + e[0] + "\",\n\'transcript\':\"" + e[1] + "\"\n},\n");
       }
       notEmpty = true;
     }
 
     //on enlève la dernière virgule s'il y a au moins un exemple dans la string
     if(notEmpty){
-      str = str.substr(0, str.length -1);
+      str = str.substr(0, str.length - 1);
     }
 
     str = str.concat("]");
@@ -294,7 +330,7 @@ export class ValidationComponent implements OnInit {
    * Méthode appelée quand l'utilisateur quitte le dialog. Si le dialog renvoie un résultat, on valide tous les exemples de la page et on retourne à l'accueil. Sinon, on quitte juste le dialog et on reste sur la page de validation.
    */
   leave(){
-    const dialogRef = this.dialog.open(EndValidationComponent, {});
+    const dialogRef = this.dialog.open(ValidateDialogComponent, {});
     
     dialogRef.afterClosed().subscribe(result => {
       console.log('The validation dialog was closed');

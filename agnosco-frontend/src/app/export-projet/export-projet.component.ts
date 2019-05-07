@@ -17,11 +17,11 @@ export class ExportProjetComponent implements OnInit {
       console.log(data);
 
       this.http.post(`agnosco/base/exportProject/${data.id}`,{},{}).subscribe(data => {
-      console.log("returned data");
+        console.log("returned data");
 
-      if(data != null){
-        this.isFinished = true;
-      }
+        if(data != null){
+          this.isFinished = true;
+        }
       });
       
       
