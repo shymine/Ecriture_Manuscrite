@@ -6,6 +6,7 @@ import { HelpAnnotationComponent } from '../help-annotation/help-annotation.comp
 import { EndAnnotationComponent } from '../end-annotation/end-annotation.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { forEach } from '@angular/router/src/utils/collection';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-annotation',
@@ -57,7 +58,10 @@ export class AnnotationComponent implements OnInit {
   public isLastPage;
   validation: Validation;
 
-  constructor(private router: Router, private route: ActivatedRoute, private validationService: ValidationService, public dialog: MatDialog, private http: HttpClient) {
+  public dangerousUrl;
+  public trustedUrl;
+
+  constructor(private router: Router, private route: ActivatedRoute, private validationService: ValidationService, public dialog: MatDialog, private http: HttpClient, private sanitizer: DomSanitizer) {
     this.examples = [];
     this.pages = [];
     this.currentPageIndex = 0;
@@ -87,6 +91,9 @@ export class AnnotationComponent implements OnInit {
     this.getPages();
 
     this.checkPageNumber();
+
+    this.dangerousUrl = 'javascript:alert("Hi there")';
+    this.trustedUrl = this.sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
   }
 
   showActions(ev){
@@ -120,7 +127,7 @@ export class AnnotationComponent implements OnInit {
   }
 
   goToValidation(){
-    this.router.navigate(['/validation',{'id':this.docName}]);
+    this.router.navigate(['/validation',{'id':this.docId}]);
   }
 
   /**
@@ -128,7 +135,7 @@ export class AnnotationComponent implements OnInit {
    */
   getPages(){
     //on récupère la liste des identifiants des pages du doc passé en paramètre 
-    this.validationService.getPages(this.docName).subscribe(returnedData => {
+    this.validationService.getPages(this.docId).subscribe(returnedData => {
       console.log("get pages : ");
       console.log(returnedData);
       
@@ -192,7 +199,9 @@ export class AnnotationComponent implements OnInit {
         console.log("path base 64 : ");
         console.log(path64);
 
-        let newExample = [id, path64, transcript, enabled, validated];
+        let securePath64 = this.sanitizer.bypassSecurityTrustUrl(path64);
+
+        let newExample = [id, securePath64, transcript, enabled, validated];
 
         this.examples.push(newExample);
         this.hidden.push(!enabled);
@@ -200,7 +209,10 @@ export class AnnotationComponent implements OnInit {
     });
 
     //Test    
-    this.examples.push([1,"data:image/jpeg;base64/fdnjGHLIaUHBFELZBQJRNSKIJOIZEF=", "yo man", true, false]);
+
+    let p64 = "data:image/jpeg;base64/fdnjGHLIaUHBFELZBQJRNSKIJOIZEF=";
+    let securePath64 = this.sanitizer.bypassSecurityTrustUrl(p64);
+    this.examples.push([1, securePath64, "yo man", true, false]);
 
     console.log("ex pushed");
 
@@ -378,7 +390,7 @@ export class AnnotationComponent implements OnInit {
         console.log("SEND EDITS ET RETOUR A L'ACCUEIL");
       }else if(result == 2){
         this.sendEdits();
-        this.router.navigate(['/validation',{'id':this.docName}]);
+        this.router.navigate(['/validation',{'id':this.docId}]);
         console.log("SEND EDITS ET VALIDATION");
       }else{
         console.log("ANNULATION");
