@@ -10,6 +10,7 @@ GREEN #66FF9C RVB 102 255 156
 
 .band {
     background-color:#110f3d;
+    text-align: center;
     color: #48327F;
     width: 100%;
     height: 30px;

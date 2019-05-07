@@ -169,7 +169,7 @@ export class AccueilComponent implements OnInit {
   }
 
   showActions(ev){
-    let es = ev.originalTarget.parentNode.children[1];
+    let es = ev.originalTarget.parentNode.parentNode.lastChild;
     if(es.hidden) {
       es.hidden = false;
     }else {
@@ -180,7 +180,7 @@ export class AccueilComponent implements OnInit {
   showXActions(ev){
     console.log("show X");
     console.log(ev);
-    let el = ev.originalTarget.parentNode.parentNode.lastChild;
+    let el = ev.originalTarget.parentNode.children[1];
     /* 
     if(el.hidden) {
       el.hidden = false;
