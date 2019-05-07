@@ -91,7 +91,7 @@ export class AnnotationComponent implements OnInit {
    */
   getPages(){
     //on récupère la liste des identifiants des pages du doc passé en paramètre 
-    /*this.validationService.getPages(this.docName).subscribe(returnedData => {
+    this.validationService.getPages(this.docName).subscribe(returnedData => {
       console.log("get pages : ");
       console.log(returnedData);
       
@@ -109,9 +109,7 @@ export class AnnotationComponent implements OnInit {
 	
 		  this.getPageData();
 
-    });*/
-
-    this.getPageData();
+    });
 
   }
 
