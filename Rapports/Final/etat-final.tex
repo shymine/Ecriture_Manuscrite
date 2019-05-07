@@ -1,12 +1,17 @@
 \chapter{État de finalisation du projet}
 
 \paragraph{}
-En cette fin de projet, nous sommes en capacité de fournir une application fonctionnelle qui remplit les exigences principales du cahier des charges. Nous expliquerons en détail les différentes fonctionnalités implémentées, pour le serveur puis pour le client. Au besoin, nous introduirons des éléments techniques, facilement compréhensibles pour un lecteur ayant déjà programmé en Java.
+En cette fin de projet, nous sommes en capacité de fournir une application fonctionnelle qui remplit les exigences principales du cahier des charges. Nous expliquerons en détail les différentes fonctionnalités implémentées, pour le serveur puis pour le client. Pour mettre en lumière les différences avec le projet tel que nous l'avions imaginé au moment de la conception, cette partie du rapport peut être considérée comme un second rapport de conception, plus bref cette fois-ci, car les éléments qui sont restés identiques à ce premier rapport de conception ne seront pas détaillés. Au besoin, nous introduirons des éléments techniques, facilement compréhensibles pour un lecteur ayant déjà programmé en Java.
+
+\section{Architecture générale et technologies utilisées}
+
+\paragraph{}
+Concernant les technologies, le rapport de conception comportait déjà tous les éléments utilisés. La seule différence est le reconnaisseur d'écriture manuscrite. En effet, par manque de temps, nous n'avons pas pu mettre en place de connexion effective avec un reconnaisseur d'écriture manuscrite. Le reconnaisseur Laia, mentionné dans le rapport de conception, n'est donc pas présent dans le projet, cette partie étant optionnelle dans le cahier des charges initial du projet, qui consiste à principalement générer les bases d'apprentissage. Nous avons donc utilisé SQLite pour la base de données, OpenCV pour la découpe d'images, Angular 7 pour l'interface client, Grizzly pour le serveur web, ainsi que Jersey pour l'API REST. L'architecture du serveur est sensiblement la même, car nous avons souhaité continuer sur le modèle d'un contrôleur qui orchestre toute l'application, découpée en modules : préparation des données, connexion avec la base de données, interface avec le reconnaisseur.
 
 \section{Côté serveur}
 
 \paragraph{}
-Du côté du serveur, nous avons développé une application principale en Scala, ainsi que quelques scripts en Python pour le prétraitement des données XML et le traitement d'images, que nous présenterons également.
+Du côté du serveur, nous avons développé une application principale en Scala, ainsi que quelques scripts en Python pour le prétraitement des données XML et le traitement d'images, que nous présenterons également. La différence principale avec le rapport de conception est la présence de ces scripts. Nous avions en effet prévu dans un premier temps de fournir une application serveur monolithique, développée en un seul langage de bout en bout. L'expérience nous a montré qu'il était plus judicieux d'utiliser des scripts comme outils venant appuyer cette application. Nous détaillerons, paquetage par paquetage, le contenu technique et son utilité pour le projet.
 
 \subsection{Application en Scala}
 
@@ -52,9 +57,7 @@ Le paquetage \texttt{preparation} est assez complexe. Il est en trois parties : 
 Le sous-paquetage \texttt{input} contient la définition du format PiFF, format principal manipulé par notre logiciel. Il contient également un \textit{trait} définissant un convertisseur d'un format quelconque vers PiFF ainsi qu'une implémentation de ce dernier pour traiter le format GEDI dans lequel sont écrites toutes les vérités terrain de la base Maurdor, base d'apprentissage à laquelle nous avons eu accès tout au long du projet. Enfin, il contient un objet \texttt{PiFFReader} permettant de lire une vérité terrain dans les formats PiFF (ou GEDI à l'aide des convertisseurs) à partir d'un fichier, et d'en faire un objet \texttt{PiFF} manipulable par toutes les autres parties de notre logiciel.
 
 \paragraph{}
-Le sous-paquetage \texttt{processing} a quant à lui pour \textit{trait} principal \texttt{ExampleMaker}, qui définit un créateur d'exemples à partir d'un objet \texttt{PiFF}. Il en contient une implémentation, \texttt{BaseExampleMaker}. Ces créateurs d'exemples se basent sur l'objet \texttt{ImageProcessing} pour toutes leurs découpes d'images. La découpe est réalisée avec un script Python qui sera présentée plus tard dans ce rapport.
-
-TODO : linedetector ???
+Le sous-paquetage \texttt{processing} a quant à lui pour \textit{trait} principal \texttt{ExampleMaker}, qui définit un créateur d'exemples à partir d'un objet \texttt{PiFF}. Il en contient une implémentation, \texttt{BaseExampleMaker}. Ces créateurs d'exemples se basent sur l'objet \texttt{ImageProcessing} pour toutes leurs découpes d'images. La découpe est réalisée avec un script Python qui sera présentée plus tard dans ce rapport. Un sous-paquetage \texttt{linedetector} est présent. Il s'agit d'un détecteur de lignes fourni par l'encadrant de projet, qui permet de découper les images de manière plus efficace. En effet, la première découpe peut donner des paragraphes, or le reconnaisseur ne s'entraîne que sur des lignes. Il est donc plus pertinent de faire une seconde découpe pour s'assurer que nous obtenons bien des lignes en sortie.
 
 \paragraph{}
 Enfin, ce paquetage \texttt{preparation} contient un \textit{trait} \texttt{Preparator}, qui définit un objet qui crée des exemples à partir d'une page d'un document et de sa vérité terrain. Comme pour le paquetage précédent, nous fournissons également une implémentation du \textit{trait} ainsi qu'un connecteur.
