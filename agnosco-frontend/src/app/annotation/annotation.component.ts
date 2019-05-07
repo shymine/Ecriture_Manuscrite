@@ -28,10 +28,22 @@ export class AnnotationComponent implements OnInit {
 
   private params = [];
   private docName;
+  private projectName;
   private hidden = [];
 
   public pages;
-  public examples; //0 : path - 1 : transcription -  2 : id - 3 : enabled
+  public examples;
+  //0 : path
+  //1 : transcription
+  //2 : id
+  //3 : enabled
+
+  //new version
+  //0 : id
+  //1 : path64
+  //2 : transcription
+  //3 : enabled
+  //4 : validated
   public currentPageIndex;
   public currentPage;
 
@@ -53,7 +65,8 @@ export class AnnotationComponent implements OnInit {
       this.params.push(param.id);
     });
 
-    this.docName = this.params[0]; // le nom du document est le 1er paramètre
+    this.docName = this.params[1]; // le nom du document est le 1er paramètre
+    this.projectName = this.params[0];
     console.log("ID du document : " + this.docName);
 
     this.getPages();
@@ -78,7 +91,7 @@ export class AnnotationComponent implements OnInit {
    */
   getPages(){
     //on récupère la liste des identifiants des pages du doc passé en paramètre 
-    this.validationService.getPages(this.docName).subscribe(returnedData => {
+    /*this.validationService.getPages(this.docName).subscribe(returnedData => {
       console.log("get pages : ");
       console.log(returnedData);
       
@@ -96,7 +109,9 @@ export class AnnotationComponent implements OnInit {
 	
 		  this.getPageData();
 
-    });
+    });*/
+
+    this.getPageData();
 
   }
 
@@ -115,18 +130,46 @@ export class AnnotationComponent implements OnInit {
       //on parcourt la returnedData pour ne prendre que l'id des pages
       Object.keys(returnedData).forEach( key => {
         let data = returnedData[key];
-        let enabled = returnedData[key].enabled;
         let id = returnedData[key].id;
-        let imagePath = returnedData[key].imagePath;
         let transcript = returnedData[key].transcript;
+        let image64 = returnedData[key].image64;
+        let enabled = returnedData[key].enabled;
         let validated = returnedData[key].validated;
+        let extension = returnedData[key].extension;
 
-        let newExample = [imagePath, transcript, id, enabled];
+        let imageType = "";
+
+        switch(extension) {
+          case "jpg": {
+            imageType = "jpeg";
+          }
+          case "tif": {
+            imageType = "tiff";
+          }
+          default: {
+            imageType = extension;
+          }
+        }
+
+        console.log("type de l'image = " + imageType)
+
+        let path64 = "data:image/" + imageType + ";base64," + image64;
+        console.log("path base 64 : ");
+        console.log(path64);
+
+        let newExample = [id, path64, transcript, enabled, validated];
 
         this.examples.push(newExample);
         this.hidden.push(!enabled);
       });
     });
+
+    //Test    
+    this.examples.push([1,"data:image/jpeg;base64/fdnjGHLIaUHBFELZBQJRNSKIJOIZEF=", "yo man", true, false]);
+
+    console.log("ex pushed");
+
+    this.hidden.push(false);
   }
 
   /**
@@ -165,11 +208,11 @@ export class AnnotationComponent implements OnInit {
   disableEx(id){
     console.log("disable " + id);
     if(this.hidden[id] == false){
-      let i = this.examples[id][2];
+      let i = this.examples[id][0];
       this.validationService.disableEx(i);
     }
     else{
-      let i = this.examples[id][2];
+      let i = this.examples[id][0];
       this.validationService.enableEx(i);
     }
     this.examples[id][3] = !this.examples[id][3];
@@ -217,12 +260,10 @@ export class AnnotationComponent implements OnInit {
    * [
       {
         'id':3,
-        'imagePath':'assets/images/coucou.png',
-        'transcript':'coucou',
+        'transcript':'coucou'
       },
       {
         'id':4,
-        'imagePath':'assets/images/salut.png',
         'transcript':'salut'
         
       }
@@ -241,9 +282,9 @@ export class AnnotationComponent implements OnInit {
       // on récupère la transcription affichée qui a pu être modifiée
       let newTranscript = document.getElementById(i.toString()).innerHTML;
 
-      //si elle a été modifiée, on ajoute l'exemple dans str
-      if(this.examples[i][1] !== newTranscript){
-        str = str.concat("{\n\'id\':" + e[2] + ",\n\'imagePath\':\"" + e[0] + "\",\n\'transcript\':\"" + e[1] + "\"\n},\n");
+      //si elle a été modifiée et si l'exemple est enabled, on ajoute l'exemple dans str
+      if(this.examples[i][2] !== newTranscript && this.examples[i][3]){
+        str = str.concat("{\n\'id\':" + e[0] + ",\n\'transcript\':\"" + e[2] + "\"\n},\n");
       }
 
       notEmpty = true;
@@ -251,7 +292,7 @@ export class AnnotationComponent implements OnInit {
 
     //on enlève la dernière virgule s'il y a au moins un exemple dans la string
     if(notEmpty){
-      str = str.substr(0, str.length -1);
+      str = str.substr(0, str.length - 1);
     }
 
     str = str.concat("]");
