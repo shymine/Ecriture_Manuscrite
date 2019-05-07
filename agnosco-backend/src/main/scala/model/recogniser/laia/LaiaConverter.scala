@@ -22,7 +22,5 @@ class LaiaConverter extends Converter {
     */
   override def convertData(samples: Iterable[Example]): Iterable[Example] = ???
 
-  override def unconvertData(samples: Iterable[Example]): Iterable[Example] = ???
-
   def setHeight(h: Integer) : Unit = this.height = h
 }

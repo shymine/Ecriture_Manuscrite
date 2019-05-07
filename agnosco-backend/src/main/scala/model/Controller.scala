@@ -234,11 +234,7 @@ class Controller {
 
 	/* AI Interactions */
 
-	def trainAI(samples: Iterable[Example]): Unit = recogniserConnector.trainAI(samples)
-
-	def evaluateAI(samples: Iterable[Example]): JSONObject = recogniserConnector.evaluateAI(samples)
-
-	def recognizeAI(samples: Iterable[Example]): Iterable[Example] = recogniserConnector.recognizeAI(samples)
+	def exportExamples(samples: Iterable[Example]): Unit = recogniserConnector.export(samples)
 
 	def changeRecogniser(name: String): Unit = recogniserConnector.changeRecogniser(name)
 }
