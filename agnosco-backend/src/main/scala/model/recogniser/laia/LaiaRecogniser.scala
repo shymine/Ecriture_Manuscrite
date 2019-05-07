@@ -61,21 +61,22 @@ class LaiaRecogniser extends ConverterRecogniser{
 			a 1
 			{space} 2
 		 */
-		val convertedData = this.converter.convertData(samples)
-		val writer1 = new PrintWriter(new File("./model/imageTraining.lst"))
-		val writer2 = new PrintWriter(new File("./model/transcriptTraining.txt"))
-		val writer3 = new PrintWriter(new File("./model/imageValidation.lst"))
-		val writer4 = new PrintWriter(new File("./model/transcriptValidation.txt"))
-		samples.foreach(sample => writer1.write(sample.imagePath))
-		val regID: Regex = raw"(\w+)\.png".r
-		samples.foreach(sample => {
-			val inte: Regex.Match =
-				regID.findFirstMatchIn(sample.imagePath)
-					.getOrElse(throw new MatchError(sample.imagePath))
-			val imgId: String = inte.group(1)
-			println(imgId)
-			writer2.write(imgId) // verifier l'append
-		})
+//		val convertedData = this.converter.convertData(samples)
+//		val writer1 = new PrintWriter(new File("./model/imageTraining.lst"))
+//		val writer2 = new PrintWriter(new File("./model/transcriptTraining.txt"))
+//		val writer3 = new PrintWriter(new File("./model/imageValidation.lst"))
+//		val writer4 = new PrintWriter(new File("./model/transcriptValidation.txt"))
+//		samples.foreach(sample => writer1.write(sample.imagePath))
+//		val regID: Regex = raw"(\w+)\.png".r
+//		samples.foreach(sample => {
+//			val inte: Regex.Match =
+//				regID.findFirstMatchIn(sample.imagePath)
+//					.getOrElse(throw new MatchError(sample.imagePath))
+//			val imgId: String = inte.group(1)
+//			println(imgId)
+//			writer2.write(imgId) // verifier l'append
+//		})
+		throw new NotImplementedError()
 	}
 
 	/**

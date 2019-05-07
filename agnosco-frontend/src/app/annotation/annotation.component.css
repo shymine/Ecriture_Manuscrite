@@ -27,7 +27,7 @@
     margin-bottom: 5px;
 }
 
-.bandButton{
+.homeButton{
     border-left: 1px solid rgb(225, 220, 238);
     border-right: 1px solid rgb(225, 220, 238);
     border-top: none;
@@ -36,10 +36,30 @@
     height: 100%;
     margin-left: 1px;
     margin-right: 1px;
-    background: rgba(255, 255, 255, 0.205)
+    background: none;
+    position: relative;
+    float: left;
 }
 
-.bandButton:hover {
+.homeButton:hover {
+    background: rgba(255, 255, 255, 0.055);
+}
+
+.helpButton{
+    border-left: 1px solid rgb(225, 220, 238);
+    border-right: 1px solid rgb(225, 220, 238);
+    border-top: none;
+    border-bottom: none;
+    color: rgb(236, 233, 243);
+    height: 100%;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: none;
+    position: relative;
+    float: right;
+}
+
+.helpButton:hover {
     background: rgba(255, 255, 255, 0.055);
 }
 
@@ -150,6 +170,19 @@ h2{
     margin-left: 8px;
     position: relative;
     float: left;
+}
+
+.blocImagettePlusTransHidden {
+    height: 95%;
+    width: 95%;
+    border: none;
+    padding: none;
+    margin: 5px;
+    margin-left: 8px;
+    position: relative;
+    float: left;
+    color: rgb(180, 179, 182);
+    opacity: 0.5;
 }
 
 .imagette {

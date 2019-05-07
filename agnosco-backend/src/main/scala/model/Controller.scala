@@ -1,8 +1,11 @@
 package model
 
+import java.io.File
+
 import model.common._
 import model.database.DatabaseConnector
 import model.preparation.PreparatorConnector
+import model.preparation.input.PiFFReader
 import model.recogniser.{Recogniser, RecogniserConnector}
 import org.json.JSONObject
 
@@ -67,25 +70,62 @@ class Controller {
 
 	def deleteProject(id: Long): Unit = {
 		databaseConnector.connect
+		val docs = databaseConnector.getDocumentsOfProject(id)
+		val pages = docs.flatMap(doc => databaseConnector.getPagesOfDocument(doc.id))
+		val examples = pages.flatMap(page => databaseConnector.getExamplesOfPage(page.id))
 		databaseConnector.deleteProject(id)
+		docs.foreach(doc => databaseConnector.deleteDocument(doc.id))
+		pages.foreach(page => {
+			databaseConnector.deletePage(id)
+			val piff = PiFFReader.fromFile(globalDataFolder+"/"+page.groundTruth).get
+			new File(globalDataFolder+"/"+piff.page.src).delete()
+			new File(globalDataFolder+"/"+page.groundTruth).delete()
+		})
+		examples.foreach(example => {
+			databaseConnector.deleteExample(example.id)
+			new File(globalDataFolder+"/"+example.imagePath)
+		})
 		databaseConnector.disconnect
 	}
 
 	def deleteDocument(id: Long): Unit = {
 		databaseConnector.connect
+		val pages = databaseConnector.getPagesOfDocument(id)
+		val examples = pages.flatMap(page => databaseConnector.getExamplesOfPage(page.id))
 		databaseConnector.deleteDocument(id)
+		pages.foreach(page => {
+			databaseConnector.deletePage(page.id)
+			val piff = PiFFReader.fromFile(globalDataFolder+"/"+page.groundTruth).get
+			new File(globalDataFolder+"/"+piff.page.src).delete()
+			new File(globalDataFolder+"/"+page.groundTruth).delete()
+		})
+		examples.foreach(example => {
+			databaseConnector.deleteExample(example.id)
+			new File(globalDataFolder+"/"+example.imagePath).delete()
+		})
 		databaseConnector.disconnect
 	}
 
 	def deletePage(id: Long): Unit = {
 		databaseConnector.connect
+		val page = databaseConnector.getPage(id).get
+		val examples = databaseConnector.getExamplesOfPage(id)
 		databaseConnector.deletePage(id)
+		val piff = PiFFReader.fromFile(globalDataFolder+"/"+page.groundTruth).get
+		new File(globalDataFolder+"/"+piff.page.src).delete()
+		new File(globalDataFolder+"/"+page.groundTruth).delete()
+		examples.foreach(example => {
+			databaseConnector.deleteExample(example.id)
+			new File(globalDataFolder+"/"+example.imagePath).delete()
+		})
 		databaseConnector.disconnect
 	}
 
 	def deleteExample(id: Long): Unit = {
 		databaseConnector.connect
+		val example = databaseConnector.getExample(id).get
 		databaseConnector.deleteExample(id)
+		new File(globalDataFolder+"/"+example.imagePath).delete()
 		databaseConnector.disconnect
 	}
 

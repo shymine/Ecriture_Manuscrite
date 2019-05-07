@@ -4,7 +4,7 @@
 
 <div class = "divisionParent">
   <div class="band">  
-    <button class = "bandButton" (click)="goHome()"><i class="fas fa-home"></i></button>
+    <button class = "homeButton" (click)="goHome()"><i class="fas fa-home"></i></button>
     
     <button class = "textBand">Validation des transcriptions</button>
 
@@ -16,12 +16,12 @@
   <div class="validationWindow">
     <ul class="examplesList">
       <li *ngFor="let p of examples ; let i = index" class= "affichage">
-        <div class= "blocImagettePlusTrans">
+        <div [class]= "isEnabled(i) ? 'blocImagettePlusTrans' : 'blocImagettePlusTransHidden'">
           <div class = "imagette">
-            <img class="imageAffiche" src={{p[0]}} alt="page" />
+            <img class="imageAffiche" src={{p[1]}} alt="page" />
           </div>
           <div class= "transcription">
-            <p>{{p[1]}}</p>
+            <p>{{p[2]}}</p>
           </div>
         </div>
         
@@ -29,6 +29,8 @@
           <button class = "hideButton" (click)="disableEx(i)" data-imgid=i>
             <i [class]="isEnabled(i) ? 'fas fa-times' : 'fas fa-angle-double-up'"></i>
           </button>
+          <br>
+          <img class="fas fa-check-circle" [hidden]="isValidated(i) ? false : true" style="border: 1px solid red;">
         </div>
       </li>
     </ul>
