@@ -83,7 +83,7 @@ class Controller {
 		})
 		examples.foreach(example => {
 			databaseConnector.deleteExample(example.id)
-			new File(globalDataFolder+"/"+example.imagePath)
+			new File(globalDataFolder+"/"+example.imagePath).delete()
 		})
 		databaseConnector.disconnect
 	}
