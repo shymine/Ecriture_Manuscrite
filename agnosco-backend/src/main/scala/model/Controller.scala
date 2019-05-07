@@ -225,6 +225,13 @@ class Controller {
 		examples
 	}
 
+	def documentArePrepared(ids: Iterable[Long]): Unit = {
+		databaseConnector.connect
+		databaseConnector.documentArePreapred(ids)
+		databaseConnector.disconnect
+	}
+
+
 	/* AI Interactions */
 
 	def trainAI(samples: Iterable[Example]): Unit = recogniserConnector.trainAI(samples)
