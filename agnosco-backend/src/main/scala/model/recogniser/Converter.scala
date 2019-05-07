@@ -13,11 +13,4 @@ trait Converter {
     * @return The converted samples
     */
   def convertData(samples: Iterable[Example]) : Iterable[Example]
-
-  /**
-    * Convert the samples from the format of the Recognizer to PiFF
-    * @param samples The samples to convert
-    * @return The converted samples
-    */
-  def unconvertData(samples: Iterable[Example]) : Iterable[Example]
 }
