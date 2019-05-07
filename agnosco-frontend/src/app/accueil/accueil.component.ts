@@ -214,17 +214,19 @@ export class AccueilComponent implements OnInit {
     this.router.navigate(['/decoupe']);
   }
 
-  goToAnnotation(d,pid, pname){
+  goToAnnotation(d,p){
     console.log("annotation");
     console.log("document: "+d.id);
-    console.log("projet: "+pid);
-    this.router.navigate(['/annotation',{'idd':d.id, 'named':d.name, 'idp':pid, 'namep': pname}]);
+    console.log("projet: "+p[1]);
+    console.log(p);
+    console.log(d);
+    this.router.navigate(['/annotation',{'idd':d.id, 'named':d.name, 'prepared': d.prepared, 'idp':p[1], 'namep': p[0]}]);
   }
 
   goToValidation(d){
     console.log("VALIDATION");
     console.log("document: "+d.id);
-    this.router.navigate(['/validation',{'idd':d.id, 'named': d.name}]);
+    this.router.navigate(['/validation',{'idd':d.id, 'named': d.name, 'prepared': d.prepared}]);
   }
 
   goToGestionPages(p,d){
@@ -257,12 +259,26 @@ export class AccueilComponent implements OnInit {
     });
   }
   
-  export(p){
+  exportP(p){
     console.log("export");
     console.log(p);
 
     const dialogRef = this.dialog.open(ExportProjetComponent, {
-      data: {'id': p[1], "pname": p[0]}
+      data: {'id': p[1], "pname": p[0], 'support': "pro"}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllProjects();
+    });
+
+  }
+
+  exportD(d){
+    console.log("export");
+    console.log(d);
+
+    const dialogRef = this.dialog.open(ExportProjetComponent, {
+      data: {'id': d.id, 'pname': d.name, 'support': "doc"}
     });
 
     dialogRef.afterClosed().subscribe(result => {
