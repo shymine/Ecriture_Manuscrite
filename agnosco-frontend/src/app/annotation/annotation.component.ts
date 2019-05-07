@@ -33,6 +33,7 @@ export class AnnotationComponent implements OnInit {
   private docName;
   private projectId;
   private projectName;
+  private docPrepared;
 
   private docMmPro = [];
 
@@ -76,17 +77,25 @@ export class AnnotationComponent implements OnInit {
       this.params.push(param.named);
       this.params.push(param.idp);
       this.params.push(param.namep);
+      this.params.push(param.prepared);
     });
 
     this.docId = this.params[0];
     this.docName = this.params[1];
     this.projectId = this.params[2];
     this.projectName = this.params[3];
+    this.docPrepared = this.params[4];
+
 
     console.log("ID du document : " + this.docId);
     console.log("nom du document : " + this.docName);
     console.log("ID du projet : " + this.projectId);
     console.log("nom du projet : " + this.projectName);
+
+    if(!this.docPrepared){
+      console.log("doc not prepared !!!!!");
+      this.http.post(`agnosco/base/prepareExamplesOfDocument/`, this.docId, {}).subscribe(response => console.log(response));
+    }
 
     this.getPages();
 
