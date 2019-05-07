@@ -93,6 +93,8 @@ export class AnnotationComponent implements OnInit {
     console.log("nom du projet : " + this.projectName);
     console.log("doc prepared : " + this.docPrepared);
 
+    this.getAllDocuments();
+
     if(this.docPrepared == "false"){
       console.log("doc not prepared !!!!!");
       this.http.post(`agnosco/base/prepareExamplesOfDocument/${this.docId}`, {}, {}).subscribe(response => {
@@ -100,21 +102,20 @@ export class AnnotationComponent implements OnInit {
         console.log("le document a été préparé");
         
         this.getPages();
+
+        this.checkPageNumber();
       });
-
-      //
-
-      //this.checkPageNumber();
     }
 
     else{
-      //this.getPages();
+      this.getPages();
 
-      //this.checkPageNumber();
+      this.checkPageNumber();
     }
   }
 
   showActions(ev){
+    console.log("show actions");
     let es = ev.originalTarget.parentNode.parentNode.lastChild;
     if(es.hidden) {
       es.hidden = false;
@@ -198,16 +199,21 @@ export class AnnotationComponent implements OnInit {
         let extension = returnedData[key].extension;
 
         let imageType = "";
+        console.log("extension : " + extension);
 
         switch(extension) {
           case "jpg": {
             imageType = "jpeg";
+            break;
           }
           case "tif": {
+            console.log("MOOUUUUUUUAAAAAAAAAAAAAA");
             imageType = "tiff";
+            break;
           }
           default: {
             imageType = extension;
+            break;
           }
         }
 
@@ -224,11 +230,15 @@ export class AnnotationComponent implements OnInit {
         this.examples.push(newExample);
         this.hidden.push(!enabled);
       });
-    });
+    },
+      error => {
+        console.log("catch error:", error);
+      }
+    );
 
     //Test    
 
-    let p64 = "data:image/jpeg;base64/fdnjGHLIaUHBFELZBQJRNSKIJOIZEF=";
+    let p64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==";
     let securePath64 = this.sanitizer.bypassSecurityTrustUrl(p64);
     this.examples.push([1, securePath64, "yo man", true, false]);
 
@@ -413,6 +423,26 @@ export class AnnotationComponent implements OnInit {
       }else{
         console.log("ANNULATION");
       }
+    });
+  }
+
+  getAllDocuments() {
+  
+    console.log("*** GET /base/projectsAndDocuments ***");
+    /**/
+    this.http.get(`agnosco/base/projectsAndDocuments`,{}).subscribe(returnedData => {
+      console.log(returnedData);
+
+      Object.keys(returnedData).forEach( key => {
+        if(returnedData[key].id == this.projectId){
+
+        }
+        this.docMmPro = returnedData[key].documents;
+
+        console.log(".............");
+        console.log(this.docMmPro);
+        console.log("............");
+      });
     });
   }
 

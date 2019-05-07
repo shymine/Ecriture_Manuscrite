@@ -41,81 +41,11 @@ object Main {
 
 	def main(args: Array[String]) : Unit = {
 		//environmentSetup()
-		//launch
 	    val server = startServer()
 	    System.in.read()
 	    server.shutdownNow()
 	}
 
-	def launch(): Unit = {
-		import model.common._
-		import model.database.DatabaseConnector
-
-		val database: DatabaseConnector = new DatabaseConnector()
-
-		val projects = new ArrayBuffer[Project]()
-		val documents = new ArrayBuffer[Document]()
-		val pages = new ArrayBuffer[Page]()
-		val examples = new ArrayBuffer[Example]()
-		
-		database.connect
-
-		projects += database.addProject(Project(-1, "super projet", RecogniserType.LaiaRecogniser, List()))
-		projects += database.addProject(Project(-1, "project de la vida", RecogniserType.None, List()))
-
-		documents += database.addDocument(Document(-1, "docu numero uno", List(), false), projects(0).id)
-		documents += database.addDocument(Document(-1, "docu numero dos", List(), false), projects(0).id)
-		documents += database.addDocument(Document(-1, "Glouglou", List(), false), projects(1).id)
-
-		pages += database.addPage(Page(-1, "groundTruth1", List()), documents(0).id)
-		pages += database.addPage(Page(-1, "groundTruth2", List()), documents(0).id)
-		pages += database.addPage(Page(-1, "groundTruth3", List()), documents(0).id)
-		pages += database.addPage(Page(-1, "groundTruth4", List()), documents(1).id)
-		pages += database.addPage(Page(-1, "groundTruth5", List()), documents(1).id)
-		pages += database.addPage(Page(-1, "groundTruth6", List()), documents(2).id)
-		pages += database.addPage(Page(-1, "groundTruth7", List()), documents(2).id)
-		pages += database.addPage(Page(-1, "groundTruth8", List()), documents(2).id)
-
-		examples += database.addExample(Example(-1, "example1/imgPath", None, true, false), pages(0).id)
-		examples += database.addExample(Example(-1, "example2/imgPath", Some("pouark"), true, false), pages(0).id)
-		examples += database.addExample(Example(-1, "example3/imgPath", None, true, false), pages(0).id)
-		examples += database.addExample(Example(-1, "example4/imgPath", None, true, false), pages(1).id)
-		examples += database.addExample(Example(-1, "example5/imgPath", None, true, false), pages(2).id)
-		examples += database.addExample(Example(-1, "example6/imgPath", None, true, false), pages(2).id)
-		examples += database.addExample(Example(-1, "example7/imgPath", Some("couclaclou"), true, false), pages(2).id)
-		examples += database.addExample(Example(-1, "example8/imgPath", Some("biyour missieur"), true, false), pages(2).id)
-		examples += database.addExample(Example(-1, "example9/imgPath", None, true, false), pages(3).id)
-		examples += database.addExample(Example(-1, "example10/imgPath", None, true, false), pages(4).id)
-		examples += database.addExample(Example(-1, "example11/imgPath", Some("bouark"), true, false), pages(4).id)
-		examples += database.addExample(Example(-1, "example12/imgPath", None, true, false), pages(5).id)
-		examples += database.addExample(Example(-1, "example13/imgPath", None, true, false), pages(6).id)
-		examples += database.addExample(Example(-1, "example14/imgPath", Some("plougastel"), true, false), pages(6).id)
-		examples += database.addExample(Example(-1, "example15/imgPath", None, true, false), pages(7).id)
-		examples += database.addExample(Example(-1, "example16/imgPath", None, true, false), pages(7).id)
-		examples += database.addExample(Example(-1, "example17/imgPath", Some("baba ba alors,"), true, false), pages(7).id)
-
-		database.disconnect
-
-		println("projects")
-		projects.foreach(p => print(s"id: ${p.id},"))
-		println()
-
-		println("documents")
-		documents.foreach(p => print(s"id: ${p.id},"))
-		println()
-
-		println("pages")
-		pages.foreach(p => print(s"id: ${p.id},"))
-		println()
-
-		println("examples")
-		examples.foreach(p => print(s"id: ${p.id},"))
-		println()
-		println()
-
-
-
-	}
 	/*
 	def main(args: Array[String]) : Unit = {
 		val bld = new BlurLineDetector("10.132.11.85", "10.132.9.2", 7007)

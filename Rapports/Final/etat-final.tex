@@ -32,7 +32,7 @@ Détaillons à présent le paquetage \texttt{model}. Celui-ci est composé de pl
 \paragraph{}
 Le paquetage \texttt{common} présenté en Figure 1 contient les classes qui correspondent aux éléments stockés en base de données : des projets contenant des documents composés de pages, ces pages contenant après traitement des exemples d'apprentissage pour les reconnaisseurs d'écriture manuscrite. Le \textit{package object} est une particularité de Scala. Il s'agit d'un objet associé au paquetage, qui contient des définitions utilisées dans le paquetage ainsi qu'en dehors, sémantiquement dépendantes de ce paquetage, mais n'appartenant pas à une classe en particulier. Une valeur \texttt{value} pourra être appelée avec \texttt{common.value}. Dans ce cas, le \textit{package object} contient des chemins vers différents dossiers ou exécutables sur le système de fichiers, notamment l'endroit où sont stockés les fichiers images ainsi que les exportations d'exemples, ou les scripts de traitement d'images.
 
-\begin{mdframed}[frametitle={Figure 1 : Paquetage \texttt{database}}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 2 : Paquetage \texttt{database}}, innerbottommargin=10]
 \begin{center}
 \includegraphics[scale=0.7]{assets/database.png}
 \end{center}
@@ -44,7 +44,7 @@ Le paquetage \texttt{database} contient les classes qui permettent au logiciel d
 \paragraph{}
 La classe \texttt{DatabaseConnector} vient d'un concept que nous avons décidé de suivre tout au long du projet du côté du serveur. Pour chaque paquetage du serveur, le connecteur reçoit les différents appels de l'extérieur, et les relaie vers l'implémentation choisie du \textit{trait} concerné par ce paquetage. Cela permet de choisir localement l'implémentation en changeant une ligne dans un fichier.
 
-\begin{mdframed}[frametitle={Figure 1 : Paquetage \texttt{preparation}}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 3 : Paquetage \texttt{preparation}}, innerbottommargin=10]
 \begin{center}
 \includegraphics[scale=0.7]{assets/preparation.png}
 \end{center}
@@ -62,16 +62,18 @@ Le sous-paquetage \texttt{processing} a quant à lui pour \textit{trait} princip
 \paragraph{}
 Enfin, ce paquetage \texttt{preparation} contient un \textit{trait} \texttt{Preparator}, qui définit un objet qui crée des exemples à partir d'une page d'un document et de sa vérité terrain. Comme pour le paquetage précédent, nous fournissons également une implémentation du \textit{trait} ainsi qu'un connecteur.
 
-\begin{mdframed}[frametitle={Figure 1 : Paquetage \texttt{recogniser}}, innerbottommargin=10]
+\begin{mdframed}[frametitle={Figure 4 : Paquetage \texttt{recogniser}}, innerbottommargin=10]
 \begin{center}
 \includegraphics[scale=0.7]{assets/recogniser.png}
 \end{center}
 \end{mdframed}
 
-\paragraph{}
-TODO : recogniser
+\paragraph{Reconnaisseur}
+Dans la première vision de l'interface avec le reconnaisseur que nous avions, nous souhaitions intégrer celui-ci à notre application. C'est-à-dire, pourvoir effectuer depuis celle-ci son entrainement, son évaluation ainsi que son utilisation pour reconnaître des imagettes. Cependant, nous avons dû réduire ces fonctionnalités afin de permettre une meilleure souplesse à l'utilisateur. En effet, celui-ci n'est plus obligé de brancher son reconnaisseur au logiciel afin que celui-ci puisse utiliser la base de connaissance. Cette modification de point de vue nous a également permit de gagner du temps vis-à-vis de cette partie. Ainsi, nous n'avons plus qu'une fonction \textit{export} permettant l'exportation des exemples générés dans le format du reconnaisseur avec les fichiers nécessaires afin d'en faciliter l'utilisation.
+Nous avons fourni une exportation par défaut qui permet d'obtenir l'image de l'exemple ansi qu'un fichier texte contenant sa transcription. Ces deux fichiers étant nommés de la même manière afin de pouvoir les associer facilement.
+Cependant, il n'est pas certain que dans le temps restant l'implémentation de l'exportation pour le reconnaisseur de Laia soit opérationnel comme il était prévu à l'origine.
 
-\paragraph{}
+\paragraph{Controleur}
 Enfin, ce paquetage \texttt{model} contient une classe \texttt{Controller} avec toutes les méthodes du modèle utilisées par la ressource REST, ainsi qu'une classe \texttt{ImplFactory} donnant toutes les implémentations choisies des différents \textit{traits} dans chaque sous-paquetage.
 
 \subsection{Scripts Python}
@@ -81,13 +83,30 @@ Pour appuyer l'application serveur en Scala, nous avons développé trois script
 
 \section{Côté client}
 \paragraph{}
-Notre IHM contient trois pages : une page d'accueil, une page d'annotation manuelle et une page de validation des transcriptions.
+Notre IHM contient trois pages : une page d'accueil, une page d'annotation manuelle et une page de validation des transcriptions. Nous avions initialement prévu d'inclure également une page de découpe manuelle des zones du manuscrit, mais nous nous sommes trouvés dans l'incapacité de la réaliser par manque de temps.
+
 \paragraph{}
-La page d'accueil permet de naviguer dans les projets et les documents afin de choisir le manuscrit à annoter. Elle propose également de créer de nouveaux projets en choisissant le nom du projet, le reconnaisseur associé et les documents qui le composent. L'utilisateur peut également supprimer des documents faisant partie d'un projet ou encore des projets entiers.
+Nous avons réalisé notre interface en \texttt{TypeScript}, \texttt{Angular} et \texttt{HTML}. Elle compte quatorze composants en tout :
+\begin{itemize}
+\item trois composants principaux, soit un pour chaque page de l'interface (accueil, annotation et validation);
+\item dix composants dédiés aux différentes fenêtres de \textit{dialog} qui apparaissent au fil de l'interface. Ce sont des fenêtres qui se superposent à la page de l'interface pour remplir des tâches très précises, comme configurer un nouveau projet, afficher des instructions sur le fonctionnement de l'interface ou encore demander une indication à l'utilisateur ;
+\item un dernier composant \texttt{service} qui se charge d'effectuer certains appels à la ressource REST pour alléger le code des composants des pages principales.
+\end{itemize}
+
+\begin{mdframed}[frametitle={Figure 5 : Arborescence des composants de l'interface}, innerbottommargin=10]
+\begin{center}
+\includegraphics[scale=0.5]{assets/arborescenceIHM.png}
+\end{center}
+\end{mdframed}
+
 \paragraph{}
-Sur la page d'annotation manuelle, l'utilisateur peut visualiser le manuscrit découpé ligne par ligne ainsi que la transcription associée sous chaque imagette. Il peut modifier cette transcription en la tapant au clavier. Si un exemple (un couple imagette-transcription) semble manquer de pertinence, l'utilisateur peut le cacher à l'aide d'une croix cliquable située dans le coin supérieur droit de l'imagette.
+Chaque page de l'interface est dédiée à une fonctionnalité. La page d'accueil permet de naviguer dans les projets et les documents afin de choisir le manuscrit à annoter. Elle propose également de créer de nouveaux projets en choisissant le nom du projet, le reconnaisseur associé, les documents qui le composent et les pages des documents. L'utilisateur peut également supprimer des documents faisant partie d'un projet ou encore des projets entiers.
+
+\paragraph{}
+Sur la page d'annotation manuelle, l'utilisateur peut visualiser le manuscrit découpé ligne par ligne ainsi que la transcription associée sous chaque imagette. Il peut modifier cette transcription en la tapant au clavier. Si un exemple (un couple imagette-transcription) semble manquer de pertinence, l'utilisateur peut le cacher à l'aide d'une croix cliquable située dans le coin supérieur droit de l'imagette. L'exemple est alors grisé sur l'interface et il n'est pas pris en compte lors de l'export des données vers le reconnaisseur du projet. L'utilisateur a encore à tout moment la possibilité de réhabiliter l'exemple en cliquant sur la flèche qui a remplacé la croix en haut à droite de l'imagette.
+
 \paragraph{}
 Enfin, la page de validation permet une relecture rapide des transcriptions pour effectuer une validation finale. L'utilisateur peut également cacher un exemple qui manque de pertinence, comme sur la page d'annotation. Un simple appui sur \texttt{Entrée} permet de valider d'un seul coup toutes les transcriptions affichées sur la page courante.
 
 \paragraph{}
-Nous avons développé l'ergonomie de notre application autant que possible dans le temps restreint dont nous disposions et nous avons tenté de fournir une application aussi intuitive que possible en facilitant son utilisation et en simplifiant les gestes requis par l'utilisateur (minimum de mouvements de souris, raccourcis clavier...).
+Nous avons développé l'ergonomie de notre application autant que possible dans le temps restreint dont nous disposions et nous avons tenté de fournir une application aussi intuitive que possible en facilitant son utilisation et en simplifiant les gestes requis par l'utilisateur (minimum de mouvements de souris, raccourcis clavier...). Cependant, l'ergonomie n'est pas optimale et nécessiterait des améliorations, notemment au niveau de la répétition de certains gestes par l'utilisateur qui requièrent de la précision. Toutefois, nous avons préféré mettre l'accent sur la stabilité et le bon fonctionnement de notre application avant de dédier le temps restant à l'amélioration de l'ergonomie.
