@@ -34,36 +34,36 @@ class BlurLineDetector(detectorIp : String, filePort : Int, answerPort : Int) ex
     val answer = new String(answerBytes)
 
     val lines = {
-      val lines = ListBuffer.empty[(Array[Point], Array[Point])]
-      answer
-        .split('\n') // Array[String]
-        .toStream // Stream[String] : lazy evaluation
-
-        // remove "Haut:", "Bas:" at the beginning
-        .map(_.split(':')(1)) // Stream[String]
-
-        // get a list of "x,y" points from a "x1,y1;x2,y2;x3,y3..." String
-        .map(_.split(';')) // Stream[Array[String]]
-
-        // in each list, split "x,y" into List("x", "y")
-        .map(_.map(_.split(';'))) // Stream[Array[Array[String]]]
-
-        // get a Point object from a "x,y" String
-        .map(_.map(coords => {
-          new Point(coords(0).toInt, coords(1).toInt)
-        })) // Stream[Array[Point]]
-
-        // from data representing [up, down, up, down, up, down] coordinates for lines,
-        // build a [(up, down), (up, down), (up, down)] list, one tuple per line of text in the image
-        .foldLeft(None[Array[Point]])((memory: Option[Array[Point]], pointList) => {
-          memory match {
-            case None => Some(pointList)
-            case Some(memPointList) =>
-              lines += ((memPointList, pointList))
-              None
-          }
-        })
-      lines.toList // List[(Array[Point], Array[Point])
+//      val lines = ListBuffer.empty[(Array[Point], Array[Point])]
+//      answer
+//        .split('\n') // Array[String]
+//        .toStream // Stream[String] : lazy evaluation
+//
+//        // remove "Haut:", "Bas:" at the beginning
+//        .map(_.split(':')(1)) // Stream[String]
+//
+//        // get a list of "x,y" points from a "x1,y1;x2,y2;x3,y3..." String
+//        .map(_.split(';')) // Stream[Array[String]]
+//
+//        // in each list, split "x,y" into List("x", "y")
+//        .map(_.map(_.split(';'))) // Stream[Array[Array[String]]]
+//
+//        // get a Point object from a "x,y" String
+//        .map(_.map(coords => {
+//          new Point(coords(0).toInt, coords(1).toInt)
+//        })) // Stream[Array[Point]]
+//
+//        // from data representing [up, down, up, down, up, down] coordinates for lines,
+//        // build a [(up, down), (up, down), (up, down)] list, one tuple per line of text in the image
+//        .foldLeft(None[Array[Point]])((memory: Option[Array[Point]], pointList) => {
+//          memory match {
+//            case None => Some(pointList)
+//            case Some(memPointList) =>
+//              lines += ((memPointList, pointList))
+//              None
+//          }
+//        })
+//      lines.toList // List[(Array[Point], Array[Point])
     }
 
     // TODO : (rectangle definining the area in the image for each line)

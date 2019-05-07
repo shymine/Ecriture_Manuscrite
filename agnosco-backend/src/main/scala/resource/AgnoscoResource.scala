@@ -113,7 +113,6 @@ class AgnoscoResource {
 	  * @param id The id of the project
 	  * @param document The json of the document to add
 	  */
-	// TODO: si un tuple donné en param est [0,0] alors il faut l'éliminer, si seulement un des deux est 0 alors il faut planter, le format du json est:
 	/*
 		{
 			'name':'truc', -> le nom de l'image
@@ -290,10 +289,6 @@ class AgnoscoResource {
 	@POST
 	@Path("/exportExamples/{id}")
 	def exportExamples(@PathParam("id") id: Long): Response = {
-      //check the recogniser and change if needed
-      //retrieve every examples where the project use this reco
-      //controller.getAllProject
-      //controller.trainAI(exampleSet)
 		try {
 			val rec = controller.getAllProject.find(proj => {
 				val docs = controller.getDocumentOfProject(proj.id)
@@ -319,7 +314,7 @@ class AgnoscoResource {
 	 */
 
 	/**
-	  * Returns the list of pages in the database of the pages that compose a document which name is given as a parameter.
+	  * Returns the list of pages in the database that compose a document which id is given as a parameter.
 	  * @param id The id of the document from which the pages are extracted
 	  * @return The list of the pages of the document
 	  */
