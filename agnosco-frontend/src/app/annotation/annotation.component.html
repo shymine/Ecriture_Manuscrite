@@ -19,7 +19,7 @@
         <li *ngFor="let p of examples ; let i = index" class= "affichage">
           <div [class]= "isEnabled(i) ? 'blocImagettePlusTrans' : 'blocImagettePlusTransHidden'">
             <div class = "imagette">
-              <img class="imageAffiche" src={{p[1]}} alt="page" />
+              <img class="imageAffiche" [src]=p[1] alt="page" />
             </div>
             <div class= "transcription">
               <p contenteditable="true" id=i>{{p[2]}}</p>
