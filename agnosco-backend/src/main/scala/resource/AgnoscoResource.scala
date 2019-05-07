@@ -287,8 +287,8 @@ class AgnoscoResource {
 	  * @return
 	  */
 	@POST
-	@Path("/exportExamples/{id}")
-	def exportExamples(@PathParam("id") id: Long): Response = {
+	@Path("/exportDocument/{id}")
+	def exportDocument(@PathParam("id") id: Long): Response = {
 		try {
 			val rec = controller.getAllProject.find(proj => {
 				val docs = controller.getDocumentOfProject(proj.id)
@@ -304,6 +304,27 @@ class AgnoscoResource {
 			controller.trainAI(examples)
 			Response.status(200).build()
 		}catch  {
+			case e: Exception => e.printStackTrace()
+				Response.status(500).build()
+		}
+	}
+
+	@POST
+	@Path("/exportProject/{id}")
+	def exportProject(@PathParam("id") id: Long): Response = {
+		try {
+			val rec = controller.getProject(id).get.recogniser
+			controller.changeRecogniser(rec.toString)
+
+			val examples = controller.getDocumentOfProject(id)
+				.flatMap(doc => controller.getPagesOfDocuments(doc.id))
+				.flatMap(page => controller.getExamplesOfPage(page.id))
+				.filter(example => example.validated&&example.enabled)
+			println("export",examples)
+
+			controller.trainAI(examples)
+			Response.status(200).build()
+		}catch {
 			case e: Exception => e.printStackTrace()
 				Response.status(500).build()
 		}
