@@ -83,7 +83,7 @@ export class AccueilComponent implements OnInit {
         console.log(docPro);
         console.log("recogniser");
         console.log(reco);
-        console.log(".............");
+        console.log("............");
 
         this.projects.push([nomPro,id,docPro]);
 
@@ -91,7 +91,6 @@ export class AccueilComponent implements OnInit {
 
       console.log("projects");
       console.log(this.projects);
-
       
     });
     
@@ -170,18 +169,24 @@ export class AccueilComponent implements OnInit {
   }
 
   showActions(ev){
-    let el = ev.originalTarget.parentNode.parentNode.lastChild;
     let es = ev.originalTarget.parentNode.children[1];
-    if(el.hidden) {
-      el.hidden = false;
-    }else {
-      el.hidden = true;
-    }
     if(es.hidden) {
       es.hidden = false;
     }else {
       es.hidden = true;
     }
+  }
+
+  showXActions(ev){
+    console.log("show X");
+    console.log(ev);
+    let el = ev.originalTarget.parentNode.parentNode.lastChild;
+    /* 
+    if(el.hidden) {
+      el.hidden = false;
+    }else {
+      el.hidden = true;
+    }*/
   }
 
   hideActions(ev){
@@ -219,10 +224,11 @@ export class AccueilComponent implements OnInit {
     this.router.navigate(['/annotation',{'id':JSON.stringify(p)}]);
   }
 
-  goToValidation(d){
+  goToValidation(d,p){
     console.log("VALIDATION");
-    console.log(d);
-    this.router.navigate(['/validation',{'id':JSON.stringify(d)}]);
+    console.log("document: "+d);
+    console.log("projet: "+p);
+    this.router.navigate(['/validation',{'idd':d, 'idp':p}]);
   }
 
   goToGestionPages(p,d){
@@ -232,8 +238,8 @@ export class AccueilComponent implements OnInit {
     
     const dialogRef = this.dialog.open(GestionPagesComponent, {
       data: {
-        'pid': p[1],
-        'pname': p[0],
+        'pid': p.id,
+        'pname': p.name,
         'd' : d
       }
     });

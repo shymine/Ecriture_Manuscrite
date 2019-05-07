@@ -6,7 +6,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
 </head>
-
 <div class="band">
   <button class="button1" >YOU</button>
   <button class="button1" (click)="goToDecoupe()">ARE</button>
@@ -32,12 +31,12 @@
       </li>
       <ul *ngFor="let d of p[2]" (mouseleave)="hideActions($event)">
         <li>
-          <button class="buttonList" (click)="showActions($event)">{{d.name}}</button>
-          <button hidden="true" class="buttonList2" (click)="deleteDoc(d)"><i class="fas fa-times"></i></button>
+          <button class="buttonList" (mouseenter)="showXActions($event)" (click)="showActions($event)">{{d.name}}</button>
+          <button hidden="true" class="button1ListX" (click)="deleteDoc(d)"><i class="fas fa-times"></i></button>
         </li>
         <ul style="list-style-type: disc; color: #666666;" hidden="true">
           <li><button class="buttonList2"(click)="goToAnnotation(d.id)" >Go To Annotation</button></li>
-          <li><button class="buttonList2"(click)="goToValidation(d.id)" >Go To Validation</button></li>
+          <li><button class="buttonList2"(click)="goToValidation(d.id,p.id)" >Go To Validation</button></li>
           <li><button class="buttonList2"(click)="goToGestionPages(p,d)">Gestion des pages</button></li>
         </ul>
       </ul>
