@@ -27,8 +27,12 @@ export class AnnotationComponent implements OnInit {
   }
 
   private params = [];
+
+  private docId;
   private docName;
+  private projectId;
   private projectName;
+
   private hidden = [];
 
   public pages;
@@ -62,12 +66,21 @@ export class AnnotationComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.forEach(param => {
-      this.params.push(param.id);
+      this.params.push(param.idd);
+      this.params.push(param.named);
+      this.params.push(param.idp);
+      this.params.push(param.namep);
     });
 
-    this.docName = this.params[1]; // le nom du document est le 1er paramètre
-    this.projectName = this.params[0];
-    console.log("ID du document : " + this.docName);
+    this.docId = this.params[0];
+    this.docName = this.params[1];
+    this.projectId = this.params[2];
+    this.projectName = this.params[3];
+
+    console.log("ID du document : " + this.docId);
+    console.log("nom du document : " + this.docName);
+    console.log("ID du projet : " + this.projectId);
+    console.log("nom du projet : " + this.projectName);
 
     this.getPages();
 
