@@ -73,6 +73,9 @@ Dans la première vision de l'interface avec le reconnaisseur que nous avions, n
 Nous avons fourni une exportation par défaut qui permet d'obtenir l'image de l'exemple ansi qu'un fichier texte contenant sa transcription. Ces deux fichiers étant nommés de la même manière afin de pouvoir les associer facilement.
 Cependant, il n'est pas certain que dans le temps restant l'implémentation de l'exportation pour le reconnaisseur de Laia soit opérationnel comme il était prévu à l'origine.
 
+Le paquetage \texttt{recogniser} est constitué de deux \textit{trait} qui prennent en charge deux aspect de l'exportation. Le \texttt{Converter} permet de contraindre les images de la base au format d'entrée du reconnaisseur selectionné tandis que le \texttt{Recogniser} se charge de la création des fichiers nécessaires à l'apprentissage du reconnaisseur à partir de la base. Afin de lier ces deux parties, la classe abstraite \texttt{ConverterRecogniser} est utilisée. C'est donc de celle-ci qu'héritent les classes de conversions qui sont à implémenter. Nous fournissons alors les classes \texttt{SampleExport} qui est la classe d'export par défaut qui ne formatte donc rien et ne délivre que les images et leur transcription de la facon expliquée précédemment, ainsi qu'une classe \texttt{LaiaRecogniser} qui permettra d'exporter pour le reconnaisseur Laia avec les fichiers nécessaires (il n'est cependant pas sur que cette partie soit complètement implémentée dans le temps restant).
+Ce paquetage possède également un connecteur comme les autres afin de le lier au \texttt{Controller}.
+
 \paragraph{Controleur}
 Enfin, ce paquetage \texttt{model} contient une classe \texttt{Controller} avec toutes les méthodes du modèle utilisées par la ressource REST, ainsi qu'une classe \texttt{ImplFactory} donnant toutes les implémentations choisies des différents \textit{traits} dans chaque sous-paquetage.
 
