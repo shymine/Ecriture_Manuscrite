@@ -214,17 +214,17 @@ export class AccueilComponent implements OnInit {
     this.router.navigate(['/decoupe']);
   }
 
-  goToAnnotation(p){
-    console.log("Bouton:");
-    console.log(p);
-    this.router.navigate(['/annotation',{'id':JSON.stringify(p)}]);
+  goToAnnotation(d,pid, pname){
+    console.log("annotation");
+    console.log("document: "+d.id);
+    console.log("projet: "+pid);
+    this.router.navigate(['/annotation',{'idd':d.id, 'named':d.name, 'idp':pid, 'namep': pname}]);
   }
 
-  goToValidation(d,p){
+  goToValidation(d){
     console.log("VALIDATION");
-    console.log("document: "+d);
-    console.log("projet: "+p);
-    this.router.navigate(['/validation',{'idd':d, 'idp':p}]);
+    console.log("document: "+d.id);
+    this.router.navigate(['/validation',{'idd':d.id, 'named': d.name}]);
   }
 
   goToGestionPages(p,d){
