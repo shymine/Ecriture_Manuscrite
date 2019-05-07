@@ -31,5 +31,5 @@ class DatabaseConnector {
 	def getPagesOfDocument(id: Long): Iterable[Page] = impl.getPagesOfDocument(id)
 	def getExamplesOfPage(id: Long): Iterable[Example] = impl.getExamplesOfPage(id)
 	def saveExampleEdition(examples: Iterable[Example]): Unit = impl.saveExampleEdition(examples)
-
+	def documentArePreapred(ids: Iterable[Long]): Unit = impl.documentArePrepared(ids)
 }
