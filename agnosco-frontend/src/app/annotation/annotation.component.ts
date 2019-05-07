@@ -128,7 +128,31 @@ export class AnnotationComponent implements OnInit {
     console.log("annotation");
     console.log("document: "+d.id);
     console.log("projet: "+this.projectId);
-    this.router.navigate(['/annotation',{'idd':d.id, 'named':d.name, 'idp':this.projectId, 'namep': this.projectName}]);
+    this.route.params.subscribe(val => {
+      this.docMmPro = [];
+      this.docId = d.id;
+      this.docName = d.name;
+      this.docPrepared = d.prepared;
+      this.getAllDocuments();
+
+      if(this.docPrepared == "false"){
+        console.log("doc not prepared !!!!!");
+        this.http.post(`agnosco/base/prepareExamplesOfDocument/${this.docId}`, {}, {}).subscribe(response => {
+          console.log(response);
+          console.log("le document a été préparé");
+          
+          this.getPages();
+
+          this.checkPageNumber();
+        });
+      }
+
+      else{
+        this.getPages();
+
+        this.checkPageNumber();
+      }
+    });
   }
 
   goToValidationD(d){
@@ -437,9 +461,16 @@ export class AnnotationComponent implements OnInit {
         if(returnedData[key].id == this.projectId){
 
         }
-        this.docMmPro = returnedData[key].documents;
+        let docs = returnedData[key].documents;
+        docs.forEach(element => {
+          if(element.id != this.docId){
+            this.docMmPro.push(element);
+          }
+        });;
 
         console.log(".............");
+        
+
         console.log(this.docMmPro);
         console.log("............");
       });
