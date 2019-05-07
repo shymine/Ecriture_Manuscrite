@@ -302,7 +302,7 @@ class AgnoscoResource {
 			println(examples)
 
 			controller.exportExamples(examples)
-			Response.status(200).build()
+			Response.status(200).entity(true).build()
 		}catch  {
 			case e: Exception => e.printStackTrace()
 				Response.status(500).build()
@@ -323,7 +323,7 @@ class AgnoscoResource {
 			println("export",examples)
 
 			controller.exportExamples(examples)
-			Response.status(200).build()
+			Response.status(200).entity(true).build()
 		}catch {
 			case e: Exception => e.printStackTrace()
 				Response.status(500).build()
