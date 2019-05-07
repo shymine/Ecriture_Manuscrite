@@ -10,15 +10,6 @@
     padding: 0px;
 }
 
-.leftWindow{
-    position: relative;
-    left: 0%;
-    width: 75%;
-    height: 98%;
-    float: left;
-    padding: 0px;
-}
-
 .band {
     background-color:#110f3d;
     color: #48327F;
@@ -26,6 +17,105 @@
     height: 30px;
     margin-bottom: 5px;
 }
+
+/* 3 divisions principales */
+
+.leftWindow{
+    position: relative;
+    left: 0%;
+    width: 75.5%;
+    float: left;
+    padding: 0px;
+}
+
+.rightWindow{
+    position: relative;
+    margin-left: 0.3%;
+    float: left;
+    width: 24%;
+    padding: 0px;
+    border: none
+}
+
+.changePage {
+    border: none;
+    position: relative;
+    float: left;
+    width: inherit;
+}
+
+/* RIGHT WINDOW : full document & navigation*/
+
+/* full document */
+
+.fullDocument{
+    background: rgb(83, 70, 116);
+    border: double rgb(218, 213, 230);
+    border-width : 6px;
+    padding: 5px;
+    top: 2px;
+    width: 22% - 6px;
+    height: 40%;
+    margin-bottom: 3px;
+}
+
+.image_doc{
+    display: block;
+    position: relative;
+    max-width: 85%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* navigation */
+
+.navigation{
+    background: rgb(219, 207, 247);
+    border: 2px solid rgb(141, 129, 170);
+    width: 99%;
+    min-height: 45vh;
+    color: rgb(81, 81, 83);
+    margin-bottom: 8px;
+}
+
+.navBandTranscription{
+    font-weight: bold;
+    border: none;
+    height: 100%;
+    float: right;
+    background: #110f3d;
+    color: rgb(236, 233, 243);
+    padding: 0%;
+}
+
+.navBand{
+    border: none;
+    height: 100%;
+    float: right;
+    background: #110f3d;
+    color: rgb(153, 143, 177);
+    padding: 0%;
+}
+
+.navBand:hover {
+    color: rgb(236, 233, 243);
+}
+
+.navTitle{
+    background: rgb(219, 207, 247);
+    padding: 5px;
+    border-bottom: 2px solid rgb(141, 129, 170);
+    height: 15%;
+    width : 80%;
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+}
+
+/* boutons */
 
 .homeButton{
     border-left: 1px solid rgb(225, 220, 238);
@@ -63,103 +153,44 @@
     background: rgba(255, 255, 255, 0.055);
 }
 
-.navBandTranscription{
-    font-weight: bold;
+.buttonList {
+    background: none;
     border: none;
-    height: 100%;
-    float: right;
-    background: #110f3d;
-    color: rgb(236, 233, 243);
-    padding: 0%;
+    color: rgb(124, 102, 180);
+    font-size: 20px;
 }
 
-.navBand{
+.buttonList:hover {
+    color: rgb(79, 56, 138);
+
+}
+
+.buttonList2 {
+    background: none;
     border: none;
-    height: 100%;
-    float: right;
-    background: #110f3d;
-    color: rgb(153, 143, 177);
-    padding: 0%;
+    color: #666666;
+    font-size: 15px;
 }
 
-.navBand:hover {
-    color: rgb(236, 233, 243);
+.buttonList2:hover {
+    color: #333333;
 }
 
-.rightWindow{
+.buttonDiv {
     position: relative;
     float: right;
-    height: 100%;
-    width: 24%;
-    padding: 0px;
-    border: none
 }
 
-.fullDocument{
-    background: rgb(83, 70, 116);
-    border: double rgb(218, 213, 230);
-    border-width : 6px;
-    padding: 5px;
-    top: 2px;
-    width: 22% - 6px;
-    height: 40%;
-}
-
-.image_doc{
-    display: block;
+.hideButton {
+    border: solid 2px rgb(72, 141, 3); /* à enlever quand y a internet */
     position: relative;
-    max-height: 75%;
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
+    float: right;
+    margin-right: 5px;
+    background: none;
+    min-height: 15px;
 }
 
-.navigation{
-    background: rgb(219, 207, 247);
-    border: 2px solid rgb(141, 129, 170);
-    width: 99%;
-    height: 40vh;
-    color: rgb(81, 81, 83);
-}
-
-.navTitle{
-    background: rgb(219, 207, 247);
-    padding: 5px;
-    border-bottom: 2px solid rgb(141, 129, 170);
-    height: 15%;
-    width : 80%;
-    display: block;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5px;
-}
-
-h2{
-    margin-top: 5px;
-    margin-bottom: 5px;
-    text-align: center;
-    font-size: 1.3em;
-    padding: 10px;
-    color: rgb(219, 210, 241);
-}
-
-
-.annotationWindow {
-    width: 70%;
-    min-height: 50vh;
-    padding: 5px;
-    border: none;
-    position: relative;
-    margin-left: 15%;
-}
-
-.affichage {
-    border: solid 2px rgb(218, 213, 230);
-    width: 100%;
-    height: 16vh;
-    margin-bottom: 10px;
-}
+/* imagettes */
 
 .blocImagettePlusTrans {
     height: 95%;
@@ -204,6 +235,24 @@ h2{
     position: relative;
 }
 
+/* autres ? */
+
+.annotationWindow {
+    width: 70%;
+    min-height: 50vh;
+    padding: 5px;
+    border: none;
+    position: relative;
+    margin-left: 15%;
+}
+
+.affichage {
+    border: solid 2px rgb(218, 213, 230);
+    width: 100%;
+    height: 16vh;
+    margin-bottom: 10px;
+}
+
 .transcription {
     height: 45%;
     width: 100%;
@@ -212,20 +261,6 @@ h2{
     border: solid 1px rgb(166, 164, 170);
     background: rgb(232, 227, 245);
     text-align: center;
-}
-
-.buttonDiv {
-    position: relative;
-    float: right;
-}
-
-.hideButton {
-    border: solid 2px rgb(72, 141, 3); /* à enlever quand y a internet */
-    position: relative;
-    float: right;
-    margin-right: 5px;
-    background: none;
-    min-height: 15px;
 }
 
 .examplesList {
@@ -268,8 +303,11 @@ h2{
     background: none;
 }
 
-.changePage {
-    border: none;
-    position: relative;
-    width: inherit;
+h2{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 1.3em;
+    padding: 10px;
+    color: rgb(219, 210, 241);
 }

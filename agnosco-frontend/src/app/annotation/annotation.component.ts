@@ -93,6 +93,8 @@ export class AnnotationComponent implements OnInit {
     console.log("nom du projet : " + this.projectName);
     console.log("doc prepared : " + this.docPrepared);
 
+    this.getAllDocuments();
+
     if(this.docPrepared == "false"){
       console.log("doc not prepared !!!!!");
       this.http.post(`agnosco/base/prepareExamplesOfDocument/${this.docId}`, {}, {}).subscribe(response => {
@@ -113,6 +115,7 @@ export class AnnotationComponent implements OnInit {
   }
 
   showActions(ev){
+    console.log("show actions");
     let es = ev.originalTarget.parentNode.parentNode.lastChild;
     if(es.hidden) {
       es.hidden = false;
@@ -227,7 +230,11 @@ export class AnnotationComponent implements OnInit {
         this.examples.push(newExample);
         this.hidden.push(!enabled);
       });
-    });
+    },
+      error => {
+        console.log("catch error:", error);
+      }
+    );
 
     //Test    
 
@@ -416,6 +423,26 @@ export class AnnotationComponent implements OnInit {
       }else{
         console.log("ANNULATION");
       }
+    });
+  }
+
+  getAllDocuments() {
+  
+    console.log("*** GET /base/projectsAndDocuments ***");
+    /**/
+    this.http.get(`agnosco/base/projectsAndDocuments`,{}).subscribe(returnedData => {
+      console.log(returnedData);
+
+      Object.keys(returnedData).forEach( key => {
+        if(returnedData[key].id == this.projectId){
+
+        }
+        this.docMmPro = returnedData[key].documents;
+
+        console.log(".............");
+        console.log(this.docMmPro);
+        console.log("............");
+      });
     });
   }
 

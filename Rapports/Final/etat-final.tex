@@ -6,12 +6,16 @@ En cette fin de projet, nous sommes en capacité de fournir une application fonc
 \section{Architecture générale et technologies utilisées}
 
 \paragraph{}
+Au cours de la conception de ce projet, nous n'avons pas eu besoin de réviser la structure globale de notre projet et aucun changement majeur n'a eu besoin d'être mis en place. Cependant, nous nous sommes rendu compte au fur et à mesure de l'inutilité de certaines fonctions ainsi que du manque d'autres afin de pouvoir réaliser les spécifications. Ainsi, nous avons réalisé par exemple que certains appels de l'API Rest n'étaient pas pertinant et qu'il en manquait pour permettre le bon fonctionnement du client.
+
+\paragraph{}
 Concernant les technologies, le rapport de conception comportait déjà tous les éléments utilisés. La seule différence est le reconnaisseur d'écriture manuscrite. En effet, par manque de temps, nous n'avons pas pu mettre en place de connexion effective avec un reconnaisseur d'écriture manuscrite. Le reconnaisseur Laia, mentionné dans le rapport de conception, n'est donc pas présent dans le projet, cette partie étant optionnelle dans le cahier des charges initial du projet, qui consiste à principalement générer les bases d'apprentissage. Nous avons donc utilisé SQLite pour la base de données, OpenCV pour la découpe d'images, Angular 7 pour l'interface client, Grizzly pour le serveur web, ainsi que Jersey pour l'API REST. L'architecture du serveur est sensiblement la même, car nous avons souhaité continuer sur le modèle d'un contrôleur qui orchestre toute l'application, découpée en modules : préparation des données, connexion avec la base de données, interface avec le reconnaisseur.
 
 \section{Côté serveur}
 
 \paragraph{}
-Du côté du serveur, nous avons développé une application principale en Scala, ainsi que quelques scripts en Python pour le prétraitement des données XML et le traitement d'images, que nous présenterons également. La différence principale avec le rapport de conception est la présence de ces scripts. Nous avions en effet prévu dans un premier temps de fournir une application serveur monolithique, développée en un seul langage de bout en bout. L'expérience nous a montré qu'il était plus judicieux d'utiliser des scripts comme outils venant appuyer cette application. Nous détaillerons, paquetage par paquetage, le contenu technique et son utilité pour le projet.
+Du côté du serveur, nous avons développé une application principale en Scala, ainsi que quelques scripts en Python pour le prétraitement des données XML et le traitement d'images, que nous présenterons également. La différence principale avec le rapport de conception est la présence de ces scripts. Nous avions en effet prévu dans un premier temps de fournir une application serveur monolithique, développée en un seul langage de bout en bout. L'expérience nous a montré qu'il était plus judicieux d'utiliser des scripts comme outils venant appuyer cette application. 
+Nous détaillerons, paquetage par paquetage, le contenu technique et son utilité pour le projet.
 
 \subsection{Application en Scala}
 
@@ -29,7 +33,7 @@ Détaillons à présent le paquetage \texttt{model}. Celui-ci est composé de pl
 \end{center}
 \end{mdframed}
 
-\paragraph{}
+\paragraph{Commun}
 Le paquetage \texttt{common} présenté en Figure 1 contient les classes qui correspondent aux éléments stockés en base de données : des projets contenant des documents composés de pages, ces pages contenant après traitement des exemples d'apprentissage pour les reconnaisseurs d'écriture manuscrite. Le \textit{package object} est une particularité de Scala. Il s'agit d'un objet associé au paquetage, qui contient des définitions utilisées dans le paquetage ainsi qu'en dehors, sémantiquement dépendantes de ce paquetage, mais n'appartenant pas à une classe en particulier. Une valeur \texttt{value} pourra être appelée avec \texttt{common.value}. Dans ce cas, le \textit{package object} contient des chemins vers différents dossiers ou exécutables sur le système de fichiers, notamment l'endroit où sont stockés les fichiers images ainsi que les exportations d'exemples, ou les scripts de traitement d'images.
 
 \begin{mdframed}[frametitle={Figure 2 : Paquetage \texttt{database}}, innerbottommargin=10]
@@ -38,7 +42,7 @@ Le paquetage \texttt{common} présenté en Figure 1 contient les classes qui cor
 \end{center}
 \end{mdframed}
 
-\paragraph{}
+\paragraph{Base de données}
 Le paquetage \texttt{database} contient les classes qui permettent au logiciel de faire des requêtes sur la base de données associée au serveur, qui contient les différents exemples qui seront fournis aux reconnaisseurs d'écriture manuscrite. Le \textit{trait} \texttt{Database} (un \textit{trait} en Scala est l'équivalent d'une interface en Java) décrit toutes les actions que l'on doit pouvoir effectuer depuis l'extérieur sur la base de données, et la classe \texttt{DatabaseSqlite} l'implémente pour le SGBD SQLite que nous avons choisi pour ce projet. L'utilisation d'un \textit{trait} permet à un développeur réutilisant le projet de changer le SGBD du serveur au besoin. Par exemple, pour un passage réel en production, une base de données MySQL peut être un choix judicieux. 
 
 \paragraph{}
@@ -50,7 +54,7 @@ La classe \texttt{DatabaseConnector} vient d'un concept que nous avons décidé 
 \end{center}
 \end{mdframed}
 
-\paragraph{}
+\paragraph{Preparation}
 Le paquetage \texttt{preparation} est assez complexe. Il est en trois parties : un sous-paquetage \texttt{input} qui gère la lecture des données d'entrée, un sous-paquetage \texttt{processing} qui réalise le traitement d'images et la création d'exemples, et un sous-paquetage \texttt{types} qui contient des définitions d'objets géométriques tels que les points ou les polygones, utiles pour les autres classes du paquetage.
 
 \paragraph{}
@@ -68,7 +72,7 @@ Enfin, ce paquetage \texttt{preparation} contient un \textit{trait} \texttt{Prep
 \end{center}
 \end{mdframed}
 
-\paragraph{}
+\paragraph{Reconnaisseur}
 TODO : recogniser
 
 \paragraph{}
@@ -107,4 +111,4 @@ Sur la page d'annotation manuelle, l'utilisateur peut visualiser le manuscrit d�
 Enfin, la page de validation permet une relecture rapide des transcriptions pour effectuer une validation finale. L'utilisateur peut également cacher un exemple qui manque de pertinence, comme sur la page d'annotation. Un simple appui sur \texttt{Entrée} permet de valider d'un seul coup toutes les transcriptions affichées sur la page courante.
 
 \paragraph{}
-Nous avons développé l'ergonomie de notre application autant que possible dans le temps restreint dont nous disposions et nous avons tenté de fournir une application aussi intuitive que possible en facilitant son utilisation et en simplifiant les gestes requis par l'utilisateur (minimum de mouvements de souris, raccourcis clavier...). Cependant, l'ergonomie n'est pas optimale et nécessiterait des améliorations, notemment au niveau de la répétition de certains gestes par l'utilisateur qui requièrent de la précision. Toutefois, nous avons préféré mettre l'accent sur la stabilité et le bon fonctionnement de notre application avant de dédier le temps restant à l'amélioration de l'ergonomie.
+Nous avons développé l'ergonomie de notre application autant que possible dans le temps restreint dont nous disposions et nous avons tenté de fournir une application aussi intuitive que possible en facilitant son utilisation et en simplifiant les gestes requis par l'utilisateur (minimum de mouvements de souris, raccourcis clavier...). Cependant, nous avons préféré nous concentrer sur une application fonctionnelle plutôt qu'ergonomique et adaptée à l'utilisation de celle-ci de manière industrielle. Des améliorations pourront donc être apportées plus tard afin d'intégrer cet aspect.
