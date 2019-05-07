@@ -10,6 +10,7 @@ import { isLoweredSymbol } from '@angular/compiler';
 })
 export class GestionPagesComponent implements OnInit {
 
+  public hideMessage = true;
   public pages = [];
   public oldpages = [];
 
@@ -153,6 +154,7 @@ export class GestionPagesComponent implements OnInit {
         'vtText' : this.pages[_j].data
       }
       this.http.post(`agnosco/base/addPageToDocument/${this.did}`,json,{}).subscribe(data => {
+        console.log("data: "+data);
       });
     }
 
