@@ -181,15 +181,19 @@ export class AccueilComponent implements OnInit {
     console.log("show X");
     console.log(ev);
     let el = ev.originalTarget.parentNode.children[1];
+    let el2 = ev.originalTarget.parentNode.children[2];
     console.log(el);
     el.hidden = false;
+    el2.hidden = false;
   }
 
   hideActions(ev){
     let el = ev.originalTarget.lastChild;
     let es = ev.originalTarget.firstChild.children[1];
+    let es2 = ev.originalTarget.firstChild.children[2];
     el.hidden = true;
     es.hidden = true;
+    es2.hidden = true;
   }
 
   showX(ev) {
@@ -214,17 +218,19 @@ export class AccueilComponent implements OnInit {
     this.router.navigate(['/decoupe']);
   }
 
-  goToAnnotation(p){
-    console.log("Bouton:");
+  goToAnnotation(d,p){
+    console.log("annotation");
+    console.log("document: "+d.id);
+    console.log("projet: "+p[1]);
     console.log(p);
-    this.router.navigate(['/annotation',{'id':JSON.stringify(p)}]);
+    console.log(d);
+    this.router.navigate(['/annotation',{'idd':d.id, 'named':d.name, 'prepared': d.prepared, 'idp':p[1], 'namep': p[0]}]);
   }
 
-  goToValidation(d,p){
+  goToValidation(d){
     console.log("VALIDATION");
-    console.log("document: "+d);
-    console.log("projet: "+p);
-    this.router.navigate(['/validation',{'idd':d, 'idp':p}]);
+    console.log("document: "+d.id);
+    this.router.navigate(['/validation',{'idd':d.id, 'named': d.name, 'prepared': d.prepared}]);
   }
 
   goToGestionPages(p,d){
@@ -257,12 +263,26 @@ export class AccueilComponent implements OnInit {
     });
   }
   
-  export(p){
+  exportP(p){
     console.log("export");
     console.log(p);
 
     const dialogRef = this.dialog.open(ExportProjetComponent, {
-      data: {'id': p[1], "pname": p[0]}
+      data: {'id': p[1], "pname": p[0], 'support': "pro"}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllProjects();
+    });
+
+  }
+
+  exportD(d){
+    console.log("export");
+    console.log(d);
+
+    const dialogRef = this.dialog.open(ExportProjetComponent, {
+      data: {'id': d.id, 'pname': d.name, 'support': "doc"}
     });
 
     dialogRef.afterClosed().subscribe(result => {

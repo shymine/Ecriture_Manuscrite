@@ -16,13 +16,27 @@ export class ExportProjetComponent implements OnInit {
       console.log("data");
       console.log(data);
 
-      this.http.post(`agnosco/base/exportProject/${data.id}`,{},{}).subscribe(data => {
+      if(data.support == "doc"){
+        this.http.post(`agnosco/base/exportDocument/${data.id}`,{},{}).subscribe(data => {
+          console.log("returned data");
+          console.log(data);
+          if(data){
+            console.log("non null");
+            this.isFinished = true;
+          }
+        });
+      }else{
+        this.http.post(`agnosco/base/exportProject/${data.id}`,{},{}).subscribe(data => {
         console.log("returned data");
 
         if(data != null){
+          console.log("non null");
           this.isFinished = true;
         }
       });
+      }
+
+      
       
       
 

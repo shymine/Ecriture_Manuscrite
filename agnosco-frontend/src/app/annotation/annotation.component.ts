@@ -6,6 +6,7 @@ import { HelpAnnotationComponent } from '../help-annotation/help-annotation.comp
 import { EndAnnotationComponent } from '../end-annotation/end-annotation.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { forEach } from '@angular/router/src/utils/collection';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-annotation',
@@ -27,8 +28,15 @@ export class AnnotationComponent implements OnInit {
   }
 
   private params = [];
+
+  private docId;
   private docName;
+  private projectId;
   private projectName;
+  private docPrepared;
+
+  private docMmPro = [];
+
   private hidden = [];
 
   public pages;
@@ -51,7 +59,10 @@ export class AnnotationComponent implements OnInit {
   public isLastPage;
   validation: Validation;
 
-  constructor(private router: Router, private route: ActivatedRoute, private validationService: ValidationService, public dialog: MatDialog, private http: HttpClient) {
+  public dangerousUrl;
+  public trustedUrl;
+
+  constructor(private router: Router, private route: ActivatedRoute, private validationService: ValidationService, public dialog: MatDialog, private http: HttpClient, private sanitizer: DomSanitizer) {
     this.examples = [];
     this.pages = [];
     this.currentPageIndex = 0;
@@ -62,16 +73,67 @@ export class AnnotationComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.forEach(param => {
-      this.params.push(param.id);
+      this.params.push(param.idd);
+      this.params.push(param.named);
+      this.params.push(param.idp);
+      this.params.push(param.namep);
+      this.params.push(param.prepared);
     });
 
-    this.docName = this.params[1]; // le nom du document est le 1er paramètre
-    this.projectName = this.params[0];
-    console.log("ID du document : " + this.docName);
+    this.docId = this.params[0];
+    this.docName = this.params[1];
+    this.projectId = this.params[2];
+    this.projectName = this.params[3];
+    this.docPrepared = this.params[4];
 
-    this.getPages();
 
-    this.checkPageNumber();
+    console.log("ID du document : " + this.docId);
+    console.log("nom du document : " + this.docName);
+    console.log("ID du projet : " + this.projectId);
+    console.log("nom du projet : " + this.projectName);
+    console.log("doc prepared : " + this.docPrepared);
+
+    if(this.docPrepared == "false"){
+      console.log("doc not prepared !!!!!");
+      this.http.post(`agnosco/base/prepareExamplesOfDocument/${this.docId}`, {}, {}).subscribe(response => {
+        console.log(response);
+        console.log("le document a été préparé");
+        
+        this.getPages();
+      });
+
+      //
+
+      //this.checkPageNumber();
+    }
+
+    else{
+      //this.getPages();
+
+      //this.checkPageNumber();
+    }
+  }
+
+  showActions(ev){
+    let es = ev.originalTarget.parentNode.parentNode.lastChild;
+    if(es.hidden) {
+      es.hidden = false;
+    }else {
+      es.hidden = true;
+    }
+  }
+
+  goToAnnotation(d){
+    console.log("annotation");
+    console.log("document: "+d.id);
+    console.log("projet: "+this.projectId);
+    this.router.navigate(['/annotation',{'idd':d.id, 'named':d.name, 'idp':this.projectId, 'namep': this.projectName}]);
+  }
+
+  goToValidationD(d){
+    console.log("VALIDATION");
+    console.log("document: "+d.id);
+    this.router.navigate(['/validation',{'idd':d.id, 'named': d.name}]);
   }
 
   goHome(){
@@ -83,7 +145,7 @@ export class AnnotationComponent implements OnInit {
   }
 
   goToValidation(){
-    this.router.navigate(['/validation',{'id':this.docName}]);
+    this.router.navigate(['/validation',{'id':this.docId}]);
   }
 
   /**
@@ -91,7 +153,7 @@ export class AnnotationComponent implements OnInit {
    */
   getPages(){
     //on récupère la liste des identifiants des pages du doc passé en paramètre 
-    this.validationService.getPages(this.docName).subscribe(returnedData => {
+    this.validationService.getPages(this.docId).subscribe(returnedData => {
       console.log("get pages : ");
       console.log(returnedData);
       
@@ -155,7 +217,9 @@ export class AnnotationComponent implements OnInit {
         console.log("path base 64 : ");
         console.log(path64);
 
-        let newExample = [id, path64, transcript, enabled, validated];
+        let securePath64 = this.sanitizer.bypassSecurityTrustUrl(path64);
+
+        let newExample = [id, securePath64, transcript, enabled, validated];
 
         this.examples.push(newExample);
         this.hidden.push(!enabled);
@@ -163,7 +227,10 @@ export class AnnotationComponent implements OnInit {
     });
 
     //Test    
-    this.examples.push([1,"data:image/jpeg;base64/fdnjGHLIaUHBFELZBQJRNSKIJOIZEF=", "yo man", true, false]);
+
+    let p64 = "data:image/jpeg;base64/fdnjGHLIaUHBFELZBQJRNSKIJOIZEF=";
+    let securePath64 = this.sanitizer.bypassSecurityTrustUrl(p64);
+    this.examples.push([1, securePath64, "yo man", true, false]);
 
     console.log("ex pushed");
 
@@ -341,7 +408,7 @@ export class AnnotationComponent implements OnInit {
         console.log("SEND EDITS ET RETOUR A L'ACCUEIL");
       }else if(result == 2){
         this.sendEdits();
-        this.router.navigate(['/validation',{'id':this.docName}]);
+        this.router.navigate(['/validation',{'id':this.docId}]);
         console.log("SEND EDITS ET VALIDATION");
       }else{
         console.log("ANNULATION");

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
 </head>
 <div class="band">
-  Bienvenue sur notre site internet!
+<div style="top: 20%; position: relative;">Vous disposez ci-dessous de vos projets personnels !</div>
 </div>
 <!-- <input type="file" (change)="encodeImageFileAsURL($event)" /> -->
 <div class="divisionParent">
@@ -19,7 +19,7 @@
       <li>
         <div class="liList" (mouseenter)="showX($event)" (mouseleave)="hideX($event)">
           <button class="button1List">{{p[0]}}</button>
-          <button hidden="true" class="button1ListE" (click)="export(p)"><i class="fas fa-dolly"></i></button>
+          <button hidden="true" class="button1ListE" (click)="exportP(p)"><i class="fas fa-dolly"></i></button>
           <button hidden="true" class="button1ListP" (click)="addDoc(p)"><i class="fas fa-plus"></i></button>
           <button hidden="true" class="button1ListX" (click)="deletePro(p)"><i class="fas fa-times"></i></button>
         </div>
@@ -27,11 +27,12 @@
       <ul *ngFor="let d of p[2]" (mouseleave)="hideActions($event)">
         <li>
           <button class="buttonList" (mouseenter)="showXActions($event)" (click)="showActions($event)">{{d.name}}</button>
+          <button hidden="true" class="button1ListE" (click)="exportD(d)"><i class="fas fa-dolly"></i></button>
           <button hidden="true" class="button1ListX" (click)="deleteDoc(d)"><i class="fas fa-times"></i></button>
         </li>
         <ul style="list-style-type: disc; color: #666666;" hidden="true">
-          <li><button class="buttonList2"(click)="goToAnnotation(d.id)" >Go To Annotation</button></li>
-          <li><button class="buttonList2"(click)="goToValidation(d.id,p.id)" >Go To Validation</button></li>
+          <li><button class="buttonList2"(click)="goToAnnotation(d, p)" >Annotation</button></li>
+          <li><button class="buttonList2"(click)="goToValidation(d)" >Validation</button></li>
           <li><button class="buttonList2"(click)="goToGestionPages(p,d)">Gestion des pages</button></li>
         </ul>
       </ul>

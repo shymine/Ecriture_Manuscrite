@@ -113,7 +113,6 @@ class AgnoscoResource {
 	  * @param id The id of the project
 	  * @param document The json of the document to add
 	  */
-	// TODO: si un tuple donné en param est [0,0] alors il faut l'éliminer, si seulement un des deux est 0 alors il faut planter, le format du json est:
 	/*
 		{
 			'name':'truc', -> le nom de l'image
@@ -204,13 +203,13 @@ class AgnoscoResource {
 			val json = new JSONObject(page)
 
 			val name = getFileName(json.getString("name"))
-
 			// écriture vt
 			val vt = PiFFReader.fromString(json.getString("vtText"))
+
 			if (vt.isDefined) {
 				val piff = vt.get
 
-				if (piff.page.src != json.getString("vtText")) {
+				if (piff.page.src != json.getString("name")) {
 					return Response.notAcceptable(new util.ArrayList[Variant]()).entity("{\"error\":400}").build()
 				}
 
@@ -288,12 +287,8 @@ class AgnoscoResource {
 	  * @return
 	  */
 	@POST
-	@Path("/exportExamples/{id}")
-	def exportExamples(@PathParam("id") id: Long): Response = {
-      //check the recogniser and change if needed
-      //retrieve every examples where the project use this reco
-      //controller.getAllProject
-      //controller.trainAI(exampleSet)
+	@Path("/exportDocument/{id}")
+	def exportDocument(@PathParam("id") id: Long): Response = {
 		try {
 			val rec = controller.getAllProject.find(proj => {
 				val docs = controller.getDocumentOfProject(proj.id)
@@ -306,9 +301,30 @@ class AgnoscoResource {
 				.filter(example => example.validated&&example.enabled)
 			println(examples)
 
-			controller.trainAI(examples)
-			Response.status(200).build()
+			controller.exportExamples(examples)
+			Response.status(200).entity(true).build()
 		}catch  {
+			case e: Exception => e.printStackTrace()
+				Response.status(500).build()
+		}
+	}
+
+	@POST
+	@Path("/exportProject/{id}")
+	def exportProject(@PathParam("id") id: Long): Response = {
+		try {
+			val rec = controller.getProject(id).get.recogniser
+			controller.changeRecogniser(rec.toString)
+
+			val examples = controller.getDocumentOfProject(id)
+				.flatMap(doc => controller.getPagesOfDocuments(doc.id))
+				.flatMap(page => controller.getExamplesOfPage(page.id))
+				.filter(example => example.validated&&example.enabled)
+			println("export",examples)
+
+			controller.exportExamples(examples)
+			Response.status(200).entity(true).build()
+		}catch {
 			case e: Exception => e.printStackTrace()
 				Response.status(500).build()
 		}
@@ -319,7 +335,7 @@ class AgnoscoResource {
 	 */
 
 	/**
-	  * Returns the list of pages in the database of the pages that compose a document which name is given as a parameter.
+	  * Returns the list of pages in the database that compose a document which id is given as a parameter.
 	  * @param id The id of the document from which the pages are extracted
 	  * @return The list of the pages of the document
 	  */
@@ -484,7 +500,7 @@ class AgnoscoResource {
 		try {
 			val pages = controller.getPagesOfDocuments(id)
 			pages.foreach(it => controller.prepareData(it))
-
+			controller.documentArePrepared(List(id))
 			Response.status(200).build()
 		}catch {
 			case e: Exception => e.printStackTrace()
