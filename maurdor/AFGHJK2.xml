@@ -8,7 +8,7 @@
 	<ns0:USER date="3/6/2012 16:45" dateFormat="mm/dd/yyyy hh:mm" name="Mailys">	</ns0:USER>
 	<ns0:USER date="5/23/2012 15:12" dateFormat="mm/dd/yyyy hh:mm" name="soumaya">	</ns0:USER>
 	<ns0:DL_DOCUMENT NrOfPages="1" docTag="xml" src="AFGHJK2.tif">
-		<ns0:DL_PAGE Category="" Document_Date="" Document_Location="" Document_Object="" Language_1="" Language_2="" Language_3="" Language_4="" NumPage="2" Receiver_Address="" Receiver_Company="" Receiver_Fax="" Receiver_Name="" Receiver_Phone="" Script_1="" Script_2="" Sender_Address="" Sender_Company="" Sender_Fax="" Sender_Name="" Sender_Phone="" gedi_type="DL_PAGE" height="3508" pageID="2" src="AFGHJK2.tif" width="2480">
+		<ns0:DL_PAGE Category="" Document_Date="" Document_Location="" Document_Object="" Language_1="" Language_2="" Language_3="" Language_4="" NumPage="2" Receiver_Address="" Receiver_Company="" Receiver_Fax="" Receiver_Name="" Receiver_Phone="" Script_1="" Script_2="" Sender_Address="" Sender_Company="" Sender_Fax="" Sender_Name="" Sender_Phone="" gedi_type="DL_PAGE" height="3508" pageID="2" src="AFGHJK2.png" width="2480">
 			<ns0:DL_ZONE col="143" contents="Votre nouvelle&#10;situation&#10;professionnelle" gedi_type="TextRegion" height="188" id="269" language="french" row="297" script="typed" width="321"> </ns0:DL_ZONE>
 			<ns0:DL_ZONE col="1192" contents="2/2" gedi_type="TextRegion" height="48" id="270" language="french" row="170" script="typed" width="80"> </ns0:DL_ZONE>
 			<ns0:DL_ZONE col="667" contents="Salari&#233;(e)" gedi_type="TextRegion" height="63" id="271" language="french" row="298" script="typed" width="178"> </ns0:DL_ZONE>
