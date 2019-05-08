@@ -15,22 +15,27 @@
     </div>
 
     <div class="annotationWindow">
+      <div [hidden]="isPrepared()">
+        <p>Manuscrit en cours de découpe...</p>
+      </div>
+     
       <ul class="examplesList">
         <li *ngFor="let p of examples ; let i = index" class= "affichage">
           <div [class]= "isEnabled(i) ? 'blocImagettePlusTrans' : 'blocImagettePlusTransHidden'">
             <div class = "imagette">
-              <img class="imageAffiche" [src]=p[1] alt="page" />
+              <img class="imageAffiche" [src]=p[1] alt="page" style="border:solid 1px red;" />
+              <button class = "hideButton" (click)="disableEx(i)" data-imgid=i>
+                <i [class]="isEnabled(i) ? 'fas fa-times' : 'fas fa-angle-double-up'"></i>
+              </button>
             </div>
             <div class= "transcription">
               <p contenteditable="true" id=i>{{p[2]}}</p>
             </div>
           </div>
           
-          <div class = "buttonDiv">
-            <button class = "hideButton" (click)="disableEx(i)" data-imgid=i>
-              <i [class]="isEnabled(i) ? 'fas fa-times' : 'fas fa-angle-double-up'"></i>
-            </button>
-          </div>
+          <!--<div class = "buttonDiv">
+            
+          </div>-->
         </li>
       </ul>
     </div>
