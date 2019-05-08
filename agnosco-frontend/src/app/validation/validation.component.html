@@ -20,7 +20,7 @@
     </div>
 
     <ul class="examplesList">
-      <li *ngFor="let p of examples ; let i = index" class= "affichage">
+      <li *ngFor="let p of ex4 ; let i = index" class= "affichage">
         <div [class]= "isEnabled(i) ? 'blocImagettePlusTrans' : 'blocImagettePlusTransHidden'">
           <div class = "imagette">
             <img class="imageAffiche" [src]=p[1] alt="page" />
@@ -29,15 +29,12 @@
             </button>
           </div>
           <div class= "transcription">
-            <p>{{p[2]}}</p>
-          </div>
-        </div>
-        
-        <div class = "buttonDiv">
-          
-          <br>
-          <div [hidden]="isValidated(i) ? false : true">
-            <p class="fas fa-check-circle" style="color:green;font-size: 1.5ch;"></p>
+              <p style="display: inline-block;">{{p[2]}}</p>  
+            <div class="boutonVert">  
+              <div [hidden]="isValidated(i) ? false : true">
+                <p class="fas fa-check-circle" style="color:green;font-size: 1.5ch;"></p>
+              </div>
+            </div>   
           </div>
         </div>
       </li>

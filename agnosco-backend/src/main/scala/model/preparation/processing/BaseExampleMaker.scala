@@ -90,7 +90,6 @@ object BaseExampleMaker extends ExampleMaker {
 
 			imageId += 1
 		})
-
 		examples.toList
 	}
 

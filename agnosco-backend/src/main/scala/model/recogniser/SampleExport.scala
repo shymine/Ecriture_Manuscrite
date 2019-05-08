@@ -1,5 +1,5 @@
 package model.recogniser
-import java.io.{File, FileInputStream, FileOutputStream}
+import java.io.{File, FileInputStream, FileOutputStream, PrintWriter}
 import java.nio.file.{Files, Paths, StandardCopyOption}
 import java.util.Calendar
 
@@ -25,21 +25,16 @@ class SampleExport extends ConverterRecogniser {
 		new File(path).mkdir()
 		samples.foreach(example => {
 			val pathIm = path +"/"+example.imagePath
-
 			val pathTr = path +"/"+getFileName(example.imagePath)+".txt"
-
 			new File(pathIm)
-
 			val pathTmp = Files.copy(
 				Paths.get(globalDataFolder + "/" + example.imagePath),
 				Paths.get(pathIm),
 				StandardCopyOption.REPLACE_EXISTING
 			)
-
-			val fileTr = new FileOutputStream(pathTr)
-			fileTr.write(example.transcript.get.toArray.map(_.toByte))
-			fileTr.close()
-
+			val pw = new PrintWriter(new File(pathTr), "UTF-8")
+			pw.write(example.transcript.get)
+			pw.close()
 		})
 	}
 

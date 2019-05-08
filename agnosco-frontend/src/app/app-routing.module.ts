@@ -12,6 +12,7 @@ import { SuppressionDialogComponent } from './suppression-dialog/suppression-dia
 import { GestionPagesComponent } from './gestion-pages/gestion-pages.component';
 import { ExportProjetComponent } from './export-projet/export-projet.component';
 import { EndValidationComponent} from './end-validation/end-validation.component';
+import { EndAnnotationComponent} from './end-annotation/end-annotation.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
   {path: 'export-projet', component: ExportProjetComponent},
   {path: 'help-validation', component: HelpValidationComponent},
   {path: 'help-annotation', component: HelpAnnotationComponent},
-  {path: 'end-validation', component: EndValidationComponent}
+  {path: 'end-validation', component: EndValidationComponent},
+  {path: 'end-annotation', component: EndAnnotationComponent}
 ];
 
 @NgModule({

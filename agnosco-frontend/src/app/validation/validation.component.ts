@@ -19,12 +19,18 @@ export class ValidationComponent implements OnInit {
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
     if(event.keyCode == 13){
+      console.log("a fait entrée");
       this.validateAll();
-      if(!this.isLastPage){
-        this.nextPage();
+      if(this.compteur4 > this.examples.length){
+        if(!this.isLastPage){
+          this.nextPage();
+        }else{
+          console.log("fini");
+          this.endOfDocument();
+        }
       }else{
-        this.endOfDocument();
-      }
+        this.getNext4();
+      }    
     }
   }
 
@@ -33,20 +39,18 @@ export class ValidationComponent implements OnInit {
   private docName;
   private docPrepared;
   private hidden = [];
+  private compteur4;
 
   public pages = [];
   public examples = [];
-  //0 : path
-  //1 : transcription
-  //2 : id
-  //3 : enabled
-
+  public ex4 = [];
   //new version
   //0 : id
   //1 : path64
   //2 : transcription
   //3 : enabled
   //4 : validated
+
   public currentPageIndex;
   public currentPage;
 
@@ -60,11 +64,13 @@ export class ValidationComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private validationService: ValidationService, public dialog: MatDialog, private http: HttpClient, private sanitizer: DomSanitizer) {
     this.examples = [];
+    this.ex4 = [];
     this.pages = [];
     this.currentPageIndex = 0;
     this.currentPage = 0;
     this.isFirstPage = true;
     this.isLastPage = false;
+    this.compteur4 = 0;
   }
 
   ngOnInit() {
@@ -144,6 +150,7 @@ export class ValidationComponent implements OnInit {
    */
   getPageData(){
     this.examples = [];
+    this.ex4 = [];
 
     this.validationService.getPageData(this.currentPage).subscribe
     ((returnedData:any) => {
@@ -194,11 +201,38 @@ export class ValidationComponent implements OnInit {
         this.examples.push(newExample);
         this.hidden.push(!enabled);
       });
+
+      for(let i = 0; i< 4; i+=1){
+        this.ex4.push(this.examples[i]);
+      }
+
+      this.compteur4 = 4;
+
+      console.log("$$$$$$$$$$$$$$$$$$$$$$ ex 4 :");
+      console.log(this.ex4);
     },
       error => {
         console.log("catch error:", error);
       }
-    );
+    );    
+  }
+
+
+  getNext4(){
+    this.ex4 = [];
+
+    for(let i = this.compteur4; i< this.compteur4 + 4 ; i+=1){
+      if(this.examples[i] != undefined){
+        this.ex4.push(this.examples[i]);
+      }else{
+        console.log("element pas pushed car undefined");
+      }
+    }
+
+    this.compteur4 += 4;
+
+    console.log("new ex4 :");
+    console.log(this.ex4);
   }
 
 
@@ -228,39 +262,45 @@ export class ValidationComponent implements OnInit {
 
   /**
    * Retourne true si l'exemple n'est pas caché et vice-versa.
-   * @param id index de l'exemple dans le tableau examples
+   * @param id index de l'exemple dans le tableau ex4
    */
   isEnabled(id){
-    return this.examples[id][3];
+    return this.ex4[id][3];
   }
 
 
   /**
    * Retourne true si l'exemple est validé.
-   * @param id index de l'exemple dans le tableau examples
+   * @param id index de l'exemple dans le tableau ex4
    */
   isValidated(id){
-    return this.examples[id][4];
+    console.log("val : " + this.ex4[id][4]);
+    return this.ex4[id][4];
   }
 
 
   /**
    * Méthode qui cache l'exemple qui manque de pertinence.
-   * @param id index de l'exemple dans le tableau examples
+   * @param id index de l'exemple dans le tableau ex4
    */
   disableEx(id){
     console.log("disable " + id);
-    if(this.hidden[id] == false){
+    if(this.hidden[id + this.compteur4 - 4] == false){
       //on récupère l'id de l'exemple à cacher
-      let i = this.examples[id][0];
+      let i = this.ex4[id][0];
+      this.ex4[id][3] = false;
       this.validationService.disableEx(i);
     }
     else{
-      let i = this.examples[id][0];
+      let i = this.ex4[id][0];
+      this.ex4[id][3] = true;
       this.validationService.enableEx(i);
     }
-    this.examples[id][3] = !this.examples[id][3];
-    this.hidden[id] = !this.hidden[id];
+
+    this.ex4[id][3] = !this.ex4[id][3];
+
+    this.examples[id + this.compteur4 - 4][3] = !this.examples[id + this.compteur4 - 4][3];
+    this.hidden[id + this.compteur4 - 4] = !this.hidden[id + this.compteur4 - 4];
   }
 
 
@@ -306,8 +346,8 @@ export class ValidationComponent implements OnInit {
 
     let notEmpty = false;
 
-    for (let i = 0; i < this.examples.length; i++) {
-      let e = this.examples[i];
+    for (let i = 0; i < this.ex4.length; i++) {
+      let e = this.ex4[i];
       console.log("exemple enabled : " + e[3]);
       if(e[3] == true){ //si l'exemple est enabled
         str = str.concat(e[0] + ",");
@@ -372,6 +412,7 @@ export class ValidationComponent implements OnInit {
    * Méthode appelée quand c'est la fin du document : un dialog s'ouvre pour indiquer que c'est la fin du document et pour demander si on valide tout et si on retourne à l'accueil.
    */
   endOfDocument(){
+    console.log("dialog defin");
     const dialogRef = this.dialog.open(EndValidationComponent, {});
     
     dialogRef.afterClosed().subscribe(result => {

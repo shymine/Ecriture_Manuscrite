@@ -270,12 +270,14 @@
     border: none;
     float: left;
     margin-left: 10%;
+    background: none;
 }
 
 .nextPage {
     border: none;
     float: right;
     margin-right: 10%;
+    background: none;
 }
 
 .pageNumbers {

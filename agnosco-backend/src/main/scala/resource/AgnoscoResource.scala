@@ -386,7 +386,6 @@ class AgnoscoResource {
 	def getPageData(@PathParam("id") id: Long): Response = {
 		try{
 			val jsonA = new JSONArray()
-			println(id)
 			val examples = controller.getExamplesOfPage(id)
 			val page = controller.getPage(id)
 			examples.foreach(it => jsonA.put(it.toRequestJSON))

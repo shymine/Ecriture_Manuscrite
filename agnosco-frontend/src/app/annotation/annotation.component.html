@@ -20,7 +20,7 @@
       </div>
      
       <ul class="examplesList">
-        <li *ngFor="let p of examples ; let i = index" class= "affichage">
+        <li *ngFor="let p of ex4 ; let i = index" class= "affichage">
           <div [class]= "isEnabled(i) ? 'blocImagettePlusTrans' : 'blocImagettePlusTransHidden'">
             <div class = "imagette">
               <img class="imageAffiche" [src]=p[1] alt="page"/>
@@ -29,16 +29,24 @@
               </button>
             </div>
             <div class= "transcription">
-              <p contenteditable="true" id=i>{{p[2]}}</p>
+              <p contenteditable="true" [id]="getId(i)">{{p[2]}}</p>
             </div>
           </div>
-          
-          <!--<div class = "buttonDiv">
-            
-          </div>-->
         </li>
       </ul>
     </div>
+
+    <div class="changePage">
+        <button id = "previousPage" class="previousPage"[disabled]="isFirstPage" (click)="previousPage()">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <button class="pageNumbers" *ngFor="let p of pages">{{pages.indexOf(p) + 1}}</button>
+      
+        <button id = "nextPage" class="nextPage" [disabled]="isLastPage" (click)="nextPage()">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
 
   </div>
 
@@ -63,16 +71,6 @@
     </div>
   </div>
 
-  <div class="changePage">
-    <button id = "previousPage" class="previousPage"[disabled]="isFirstPage" (click)="previousPage()">
-        <i class="fas fa-chevron-left"></i>
-    </button>
-    
-    <button class="pageNumbers" *ngFor="let p of pages">{{pages.indexOf(p) + 1}}</button>
   
-    <button id = "nextPage" class="nextPage" [disabled]="isLastPage" (click)="nextPage()">
-        <i class="fas fa-chevron-right"></i>
-    </button>
-  </div>
 
 </div>
