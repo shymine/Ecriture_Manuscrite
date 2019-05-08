@@ -6,7 +6,8 @@ En cette fin de projet, nous sommes en capacité de fournir une application fonc
 \section{Architecture générale et technologies utilisées}
 
 \paragraph{}
-Concernant les technologies, le rapport de conception comportait déjà tous les éléments utilisés. La seule différence est le reconnaisseur d'écriture manuscrite. En effet, par manque de temps, nous n'avons pas pu mettre en place de connexion effective avec un reconnaisseur d'écriture manuscrite. Le reconnaisseur Laia, mentionné dans le rapport de conception, n'est donc pas présent dans le projet, cette partie étant optionnelle dans le cahier des charges initial du projet, qui consiste à principalement générer les bases d'apprentissage. Nous avons donc utilisé SQLite pour la base de données, OpenCV pour la découpe d'images, Angular 7 pour l'interface client, Grizzly pour le serveur web, ainsi que Jersey pour l'API REST. L'architecture du serveur est sensiblement la même, car nous avons souhaité continuer sur le modèle d'un contrôleur qui orchestre toute l'application, découpée en modules : préparation des données, connexion avec la base de données, interface avec le reconnaisseur.
+Concernant les technologies, le rapport de conception comportait déjà tous les éléments utilisés. La seule différence est le reconnaisseur d'écriture manuscrite. En effet, par manque de temps, nous n'avons pas pu mettre en place de connexion effective avec un reconnaisseur d'écriture manuscrite. Le reconnaisseur Laia, mentionné dans le rapport de conception, n'est donc pas présent dans le projet, cette partie étant optionnelle dans le cahier des charges initial du projet, qui consiste à principalement générer les bases d'apprentissage. 
+Pour réaliser ce projet, nous avons utilisé SQLite pour la base de données, OpenCV pour la découpe d'images, Angular 7 pour l'interface client, Grizzly pour le serveur web, ainsi que Jersey pour l'API REST. L'architecture du serveur est sensiblement la même, car nous avons souhaité continuer sur le modèle d'un contrôleur qui orchestre toute l'application, découpée en modules : préparation des données, connexion avec la base de données, interface avec le reconnaisseur.
 
 \section{Côté serveur}
 
@@ -29,7 +30,7 @@ Détaillons à présent le paquetage \texttt{model}. Celui-ci est composé de pl
 \end{center}
 \end{mdframed}
 
-\paragraph{}
+\paragraph{Commun}
 Le paquetage \texttt{common} présenté en Figure 1 contient les classes qui correspondent aux éléments stockés en base de données : des projets contenant des documents composés de pages, ces pages contenant après traitement des exemples d'apprentissage pour les reconnaisseurs d'écriture manuscrite. Le \textit{package object} est une particularité de Scala. Il s'agit d'un objet associé au paquetage, qui contient des définitions utilisées dans le paquetage ainsi qu'en dehors, sémantiquement dépendantes de ce paquetage, mais n'appartenant pas à une classe en particulier. Une valeur \texttt{value} pourra être appelée avec \texttt{common.value}. Dans ce cas, le \textit{package object} contient des chemins vers différents dossiers ou exécutables sur le système de fichiers, notamment l'endroit où sont stockés les fichiers images ainsi que les exportations d'exemples, ou les scripts de traitement d'images.
 
 \begin{mdframed}[frametitle={Figure 2 : Paquetage \texttt{database}}, innerbottommargin=10]
@@ -38,11 +39,13 @@ Le paquetage \texttt{common} présenté en Figure 1 contient les classes qui cor
 \end{center}
 \end{mdframed}
 
-\paragraph{}
+\paragraph{Base de données}
 Le paquetage \texttt{database} contient les classes qui permettent au logiciel de faire des requêtes sur la base de données associée au serveur, qui contient les différents exemples qui seront fournis aux reconnaisseurs d'écriture manuscrite. Le \textit{trait} \texttt{Database} (un \textit{trait} en Scala est l'équivalent d'une interface en Java) décrit toutes les actions que l'on doit pouvoir effectuer depuis l'extérieur sur la base de données, et la classe \texttt{DatabaseSqlite} l'implémente pour le SGBD SQLite que nous avons choisi pour ce projet. L'utilisation d'un \textit{trait} permet à un développeur réutilisant le projet de changer le SGBD du serveur au besoin. Par exemple, pour un passage réel en production, une base de données MySQL peut être un choix judicieux. 
 
 \paragraph{}
 La classe \texttt{DatabaseConnector} vient d'un concept que nous avons décidé de suivre tout au long du projet du côté du serveur. Pour chaque paquetage du serveur, le connecteur reçoit les différents appels de l'extérieur, et les relaie vers l'implémentation choisie du \textit{trait} concerné par ce paquetage. Cela permet de choisir localement l'implémentation en changeant une ligne dans un fichier.
+
+\newpage
 
 \begin{mdframed}[frametitle={Figure 3 : Paquetage \texttt{preparation}}, innerbottommargin=10]
 \begin{center}
@@ -68,10 +71,16 @@ Enfin, ce paquetage \texttt{preparation} contient un \textit{trait} \texttt{Prep
 \end{center}
 \end{mdframed}
 
-\paragraph{}
-TODO : recogniser
+\paragraph{Reconnaisseur}
+Dans la première vision de l'interface avec le reconnaisseur que nous avions, nous souhaitions intégrer celui-ci à notre application. C'est-à-dire, pourvoir effectuer depuis celle-ci son entrainement, son évaluation ainsi que son utilisation pour reconnaître des imagettes. Cependant, nous avons dû réduire ces fonctionnalités afin de permettre une meilleure souplesse à l'utilisateur. En effet, celui-ci n'est plus obligé de brancher son reconnaisseur au logiciel afin que celui-ci puisse utiliser la base de connaissance. Cette modification de point de vue nous a également permit de gagner du temps vis-à-vis de cette partie. Ainsi, nous n'avons plus qu'une fonction \textit{export} permettant l'exportation des exemples générés dans le format du reconnaisseur avec les fichiers nécessaires afin d'en faciliter l'utilisation.
+Nous avons fourni une exportation par défaut qui permet d'obtenir l'image de l'exemple ansi qu'un fichier texte contenant sa transcription. Ces deux fichiers étant nommés de la même manière afin de pouvoir les associer facilement.
+Cependant, il n'est pas certain que dans le temps restant l'implémentation de l'exportation pour le reconnaisseur de Laia soit opérationnel comme il était prévu à l'origine.
 
 \paragraph{}
+Le paquetage \texttt{recogniser} est constitué de deux \textit{trait} qui prennent en charge deux aspect de l'exportation. Le \texttt{Converter} permet de contraindre les images de la base au format d'entrée du reconnaisseur selectionné tandis que le \texttt{Recogniser} se charge de la création des fichiers nécessaires à l'apprentissage du reconnaisseur à partir de la base. Afin de lier ces deux parties, la classe abstraite \texttt{ConverterRecogniser} est utilisée. C'est donc de celle-ci qu'héritent les classes de conversions qui sont à implémenter. Nous fournissons alors les classes \texttt{SampleExport} qui est la classe d'export par défaut qui ne formatte donc rien et ne délivre que les images et leur transcription de la facon expliquée précédemment, ainsi qu'une classe \texttt{LaiaRecogniser} qui permettra d'exporter pour le reconnaisseur Laia avec les fichiers nécessaires (il n'est cependant pas sur que cette partie soit complètement implémentée dans le temps restant).
+Ce paquetage possède également un connecteur comme les autres afin de le lier au \texttt{Controller}.
+
+\paragraph{Controleur}
 Enfin, ce paquetage \texttt{model} contient une classe \texttt{Controller} avec toutes les méthodes du modèle utilisées par la ressource REST, ainsi qu'une classe \texttt{ImplFactory} donnant toutes les implémentations choisies des différents \textit{traits} dans chaque sous-paquetage.
 
 \subsection{Scripts Python}
@@ -107,4 +116,4 @@ Sur la page d'annotation manuelle, l'utilisateur peut visualiser le manuscrit d�
 Enfin, la page de validation permet une relecture rapide des transcriptions pour effectuer une validation finale. L'utilisateur peut également cacher un exemple qui manque de pertinence, comme sur la page d'annotation. Un simple appui sur \texttt{Entrée} permet de valider d'un seul coup toutes les transcriptions affichées sur la page courante.
 
 \paragraph{}
-Nous avons développé l'ergonomie de notre application autant que possible dans le temps restreint dont nous disposions et nous avons tenté de fournir une application aussi intuitive que possible en facilitant son utilisation et en simplifiant les gestes requis par l'utilisateur (minimum de mouvements de souris, raccourcis clavier...). Cependant, l'ergonomie n'est pas optimale et nécessiterait des améliorations, notemment au niveau de la répétition de certains gestes par l'utilisateur qui requièrent de la précision. Toutefois, nous avons préféré mettre l'accent sur la stabilité et le bon fonctionnement de notre application avant de dédier le temps restant à l'amélioration de l'ergonomie.
+Nous avons développé l'ergonomie de notre application autant que possible dans le temps restreint dont nous disposions et nous avons tenté de fournir une application aussi intuitive que possible en facilitant son utilisation et en simplifiant les gestes requis par l'utilisateur (minimum de mouvements de souris, raccourcis clavier, ...). Cependant, l'ergonomie n'est pas optimale et nécessiterait des améliorations, notemment au niveau de la répétition de certains gestes par l'utilisateur qui requièrent de la précision. Toutefois, nous avons préféré mettre l'accent sur la stabilité et le bon fonctionnement de notre application avant de dédier le temps restant à l'amélioration de l'ergonomie.

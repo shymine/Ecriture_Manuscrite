@@ -130,9 +130,10 @@ class AgnoscoResource {
 			val arr = json.getJSONArray("pages")
 			val pageList = new ArrayBuffer[Page]()
 			var ok = true
+			var correctVT = true
 
-			breakable {
-				for (i <- 0 until arr.length()) {
+			for (i <- 0 until arr.length()) {
+				breakable {
 					val obj = arr.getJSONObject(i)
 					val name = getFileName(obj.getString("name"))
 
@@ -140,7 +141,7 @@ class AgnoscoResource {
 					if (vt.isDefined) {
 						val piff = vt.get
 
-						if(piff.page.src != obj.getString("name")) {
+						if (piff.page.src != obj.getString("name")) {
 							ok = false
 							break()
 						}
@@ -148,7 +149,7 @@ class AgnoscoResource {
 						// écriture image
 						val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(obj.getString("image64"))
 
-						val out = new FileOutputStream(globalDataFolder+"/"+obj.getString("name"))
+						val out = new FileOutputStream(globalDataFolder + "/" + obj.getString("name"))
 						out.write(imgByte)
 						out.close()
 
@@ -159,17 +160,24 @@ class AgnoscoResource {
 
 						pageList += Page(-1, name + ".piff", List())
 					} else {
-						return Response.status(200).entity("{'error':'unhandled file format'}").build()
+						correctVT = false
+						//return Response.status(200).entity("{'error':'unhandled file format'}").build()
 					}
 				}
 			}
 
+
 			val doc = Document(-1, json.getString("name"), pageList, false)
 			val res = controller.addDocToProject(id, doc)
-			if(ok) {
+
+			if(ok&&correctVT) {
 				Response.status(200).entity(res.toJSON.toString()).build()
+			}else if(ok&&(!correctVT)){
+				Response.notAcceptable(new util.ArrayList[Variant]()).entity(0).build() // vt incorrecte -> unhandled file format
+			}else if((!ok)&&correctVT){
+				Response.notAcceptable(new util.ArrayList[Variant]()).entity(1).build() // nom incorrect
 			}else {
-				Response.notAcceptable(new util.ArrayList[Variant]()).entity("{\"error\":400}").build()
+				Response.notAcceptable(new util.ArrayList[Variant]()).entity(2).build() // nom et vt incorrect
 			}
 
 		}catch {
