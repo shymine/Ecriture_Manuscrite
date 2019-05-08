@@ -42,9 +42,6 @@ object Main {
 
 	def main(args: Array[String]) : Unit = {
 		//environmentSetup()
-		// java -jar agnosco.jar 8.8.8.8 7000 7001
-		ImplFactory.setConnectionData(args(0), args(1).toInt, args(2).toInt)
-
 		val server = startServer()
 		System.in.read()
 		server.shutdownNow()
