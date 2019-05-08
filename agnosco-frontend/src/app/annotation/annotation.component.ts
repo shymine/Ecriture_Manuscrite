@@ -44,6 +44,7 @@ export class AnnotationComponent implements OnInit {
 
   public pages;
   public examples;
+  public pageImage;
   //new version
   //0 : id
   //1 : path64
@@ -220,19 +221,25 @@ export class AnnotationComponent implements OnInit {
     this.examples = [];
 
     this.validationService.getPageData(this.currentPage).subscribe
-    (returnedData => {
+    ((returnedData:any) => {
       console.log("get data : ");
       console.log(returnedData);
+
+      let pageImage64 = returnedData.pageImage;
+      let pagePath64 = "data:image/png;base64," + pageImage64;
+      this.pageImage = this.sanitizer.bypassSecurityTrustUrl(pagePath64);
+
+      let ex = returnedData.examples;
       
       //on parcourt la returnedData pour ne prendre que l'id des pages
-      Object.keys(returnedData).forEach( key => {
-        let data = returnedData[key];
-        let id = returnedData[key].id;
-        let transcript = returnedData[key].transcript;
-        let image64 = returnedData[key].image64;
-        let enabled = returnedData[key].enabled;
-        let validated = returnedData[key].validated;
-        let extension = returnedData[key].extension;
+      Object.keys(ex).forEach( key => {
+        let data = ex[key];
+        let id = ex[key].id;
+        let transcript = ex[key].transcript;
+        let image64 = ex[key].image64;
+        let enabled = ex[key].enabled;
+        let validated = ex[key].validated;
+        let extension = ex[key].extension;
 
         let imageType = "";
         console.log("extension : " + extension);

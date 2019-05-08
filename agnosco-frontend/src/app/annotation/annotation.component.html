@@ -23,7 +23,7 @@
         <li *ngFor="let p of examples ; let i = index" class= "affichage">
           <div [class]= "isEnabled(i) ? 'blocImagettePlusTrans' : 'blocImagettePlusTransHidden'">
             <div class = "imagette">
-              <img class="imageAffiche" [src]=p[1] alt="page" style="border:solid 1px red;" />
+              <img class="imageAffiche" [src]=p[1] alt="page"/>
               <button class = "hideButton" (click)="disableEx(i)" data-imgid=i>
                 <i [class]="isEnabled(i) ? 'fas fa-times' : 'fas fa-angle-double-up'"></i>
               </button>
@@ -45,7 +45,7 @@
   <div class="rightWindow">
     <div class="fullDocument">
       <h2>{{docName}}</h2>
-      <img class="image_doc" src="../../assets/images/Elephant.jpg" alt="page" />
+      <img class="image_doc" [src]="pageImage" alt="page" />
     </div>
     <div class="navigation">
       <div class="navTitle">

@@ -24,6 +24,9 @@
         <div [class]= "isEnabled(i) ? 'blocImagettePlusTrans' : 'blocImagettePlusTransHidden'">
           <div class = "imagette">
             <img class="imageAffiche" [src]=p[1] alt="page" />
+            <button class = "hideButton" (click)="disableEx(i)" data-imgid=i>
+              <i [class]="isEnabled(i) ? 'fas fa-times' : 'fas fa-angle-double-up'"></i>
+            </button>
           </div>
           <div class= "transcription">
             <p>{{p[2]}}</p>
@@ -31,9 +34,7 @@
         </div>
         
         <div class = "buttonDiv">
-          <button class = "hideButton" (click)="disableEx(i)" data-imgid=i>
-            <i [class]="isEnabled(i) ? 'fas fa-times' : 'fas fa-angle-double-up'"></i>
-          </button>
+          
           <br>
           <div [hidden]="isValidated(i) ? false : true">
             <p class="fas fa-check-circle" style="color:green;font-size: 1.5ch;"></p>
