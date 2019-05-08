@@ -105,7 +105,7 @@ object GEDIToPiFFConverter extends PiFFConverter {
     val zones = page \ "DL_ZONE"
     if (zones.length == 0)
       throw new FormatException("No zones found in the page")
-
+    println("src",src)
     new PiFFPage(src, width, height, elementsFromZones(zones))
   }
 

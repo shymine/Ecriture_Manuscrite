@@ -18,7 +18,7 @@
       <li *ngFor="let p of examples ; let i = index" class= "affichage">
         <div [class]= "isEnabled(i) ? 'blocImagettePlusTrans' : 'blocImagettePlusTransHidden'">
           <div class = "imagette">
-            <img class="imageAffiche" src={{p[1]}} alt="page" />
+            <img class="imageAffiche" [src]=p[1] alt="page" />
           </div>
           <div class= "transcription">
             <p>{{p[2]}}</p>
@@ -30,7 +30,9 @@
             <i [class]="isEnabled(i) ? 'fas fa-times' : 'fas fa-angle-double-up'"></i>
           </button>
           <br>
-          <img class="fas fa-check-circle" [hidden]="isValidated(i) ? false : true" style="border: 1px solid red;">
+          <div [hidden]="isValidated(i) ? false : true">
+            <p class="fas fa-check-circle" style="color:green;font-size: 1.5ch;"></p>
+          </div>
         </div>
       </li>
     </ul>

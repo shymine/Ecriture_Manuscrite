@@ -9,18 +9,20 @@
 
   <br>
 
-<div style="font-size: 80%">
+<div style="font-size: 80%; overflow: hidden">
   <p><b>Pour chaque page, suivre la disposition suivante :</b> a) fichier image b) fichier vérité terrain</p>
   <br>
-  <div *ngFor="let p of pages ; let i = index">
-    <span><b>page {{i+1}} : </b></span>
-    <span>a)</span>
-    <input type="file" (change)="encodeImageFile([$event,i])"/>
-    <span>b)</span>
-    <input type="file" (change)="encodeDataFile([$event,i])"/><button (click)="deletePage(i)" class="button1ListX ">x</button>
-    <br><br>
-  </div>
+  <div style="height: 20vh; overflow-y: scroll">
+    <div *ngFor="let p of pages ; let i = index">
+      <span><b>page {{i+1}} : </b></span>
+      <span>a)</span>
+      <input type="file" (change)="encodeImageFile([$event,i])"/>
+      <span>b)</span>
+      <input type="file" (change)="encodeDataFile([$event,i])"/><button (click)="deletePage(i)" class="button1ListX ">x</button>
+      <br><br>
+    </div>
   <br>
+  </div>
   <button class="plusB" (click)="plusPage()">+ 1 page </button>
 </div>
 
