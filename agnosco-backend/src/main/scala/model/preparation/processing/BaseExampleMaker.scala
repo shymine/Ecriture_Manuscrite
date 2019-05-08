@@ -33,9 +33,9 @@ object BaseExampleMaker extends ExampleMaker {
 			val imgPath = s"$globalDataFolder/${page.src}"
 			println("img path : " + imgPath)
 			val paragraphImgPath = ImageProcessing.createThumbnail(imgPath, imageId, element.polygon)
-			examples += Example(-1, removeDataFolderPath(paragraphImgPath), transcript)
+//			examples += Example(-1, removeDataFolderPath(paragraphImgPath), transcript)
 
-			/*// calling the line detector on the newly created image
+			// calling the line detector on the newly created image
 			val polygons = lineDetector.detectLines(paragraphImgPath)
 
 			// get the line lengths
@@ -106,7 +106,7 @@ object BaseExampleMaker extends ExampleMaker {
 			val newExamples = images.zip(transcripts).map(z => Example(-1, removeDataFolderPath(z._1), z._2))
 
 			// adding the newly created examples to the list
-			examples ++= newExamples*/
+			examples ++= newExamples
 
 			imageId += 1
 		})

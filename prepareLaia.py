@@ -2,6 +2,7 @@
 
 import sys
 import os
+
 from PIL import Image
 
 """
@@ -47,10 +48,12 @@ for imageName in imagesNames:
     try:
         im = Image.open("%s/%s" % (datasetPath, imageName))
         wsize = int((float(imgSize)*float(im.size[0]))/float(im.size[1]))
-
-        im.thumbnail((wsize, imgSize))
+        im = im.resize((wsize, imgSize), Image.ANTIALIAS)
+        #im.thumbnail((wsize, imgSize))
         im.save("%s/%s" %(datasetExport, imageName), quality=100)
     except Exception as e:
         print("unable to load image %s/%s" % (datasetPath, imageName))
         print(e)
+
+print("images created")
 

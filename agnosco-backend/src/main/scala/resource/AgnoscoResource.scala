@@ -388,11 +388,13 @@ class AgnoscoResource {
 			val jsonA = new JSONArray()
 			println(id)
 			val examples = controller.getExamplesOfPage(id)
-			println(examples)
 			val page = controller.getPage(id)
 			examples.foreach(it => jsonA.put(it.toRequestJSON))
-			println(jsonA.toString)
-			Response.status(200).entity(jsonA.toString).build()
+			val json = new JSONObject()
+			json.put("examples", jsonA)
+			val pjson = page.toJSON
+			json.put("pageImage", pjson.getString("image64"))
+			Response.status(200).entity(json.toString).build()
 		}catch{
 			case e: Exception=> e.printStackTrace()
 				Response.status(500).build()
