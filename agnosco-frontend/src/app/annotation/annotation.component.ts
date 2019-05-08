@@ -17,16 +17,16 @@ export class AnnotationComponent implements OnInit {
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
     if(event.keyCode == 13){
-      this.sendEdits();
-      //if(this.isEndOfPage){
+      //this.sendEdits();
+      if(this.compteur4 > this.examples.length){
         if(!this.isLastPage){
           this.nextPage();
         }else{
           this.endAnnotation();
         }
-     // }else{
-       // this.getNextExamples();
-      //}
+      }else{
+       this.getNext4();
+      }
     }
   }
 
@@ -37,6 +37,7 @@ export class AnnotationComponent implements OnInit {
   private projectId;
   private projectName;
   private docPrepared;
+  private compteur4;
 
   private docMmPro = [];
 
@@ -44,6 +45,7 @@ export class AnnotationComponent implements OnInit {
 
   public pages;
   public examples;
+  public ex4;
   public pageImage;
   //new version
   //0 : id
@@ -51,9 +53,6 @@ export class AnnotationComponent implements OnInit {
   //2 : transcription
   //3 : enabled
   //4 : validated
-
-  public examplesToDisplay;
-  public compteur;
 
   public currentPageIndex;
   public currentPage;
@@ -69,14 +68,14 @@ export class AnnotationComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private validationService: ValidationService, public dialog: MatDialog, private http: HttpClient, private sanitizer: DomSanitizer) {
     this.examples = [];
-    this.examplesToDisplay = [];
-    this.compteur = 0;
+    this.ex4 = [];
     this.pages = [];
     this.currentPageIndex = 0;
     this.currentPage = 0;
     this.isFirstPage = true;
     this.isLastPage = false;
     this.isEndOfPage = false;
+    this.compteur4 = 0;
   }
 
   ngOnInit() {
@@ -219,6 +218,7 @@ export class AnnotationComponent implements OnInit {
    */
   getPageData(){
     this.examples = [];
+    this.ex4 = [];
 
     this.validationService.getPageData(this.currentPage).subscribe
     ((returnedData:any) => {
@@ -269,37 +269,37 @@ export class AnnotationComponent implements OnInit {
         this.examples.push(newExample);
         this.hidden.push(!enabled);
       });
+
+      for(let i = 0; i< 4; i+=1){
+        this.ex4.push(this.examples[i]);
+      }
+
+      this.compteur4 = 4;
+
+      console.log("$$$$$$$$$$$$$$$$$$$$$$ ex 4 :");
+      console.log(this.ex4);
     },
       error => {
         console.log("catch error:", error);
       }
     );
-    
-    //on push les 4 premiers exemples dans examplesToDisplay
-    for(let i = 0; i<4; i+=1){
-      this.examplesToDisplay.push(this.examples[i]);
-    }
-    this.compteur = 4;
-
-    console.log("examples to display :");
-    console.log(this.examplesToDisplay);
-
-    if(this.compteur > this.examples.length){
-      this.isEndOfPage = true;
-    }
   }
 
-  getNextExamples(){
-    this.examplesToDisplay = [];
+  getNext4(){
+    this.ex4 = [];
 
-    for(let i = this.compteur; i< this.compteur + 4; i+=1){
-      this.examplesToDisplay.push(this.examples[i]);
+    for(let i = this.compteur4; i< this.compteur4 + 4 ; i+=1){
+      if(this.examples[i] != undefined){
+        this.ex4.push(this.examples[i]);
+      }else{
+        console.log("element pas pushed car undefined");
+      }
     }
-    this.compteur += 4;
 
-    if(this.compteur > this.examples.length){
-      this.isEndOfPage = true;
-    }
+    this.compteur4 += 4;
+
+    console.log("new ex4 :");
+    console.log(this.ex4);
   }
 
   /**
@@ -330,7 +330,7 @@ export class AnnotationComponent implements OnInit {
    * @param id index de l'exemple dans le tableau examples
    */
   isEnabled(id){
-    return this.examples[id][3];
+    return this.ex4[id][3];
   }
 
   /**
@@ -339,17 +339,22 @@ export class AnnotationComponent implements OnInit {
    */
   disableEx(id){
     console.log("disable " + id);
-    if(this.hidden[id] == false){
-      let i = this.examples[id][0];
+    if(this.hidden[id + this.compteur4 - 4] == false){
+      //on récupère l'id de l'exemple à cacher
+      let i = this.ex4[id][0];
+      this.ex4[id][3] = false;
       this.validationService.disableEx(i);
     }
     else{
-      let i = this.examples[id][0];
+      let i = this.ex4[id][0];
+      this.ex4[id][3] = true;
       this.validationService.enableEx(i);
     }
-    //this.examplesToDisplay[id][3] = !this.examplesToDisplay[id][3];
-    this.examples[id][3] = !this.examples[id][3];
-    this.hidden[id] = !this.hidden[id];
+
+    this.ex4[id][3] = !this.ex4[id][3];
+
+    this.examples[id + this.compteur4 - 4][3] = !this.examples[id + this.compteur4 - 4][3];
+    this.hidden[id + this.compteur4 - 4] = !this.hidden[id + this.compteur4 - 4];
   }
 
   /**
@@ -409,14 +414,14 @@ export class AnnotationComponent implements OnInit {
 
     let notEmpty = false;
 
-    for (let i = 0; i < this.examples.length; i++) {
-      let e = this.examples[i];
+    for (let i = 0; i < this.ex4.length; i++) {
+      let e = this.ex4[i];
 
       // on récupère la transcription affichée qui a pu être modifiée
       let newTranscript = document.getElementById(i.toString()).innerHTML;
 
       //si elle a été modifiée et si l'exemple est enabled, on ajoute l'exemple dans str
-      if(this.examples[i][2] !== newTranscript && this.examples[i][3]){
+      if(this.ex4[i][2] !== newTranscript && this.ex4[i][3]){
         str = str.concat("{\n\'id\':" + e[0] + ",\n\'transcript\':\"" + e[2] + "\"\n},\n");
       }
 

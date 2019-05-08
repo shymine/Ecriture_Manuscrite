@@ -19,6 +19,7 @@ export class EndValidationComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("dialog ouvert");
   }
 
   onNoClick(): void {
