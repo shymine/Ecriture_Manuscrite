@@ -41,6 +41,7 @@ imgSize = sys.argv[3] if len(sys.argv) >= 4 else 64
 
 imagesNames = [i for i in os.listdir(datasetPath) if
                not i.endswith(".txt") and os.path.isfile("%s/%s" % (datasetPath, i))]
+
 # images are only with txt docs
 print(imagesNames)
 
@@ -56,4 +57,11 @@ for imageName in imagesNames:
         print(e)
 
 print("images created")
+
+txtFiles = [t for t in os.listdir(datasetPath) if i.endswith(".txt")]
+print(txtFiles)
+
+for txtName in txtFiles:
+    try:
+        with open("%s/%s" %(datasetPath, txtName), "r"):
 
