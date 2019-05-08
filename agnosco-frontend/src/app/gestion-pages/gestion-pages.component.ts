@@ -10,7 +10,6 @@ import { isLoweredSymbol } from '@angular/compiler';
 })
 export class GestionPagesComponent implements OnInit {
 
-  public hideMessage = true;
   public pages = [];
   public oldpages = [];
 
@@ -123,9 +122,10 @@ export class GestionPagesComponent implements OnInit {
   /*
   pages sont de la forme:
   {
-    'name' : name,
-    'image64' : image,
-    'vtText' : data
+    json = {
+      'deletedPages': [id1, id2,id3],
+      'addedPages': [{'name':"nfgh", 'image64': image, 'vtText': vt}]
+    }
   }
   */
 
@@ -134,36 +134,46 @@ export class GestionPagesComponent implements OnInit {
 
     console.log("validation");
 
+    let json = {'deletedPages':[], 'addedPages':[]};
+
     console.log("voilà ce qui va se passer!");
 
     for (var _i = 0; _i < this.oldpages.length; _i++){
       if(this.oldpages[_i].cancelled == 1){
         console.log("supprimer:");
         console.log(this.oldpages[_i]);
-        this.http.delete(`agnosco/base/deleteDocument/${this.oldpages[_i].id}`).subscribe(returnedData =>{
-        });
+
+        json.deletedPages.push(this.oldpages[_i].id);
       }
     }
 
     for (var _j = 0; _j < this.pages.length; _j++){
       console.log("ajouter:");
       console.log(this.pages[_j]);
-      let json = {
+      let p = {
         'name': this.pages[_j].name,
         'image64': this.pages[_j].image,
         'vtText' : this.pages[_j].data
       }
-      this.http.post(`agnosco/base/addPageToDocument/${this.did}`,json,{}).subscribe(data => {
-        console.log("data: "+data);
-      },
-      error => {
-        console.log("catch error:", error);
-        this.hideMessage = false;
-      }
-    );
+
+      json.addedPages.push(p);
     }
 
-    this.dialogRef.close(1);
+    console.log("recapitulons:");
+    console.log(json);
+
+
+    this.http.post(`agnosco/base/pagesGestion/${this.did}`,json,{}).subscribe(data => {
+      this.dialogRef.close(0);
+    },
+    error => {
+      console.log("catch error:", error.error.error);
+      let answer = error.error.error + 1;
+      console.log("answer:",answer);
+
+      this.dialogRef.close(answer);
+    });
+
   }
   /* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 
@@ -204,8 +214,6 @@ export class GestionPagesComponent implements OnInit {
 
   isCancelled(p){
     //p index de old
-    console.log("isCancelled");
-    console.log(this.oldpages[p]);
     if(this.oldpages[p].cancelled == 0){
       return false;
     }else{

@@ -1,7 +1,7 @@
 package model.preparation.processing.linedetection
 
-import model.preparation.types.Line
+import model.preparation.types.Polygon
 
 trait LineDetector {
-  def detectLines(src : String) : List[Line]
+  def detectLines(src : String) : List[Polygon]
 }
