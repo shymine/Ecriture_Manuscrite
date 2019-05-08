@@ -1,0 +1,141 @@
+<ns0:GEDI xmlns:ns0="http://lamp.cfar.umd.edu/media/projects/GEDI/" GEDI_date="12/23/2011" GEDI_version="2.3.19">
+	<ns0:USER date="3/5/2012 10:32" dateFormat="mm/dd/yyyy hh:mm" name="Adil">	</ns0:USER>
+	<ns0:USER date="4/5/2012 10:47" dateFormat="mm/dd/yyyy hh:mm" name="Laure">	</ns0:USER>
+	<ns0:USER date="10/16/2012 23:25" dateFormat="mm/dd/yyyy hh:mm" name="MDR-P6">	</ns0:USER>
+	<ns0:USER date="10/31/2012 15:31" dateFormat="mm/dd/yyyy hh:mm" name="MDR-P8">	</ns0:USER>
+	<ns0:USER date="5/23/2012 15:56" dateFormat="mm/dd/yyyy hh:mm" name="soumaya">	</ns0:USER>
+	<ns0:DL_DOCUMENT NrOfPages="1" docTag="xml" src="AFHJKL.tif">
+		<ns0:DL_PAGE Category="C1" Document_Date="" Document_Location="" Document_Object="Demande de logement social" Language_1="french" Language_2="" Language_3="" Language_4="" NumPage="1" Receiver_Address="" Receiver_Company="Minist&#232;re charg&#233; du logement" Receiver_Fax="" Receiver_Name="" Receiver_Phone="" Script_1="typed" Script_2="hand" Sender_Address="" Sender_Company="" Sender_Fax="" Sender_Name="Florence DUPONT" Sender_Phone="" gedi_type="DL_PAGE" height="3507" pageID="1" src="AFHJKL1.png" width="2480">
+			<ns0:DL_ZONE col="641" contents="Compl&#233;ment &#224; la demande de logement social&#10;Logements adapt&#233;s au(x) handicap(s)" function_1="title" function_2="object" gedi_type="TextRegion" height="153" id="1" language="french" row="62" script="typed" width="1317"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="185" function="logo" gedi_type="GraphicRegion" height="279" id="2" row="77" width="318"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="188" contents="Libert&#233; &#8226; &#201;galit&#233; &#8226; Fraternit&#233;" gedi_type="TextRegion" height="27" id="3" language="french" row="193" script="typed" width="309"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1026" function="logo" gedi_type="GraphicRegion" height="106" id="7" row="220" width="436"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="290" contents="Un questionnaire doit &#234;tre renseign&#233; pour chacune des personnes (demandeur, conjoint ou co-titulaire du bail,&#10;personnes fiscalement &#224; charge) dont le handicap n&#233;cessite un logement adapt&#233; &#224; leur situation." gedi_type="TextRegion" height="104" id="8" language="french" row="362" script="typed" width="1938"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="218" contents="Le demandeur de logement social" gedi_type="TextRegion" height="58" id="9" language="french" row="486" script="typed" width="694"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="212" contents="Nom :" gedi_type="TextRegion" height="36" id="10" language="french" nextZoneID="12" row="592" script="typed" width="96"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="210" contents="Pr&#233;nom :" gedi_type="TextRegion" height="34" id="11" language="french" nextZoneID="13" row="650" script="typed" width="143"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="406" contents="DUPONT" gedi_type="TextRegion" height="65" id="12" language="french" row="576" script="hand" width="301"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="410" contents="FLORENCE" gedi_type="TextRegion" height="62" id="13" language="french" row="644" script="hand" width="376"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="218" contents="Cadre r&#233;serv&#233; au service" gedi_type="TextRegion" height="57" id="14" language="french" row="764" script="typed" width="588"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1034" contents="Num&#233;ro de dossier :" gedi_type="TextRegion" height="44" id="15" language="french" row="776" script="typed" width="374"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="218" contents="La personne handicap&#233;e" gedi_type="TextRegion" height="56" id="16" language="french" row="868" script="typed" width="530"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="200" contents="Votre date de naissance :" gedi_type="TextRegion" height="50" id="17" language="french" nextZoneID="18" row="958" script="typed" width="454"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="752" contents="09051961" gedi_type="TextRegion" height="70" id="18" language="french" row="946" script="hand" width="359"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="202" contents="Votre handicap est-il reconnu par la Maison d&#233;partementale des personnes handicap&#233;es ?" gedi_type="TextRegion" height="54" id="21" language="french" row="1048" script="typed" width="1598"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1822" contents="Oui" gedi_type="TextRegion" height="46" id="22" language="french" row="1056" script="typed" width="76"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2006" contents="Non" gedi_type="TextRegion" height="44" id="23" language="french" row="1056" script="typed" width="90"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1912" gedi_type="LineDrawingRegion" height="68" id="24" row="1042" width="66"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="196" contents="Si vous &#234;tes en contact r&#233;gulier avec un r&#233;f&#233;rent de la Maison d&#233;partementale des personnes handicap&#233;es&#10;ou un travailleur social ou une association (d'aide aux personnes handicap&#233;es ou d'aide &#224; domicile), merci&#10;d'indiquer son nom et ses coordonn&#233;es professionnelles :" gedi_type="TextRegion" height="150" id="25" language="french" row="1122" script="typed" width="2020"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="204" contents="Nom :" gedi_type="TextRegion" height="50" id="26" language="french" nextZoneID="30" row="1298" script="typed" width="117"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="196" contents="Adresse :" gedi_type="TextRegion" height="42" id="27" language="french" nextZoneID="31" row="1378" script="typed" width="180"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="206" contents="T&#233;l&#233;phone :" gedi_type="TextRegion" height="50" id="28" language="french" nextZoneID="32" row="1444" script="typed" width="216"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="200" contents="Mail :" gedi_type="TextRegion" height="40" id="29" language="french" nextZoneID="33" row="1504" script="typed" width="100"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="430" contents="CCAS" gedi_type="TextRegion" height="56" id="30" language="french" row="1300" script="hand" width="192"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="436" contents="18 RUE DU HOHNECK 68380 METZERAL" gedi_type="TextRegion" height="77" id="31" language="french" row="1355" script="hand" width="1470"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="440" contents="0389009112" gedi_type="TextRegion" height="62" id="32" language="french" row="1434" script="hand" width="442"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="426" contents="METZERAL-CCAS" gedi_type="TextRegion" height="70" id="33" language="french" nextZoneID="185" row="1498" script="hand" width="614"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="202" contents="S'il s'agit d'un organisme, avez-vous &#233;lu domicile aupr&#232;s de lui ?" gedi_type="TextRegion" height="48" id="34" language="french" row="1600" script="typed" width="1132"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1364" contents="Oui" gedi_type="TextRegion" height="40" id="35" language="french" row="1602" script="typed" width="78"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1556" contents="Non" gedi_type="TextRegion" height="40" id="36" language="french" row="1604" script="typed" width="84"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1462" gedi_type="LineDrawingRegion" height="58" id="37" row="1596" width="60"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="222" contents="Renseignements concernant votre handicap :" gedi_type="TextRegion" height="64" id="38" language="french" row="1666" script="typed" width="952"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="218" contents="Nature du handicap" gedi_type="TextRegion" height="42" id="39" language="french" row="1826" script="typed" width="326"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="738" contents="Moteur" gedi_type="TextRegion" height="40" id="40" language="french" row="1746" script="typed" width="130"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="882" contents="Membres(s) sup&#233;rieur(s)" gedi_type="TextRegion" height="49" id="41" language="french" row="1809" script="typed" width="345"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="874" contents="Membre(s) inf&#233;rieur(s)" gedi_type="TextRegion" height="40" id="42" language="french" row="1878" script="typed" width="330"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1502" contents="Sensoriel" gedi_type="TextRegion" height="40" id="43" language="french" row="1744" script="typed" width="172"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1644" contents="D&#233;ficience auditive" gedi_type="TextRegion" height="48" id="44" language="french" row="1809" script="typed" width="275"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1643" contents="D&#233;ficience visuelle" gedi_type="TextRegion" height="51" id="45" language="french" row="1868" script="typed" width="272"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="222" contents="Votre handicap est-il ?" gedi_type="TextRegion" height="44" id="46" language="french" row="2040" script="typed" width="366"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="738" contents="Autre" gedi_type="TextRegion" height="39" id="47" language="french" row="1958" script="typed" width="106"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="998" contents="Merci de pr&#233;ciser :" gedi_type="TextRegion" height="40" id="48" language="french" row="1958" script="typed" width="266"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1300" contents="MALADIE RESPIRATOIRE" gedi_type="TextRegion" height="74" id="49" language="french" row="1940" script="hand" width="922"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="880" contents="Stabilis&#233;" gedi_type="TextRegion" height="38" id="50" language="french" row="2044" script="typed" width="132"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1398" contents="Evolutif" gedi_type="TextRegion" height="32" id="51" language="french" row="2044" script="typed" width="122"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="218" contents="Besoins en aides&#10;techniques" gedi_type="TextRegion" height="92" id="52" language="french" row="2176" script="typed" width="282"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="736" contents="Aucune" gedi_type="TextRegion" height="34" id="53" language="french" row="2136" script="typed" width="120"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="740" contents="Canne, B&#233;quille" gedi_type="TextRegion" height="49" id="54" language="french" row="2210" script="typed" width="232"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="740" contents="D&#233;ambulateur" gedi_type="TextRegion" height="45" id="55" language="french" row="2292" script="typed" width="204"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1402" contents="Fauteuil roulant manuel" gedi_type="TextRegion" height="42" id="56" language="french" row="2116" script="typed" width="336"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1396" contents="Fauteuil roulant &#233;lectrique" gedi_type="TextRegion" height="42" id="57" language="french" row="2180" script="typed" width="380"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1400" contents="Autres aides techniques (merci de pr&#233;ciser) :" gedi_type="TextRegion" height="44" id="58" language="french" row="2244" script="typed" width="636"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1452" contents="- L&#232;ve personne" gedi_type="TextRegion" height="40" id="59" language="french" row="2308" script="typed" width="242"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1858" contents="- Lit m&#233;dicalis&#233;" gedi_type="TextRegion" height="46" id="60" language="french" row="2304" script="typed" width="218"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="218" contents="Capacit&#233; &#224; monter&#10;des marches" gedi_type="TextRegion" height="88" id="61" language="french" row="2384" script="typed" width="298"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="732" contents="Impossible" gedi_type="TextRegion" height="38" id="62" language="french" row="2374" script="typed" width="162"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="738" contents="1 &#224; 3 marches" gedi_type="TextRegion" height="40" id="63" language="french" row="2444" script="typed" width="206"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1402" contents="1 &#233;tage" gedi_type="TextRegion" height="42" id="64" language="french" row="2376" script="typed" width="116"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1400" contents="Plus d'un &#233;tage" gedi_type="TextRegion" height="49" id="65" language="french" row="2444" script="typed" width="228"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="216" contents="Tierce personne" gedi_type="TextRegion" height="44" id="66" language="french" row="2518" script="typed" width="262"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="738" contents="Pr&#233;sence d'une tierce personne (aide &#224; domicile, aide soignante, veille de nuit)" gedi_type="TextRegion" height="55" id="67" language="french" row="2512" script="typed" width="1115"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="206" contents="Renseignements concernant le logement :&#10;Merci de pr&#233;ciser les &#233;quipements dont vous avez imp&#233;rativement besoin (1) :" gedi_type="TextRegion" height="100" id="68" language="french" row="2603" script="typed" width="1509"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="192" contents="Baignoire adapt&#233;e" gedi_type="TextRegion" height="46" id="69" language="french" row="2732" script="typed" width="266"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="192" contents="WC avec espace de transfert" gedi_type="TextRegion" height="38" id="70" language="french" row="2792" script="typed" width="422"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="744" contents="Douche sans seuil" gedi_type="TextRegion" height="40" id="71" language="french" row="2732" script="typed" width="270"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="744" contents="Ascenseur" gedi_type="TextRegion" height="44" id="72" language="french" row="2791" script="typed" width="162"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1162" contents="Chambre avec une tierce personne (aide &#224; domicile, aide soignante,&#10;veille de nuit)." gedi_type="TextRegion" height="80" id="73" language="french" row="2716" script="typed" width="954"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1166" contents="Place de stationnement accessible et de largueur adapt&#233;e (3m30)" gedi_type="TextRegion" height="43" id="74" language="french" row="2806" script="typed" width="936"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="200" contents="Avez-vous des besoins particuliers quant &#224; la localisation du logement et &#224; son environnement (besoins de services de sant&#233; de proximit&#233;) ?" gedi_type="TextRegion" height="46" id="75" language="french" nextZoneID="76" row="2882" script="typed" width="1976"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="212" contents="A PROXIMITE DU POLE MEDICAL AVEC KINESITH&#201;RA&#10;PEUTE" gedi_type="TextRegion" height="150" id="76" language="french" row="2932" script="hand" width="2060"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="196" contents="Autres besoins, pr&#233;cisez :" gedi_type="TextRegion" height="52" id="77" language="french" nextZoneID="78" row="3136" script="typed" width="372"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="588" contents="GROUPE SCOLAIRE ELEMENTAIRE" gedi_type="TextRegion" height="83" id="78" language="french" row="3126" script="hand" width="1275"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="178" contents="(1) : plus le nombre d'&#233;quipements imp&#233;ratifs sera important, plus il sera difficile de trouver un logement adapt&#233; &#224; votre demande.&#10;Il est donc important que vous s&#233;lectionniez uniquement ceux qui vous sont indispensables." gedi_type="TextRegion" height="80" id="79" language="french" row="3240" script="typed" width="1818"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="880" gedi_type="LineDrawingRegion" height="64" id="81" row="1948" width="60"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1574" gedi_type="LineDrawingRegion" height="60" id="82" row="2038" width="60"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1090" gedi_type="LineDrawingRegion" height="56" id="83" row="2206" width="44"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1079" gedi_type="LineDrawingRegion" height="64" id="84" row="2370" width="64"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1962" function="signature" gedi_type="GraphicRegion" height="138" id="85" row="3218" width="352"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1976" contents="F.Dupont" gedi_type="TextRegion" height="106" id="86" language="french" row="3220" script="hand" width="284"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2308" contents="1" function_1="footer" gedi_type="TextRegion" height="34" id="88" language="french" row="3278" script="typed" width="30"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1062" gedi_type="LineDrawingRegion" height="62" id="89" row="2791" width="64"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="169" gedi_type="TableRegion" height="2757" id="90" row="472" width="2134"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2120" function="form-field" gedi_type="GraphicRegion" height="56" id="95" row="1046" width="58"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1918" function="form-field" gedi_type="GraphicRegion" height="54" id="96" row="1048" width="54"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1666" function="form-field" gedi_type="GraphicRegion" height="54" id="99" row="1598" width="58"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1468" function="form-field" gedi_type="GraphicRegion" height="56" id="100" row="1596" width="48"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="902" function="form-field" gedi_type="GraphicRegion" height="56" id="102" row="1740" width="52"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1388" function="form-field" gedi_type="GraphicRegion" height="54" id="103" row="1798" width="56"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1388" function="form-field" gedi_type="GraphicRegion" height="54" id="104" row="1864" width="58"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1696" function="form-field" gedi_type="GraphicRegion" height="54" id="105" row="1744" width="58"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2148" function="form-field" gedi_type="GraphicRegion" height="68" id="106" row="1792" width="67"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2150" function="form-field" gedi_type="GraphicRegion" height="67" id="107" row="1860" width="60"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="884" function="form-field" gedi_type="GraphicRegion" height="56" id="116" row="1952" width="54"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="728" elements="47;81;116" gedi_type="Group" height="84" id="117" row="1938" width="222"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1082" function="form-field" gedi_type="GraphicRegion" height="54" id="119" row="2042" width="58"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1578" function="form-field" gedi_type="GraphicRegion" height="48" id="120" row="2044" width="56"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1388" elements="51;82;120" gedi_type="Group" height="80" id="122" row="2028" width="256"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1080" function="form-field" gedi_type="GraphicRegion" height="54" id="123" row="2134" width="60"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1084" function="form-field" gedi_type="GraphicRegion" height="54" id="124" row="2206" width="54"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1084" function="form-field" gedi_type="GraphicRegion" height="52" id="125" row="2286" width="56"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2217" function="form-field" gedi_type="GraphicRegion" height="60" id="126" row="2116" width="59"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2216" function="form-field" gedi_type="GraphicRegion" height="61" id="127" row="2176" width="58"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2220" function="form-field" gedi_type="GraphicRegion" height="58" id="128" row="2238" width="54"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1762" function="form-field" gedi_type="GraphicRegion" height="70" id="129" row="2300" width="60"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2144" function="form-field" gedi_type="GraphicRegion" height="70" id="130" row="2298" width="66"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="730" elements="54;83;124" gedi_type="Group" height="76" id="132" row="2196" width="418"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1084" function="form-field" gedi_type="GraphicRegion" height="50" id="139" row="2374" width="56"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1084" function="form-field" gedi_type="GraphicRegion" height="56" id="140" row="2434" width="58"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2220" function="form-field" gedi_type="GraphicRegion" height="64" id="141" row="2372" width="54"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2218" function="form-field" gedi_type="GraphicRegion" height="58" id="142" row="2438" width="54"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="722" elements="62;84;139" gedi_type="Group" height="84" id="143" row="2360" width="431"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2217" function="form-field" gedi_type="GraphicRegion" height="61" id="147" row="2516" width="55"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="676" function="form-field" gedi_type="GraphicRegion" height="52" id="151" row="2724" width="56"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1074" function="form-field" gedi_type="GraphicRegion" height="58" id="152" row="2722" width="52"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2212" function="form-field" gedi_type="GraphicRegion" height="67" id="153" row="2724" width="64"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2210" function="form-field" gedi_type="GraphicRegion" height="62" id="154" row="2793" width="64"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="674" function="form-field" gedi_type="GraphicRegion" height="60" id="155" row="2786" width="58"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1070" function="form-field" gedi_type="GraphicRegion" height="56" id="156" row="2795" width="54"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="734" elements="72;89;156" gedi_type="Group" height="82" id="160" row="2781" width="402"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="186" function="other" gedi_type="GraphicRegion" height="88" id="172" row="472" width="2108"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="182" function="other" gedi_type="GraphicRegion" height="102" id="173" row="734" width="800"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="182" function="other" gedi_type="GraphicRegion" height="88" id="174" row="850" width="2110"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1812" elements="22;24;96" gedi_type="Group" height="88" id="176" row="1032" width="176"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="180" function="other" gedi_type="GraphicRegion" height="73" id="178" row="1662" width="2115"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="180" function="other" gedi_type="GraphicRegion" height="120" id="179" row="2597" width="2115"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="188" contents="R&#201;PUBLIQUE FRAN&#199;AISE&#10;Minist&#232;re charg&#233; du&#10;logement" gedi_type="TextRegion" height="117" id="181" language="french" row="229" script="typed" width="310"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1354" elements="35;37;100" gedi_type="Group" height="78" id="182" row="1586" width="178"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1304" contents="@" gedi_type="TextRegion" height="54" id="185" language="french" nextZoneID="186" row="1504" script="typed" width="54"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1360" contents="SOCIAL.GOUV.FR" gedi_type="TextRegion" height="78" id="186" language="french" row="1490" script="hand" width="876"> </ns0:DL_ZONE>
+		</ns0:DL_PAGE>
+	</ns0:DL_DOCUMENT>
+</ns0:GEDI>

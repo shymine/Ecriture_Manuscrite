@@ -72,7 +72,7 @@ export class ValidationService {
   sendEdits(str){
     console.log("*** POST `agnosco/base/saveExamplesEdits` ***");
 
-    this.http.post(`agnosco/base/saveExamplesEdits`, str, {}).subscribe
+    this.http.post(`agnosco/base/saveExampleEdits`, {str}, {}).subscribe
     (response => console.log(response));
     
     console.log("edits sent");

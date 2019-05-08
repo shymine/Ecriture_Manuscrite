@@ -17,7 +17,7 @@ export class AnnotationComponent implements OnInit {
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
     if(event.keyCode == 13){
-      //this.sendEdits();
+      this.sendEdits();
       if(this.compteur4 > this.examples.length){
         if(!this.isLastPage){
           this.nextPage();
@@ -117,6 +117,11 @@ export class AnnotationComponent implements OnInit {
     else{
       this.getPages();
     }
+  }
+
+  getId(i){
+    let id = "trans" + i;
+    return id;
   }
 
   isPrepared(){
@@ -410,7 +415,7 @@ export class AnnotationComponent implements OnInit {
   sendEdits() {
     console.log("Send edits");
 
-    let str = "[\n";
+    let str = "[";
 
     let notEmpty = false;
 
@@ -418,11 +423,11 @@ export class AnnotationComponent implements OnInit {
       let e = this.ex4[i];
 
       // on récupère la transcription affichée qui a pu être modifiée
-      let newTranscript = document.getElementById(i.toString()).innerHTML;
+      let newTranscript = document.getElementById("trans" + i).innerHTML;
 
       //si elle a été modifiée et si l'exemple est enabled, on ajoute l'exemple dans str
       if(this.ex4[i][2] !== newTranscript && this.ex4[i][3]){
-        str = str.concat("{\n\'id\':" + e[0] + ",\n\'transcript\':\"" + e[2] + "\"\n},\n");
+        str = str.concat("\n{\n\'id\':" + e[0] + ",\n\'transcript\':\"" + newTranscript + "\"\n},");
       }
 
       notEmpty = true;
@@ -433,7 +438,7 @@ export class AnnotationComponent implements OnInit {
       str = str.substr(0, str.length - 1);
     }
 
-    str = str.concat("]");
+    str = str.concat("\n]");
 
     console.log(str);
     this.validationService.sendEdits(str);
