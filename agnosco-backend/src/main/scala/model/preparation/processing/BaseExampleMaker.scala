@@ -107,8 +107,8 @@ object BaseExampleMaker extends ExampleMaker {
 
 			// adding the newly created examples to the list
 			examples ++= newExamples
-
-			imageId += 1*/
+			*/
+			imageId += 1
 		})
 		println(examples)
 		examples.toList
