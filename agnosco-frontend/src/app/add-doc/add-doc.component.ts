@@ -9,7 +9,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AddDocComponent implements OnInit {
 
-  public hideMessage = true;
   public pages = [];
   public id = -1;
   public params = [];
@@ -130,7 +129,6 @@ export class AddDocComponent implements OnInit {
         console.log("catch error:", error.error.error);
         let answer = error.error.error + 1;
         console.log("answer:",answer);
-        this.hideMessage = false;
         this.dialogRef.close(answer);
       });
     }else{

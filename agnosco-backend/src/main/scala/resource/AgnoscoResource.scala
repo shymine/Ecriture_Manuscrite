@@ -173,11 +173,11 @@ class AgnoscoResource {
 			if(ok&&correctVT) {
 				Response.status(200).entity(res.toJSON.toString()).build()
 			}else if(ok&&(!correctVT)){
-				Response.notAcceptable(new util.ArrayList[Variant]()).entity(0).build() // vt incorrecte -> unhandled file format
+				Response.notAcceptable(new util.ArrayList[Variant]()).entity("{\"error\":0}").build() // vt incorrecte -> unhandled file format
 			}else if((!ok)&&correctVT){
-				Response.notAcceptable(new util.ArrayList[Variant]()).entity(1).build() // nom incorrect
+				Response.notAcceptable(new util.ArrayList[Variant]()).entity("{\"error\":1}").build() // nom incorrect
 			}else {
-				Response.notAcceptable(new util.ArrayList[Variant]()).entity(2).build() // nom et vt incorrect
+				Response.notAcceptable(new util.ArrayList[Variant]()).entity("{\"error\":2}").build() // nom et vt incorrect
 			}
 
 		}catch {
@@ -218,7 +218,7 @@ class AgnoscoResource {
 				val piff = vt.get
 
 				if (piff.page.src != json.getString("name")) {
-					return Response.notAcceptable(new util.ArrayList[Variant]()).entity(1).build()
+					return Response.notAcceptable(new util.ArrayList[Variant]()).entity("{\"error\":1}").build()
 				}
 
 				val pw = new PrintWriter(new File(globalDataFolder + "/" + name + ".piff"))
@@ -237,7 +237,7 @@ class AgnoscoResource {
 
 				Response.status(200).entity(res.toJSON.toString).build()
 			} else {
-				Response.notAcceptable(new util.ArrayList[Variant]()).entity(0).build()
+				Response.notAcceptable(new util.ArrayList[Variant]()).entity("{\"error\":0}").build()
 			}
 		}catch {
 			case e: Exception => e.printStackTrace()
