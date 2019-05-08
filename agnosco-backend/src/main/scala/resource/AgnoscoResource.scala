@@ -218,7 +218,7 @@ class AgnoscoResource {
 				val piff = vt.get
 
 				if (piff.page.src != json.getString("name")) {
-					return Response.notAcceptable(new util.ArrayList[Variant]()).entity("{\"error\":400}").build()
+					return Response.notAcceptable(new util.ArrayList[Variant]()).entity(1).build()
 				}
 
 				val pw = new PrintWriter(new File(globalDataFolder + "/" + name + ".piff"))
@@ -237,7 +237,7 @@ class AgnoscoResource {
 
 				Response.status(200).entity(res.toJSON.toString).build()
 			} else {
-				Response.status(500).build()
+				Response.notAcceptable(new util.ArrayList[Variant]()).entity(0).build()
 			}
 		}catch {
 			case e: Exception => e.printStackTrace()
