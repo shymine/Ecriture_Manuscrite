@@ -62,7 +62,7 @@ export class ValidationService {
   validateAll(valid){
     console.log("*** POST `agnosco/base/validateExamples` ***");
 
-    this.http.post(`agnosco/base/validateExamples`, valid, {}).subscribe
+    this.http.post(`agnosco/base/validateExamples`, {valid}, {}).subscribe
     (response => console.log(response));
     
     console.log("examples validated");

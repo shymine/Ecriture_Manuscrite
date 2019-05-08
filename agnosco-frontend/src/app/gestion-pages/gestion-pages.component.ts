@@ -164,6 +164,7 @@ export class GestionPagesComponent implements OnInit {
 
 
     this.http.post(`agnosco/base/pagesGestion/${this.did}`,json,{}).subscribe(data => {
+      this.dialogRef.close(0);
     },
     error => {
       console.log("catch error:", error.error.error);

@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { AddDocComponent } from '../add-doc/add-doc.component';
 import { GestionPagesComponent } from '../gestion-pages/gestion-pages.component';
 import { ExportProjetComponent } from '../export-projet/export-projet.component';
+import { relative } from 'path';
 
 @Component({
   selector: 'app-accueil',
@@ -231,7 +232,8 @@ export class AccueilComponent implements OnInit {
         'pid': p.id,
         'pname': p.name,
         'd' : d
-      }
+      },
+      width: '70%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -271,7 +273,8 @@ export class AccueilComponent implements OnInit {
     console.log(p);
     
     const dialogRef = this.dialog.open(AddDocComponent, {
-      data: {'id': p[1], "pname": p[0]}
+      data: {'id': p[1], "pname": p[0]},
+      width: '70%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
