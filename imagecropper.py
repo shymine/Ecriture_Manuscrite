@@ -23,17 +23,6 @@ col = int(sys.argv[4])
 width = int(sys.argv[5])
 height = int(sys.argv[6])
 
-# Bounds checking
-if row >= height:
-    row = height - 1
-elif row < 0:
-    row = 0
-
-if col >= width:
-    col = width - 1
-elif col < 0:
-    col = 0
-
 filename_split = filename_src.split('.')
 filename_out = "{}{}.{}".format(filename_split[0], img_id, filename_split[1])
 

@@ -1,13 +1,14 @@
 package model.preparation.processing
 
+import model.common
 import model.common.{Example, globalDataFolder}
 import model.preparation.input.piff.PiFF
 import model.preparation.processing.linedetection.BlurLineDetector
 
 import scala.collection.mutable.ListBuffer
 
-class BaseExampleMaker(detectorIp: String, filePort: Int, answerPort: Int) extends ExampleMaker {
-	val lineDetector = new BlurLineDetector(detectorIp, filePort, answerPort)
+object BaseExampleMaker extends ExampleMaker {
+	val lineDetector = new BlurLineDetector(common.detectorIp, common.filePort, common.answerPort)
 
 	override def makeExamples(p : PiFF): List[Example] = {
 		val examples = new ListBuffer[Example]
@@ -32,8 +33,9 @@ class BaseExampleMaker(detectorIp: String, filePort: Int, answerPort: Int) exten
 			val imgPath = s"$globalDataFolder/${page.src}"
 			println("img path : " + imgPath)
 			val paragraphImgPath = ImageProcessing.createThumbnail(imgPath, imageId, element.polygon)
+			examples += Example(-1, removeDataFolderPath(paragraphImgPath), transcript)
 
-			// calling the line detector on the newly created image
+			/*// calling the line detector on the newly created image
 			val polygons = lineDetector.detectLines(paragraphImgPath)
 
 			// get the line lengths
@@ -104,8 +106,7 @@ class BaseExampleMaker(detectorIp: String, filePort: Int, answerPort: Int) exten
 			val newExamples = images.zip(transcripts).map(z => Example(-1, removeDataFolderPath(z._1), z._2))
 
 			// adding the newly created examples to the list
-			//examples += Example(-1, removeDataFolderPath(newExampleImgPath), transcript)
-			examples ++= newExamples
+			examples ++= newExamples*/
 
 			imageId += 1
 		})
