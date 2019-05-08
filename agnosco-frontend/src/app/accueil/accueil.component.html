@@ -7,7 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
 </head>
 <div class="band">
-<div style="top: 20%; position: relative;">Vous disposez ci-dessous de vos projets personnels !</div>
+  <div style="top: 20%; position: relative;">Vous disposez ci-dessous de vos projets personnels !</div>
+</div>
+<div class="alertMessage" [hidden]="this.alertMessage.hide">
+  {{alertMessage.message}}
+  <button class="alertButton" (click)="fermerAlert()"><i class="fas fa-times"></i></button>
 </div>
 <!-- <input type="file" (change)="encodeImageFileAsURL($event)" /> -->
 <div class="divisionParent">

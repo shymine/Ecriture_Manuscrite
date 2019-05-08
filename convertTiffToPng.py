@@ -1,9 +1,16 @@
+#!/usr/local/bin/python3
 # need the package pillow to be installed
 
 # find every tif in the given directory and the ones under it and transform it to png
 
+# pip3 install defusedxml : stdlib xml parsing module is vulnerable to attacks
+
 import os
 import sys
+import os
+import sys
+import subprocess
+import defusedxml.ElementTree as ET
 from PIL import Image
 
 #yourpath = os.getcwd()
@@ -24,3 +31,39 @@ for root, dirs, files in os.walk(yourpath, topdown=False):
                     im.save(outfile, "PNG", quality=100)
                 except Exception as e:
                     print(e)
+
+metadata = [f for f in os.listdir(yourpath) if f.endswith(".xml")]
+
+for xmlfile in metadata:
+    print("Processing file '{}'".format(xmlfile))
+
+    xmlns = r"{http://lamp.cfar.umd.edu/media/projects/GEDI/}"
+
+    try:
+        # parsing the XML file
+        xml = ET.parse("{}/{}".format(directory, xmlfile))
+        root = xml.getroot()
+
+        doc = root.find("{}DL_DOCUMENT".format(xmlns))
+        if doc == None:
+            print("No DL_DOCUMENT")
+            raise ET.ParseError()
+
+        pages = doc.findall("{}DL_PAGE".format(xmlns))
+
+        # change src from .tif to .png for each page
+        for page in pages:
+            imgfile = page.get("src")
+
+            filename = imgfile[:-4]
+            extension = imgfile[-4:]
+
+            if extension == ".tif":
+                page.set("src", filename + ".png")
+        
+            # saving the modified xml file
+            xml.write("{}/{}.xml".format(directory, xmlfile))
+
+    except ET.ParseError:
+        print("Error: File '{}' is not well formed.".format(xmlfile))
+        exit(1)

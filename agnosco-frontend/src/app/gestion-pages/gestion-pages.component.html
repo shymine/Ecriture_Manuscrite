@@ -6,7 +6,6 @@
   
 <div style="font-size: 80%">
   <p><b>Pour chaque page, suivre la disposition suivante :</b> a) fichier image b) fichier vérité terrain</p>
-  <p [hidden]="hideMessage" style="color: red">Attention, vérifiez à ce que le nom de l'image corresponde bien au nom de la vérité terrain !</p>
   <br>
   <div *ngFor="let p of oldpages ; let i = index">
     <div [class]="isCancelled(i) ? 'divGrise' : 'divViolette'">

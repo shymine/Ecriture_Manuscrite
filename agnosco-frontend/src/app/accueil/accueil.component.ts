@@ -17,6 +17,7 @@ export class AccueilComponent implements OnInit {
 
   public projects;
   public maxListIndex;
+  public alertMessage = {'message':"Rien à signaler", 'hide':true};
 
   constructor(private router: Router, public dialog: MatDialog, private http: HttpClient) {
   //constructor(private router: Router, public dialog: MatDialog) {
@@ -168,11 +169,8 @@ export class AccueilComponent implements OnInit {
   }
 
   showXActions(ev){
-    console.log("show X");
-    console.log(ev);
     let el = ev.originalTarget.parentNode.children[1];
     let el2 = ev.originalTarget.parentNode.children[2];
-    console.log(el);
     el.hidden = false;
     el2.hidden = false;
   }
@@ -237,6 +235,34 @@ export class AccueilComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log("*ACCUEIL*");
+      console.log("result:",result);
+      if(result != undefined){
+        switch(result){
+          case -1:
+            this.alertMessage.message = ">> Erreur: l'identifiant du projet est introuvable <<";
+            this.alertMessage.hide = false;
+            break;
+          case 0:
+            // tout est ok
+            break;
+          case 1:
+            this.alertMessage.message = ">> Une ou plusieurs pages n'ont pas pu être ajoutées au document: 'format de vérité terrain incorrect' <<";
+            this.alertMessage.hide = false;
+            break;
+          case 2:
+            this.alertMessage.message = ">> Une ou plusieurs pages n'ont pas pu être ajoutées au document: 'image et vérité terrain incompatibles' <<";
+            this.alertMessage.hide = false;
+            break;
+          case 3:
+            this.alertMessage.message = ">> Une ou plusieurs pages n'ont pas pu être ajoutées au document: 'format de vérité terrain incorrect + image et vérité terrain incompatibles' <<";
+            this.alertMessage.hide=false;
+            break;
+          default:
+            this.alertMessage.message = ">> Erreur non traitée <<";
+            this.alertMessage.hide=false;
+        }
+      }
     });
   }
 
@@ -249,8 +275,40 @@ export class AccueilComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.getAllProjects();
+      console.log("result:",result);
+      if(result != undefined){
+        switch(result){
+          case -1:
+            this.alertMessage.message = ">> Erreur: l'identifiant du projet est introuvable <<";
+            this.alertMessage.hide = false;
+            break;
+          case 0:
+            // tout est ok
+            break;
+          case 1:
+            this.alertMessage.message = ">> Une ou plusieurs pages n'ont pas pu être ajoutées au document: 'format de vérité terrain incorrect' <<";
+            this.alertMessage.hide = false;
+            break;
+          case 2:
+            this.alertMessage.message = ">> Une ou plusieurs pages n'ont pas pu être ajoutées au document: 'image et vérité terrain incompatibles' <<";
+            this.alertMessage.hide = false;
+            break;
+          case 3:
+            this.alertMessage.message = ">> Une ou plusieurs pages n'ont pas pu être ajoutées au document: 'format de vérité terrain incorrect + image et vérité terrain incompatibles' <<";
+            this.alertMessage.hide=false;
+            break;
+          default:
+            this.alertMessage.message = ">> Erreur non traitée <<";
+            this.alertMessage.hide=false;
+        }
+        this.getAllProjects();
+      }
     });
+  }
+
+  fermerAlert(){
+    this.alertMessage.hide = true;
+    this.alertMessage.message = "Rien à signaler";
   }
   
   exportP(p){
@@ -261,7 +319,9 @@ export class AccueilComponent implements OnInit {
       data: {'id': p[1], "pname": p[0], 'support': "pro"}
     });
 
+    /* answer: 0->ok 1->vt_inc 2->nom_inc 3->vt_nom_inc -1->id_inc */
     dialogRef.afterClosed().subscribe(result => {
+      console.log("*ACCUEIL*");
       this.getAllProjects();
     });
 
