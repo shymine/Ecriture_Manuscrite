@@ -2,7 +2,8 @@
 
 import sys
 import os
-
+from random import random
+import re
 from PIL import Image
 
 """
@@ -35,6 +36,7 @@ symbs.txt: the symbols and their ID
 datasetPath = sys.argv[1]
 datasetExport = sys.argv[2]
 imgSize = sys.argv[3] if len(sys.argv) >= 4 else 64
+testRate = sys.argv[4] if len(sys.argv) >= 5 else 0.1
 
 # Processing of the images
 ## Need to get the names of the images
@@ -48,20 +50,52 @@ print(imagesNames)
 for imageName in imagesNames:
     try:
         im = Image.open("%s/%s" % (datasetPath, imageName))
-        wsize = int((float(imgSize)*float(im.size[0]))/float(im.size[1]))
+        wsize = int((float(imgSize) * float(im.size[0])) / float(im.size[1]))
         im = im.resize((wsize, imgSize), Image.ANTIALIAS)
-        #im.thumbnail((wsize, imgSize))
-        im.save("%s/%s" %(datasetExport, imageName), quality=100)
+        # im.thumbnail((wsize, imgSize))
+        im.save("%s/%s" % (datasetExport, imageName), quality=100)
     except Exception as e:
         print("unable to load image %s/%s" % (datasetPath, imageName))
         print(e)
-
 print("images created")
 
-txtFiles = [t for t in os.listdir(datasetPath) if i.endswith(".txt")]
+txtFiles = [t for t in os.listdir(datasetPath) if t.endswith(".txt")]
 print(txtFiles)
+
+testLst = open("%s/test.lst" % datasetExport, "w")
+testTxt = open("%s/test.txt" % datasetExport, "w")
+trainLst = open("%s/train.lst" % datasetExport, "w")
+trainTxt = open("%s/train.txt" % datasetExport, "w")
 
 for txtName in txtFiles:
     try:
-        with open("%s/%s" %(datasetPath, txtName), "r"):
+        test = random() <= testRate
+        with open("%s/%s" % (datasetPath, txtName), "r") as file:
+            #print("file %s is opened" % txtName)
+            print(file)
+            text = file.readline()
+            print(text)
+            imageName = re.sub(r".txt$", r".png", txtName)
 
+            imgName = re.sub(r".txt", r"", txtName)
+            transcript = []
+            for char in text:
+                if char == " ":
+                    transcript.append("{space}")
+                else:
+                    transcript.append(char)
+                transcript.append(" ")
+
+            if test:
+                testLst.write("%s/%s" % (datasetExport, imageName))
+                testTxt.write("%s %s" % (imgName, str.join('', transcript)))
+            else:
+                trainLst.write("%s/%s" % (datasetExport, imageName))
+                trainTxt.write("%s %s" % (imgName, str.join('', transcript)))
+
+    except Exception as e:
+        print(e)
+testLst.close()
+testTxt.close()
+trainLst.close()
+trainTxt.close()
