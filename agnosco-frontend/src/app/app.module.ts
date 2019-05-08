@@ -11,7 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
-import { DecoupeComponent } from './decoupe/decoupe.component';
 import { AnnotationComponent } from './annotation/annotation.component';
 import { ValidationComponent } from './validation/validation.component';
 import { MydialogComponent } from './mydialog/mydialog.component';
@@ -31,7 +30,6 @@ import { HelpAnnotationComponent} from './help-annotation/help-annotation.compon
   declarations: [
     AppComponent,
     AccueilComponent,
-    DecoupeComponent,
     AnnotationComponent,
     ValidationComponent,
     MydialogComponent,
