@@ -196,55 +196,6 @@ class AgnoscoResource {
 		regexp.replaceAllIn(str,".png")
 	}
 
-	/**
-	  * {name:'truc',image64:'ezrgrgz',vtText:'eofigzpieguh'}
-	  * @param id
-	  * @param page
-	  * @return
-	  */
-//	@POST
-//	@Path("/addPageToDocument/{doc_id}")
-//	@Consumes(Array(MediaType.APPLICATION_JSON))
-//	@Produces(Array(MediaType.APPLICATION_JSON))
-//	def addPageToDocument(@PathParam("doc_id") id: Long, page: String): Response = {
-//		try {
-//			val json = new JSONObject(page)
-//
-//			val name = getFileName(json.getString("name"))
-//			// écriture vt
-//			val vt = PiFFReader.fromString(json.getString("vtText"))
-//
-//			if (vt.isDefined) {
-//				val piff = vt.get
-//
-//				if (piff.page.src != json.getString("name")) {
-//					return Response.notAcceptable(new util.ArrayList[Variant]()).entity(1).build()
-//				}
-//
-//				val pw = new PrintWriter(new File(globalDataFolder + "/" + name + ".piff"))
-//				pw.write(piff.toJSON.toString())
-//				pw.close()
-//
-//				val page = Page(-1, name + ".piff", List())
-//				val res = controller.addPageToDocument(id, page)
-//
-//				// écriture image
-//				val imgByte = javax.xml.bind.DatatypeConverter.parseBase64Binary(json.getString("image64"))
-//
-//				val out = new FileOutputStream(globalDataFolder + "/" + json.getString("name"))
-//				out.write(imgByte)
-//				out.close()
-//
-//				Response.status(200).entity(res.toJSON.toString).build()
-//			} else {
-//				Response.notAcceptable(new util.ArrayList[Variant]()).entity(0).build()
-//			}
-//		}catch {
-//			case e: Exception => e.printStackTrace()
-//				Response.status(500).build()
-//		}
-//	}
-
 	@POST
 	@Path("/pagesGestion/{doc_id}")
 	@Consumes(Array(MediaType.APPLICATION_JSON))
@@ -254,6 +205,8 @@ class AgnoscoResource {
 			val json = new JSONObject(gestion)
 			val deletedPages = json.getJSONArray("deletedPages")
 			val addedPages = json.getJSONArray("addedPages")
+			println(deletedPages)
+//			println("added",addedPages.getJSONObject(0))
 			val pageList = new ListBuffer[Page]()
 			var ok = true
 			var correctVT = true
@@ -263,7 +216,7 @@ class AgnoscoResource {
 			}
 			for(i <- 0 until addedPages.length()) {
 				breakable {
-					val page = deletedPages.getJSONObject(i)
+					val page = addedPages.getJSONObject(i)
 					val name = getFileName(page.getString("name"))
 					val vt = PiFFReader.fromString(page.getString("vtText"))
 					if(vt.isDefined) {

@@ -13,7 +13,7 @@
     a) <i>{{oldpages[i].nameIm}}</i>
     b) <i>{{oldpages[i].nameVt}}</i><button (click)="deleteOld(i)" class="button1ListX "><i [class]="isCancelled(i) ? 'fas fa-angle-up' : 'fas fa-times'"></i></button>
     </div>
-    <br><br>
+    <br>
   </div>
 
   <div *ngFor="let p of pages ; let i = index">
