@@ -71,13 +71,13 @@ class BlurLineDetector(detectorIp : String, filePort : Int, answerPort : Int) ex
         .toStream // Stream[String] : lazy evaluation
 
         // remove "Haut:", "Bas:" at the beginning
-        .map(_.split(':')(1)) // Stream[String]
+        .map(_.split(':').last) // Stream[String]
 
         // get a list of "x,y" points from a "x1,y1;x2,y2;x3,y3..." String
         .map(_.split(';')) // Stream[Array[String]]
 
         // in each list, split "x,y" into List("x", "y")
-        .map(_.map(_.split(';'))) // Stream[Array[Array[String]]]
+        .map(_.map(_.split(','))) // Stream[Array[Array[String]]]
 
         // get a Point object from a "x,y" String
         .map(_.map(coords => {
