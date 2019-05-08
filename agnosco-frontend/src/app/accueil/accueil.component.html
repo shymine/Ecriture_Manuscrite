@@ -11,7 +11,7 @@
 </div>
 <div class="alertMessage" [hidden]="this.alertMessage.hide">
   {{alertMessage.message}}
-  <button class="alertButton"><i class="fas fa-times"></i></button>
+  <button class="alertButton" (click)="fermerAlert()"><i class="fas fa-times"></i></button>
 </div>
 <!-- <input type="file" (change)="encodeImageFileAsURL($event)" /> -->
 <div class="divisionParent">
