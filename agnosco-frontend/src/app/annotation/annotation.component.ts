@@ -5,7 +5,6 @@ import { Validation, ValidationService } from '../service/validation.service';
 import { HelpAnnotationComponent } from '../help-annotation/help-annotation.component';
 import { EndAnnotationComponent } from '../end-annotation/end-annotation.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { forEach } from '@angular/router/src/utils/collection';
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 @Component({
@@ -19,11 +18,15 @@ export class AnnotationComponent implements OnInit {
   handleKeyboardEvent(event: KeyboardEvent) { 
     if(event.keyCode == 13){
       this.sendEdits();
-      if(!this.isLastPage){
-        this.nextPage();
-      }else{
-        this.endAnnotation();
-      }
+      //if(this.isEndOfPage){
+        if(!this.isLastPage){
+          this.nextPage();
+        }else{
+          this.endAnnotation();
+        }
+     // }else{
+       // this.getNextExamples();
+      //}
     }
   }
 
@@ -41,22 +44,23 @@ export class AnnotationComponent implements OnInit {
 
   public pages;
   public examples;
-  //0 : path
-  //1 : transcription
-  //2 : id
-  //3 : enabled
-
   //new version
   //0 : id
   //1 : path64
   //2 : transcription
   //3 : enabled
   //4 : validated
+
+  public examplesToDisplay;
+  public compteur;
+
   public currentPageIndex;
   public currentPage;
 
   public isFirstPage;
   public isLastPage;
+  public isEndOfPage;
+
   validation: Validation;
 
   public dangerousUrl;
@@ -64,11 +68,14 @@ export class AnnotationComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private validationService: ValidationService, public dialog: MatDialog, private http: HttpClient, private sanitizer: DomSanitizer) {
     this.examples = [];
+    this.examplesToDisplay = [];
+    this.compteur = 0;
     this.pages = [];
     this.currentPageIndex = 0;
     this.currentPage = 0;
     this.isFirstPage = true;
     this.isLastPage = false;
+    this.isEndOfPage = false;
   }
 
   ngOnInit() {
@@ -100,17 +107,15 @@ export class AnnotationComponent implements OnInit {
       this.http.post(`agnosco/base/prepareExamplesOfDocument/${this.docId}`, {}, {}).subscribe(response => {
         console.log(response);
         console.log("le document a été préparé");
+
+        this.docPrepared = "true";
         
         this.getPages();
-
-        this.checkPageNumber();
       });
     }
 
     else{
       this.getPages();
-
-      this.checkPageNumber();
     }
   }
 
@@ -142,15 +147,11 @@ export class AnnotationComponent implements OnInit {
           console.log("le document a été préparé");
           
           this.getPages();
-
-          this.checkPageNumber();
         });
       }
 
       else{
         this.getPages();
-
-        this.checkPageNumber();
       }
     });
   }
@@ -158,7 +159,13 @@ export class AnnotationComponent implements OnInit {
   goToValidationD(d){
     console.log("VALIDATION");
     console.log("document: "+d.id);
-    this.router.navigate(['/validation',{'idd':d.id, 'named': d.name}]);
+    this.router.navigate(['/validation',{'idd':d.id, 'named': d.name, 'prepared': d.prepared}]);
+  }
+
+  goToValidation(){
+    console.log("VALIDATION");
+    console.log("document: "+ this.docId);
+    this.router.navigate(['/validation',{'idd':this.docId, 'named': this.docName, 'prepared': this.docPrepared}]);
   }
 
   goHome(){
@@ -167,10 +174,6 @@ export class AnnotationComponent implements OnInit {
 
   goToDecoupe(){
     this.router.navigate(['/decoupe']);
-  }
-
-  goToValidation(){
-    this.router.navigate(['/validation',{'id':this.docId}]);
   }
 
   /**
@@ -190,9 +193,7 @@ export class AnnotationComponent implements OnInit {
         this.pages.push(id);
       });
 
-      this.currentPage = this.pages[this.currentPageIndex];
-        
-      console.log("current page : " + this.currentPage);   
+      this.checkPageNumber();
 	
 		  this.getPageData();
 
@@ -241,11 +242,7 @@ export class AnnotationComponent implements OnInit {
           }
         }
 
-        console.log("type de l'image = " + imageType)
-
         let path64 = "data:image/" + imageType + ";base64," + image64;
-        console.log("path base 64 : ");
-        console.log(path64);
 
         let securePath64 = this.sanitizer.bypassSecurityTrustUrl(path64);
 
@@ -259,22 +256,39 @@ export class AnnotationComponent implements OnInit {
         console.log("catch error:", error);
       }
     );
+    
+    //on push les 4 premiers exemples dans examplesToDisplay
+    for(let i = 0; i<4; i+=1){
+      this.examplesToDisplay.push(this.examples[i]);
+    }
+    this.compteur = 4;
 
-    //Test    
+    console.log("examples to display :");
+    console.log(this.examplesToDisplay);
 
-    let p64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==";
-    let securePath64 = this.sanitizer.bypassSecurityTrustUrl(p64);
-    this.examples.push([1, securePath64, "yo man", true, false]);
+    if(this.compteur > this.examples.length){
+      this.isEndOfPage = true;
+    }
+  }
 
-    console.log("ex pushed");
+  getNextExamples(){
+    this.examplesToDisplay = [];
 
-    this.hidden.push(false);
+    for(let i = this.compteur; i< this.compteur + 4; i+=1){
+      this.examplesToDisplay.push(this.examples[i]);
+    }
+    this.compteur += 4;
+
+    if(this.compteur > this.examples.length){
+      this.isEndOfPage = true;
+    }
   }
 
   /**
    * Méthode qui vérifie si on est à la 1e ou à la dernière page
    */
   checkPageNumber(){
+    console.log("page index : " + this.currentPageIndex);
     if(this.currentPageIndex == 0){
       //on grise la 1e flèche
       this.isFirstPage = true;
@@ -288,6 +302,7 @@ export class AnnotationComponent implements OnInit {
     }else{
       this.isLastPage = false;
     }
+
     this.currentPage = this.pages[this.currentPageIndex];
     console.log("check page : " + this.currentPage);
   }
@@ -314,6 +329,7 @@ export class AnnotationComponent implements OnInit {
       let i = this.examples[id][0];
       this.validationService.enableEx(i);
     }
+    //this.examplesToDisplay[id][3] = !this.examplesToDisplay[id][3];
     this.examples[id][3] = !this.examples[id][3];
     this.hidden[id] = !this.hidden[id];
   }
@@ -411,24 +427,6 @@ export class AnnotationComponent implements OnInit {
       console.log('The help dialog was closed');
     });
   }
-
-  /**
-   * Fonction pour traduire une image en base 64
-   * @param event 
-   */
-  getBase64(event) {
-    let file = event.target.files[0];
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-      //me.modelvalue = reader.result;
-      console.log(reader.result);
-    };
-    reader.onerror = function (error) {
-      console.log('Error: ', error);
-    };
-  }
-
 
   endAnnotation(){
     const dialogRef = this.dialog.open(EndAnnotationComponent, {});

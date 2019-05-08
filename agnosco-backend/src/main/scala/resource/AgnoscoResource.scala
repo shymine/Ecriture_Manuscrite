@@ -136,11 +136,11 @@ class AgnoscoResource {
 				breakable {
 					val obj = arr.getJSONObject(i)
 					val name = getFileName(obj.getString("name"))
-
+					println(obj.getString("vtText"))
 					val vt = PiFFReader.fromString(obj.getString("vtText"))
 					if (vt.isDefined) {
 						val piff = vt.get
-
+						println(piff)
 						if (piff.page.src != obj.getString("name")) {
 							ok = false
 							break()
@@ -463,7 +463,9 @@ class AgnoscoResource {
 	@Consumes(Array(MediaType.APPLICATION_JSON))
 	def validateExamples(samples: String): Response = {
 		try {
-			val array = new JSONArray(samples)
+			val obj = new JSONObject(samples)
+			println(obj)
+			val array = new JSONArray(obj.getString("valid"))
 			val examples = new ListBuffer[Example]()
 			for(i <- 0 until array.length()) {
 				val id = array.getLong(i)

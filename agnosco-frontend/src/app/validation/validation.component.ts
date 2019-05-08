@@ -6,7 +6,7 @@ import { ValidateDialogComponent } from '../validate-dialog/validate-dialog.comp
 import { HelpValidationComponent } from '../help-validation/help-validation.component';
 import { EndValidationComponent } from '../end-validation/end-validation.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { forEach } from '@angular/router/src/utils/collection';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-validation',
@@ -29,8 +29,9 @@ export class ValidationComponent implements OnInit {
   }
 
   private params = [];
+  private docId;
   private docName;
-  private projectName;
+  private docPrepared;
   private hidden = [];
 
   public pages = [];
@@ -57,7 +58,7 @@ export class ValidationComponent implements OnInit {
   validation: Validation;
 
 
-  constructor(private router: Router, private route: ActivatedRoute, private validationService: ValidationService, public dialog: MatDialog, private http: HttpClient) {
+  constructor(private router: Router, private route: ActivatedRoute, private validationService: ValidationService, public dialog: MatDialog, private http: HttpClient, private sanitizer: DomSanitizer) {
     this.examples = [];
     this.pages = [];
     this.currentPageIndex = 0;
@@ -68,24 +69,31 @@ export class ValidationComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.forEach(param => {
-      this.params.push(param.id);
-    });
+      this.params.push(param.idd);
+      this.params.push(param.named);
+      this.params.push(param.prepared);
+    });    
 
-    console.log("TEEEEEEEEEEEEEST");
-    //test
-    let imPath = "iFbeo6dO+joe/nvuepzHRLZJ.DpejHEZO805+Kd/nerhs=.png";
-    let regex = new RegExp('[.]([a-z]+)');
-    let format = imPath.match(regex)[1];
-    console.log("FORMAT : "+format);
-    
+    this.docId = this.params[0]; // le nom du document est le 1er paramètre
+    console.log("ID du document : " + this.docId);
+    this.docName = this.params[1];
+    this.docPrepared = this.params[2];
 
-    this.docName = this.params[1]; // le nom du document est le 1er paramètre
-    this.projectName = this.params[0];
-    console.log("ID du document : " + this.docName);
+    if(this.docPrepared == "false"){
+      console.log("doc not prepared !!!!!");
+      this.http.post(`agnosco/base/prepareExamplesOfDocument/${this.docId}`, {}, {}).subscribe(response => {
+        console.log(response);
+        console.log("le document a été préparé");
 
-    this.getPages();
+        this.docPrepared = "true";
+        
+        this.getPages();
+      });
+    }
 
-    this.checkPageNumber();
+    else{
+      this.getPages();
+    }
     
   }
 
@@ -100,7 +108,7 @@ export class ValidationComponent implements OnInit {
    */
   getPages(){
     //on récupère la liste des identifiants des pages du doc passé en paramètre 
-    this.validationService.getPages(this.docName).subscribe(returnedData => {
+    this.validationService.getPages(this.docId).subscribe(returnedData => {
       console.log("get pages : ");
       console.log(returnedData);
       
@@ -112,21 +120,11 @@ export class ValidationComponent implements OnInit {
         this.pages.push(id);
       });
 
-      this.currentPage = this.pages[this.currentPageIndex];
-        
-      console.log("current page : " + this.currentPage);   
+      this.checkPageNumber();
 	
 		  this.getPageData();
 
-    });/*
-
-
-    //Test    
-    this.examples.push([1,"data:image/jpeg;base64/fdnjGHLIaUHBFELZBQJRNSKIJOIZEF=", "yo man", true, false]);
-
-    console.log("ex pushed");
-
-    this.hidden.push(false);*/
+    });
   }
 
   
@@ -153,32 +151,38 @@ export class ValidationComponent implements OnInit {
         let extension = returnedData[key].extension;
 
         let imageType = "";
+        console.log("extension : " + extension);
 
         switch(extension) {
           case "jpg": {
             imageType = "jpeg";
+            break;
           }
           case "tif": {
+            console.log("MOOUUUUUUUAAAAAAAAAAAAAA");
             imageType = "tiff";
+            break;
           }
           default: {
             imageType = extension;
+            break;
           }
         }
 
-        console.log("type de l'image = " + imageType)
-
         let path64 = "data:image/" + imageType + ";base64," + image64;
-        console.log("path base 64 : ");
-        console.log(path64);
 
-        let newExample = [id, path64, transcript, enabled, validated];
+        let securePath64 = this.sanitizer.bypassSecurityTrustUrl(path64);
+
+        let newExample = [id, securePath64, transcript, enabled, validated];
 
         this.examples.push(newExample);
         this.hidden.push(!enabled);
       });
-    });
-
+    },
+      error => {
+        console.log("catch error:", error);
+      }
+    );
   }
 
 
@@ -186,6 +190,7 @@ export class ValidationComponent implements OnInit {
    * Méthode qui vérifie si on est à la 1e ou à la dernière page
    */
   checkPageNumber(){
+    console.log("page index : " + this.currentPageIndex);
     if(this.currentPageIndex == 0){
       //on grise la 1e flèche
       this.isFirstPage = true;
@@ -199,6 +204,7 @@ export class ValidationComponent implements OnInit {
     }else{
       this.isLastPage = false;
     }
+
     this.currentPage = this.pages[this.currentPageIndex];
     console.log("check page : " + this.currentPage);
   }
@@ -280,15 +286,15 @@ export class ValidationComponent implements OnInit {
   validateAll(){
     console.log("Validation");
 
-    let str = "[\n";
+    let str = "[";
 
     let notEmpty = false;
 
     for (let i = 0; i < this.examples.length; i++) {
       let e = this.examples[i];
-      if(e[3] === true){ //si l'exemple est validé
-        str.concat(e[0]);
-        //str = str.concat("{\n\'id\':" + e[2] + ",\n\'imagePath\':\"" + e[0] + "\",\n\'transcript\':\"" + e[1] + "\"\n},\n");
+      console.log("exemple enabled : " + e[3]);
+      if(e[3] == true){ //si l'exemple est enabled
+        str = str.concat(e[0] + ",");
       }
       notEmpty = true;
     }
@@ -300,7 +306,7 @@ export class ValidationComponent implements OnInit {
 
     str = str.concat("]");
 
-    console.log(str);
+    console.log("validation string : " + str);
     this.validationService.validateAll(str);
   }
 
