@@ -52,6 +52,13 @@
     background: rgba(255, 255, 255, 0.137);
 }
 
+.boutonVert{
+    position:relative;
+    display: inline-block;
+    float: right;
+    margin-right: 1%;
+}
+
 .textBand{
     background: #110f3d;
     color: rgb(236, 233, 243);
@@ -150,12 +157,15 @@
     border: none;
     float: left;
     margin-left: 10%;
+    background: none;
+
 }
 
 .nextPage {
     border: none;
     float: right;
     margin-right: 10%;
+    background: none;
 }
 
 .pageNumbers {
