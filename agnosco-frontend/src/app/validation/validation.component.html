@@ -14,6 +14,11 @@
   </div>
 
   <div class="validationWindow">
+
+    <div [hidden]="isPrepared()">
+      <p>Manuscrit en cours de découpe...</p>
+    </div>
+
     <ul class="examplesList">
       <li *ngFor="let p of examples ; let i = index" class= "affichage">
         <div [class]= "isEnabled(i) ? 'blocImagettePlusTrans' : 'blocImagettePlusTransHidden'">

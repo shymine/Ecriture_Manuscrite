@@ -136,12 +136,12 @@
 }
 
 .hideButton {
-    border: solid 2px rgb(72, 141, 3); /* à enlever quand y a internet */
+    border: none;
     position: relative;
     float: right;
     margin-right: 5px;
     background: none;
-    min-height: 15px;
+    font-size: 3ch;
 }
 
 .examplesList {
