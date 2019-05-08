@@ -265,7 +265,6 @@ export class ValidationComponent implements OnInit {
    * @param id index de l'exemple dans le tableau ex4
    */
   isEnabled(id){
-    console.log("is enabled ? ", id, " : ", this.ex4[id][3]);
     return this.ex4[id][3];
   }
 
@@ -275,6 +274,7 @@ export class ValidationComponent implements OnInit {
    * @param id index de l'exemple dans le tableau ex4
    */
   isValidated(id){
+    console.log("val : " + this.ex4[id][4]);
     return this.ex4[id][4];
   }
 

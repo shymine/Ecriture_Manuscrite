@@ -464,11 +464,11 @@ export class AnnotationComponent implements OnInit {
       console.log(result);
       if(result == 1) {
         this.sendEdits();
-        this.router.navigate(['']);
+        this.goHome();
         console.log("SEND EDITS ET RETOUR A L'ACCUEIL");
       }else if(result == 2){
         this.sendEdits();
-        this.router.navigate(['/validation',{'id':this.docId}]);
+        this.goToValidation();
         console.log("SEND EDITS ET VALIDATION");
       }else{
         console.log("ANNULATION");
