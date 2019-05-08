@@ -64,6 +64,8 @@ class BlurLineDetector(detectorIp : String, filePort : Int, answerPort : Int) ex
     println("[INFO] Answer received from the line detector")
     val answer = new String(answerBytes)
 
+    if (answer.isEmpty) return List.empty
+
     val lines = {
       val lines = ListBuffer.empty[(Array[Point], Array[Point])]
       answer
