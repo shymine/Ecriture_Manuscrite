@@ -182,12 +182,14 @@
 }
 
 .hideButton {
-    border: solid 2px rgb(72, 141, 3); /* à enlever quand y a internet */
+    border: none;
+    /*border: solid 2px rgb(72, 141, 3);  /*à enlever quand y a internet */
     position: relative;
     float: right;
     margin-right: 5px;
     background: none;
     min-height: 15px;
+    font-size: 3ch;
 }
 
 /* imagettes */
@@ -238,12 +240,12 @@
 /* autres ? */
 
 .annotationWindow {
-    width: 70%;
+    width: 90%;
     min-height: 50vh;
     padding: 5px;
     border: none;
     position: relative;
-    margin-left: 15%;
+    margin-left: 2%;
 }
 
 .affichage {
@@ -259,7 +261,7 @@
     margin-top: 1px;
     margin-bottom: 1px;
     border: solid 1px rgb(166, 164, 170);
-    background: rgb(232, 227, 245);
+    background: rgba(245, 245, 248, 0.623);
     text-align: center;
 }
 
