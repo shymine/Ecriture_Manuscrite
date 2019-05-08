@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { AddDocComponent } from '../add-doc/add-doc.component';
 import { GestionPagesComponent } from '../gestion-pages/gestion-pages.component';
 import { ExportProjetComponent } from '../export-projet/export-projet.component';
-import { relative } from 'path';
+//import { relative } from 'path';
 
 @Component({
   selector: 'app-accueil',
