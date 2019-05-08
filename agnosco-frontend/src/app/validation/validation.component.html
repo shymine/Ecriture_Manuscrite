@@ -29,15 +29,10 @@
             </button>
           </div>
           <div class= "transcription">
-            <p>{{p[2]}}</p>
-          </div>
-        </div>
-        
-        <div class = "buttonDiv">
-          
-          <br>
-          <div [hidden]="isValidated(i) ? false : true">
-            <p class="fas fa-check-circle" style="color:green;font-size: 1.5ch;"></p>
+              <p style="display: inline-block;">{{p[2]}}</p>       
+            <div style="position:relative; display: inline-block; float: right; margin-right: 1%;" [hidden]="isValidated(i) ? false : true">
+              <p class="fas fa-check-circle" style="color:green;font-size: 1.5ch;"></p>
+            </div>
           </div>
         </div>
       </li>
