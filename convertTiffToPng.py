@@ -4,18 +4,16 @@
 # find every tif in the given directory and the ones under it and transform it to png
 
 # pip3 install defusedxml : stdlib xml parsing module is vulnerable to attacks
+# pip3 install Pillow
 
-import os
-import sys
 import os
 import sys
 import subprocess
 import defusedxml.ElementTree as ET
 from PIL import Image
 
-#yourpath = os.getcwd()
 yourpath = sys.argv[1]
-print("yourpath",yourpath)
+print("your path",yourpath)
 for root, dirs, files in os.walk(yourpath, topdown=False):
     for name in files:
         print(os.path.join(root, name))
@@ -41,7 +39,7 @@ for xmlfile in metadata:
 
     try:
         # parsing the XML file
-        xml = ET.parse("{}/{}".format(directory, xmlfile))
+        xml = ET.parse("{}/{}".format(yourpath, xmlfile))
         root = xml.getroot()
 
         doc = root.find("{}DL_DOCUMENT".format(xmlns))
