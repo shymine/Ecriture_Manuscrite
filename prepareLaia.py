@@ -46,9 +46,11 @@ print(imagesNames)
 for imageName in imagesNames:
     try:
         im = Image.open("%s/%s" % (datasetPath, imageName))
-        im.thumbnail(imgSize)
         wsize = int((float(imgSize)*float(im.size[0]))/float(im.size[1]))
-        im.save("%s/%s" %(wsize, imgSize), quality=100)
-    except:
+
+        im.thumbnail((wsize, imgSize))
+        im.save("%s/%s" %(datasetExport, imageName), quality=100)
+    except Exception as e:
         print("unable to load image %s/%s" % (datasetPath, imageName))
+        print(e)
 
