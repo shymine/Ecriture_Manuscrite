@@ -2,10 +2,13 @@ package model.preparation.processing
 
 import model.common.{Example, globalDataFolder}
 import model.preparation.input.piff.PiFF
+import model.preparation.processing.linedetection.BlurLineDetector
 
 import scala.collection.mutable.ListBuffer
 
-object BaseExampleMaker extends ExampleMaker {
+class BaseExampleMaker(detectorIp: String, filePort: Int, answerPort: Int) extends ExampleMaker {
+	val lineDetector = new BlurLineDetector(detectorIp, filePort, answerPort)
+
 	override def makeExamples(p : PiFF): List[Example] = {
 		val examples = new ListBuffer[Example]
 
@@ -29,6 +32,11 @@ object BaseExampleMaker extends ExampleMaker {
 			val imgPath = s"$globalDataFolder/${page.src}"
 			println("img path : " + imgPath)
 			val newExampleImgPath = ImageProcessing.createThumbnail(imgPath, imageId, element.polygon)
+
+			// calling the line detector on the newly created image
+			val polygons = lineDetector.detectLines(imgPath)
+			
+			// TODO : use polygons
 
 			// adding the newly created example to the list
 			examples += Example(-1, removeDataFolderPath(newExampleImgPath), transcript)

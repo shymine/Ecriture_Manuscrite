@@ -2,6 +2,7 @@ import java.io.{File, FileNotFoundException}
 import java.net.URI
 import java.util.logging.Logger
 
+import model.ImplFactory
 import model.preparation.PreparatorImpl
 import org.glassfish.grizzly.http.server.HttpServer
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory
@@ -9,7 +10,7 @@ import org.glassfish.jersey.server.ResourceConfig
 import resource.AgnoscoResource
 
 import scala.collection.mutable.ArrayBuffer
-import model.common.{globalDataFolder, pythonImageCropperExecutablePath, globalExportFolder}
+import model.common.{globalDataFolder, globalExportFolder, pythonImageCropperExecutablePath}
 
 object Main {
 	// Base URI the Grizzly HTTP server will listen on
@@ -41,9 +42,12 @@ object Main {
 
 	def main(args: Array[String]) : Unit = {
 		//environmentSetup()
-	    val server = startServer()
-	    System.in.read()
-	    server.shutdownNow()
+		// java -jar agnosco.jar 8.8.8.8 7000 7001
+		ImplFactory.setConnectionData(args(0), args(1).toInt, args(2).toInt)
+
+		val server = startServer()
+		System.in.read()
+		server.shutdownNow()
 	}
 
 	/*
