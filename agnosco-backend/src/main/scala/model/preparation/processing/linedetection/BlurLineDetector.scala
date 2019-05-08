@@ -72,7 +72,7 @@ class BlurLineDetector(detectorIp : String, filePort : Int, answerPort : Int) ex
         .split('\n') // Array[String]
         .toStream // Stream[String] : lazy evaluation
 
-        // remove "Haut:", "Bas:" at the beginning
+        // remove "Haut:", "Bas:xxx:" at the beginning
         .map(_.split(':').last) // Stream[String]
 
         // get a list of "x,y" points from a "x1,y1;x2,y2;x3,y3..." String
@@ -100,36 +100,32 @@ class BlurLineDetector(detectorIp : String, filePort : Int, answerPort : Int) ex
     }
 
     // building min and max X and Y values from the lines
-    val rects = {
-      def foldLeft2[A, T](a1: Array[T], a2: Array[T], initAcc: A, f: (A, T) => A): A = {
-        a2.foldLeft(a1.foldLeft(initAcc)(f))(f)
-      }
-
-      def f(acc: (Int, Int, Int, Int), p: Point): (Int, Int, Int, Int) = {
-        val (minX, minY, maxX, maxY) = acc
-        val minX2 = if (minX == -1 || p.x < minX) p.x else minX
-        val minY2 = if (minY == -1 || p.y < minY) p.x else minY
-        val maxX2 = if (maxX == -1 || p.x > maxX) p.x else maxX
-        val maxY2 = if (maxY == -1 || p.y > maxY) p.x else maxY
-        (minX2, minY2, maxX2, maxY2)
-      }
-
+    val rects =
       lines.map(line => {
         val (up, down) = line
-        foldLeft2(up, down, (-1, -1, -1, -1), f)
-      })
-    } // List[(Int, Int, Int, Int)]
+        val xsu = up.map(_.x)
+        val ysu = up.map(_.y)
+        val xsd = down.map(_.x)
+        val ysd = down.map(_.y)
+        (List(xsu.min, xsd.min).min,
+         List(ysu.min, ysd.min).min,
+         List(xsu.max, xsd.max).max,
+         List(ysu.max, ysd.max).max)
+      }) // List[(Int, Int, Int, Int)]
 
-    // making polygons from 4 values (5% margin)
+    // making polygons from 4 values (6% margin)
     val polygons = rects.map(rect => {
-      val marginRate = 0.05
+      val marginRate = 0.06
       val (minX, minY, maxX, maxY) = rect
-      val (height, width) = (maxX - minX, maxY - minY)
-      val minX2 = (minX - marginRate * height).toInt
-      val minY2 = (minY - marginRate * width).toInt
-      val maxX2 = (maxX + marginRate * height).toInt
-      val maxY2 = (maxY + marginRate * width).toInt
-      new Polygon(List(new Point(minX2, minY2), new Point(maxX2, maxY2)))
+      val (dx, dy) = (maxX - minX, maxY - minY)
+      val minX2 = (minX - marginRate * dx).toInt
+      val minY2 = (minY - marginRate * dy).toInt
+      val maxX2 = (maxX + marginRate * dx).toInt
+      val maxY2 = (maxY + marginRate * dy).toInt
+      new Polygon(
+        List(
+          new Point(if (minX2 > 0) minX2 else 0, if (minY2 > 0) minY2 else 0),
+          new Point(maxX2, maxY2)))
     }) // List[Polygon]
 
     println(answer)

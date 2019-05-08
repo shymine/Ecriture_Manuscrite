@@ -13,6 +13,8 @@ object ImageProcessing {
           (xmin min p.x, ymin min p.y, xmax max p.x, ymax max p.y)
       }
 
+    println((x1, y1, x2, y2))
+
     val col = x1
     val row = y1
     val width = x2 - x1
