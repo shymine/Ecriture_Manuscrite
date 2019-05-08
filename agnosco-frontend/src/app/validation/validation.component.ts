@@ -98,6 +98,16 @@ export class ValidationComponent implements OnInit {
   }
 
 
+  isPrepared(){
+    console.log("doc prep : " + this.docPrepared);
+    if(this.docPrepared == "false"){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+
   goHome(){
     this.router.navigate(['']);
   }

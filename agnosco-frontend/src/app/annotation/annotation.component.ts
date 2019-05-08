@@ -107,15 +107,24 @@ export class AnnotationComponent implements OnInit {
       this.http.post(`agnosco/base/prepareExamplesOfDocument/${this.docId}`, {}, {}).subscribe(response => {
         console.log(response);
         console.log("le document a été préparé");
-
-        this.docPrepared = "true";
         
         this.getPages();
+
+        this.docPrepared = "true";
       });
     }
 
     else{
       this.getPages();
+    }
+  }
+
+  isPrepared(){
+    console.log("doc prep : " + this.docPrepared);
+    if(this.docPrepared == "false"){
+      return false;
+    }else{
+      return true;
     }
   }
 
@@ -180,6 +189,8 @@ export class AnnotationComponent implements OnInit {
    * Méthode qui récupère la liste des pages sous forme d'id.
    */
   getPages(){
+    this.pages = [];
+
     //on récupère la liste des identifiants des pages du doc passé en paramètre 
     this.validationService.getPages(this.docId).subscribe(returnedData => {
       console.log("get pages : ");
