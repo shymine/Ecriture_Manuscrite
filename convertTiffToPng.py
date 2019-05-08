@@ -60,7 +60,7 @@ for xmlfile in metadata:
                 page.set("src", filename + ".png")
         
             # saving the modified xml file
-            xml.write("{}/{}.xml".format(yourpath, xmlfile))
+            xml.write("{}/{}".format(yourpath, xmlfile))
 
     except ET.ParseError:
         print("Error: File '{}' is not well formed.".format(xmlfile))
