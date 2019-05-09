@@ -33,12 +33,17 @@ object BaseExampleMaker extends ExampleMaker {
 			val imgPath = s"$globalDataFolder/${page.src}"
 			println("img path : " + imgPath)
 			val paragraphImgPath = ImageProcessing.createThumbnail(imgPath, imageId, element.polygon)
-			//examples += Example(-1, removeDataFolderPath(paragraphImgPath), transcript)
 
 			// calling the line detector on the newly created image
-			val polygons = lineDetector.detectLines(paragraphImgPath)
+			lazy val polygons = lineDetector.detectLines(paragraphImgPath)
 
-			if (polygons.nonEmpty) {
+			if (common.disableLineDetector) {
+				// line detector is disabled, adding the paragraph into the examples
+				examples += Example(-1, removeDataFolderPath(paragraphImgPath), transcript)
+			} else if (polygons.isEmpty) {
+				// enabled but no answer (means no lines detected)
+				examples += Example(-1, removeDataFolderPath(paragraphImgPath), transcript, enabled = false)
+			} else {
 				// get the line lengths
 				val lineLengths =
 					polygons.map(polygon => {
@@ -83,9 +88,6 @@ object BaseExampleMaker extends ExampleMaker {
 
 				// adding the newly created examples to the list
 				examples ++= newExamples
-			} else {
-				// polygons empty => no lines detected
-				examples += Example(-1, removeDataFolderPath(paragraphImgPath), transcript, enabled = false)
 			}
 
 			imageId += 1

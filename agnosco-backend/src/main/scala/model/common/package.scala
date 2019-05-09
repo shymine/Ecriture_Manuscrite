@@ -7,4 +7,5 @@ package object common {
   val detectorIp = "192.168.1.12"
   val filePort = 7007
   val answerPort = 7008
+  val disableLineDetector = true
 }
