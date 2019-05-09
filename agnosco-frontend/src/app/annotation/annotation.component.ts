@@ -291,20 +291,67 @@ export class AnnotationComponent implements OnInit {
   }
 
   getNext4(){
-    this.ex4 = [];
+    console.log("get next 4");
 
-    for(let i = this.compteur4; i< this.compteur4 + 4 ; i+=1){
-      if(this.examples[i] != undefined){
-        this.ex4.push(this.examples[i]);
-      }else{
-        console.log("element pas pushed car undefined");
+    if(this.compteur4 > this.examples.length){
+      console.log("pas possible, fin du doc");
+      this.endAnnotation();
+    }else{
+      this.ex4 = [];
+
+      for(let i = this.compteur4; i< this.compteur4 + 4 ; i+=1){
+        if(this.examples[i] != undefined){
+          this.ex4.push(this.examples[i]);
+        }else{
+          console.log("element pas pushed car undefined");
+        }
       }
+
+      this.compteur4 += 4;
+
+      console.log("new ex4 :");
+      console.log(this.ex4);
     }
+  }
 
-    this.compteur4 += 4;
+  getPrevious4(){
+    console.log("get previous 4");
 
-    console.log("new ex4 :");
-    console.log(this.ex4);
+    if((this.compteur4-8) < 0){
+      console.log("pas possible, déjà au début");
+    }else{
+      this.ex4 = [];
+
+      for(let i = this.compteur4 - 8; i< this.compteur4 - 4 ; i+=1){
+        if(this.examples[i] != undefined){
+          this.ex4.push(this.examples[i]);
+        }else{
+          console.log("element pas pushed car undefined");
+        }
+      }
+
+      this.compteur4 -= 4;
+
+      console.log("new ex4 :");
+      console.log(this.ex4);
+    }
+  }
+
+  isBegining(){
+    if((this.compteur4-8) < 0){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  
+  isEnd(){
+    console.log("ex4 : ", this.compteur4, " / length : ", this.examples.length);
+    if((this.compteur4) > this.examples.length){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   /**
@@ -428,9 +475,10 @@ export class AnnotationComponent implements OnInit {
       //si elle a été modifiée et si l'exemple est enabled, on ajoute l'exemple dans str
       if(this.ex4[i][2] !== newTranscript && this.ex4[i][3]){
         str = str.concat("\n{\n\'id\':" + e[0] + ",\n\'transcript\':\"" + newTranscript + "\"\n},");
+      
+        notEmpty = true;
       }
 
-      notEmpty = true;
     }
 
     //on enlève la dernière virgule s'il y a au moins un exemple dans la string
@@ -486,19 +534,20 @@ export class AnnotationComponent implements OnInit {
       Object.keys(returnedData).forEach( key => {
         if(returnedData[key].id == this.projectId){
 
-        }
-        let docs = returnedData[key].documents;
-        docs.forEach(element => {
-          if(element.id != this.docId){
-            this.docMmPro.push(element);
-          }
-        });;
-
-        console.log(".............");
         
+          let docs = returnedData[key].documents;
+          docs.forEach(element => {
+            if(element.id != this.docId){
+              this.docMmPro.push(element);
+            }
+          });
 
-        console.log(this.docMmPro);
-        console.log("............");
+          console.log(".............");
+          
+
+          console.log(this.docMmPro);
+          console.log("............");
+        }
       });
     });
   }
