@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSelect} from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { HttpClient } from '@angular/common/http';
-import { projection } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-mydialog',
@@ -15,20 +14,17 @@ export class MydialogComponent implements OnInit {
 
   public reconnaisseurs = [];
 
-
+  /* *** CREATION D'UN PROJET *** */
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<MydialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     
   }
 
   ngOnInit() {
-    /* */
-    console.log("*** GET agnosco/base/availableRecogniser ***");
-    //this.reconnaisseurs.push("rec 1");
-    //this.reconnaisseurs.push("rec 2");
-    //this.reconnaisseurs.push("rec 3");
 
+    console.log("*** GET agnosco/base/availableRecogniser ***");
     
+    // afficher les reconnaisseurs disponibles
     this.http.get(`agnosco/base/availableRecogniser`,{}).subscribe(returnedData => {
       console.log(returnedData);
 
@@ -38,6 +34,8 @@ export class MydialogComponent implements OnInit {
       });
     });
   }
+
+  /* ANNULER: onNoClick | VALIDATION: onValidation */
 
   onNoClick(): void {
     console.log(this.pName);

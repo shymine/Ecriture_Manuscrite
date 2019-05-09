@@ -30,6 +30,7 @@ export class AccueilComponent implements OnInit {
     
   }
 
+  /* affichage de tous les projets et docs: rangement dans this.projects */
   getAllProjects() {
   
     console.log("*** GET /base/projectsAndDocuments ***");
@@ -65,49 +66,7 @@ export class AccueilComponent implements OnInit {
     });
   }
 
-  deletePro(p) {
-    console.log("//////////////////////////");
-    console.log(p);
-
-    const dialogRef = this.dialog.open(SuppressionDialogComponent, {
-      data : {
-        'support': "projet",
-        'nom' : p[0]
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-
-      if(result){
-        this.http.delete(`agnosco/base/deleteProject/${p[1]}`).subscribe(returnedData =>{
-          this.getAllProjects();
-        });
-      }
-    });
-  }
-
-  deleteDoc(doc) {
-
-    console.log("*** DELETE `agnosco/base/deleteDocument/{" + doc.id +"} ***");
-    console.log("doc name:" + doc.name);
-
-    const dialogRef = this.dialog.open(SuppressionDialogComponent, {
-      data: {
-        'support':"document",
-        'nom': doc.name
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-
-      if(result){
-        this.http.delete(`agnosco/base/deleteDocument/${doc.id}`).subscribe(returnedData =>{
-          this.getAllProjects();
-        });
-      }
-    });
-    
-  }
+  /* CREATION D'UN NOUVEAU PROJET : navigation vers my-dialog */
 
   openDialog(): void {
     const dialogRef = this.dialog.open(MydialogComponent, {});
@@ -129,35 +88,13 @@ export class AccueilComponent implements OnInit {
     });
   }
 
-  showActions(ev){
-    let es = ev.originalTarget.parentNode.parentNode.lastChild;
-    if(es.hidden) {
-      es.hidden = false;
-    }else {
-      es.hidden = true;
-    }
-  }
+  /* icones de gestions des projets/ doc/ pages: gestion des 'hidden' */
 
-  showXActions(ev){
-    let el = ev.originalTarget.parentNode.children[1];
-    let el2 = ev.originalTarget.parentNode.children[2];
-    el.hidden = false;
-    el2.hidden = false;
-  }
-
-  hideActions(ev){
-    let el = ev.originalTarget.lastChild;
-    let es = ev.originalTarget.firstChild.children[1];
-    let es2 = ev.originalTarget.firstChild.children[2];
-    el.hidden = true;
-    es.hidden = true;
-    es2.hidden = true;
-  }
-
+  /* icones des projets: chariot:export | plus:addDoc | croix: suppression*/
   showX(ev) {
-    let elX = ev.originalTarget.children[1];
-    let elY = ev.originalTarget.children[2];
-    let elZ = ev.originalTarget.children[3];
+    let elX = ev.originalTarget.children[1]; //export
+    let elY = ev.originalTarget.children[2]; // addDoc
+    let elZ = ev.originalTarget.children[3]; //suppression
     elX.hidden = false;
     elY.hidden = false;
     elZ.hidden = false;
@@ -172,9 +109,37 @@ export class AccueilComponent implements OnInit {
     elZ.hidden = true;
   }
 
-  goToDecoupe(){
-    this.router.navigate(['/decoupe']);
+  /* icones de documents: chariot: export | croix: suppression */
+
+  showXActions(ev){
+    let el = ev.originalTarget.parentNode.children[1]; // export
+    let el2 = ev.originalTarget.parentNode.children[2]; // suppression
+    el.hidden = false;
+    el2.hidden = false;
   }
+
+  /* affichage de la liste des actions possibles (annotation, validation, gestion des pages) */
+
+  showActions(ev){
+    let es = ev.originalTarget.parentNode.parentNode.lastChild;
+    if(es.hidden) {
+      es.hidden = false;
+    }else {
+      es.hidden = true;
+    }
+  }
+
+  hideActions(ev){
+    // lorsque le pointeurs quitte l'espace du document, les actions sont à nous cachées
+    let el = ev.originalTarget.lastChild; // liste des actions (annotation, validation, gestion des pages)
+    let es = ev.originalTarget.firstChild.children[1]; // export
+    let es2 = ev.originalTarget.firstChild.children[2]; // suppression
+    el.hidden = true;
+    es.hidden = true;
+    es2.hidden = true;
+  }
+
+  /* NAVIGATION: actions sur les documents: annotation , validation, gestion des pages, suppression, exportation */
 
   goToAnnotation(d,p){
     console.log("annotation");
@@ -237,6 +202,7 @@ export class AccueilComponent implements OnInit {
     });
   }
 
+  //ajout un document
   addDoc(p){
     console.log("addDoc");
     console.log(p);
@@ -277,12 +243,60 @@ export class AccueilComponent implements OnInit {
       }
     });
   }
-
+  
+  // gère les erreurs d'importation de pages: voir addDoc ou gestionPages 
   fermerAlert(){
     this.alertMessage.hide = true;
     this.alertMessage.message = "Rien à signaler";
   }
+
+  //  supprime un projet et les documents qu'il contient
+  deletePro(p) {
+    console.log("//////////////////////////");
+    console.log(p);
+
+    const dialogRef = this.dialog.open(SuppressionDialogComponent, {
+      data : {
+        'support': "projet",
+        'nom' : p[0]
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if(result){
+        this.http.delete(`agnosco/base/deleteProject/${p[1]}`).subscribe(returnedData =>{
+          this.getAllProjects();
+        });
+      }
+    });
+  }
+
+  // supprime un document
+  deleteDoc(doc) {
+
+    console.log("*** DELETE `agnosco/base/deleteDocument/{" + doc.id +"} ***");
+    console.log("doc name:" + doc.name);
+
+    const dialogRef = this.dialog.open(SuppressionDialogComponent, {
+      data: {
+        'support':"document",
+        'nom': doc.name
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if(result){
+        this.http.delete(`agnosco/base/deleteDocument/${doc.id}`).subscribe(returnedData =>{
+          this.getAllProjects();
+        });
+      }
+    });
+    
+  }
   
+  //exporte un projet (plusieurs documents)
   exportP(p){
     console.log("export");
     console.log(p);
@@ -298,6 +312,7 @@ export class AccueilComponent implements OnInit {
 
   }
 
+  //exporte un document
   exportD(d){
     console.log("export");
     console.log(d);
@@ -309,7 +324,6 @@ export class AccueilComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.getAllProjects();
     });
-
   }
 
 }

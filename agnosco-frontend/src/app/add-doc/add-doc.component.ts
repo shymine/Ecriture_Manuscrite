@@ -21,11 +21,78 @@ export class AddDocComponent implements OnInit {
     console.log(data.id);
 
     this.id = data.id;
-
   }
 
   ngOnInit() {
   }
+
+  /* VALIDER: onValidation | ANNULER: onNoClick() */
+
+  onNoClick(): void {
+    console.log("");
+    this.dialogRef.close(0);
+  }
+
+/*
+  pages sont de la forme:
+  {
+    'nameVT' : nvt,
+    'fichierImage' : imb64,
+    'fichierVT' : vt
+  }
+*/
+
+  onValidation(): void {
+
+    console.log("validation");
+
+    const json = {
+      'name': this.dName,
+      'pages': this.pages
+    }
+
+    console.log(json);
+    /* answer: 0->ok 1->vt_inc 2->nom_inc 3->vt_nom_inc -1->id_inc */
+
+    if(this.id>=0){
+      this.http.post(`agnosco/base/addDocToProject/${this.id}`,json,{}).subscribe(data => {
+        console.log("data:"+data);
+        this.dialogRef.close(0);
+      },
+      error => {
+        console.log("catch error:", error.error.error);
+        let answer = error.error.error + 1;
+        console.log("answer:",answer);
+        this.dialogRef.close(answer);
+      });
+    }else{
+      console.log("FAIL ID");
+      this.dialogRef.close(-1);
+    }
+  }
+
+  /* AJOUT et SUPPRESSION de pages dans la liste des pages à enregistrer dans la base de données */
+
+  plusPage(){
+    console.log("add one page");
+    this.pages.push({'name':"default", 'image64': "default", 'vtText':"default"});
+    console.log(this.pages);
+  }
+
+  deletePage(page){
+    console.log("DELETE ONE PAGE");
+
+    for (var _i = page; _i < this.pages.length; _i++){
+      this.pages[_i] = this.pages[_i+1];
+    }
+    this.pages.pop();
+
+    console.log("end of delete page");
+    console.log(this.pages);
+    
+  }
+
+  /* ECODAGE DES IMAGES / VT IMPORTES */
 
   encodeImageFile(param) {
 
@@ -88,66 +155,4 @@ export class AddDocComponent implements OnInit {
     reader.readAsText(file);
     console.log("j'encode");
   }
-
-  onNoClick(): void {
-    console.log("");
-    this.dialogRef.close(0);
-  }
-  /*
-  pages sont de la forme:
-  {
-    'nameVT' : nvt,
-    'fichierImage' : imb64,
-    'fichierVT' : vt
-  }
-  */
-
-  onValidation(): void {
-
-    console.log("validation");
-
-    const json = {
-      'name': this.dName,
-      'pages': this.pages
-    }
-
-    console.log(json);
-    /* answer: 0->ok 1->vt_inc 2->nom_inc 3->vt_nom_inc -1->id_inc */
-
-    if(this.id>=0){
-      this.http.post(`agnosco/base/addDocToProject/${this.id}`,json,{}).subscribe(data => {
-        console.log("data:"+data);
-        this.dialogRef.close(0);
-      },
-      error => {
-        console.log("catch error:", error.error.error);
-        let answer = error.error.error + 1;
-        console.log("answer:",answer);
-        this.dialogRef.close(answer);
-      });
-    }else{
-      console.log("FAIL ID");
-      this.dialogRef.close(-1);
-    }
-  }
-
-  plusPage(){
-    console.log("add one page");
-    this.pages.push({'name':"default", 'image64': "default", 'vtText':"default"});
-    console.log(this.pages);
-  }
-
-  deletePage(page){
-    console.log("DELETE ONE PAGE");
-
-    for (var _i = page; _i < this.pages.length; _i++){
-      this.pages[_i] = this.pages[_i+1];
-    }
-    this.pages.pop();
-
-    console.log("end of delete page");
-    console.log(this.pages);
-    
-  }
-
 }
