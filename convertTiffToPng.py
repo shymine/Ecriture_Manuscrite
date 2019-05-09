@@ -13,7 +13,8 @@ import defusedxml.ElementTree as ET
 from PIL import Image
 
 yourpath = sys.argv[1]
-print("your path",yourpath)
+os.mkdir("./maurdor/png")
+print("your path", yourpath)
 for root, dirs, files in os.walk(yourpath, topdown=False):
     for name in files:
         print(os.path.join(root, name))
@@ -24,9 +25,12 @@ for root, dirs, files in os.walk(yourpath, topdown=False):
                 outfile = os.path.splitext(os.path.join(root,name))[0]+".png"
                 try:
                     im = Image.open(os.path.join(root,name))
+
                     print("generating png for %s" % name)
-                    im.thumbnail(im.size)
-                    im.save(outfile, "PNG", quality=100)
+                    # im.thumbnail(im.size)
+                    # im.save(outfile, "PNG", quality=
+                    without_extension = name.split(".")[0]
+                    im.save("./maurdor/png/%s.png" % without_extension, "PNG", quality=100)
                 except Exception as e:
                     print(e)
 

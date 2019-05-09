@@ -71,9 +71,10 @@ for image in images:
 
         # changing the image source for each page
         for new_image in newly_created_images:
-            page_id = new_image[-5]
+            # page_id = new_image[-5]
+            page_id = new_image[len(filename):-4]
 
-            pages_with_right_id = [p for p in pages if p.get("pageID") == str(page_id)]
+            pages_with_right_id = [p for p in pages if p.get("pageID") == page_id]
             if len(pages_with_right_id) != 1:
                 print("no right id or several")
                 raise ET.ParseError()

@@ -9,8 +9,12 @@ import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory
 import org.glassfish.jersey.server.ResourceConfig
 import resource.AgnoscoResource
 
-import scala.collection.mutable.ArrayBuffer
-import model.common.{globalDataFolder, globalExportFolder, pythonImageCropperExecutablePath}
+import scala.collection.mutable.{ArrayBuffer, ListBuffer}
+import model.common.{Example, globalDataFolder, globalExportFolder, pythonImageCropperExecutablePath}
+import model.preparation.input.PiFFReader
+import model.preparation.processing.{BaseExampleMaker, ImageProcessing}
+import model.preparation.processing.BaseExampleMaker.{lineDetector, removeDataFolderPath}
+import model.preparation.processing.linedetection.BlurLineDetector
 
 object Main {
 	// Base URI the Grizzly HTTP server will listen on
@@ -46,10 +50,4 @@ object Main {
 		System.in.read()
 		server.shutdownNow()
 	}
-
-	/*
-	def main(args: Array[String]) : Unit = {
-		val bld = new BlurLineDetector("10.132.11.85", "10.132.9.2", 7007)
-		val _ = bld.detectLines("/Users/cloudyhug/Desktop/DetectLignes-v1.0/Images/19180116_05.jpg")
-	}*/
 }

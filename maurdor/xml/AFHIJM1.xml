@@ -1,0 +1,92 @@
+<ns0:GEDI xmlns:ns0="http://lamp.cfar.umd.edu/media/projects/GEDI/" GEDI_date="12/23/2011" GEDI_version="2.3.19">
+	<ns0:USER date="4/4/2012 11:14" dateFormat="mm/dd/yyyy hh:mm" name="Laure">	</ns0:USER>
+	<ns0:USER date="10/16/2012 16:42" dateFormat="mm/dd/yyyy hh:mm" name="MDR-P4">	</ns0:USER>
+	<ns0:USER date="10/31/2012 15:32" dateFormat="mm/dd/yyyy hh:mm" name="MDR-P8">	</ns0:USER>
+	<ns0:USER date="3/2/2012 12:48" dateFormat="mm/dd/yyyy hh:mm" name="Mailys">	</ns0:USER>
+	<ns0:USER date="5/24/2012 11:17" dateFormat="mm/dd/yyyy hh:mm" name="Manuela">	</ns0:USER>
+	<ns0:USER date="2/3/2012 14:11" dateFormat="mm/dd/yyyy hh:mm" name="test">	</ns0:USER>
+	<ns0:DL_DOCUMENT NrOfPages="1" docTag="xml" src="AFHIJM.tif">
+		<ns0:DL_PAGE Category="C1" Document_Date="" Document_Location="02/04/2012" Document_Object="FLAG LOAN REQUEST" Language_1="english" Language_2="french" Language_3="" Language_4="" NumPage="1" Receiver_Address="" Receiver_Company="U.S. Departement of State" Receiver_Fax="" Receiver_Name="John BAUER" Receiver_Phone="" Script_1="typed" Script_2="hand" Sender_Address="" Sender_Company="NICE EVENT AGENCY" Sender_Fax="" Sender_Name="Nathalie NOEL" Sender_Phone="&#164;{+33(0)4.74.90.57.74|+33(0)6.58.90.30.85}&#164;" gedi_type="DL_PAGE" height="2340" pageID="1" src="AFHIJM1.tif" width="1654">
+			<ns0:DL_ZONE col="713" contents="U.S. Departement of State" gedi_type="TextRegion" height="27" id="1" language="english" row="254" script="typed" width="230"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="657" contents="FLAG LOAN REQUEST" function_1="title" function_2="object" gedi_type="TextRegion" height="33" id="2" language="english" row="298" script="typed" width="339"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="591" contents="SECTION 1: REQUESTER'S INFORMATION" gedi_type="TextRegion" height="28" id="3" language="english" row="343" script="typed" width="478"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="236" contents="NOEL" gedi_type="TextRegion" height="39" id="5" language="english" nextZoneID="6" row="413" script="hand" width="130"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="523" contents="Nathalie" gedi_type="TextRegion" height="42" id="6" language="english" row="411" script="hand" width="194"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="902" contents="Ms" gedi_type="TextRegion" height="65" id="7" language="english" row="403" script="hand" width="54"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="982" contents="Request Date (mm-dd-yyyy)" gedi_type="TextRegion" height="28" id="8" language="english" nextZoneID="9" row="383" script="typed" width="258"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="997" contents="01 . 04 . 2012" gedi_type="TextRegion" height="42" id="9" language="english" row="414" script="hand" width="247"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1255" contents="Return Date (mm-dd-yyyy)" gedi_type="TextRegion" height="26" id="10" language="english" nextZoneID="11" row="383" script="typed" width="242"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1267" contents="02 . 04 . 2012" gedi_type="TextRegion" height="45" id="11" language="english" row="411" script="hand" width="243"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="151" contents="Requesting Agency (If Other Than Departement of State)" gedi_type="TextRegion" height="23" id="12" language="english" nextZoneID="13" row="476" script="typed" width="508"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="271" contents="NICE EVENT AGENCY" gedi_type="TextRegion" height="47" id="13" language="english" row="499" script="hand" width="463"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="836" contents="Room" gedi_type="TextRegion" height="20" id="14" language="english" nextZoneID="15" row="473" script="typed" width="55"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="857" contents="13" gedi_type="TextRegion" height="48" id="15" language="english" row="493" script="hand" width="70"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1016" contents="Building" gedi_type="TextRegion" height="26" id="16" language="english" nextZoneID="17" row="470" script="typed" width="78"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1104" contents="GREEN TOWER" gedi_type="TextRegion" height="52" id="17" language="english" row="481" script="hand" width="328"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="150" contents="Office Phone" gedi_type="TextRegion" height="23" id="18" language="english" nextZoneID="19" row="562" script="typed" width="124"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="191" contents="+33 . 4. 74.90.57.74" gedi_type="TextRegion" height="64" id="19" language="english" row="572" script="hand" width="466"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="834" contents="Mobile Phone" gedi_type="TextRegion" height="22" id="20" language="english" nextZoneID="21" row="560" script="typed" width="128"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="946" contents="+33.658 . 90 30.85" gedi_type="TextRegion" height="62" id="21" language="english" row="569" script="hand" width="458"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="617" contents="SECTION 2: REQUEST INFORMATION" gedi_type="TextRegion" height="28" id="22" language="english" row="644" script="typed" width="432"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="148" contents="Flags" gedi_type="TextRegion" height="26" id="23" language="english" nextZoneID="24" row="686" script="typed" width="57"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="350" contents="To be advised ." gedi_type="TextRegion" height="61" id="24" language="english" row="700" script="hand" width="326"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="149" contents="Number of Bases" gedi_type="TextRegion" height="24" id="25" language="english" nextZoneID="26" row="954" script="typed" width="164"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="319" contents="10" gedi_type="TextRegion" height="52" id="26" language="english" row="974" script="hand" width="57"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="494" contents="Number of Spires" gedi_type="TextRegion" height="27" id="27" language="english" nextZoneID="28" row="952" script="typed" width="163"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="694" contents="4" gedi_type="TextRegion" height="59" id="28" language="english" row="967" script="hand" width="40"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="834" contents="Number of Eagles" gedi_type="TextRegion" height="24" id="29" language="english" nextZoneID="30" row="952" script="typed" width="172"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1024" contents="4" gedi_type="TextRegion" height="57" id="30" language="english" row="972" script="hand" width="40"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1179" contents="Number of Poles" gedi_type="TextRegion" height="23" id="31" language="english" nextZoneID="32" row="954" script="typed" width="157"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1346" contents="4" gedi_type="TextRegion" height="59" id="32" language="english" row="971" script="hand" width="36"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="148" contents="Event Location" gedi_type="TextRegion" height="25" id="33" language="english" nextZoneID="34" row="1041" script="typed" width="141"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="356" contents="500 Chemin du Val de Pomme . BIOT . FRANCE" gedi_type="TextRegion" height="63" id="34" language="french" row="1044" script="hand" width="1151"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="144" contents="Purpose" gedi_type="TextRegion" height="26" id="35" language="english" nextZoneID="36" row="1130" script="typed" width="85"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="330" contents="Big birthday party" gedi_type="TextRegion" height="92" id="36" language="english" row="1142" script="hand" width="491"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="149" contents="NOTE: In signing for this equipment it is understood that you are responsible for its return to Support Services. If the flags are not returned, or returned&#10;damaged your office will be financially responsible. Please be sure to receive a receipt when you return this equipment." function_1="text_section" gedi_type="TextRegion" height="51" id="37" language="english" row="1309" script="typed" width="1361"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="490" contents="Noel" gedi_type="TextRegion" height="90" id="38" language="english" row="1347" script="hand" width="120"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="562" contents="Signature" gedi_type="TextRegion" height="24" id="39" language="english" row="1420" script="typed" width="95"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1242" contents="01.04.2012" gedi_type="TextRegion" height="42" id="40" language="english" row="1364" script="hand" width="245"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1204" contents="Date (mm-dd-yyyy)" gedi_type="TextRegion" height="32" id="41" language="english" nextZoneID="40" row="1412" script="typed" width="178"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="622" contents="SECTION 3: REQUEST PROCESSING" gedi_type="TextRegion" height="26" id="42" language="english" row="1454" script="typed" width="409"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="143" contents="Authorizing Official (Last, First, MI)" gedi_type="TextRegion" height="23" id="43" language="english" nextZoneID="44" row="1495" script="typed" width="326"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="226" contents="BAUER" gedi_type="TextRegion" height="55" id="44" language="english" row="1517" script="hand" width="149"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="634" contents="John" gedi_type="TextRegion" height="45" id="45" language="english" row="1517" script="hand" width="123"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="970" contents="Mr" gedi_type="TextRegion" height="32" id="46" language="english" row="1528" script="hand" width="54"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1042" contents="Date Must be Returned by (mm-dd-yyyy)" gedi_type="TextRegion" height="27" id="47" language="english" nextZoneID="48" row="1490" script="typed" width="378"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1076" contents="02.04.2012 ." gedi_type="TextRegion" height="52" id="48" language="english" row="1515" script="hand" width="279"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="687" contents="SECTION 4: CLOSE-OUT" gedi_type="TextRegion" height="27" id="49" language="english" row="1577" script="typed" width="275"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="148" contents="Returned to (Last, First, MI)" gedi_type="TextRegion" height="30" id="50" language="english" nextZoneID="51" row="1617" script="typed" width="255"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="181" contents="BAUER" gedi_type="TextRegion" height="49" id="51" language="english" row="1644" script="hand" width="165"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="641" contents="John" gedi_type="TextRegion" height="47" id="52" language="english" row="1645" script="hand" width="123"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="961" contents="Mr" gedi_type="TextRegion" height="54" id="53" language="english" row="1634" script="hand" width="63"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1046" contents="Date Returned (mm-dd-yyyy)" gedi_type="TextRegion" height="31" id="54" language="english" nextZoneID="55" row="1614" script="typed" width="266"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1067" contents="02.04. 2012 ." gedi_type="TextRegion" height="67" id="55" language="english" row="1640" script="hand" width="341"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="561" contents="Signature" gedi_type="TextRegion" height="25" id="56" language="english" row="1953" script="typed" width="98"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="146" contents="DS-4192&#10;08-2011" function_1="reference" gedi_type="TextRegion" height="47" id="57" language="english" row="1996" script="typed" width="87"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="632" contents="BAUER" gedi_type="TextRegion" height="55" id="58" language="english" row="1954" script="hand" width="119"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1205" contents="Date (mm-dd-yyyy)" gedi_type="TextRegion" height="25" id="59" language="english" nextZoneID="60" row="1955" script="typed" width="177"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1210" contents="02.04. 2012" function_1="date" gedi_type="TextRegion" height="56" id="60" language="english" row="1983" script="hand" width="240"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="148" function="logo" gedi_type="GraphicRegion" height="86" id="61" row="250" width="79"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="146" contents="Items Returned." gedi_type="TextRegion" height="30" id="66" language="english" row="1702" script="typed" width="155"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="467" function="signature" gedi_type="GraphicRegion" height="137" id="68" row="1917" width="289"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="466" function="signature" gedi_type="GraphicRegion" height="129" id="69" row="1325" width="205"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="136" function="other" gedi_type="GraphicRegion" height="1665" id="74" row="333" width="1382"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1475" gedi_type="LineDrawingRegion" height="15" id="75" row="2017" width="34"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="811" gedi_type="LineDrawingRegion" height="13" id="76" row="1992" width="31"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1" gedi_type="NoiseRegion" height="48" id="77" row="1234" width="1645"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="144" function="other" gedi_type="GraphicRegion" height="41" id="78" row="1523" width="397"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="552" function="other" gedi_type="GraphicRegion" height="39" id="79" row="1525" width="396"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="957" function="other" gedi_type="GraphicRegion" height="37" id="80" row="1525" width="69"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="961" function="other" gedi_type="GraphicRegion" height="41" id="81" row="1644" width="68"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="553" function="other" gedi_type="GraphicRegion" height="43" id="82" row="1645" width="396"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="144" function="other" gedi_type="GraphicRegion" height="40" id="83" row="1648" width="400"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="897" function="other" gedi_type="GraphicRegion" height="37" id="95" row="415" width="69"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1071" function="underlined-field" gedi_type="GraphicRegion" height="17" id="101" row="1398" width="438"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="146" function="underlined-field" gedi_type="GraphicRegion" height="20" id="102" row="1399" width="920"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="148" function="underlined-field" gedi_type="GraphicRegion" height="12" id="103" row="1941" width="924"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1075" function="underlined-field" gedi_type="GraphicRegion" height="17" id="104" row="1936" width="440"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="157" function="other" gedi_type="GraphicRegion" height="31" id="105" row="417" width="737"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="148" contents="Name (Last, First, MI)" gedi_type="TextRegion" height="24" id="106" language="english" nextZoneID="5" row="384" script="typed" width="206"> </ns0:DL_ZONE>
+		</ns0:DL_PAGE>
+	</ns0:DL_DOCUMENT>
+</ns0:GEDI>
