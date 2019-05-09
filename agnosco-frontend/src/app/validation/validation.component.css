@@ -119,7 +119,7 @@
 
 .imageAffiche {
     height: 90%;
-    width: 60%;
+    max-width: 60%;
     margin-top: 2px;
     margin-bottom: 2px;
     margin-left: 20%;
@@ -140,6 +140,11 @@
     float: right;
 }
 
+.centerWindow{
+    position: relative;
+    display: inline;
+}
+
 .hideButton {
     border: none;
     position: relative;
@@ -149,8 +154,24 @@
     font-size: 3ch;
 }
 
+.boutonGroupe{
+    float: left;
+    border: none;
+    background: none;
+    height: 100%;
+    width: 5%;
+}
+
 .examplesList {
     list-style-type: none;
+}
+
+.divList{
+    float: left;
+    border: none;
+    background: none;
+    height: 100%;
+    width: 90%;
 }
 
 .previousPage {
@@ -169,6 +190,7 @@
 }
 
 .pageNumbers {
+    background: none;
     border: none;
     display: inline;
     position: relative;

@@ -235,6 +235,29 @@ export class ValidationComponent implements OnInit {
     console.log(this.ex4);
   }
 
+  getPrevious4(){
+    console.log("get previous 4");
+
+    if((this.compteur4-8) < 0){
+      console.log("pas possible, déjà au début");
+    }else{
+      this.ex4 = [];
+
+      for(let i = this.compteur4 - 8; i< this.compteur4 - 4 ; i+=1){
+        if(this.examples[i] != undefined){
+          this.ex4.push(this.examples[i]);
+        }else{
+          console.log("element pas pushed car undefined");
+        }
+      }
+
+      this.compteur4 -= 4;
+
+      console.log("new ex4 :");
+      console.log(this.ex4);
+    }
+  }
+
 
   /**
    * Méthode qui vérifie si on est à la 1e ou à la dernière page
@@ -276,6 +299,23 @@ export class ValidationComponent implements OnInit {
   isValidated(id){
     console.log("val : " + this.ex4[id][4]);
     return this.ex4[id][4];
+  }
+
+  isBegining(){
+    if((this.compteur4-8) < 0){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  
+  isEnd(){
+    console.log("ex4 : ", this.compteur4, " / length : ", this.examples.length);
+    if((this.compteur4) > this.examples.length){
+      return true;
+    }else{
+      return false;
+    }
   }
 
 

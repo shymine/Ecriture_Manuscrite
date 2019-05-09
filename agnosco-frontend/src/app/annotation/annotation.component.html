@@ -18,22 +18,38 @@
       <div [hidden]="isPrepared()">
         <p>Manuscrit en cours de découpe...</p>
       </div>
-     
-      <ul class="examplesList">
-        <li *ngFor="let p of ex4 ; let i = index" class= "affichage">
-          <div [class]= "isEnabled(i) ? 'blocImagettePlusTrans' : 'blocImagettePlusTransHidden'">
-            <div class = "imagette">
-              <img class="imageAffiche" [src]=p[1] alt="page"/>
-              <button class = "hideButton" (click)="disableEx(i)" data-imgid=i>
-                <i [class]="isEnabled(i) ? 'fas fa-times' : 'fas fa-angle-double-up'"></i>
-              </button>
-            </div>
-            <div class= "transcription">
-              <p contenteditable="true" [id]="getId(i)">{{p[2]}}</p>
-            </div>
-          </div>
-        </li>
-      </ul>
+
+      <div class="centerWindow">
+
+        <div class="boutonGroupe">
+          <p> </p>
+          <button [hidden]="isBegining()" style="border: none; background: none;top:30vh;position: relative;" (click)="getPrevious4()"><i class="fas fa-chevron-left" style="color: green;font-size: 3ch;"></i></button>
+        </div>
+
+        <div class="divList">
+          <ul class="examplesList">
+            <li *ngFor="let p of ex4 ; let i = index" class= "affichage">
+              <div [class]= "isEnabled(i) ? 'blocImagettePlusTrans' : 'blocImagettePlusTransHidden'">
+                <div class = "imagette">
+                  <img class="imageAffiche" [src]=p[1] alt="page"/>
+                  <button class = "hideButton" (click)="disableEx(i)" data-imgid=i>
+                    <i [class]="isEnabled(i) ? 'fas fa-times' : 'fas fa-angle-double-up'"></i>
+                  </button>
+                </div>
+                <div class= "transcription">
+                  <p contenteditable="true" [id]="getId(i)">{{p[2]}}</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      
+        <div class="boutonGroupe">
+          <p> </p>
+          <button [hidden]="isEnd()" style="border: none; background: none;top:30vh;position: relative;" (click)="getNext4()"><i class="fas fa-chevron-right" style="color: green;font-size: 3ch;"></i></button>
+        </div>
+
+      </div>
     </div>
 
     <div class="changePage">
@@ -41,7 +57,9 @@
             <i class="fas fa-chevron-left"></i>
         </button>
         
-        <button class="pageNumbers" *ngFor="let p of pages">{{pages.indexOf(p) + 1}}</button>
+        <button class="pageNumbers" *ngFor="let p of pages">
+          <i [class]="isCurrentPage(p) ? 'currentPage' : 'notCurrentPage'">{{pages.indexOf(p) + 1}}</i>
+        </button>
       
         <button id = "nextPage" class="nextPage" [disabled]="isLastPage" (click)="nextPage()">
             <i class="fas fa-chevron-right"></i>
