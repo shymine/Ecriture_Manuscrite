@@ -136,7 +136,7 @@ export class AnnotationComponent implements OnInit {
       if(this.ex4[i][2] !== newTranscript && this.ex4[i][3]){
         this.strEdits = this.strEdits.concat("\n{\n\'id\':" + e[0] + ",\n\'transcript\':\"" + newTranscript + "\"\n},");
         
-        this.examples[i + this.compteur4 - 4][3] = newTranscript;
+        this.examples[i + this.compteur4 - 4][2] = newTranscript;
         notEmpty = true;
       }
     }
