@@ -411,7 +411,8 @@ class AgnoscoResource {
 	@Consumes(Array(MediaType.APPLICATION_JSON))
 	def saveExamplesEdits(examples: String): Response = {
 		try {
-			val json = new JSONArray(examples)
+			val obj = new JSONObject(examples)
+			val json = new JSONArray(obj.getString("str"))
 			for (i <- 0 until json.length()) {
 				try {
 					val obj = json.getJSONObject(i)
