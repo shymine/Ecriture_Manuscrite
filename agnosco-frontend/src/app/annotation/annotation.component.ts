@@ -17,9 +17,10 @@ export class AnnotationComponent implements OnInit {
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
     if(event.keyCode == 13){
-      this.sendEdits();
+      this.saveEdits();
       if(this.compteur4 > this.examples.length){
         if(!this.isLastPage){
+          this.sendEdits();
           this.nextPage();
         }else{
           this.endAnnotation();
@@ -38,6 +39,7 @@ export class AnnotationComponent implements OnInit {
   private projectName;
   private docPrepared;
   private compteur4;
+  private strEdits;
 
   private docMmPro = [];
 
@@ -76,6 +78,7 @@ export class AnnotationComponent implements OnInit {
     this.isLastPage = false;
     this.isEndOfPage = false;
     this.compteur4 = 0;
+    this.strEdits = "[";
   }
 
   ngOnInit() {
@@ -117,6 +120,35 @@ export class AnnotationComponent implements OnInit {
     else{
       this.getPages();
     }
+  }
+
+
+  saveEdits(){
+    let notEmpty = false;
+
+    for (let i = 0; i < this.ex4.length; i++) {
+      let e = this.ex4[i];
+
+      // on récupère la transcription affichée qui a pu être modifiée
+      let newTranscript = document.getElementById("trans" + i).innerHTML;
+
+      //si elle a été modifiée et si l'exemple est enabled, on ajoute l'exemple dans str
+      if(this.ex4[i][2] !== newTranscript && this.ex4[i][3]){
+        this.strEdits = this.strEdits.concat("\n{\n\'id\':" + e[0] + ",\n\'transcript\':\"" + newTranscript + "\"\n},");
+        
+        this.examples[i-this.compteur4 - 4][3] = newTranscript;
+        notEmpty = true;
+      }
+    }
+
+    //on enlève la dernière virgule s'il y a au moins un exemple dans la string
+    if(notEmpty){
+      this.strEdits = this.strEdits.substr(0, this.strEdits.length - 1);
+    }
+
+    this.strEdits = this.strEdits.concat("\n]");
+
+    console.log(this.strEdits);
   }
 
   getId(i){
@@ -461,35 +493,7 @@ export class AnnotationComponent implements OnInit {
    */
   sendEdits() {
     console.log("Send edits");
-
-    let str = "[";
-
-    let notEmpty = false;
-
-    for (let i = 0; i < this.ex4.length; i++) {
-      let e = this.ex4[i];
-
-      // on récupère la transcription affichée qui a pu être modifiée
-      let newTranscript = document.getElementById("trans" + i).innerHTML;
-
-      //si elle a été modifiée et si l'exemple est enabled, on ajoute l'exemple dans str
-      if(this.ex4[i][2] !== newTranscript && this.ex4[i][3]){
-        str = str.concat("\n{\n\'id\':" + e[0] + ",\n\'transcript\':\"" + newTranscript + "\"\n},");
-      
-        notEmpty = true;
-      }
-
-    }
-
-    //on enlève la dernière virgule s'il y a au moins un exemple dans la string
-    if(notEmpty){
-      str = str.substr(0, str.length - 1);
-    }
-
-    str = str.concat("\n]");
-
-    console.log(str);
-    this.validationService.sendEdits(str);
+    this.validationService.sendEdits(this.strEdits);
     
   }
 
