@@ -1,0 +1,120 @@
+<ns0:GEDI xmlns:ns0="http://lamp.cfar.umd.edu/media/projects/GEDI/" GEDI_date="12/23/2011" GEDI_version="2.3.19">
+	<ns0:USER date="3/3/2012 9:46" dateFormat="mm/dd/yyyy hh:mm" name="Khizrane">	</ns0:USER>
+	<ns0:USER date="4/5/2012 10:55" dateFormat="mm/dd/yyyy hh:mm" name="Laure">	</ns0:USER>
+	<ns0:USER date="10/16/2012 23:24" dateFormat="mm/dd/yyyy hh:mm" name="MDR-P6">	</ns0:USER>
+	<ns0:USER date="10/31/2012 15:31" dateFormat="mm/dd/yyyy hh:mm" name="MDR-P8">	</ns0:USER>
+	<ns0:USER date="5/23/2012 15:45" dateFormat="mm/dd/yyyy hh:mm" name="soumaya">	</ns0:USER>
+	<ns0:DL_DOCUMENT NrOfPages="1" docTag="xml" src="AFHIKL.tif">
+		<ns0:DL_PAGE Category="C1" Document_Date="18/04/2009" Document_Location="Saint Jean Cap Ferrat" Document_Object="DECLARATION DE CANDIDATURE" GEDI_orientation="0" Language_1="french" Language_2="" Language_3="" Language_4="" NumPage="1" Receiver_Address="Nice" Receiver_Company="Acad&#233;mie de Nice" Receiver_Fax="" Receiver_Name="" Receiver_Phone="" Script_1="typed" Script_2="hand" Sender_Address="10 BD Gen De Gaulle 06230 Saint Jean Cap Ferrat France" Sender_Company="" Sender_Fax="+33(0)4.44.11.99.59" Sender_Name="Erwan TESSIER" Sender_Phone="&#164;{+33(0)4.44.11.99.59|+33(0)6.18.22.15.87}&#164;" gedi_type="DL_PAGE" height="2338" pageID="1" src="AFHIKL1.tif" width="1700">
+			<ns0:DL_ZONE col="615" contents="MINISTERE DE L&#8217;EDUCATION NATIONALE" gedi_type="TextRegion" height="33" id="1" language="french" row="113" script="typed" width="502"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1474" function="logo" gedi_type="GraphicRegion" height="63" id="2" row="103" width="125"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1465" contents="n&#176; 11430*01" function_1="reference" gedi_type="TextRegion" height="31" id="5" language="french" row="182" script="typed" width="147"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="382" contents="DECLARATION DE CANDIDATURE&#10;CONCOURS NATIONAL D&#8217;AGREGATION&#10;POUR LE RECRUTEMENT DE PROFESSEURS DES UNIVERSITES&#10;(D&#233;cret n&#176; 84-431 du 6 juin 1984 modifi&#233;)" function_1="title" function_2="object" gedi_type="TextRegion" height="203" id="6" language="french" row="212" script="typed" width="984"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="596" contents="PREMIER CONCOURS" gedi_type="TextRegion" height="40" id="7" language="french" row="476" script="typed" width="340"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1124" function="form-field" gedi_type="GraphicRegion" height="46" id="8" row="530" width="32"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1179" contents="(1)" gedi_type="TextRegion" height="40" id="9" language="french" row="481" script="typed" width="44"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="126" contents="DISCIPLINE :" gedi_type="TextRegion" height="35" id="11" language="french" nextZoneID="203" row="632" script="typed" width="198"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="122" contents="M." gedi_type="TextRegion" height="29" id="13" language="french" row="725" script="typed" width="43"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="418" contents="Mme" gedi_type="TextRegion" height="32" id="14" language="french" row="723" script="typed" width="75"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="716" contents="Mlle" gedi_type="TextRegion" height="30" id="15" language="french" row="724" script="typed" width="64"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="178" function="form-field" gedi_type="GraphicRegion" height="33" id="20" row="717" width="25"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="503" function="form-field" gedi_type="GraphicRegion" height="36" id="21" row="714" width="26"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="792" function="form-field" gedi_type="GraphicRegion" height="38" id="22" row="713" width="29"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="121" contents="Nom patronymique :" gedi_type="TextRegion" height="38" id="29" language="french" nextZoneID="35" row="782" script="typed" width="281"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="425" contents="TESSIER" gedi_type="TextRegion" height="45" id="35" language="french" row="769" script="hand" width="238"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="117" contents="(1) Cocher la case utile" gedi_type="TextRegion" height="39" id="45" language="french" row="2073" script="typed" width="313"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="120" contents="Date de naissance :" gedi_type="TextRegion" height="32" id="50" language="french" nextZoneID="89" row="1019" script="typed" width="258"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="122" contents="Nationalit&#233; :" gedi_type="TextRegion" height="32" id="51" language="french" nextZoneID="97" row="1074" script="typed" width="166"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="615" contents="commune :" gedi_type="TextRegion" height="31" id="56" language="french" nextZoneID="204" row="1193" script="typed" width="147"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="121" contents="Code postal :" gedi_type="TextRegion" height="44" id="57" language="french" nextZoneID="129" row="1185" script="typed" width="183"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="120" contents="Adresse &#233;lectronique :" gedi_type="TextRegion" height="40" id="62" language="french" nextZoneID="210" row="1330" script="typed" width="296"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="342" contents="ERWAN" gedi_type="TextRegion" height="58" id="66" language="french" row="935" script="hand" width="251"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1137" contents="Pays :" gedi_type="TextRegion" height="40" id="67" language="french" nextZoneID="131" row="1184" script="typed" width="85"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="442" contents="0444119959" gedi_type="TextRegion" height="35" id="69" language="french" row="1265" script="hand" width="310"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="770" contents="T&#233;l&#233;phone professionnel :" gedi_type="TextRegion" height="35" id="70" language="french" nextZoneID="71" row="1271" script="typed" width="344"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1190" contents="0618221587" gedi_type="TextRegion" height="38" id="71" language="french" row="1262" script="hand" width="316"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1061" contents="fax :" gedi_type="TextRegion" height="33" id="72" language="french" nextZoneID="134" row="1331" script="typed" width="63"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1492" contents="cerfa" gedi_type="TextRegion" height="42" id="85" language="french" row="121" script="typed" width="90"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="759" gedi_type="SeparatorRegion" height="14" id="86" row="600" width="229"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="398" contents="13" gedi_type="TextRegion" height="43" id="89" language="french" nextZoneID="152" row="1009" script="hand" width="48"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="119" contents="Pr&#233;nom usuel :" gedi_type="TextRegion" height="32" id="91" language="french" nextZoneID="66" row="960" script="typed" width="205"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="121" contents="Nom marital :" gedi_type="TextRegion" height="37" id="92" language="french" nextZoneID="93" row="863" script="typed" width="189"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="334" contents="TESSIER" gedi_type="TextRegion" height="57" id="93" language="french" row="837" script="hand" width="237"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="853" contents="(1)" gedi_type="TextRegion" height="36" id="94" language="french" row="724" script="typed" width="46"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="838" contents="et lieu de naissance :" gedi_type="TextRegion" height="35" id="95" language="french" nextZoneID="96" row="1019" script="typed" width="276"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1165" contents="Nice" gedi_type="TextRegion" height="50" id="96" language="french" row="992" script="hand" width="139"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="303" contents="Fran&#231;aise" gedi_type="TextRegion" height="62" id="97" language="french" row="1062" script="hand" width="238"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="620" contents="Situation de famille :" gedi_type="TextRegion" height="33" id="99" language="french" nextZoneID="100" row="1074" script="typed" width="277"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="934" contents="C&#233;libataire" gedi_type="TextRegion" height="52" id="100" language="french" row="1058" script="hand" width="331"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="123" contents="Adresse (rue et n&#176;) :" gedi_type="TextRegion" height="39" id="103" language="french" row="1128" script="typed" width="271"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="120" contents="Fonctions :" gedi_type="TextRegion" height="35" id="106" language="french" nextZoneID="212" row="1618" script="typed" width="152"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="160" contents="&#224; M" function_1="text_section" gedi_type="TextRegion" height="36" id="113" language="french" nextZoneID="172" row="1822" script="typed" width="54"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="392" contents="le recteur de l&#8217;Acad&#233;mie de" function_1="text_section" gedi_type="TextRegion" height="36" id="115" language="french" nextZoneID="116" row="1824" script="typed" width="370"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="781" contents="Nice" function_1="text_section" gedi_type="TextRegion" height="47" id="116" language="french" nextZoneID="214" row="1815" script="hand" width="134"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="908" contents="Signature" gedi_type="TextRegion" height="38" id="121" language="french" row="2036" script="typed" width="129"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="512" contents="A" function_1="location" gedi_type="TextRegion" height="28" id="122" language="french" nextZoneID="123" row="1985" script="typed" width="28"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents="Saint Jean&#10;Cap Ferrat" function_1="location" gedi_type="TextRegion" id="123" language="french" nextZoneID="181" polygon="(518,2064);(595,2103);(792,2068);(820,1990);(713,1972);(555,1986);(553,2037);(519,2054)" script="hand"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1145" function="signature" gedi_type="GraphicRegion" height="69" id="126" row="2041" width="217"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="119" contents="Inscriptions ant&#233;rieures &#224; ce concours :" gedi_type="TextRegion" height="36" id="128" language="french" row="1733" script="typed" width="527"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="316" contents="06230" gedi_type="TextRegion" height="39" id="129" language="french" row="1181" script="hand" width="152"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1251" contents="France" gedi_type="TextRegion" height="57" id="131" language="french" row="1166" script="hand" width="195"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="121" contents="T&#233;l&#233;phone personnel :" gedi_type="TextRegion" height="43" id="133" language="french" nextZoneID="69" row="1264" script="typed" width="297"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1204" contents="0444119959" gedi_type="TextRegion" height="37" id="134" language="french" row="1325" script="hand" width="312"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="121" contents="Etablissement d&#8217;exercice des fonctions" gedi_type="TextRegion" height="37" id="136" language="french" nextZoneID="213" row="1673" script="typed" width="539"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="697" gedi_type="LineDrawingRegion" height="9" id="139" orientationD="27.646" row="1759" width="71"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="116" contents="La loi n&#176; 78 - 17 du 6 janvier 1978 relative aux fichiers nominatifs garantit un droit d&#8217;acc&#232;s et de rectification des donn&#233;es&#10;aupr&#232;s des organismes destinataires du formulaire." function_1="footer" gedi_type="TextRegion" height="68" id="144" language="french" row="2129" script="typed" width="1384"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1122" function="form-field" gedi_type="GraphicRegion" height="42" id="145" row="464" width="34"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1119" gedi_type="LineDrawingRegion" height="50" id="146" row="461" width="37"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="328" function="underlined-field" gedi_type="GraphicRegion" height="18" id="147" row="647" width="1220"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="404" function="underlined-field" gedi_type="GraphicRegion" height="19" id="148" row="796" width="1142"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="314" function="underlined-field" gedi_type="GraphicRegion" height="64" id="149" row="832" width="1230"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="328" function="underlined-field" gedi_type="GraphicRegion" height="17" id="150" row="974" width="1214"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1118" function="underlined-field" gedi_type="GraphicRegion" height="12" id="151" row="1036" width="408"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="463" contents="/" gedi_type="TextRegion" height="32" id="152" language="french" nextZoneID="153" row="1020" script="typed" width="13"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="482" contents="09" gedi_type="TextRegion" height="38" id="153" language="french" nextZoneID="154" row="1010" script="hand" width="56"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="552" contents="/" gedi_type="TextRegion" height="24" id="154" language="french" nextZoneID="155" row="1026" script="typed" width="16"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="572" contents="1980" gedi_type="TextRegion" height="39" id="155" language="french" row="1009" script="hand" width="124"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="386" function="form-field" gedi_type="GraphicRegion" height="46" id="156" row="1006" width="316"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="288" function="underlined-field" gedi_type="GraphicRegion" height="20" id="157" row="1084" width="326"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="896" function="underlined-field" gedi_type="GraphicRegion" height="23" id="158" row="1087" width="648"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="306" function="form-field" gedi_type="GraphicRegion" height="46" id="159" row="1176" width="174"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1228" function="underlined-field" gedi_type="GraphicRegion" height="24" id="160" row="1202" width="300"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="434" function="form-field" gedi_type="GraphicRegion" height="40" id="162" row="1262" width="322"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1180" function="form-field" gedi_type="GraphicRegion" height="46" id="163" row="1260" width="332"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1192" function="form-field" gedi_type="GraphicRegion" height="44" id="164" row="1324" width="330"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="416" function="underlined-field" gedi_type="GraphicRegion" height="21" id="165" row="1346" width="620"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="214" contents="onsieur" function_1="text_section" gedi_type="TextRegion" height="38" id="172" language="french" nextZoneID="115" row="1822" script="hand" width="158"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="426" function="underlined-field" gedi_type="GraphicRegion" height="16" id="173" row="1464" width="1098"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="122" function="underlined-field" gedi_type="GraphicRegion" height="17" id="174" row="1519" width="1422"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="124" function="underlined-field" gedi_type="GraphicRegion" height="30" id="175" row="1574" width="1418"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="179" gedi_type="LineDrawingRegion" height="30" id="176" row="718" width="22"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="112" elements="13;20;176" gedi_type="Group" height="57" id="177" row="707" width="101"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="651" function="underlined-field" gedi_type="GraphicRegion" height="21" id="180" row="1748" width="889"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="898" contents=", le" gedi_type="TextRegion" height="40" id="181" language="french" nextZoneID="182" row="1974" script="typed" width="49"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="965" contents="18" function_1="date" gedi_type="TextRegion" height="39" id="182" language="french" nextZoneID="220" row="1970" script="hand" width="52"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1052" contents="04" function_1="date" gedi_type="TextRegion" height="32" id="183" language="french" nextZoneID="221" row="1975" script="hand" width="54"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1138" contents="2009" function_1="date" gedi_type="TextRegion" height="33" id="185" language="french" row="1976" script="hand" width="120"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="951" function="form-field" gedi_type="GraphicRegion" height="34" id="187" row="1981" width="314"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="667" function="underlined-field" gedi_type="GraphicRegion" height="22" id="188" row="1689" width="866"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="273" function="underlined-field" gedi_type="GraphicRegion" height="23" id="190" row="1636" width="1264"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="659" gedi_type="NoiseRegion" height="71" id="191" orientationD="-22.932" row="-1" width="15"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="594" contents="DEUXIEME CONCOURS" gedi_type="TextRegion" height="32" id="193" language="french" row="548" script="typed" width="370"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="586" elements="7;145;146" gedi_type="Group" height="75" id="196" row="451" width="580"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents="Linguistique" gedi_type="TextRegion" id="203" language="french" polygon="(377,641);(395,607);(570,598);(689,628);(717,654);(601,709);(535,687);(461,680);(382,658)" script="hand"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents="Saint Jean&#10;Cap Ferrat" gedi_type="TextRegion" id="204" language="french" polygon="(779,1236);(792,1184);(817,1173);(905,1171);(1002,1174);(1099,1212);(1008,1253);(886,1261);(843,1277);(809,1254);(780,1247)" script="hand"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="402" function="underlined-field" gedi_type="GraphicRegion" height="20" id="205" row="1146" width="1150"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents="10 BD Gen De Gaulle" gedi_type="TextRegion" id="206" language="french" polygon="(428,1139);(460,1118);(590,1121);(792,1113);(902,1112);(1005,1109);(1037,1114);(1064,1158);(945,1163);(643,1167);(455,1162);(435,1154)" script="hand"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="765" function="underlined-field" gedi_type="GraphicRegion" height="18" id="209" row="1203" width="372"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents="Tessier. Erwa&#164;n&#164;@gmail.com" gedi_type="TextRegion" id="210" language="french" polygon="(437,1321);(447,1316);(603,1326);(772,1317);(905,1312);(1009,1335);(1035,1363);(841,1375);(803,1389);(760,1371);(431,1364);(415,1331)" script="hand"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents="Th&#232;se : &quot;Traitement automatique des&#10;anaphores associatives&quot;. le 19/05/2008 &#224; Nice.&#10;Directeur de th&#232;se : Pr GASCON, Jury : E.DARNET et F.CLYS" gedi_type="TextRegion" id="211" language="french" polygon="(443,1433);(755,1435);(959,1432);(1058,1426);(1170,1428);(1346,1433);(1396,1458);(1426,1485);(1489,1508);(1504,1528);(1637,1558);(1631,1593);(1154,1596);(1122,1628);(1105,1600);(970,1604);(378,1597);(124,1597);(137,1496);(442,1493)" script="hand"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents="Professeur d'Universit&#233; en Linguistique" gedi_type="TextRegion" id="212" language="french" polygon="(303,1611);(383,1599);(573,1607);(806,1604);(979,1606);(1121,1629);(1164,1597);(1277,1624);(1282,1650);(1219,1659);(1201,1687);(1176,1663);(1066,1660);(1054,1673);(1031,1671);(1026,1659);(388,1653);(368,1675);(352,1652);(295,1651)" script="hand"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents="Universit&#233; de Nice Sophia Antipolis" gedi_type="TextRegion" id="213" language="french" polygon="(670,1679);(705,1668);(848,1664);(945,1659);(1056,1673);(1165,1666);(1204,1688);(1227,1660);(1357,1657);(1406,1656);(1489,1653);(1529,1708);(1426,1735);(1388,1713);(1215,1713);(1192,1740);(1161,1712);(807,1716);(672,1706)" script="hand"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents=", chancelier des universit&#233;s.&#10;J&#8217;ai l&#8217;honneur de poser ma candidature au concours ci-dessus d&#233;sign&#233;." function_1="text_section" gedi_type="TextRegion" id="214" language="french" polygon="(929,1839);(965,1822);(1300,1825);(1299,1863);(1054,1869);(1052,1920);(115,1916);(122,1875);(925,1883)" script="typed"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents="&#164;T&#164;essier" gedi_type="TextRegion" id="217" language="french" polygon="(1148,2065);(1179,2049);(1309,2045);(1365,2049);(1225,2086);(1201,2103);(1163,2091);(1147,2076);(1142,2071)" script="hand"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1462" gedi_type="NoiseRegion" height="15" id="219" row="1131" width="18"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1028" contents="/" function_1="date" gedi_type="TextRegion" height="25" id="220" language="french" nextZoneID="183" row="1987" script="typed" width="17"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1118" contents="/" function_1="date" gedi_type="TextRegion" height="21" id="221" language="french" nextZoneID="185" row="1990" script="typed" width="19"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents="Titres universitaires : (pr&#233;ciser pour la th&#232;se, le titre, la date, le lieu de soutenance, le directeur de th&#232;se et&#10;les membres du jury) :" gedi_type="TextRegion" id="222" language="french" nextZoneID="211" polygon="(116,1387);(1525,1393);(1525,1433);(417,1431);(417,1488);(116,1487)" script="typed"> </ns0:DL_ZONE>
+		</ns0:DL_PAGE>
+	</ns0:DL_DOCUMENT>
+</ns0:GEDI>
