@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
 
-
+/**
+ * Cette interface est utilisée pour effectuer les appels REST vers le back-end pour alléger le code des composants principaux.
+ */
 export interface Validation{
-  image: string; //normalement, c'est une image et pas une string
+  image: string;
   examples: string[]; //liste des imagettes et des transcriptions
 }
 
@@ -14,24 +15,23 @@ export interface Validation{
 })
 export class ValidationService {
 
-
   constructor(private http: HttpClient) { 
   }
 
 
   /**
    * Cette méthode permet de récupérer les id des pages du document dont le nom est passé en paramètre.
-   * @param docName 
+   * @param docId 
    */
-  getPages(docName): Observable<Object>{
+  getPages(docId): Observable<Object>{
     console.log("*** GET /base/documentPages ***");    
     
-    return this.http.get(`agnosco/base/documentPages/${docName}`,{});
+    return this.http.get(`agnosco/base/documentPages/${docId}`,{});
   }
 
 
   /**
-   * Cette méthode permet de récupérer les données de la page numéro id, soit la liste des exemples (imagettes et transcriptions) ainsi que l'image associée à la page (utilisée que pour la V1).
+   * Cette méthode permet de récupérer les données de la page numéro id, soit la liste des exemples (imagettes et transcriptions) ainsi que l'image associée à la page.
    * @param id numéro de la page dont on veut les données
    */
   getPageData(id): Observable<Object>{
@@ -41,6 +41,10 @@ export class ValidationService {
   }
 
 
+  /**
+   * Cette méthode permet de cacher un exemple qui manque de pertinence pour qu'il ne soit pas pris en compte pendant l'apprentissage.
+   * @param id 
+   */
   disableEx(id){
     console.log("*** PUT `agnosco/base/disableExample/${id}` ***");
 
@@ -50,6 +54,10 @@ export class ValidationService {
   }
 
 
+  /**
+   * Cette méthode permet de réhabiliter un example qui a été caché précédemment.
+   * @param id 
+   */
   enableEx(id){
     console.log("*** PUT `agnosco/base/enableExample/${id}` ***");
 
@@ -59,6 +67,10 @@ export class ValidationService {
   }
 
 
+  /**
+   * Cette méthode permet d'envoyer au back-end la liste des id des exemples validés par l'utilisateur.
+   * @param valid 
+   */
   validateAll(valid){
     console.log("*** POST `agnosco/base/validateExamples` ***");
 
@@ -69,6 +81,10 @@ export class ValidationService {
   }
 
 
+  /**
+   * Cette méthode permet d'envoyer au back-end les éléments dont la transcription a été modifiée par l'utilisateur.
+   * @param str 
+   */
   sendEdits(str){
     console.log("*** POST `agnosco/base/saveExamplesEdits` ***");
 
@@ -77,21 +93,4 @@ export class ValidationService {
     
     console.log("edits sent");
   }
-
-  
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }
-    // return an observable with a user-facing error message
-    return throwError(
-      'Something bad happened; please try again later.');
-  };
 }
