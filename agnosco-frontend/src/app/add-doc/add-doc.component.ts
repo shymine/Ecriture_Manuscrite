@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSelect} from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -29,14 +29,11 @@ export class AddDocComponent implements OnInit {
 
   encodeImageFile(param) {
 
-    // console.log("ENCODE..IMAGE");
-    // console.log(param);
-
     const event = param[0];
     const page = param[1];
 
     const file = event.target.files[0];
-    // console.log(file)
+    
     const reader = new FileReader();
     const http = this.http;
     const pages = this.pages;
@@ -56,9 +53,6 @@ export class AddDocComponent implements OnInit {
       pages[page].name = file.name;
 
       console.log("encoded");
-
-      // console.log("pages[page]");
-      // console.log(pages[page]);
     }
     reader.readAsDataURL(file);
     console.log("j'encode");

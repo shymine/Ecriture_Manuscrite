@@ -1,13 +1,12 @@
-import { Component, OnInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MydialogComponent } from '../mydialog/mydialog.component';
 import { SuppressionDialogComponent } from '../suppression-dialog/suppression-dialog.component';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { AddDocComponent } from '../add-doc/add-doc.component';
 import { GestionPagesComponent } from '../gestion-pages/gestion-pages.component';
 import { ExportProjetComponent } from '../export-projet/export-projet.component';
-//import { relative } from 'path';
 
 @Component({
   selector: 'app-accueil',
@@ -21,43 +20,21 @@ export class AccueilComponent implements OnInit {
   public alertMessage = {'message':"Rien à signaler", 'hide':true};
 
   constructor(private router: Router, public dialog: MatDialog, private http: HttpClient) {
-  //constructor(private router: Router, public dialog: MatDialog) {
     this.projects = [];
     this.maxListIndex = -1;
   }
 
   ngOnInit() {
 
-    //test
-    
     this.getAllProjects();
     
-
   }
-
-
-  // encodeImageFileAsURL(event: any) {
-  //   var file = event.target.files[0];
-  
-  //   var reader = new FileReader();
-  //   var http = this.http;
-  //   reader.onloadend = function() {
-  //       let encoded = (reader.result as string).replace(/^data:(.)*(;base64,)/,'');
-  //       if ((encoded.length % 4) > 0) {
-  //         encoded += '='.repeat(4 - (encoded.length % 4));
-  //       }
-  //     console.log('RESULT', encoded)
-  //     http.post(`agnosco/base/test`, {"test":encoded}).subscribe(data => console.log(data))
-  //   }
-  //   reader.readAsDataURL(file);
-  // }
 
   getAllProjects() {
   
     console.log("*** GET /base/projectsAndDocuments ***");
     this.projects = [];
 
-    /**/
     this.http.get(`agnosco/base/projectsAndDocuments`,{}).subscribe(returnedData => {
       console.log(returnedData);
 
@@ -89,11 +66,8 @@ export class AccueilComponent implements OnInit {
   }
 
   deletePro(p) {
-    /* */
     console.log("//////////////////////////");
     console.log(p);
-
-    //console.log("Delete all documents from "+ this.projects[p][0]);
 
     const dialogRef = this.dialog.open(SuppressionDialogComponent, {
       data : {
@@ -110,8 +84,6 @@ export class AccueilComponent implements OnInit {
         });
       }
     });
-
-    //this.projects.splice(p,1);
   }
 
   deleteDoc(doc) {
@@ -144,8 +116,6 @@ export class AccueilComponent implements OnInit {
       console.log('The dialog was closed');
       console.log(result);
       if(result && result[0]) {
-        /**/
-        // this.projects.push([result[0],result[1],[]]);
         console.log("reconaisseur:");
         console.log(result[1]);
         console.log("*** POST agnosco/base/createNewProject/{"+result[0]+"}/{"+result[1]+"} ***");
@@ -153,7 +123,6 @@ export class AccueilComponent implements OnInit {
           console.log("created");
           this.projects.push([data.name, data.id, data.documents]);
         });
-        // this.getAllProjects();
       }else{
         console.log("no name");
       }
@@ -322,7 +291,6 @@ export class AccueilComponent implements OnInit {
       data: {'id': p[1], "pname": p[0], 'support': "pro"}
     });
 
-    /* answer: 0->ok 1->vt_inc 2->nom_inc 3->vt_nom_inc -1->id_inc */
     dialogRef.afterClosed().subscribe(result => {
       console.log("*ACCUEIL*");
       this.getAllProjects();
