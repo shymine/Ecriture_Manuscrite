@@ -48,11 +48,11 @@ These scripts require Python3 to be installed on the server's system, with sever
 
 The application is composed of 3 major blocks as described previously.
 
-The backend run using java 8, the scala and sbt plugin (jdk8, scala 2.11) in IntelliJ 2019.1.2. To open the project, select open project and go to the build.sbt file and open it as a project. IntelliJ will then ask you if you want to import the dependencies, click yes ;) . SBT will the download for you the dependencies of the project. You can then run the application by launching the main method in the Main object.
+The backend runs using Java 8, the Scala and sbt plugins (jdk8, scala 2.11) in IntelliJ 2019.1.2. To open the project, select `Open project`, go to the build.sbt file, and open it as a project. IntelliJ will then ask you if you want to import the dependencies, click yes ;) . SBT will download for you the dependencies of the project. You can then run the application by launching the main method in the Main object.
 
-The frontend use Angular6. To install the dependencies of this block, you will need npm. In the package agnosco-frontend, open a terminal and run ```npm install```. The dependencies in the file package-lock.json will then be downloaded. You can then run the debug server by running 'ng serve'.
+The frontend uses Angular6. To install the dependencies of this block, you will need npm. In the package agnosco-frontend, open a terminal and run `npm install`. The dependencies in the file `package-lock.json` will then be downloaded. You can then run the debug server by running `ng serve`.
 
-For the scripts, you ll need python3 and pip3 to install the needed librairies:
+For the scripts, you will need Python3 and pip3 to install the needed librairies :
 
 ```bash
 pip3 install opencv-python --user
@@ -72,11 +72,10 @@ If the line detector is used (and the boolean for it enabled in the `common` pac
 
 ## Workflow
 
-Right now, in the maurdor folder, the xml files are prepared in monopages gedi and the tif are also in monopage. However, if you receive new data from the maurdor database or work with tif and gedi format from another base, you need first to preprocess them using first tiff_splitter to remove the mutlipages tiff files, then using gedi_splitter to remove then multipages gedi (xml) files.
+Right now, in the `maurdor` folder, the XML files are prepared as 1-page GEDI files and the TIFF files are also in a 1-page format. However, if you receive new data from the Maurdor database, or work with TIFF and GEDI formats from another base, you need first to preprocess them using first `tiffsplitter.py` to remove the multi-page TIFF files, then using `gedisplitter.py` to split the multi-page GEDI (XML) files.
 
-Moreover, as the web browser doesn t support the tif format, use the convert_tif_to_png script.
+Moreover, as most web browsers do not support the TIFF format, use the `convertTiffToPng.py` script.
 
-The scripts modify inplace the src of the page in the xml file. When loading an image and a groundtruth you ll then need to use the png image, but if you want to persist with the tif format, dont use the convert file and the src will still be on the tif file.
+The scripts modify in place the `src` attribute of the pages in the XML files. When loading an image and a ground truth, you will then need to use the PNG image, but if you want to keep the TIFF format, do not use the converter script, and the `src` attribute will still be pointing to the TIFF file.
 
-Once you have annotate and validate the examples through the frontend (YOU MUST TAP ENTER to validate the set of 4 examples in the front), you can export the project or document in the export folder at the root of agnosco-backend.
-
+Once you have annotated and validated the examples through the frontend (YOU MUST HIT ENTER to validate the set of 4 examples in the frontend), you can export the project or document into the export folder at the root of agnosco-backend.
