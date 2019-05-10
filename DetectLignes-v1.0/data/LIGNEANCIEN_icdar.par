@@ -1,0 +1,148 @@
+
+#-------------Paramétrage pour la construction des images floues
+
+multiCol non #Image dans laquelle à priori on ne cherche pas de séparateurs de colonnes
+
+type_flou castan rectangle
+
+# paramétrage du flou par Shen et Castan
+# Pour Maurdor avec des lignes très serrées 0.20
+# flou_castan_verti  0.20 
+# Pour ICDAR  avec des lignes peu serrées et traits en arabe et Bangla 0.10
+flou_castan_verti  0.15
+
+flou_castan_horiz 0.04
+
+# paramètre du rectangle calculant la moyenne
+pf_haut_flou  4 5 7 6 # demi-hauteur du rectangle dans lequel est calculée la moyenne
+pf_nbCol_flou 60 # nb de colonnes du rectangle
+
+# Calcul du seuil en fonction de la valeur moyenne de l'image floue
+# 1 => seuil = moyenne ; >1 seuil plus bas ; < 1 seuil plus haut
+flou_coef_seuil 1.10  # valeur entre 1 et 1.2 parait bonne
+
+# Variation minimum de luminosité pour détection d'un flanc
+delta_lum_min 3.	# Pour Maurdor
+#delta_lum_min 4.	# Pour texte arabe ou Bangla d'ICDAR (effet de trait)
+
+
+#---------------------------------------------------------
+
+#On construit des images de voronoi
+voronoi non
+
+Batch:start "Reconnaissance"
+Visu:start  "Reconnaissance"
+
+# Choix du filtre en sous-échantillonnage
+zoom:sousEch 3x3 #2x2
+
+Multi:résolution Seg Seg2  Aff 
+# Multi:résolution Seg Seg2 Flou Flou2 Aff 
+# Flou:zoom -2 # -2
+Seg:zoom 1 -2 1
+# Flou:zoom -2
+
+Seg2:zoom -2 -4
+# Flou2:zoom -4 #-4
+
+# Seg:zoom -2
+Aff:zoom -4 -8
+ 
+Multi:affichage Seg
+
+# type_sous_im   sans ancrage  sans #case
+type_sous_im sans #sans #case
+nom_case zoneAnalyse
+
+# type_sous_im  ancrage sans ancrage #sans #case
+# ancrage nord_ouest
+# dx 90
+# dy 10
+# larg 4843
+# haut 3606
+
+# ancrage nord_ouest
+# dx 200
+# dy 0
+# larg 4000
+# haut 600
+
+# Paramétrage pour la binarisation adapté automatiquement au zoom
+Fond_noir:trou_blanc  30 0 # pour l'élimination des noirs sur les marges.
+
+
+# Paramétrage pour la binarisation indépendant du zoom
+seuil_noir   55 100 # 18/02/04 seuil du masquage
+
+# Paramétrage pour la binarisation, variable avec le niveau
+# multiCol   oui
+
+Flou:contraste 25 20 10 18 30
+Flou:alpha 0.15
+# Flou:multiCol   oui non
+
+
+Flou2:contraste 25 25 20 10 18 30
+Flou2:alpha 0.15
+# Flou2:multiCol   oui non
+
+Seg:multiCol   oui non
+Seg:contraste 25 10 15  	# seuil de contraste (en niveaux de gris)
+Seg:alpha 0.15	# 18/02/04 paramètre de filtrage 0< alpha < 0.5
+
+Seg:Convergence   #10 40	# Evaluation de la convergence des filtres
+
+Seg:l_amorce	   20 8 3     # Distance en pixel pour valider une détection
+Seg:segment_longueur_min 25 0  # Longueur min en pixel d'un segment à garder
+Seg:pas_integration	 2     # Distance min, en pixel entre deux intégrations
+Seg:poursuite_blanc  3 5 # 15 5 #10     # Distance en pixel pour perte d'un segment fin
+Seg:bruit_contour        1.0 # 0.60	# en pixel
+Seg:prédiction_épaisseur 0.03	# en pixel
+Seg:prédiction_position  0.05	# en pixel
+Seg:prédiction_pente     0.00	# en pixel/pixel
+Seg:pente_max	  0.15  0.30	# au lieu de 0.15
+
+Seg2:multiCol   oui non
+Seg2:contraste  25 10 15  	# seuil de contraste (en niveaux de gris)
+Seg2:alpha 0.15	# 18/02/04 paramètre de filtrage 0< alpha < 0.5
+
+Seg2:Convergence   #10 40	# Evaluation de la convergence des filtres
+
+Seg2:l_amorce	  20 8 3     # Distance en pixel pour valider une détection
+Seg2:segment_longueur_min 25 0  # Longueur min en pixel d'un segment à garder
+Seg2:pas_integration	 2     # Distance min, en pixel entre deux intégrations
+Seg2:poursuite_blanc  3 5 # 15 5 #10     # Distance en pixel pour perte d'un segment fin
+Seg2:bruit_contour        1.0 # 0.60	# en pixel
+Seg2:prédiction_épaisseur 0.03	# en pixel
+Seg2:prédiction_position  0.05	# en pixel
+Seg2:prédiction_pente     0.00	# en pixel/pixel
+Seg2:pente_max	  0.15  0.30	# au lieu de 0.15
+
+
+Trait:contraste 20 5 10  15  	# seuil de contraste (en niveaux de gris)
+Trait:alpha 0.15	# 18/02/04 paramètre de filtrage 0< alpha < 0.5
+
+Trait:Convergence   #10 40	# Evaluation de la convergence des filtres
+
+Trait:l_amorce	   100 8 3     # Distance en pixel pour valider une détection
+Trait:segment_longueur_min 100  # Longueur min en pixel d'un segment à garder
+Trait:pas_integration	4 10     # Distance min, en pixel entre deux intégrations
+Trait:poursuite_blanc   3 6 5 # 15 5 #10     # Distance en pixel pour perte d'un segment fin
+Trait:bruit_contour        1.0 # 0.60	# en pixel
+Trait:prédiction_épaisseur 0.05 0.03	# en pixel
+Trait:prédiction_position  0.05	# en pixel
+Trait:prédiction_pente     0.001	# en pixel/pixel
+Trait:pente_max	  0.15  0.30	# au lieu de 0.15
+
+
+densiteNumerisation 300 # en dpi. Utilisée pour définir 
+                        # des positions en cm, mm, pouce, dans EPF
+
+
+#------------------------ Paramètres pour la visualisation
+
+Visu:geometry 1000
+Visu:plans  /home/dmosuser/WorkspaceDocRead/LIGNEANCIEN/data/LIGNEANCIEN.visu
+#Visu:plans_Aff  /home/dmosuser/WorkspaceDocRead/LIGNEANCIEN/data/LIGNEANCIEN.visu
+#Visu:plans_Flou  /home/dmosuser/WorkspaceDocRead/LIGNEANCIEN/data/LIGNEANCIEN.visu
