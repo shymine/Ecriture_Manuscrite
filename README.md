@@ -79,3 +79,7 @@ Moreover, as most web browsers do not support the TIFF format, use the `convertT
 The scripts modify in place the `src` attribute of the pages in the XML files. When loading an image and a ground truth, you will then need to use the PNG image, but if you want to keep the TIFF format, do not use the converter script, and the `src` attribute will still be pointing to the TIFF file.
 
 Once you have annotated and validated the examples through the frontend (YOU MUST HIT ENTER to validate the set of 4 examples in the frontend), you can export the project or document into the export folder at the root of agnosco-backend.
+
+## Bugs detected
+
+A bug has been detected when deleting a page or when the chosen association of ground truth and image is wrong : the backend throws an exception when trying to add newer pages.
