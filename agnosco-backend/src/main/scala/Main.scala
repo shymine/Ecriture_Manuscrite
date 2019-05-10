@@ -2,19 +2,12 @@ import java.io.{File, FileNotFoundException}
 import java.net.URI
 import java.util.logging.Logger
 
-import model.ImplFactory
-import model.preparation.PreparatorImpl
 import org.glassfish.grizzly.http.server.HttpServer
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory
 import org.glassfish.jersey.server.ResourceConfig
 import resource.AgnoscoResource
 
-import scala.collection.mutable.{ArrayBuffer, ListBuffer}
-import model.common.{Example, globalDataFolder, globalExportFolder, pythonImageCropperExecutablePath}
-import model.preparation.input.PiFFReader
-import model.preparation.processing.{BaseExampleMaker, ImageProcessing}
-import model.preparation.processing.BaseExampleMaker.{lineDetector, removeDataFolderPath}
-import model.preparation.processing.linedetection.BlurLineDetector
+import model.common.{globalDataFolder, globalExportFolder, pythonImageCropperExecutablePath}
 
 object Main {
 	// Base URI the Grizzly HTTP server will listen on
