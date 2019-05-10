@@ -8,7 +8,7 @@ import model.common.Example
 trait Recogniser {
   /**
     * Export the examples to a given format
-    * @param samples
+    * @param samples The examples to export
     */
   def export(samples: Iterable[Example]): Unit
 }

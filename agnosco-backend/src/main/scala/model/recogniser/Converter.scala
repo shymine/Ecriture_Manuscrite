@@ -9,6 +9,7 @@ import model.common.Example
 trait Converter {
   /**
     * Convert the samples from PiFF to the format of the recognizer
+    * (if a certain height is needed or if jpeg is prefered instead of png, etc)
     * @param samples The samples to convert
     * @return The converted samples
     */

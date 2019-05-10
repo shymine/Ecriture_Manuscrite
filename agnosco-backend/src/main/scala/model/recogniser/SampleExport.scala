@@ -28,7 +28,7 @@ class SampleExport extends Recogniser {
 			val pathIm = path +"/"+example.imagePath
 			val pathTr = path +"/"+getFileName(example.imagePath)+".txt"
 			new File(pathIm)
-			val pathTmp = Files.copy(
+			Files.copy(
 				Paths.get(globalDataFolder + "/" + example.imagePath),
 				Paths.get(pathIm),
 				StandardCopyOption.REPLACE_EXISTING

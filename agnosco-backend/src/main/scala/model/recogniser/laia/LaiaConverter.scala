@@ -12,7 +12,6 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException
   * -	must know the number of output symbol
   */
 class LaiaConverter extends Converter {
-  var height : Int = -1
 
   /**
     * This should convert the images into images off the defined height
@@ -22,6 +21,4 @@ class LaiaConverter extends Converter {
     * @return The converted samples
     */
   override def convertData(samples: Iterable[Example]): Iterable[Example] = throw new NotImplementedException()
-
-  def setHeight(h: Integer) : Unit = this.height = h
 }

@@ -2,19 +2,12 @@ import java.io.{File, FileNotFoundException}
 import java.net.URI
 import java.util.logging.Logger
 
-import model.ImplFactory
-import model.preparation.PreparatorImpl
 import org.glassfish.grizzly.http.server.HttpServer
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory
 import org.glassfish.jersey.server.ResourceConfig
 import resource.AgnoscoResource
 
-import scala.collection.mutable.{ArrayBuffer, ListBuffer}
-import model.common.{Example, globalDataFolder, globalExportFolder, pythonImageCropperExecutablePath}
-import model.preparation.input.PiFFReader
-import model.preparation.processing.{BaseExampleMaker, ImageProcessing}
-import model.preparation.processing.BaseExampleMaker.{lineDetector, removeDataFolderPath}
-import model.preparation.processing.linedetection.BlurLineDetector
+import model.common.{globalDataFolder, globalExportFolder, pythonImageCropperExecutablePath}
 
 object Main {
 	// Base URI the Grizzly HTTP server will listen on
@@ -29,6 +22,11 @@ object Main {
 		GrizzlyHttpServerFactory.createHttpServer(URI.create(HTTP_ADDRESS), rc)
 	}
 
+	/**
+	  * Set up the folders data and export
+	  * data store the images for the pages and the examples
+	  * export store the images and transcripts for the examples that are exported
+	  */
 	def environmentSetup() : Unit = {
 		if (!new File(pythonImageCropperExecutablePath).exists()) {
 			throw new FileNotFoundException(s"missing file : $pythonImageCropperExecutablePath")
@@ -45,7 +43,7 @@ object Main {
 	}
 
 	def main(args: Array[String]) : Unit = {
-		//environmentSetup()
+		environmentSetup()
 		val server = startServer()
 		System.in.read()
 		server.shutdownNow()
