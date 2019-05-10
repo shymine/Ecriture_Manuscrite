@@ -23,4 +23,3 @@ describe('AccueilComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-//blabla

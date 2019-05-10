@@ -10,12 +10,11 @@ import { isLoweredSymbol } from '@angular/compiler';
 })
 export class GestionPagesComponent implements OnInit {
 
-  public pages = [];
-  public oldpages = [];
+  /* LISTES VISIBLES */
+  public pages = []; // liste des pages candidates à ajouter dans la base de données
+  public oldpages = []; // liste des pages déjà présentes dans la base de données
 
-  public did = -1;
-
-  dName : string;
+  public did = -1; // id du document
 
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<GestionPagesComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
@@ -44,7 +43,119 @@ export class GestionPagesComponent implements OnInit {
   ngOnInit() {
   }
 
-  encodeImageFile(param) {
+  /* ANNULER : onNoClick | VALIDER: onValidation */
+
+  onNoClick(): void {
+    console.log("");
+    this.dialogRef.close(0);
+  }
+
+  /*
+  l'envoi au backend sera de la forme
+  {
+    json = {
+      'deletedPages': [id1, id2,id3],
+      'addedPages': [{'name':"nfgh", 'image64': image, 'vtText': vt}]
+    }
+  }
+  */
+  onValidation(): void {
+
+    console.log("validation");
+
+    let json = {'deletedPages':[], 'addedPages':[]};
+
+    console.log("voilà ce qui va se passer!");
+
+    // récupération des pages à supprimer de la base de données (oldpages avec cancelled:1)
+    for (var _i = 0; _i < this.oldpages.length; _i++){
+      if(this.oldpages[_i].cancelled == 1){
+        console.log("supprimer:");
+        console.log(this.oldpages[_i]);
+
+        json.deletedPages.push(this.oldpages[_i].id);
+      }
+    }
+
+    // récupération des pages à ajouter (pages)
+    for (var _j = 0; _j < this.pages.length; _j++){
+      console.log("ajouter:");
+      console.log(this.pages[_j]);
+      let p = {
+        'name': this.pages[_j].name,
+        'image64': this.pages[_j].image,
+        'vtText' : this.pages[_j].data
+      }
+
+      json.addedPages.push(p);
+    }
+
+    console.log("recapitulons:");
+    console.log(json);
+
+
+    this.http.post(`agnosco/base/pagesGestion/${this.did}`,json,{}).subscribe(data => {
+      this.dialogRef.close(0);
+    },
+    error => {
+      console.log("catch error:", error.error.error);
+      let answer = error.error.error + 1;
+      console.log("answer:",answer);
+
+      this.dialogRef.close(answer);
+    });
+  }
+
+  /* AJOUT et SUPPRESSION des pages sur la liste des pages à enregistrer dans la  base de données */
+
+  plusPage(){
+    console.log("add one page");
+    
+    this.pages.push({'name':"default", 'image': "default", 'data':"default"});
+    
+    console.log(this.pages);
+  }
+
+  deleteOld(page){
+    //page = index dans oldpages
+    console.log("DELETE OLD PAGE");
+
+    if(this.oldpages[page].cancelled == 1){
+      console.log("RESTAURATION");
+      this.oldpages[page].cancelled = 0;
+
+    }else{
+      console.log("SUPPRESSION");
+      this.oldpages[page].cancelled = 1;
+      
+    }
+  }
+
+  // si on souhaite supprimer une page qui n'est pas déjà présente de la base de données: on la supprimer de la liste des pages à ajouter
+  deleteNew(page){
+    //page = index dans pages
+
+    console.log("DELETE NEW PAGE");
+    console.log("annulation de l'ajout => suppression dans pages");
+
+    for (var _j = page; _j < this.pages.length-1; _j++){
+      this.pages[_j] = this.pages[_j+1];
+    }
+    this.pages.pop();
+  }
+
+  /* Boolean pour l'HTML */
+  isCancelled(p){
+    //p index de old
+    if(this.oldpages[p].cancelled == 0){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+   /* ENCODAGE DES IMAGES ET VT LORS DE L'IMPORTATION */
+   encodeImageFile(param) {
 
     console.log("ENCODE..IMAGE");
     console.log(param);
@@ -113,111 +224,5 @@ export class GestionPagesComponent implements OnInit {
 
     reader.readAsText(file);
     console.log("j'encode");
-  }
-
-  onNoClick(): void {
-    console.log("");
-    this.dialogRef.close(0);
-  }
-  /*
-  pages sont de la forme:
-  {
-    json = {
-      'deletedPages': [id1, id2,id3],
-      'addedPages': [{'name':"nfgh", 'image64': image, 'vtText': vt}]
-    }
-  }
-  */
-
-  /* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
-  onValidation(): void {
-
-    console.log("validation");
-
-    let json = {'deletedPages':[], 'addedPages':[]};
-
-    console.log("voilà ce qui va se passer!");
-
-    for (var _i = 0; _i < this.oldpages.length; _i++){
-      if(this.oldpages[_i].cancelled == 1){
-        console.log("supprimer:");
-        console.log(this.oldpages[_i]);
-
-        json.deletedPages.push(this.oldpages[_i].id);
-      }
-    }
-
-    for (var _j = 0; _j < this.pages.length; _j++){
-      console.log("ajouter:");
-      console.log(this.pages[_j]);
-      let p = {
-        'name': this.pages[_j].name,
-        'image64': this.pages[_j].image,
-        'vtText' : this.pages[_j].data
-      }
-
-      json.addedPages.push(p);
-    }
-
-    console.log("recapitulons:");
-    console.log(json);
-
-
-    this.http.post(`agnosco/base/pagesGestion/${this.did}`,json,{}).subscribe(data => {
-      this.dialogRef.close(0);
-    },
-    error => {
-      console.log("catch error:", error.error.error);
-      let answer = error.error.error + 1;
-      console.log("answer:",answer);
-
-      this.dialogRef.close(answer);
-    });
-
-  }
-  /* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
-
-  plusPage(){
-    console.log("add one page");
-    
-    this.pages.push({'name':"default", 'image': "default", 'data':"default"});
-    
-    console.log(this.pages);
-  }
-
-  deleteOld(page){
-    //page = index dans oldpages
-    console.log("DELETE OLD PAGE");
-
-    if(this.oldpages[page].cancelled == 1){
-      console.log("RESTAURATION");
-      this.oldpages[page].cancelled = 0;
-
-    }else{
-      console.log("SUPPRESSION");
-      this.oldpages[page].cancelled = 1;
-      
-    }
-  }
-
-  deleteNew(page){
-    //page = index dans pages
-
-    console.log("DELETE NEW PAGE");
-    console.log("annulation de l'ajout => suppression dans pages");
-
-    for (var _j = page; _j < this.pages.length-1; _j++){
-      this.pages[_j] = this.pages[_j+1];
-    }
-    this.pages.pop();
-  }
-
-  isCancelled(p){
-    //p index de old
-    if(this.oldpages[p].cancelled == 0){
-      return false;
-    }else{
-      return true;
-    }
   }
 }

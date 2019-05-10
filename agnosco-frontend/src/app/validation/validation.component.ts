@@ -5,8 +5,8 @@ import { Validation, ValidationService } from '../service/validation.service';
 import { ValidateDialogComponent } from '../validate-dialog/validate-dialog.component';
 import { HelpValidationComponent } from '../help-validation/help-validation.component';
 import { EndValidationComponent } from '../end-validation/end-validation.component';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import {MatDialog } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-validation',
@@ -16,11 +16,15 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser
 })
 export class ValidationComponent implements OnInit {
 
+  /* un listener attend l'appui sur la touche Entrée pour obtenir les 4 exemples suivants ;
+  - si on est arrivé à la fin de la page, on appelle nextPage() pour passer à la page suivante
+  - si on est arrivé à la fin du document, on appelle endOfDocument()
+  */
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
     if(event.keyCode == 13){
       console.log("a fait entrée");
-      this.validateAll();
+      this.validate4();
       if(this.compteur4 > this.examples.length){
         if(!this.isLastPage){
           this.nextPage();
@@ -44,18 +48,22 @@ export class ValidationComponent implements OnInit {
   public pages = [];
   public examples = [];
   public ex4 = [];
-  //new version
-  //0 : id
-  //1 : path64
-  //2 : transcription
-  //3 : enabled
-  //4 : validated
+  /*
+  format du tableau examples :
+  0 : id
+  1 : path64
+  2 : transcription
+  3 : enabled
+  4 : validated
+  */
 
   public currentPageIndex;
   public currentPage;
 
   public isFirstPage;
   public isLastPage;
+  public validStr;
+  public strNotEmpty;
 
   pageD : any[];
 
@@ -71,6 +79,8 @@ export class ValidationComponent implements OnInit {
     this.isFirstPage = true;
     this.isLastPage = false;
     this.compteur4 = 0;
+    this.validStr = "[";
+    this.strNotEmpty = false;
   }
 
   ngOnInit() {
@@ -80,11 +90,11 @@ export class ValidationComponent implements OnInit {
       this.params.push(param.prepared);
     });    
 
-    this.docId = this.params[0]; // le nom du document est le 1er paramètre
-    console.log("ID du document : " + this.docId);
+    this.docId = this.params[0];
     this.docName = this.params[1];
     this.docPrepared = this.params[2];
 
+    // si le document n'a pas été découpé au préalable, on appelle le pré-traitement
     if(this.docPrepared == "false"){
       console.log("doc not prepared !!!!!");
       this.http.post(`agnosco/base/prepareExamplesOfDocument/${this.docId}`, {}, {}).subscribe(response => {
@@ -146,7 +156,6 @@ export class ValidationComponent implements OnInit {
   
   /**
    * On récupère la liste des exemples qui composent la première page.
-   * validation.getPageData() renvoie l'image de la page et les exemples, il faut donc faire un tri
    */
   getPageData(){
     this.examples = [];
@@ -157,15 +166,10 @@ export class ValidationComponent implements OnInit {
       console.log("get data : ");
       console.log(returnedData);
 
-      let pageImage64 = returnedData.pageImage;
-      let pagePath64 = "data:image/png;base64," + pageImage64;
-      //this.pageImage = this.sanitizer.bypassSecurityTrustUrl(pagePath64);
-
       let ex = returnedData.examples;
       
       //on parcourt la returnedData pour ne prendre que l'id des pages
       Object.keys(ex).forEach( key => {
-        let data = ex[key];
         let id = ex[key].id;
         let transcript = ex[key].transcript;
         let image64 = ex[key].image64;
@@ -182,7 +186,6 @@ export class ValidationComponent implements OnInit {
             break;
           }
           case "tif": {
-            console.log("MOOUUUUUUUAAAAAAAAAAAAAA");
             imageType = "tiff";
             break;
           }
@@ -202,14 +205,12 @@ export class ValidationComponent implements OnInit {
         this.hidden.push(!enabled);
       });
 
+      // remplissage de ex4 avec les 4 premiers exemples
       for(let i = 0; i< 4; i+=1){
         this.ex4.push(this.examples[i]);
       }
 
       this.compteur4 = 4;
-
-      console.log("$$$$$$$$$$$$$$$$$$$$$$ ex 4 :");
-      console.log(this.ex4);
     },
       error => {
         console.log("catch error:", error);
@@ -218,6 +219,9 @@ export class ValidationComponent implements OnInit {
   }
 
 
+  /**
+   * Méthode qui remplit ex4 avec les 4 exemples suivants.
+   */
   getNext4(){
     this.ex4 = [];
 
@@ -235,6 +239,9 @@ export class ValidationComponent implements OnInit {
     console.log(this.ex4);
   }
 
+  /**
+   * Méthode qui remplit ex4 avec les 4 exemples précédents.
+   */
   getPrevious4(){
     console.log("get previous 4");
 
@@ -260,19 +267,19 @@ export class ValidationComponent implements OnInit {
 
 
   /**
-   * Méthode qui vérifie si on est à la 1e ou à la dernière page
+   * Méthode qui vérifie si on est à la 1e ou à la dernière page.
    */
   checkPageNumber(){
     console.log("page index : " + this.currentPageIndex);
     if(this.currentPageIndex == 0){
-      //on grise la 1e flèche
+      //la 1e flèche est grisée
       this.isFirstPage = true;
     }else{
       this.isFirstPage = false;
     }
 
     if(this.currentPageIndex == this.pages.length - 1){
-      //on grise la 2e flèche
+      //la 2e flèche est grisée
       this.isLastPage = true;
     }else{
       this.isLastPage = false;
@@ -301,6 +308,7 @@ export class ValidationComponent implements OnInit {
     return this.ex4[id][4];
   }
 
+
   isBegining(){
     if((this.compteur4-8) < 0){
       return true;
@@ -308,6 +316,7 @@ export class ValidationComponent implements OnInit {
       return false;
     }
   }
+
   
   isEnd(){
     console.log("ex4 : ", this.compteur4, " / length : ", this.examples.length);
@@ -337,6 +346,7 @@ export class ValidationComponent implements OnInit {
       this.validationService.enableEx(i);
     }
 
+    //mise à jour du booléen enabled dans ex4 et dans examples
     this.ex4[id][3] = !this.ex4[id][3];
 
     this.examples[id + this.compteur4 - 4][3] = !this.examples[id + this.compteur4 - 4][3];
@@ -375,35 +385,23 @@ export class ValidationComponent implements OnInit {
 
 
   /**
-   * Méthode qui fabrique une string (str) contenant les id des exemples validés sous ce format :
-   * [3,6,9]
-   * Puis qui envoie cette string au back-end.
+   * Méthode qui fabrique une string (str) contenant les id des exemples validés sous ce format : [3,6,9]
+   * Puis qui envoie cette string au back-end via une requête REST.
    */
-  validateAll(){
+  validate4(){
     console.log("Validation");
-
-    let str = "[";
 
     let notEmpty = false;
 
     for (let i = 0; i < this.ex4.length; i++) {
       let e = this.ex4[i];
-      console.log("exemple enabled : " + e[3]);
-      if(e[3] == true){ //si l'exemple est enabled
-        str = str.concat(e[0] + ",");
+
+      //si l'exemple est enabled
+      if(e[3] == true){ 
+        this.validStr = this.validStr.concat(e[0] + ",");
       }
       notEmpty = true;
     }
-
-    //on enlève la dernière virgule s'il y a au moins un exemple dans la string
-    if(notEmpty){
-      str = str.substr(0, str.length - 1);
-    }
-
-    str = str.concat("]");
-
-    console.log("validation string : " + str);
-    this.validationService.validateAll(str);
   }
 
 
@@ -437,8 +435,17 @@ export class ValidationComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The validation dialog was closed');
       console.log(result);
+
       if(result) {
-        this.validateAll();
+        //on enlève la dernière virgule s'il y a au moins un exemple dans la string
+        if(this.strNotEmpty){
+          this.validStr = this.validStr.substr(0, this.validStr.length - 1);
+        }
+
+        this.validStr = this.validStr.concat("]");
+        
+        this.validationService.validateAll(this.validStr);
+
         this.router.navigate(['']);
         console.log("VALIDATION ET RETOUR A L'ACCUEIL");
       }else{
@@ -458,8 +465,16 @@ export class ValidationComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The validation dialog was closed');
       console.log(result);
+
       if(result) {
-        this.validateAll();
+        //on enlève la dernière virgule s'il y a au moins un exemple dans la string
+        if(this.strNotEmpty){
+          this.validStr = this.validStr.substr(0, this.validStr.length - 1);
+        }
+
+        this.validStr = this.validStr.concat("]");
+        
+        this.validationService.validateAll(this.validStr);
         this.router.navigate(['']);
         console.log("VALIDATION ET RETOUR A L'ACCUEIL");
       }else{

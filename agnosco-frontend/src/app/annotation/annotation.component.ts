@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Validation, ValidationService } from '../service/validation.service';
 import { HelpAnnotationComponent } from '../help-annotation/help-annotation.component';
 import { EndAnnotationComponent } from '../end-annotation/end-annotation.component';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import {MatDialog } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-annotation',
@@ -14,12 +14,14 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser
 })
 export class AnnotationComponent implements OnInit {
 
+  // un listener écoute l'appui sur la touche Entrée
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
     if(event.keyCode == 13){
-      this.sendEdits();
+      this.saveEdits();
       if(this.compteur4 > this.examples.length){
         if(!this.isLastPage){
+          this.sendEdits();
           this.nextPage();
         }else{
           this.endAnnotation();
@@ -38,6 +40,7 @@ export class AnnotationComponent implements OnInit {
   private projectName;
   private docPrepared;
   private compteur4;
+  private strEdits;
 
   private docMmPro = [];
 
@@ -45,14 +48,17 @@ export class AnnotationComponent implements OnInit {
 
   public pages;
   public examples;
+  /*
+  format du tableau examples :
+  0 : id
+  1 : path64
+  2 : transcription
+  3 : enabled
+  4 : validated
+  */
+
   public ex4;
   public pageImage;
-  //new version
-  //0 : id
-  //1 : path64
-  //2 : transcription
-  //3 : enabled
-  //4 : validated
 
   public currentPageIndex;
   public currentPage;
@@ -63,8 +69,6 @@ export class AnnotationComponent implements OnInit {
 
   validation: Validation;
 
-  public dangerousUrl;
-  public trustedUrl;
 
   constructor(private router: Router, private route: ActivatedRoute, private validationService: ValidationService, public dialog: MatDialog, private http: HttpClient, private sanitizer: DomSanitizer) {
     this.examples = [];
@@ -76,6 +80,7 @@ export class AnnotationComponent implements OnInit {
     this.isLastPage = false;
     this.isEndOfPage = false;
     this.compteur4 = 0;
+    this.strEdits = "[";
   }
 
   ngOnInit() {
@@ -117,6 +122,37 @@ export class AnnotationComponent implements OnInit {
     else{
       this.getPages();
     }
+  }
+
+  /**
+   * Méthode qui sauvegarde les exemples modifiés dans la string strEdits.
+   */
+  saveEdits(){
+    let notEmpty = false;
+
+    for (let i = 0; i < this.ex4.length; i++) {
+      let e = this.ex4[i];
+
+      // on récupère la transcription affichée qui a pu être modifiée
+      let newTranscript = document.getElementById("trans" + i).innerHTML;
+
+      //si elle a été modifiée et si l'exemple est enabled, on ajoute l'exemple dans strEdits
+      if(this.ex4[i][2] !== newTranscript && this.ex4[i][3]){
+        this.strEdits = this.strEdits.concat("\n{\n\'id\':" + e[0] + ",\n\'transcript\':\"" + newTranscript + "\"\n},");
+        
+        this.examples[i + this.compteur4 - 4][2] = newTranscript;
+        notEmpty = true;
+      }
+    }
+
+    //on enlève la dernière virgule s'il y a au moins un exemple dans la string pour avoir le bon format pour l'appel REST
+    if(notEmpty){
+      this.strEdits = this.strEdits.substr(0, this.strEdits.length - 1);
+    }
+
+    this.strEdits = this.strEdits.concat("\n]");
+
+    console.log(this.strEdits);
   }
 
   getId(i){
@@ -163,7 +199,6 @@ export class AnnotationComponent implements OnInit {
           this.getPages();
         });
       }
-
       else{
         this.getPages();
       }
@@ -196,12 +231,12 @@ export class AnnotationComponent implements OnInit {
   getPages(){
     this.pages = [];
 
-    //on récupère la liste des identifiants des pages du doc passé en paramètre 
+    //on récupère la liste des identifiants des pages du document courant
     this.validationService.getPages(this.docId).subscribe(returnedData => {
       console.log("get pages : ");
       console.log(returnedData);
       
-      //on parcourt la returnedData pour ne prendre que l'image, la transcription
+      //on parcourt la returnedData pour ne prendre que l'id des pages
       Object.keys(returnedData).forEach( key => {
         let id = returnedData[key].id;
 
@@ -218,8 +253,7 @@ export class AnnotationComponent implements OnInit {
   }
 
   /**
-   * On récupère la liste des exemples qui composent la première page.
-   * validation.getPageData() renvoie l'image de la page et les exemples, il faut donc faire un tri
+   * On récupère la liste des exemples qui composent la première page, soit l'id, la transcription, l'imagette, les booléens enabled et validated ainsi que l'extension de l'imagette (tif, png...).
    */
   getPageData(){
     this.examples = [];
@@ -236,7 +270,6 @@ export class AnnotationComponent implements OnInit {
 
       let ex = returnedData.examples;
       
-      //on parcourt la returnedData pour ne prendre que l'id des pages
       Object.keys(ex).forEach( key => {
         let data = ex[key];
         let id = ex[key].id;
@@ -255,7 +288,6 @@ export class AnnotationComponent implements OnInit {
             break;
           }
           case "tif": {
-            console.log("MOOUUUUUUUAAAAAAAAAAAAAA");
             imageType = "tiff";
             break;
           }
@@ -267,6 +299,7 @@ export class AnnotationComponent implements OnInit {
 
         let path64 = "data:image/" + imageType + ";base64," + image64;
 
+        // le sanitizer sert à contourner l'alerte de sécurité lancée par l'url de l'image en base 64
         let securePath64 = this.sanitizer.bypassSecurityTrustUrl(path64);
 
         let newExample = [id, securePath64, transcript, enabled, validated];
@@ -275,14 +308,12 @@ export class AnnotationComponent implements OnInit {
         this.hidden.push(!enabled);
       });
 
+      // remplissage d'ex4 qui contient les 4 exemples courants
       for(let i = 0; i< 4; i+=1){
         this.ex4.push(this.examples[i]);
       }
 
       this.compteur4 = 4;
-
-      console.log("$$$$$$$$$$$$$$$$$$$$$$ ex 4 :");
-      console.log(this.ex4);
     },
       error => {
         console.log("catch error:", error);
@@ -290,6 +321,9 @@ export class AnnotationComponent implements OnInit {
     );
   }
 
+  /**
+   * Méthode qui remplit ex4 avec les 4 exemples suivants.
+   */
   getNext4(){
     console.log("get next 4");
 
@@ -314,6 +348,9 @@ export class AnnotationComponent implements OnInit {
     }
   }
 
+  /**
+   * Méthode qui remplit ex4 avec les 4 exemples précédents.
+   */
   getPrevious4(){
     console.log("get previous 4");
 
@@ -345,6 +382,9 @@ export class AnnotationComponent implements OnInit {
     }
   }
   
+  /**
+   * Renvoie true si on est à la fin de la page, false sinon.
+   */
   isEnd(){
     console.log("ex4 : ", this.compteur4, " / length : ", this.examples.length);
     if((this.compteur4) > this.examples.length){
@@ -379,7 +419,7 @@ export class AnnotationComponent implements OnInit {
 
   /**
    * Retourne true si l'exemple n'est pas caché et vice-versa.
-   * @param id index de l'exemple dans le tableau examples
+   * @param id index de l'exemple dans le tableau ex4
    */
   isEnabled(id){
     return this.ex4[id][3];
@@ -387,7 +427,7 @@ export class AnnotationComponent implements OnInit {
 
   /**
    * Méthode qui cache l'exemple qui manque de pertinence.
-   * @param id index de l'exemple dans le tableau examples
+   * @param id index de l'exemple dans le tableau ex4
    */
   disableEx(id){
     console.log("disable " + id);
@@ -403,6 +443,7 @@ export class AnnotationComponent implements OnInit {
       this.validationService.enableEx(i);
     }
 
+    // mise à jour du booléen enabled dans ex4 ainsi que dans examples
     this.ex4[id][3] = !this.ex4[id][3];
 
     this.examples[id + this.compteur4 - 4][3] = !this.examples[id + this.compteur4 - 4][3];
@@ -450,7 +491,7 @@ export class AnnotationComponent implements OnInit {
    * [
       {
         'id':3,
-        'transcript':'coucou'
+        'transcript':'hello'
       },
       {
         'id':4,
@@ -461,35 +502,7 @@ export class AnnotationComponent implements OnInit {
    */
   sendEdits() {
     console.log("Send edits");
-
-    let str = "[";
-
-    let notEmpty = false;
-
-    for (let i = 0; i < this.ex4.length; i++) {
-      let e = this.ex4[i];
-
-      // on récupère la transcription affichée qui a pu être modifiée
-      let newTranscript = document.getElementById("trans" + i).innerHTML;
-
-      //si elle a été modifiée et si l'exemple est enabled, on ajoute l'exemple dans str
-      if(this.ex4[i][2] !== newTranscript && this.ex4[i][3]){
-        str = str.concat("\n{\n\'id\':" + e[0] + ",\n\'transcript\':\"" + newTranscript + "\"\n},");
-      
-        notEmpty = true;
-      }
-
-    }
-
-    //on enlève la dernière virgule s'il y a au moins un exemple dans la string
-    if(notEmpty){
-      str = str.substr(0, str.length - 1);
-    }
-
-    str = str.concat("\n]");
-
-    console.log(str);
-    this.validationService.sendEdits(str);
+    this.validationService.sendEdits(this.strEdits);
     
   }
 
@@ -504,6 +517,9 @@ export class AnnotationComponent implements OnInit {
     });
   }
 
+  /**
+   * Méthode appelée à la fin de l'annotation d'un document pour ouvrir le dialog de fin.
+   */
   endAnnotation(){
     const dialogRef = this.dialog.open(EndAnnotationComponent, {});
     
@@ -524,6 +540,9 @@ export class AnnotationComponent implements OnInit {
     });
   }
 
+  /**
+   * Méthode appelée pour obtenir la liste des autres documents du même projet pour permettre la navigation en leur sein.
+   */
   getAllDocuments() {
   
     console.log("*** GET /base/projectsAndDocuments ***");
