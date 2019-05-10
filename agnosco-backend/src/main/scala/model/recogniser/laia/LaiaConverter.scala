@@ -2,6 +2,7 @@ package model.recogniser.laia
 
 import model.recogniser.Converter
 import model.common.Example
+import sun.reflect.generics.reflectiveObjects.NotImplementedException
 
 /**
   * Laia constraints:
@@ -20,7 +21,7 @@ class LaiaConverter extends Converter {
     * @param samples The samples to convert
     * @return The converted samples
     */
-  override def convertData(samples: Iterable[Example]): Iterable[Example] = ???
+  override def convertData(samples: Iterable[Example]): Iterable[Example] = throw new NotImplementedException()
 
   def setHeight(h: Integer) : Unit = this.height = h
 }

@@ -1,24 +1,25 @@
 package model.recogniser
-import java.io.{File, FileInputStream, FileOutputStream, PrintWriter}
+import java.io.{File, PrintWriter}
 import java.nio.file.{Files, Paths, StandardCopyOption}
 import java.util.Calendar
 
 import model.common.Example
-import org.json.JSONObject
 import model.common.{globalDataFolder, globalExportFolder}
 
-class SampleExport extends ConverterRecogniser {
-	override protected var converter: Converter = _
+/**
+  * Default export
+  */
+class SampleExport extends Recogniser {
 
-	def getFileName(str: String): String = {
+	// get the name of the file without extension
+	private def getFileName(str: String): String = {
 		val regexp = "[.][a-zA-Z]+".r
 		regexp.replaceAllIn(str,"")
 	}
 
 	/**
-	  * Train the Recognizer using the samples given in parameter
-	  *
-	  * @param samples The samples the Recognizer trains on
+	  * Export the examples to the given format
+	  * @param samples The samples to export
 	  */
 	override def export(samples: Iterable[Example]): Unit = {
 		val path: String = globalExportFolder+"/"+ "[ ]".r.replaceAllIn(Calendar.getInstance().getTime.toString, "_")

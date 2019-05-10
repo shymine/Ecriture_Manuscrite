@@ -3,7 +3,7 @@ package model.common
 import org.json.{JSONArray, JSONObject}
 
 /**
-  * The Document class represents a set of pages that are linked by their meanings
+  * Represents a set of pages that are linked by their meanings
   * @param id The id in the database, set when stored, not takken in account when the document is first created
   * @param name The name you want to give to the document
   * @param pages The set of pages that constitute the document
@@ -14,7 +14,7 @@ case class Document(id : Long, name : String, pages : Iterable[Page], prepared: 
 	  * Create a JSONObject composed of the differents membres of the Document
 	  * @return The JSONObject corresponding to the Document
 	  */
-	def toJSON = {
+	def toJSON: JSONObject = {
 		val json = new JSONObject()
 		json.put("id", id)
 		json.put("name", name)

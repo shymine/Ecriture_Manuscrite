@@ -11,7 +11,7 @@ class LaiaRecogniser extends ConverterRecogniser{
 
 	private val height = 256
 
-	override protected var converter: Converter = new LaiaConverter
+	override protected val converter: Converter = new LaiaConverter
 
 	override def export(samples: Iterable[Example]): Unit = throw new NotImplementedError()
 
