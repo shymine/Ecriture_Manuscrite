@@ -1,6 +1,7 @@
 #!/usr/local/bin/python3
 
 # pip3 install defusedxml : stdlib xml parsing module is vulnerable to attacks
+# imagemagick must be installed on the system
 
 import os
 import sys
@@ -18,6 +19,7 @@ if len(sys.argv) != 2:
           .format(sys.argv[0]))
     exit(1)
 
+# the directory to process
 directory = sys.argv[1]
 
 if not (os.path.isdir(directory + "/xml") and os.path.isdir(directory + "/tiff")):
@@ -36,7 +38,7 @@ for image in images:
     image_path = directory + "/tiff/" + image
     image_path_no_ext = directory + "/tiff/" + filename
 
-    # splitting the image
+    # splitting the image with imagemagick
     process = subprocess.Popen(
         ["convert", image_path, "-scene", "1", "{}%d.{}".format(image_path_no_ext, extension)]
     )

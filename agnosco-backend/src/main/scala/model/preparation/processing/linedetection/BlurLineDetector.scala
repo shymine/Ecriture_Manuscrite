@@ -9,6 +9,11 @@ import model.preparation.types.{Point, Polygon}
 
 import scala.collection.mutable.ListBuffer
 
+/** An implementation of [[LineDetector]] working with Intuidoc's line detector.
+  * @param detectorIp the IP address of the VM running the detector
+  * @param filePort the port to send the file on
+  * @param answerPort the port that is open to listen for the answer
+  */
 class BlurLineDetector(detectorIp : String, filePort : Int, answerPort : Int) extends LineDetector {
   /*private def map3[A, B](l: List[A], f1 : (A, A) => B, f: (A, A, A) => B, fn : (A, A) => B): List[B] = {
     def mapEnd(l: List[A]): List[B] = {

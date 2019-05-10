@@ -4,7 +4,7 @@ import model.preparation.input.{Language, ScriptType}
 import model.preparation.types.{Point, Polygon}
 import org.json.JSONObject
 
-/*
+/* example of an element
 {
   "polygon": "(4,6);(7,5)",
   "contents": "hello",
@@ -21,7 +21,7 @@ class PiFFElement(val polygon : Polygon, val contents : String,
            l : Language) =
     this(
       new Polygon(List(new Point(c, r), new Point(c + w, r + h))), cont, st, l)
-
+  /** Builds a [[JSONObject]] from the data in this PiFFElement object. */
   def toJSON : JSONObject = {
     val json = new JSONObject()
     json.put("polygon", polygon.toString)

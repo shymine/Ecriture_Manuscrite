@@ -11,7 +11,9 @@ import org.xml.sax.SAXParseException
 import scala.collection.mutable.ListBuffer
 import scala.xml.{Node, NodeSeq, XML}
 
-/** This class can read a GEDI file (an XML format) and convert it into a PiFF object. */
+/** This class can read a GEDI file (an XML format) and convert it into a PiFF object.
+  * Find information about GEDI here : https://sourceforge.net/projects/gedigroundtruth/
+  */
 object GEDIToPiFFConverter extends PiFFConverter {
   // Finds a date in the document and adds it to the builder.
   private def findDate(xml : Node) : String = {
@@ -49,6 +51,7 @@ object GEDIToPiFFConverter extends PiFFConverter {
     zones.filter(z => (z \@ "gedi_type").equals("TextRegion")).foreach(z => {
       val contents = z \@ "contents"
 
+      // reading script type
       val scriptTypeStr = z \@ "script"
       val scriptType =
         string2ScriptType(scriptTypeStr)
@@ -56,14 +59,18 @@ object GEDIToPiFFConverter extends PiFFConverter {
             throw new FormatException(
               s"Wrong ScriptType value : $scriptTypeStr"))
 
+      // reading language type
       val languageStr = z \@ "language"
       val language =
         string2Language(languageStr)
           .getOrElse(
             throw new FormatException(s"Wrong language value : $languageStr"))
 
+      // making a PiFFElement from all the elements, depending on the provided polygon :
+      // when it is a polygon, parse the points one by one
+      // when it is (col, row, width, height), build a polygon from these values
       z \@ "polygon" match {
-        case "" =>
+        case "" => // it is only 4 values
           val col = (z \@ "col").toInt
           val row = (z \@ "row").toInt
           val width = (z \@ "width").toInt
@@ -71,7 +78,8 @@ object GEDIToPiFFConverter extends PiFFConverter {
           elements +=
             new PiFFElement(
               col, row, width, height, contents, scriptType, language)
-        case polygonStr =>
+
+        case polygonStr => // it is a polygon
           val point = raw"\((\d+),(\d+)\)".r
           val polygon =
             polygonStr
@@ -111,6 +119,7 @@ object GEDIToPiFFConverter extends PiFFConverter {
 
   override def toPiFF(filename : String) : Option[PiFF] = {
     try {
+      // reads the page in the XML file, and makes a PiFF object from it
       val xml = XML.loadFile(filename)
       val date = findDate(xml)
       val page = readPage(findPage(xml))

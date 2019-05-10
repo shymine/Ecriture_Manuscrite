@@ -1,6 +1,8 @@
 package model.preparation
 
+/** This subpackage parses the ground truths and makes PiFF objects out of them. */
 package object input {
+  // all the following classes are made to process the GEDI format
   sealed trait ScriptType
   final case object TypedScriptType extends ScriptType {
     override def toString: String = "typed"

@@ -2,7 +2,7 @@ package model.preparation.input.piff
 
 import org.json.JSONObject
 
-/*
+/* example of PiFF file
 {
   "date": "01-01-2000",
   "page":
@@ -21,10 +21,13 @@ import org.json.JSONObject
       ]
     }
 }
- */
+*/
 
-/** This class represents a PiFF file as an object. */
+/** This class represents a PiFF file as an object.
+  * It contains a date and a page.
+  */
 class PiFF(val date : String, val page : PiFFPage) {
+  /** Builds a [[JSONObject]] from the data in this PiFF object. */
   def toJSON : JSONObject = {
     val json = new JSONObject()
     json.put("date", date)

@@ -7,7 +7,9 @@ import model.preparation.processing.linedetection.BlurLineDetector
 
 import scala.collection.mutable.ListBuffer
 
+/** An implementation of [[ExampleMaker]]. */
 object BaseExampleMaker extends ExampleMaker {
+	// connects to the Intuidoc line detector that must run in a Linux 32-bit VM
 	val lineDetector = new BlurLineDetector(common.detectorIp, common.filePort, common.answerPort)
 
 	override def makeExamples(p : PiFF): List[Example] = {
@@ -95,6 +97,7 @@ object BaseExampleMaker extends ExampleMaker {
 		examples.toList
 	}
 
+	// the path stored in the example must not include "data/"
 	private def removeDataFolderPath(path: String): String = {
 		"data/".r.replaceAllIn(path, "")
 	}
