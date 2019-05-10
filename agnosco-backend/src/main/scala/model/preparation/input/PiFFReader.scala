@@ -1,8 +1,8 @@
 package model.preparation.input
 
-import java.io.{BufferedOutputStream, DataOutputStream, File, FileOutputStream}
+import java.io.{File, FileOutputStream}
 
-import model.preparation.input.converters.{GEDIToPiFFConverter, PiFFConverter}
+import model.preparation.input.converters.PiFFConverter
 import model.preparation.input.piff.{PiFF, PiFFElement, PiFFPage}
 import model.preparation.types.{Point, Polygon}
 import org.json.{JSONException, JSONObject}
@@ -12,7 +12,7 @@ import scala.annotation.tailrec
 import scala.collection.mutable.ListBuffer
 import scala.io.Source
 
-/** This class builds PiFF objects from files or JSON objects. */
+/** This class builds PiFF objects from files, Strings, or JSON objects. */
 object PiFFReader {
 	// Reads a PiFFElement from a JSON object in both possible formats.
 	private def readElement(json : JSONObject) : PiFFElement = {
@@ -67,7 +67,10 @@ object PiFFReader {
 		new PiFFPage(src, width, height, elements.toList)
 	}
 
-	/** Builds an optional PiFF object from a JSON object. */
+	/** Builds an optional PiFF object from a JSON object.
+		* @param json the JSON object
+		* @return an optional PiFF object
+		*/
 	def fromJSON(json : JSONObject) : Option[PiFF] = {
 		try {
 			val date = json.getString("date")
@@ -125,10 +128,15 @@ object PiFFReader {
     */
   def fromString(str : String) : Option[PiFF] = {
     try {
+			// storing the string in a temporary file
 			val outTmp = new FileOutputStream("fromString.tmp")
 			outTmp.write(str.getBytes)
 			outTmp.close()
+
+			// calling a method defined above to try reading PiFF
 			val piffOpt = fromFile("fromString.tmp")
+
+			// deleting the temporary file and returning the option
 			new File("fromString.tmp").delete()
 			piffOpt
     } catch {

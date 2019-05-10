@@ -2,8 +2,9 @@ package model.preparation
 
 import model.common.{Example, Page, globalDataFolder}
 import model.preparation.input.PiFFReader
-import model.preparation.processing.{BaseExampleMaker, ExampleMaker}
+import model.preparation.processing.BaseExampleMaker
 
+/** An implementation of [[Preparator]]. */
 class PreparatorImpl extends Preparator {
 
 	override def prepareData(page: Page): Iterable[Example] = {

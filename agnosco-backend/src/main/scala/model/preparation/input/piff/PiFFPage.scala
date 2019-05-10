@@ -2,7 +2,7 @@ package model.preparation.input.piff
 
 import org.json.JSONObject
 
-/*
+/* example of a page
 {
   "src": "src.jpg",
   "width": 34,
@@ -19,8 +19,12 @@ import org.json.JSONObject
 }
 */
 
+/** This class describes a page in the PiFF document.
+  * It contains a link to the associated image, metadata, and a list of elements.
+  */
 class PiFFPage(val src : String, val width : Int, val height : Int,
                val elements : List[PiFFElement]) {
+  /** Builds a [[JSONObject]] from the data in this PiFFPage object. */
   def toJSON : JSONObject = {
     val json = new JSONObject()
     json.put("src", src)
