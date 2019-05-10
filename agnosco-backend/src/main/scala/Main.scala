@@ -22,6 +22,11 @@ object Main {
 		GrizzlyHttpServerFactory.createHttpServer(URI.create(HTTP_ADDRESS), rc)
 	}
 
+	/**
+	  * Set up the folders data and export
+	  * data store the images for the pages and the examples
+	  * export store the images and transcripts for the examples that are exported
+	  */
 	def environmentSetup() : Unit = {
 		if (!new File(pythonImageCropperExecutablePath).exists()) {
 			throw new FileNotFoundException(s"missing file : $pythonImageCropperExecutablePath")
@@ -38,7 +43,7 @@ object Main {
 	}
 
 	def main(args: Array[String]) : Unit = {
-		//environmentSetup()
+		environmentSetup()
 		val server = startServer()
 		System.in.read()
 		server.shutdownNow()
