@@ -38,6 +38,11 @@ Some Python scripts are present in this directory to pre-process the data before
 - `imagecropper.py` : cuts an image thanks to the polygon given as a parameter ;
 - `prepareLaia.py` : TODO
 
+## How to install the application
+
+The application is composed of 3 major blocks as described previously.
+The backend run using java 8, the scala and sbt plugin (jdk8, scala 2.11) in IntelliJ 2019.1.2. To open the project, select open project and go to the build.sbt file 
+
 ## How to run the application
 
 In order to run the application, one must run the `Main` Scala object from the backend application, setting the right parameters (IP and ports for the line detector, ...), and run the Angular frontend by calling `ng serve` in the `agnosco-frontend` directory.

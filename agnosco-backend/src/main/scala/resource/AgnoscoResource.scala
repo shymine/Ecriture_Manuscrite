@@ -512,5 +512,5 @@ class AgnoscoResource {
 				Response.status(500).build()
 		}
 	}
-	
+
 }
