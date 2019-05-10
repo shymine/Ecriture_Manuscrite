@@ -47,7 +47,18 @@ These scripts require Python3 to be installed on the server's system, with sever
 ## How to install the application
 
 The application is composed of 3 major blocks as described previously.
-The backend run using java 8, the scala and sbt plugin (jdk8, scala 2.11) in IntelliJ 2019.1.2. To open the project, select open project and go to the build.sbt file 
+
+The backend run using java 8, the scala and sbt plugin (jdk8, scala 2.11) in IntelliJ 2019.1.2. To open the project, select open project and go to the build.sbt file and open it as a project. IntelliJ will then ask you if you want to import the dependencies, click yes ;) . SBT will the download for you the dependencies of the project. You can then run the application by launching the main method in the Main object.
+
+The frontend use Angular6. To install the dependencies of this block, you will need npm. In the package agnosco-frontend, open a terminal and run ```npm install```. The dependencies in the file package-lock.json will then be downloaded. You can then run the debug server by running 'ng serve'.
+
+For the scripts, you ll need python3 and pip3 to install the needed librairies:
+
+```bash
+pip3 install opencv-python --user
+pip3 install pillow --user
+pip3 install defusedxml --user
+```
 
 ## How to run the application
 
@@ -58,3 +69,7 @@ Several parameters (IP and ports for the line detector, directories, ...) are av
 For the frontend side, one needs to run the Angular project by calling `ng serve` in the `agnosco-frontend` directory.
 
 If the line detector is used (and the boolean for it enabled in the `common` package object), the `blurlinedetector.jar` file must be run by executing the `launch.sh` script on its machine.
+
+## Workflow
+
+Right now, in the maurdor folder, the xml files are prepared in monopages gedi and the tif are also in monopage. However, 
