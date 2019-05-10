@@ -80,3 +80,6 @@ The scripts modify inplace the src of the page in the xml file. When loading an 
 
 Once you have annotate and validate the examples through the frontend (YOU MUST TAP ENTER to validate the set of 4 examples in the front), you can export the project or document in the export folder at the root of agnosco-backend.
 
+## Bugs detected
+
+A bug have been detected when deleting a page or when the choosen association of groundtruth and image is wrong, the backend throw an exception when trying to add newer pages.
