@@ -16,6 +16,7 @@ export class ExportProjetComponent implements OnInit {
       console.log("data");
       console.log(data);
 
+      // exportation d'un document ou d'un projet (plusieurs documents)
       if(data.support == "doc"){
         this.http.post(`agnosco/base/exportDocument/${data.id}`,{},{}).subscribe(data => {
           console.log("returned data");
@@ -35,11 +36,6 @@ export class ExportProjetComponent implements OnInit {
         }
       });
       }
-
-      
-      
-      
-
   }
 
   ngOnInit() {

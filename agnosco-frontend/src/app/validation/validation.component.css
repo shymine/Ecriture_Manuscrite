@@ -5,6 +5,8 @@
     padding: 0px;
 }
 
+/* BANNIERE */
+
 .band {
     background-color:#110f3d;
     color: #48327F;
@@ -14,6 +16,16 @@
     text-align: center;
 }
 
+.textBand{
+    background: #110f3d;
+    color: rgb(236, 233, 243);
+    display: inline-block;
+    border: none;
+    height: 100%;
+    font-weight: bold;
+}
+
+/* boutons */
 
 .homeButton {
     border-left: 1px solid rgb(225, 220, 238);
@@ -52,21 +64,8 @@
     background: rgba(255, 255, 255, 0.137);
 }
 
-.boutonVert{
-    position:relative;
-    display: inline-block;
-    float: right;
-    margin-right: 1%;
-}
 
-.textBand{
-    background: #110f3d;
-    color: rgb(236, 233, 243);
-    display: inline-block;
-    border: none;
-    height: 100%;
-    font-weight: bold;
-}
+/* VALIDATION WINDOW */
 
 .validationWindow {
     width: 70%;
@@ -75,6 +74,35 @@
     border: none;
     position: relative;
     margin-left: 15%;
+}
+
+.centerWindow{
+    position: relative;
+    display: inline;
+}
+
+/* boutons gauche et droite pour naviguer dans les imagettes */
+
+.boutonGroupe{
+    float: left;
+    border: none;
+    background: none;
+    height: 100%;
+    width: 5%;
+}
+
+/* liste des exemples */
+
+.divList{
+    float: left;
+    border: none;
+    background: none;
+    height: 100%;
+    width: 90%;
+}
+
+.examplesList {
+    list-style-type: none;
 }
 
 .affichage {
@@ -135,15 +163,7 @@
     text-align: center;
 }
 
-.buttonDiv {
-    position: relative;
-    float: right;
-}
-
-.centerWindow{
-    position: relative;
-    display: inline;
-}
+/* boutons */
 
 .hideButton {
     border: none;
@@ -154,25 +174,15 @@
     font-size: 3ch;
 }
 
-.boutonGroupe{
-    float: left;
-    border: none;
-    background: none;
-    height: 100%;
-    width: 5%;
+.boutonVert{
+    position:relative;
+    display: inline-block;
+    float: right;
+    margin-right: 1%;
 }
 
-.examplesList {
-    list-style-type: none;
-}
 
-.divList{
-    float: left;
-    border: none;
-    background: none;
-    height: 100%;
-    width: 90%;
-}
+/* BOUTONS DE CHANGEMENT DE PAGE */
 
 .previousPage {
     border: none;

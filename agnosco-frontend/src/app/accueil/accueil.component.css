@@ -1,11 +1,3 @@
-/* COULEURS (peut changer ici)
-BLUE #D1DEFF RVB 209 222 255
-PINK #E88AE8 RVB 232 138 232
-ORANGE #FFB380 RVB 255 179 128
-YELLOW #E8E069 RVB 232 224 105
-GREEN #66FF9C RVB 102 255 156
-*/
-
 /* divisions */
 
 .band {
@@ -191,7 +183,8 @@ GREEN #66FF9C RVB 102 255 156
     color: #333333;
 }
 
-/* */
+/* liste */
+
 .liList{
     color: rgb(124, 102, 180);
 }
