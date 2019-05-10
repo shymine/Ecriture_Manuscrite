@@ -72,4 +72,11 @@ If the line detector is used (and the boolean for it enabled in the `common` pac
 
 ## Workflow
 
-Right now, in the maurdor folder, the xml files are prepared in monopages gedi and the tif are also in monopage. However, 
+Right now, in the maurdor folder, the xml files are prepared in monopages gedi and the tif are also in monopage. However, if you receive new data from the maurdor database or work with tif and gedi format from another base, you need first to preprocess them using first tiff_splitter to remove the mutlipages tiff files, then using gedi_splitter to remove then multipages gedi (xml) files.
+
+Moreover, as the web browser doesn t support the tif format, use the convert_tif_to_png script.
+
+The scripts modify inplace the src of the page in the xml file. When loading an image and a groundtruth you ll then need to use the png image, but if you want to persist with the tif format, dont use the convert file and the src will still be on the tif file.
+
+Once you have annotate and validate the examples through the frontend (YOU MUST TAP ENTER to validate the set of 4 examples in the front), you can export the project or document in the export folder at the root of agnosco-backend.
+
