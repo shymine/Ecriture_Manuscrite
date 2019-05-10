@@ -26,10 +26,15 @@ height = int(sys.argv[6])
 filename_split = filename_src.split('.')
 filename_out = "{}{}.{}".format(filename_split[0], img_id, filename_split[1])
 
+# opening the image with OpenCV
 img = cv2.imread(filename_src)
+
 row2 = row + height
 col2 = col + width
 
+# cutting a subset of the image's pixels
 img2 = img[row:row2, col:col2]
+
+# writing the new image
 cv2.imwrite(filename_out, img2)
 exit(0)

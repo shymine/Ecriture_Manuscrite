@@ -16,6 +16,7 @@ if len(sys.argv) != 2:
           .format(sys.argv[0]))
     exit(1)
 
+# the directory to process
 directory = sys.argv[1]
 
 metadata = [f for f in os.listdir(directory) if f.endswith(".xml")]
