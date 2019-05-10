@@ -391,8 +391,6 @@ export class ValidationComponent implements OnInit {
   validate4(){
     console.log("Validation");
 
-    this.strNotEmpty = false;
-
     for (let i = 0; i < this.ex4.length; i++) {
       let e = this.ex4[i];
 
