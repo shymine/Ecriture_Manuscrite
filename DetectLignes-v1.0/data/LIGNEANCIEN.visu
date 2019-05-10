@@ -1,0 +1,70 @@
+# Paramétrage des plans : nouveau format (encodage utf8)
+#
+#
+
+
+#--------------- Paramètres pour la visualisation 
+
+# L'ensemble des noms sur les lignes Couleurs sont rassemblés pour
+# fournir la liste des couleurs prioritaires (12 au max).
+# Le premier élément de la liste définit la couleur par défaut
+
+#--------------- paramétrage de la visualisation 
+# Les noms des couleurs sont ceux utilisés par html, la liste est longue (>140).
+# Les noms ne sont pas sensibles à la casse
+#
+# On peut trouver cette liste sous 
+#   http://www.w3.org/TR/SVG/types.html#ColorKeywords (alphabétique)
+#   http://html-color-codes.info	        (par famille de couleur)
+#   http://fr.wikipedia.org/wiki/Couleurs_du_Web
+
+# Les noms les plus classiques sont :
+# red		darkRed		maroon	purple
+# green		darkGreen 	lime	teal
+# blue		darkBlue	navy
+# cyan		darkCyan
+# magenta	darkMagenta	
+# yellow	darkYellow	olive
+# gray		darkGray	lightGray silver
+# white		black 
+
+#La première couleur est celle par défaut, pour un plan sans couleur. Les autres couleurs sont celles qui peuvent être utilisées
+Couleurs 
+
+
+# Les lignes suivantes définissent les plans
+# Il y a une ligne par plan physique : nom [couleur]
+# 2 noms de plan logique séparés par ~ seront affichés dans le même plan physique
+# le + devant le nom force l'initialisation à visible
+# si le nom de couleur est omis on utilisera la couleur par défaut
+# si un nom de couleur n'existe pas encore il est rajouté à la liste
+# il y a au maximum 12 couleurs différentes
+
++LignesDeTexte purple
++LignesDeTexteHaut red
+LDTFlou Crimson 
+Initiaux yellow
+apres orange
+avant maroon
+Eliminee red
+SegInit Gold
+SegHTrait red
+SegVTrait blue
+TraitEffH red
+TraitEffV blue
++TraitV magenta
++TraitH maroon
+Colonne darkGreen
+
+# Caractéristiques supplémentaires
+
+# épaisseur du trait : les noms sur la ligne  repèrent des noms de plans
+# la caractéristique s'applique à toutes les résolutions
+# En cas de multirésolution, en faisant précéder le nom de plan par le nom de
+# la résolution, on restreint la caractéristique à cette résolution
+
+Visu:epaisseur3 LDTFlou LignesDeTexte
+Visu:epaisseur5
+Visu:police_grande
+Visu:police_petite
+Visu:persistant
