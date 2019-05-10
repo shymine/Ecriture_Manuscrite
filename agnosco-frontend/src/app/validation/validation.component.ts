@@ -391,7 +391,7 @@ export class ValidationComponent implements OnInit {
   validate4(){
     console.log("Validation");
 
-    let notEmpty = false;
+    this.strNotEmpty = false;
 
     for (let i = 0; i < this.ex4.length; i++) {
       let e = this.ex4[i];
@@ -399,8 +399,8 @@ export class ValidationComponent implements OnInit {
       //si l'exemple est enabled
       if(e[3] == true){ 
         this.validStr = this.validStr.concat(e[0] + ",");
+        this.strNotEmpty = true;
       }
-      notEmpty = true;
     }
   }
 
@@ -436,16 +436,15 @@ export class ValidationComponent implements OnInit {
       console.log('The validation dialog was closed');
       console.log(result);
 
-      if(result) {
+      if(result) {        
+
         //on enlève la dernière virgule s'il y a au moins un exemple dans la string
-        if(this.strNotEmpty){
+        if(this.strNotEmpty == true){
           this.validStr = this.validStr.substr(0, this.validStr.length - 1);
         }
 
         this.validStr = this.validStr.concat("]");
-        
         this.validationService.validateAll(this.validStr);
-
         this.router.navigate(['']);
         console.log("VALIDATION ET RETOUR A L'ACCUEIL");
       }else{
@@ -467,13 +466,13 @@ export class ValidationComponent implements OnInit {
       console.log(result);
 
       if(result) {
+
         //on enlève la dernière virgule s'il y a au moins un exemple dans la string
-        if(this.strNotEmpty){
+        if(this.strNotEmpty == true){
           this.validStr = this.validStr.substr(0, this.validStr.length - 1);
         }
 
         this.validStr = this.validStr.concat("]");
-        
         this.validationService.validateAll(this.validStr);
         this.router.navigate(['']);
         console.log("VALIDATION ET RETOUR A L'ACCUEIL");
