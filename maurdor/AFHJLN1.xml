@@ -1,0 +1,124 @@
+<ns0:GEDI xmlns:ns0="http://lamp.cfar.umd.edu/media/projects/GEDI/" GEDI_date="12/23/2011" GEDI_version="2.3.19">
+	<ns0:USER date="3/3/2012 10:59" dateFormat="mm/dd/yyyy hh:mm" name="Adil">	</ns0:USER>
+	<ns0:USER date="4/5/2012 10:41" dateFormat="mm/dd/yyyy hh:mm" name="Laure">	</ns0:USER>
+	<ns0:USER date="10/16/2012 22:13" dateFormat="mm/dd/yyyy hh:mm" name="MDR-P6">	</ns0:USER>
+	<ns0:USER date="10/31/2012 15:32" dateFormat="mm/dd/yyyy hh:mm" name="MDR-P8">	</ns0:USER>
+	<ns0:USER date="5/23/2012 16:12" dateFormat="mm/dd/yyyy hh:mm" name="soumaya">	</ns0:USER>
+	<ns0:DL_DOCUMENT NrOfPages="1" docTag="xml" src="AFHJLN.tif">
+		<ns0:DL_PAGE Category="C1" Document_Date="19/01/2012" Document_Location="Chasseneuil" Document_Object="D&#233;claration de contrat de pr&#234;t" Language_1="french" Language_2="" Language_3="" Language_4="" NumPage="1" Receiver_Address="" Receiver_Company="MINIST&#200;RE DE L'&#201;CONOMIE DES FINANCES ET DE L'INDUSTRIE" Receiver_Fax="" Receiver_Name="" Receiver_Phone="" Script_1="typed" Script_2="hand" Sender_Address="1 Rue de la Grenadi&#232;re 86360 CHASSENEUIL DU POINTOU" Sender_Company="" Sender_Fax="" Sender_Name="Rebecca ROBIN" Sender_Phone="" gedi_type="DL_PAGE" height="2338" pageID="1" src="AFHJLN1.png" width="1700">
+			<ns0:DL_ZONE col="100" contents="@ internet - DGI" gedi_type="TextRegion" height="37" id="1" language="french" row="39" script="typed" width="202"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1468" contents="N&#176; 2062" function_1="reference" gedi_type="TextRegion" height="42" id="2" language="french" row="68" script="typed" width="130"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="412" contents="D&#233;claration de contrat de pr&#234;t" function_1="title" function_2="object" gedi_type="TextRegion" height="78" id="3" language="french" row="270" script="typed" width="925"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="424" contents="(Code g&#233;n&#233;ral des imp&#244;ts : article 242 ter3, article 49 B de l'annexe III et article 23 L de l'annexe IV)" gedi_type="TextRegion" height="44" id="4" language="french" row="363" script="typed" width="891"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="135" contents="I. D&#201;SIGNATION DU D&#201;CLARANT (interm&#233;diaire ou &#224; d&#233;faut emprunteur)" gedi_type="TextRegion" height="45" id="5" language="french" row="500" script="typed" width="1075"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="174" contents="Nom et pr&#233;nom ou raison sociale, profession:" gedi_type="TextRegion" height="35" id="6" language="french" nextZoneID="9" row="618" script="typed" width="534"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="175" contents="Adresse compl&#232;te:" gedi_type="TextRegion" height="30" id="8" language="french" nextZoneID="10" row="671" script="typed" width="226"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="727" contents="ROBIN RebeccA" gedi_type="TextRegion" height="51" id="9" language="french" row="598" script="hand" width="451"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="400" contents="1 Rue de la Grenadi&#232;re&#10;86360 CHASSENEUIL DU POITOU" gedi_type="TextRegion" height="99" id="10" language="french" row="650" script="hand" width="942"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="137" contents="II. RENSEIGNEMENTS CONCERNANT LES CONDITIONS DU PR&#202;T ET LES PARTIES AU CONTRAT" gedi_type="TextRegion" height="54" id="12" language="french" row="824" script="typed" width="1471"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="258" contents="Conditions du pr&#234;t" gedi_type="TextRegion" height="34" id="13" language="french" row="915" script="typed" width="230"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="627" contents="Noms, pr&#233;noms et adresses compl&#232;tes (y compris code d&#233;partement) des parties&#10;&#201;CRIVEZ EN CAPITALES" gedi_type="TextRegion" height="72" id="14" language="french" row="917" script="typed" width="950"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="192" contents="Date&#10;1" gedi_type="TextRegion" height="58" id="15" language="french" row="974" script="typed" width="61"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="297" contents="Dur&#233;e&#10;2" gedi_type="TextRegion" height="55" id="18" language="french" row="976" script="typed" width="72"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="388" contents="Taux&#10;3" gedi_type="TextRegion" height="58" id="19" language="french" row="974" script="typed" width="52"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="462" contents="Montant&#10;en pricipal&#10;4" gedi_type="TextRegion" height="64" id="21" language="french" row="965" script="typed" width="127"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="159" contents="18.01.12" gedi_type="TextRegion" height="42" id="22" language="french" row="1039" script="hand" width="121"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="293" contents="36 mois" gedi_type="TextRegion" height="65" id="23" language="french" row="1041" script="hand" width="76"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="385" contents="2%" gedi_type="TextRegion" height="40" id="24" language="french" row="1037" script="hand" width="63"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="467" contents="15000" gedi_type="TextRegion" height="36" id="25" language="french" row="1041" script="hand" width="110"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="646" contents="ROBIN REBECCA" gedi_type="TextRegion" height="50" id="26" language="french" row="1069" script="hand" width="431"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="605" contents="A" gedi_type="TextRegion" height="22" id="27" language="french" row="1036" script="typed" width="21"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="656" contents="Cr&#233;ance ou porteur ou pr&#234;teur" gedi_type="TextRegion" height="32" id="28" language="french" row="1030" script="typed" width="374"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="608" contents="B" gedi_type="TextRegion" height="28" id="30" language="french" row="1294" script="typed" width="23"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="660" contents="D&#233;biteur ou &#233;metteur ou emprunteur" gedi_type="TextRegion" height="29" id="31" language="french" row="1287" script="typed" width="444"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="159" contents="C" gedi_type="TextRegion" height="28" id="32" language="french" row="1564" script="typed" width="27"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="245" contents="Observations" gedi_type="TextRegion" height="32" id="33" language="french" row="1561" script="typed" width="162"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="495" contents="&#164;{Debut/D&#233;but}&#164; du Remboursement" gedi_type="TextRegion" height="59" id="34" language="french" row="1548" script="hand" width="713"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1292" contents="MARS 2012" gedi_type="TextRegion" height="49" id="35" language="french" row="1549" script="hand" width="253"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="161" contents="D" gedi_type="TextRegion" height="25" id="36" language="french" row="1688" script="typed" width="30"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="323" contents="Ann&#233;es" gedi_type="TextRegion" height="24" id="37" language="french" row="1687" script="typed" width="85"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="475" contents="20" gedi_type="TextRegion" height="33" id="39" language="french" nextZoneID="128" row="1679" script="typed" width="28"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="592" contents="20" gedi_type="TextRegion" height="31" id="40" language="french" nextZoneID="129" row="1680" script="typed" width="28"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="707" contents="20" gedi_type="TextRegion" height="24" id="41" language="french" nextZoneID="130" row="1679" script="typed" width="26"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="818" contents="20" gedi_type="TextRegion" height="23" id="42" language="french" row="1681" script="typed" width="29"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="932" contents="20" gedi_type="TextRegion" height="26" id="43" language="french" row="1678" script="typed" width="28"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1050" contents="20" gedi_type="TextRegion" height="25" id="44" language="french" row="1676" script="typed" width="23"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1162" contents="20" gedi_type="TextRegion" height="26" id="45" language="french" row="1674" script="typed" width="30"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1394" contents="20" gedi_type="TextRegion" height="24" id="47" language="french" row="1671" script="typed" width="24"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1510" contents="20" gedi_type="TextRegion" height="27" id="48" language="french" row="1669" script="typed" width="30"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="168" contents="Montant annuel des int&#233;r&#234;ts exigibles" gedi_type="TextRegion" height="26" id="51" language="french" row="1732" script="typed" width="290"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="169" contents="Montant annuel du principal rembours&#233;" gedi_type="TextRegion" height="30" id="52" language="french" row="1777" script="typed" width="288"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="321" contents="Ann&#233;es" gedi_type="TextRegion" height="21" id="53" language="french" row="1833" script="typed" width="89"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="173" contents="Montant annuel des int&#233;r&#234;ts exigibles" gedi_type="TextRegion" height="32" id="54" language="french" row="1873" script="typed" width="285"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="173" contents="Montant annuel du principal rembours&#233;" gedi_type="TextRegion" height="31" id="56" language="french" row="1921" script="typed" width="288"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="113" contents="N&#176; 2062-2006 01 14214 PO- (SDNC 870)&#10;-novembre 2006" function_1="reference" gedi_type="TextRegion" height="384" id="57" language="french" rotation="-90" row="1672" script="typed" width="31"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="474" contents="20" gedi_type="TextRegion" height="27" id="58" language="french" row="1828" script="typed" width="32"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="589" contents="20" gedi_type="TextRegion" height="25" id="59" language="french" row="1827" script="typed" width="28"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="706" contents="20" gedi_type="TextRegion" height="26" id="60" language="french" row="1827" script="typed" width="26"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="821" contents="20" gedi_type="TextRegion" height="25" id="62" language="french" row="1823" script="typed" width="26"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="932" contents="20" gedi_type="TextRegion" height="22" id="65" language="french" row="1825" script="typed" width="32"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1050" contents="20" gedi_type="TextRegion" height="26" id="67" language="french" row="1821" script="typed" width="28"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1165" contents="20" gedi_type="TextRegion" height="25" id="68" language="french" row="1821" script="typed" width="28"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1278" contents="20" gedi_type="TextRegion" height="24" id="69" language="french" row="1821" script="typed" width="29"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1393" contents="20" gedi_type="TextRegion" height="27" id="70" language="french" row="1817" script="typed" width="29"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1509" contents="20" gedi_type="TextRegion" height="27" id="71" language="french" row="1814" script="typed" width="33"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="384" contents="A" gedi_type="TextRegion" height="25" id="72" language="french" nextZoneID="73" row="2028" script="typed" width="24"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="428" contents="Chasseneuil" function_1="location" gedi_type="TextRegion" height="82" id="73" language="french" nextZoneID="74" row="1978" script="hand" width="306"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="856" contents=", le" function_1="date" gedi_type="TextRegion" height="29" id="74" language="french" nextZoneID="75" row="2023" script="typed" width="43"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="911" contents="19.01.2012" function_1="date" gedi_type="TextRegion" height="64" id="75" language="french" row="1990" script="hand" width="250"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1166" contents="Signature" gedi_type="TextRegion" height="27" id="76" language="french" nextZoneID="138" row="2019" script="typed" width="128"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="729" contents="MINIST&#200;RE DE L'&#201;CONOMIE&#10;DES FINANCES ET DE L'INDUSTRIE" function_1="footer" gedi_type="TextRegion" height="39" id="78" language="french" row="2175" script="typed" width="317"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="717" function="logo" gedi_type="GraphicRegion" height="93" id="80" row="2132" width="341"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="745" function="logo" gedi_type="GraphicRegion" height="157" id="82" row="61" width="248"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="130" function="logo" gedi_type="GraphicRegion" height="55" id="83" row="82" width="136"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="138" contents="N&#176; 10142 * 05&#10;N&#176; 50058 # 05" function_1="reference" gedi_type="TextRegion" height="42" id="87" language="french" row="142" script="typed" width="122"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1278" contents="20" gedi_type="TextRegion" height="26" id="95" language="french" row="1674" script="typed" width="27"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="468" contents="4250" gedi_type="TextRegion" height="37" id="97" language="french" row="1724" script="hand" width="100"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="587" contents="5100" gedi_type="TextRegion" height="37" id="98" language="french" row="1726" script="hand" width="95"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="704" contents="5100" gedi_type="TextRegion" height="34" id="99" language="french" row="1725" script="hand" width="91"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="709" contents="5000" gedi_type="TextRegion" height="35" id="100" language="french" row="1770" script="hand" width="93"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="587" contents="5000" gedi_type="TextRegion" height="32" id="101" language="french" row="1775" script="hand" width="92"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="470" contents="4166,60" gedi_type="TextRegion" height="34" id="102" language="french" row="1772" script="hand" width="115"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1231" gedi_type="LineDrawingRegion" height="35" id="103" row="1563" width="48"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1090" contents="5" gedi_type="TextRegion" height="22" id="107" language="french" row="1002" script="typed" width="23"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="750" contents="Libert&#233; &#8226; &#201;galit&#233; &#8226; Fraternit&#233;" gedi_type="TextRegion" height="19" id="108" language="french" row="158" script="typed" width="241"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="510" contents="12" gedi_type="TextRegion" height="32" id="128" language="french" row="1680" script="hand" width="41"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="627" contents="13" gedi_type="TextRegion" height="30" id="129" language="french" row="1679" script="hand" width="42"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="743" contents="14" gedi_type="TextRegion" height="25" id="130" language="french" row="1678" script="hand" width="39"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1296" contents="Robin" gedi_type="TextRegion" height="68" id="138" language="french" row="1985" script="hand" width="196"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="712" function="underlined-field" gedi_type="GraphicRegion" height="25" id="141" row="626" width="856"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="410" function="underlined-field" gedi_type="GraphicRegion" height="30" id="142" row="670" width="1159"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="165" function="underlined-field" gedi_type="GraphicRegion" height="32" id="143" row="717" width="1409"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="483" function="underlined-field" gedi_type="GraphicRegion" height="22" id="144" row="1576" width="1118"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="156" function="underlined-field" gedi_type="GraphicRegion" height="24" id="145" row="1627" width="1437"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="502" function="underlined-field" gedi_type="GraphicRegion" height="17" id="147" row="1694" width="65"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="622" function="underlined-field" gedi_type="GraphicRegion" height="15" id="148" row="1695" width="48"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="734" function="underlined-field" gedi_type="GraphicRegion" height="10" id="149" row="1695" width="60"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="847" function="underlined-field" gedi_type="GraphicRegion" height="10" id="150" row="1693" width="56"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="966" function="underlined-field" gedi_type="GraphicRegion" height="12" id="151" row="1690" width="60"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1076" function="underlined-field" gedi_type="GraphicRegion" height="9" id="152" row="1692" width="64"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1193" function="underlined-field" gedi_type="GraphicRegion" height="8" id="153" row="1690" width="59"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1304" function="underlined-field" gedi_type="GraphicRegion" height="11" id="154" row="1687" width="62"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1419" function="underlined-field" gedi_type="GraphicRegion" height="8" id="155" row="1688" width="62"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1540" function="underlined-field" gedi_type="GraphicRegion" height="11" id="156" row="1686" width="52"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="506" function="underlined-field" gedi_type="GraphicRegion" height="8" id="157" row="1843" width="62"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="618" function="underlined-field" gedi_type="GraphicRegion" height="9" id="158" row="1841" width="67"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="732" function="underlined-field" gedi_type="GraphicRegion" height="11" id="159" row="1842" width="71"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="848" function="underlined-field" gedi_type="GraphicRegion" height="10" id="160" row="1840" width="63"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="965" function="underlined-field" gedi_type="GraphicRegion" height="9" id="162" row="1837" width="58"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1079" function="underlined-field" gedi_type="GraphicRegion" height="12" id="163" row="1835" width="60"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1195" function="underlined-field" gedi_type="GraphicRegion" height="10" id="164" row="1836" width="52"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1310" function="underlined-field" gedi_type="GraphicRegion" height="12" id="165" row="1832" width="57"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1425" function="underlined-field" gedi_type="GraphicRegion" height="10" id="166" row="1833" width="60"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1542" function="underlined-field" gedi_type="GraphicRegion" height="8" id="167" row="1830" width="51"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="157" contents="cerfa" gedi_type="TextRegion" height="49" id="170" language="french" row="85" script="typed" width="88"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="143" gedi_type="TableRegion" height="1072" id="182" orientationD="0.473" row="898" width="1467"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="754" contents="R&#201;PUBLIQUE FRAN&#199;AISE" gedi_type="TextRegion" height="21" id="185" language="french" row="188" script="typed" width="232"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE function="signature" gedi_type="GraphicRegion" id="186" polygon="(1271,1994);(1293,1983);(1384,1975);(1485,1978);(1564,1991);(1559,2056);(1389,2082);(1188,2142);(1188,2115);(1276,2075);(1274,1997)"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="136" function="other" gedi_type="GraphicRegion" height="218" id="188" row="559" width="1476"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="421" function="underlined-field" gedi_type="GraphicRegion" height="13" id="189" row="2035" width="429"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="900" function="underlined-field" gedi_type="GraphicRegion" height="15" id="190" row="2032" width="257"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="0" gedi_type="NoiseRegion" height="2337" id="191" row="0" width="48"> </ns0:DL_ZONE>
+		</ns0:DL_PAGE>
+	</ns0:DL_DOCUMENT>
+</ns0:GEDI>

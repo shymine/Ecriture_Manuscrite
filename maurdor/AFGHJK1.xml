@@ -1,0 +1,113 @@
+<ns0:GEDI xmlns:ns0="http://lamp.cfar.umd.edu/media/projects/GEDI/" GEDI_date="12/23/2011" GEDI_version="2.3.19">
+	<ns0:USER date="2/29/2012 17:46" dateFormat="mm/dd/yyyy hh:mm" name="Adil">	</ns0:USER>
+	<ns0:USER date="10/2/2018 15:58" dateFormat="mm/dd/yyyy hh:mm" name="Bertrand">	</ns0:USER>
+	<ns0:USER date="4/4/2012 11:14" dateFormat="mm/dd/yyyy hh:mm" name="Laure">	</ns0:USER>
+	<ns0:USER date="10/16/2012 23:06" dateFormat="mm/dd/yyyy hh:mm" name="MDR-P6">	</ns0:USER>
+	<ns0:USER date="10/31/2012 15:31" dateFormat="mm/dd/yyyy hh:mm" name="MDR-P8">	</ns0:USER>
+	<ns0:USER date="10/16/2012 15:47" dateFormat="mm/dd/yyyy hh:mm" name="MDR_P1">	</ns0:USER>
+	<ns0:USER date="3/6/2012 16:45" dateFormat="mm/dd/yyyy hh:mm" name="Mailys">	</ns0:USER>
+	<ns0:USER date="5/23/2012 15:12" dateFormat="mm/dd/yyyy hh:mm" name="soumaya">	</ns0:USER>
+	<ns0:DL_DOCUMENT NrOfPages="1" docTag="xml" src="AFGHJK1.tif">
+		<ns0:DL_PAGE Category="C1" Document_Date="20/12/2011" Document_Location="La Brigue" Document_Object="AVIS DE CHANGEMENT DE SITUATION" Language_1="french" Language_2="" Language_3="" Language_4="" NumPage="2" Receiver_Address="" Receiver_Company="ALLOCATIONS FAMILIALES" Receiver_Fax="" Receiver_Name="" Receiver_Phone="" Script_1="typed" Script_2="hand" Sender_Address="30, rue Famille ARNALDI 06430 La Brigue" Sender_Company="" Sender_Fax="" Sender_Name="Arnaud MARIE" Sender_Phone="" gedi_type="DL_PAGE" height="3508" pageID="1" src="AFGHJK1.png" width="2480">
+			<ns0:DL_ZONE col="1732" contents="Livre V du code de la S&#233;curit&#233; Sociale" gedi_type="TextRegion" height="50" id="1" language="french" row="469" script="typed" width="591"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="165" contents="N&#176; d'allocataire :" gedi_type="TextRegion" height="54" id="2" language="french" nextZoneID="238" row="652" script="typed" width="285"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="392" contents="ALLOCATIONS&#10;FAMILIALES" gedi_type="TextRegion" height="70" id="3" language="french" row="196" script="typed" width="218"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2149" contents="11361*02" function_1="reference" gedi_type="TextRegion" height="47" id="5" language="french" row="252" script="typed" width="167"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="614" contents="Votre nom" gedi_type="TextRegion" height="53" id="6" language="french" nextZoneID="8" row="1516" script="typed" width="191"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="614" contents="Votre num&#233;ro d'allocataire" gedi_type="TextRegion" height="54" id="7" language="french" nextZoneID="240" row="1589" script="typed" width="479"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="834" contents="MARIE" gedi_type="TextRegion" height="65" id="8" language="french" row="1489" script="hand" width="202"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1478" contents="Votre pr&#233;nom" gedi_type="TextRegion" height="55" id="9" language="french" nextZoneID="10" row="1516" script="typed" width="250"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1762" contents="Arnaud" gedi_type="TextRegion" height="66" id="10" language="french" row="1487" script="hand" width="244"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="164" contents="Votre nouvelle&#10;adresse" gedi_type="TextRegion" height="98" id="11" language="french" row="1815" script="typed" width="308"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="167" contents="Votre nouvelle&#10;situation familiale" gedi_type="TextRegion" height="112" id="12" language="french" row="2040" script="typed" width="382"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="615" contents="Votre adresse :" gedi_type="TextRegion" height="44" id="13" language="french" nextZoneID="81" row="1817" script="typed" width="271"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="621" contents="Code postal" gedi_type="TextRegion" height="52" id="14" language="french" nextZoneID="79" row="1873" script="typed" width="215"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="614" contents="Si vous avez chang&#233; de logement, pr&#233;cisez depuis le :" gedi_type="TextRegion" height="50" id="15" language="french" nextZoneID="242" row="1929" script="typed" width="956"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1196" contents="Commune" gedi_type="TextRegion" height="44" id="16" language="french" nextZoneID="420" row="1873" script="typed" width="190"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="170" contents="La nouvelle&#10;situation de vos&#10;enfants et&#10;des personnes &#224;&#10;votre charge" gedi_type="TextRegion" height="219" id="17" language="french" row="2594" script="typed" width="333"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="307" contents="Nom et pr&#233;nom" gedi_type="TextRegion" height="39" id="18" language="french" row="2984" script="typed" width="214"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="719" contents="Lien&#10;de parent&#233;&#10;(fils, fille, neveu...)&#10;enfant recueilli" gedi_type="TextRegion" height="139" id="19" language="french" row="2986" script="typed" width="290"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1106" contents="Date&#10;de naissance" gedi_type="TextRegion" height="71" id="20" language="french" row="2983" script="typed" width="182"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1520" contents="Nouvelle&#10;situation" gedi_type="TextRegion" height="75" id="21" language="french" row="2980" script="typed" width="129"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1844" contents="Date de ce&#10;changement&#10;de situation" gedi_type="TextRegion" height="104" id="22" language="french" row="2980" script="typed" width="178"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2148" contents="S. 7129c" gedi_type="TextRegion" height="46" id="23" language="french" row="3303" script="typed" width="175"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="625" contents="En cas de s&#233;paration ou de divorce, pr&#233;cisez qui &#164;{&#224;/a}&#164; la garde et la charge des enfants ?" gedi_type="TextRegion" height="54" id="24" language="french" row="2414" script="typed" width="1301"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="630" function="underlined-field" gedi_type="GraphicRegion" height="8" id="25" row="2503" width="1691"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="47" gedi_type="SeparatorRegion" height="15" id="26" row="337" width="2376"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="47" gedi_type="SeparatorRegion" height="7" id="27" row="453" width="2377"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="313" contents="AVIS DE CHANGEMENT DE SITUATION POUR LES PRESTATIONS FAMILIALES" function_1="title" gedi_type="TextRegion" height="63" id="28" language="french" row="374" script="typed" width="2014"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="607" contents="Madame, Monsieur,&#10;Si votre situation change, vos droits peuvent aussi changer. Ils peuvent augmenter ou&#10;diminuer. Vous devez donc nous pr&#233;venir de tout changement dans votre situation. Sinon, dans&#10;certains cas, vous risquez de perdre une partie de vos droits. Dans d'autres cas, vous serez&#10;oblig&#233; de nous rembourser les prestations re&#231;ues alors que vous n'y aviez plus droit.&#10;Pour nous avertir, utilisez cet &#171;avis de changement de situation&#187;. Compl&#233;tez-le et&#10;renvoyez-le nous. N'oubliez pas de le dater, de le signer et d'y joindre les pi&#232;ces&#10;justificatives qui vous sont demand&#233;es.&#10;Votre caisse d'Allocations familiales." function_2="text_section" gedi_type="TextRegion" height="445" id="29" language="french" row="926" script="typed" width="1710"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="679" contents="Vous &#234;tes s&#233;par&#233;(e) de fait" gedi_type="TextRegion" height="50" id="32" language="french" row="2264" script="typed" width="378"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="615" contents="Pr&#233;cisez dans le cadre ci-dessous :&#10;&#61599; Si la situation de vos enfants ou des personnes &#224; votre charge a chang&#233; : d&#233;but d'activit&#233; professionnelle,&#10;d'apprentissage, ch&#244;mage, en longue maladie, etc. (joignez selon la situation : bulletin de salaire,&#10;attestation du ma&#238;tre de stage ou d'apprentissage, certificat m&#233;dical, etc.)&#10;&#61599; Si le nombre d'enfants ou de personnes &#224; votre charge a chang&#233; : arriv&#233;e au foyer (joignez une&#10;photocopie de votre livret de famille ou de la carte d'identit&#233; ou du passeport de l'enfant), d&#233;part du&#10;foyer, mariage, d&#233;c&#232;s..." gedi_type="TextRegion" height="343" id="35" language="french" row="2593" script="typed" width="1704"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1139" contents="03 12 2011" gedi_type="TextRegion" height="48" id="78" language="french" row="2034" script="hand" width="370"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="840" contents="06430" gedi_type="TextRegion" height="43" id="79" language="french" row="1870" script="hand" width="265"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="889" contents="30, rue Famille ARNALDI" gedi_type="TextRegion" height="84" id="81" language="french" row="1781" script="hand" width="743"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1726" contents="Vous avez sign&#233; un Pacs" gedi_type="TextRegion" height="49" id="106" language="french" row="2101" script="typed" width="375"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1741" contents="Vous &#234;tes c&#233;libataire" gedi_type="TextRegion" height="37" id="108" language="french" row="2336" script="typed" width="313"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents="Vous &#234;tes mari&#233;s&#10;(joignez une photocopie de votre livret de famille)" gedi_type="TextRegion" id="111" language="french" polygon="(679,2103);(950,2105);(950,2146);(1087,2146);(1087,2188);(607,2185);(612,2149);(678,2149)" script="typed"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="625" contents="Vous vivez en couple depuis le" gedi_type="TextRegion" height="45" id="112" language="french" nextZoneID="78" row="2054" script="typed" width="496"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents="Vous vivez en concubinage&#10;(joignez une photocopie de la carte d'identit&#233;, du passeport, de la carte d'ancien combattant ou d'invalide de guerre&#10;ou encore du titre de s&#233;jour de votre concubin(e) ou partenaire)" gedi_type="TextRegion" id="113" language="french" polygon="(1147,2148);(1146,2104);(1575,2105);(1575,2153);(2197,2150);(2198,2212);(1094,2212);(1097,2149)" script="typed"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents="Vous &#234;tes s&#233;par&#233;(e) l&#233;galement&#10;(joignez une copie de la d&#233;cision judiciaire)" gedi_type="TextRegion" id="114" language="french" polygon="(1154,2304);(1152,2255);(1627,2255);(1629,2344);(1099,2348);(1100,2302)" script="typed"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents="Vous &#234;tes divorc&#233;(e)&#10;(joignez une copie du jugement de divorce)" gedi_type="TextRegion" id="115" language="french" polygon="(1678,2328);(2107,2332);(2105,2255);(1735,2255);(1735,2294);(1682,2297)" script="typed"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents="Vous &#234;tes veuf(ve)&#10;(joignez un bulletin de d&#233;c&#232;s)" gedi_type="TextRegion" id="116" language="french" polygon="(627,2408);(975,2408);(973,2326);(678,2328);(678,2368);(629,2368)" script="typed"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2108" contents="Vit-il avec&#10;vous" gedi_type="TextRegion" height="65" id="119" language="french" row="2981" script="typed" width="154"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2165" contents="cerfa" gedi_type="TextRegion" height="56" id="122" language="french" row="178" script="typed" width="116"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2145" function="logo" gedi_type="GraphicRegion" height="83" id="124" row="163" width="151"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1852" contents="www&#10;6008001 H" gedi_type="TextRegion" height="95" id="125" language="french" row="212" script="typed" width="202"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="620" contents="Vous vivez seul(e) depuis le" gedi_type="TextRegion" height="50" id="127" language="french" row="2208" script="typed" width="450"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="627" function="form-field" gedi_type="GraphicRegion" height="44" id="129" row="2320" width="47"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="633" function="form-field" gedi_type="GraphicRegion" height="43" id="130" row="2262" width="43"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1106" function="form-field" gedi_type="GraphicRegion" height="43" id="131" row="2259" width="43"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1680" function="form-field" gedi_type="GraphicRegion" height="43" id="132" row="2102" width="49"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1102" function="form-field" gedi_type="GraphicRegion" height="43" id="133" row="2104" width="43"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1683" function="form-field" gedi_type="GraphicRegion" height="42" id="134" row="2255" width="46"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1682" function="form-field" gedi_type="GraphicRegion" height="42" id="135" row="2326" width="44"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="631" function="form-field" gedi_type="GraphicRegion" height="44" id="136" row="2104" width="43"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1096" gedi_type="SeparatorRegion" height="34" id="163" row="1609" width="759"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1083" function="form-field" gedi_type="GraphicRegion" height="31" id="164" row="2213" width="378"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2125" function="form-field" gedi_type="GraphicRegion" height="43" id="165" row="3110" width="43"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2204" function="form-field" gedi_type="GraphicRegion" height="43" id="166" row="3108" width="43"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2204" function="form-field" gedi_type="GraphicRegion" height="43" id="167" row="3167" width="43"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2123" function="form-field" gedi_type="GraphicRegion" height="43" id="168" row="3170" width="44"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2124" function="form-field" gedi_type="GraphicRegion" height="43" id="169" row="3227" width="43"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2205" function="form-field" gedi_type="GraphicRegion" height="43" id="170" row="3227" width="42"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="806" function="underlined-field" gedi_type="GraphicRegion" height="20" id="171" row="1542" width="661"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1732" function="underlined-field" gedi_type="GraphicRegion" height="28" id="172" row="1537" width="577"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="891" function="underlined-field" gedi_type="GraphicRegion" height="26" id="173" row="1840" width="1427"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1580" gedi_type="SeparatorRegion" height="19" id="174" row="1952" width="256"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1399" function="underlined-field" gedi_type="GraphicRegion" height="29" id="175" row="1897" width="917"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="170" function="underlined-field" gedi_type="GraphicRegion" height="17" id="177" row="3145" width="536"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="170" function="underlined-field" gedi_type="GraphicRegion" height="17" id="178" row="3202" width="532"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="170" function="underlined-field" gedi_type="GraphicRegion" height="21" id="179" row="3254" width="530"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="726" function="underlined-field" gedi_type="GraphicRegion" height="25" id="180" row="3141" width="252"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="726" function="underlined-field" gedi_type="GraphicRegion" height="23" id="181" row="3202" width="252"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="726" function="underlined-field" gedi_type="GraphicRegion" height="28" id="182" row="3251" width="252"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1006" function="form-field" gedi_type="GraphicRegion" height="31" id="183" row="3131" width="377"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1007" function="form-field" gedi_type="GraphicRegion" height="31" id="184" row="3187" width="377"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1007" function="form-field" gedi_type="GraphicRegion" height="31" id="185" row="3244" width="377"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1408" function="underlined-field" gedi_type="GraphicRegion" height="13" id="186" row="3144" width="362"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1409" function="underlined-field" gedi_type="GraphicRegion" height="20" id="187" row="3194" width="361"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1409" function="underlined-field" gedi_type="GraphicRegion" height="18" id="188" row="3252" width="361"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1793" function="form-field" gedi_type="GraphicRegion" height="32" id="189" row="3124" width="286"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1794" function="form-field" gedi_type="GraphicRegion" height="31" id="190" row="3181" width="285"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1794" function="form-field" gedi_type="GraphicRegion" height="32" id="191" row="3237" width="285"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="842" function="form-field" gedi_type="GraphicRegion" height="48" id="196" row="1867" width="265"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1133" function="form-field" gedi_type="GraphicRegion" height="66" id="211" row="2026" width="392"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="143" function="logo" gedi_type="GraphicRegion" height="186" id="216" row="150" width="566"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="641" gedi_type="LineDrawingRegion" height="36" id="234" row="2107" width="29"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="170" contents="REMPLISSEZ UNIQUEMENT LES RUBRIQUES CORRESPONDANT &#192; VOTRE NOUVELLE SITUATION" gedi_type="TextRegion" height="55" id="235" language="french" row="1714" script="typed" width="1702"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1185" contents="1/2" gedi_type="TextRegion" height="46" id="237" language="french" row="168" script="typed" width="68"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="477" contents="8 3 5 7 4 6 3 D" gedi_type="TextRegion" height="59" id="238" language="french" row="651" script="hand" width="442"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="470" function="form-field" gedi_type="GraphicRegion" height="65" id="239" row="644" width="453"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1872" contents="8 3 5 7 4 6 3 D" gedi_type="TextRegion" height="59" id="240" language="french" row="1576" script="hand" width="435"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1862" function="form-field" gedi_type="GraphicRegion" height="63" id="241" row="1569" width="452"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1861" contents="01 12 2011" gedi_type="TextRegion" height="45" id="242" language="french" row="1912" script="hand" width="427"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="1849" function="form-field" gedi_type="GraphicRegion" height="56" id="243" row="1908" width="469"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2122" contents="oui" gedi_type="TextRegion" height="33" id="250" language="french" row="3049" script="typed" width="51"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="2198" contents="non" gedi_type="TextRegion" height="32" id="251" language="french" row="3048" script="typed" width="55"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="597" elements="111;136;234" gedi_type="Group" height="105" id="255" row="2093" width="500"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="156" gedi_type="TableRegion" height="336" id="267" row="2960" width="2148"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE contents="La Brigue" gedi_type="TextRegion" id="420" language="french" polygon="(1424,1855);(1724,1854);(1722,1942);(1580,1939);(1580,1920);(1423,1920)" script="hand"> </ns0:DL_ZONE>
+		</ns0:DL_PAGE>
+		</ns0:DL_DOCUMENT>
+</ns0:GEDI>

@@ -1,0 +1,11 @@
+<ns0:GEDI xmlns:ns0="http://lamp.cfar.umd.edu/media/projects/GEDI/" GEDI_date="12/23/2011" GEDI_version="2.3.19">
+	<ns0:USER date="1/25/2012 9:23" dateFormat="mm/dd/yyyy hh:mm" name="Jean">	</ns0:USER>
+	<ns0:DL_DOCUMENT NrOfPages="1" docTag="xml" src="example.tif">
+		<ns0:DL_PAGE gedi_type="DL_PAGE" height="2338" pageID="1" src="AFHIKM1.png" width="1700">
+			<ns0:DL_ZONE col="102" contents="test" gedi_type="TextRegion" height="300" language="french" row="89" script="typed" width="1347"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="323" contents="FORMULAIRE DE DEMANDE DE L'AIDE &#192; L'ANTENNE&#10;EN ZONE COUVERTE PAR LA TNT" function_1="title" function_2="object" gedi_type="TextRegion" height="106" id="3" language="french" row="457" script="typed" width="925"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="323" contents="Nom" gedi_type="TextRegion" height="34" id="5" language="french" nextZoneID="7" row="642" script="typed" width="63"> </ns0:DL_ZONE>
+			<ns0:DL_ZONE col="105" contents="Pr&#233;nom" gedi_type="TextRegion" height="35" id="6" language="french" nextZoneID="8" row="700" script="typed" width="107"> </ns0:DL_ZONE>
+		</ns0:DL_PAGE>
+	</ns0:DL_DOCUMENT>
+</ns0:GEDI>
